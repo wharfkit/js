@@ -4,8 +4,8 @@ A template to create a `transactPlugin` for use during a `transact` call within 
 
 ## Usage
 
--   Create a new repository and use this as a template.
--   Write your plugin
+-   [Use this as a template.](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
+-   Write your plugin's logic.
 -   Publish it on Github or npmjs.com
 -   Include it in your project and use it.
 

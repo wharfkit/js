@@ -3,8 +3,6 @@ import {TransactPluginTemplate} from '../../src/index'
 
 import {PrivateKey, Session, SessionOptions, WalletPluginPrivateKey} from '@wharfkit/session'
 
-const url = 'https://jungle4.greymass.com/v1/resource_provider/request_transaction'
-
 const wallet = new WalletPluginPrivateKey({
     privateKey: PrivateKey.from('5Jtoxgny5tT7NiNFp1MLogviuPJ9NniWjnU4wKzaX4t7pL4kJ8s'),
 })
@@ -20,7 +18,7 @@ const mockSessionOptions: SessionOptions = {
     walletPlugin: wallet,
 }
 
-suite('exaple', function () {
+suite('example', function () {
     test('plugin usage', async function () {
         const session = new Session(mockSessionOptions)
         const action = {

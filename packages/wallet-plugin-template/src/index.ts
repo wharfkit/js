@@ -1,5 +1,4 @@
 import {
-    ChainDefinition,
     Checksum256,
     LoginContext,
     PermissionLevel,
@@ -39,11 +38,14 @@ export class WalletPluginTEMPLATE implements WalletPlugin {
      * @param options WalletPluginLoginOptions
      * @returns Promise<WalletPluginLoginResponse>
      */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // TODO: Remove these eslint rule modifiers when you are implementing this method.
+    /* eslint-disable @typescript-eslint/no-unused-vars */
     async login(
         context: LoginContext,
         options: WalletPluginLoginOptions
     ): Promise<WalletPluginLoginResponse> {
+        // TODO: Remove these eslint rule modifiers when you are implementing this method.
+        /* eslint-enable @typescript-eslint/no-unused-vars */
         // Example response...
         return {
             chain: Checksum256.from(
@@ -59,8 +61,11 @@ export class WalletPluginTEMPLATE implements WalletPlugin {
      * @param resolved ResolvedSigningRequest
      * @returns Promise<Signature>
      */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // TODO: Remove these eslint rule modifiers when you are implementing this method.
+    /* eslint-disable @typescript-eslint/no-unused-vars */
     async sign(resolved: ResolvedSigningRequest, context: TransactContext): Promise<Signature> {
+        // TODO: Remove these eslint rule modifiers when you are implementing this method.
+        /* eslint-enable @typescript-eslint/no-unused-vars */
         // Example response...
         return Signature.from(
             'SIG_K1_KfqBXGdSRnVgZbAXyL9hEYbAvrZjcaxUCenD7Z3aX6yzf6MEyc4Cy3ywToD4j3SKkzSg7L1uvRUirEPHwAwrbg5c9z27Z3'

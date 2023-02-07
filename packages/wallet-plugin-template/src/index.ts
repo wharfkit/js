@@ -1,9 +1,11 @@
 import {
     ChainDefinition,
     Checksum256,
+    LoginContext,
     PermissionLevel,
     ResolvedSigningRequest,
     Signature,
+    TransactContext,
     WalletPlugin,
     WalletPluginConfig,
     WalletPluginLoginOptions,
@@ -38,7 +40,10 @@ export class WalletPluginTEMPLATE implements WalletPlugin {
      * @returns Promise<WalletPluginLoginResponse>
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    async login(options: WalletPluginLoginOptions): Promise<WalletPluginLoginResponse> {
+    async login(
+        context: LoginContext,
+        options: WalletPluginLoginOptions
+    ): Promise<WalletPluginLoginResponse> {
         // Example response...
         return {
             chain: Checksum256.from(
@@ -55,7 +60,7 @@ export class WalletPluginTEMPLATE implements WalletPlugin {
      * @returns Promise<Signature>
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    async sign(chain: ChainDefinition, resolved: ResolvedSigningRequest): Promise<Signature> {
+    async sign(resolved: ResolvedSigningRequest, context: TransactContext): Promise<Signature> {
         // Example response...
         return Signature.from(
             'SIG_K1_KfqBXGdSRnVgZbAXyL9hEYbAvrZjcaxUCenD7Z3aX6yzf6MEyc4Cy3ywToD4j3SKkzSg7L1uvRUirEPHwAwrbg5c9z27Z3'

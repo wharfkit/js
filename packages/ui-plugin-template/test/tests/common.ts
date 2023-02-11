@@ -1,12 +1,9 @@
 import {mockFetch} from '$test/utils/mock-fetch'
 import {UserInterfaceTEMPLATE} from '../../src/index'
 
-import SessionKit, {
-    PrivateKey,
-    Session,
-    SessionOptions,
-    WalletPluginPrivateKey,
-} from '@wharfkit/session'
+import SessionKit, {PrivateKey, Session, SessionArgs, SessionOptions} from '@wharfkit/session'
+
+import {WalletPluginPrivateKey} from '@wharfkit/wallet-plugin-privatekey'
 
 const wallet = new WalletPluginPrivateKey({
     privateKey: PrivateKey.from('5Jtoxgny5tT7NiNFp1MLogviuPJ9NniWjnU4wKzaX4t7pL4kJ8s'),
@@ -17,12 +14,15 @@ const mockChain = {
     url: 'https://jungle4.greymass.com',
 }
 
-const mockSessionOptions: SessionOptions = {
+const mockSessionArgs: SessionArgs = {
     chain: mockChain,
-    fetch: mockFetch,
     permissionLevel: 'wharfkit1131@test',
-    ui: new UserInterfaceTEMPLATE(),
     walletPlugin: wallet,
+}
+
+const mockSessionOptions: SessionOptions = {
+    fetch: mockFetch,
+    ui: new UserInterfaceTEMPLATE(),
 }
 
 const mockSessionKitOptions = {
@@ -39,7 +39,7 @@ suite('example', function () {
         await kit.login()
     })
     test('interface perform transaction', async function () {
-        const session = new Session(mockSessionOptions)
+        const session = new Session(mockSessionArgs, mockSessionOptions)
         const action = {
             authorization: [
                 {

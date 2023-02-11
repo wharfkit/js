@@ -1,12 +1,32 @@
 import {Checksum256, PermissionLevel} from '@greymass/eosio'
-import {UserInterface, LoginOptions, TransactContext, LoginContext} from '@wharfkit/session'
+import {
+    LoginContext,
+    LoginOptions,
+    PromptArgs,
+    TransactContext,
+    UserInterface,
+} from '@wharfkit/session'
 
 export class UserInterfaceTEMPLATE implements UserInterface {
+    /**
+     * onError
+     */
+    // TODO: Remove these eslint rule modifiers when you are implementing this method.
+    /* eslint-disable @typescript-eslint/no-unused-vars */
+    async onError(error: Error): Promise<void> {
+        /**
+         * An error has occurred.
+         *
+         * Present the error to the user.
+         */
+    }
     /**
      * onLogin
      *
      * @param options LoginOptions
      */
+    // TODO: Remove these eslint rule modifiers when you are implementing this method.
+    /* eslint-disable @typescript-eslint/no-unused-vars */
     async onLogin(options?: LoginOptions): Promise<void> {
         /**
          * A login call has been initiated.
@@ -31,6 +51,8 @@ export class UserInterfaceTEMPLATE implements UserInterface {
      *
      * @param context TransactContext
      */
+    // TODO: Remove these eslint rule modifiers when you are implementing this method.
+    /* eslint-disable @typescript-eslint/no-unused-vars */
     async onTransact(context: TransactContext): Promise<void> {
         /**
          * A transact call has been initiated.
@@ -55,6 +77,8 @@ export class UserInterfaceTEMPLATE implements UserInterface {
      *
      * @param message string
      */
+    // TODO: Remove these eslint rule modifiers when you are implementing this method.
+    /* eslint-disable @typescript-eslint/no-unused-vars */
     status(message: string) {
         /**
          * Plugins (TransactPlugins, WalletPlugins, etc) can use this to push generic text-only messages to the user interface.
@@ -69,6 +93,8 @@ export class UserInterfaceTEMPLATE implements UserInterface {
      * @param context LoginContext
      * @returns Promise<PermissionLevel>
      */
+    // TODO: Remove these eslint rule modifiers when you are implementing this method.
+    /* eslint-disable @typescript-eslint/no-unused-vars */
     async onSelectPermissionLevel(context: LoginContext): Promise<PermissionLevel> {
         /**
          * Present the user with an interface to select a permission level to use for the session.
@@ -94,6 +120,8 @@ export class UserInterfaceTEMPLATE implements UserInterface {
      * @param context LoginContext
      * @returns Promise<Checksum256>
      */
+    // TODO: Remove these eslint rule modifiers when you are implementing this method.
+    /* eslint-disable @typescript-eslint/no-unused-vars */
     async onSelectChain(context: LoginContext): Promise<Checksum256> {
         /**
          * Present the user with an interface to select one of the blockchains from the config.
@@ -111,6 +139,8 @@ export class UserInterfaceTEMPLATE implements UserInterface {
      * @param context LoginContext
      * @returns Promise<number>
      */
+    // TODO: Remove these eslint rule modifiers when you are implementing this method.
+    /* eslint-disable @typescript-eslint/no-unused-vars */
     async onSelectWallet(context: LoginContext): Promise<number> {
         /**
          * Present the user with an interface to select one of the walletPlugins from the config.
@@ -121,5 +151,18 @@ export class UserInterfaceTEMPLATE implements UserInterface {
          * The index in the array of the wallet selected by the user should be returned below.
          */
         return 0
+    }
+
+    /**
+     * prompt
+     *
+     * @param args PromptArgs
+     */
+    // TODO: Remove these eslint rule modifiers when you are implementing this method.
+    /* eslint-disable @typescript-eslint/no-unused-vars */
+    async prompt(args: PromptArgs): Promise<void> {
+        /**
+         * Accept PromptArgs, render PromptElements, and present the user for interaction.
+         */
     }
 }

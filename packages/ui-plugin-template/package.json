@@ -16,7 +16,7 @@
         "prepare": "make"
     },
     "dependencies": {
-        "@wharfkit/session": "^0.3.0-ui-5",
+        "@wharfkit/session": "^0.3.0-ui-7",
         "tslib": "^2.1.0"
     },
     "devDependencies": {
@@ -32,6 +32,7 @@
         "@types/node": "^18.7.18",
         "@typescript-eslint/eslint-plugin": "^5.20.0",
         "@typescript-eslint/parser": "^5.20.0",
+        "@wharfkit/wallet-plugin-privatekey": "^0.2.0",
         "chai": "^4.3.4",
         "eslint": "^8.13.0",
         "eslint-config-prettier": "^8.1.0",

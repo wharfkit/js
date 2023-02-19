@@ -46,7 +46,6 @@ export default [
     {
         input: 'src/index.ts',
         output: {banner, file: pkg.types, format: 'esm'},
-
         plugins: [dts()],
     },
 ]

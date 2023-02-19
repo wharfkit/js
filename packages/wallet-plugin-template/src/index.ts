@@ -1,4 +1,5 @@
 import {
+    AbstractWalletPlugin,
     Checksum256,
     LoginContext,
     PermissionLevel,
@@ -7,20 +8,24 @@ import {
     TransactContext,
     WalletPlugin,
     WalletPluginConfig,
-    WalletPluginLoginOptions,
     WalletPluginLoginResponse,
     WalletPluginMetadata,
+    WalletPluginSignResponse,
 } from '@wharfkit/session'
 
-export class WalletPluginTEMPLATE implements WalletPlugin {
+export class WalletPluginTEMPLATE extends AbstractWalletPlugin implements WalletPlugin {
     /**
      * The logic configuration for the wallet plugin.
      */
     readonly config: WalletPluginConfig = {
         // Should the user interface display a chain selector?
         requiresChainSelect: true,
+
         // Should the user interface display a permission selector?
         requiresPermissionSelect: false,
+
+        // Optionally specify if this plugin only works with specific blockchains.
+        // supportedChains: ['73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d']
     }
     /**
      * The metadata for the wallet plugin to be displayed in the user interface.
@@ -33,6 +38,23 @@ export class WalletPluginTEMPLATE implements WalletPlugin {
         download: 'https://someplace.com/download',
     }
     /**
+     * A unique string identifier for this wallet plugin.
+     *
+     * It's recommended this is all lower case, no spaces, and only URL-friendly special characters (dashes, underscores, etc)
+     */
+    get id(): string {
+        return 'wallet-plugin-template'
+    }
+    /**
+     * A method which returns any data from this class/plugin that should be persisted.
+     */
+    get data(): Record<string, any> {
+        return {
+            foo: 'bar',
+            // baz: this.something,
+        }
+    }
+    /**
      * Performs the wallet logic required to login and return the chain and permission level to use.
      *
      * @param options WalletPluginLoginOptions
@@ -40,10 +62,7 @@ export class WalletPluginTEMPLATE implements WalletPlugin {
      */
     // TODO: Remove these eslint rule modifiers when you are implementing this method.
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    async login(
-        context: LoginContext,
-        options: WalletPluginLoginOptions
-    ): Promise<WalletPluginLoginResponse> {
+    async login(context: LoginContext): Promise<WalletPluginLoginResponse> {
         // TODO: Remove these eslint rule modifiers when you are implementing this method.
         /* eslint-enable @typescript-eslint/no-unused-vars */
         // Example response...
@@ -63,12 +82,19 @@ export class WalletPluginTEMPLATE implements WalletPlugin {
      */
     // TODO: Remove these eslint rule modifiers when you are implementing this method.
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    async sign(resolved: ResolvedSigningRequest, context: TransactContext): Promise<Signature> {
+    async sign(
+        resolved: ResolvedSigningRequest,
+        context: TransactContext
+    ): Promise<WalletPluginSignResponse> {
         // TODO: Remove these eslint rule modifiers when you are implementing this method.
         /* eslint-enable @typescript-eslint/no-unused-vars */
         // Example response...
-        return Signature.from(
-            'SIG_K1_KfqBXGdSRnVgZbAXyL9hEYbAvrZjcaxUCenD7Z3aX6yzf6MEyc4Cy3ywToD4j3SKkzSg7L1uvRUirEPHwAwrbg5c9z27Z3'
-        )
+        return {
+            signatures: [
+                Signature.from(
+                    'SIG_K1_KfqBXGdSRnVgZbAXyL9hEYbAvrZjcaxUCenD7Z3aX6yzf6MEyc4Cy3ywToD4j3SKkzSg7L1uvRUirEPHwAwrbg5c9z27Z3'
+                ),
+            ],
+        }
     }
 }

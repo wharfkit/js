@@ -16,8 +16,10 @@
         "prepare": "make"
     },
     "dependencies": {
-        "@wharfkit/session": "^0.3.0-ui-12",
         "tslib": "^2.1.0"
+    },
+    "peerDependencies": {
+        "@wharfkit/session": "^0.3.0-ui-12"
     },
     "devDependencies": {
         "@rollup/plugin-alias": "^3.1.4",

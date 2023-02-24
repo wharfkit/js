@@ -1,8 +1,12 @@
 import {
+    cancelable,
+    Cancelable,
     Checksum256,
     LoginContext,
     LoginOptions,
     PermissionLevel,
+    PromptArgs,
+    PromptResponse,
     UserInterface,
     UserInterfaceLoginResponse,
 } from '@wharfkit/session'
@@ -49,8 +53,12 @@ export class MockUserInterface implements UserInterface {
     async onTransactResult() {
         this.log('onTransactResult')
     }
-    prompt(args) {
+    prompt(args: PromptArgs): Cancelable<PromptResponse> {
         this.log('prompt' + JSON.stringify(args))
+        return cancelable(new Promise(() => {}), (canceled) => {
+            // do things to cancel promise
+            throw canceled
+        })
     }
     status(message: string) {
         this.log(`status:('${message}')`)

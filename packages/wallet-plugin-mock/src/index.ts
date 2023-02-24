@@ -46,11 +46,6 @@ export class WalletPluginMock extends AbstractWalletPlugin implements WalletPlug
     }
 
     /**
-     * Any data that should be persisted for the mock wallet.
-     */
-    public _data: Record<string, any> = {}
-
-    /**
      * A mock WalletPluginLoginResponse to be returned by the login method.
      */
     public loginResponse: WalletPluginLoginResponse = {
@@ -102,13 +97,6 @@ export class WalletPluginMock extends AbstractWalletPlugin implements WalletPlug
      */
     get id(): string {
         return 'wallet-plugin-mock'
-    }
-
-    /**
-     * A method which returns any data from this class/plugin that should be persisted.
-     */
-    get data(): Record<string, any> {
-        return this.data
     }
 
     /**

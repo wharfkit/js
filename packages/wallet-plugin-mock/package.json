@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/wallet-plugin-mock",
     "description": "A mock wallet for developers to use while building web applications.",
-    "version": "0.1.0",
+    "version": "0.3.0-ui-13",
     "homepage": "https://github.com/wharfkit/wallet-plugin-mock",
     "license": "BSD-3-Clause",
     "main": "lib/wallet-plugin-mock.js",

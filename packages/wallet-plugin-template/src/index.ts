@@ -46,15 +46,6 @@ export class WalletPluginTEMPLATE extends AbstractWalletPlugin implements Wallet
         return 'wallet-plugin-template'
     }
     /**
-     * A method which returns any data from this class/plugin that should be persisted.
-     */
-    get data(): Record<string, any> {
-        return {
-            foo: 'bar',
-            // baz: this.something,
-        }
-    }
-    /**
      * Performs the wallet logic required to login and return the chain and permission level to use.
      *
      * @param options WalletPluginLoginOptions
@@ -63,8 +54,6 @@ export class WalletPluginTEMPLATE extends AbstractWalletPlugin implements Wallet
     // TODO: Remove these eslint rule modifiers when you are implementing this method.
     /* eslint-disable @typescript-eslint/no-unused-vars */
     async login(context: LoginContext): Promise<WalletPluginLoginResponse> {
-        // TODO: Remove these eslint rule modifiers when you are implementing this method.
-        /* eslint-enable @typescript-eslint/no-unused-vars */
         // Example response...
         return {
             chain: Checksum256.from(
@@ -86,8 +75,6 @@ export class WalletPluginTEMPLATE extends AbstractWalletPlugin implements Wallet
         resolved: ResolvedSigningRequest,
         context: TransactContext
     ): Promise<WalletPluginSignResponse> {
-        // TODO: Remove these eslint rule modifiers when you are implementing this method.
-        /* eslint-enable @typescript-eslint/no-unused-vars */
         // Example response...
         return {
             signatures: [

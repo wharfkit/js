@@ -1,13 +1,70 @@
-import {AbstractTransactPlugin, TransactContext, TransactHookTypes} from '@wharfkit/session'
+import {
+    AbstractTransactPlugin,
+    Cancelable,
+    ChainDefinition,
+    Checksum256Type,
+    PromptResponse,
+    SigningRequest,
+    TransactContext,
+    TransactHookTypes,
+    TransactResult,
+} from '@wharfkit/session'
 
-export class TransactPluginTemplate extends AbstractTransactPlugin {
+export class TransactPluginExplorerLink extends AbstractTransactPlugin {
     register(context: TransactContext): void {
-        context.addHook(TransactHookTypes.beforeSign, async (request, context) => {
-            // eslint-disable-next-line no-console
-            console.log('beforeSign hook called with', request, context)
-            return {
-                request,
+        context.addHook(
+            TransactHookTypes.afterBroadcast,
+            async (
+                request: SigningRequest,
+                context: TransactContext,
+                result: TransactResult | undefined
+            ) => {
+                if (context.ui) {
+                    // Ensure we have the data to build the link
+                    if (!result) {
+                        throw new Error('Unable to generate explorer link, no result.')
+                    }
+                    if (!result.chain) {
+                        throw new Error('Unable to generate explorer link, no chain definition.')
+                    }
+                    if (!result.chain) {
+                        throw new Error(
+                            'Unable to generate explorer link, chain definition doesnt defined an explorer.'
+                        )
+                    }
+                    if (!result.resolved) {
+                        throw new Error(
+                            'Unable to generate explorer link, no resolved transaction.'
+                        )
+                    }
+                    // Update the status bar
+                    context.ui.status('Transaction Complete')
+                    // Prompt the user with the link to view the transaction
+                    const prompt: Cancelable<PromptResponse> = context.ui.prompt({
+                        title: 'Transaction Complete',
+                        body: 'Click the button below to view the transaction in a block explorer.',
+                        elements: [
+                            {
+                                type: 'button',
+                                label: 'Visit Explorer',
+                                data: this.getExplorerLink(
+                                    result.chain,
+                                    result.resolved.transaction.id
+                                ),
+                            },
+                        ],
+                    })
+                    return prompt.then(async () => {
+                        return new Promise((r) => r()) as Promise<void>
+                    })
+                }
             }
-        })
+        )
+    }
+    getExplorerLink(chain: ChainDefinition, transaction: Checksum256Type): string {
+        if (!chain.explorer) {
+            throw new Error('Unable to generate explorer link, no explorer defined.')
+        }
+        return chain.explorer?.url(String(transaction))
     }
 }

@@ -1,5 +1,5 @@
 import {mockFetch} from '$test/utils/mock-fetch'
-import {TransactPluginTemplate} from '../../src/index'
+import {TransactPluginExplorerLink} from '../../src/index'
 
 import {Session, SessionArgs, SessionOptions} from '@wharfkit/session'
 import {WalletPluginPrivateKey} from '@wharfkit/wallet-plugin-privatekey'
@@ -11,13 +11,13 @@ const mockSessionArgs: SessionArgs = {
         id: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
         url: 'https://jungle4.greymass.com',
     },
-    permissionLevel: 'wharfkit1131@test',
+    permissionLevel: 'wharfkit1111@test',
     walletPlugin: wallet,
 }
 
 const mockSessionOptions: SessionOptions = {
     fetch: mockFetch,
-    transactPlugins: [new TransactPluginTemplate()],
+    transactPlugins: [new TransactPluginExplorerLink()],
 }
 
 suite('example', function () {
@@ -26,24 +26,27 @@ suite('example', function () {
         const action = {
             authorization: [
                 {
-                    actor: 'wharfkit1115',
+                    actor: 'wharfkit1111',
                     permission: 'test',
                 },
             ],
             account: 'eosio.token',
             name: 'transfer',
             data: {
-                from: 'wharfkit1115',
+                from: 'wharfkit1111',
                 to: 'wharfkittest',
                 quantity: '0.0001 EOS',
                 memo: 'wharfkit plugin - resource provider test (maxFee: 0.0001)',
             },
         }
-        await session.transact(
+        const result = await session.transact(
             {
                 action,
             },
-            {broadcast: false}
+            {broadcast: true}
         )
+        if (result.response) {
+            console.log(result.response.transaction_id)
+        }
     })
 })

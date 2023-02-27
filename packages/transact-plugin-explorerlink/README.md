@@ -1,13 +1,31 @@
 # @wharfkit/transact-plugin-explorerlink
 
-A template to create a `transactPlugin` for use during a `transact` call within the `@wharfkit/session` library.
+A plugin to display a link to a block explorer after a transaction has been completed.
 
 ## Usage
 
--   [Use this as a template.](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
--   Write your plugin's logic.
--   Publish it on Github or npmjs.com
--   Include it in your project and use it.
+When instantiating your Session Kit, ensure you have the `explorer` parameter defined on the `ChainDefintion` for each blockchain, and then add the `TransactPluginExplorerLink` as a `transactPlugin`.
+
+```ts
+import {TransactPluginExplorerLink} from '@wharfkit/transact-plugin-resource-provider'
+
+const kit = new SessionKit({
+    // ... all your other options
+    chains: [
+        {
+            id: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
+            url: 'https://jungle4.greymass.com',
+            // Make sure to define the structure of an explorer link for each chain in your chain definitions.
+            explorer: {
+                prefix: 'https://jungle4.eosq.eosnation.io/tx/',
+                suffix: '',
+            },
+        },
+    ],
+    // Include the explorer link plugin
+    transactPlugins: [new TransactPluginExplorerLink()],
+})
+```
 
 ## Developing
 

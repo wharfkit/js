@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/transact-plugin-explorerlink",
     "description": "A transact plugin to display a link to a block explorer after a transaction completes.",
-    "version": "0.3.0-ui-14",
+    "version": "0.3.0-ui-15",
     "homepage": "https://github.com/wharfkit/transact-plugin-explorerlink",
     "license": "BSD-3-Clause",
     "main": "lib/transact-plugin-explorerlink.js",

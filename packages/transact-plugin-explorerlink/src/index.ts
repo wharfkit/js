@@ -45,12 +45,19 @@ export class TransactPluginExplorerLink extends AbstractTransactPlugin {
                         body: 'Click the button below to view the transaction in a block explorer.',
                         elements: [
                             {
-                                type: 'button',
+                                type: 'link',
+                                data: {
+                                    button: true,
+                                    label: 'Visit Explorer',
+                                    href: this.getExplorerLink(
+                                        result.chain,
+                                        result.resolved.transaction.id
+                                    ),
+                                },
+                            },
+                            {
+                                type: 'close',
                                 label: 'Visit Explorer',
-                                data: this.getExplorerLink(
-                                    result.chain,
-                                    result.resolved.transaction.id
-                                ),
                             },
                         ],
                     })

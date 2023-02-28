@@ -21,6 +21,13 @@ interface WalletPluginMockOptions {
 
 export class WalletPluginMock extends AbstractWalletPlugin implements WalletPlugin {
     /**
+     * A unique string identifier for this wallet plugin.
+     *
+     * It's recommended this is all lower case, no spaces, and only URL-friendly special characters (dashes, underscores, etc)
+     */
+    id = 'wallet-plugin-mock'
+
+    /**
      * The logic configuration for the wallet plugin.
      */
     readonly config: WalletPluginConfig = {
@@ -88,15 +95,6 @@ export class WalletPluginMock extends AbstractWalletPlugin implements WalletPlug
                 this.signResponse = options.signResponse
             }
         }
-    }
-
-    /**
-     * A unique string identifier for this wallet plugin.
-     *
-     * It's recommended this is all lower case, no spaces, and only URL-friendly special characters (dashes, underscores, etc)
-     */
-    get id(): string {
-        return 'wallet-plugin-mock'
     }
 
     /**

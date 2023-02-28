@@ -1,6 +1,6 @@
 {
     "name": "@wharfkit/transact-plugin-explorerlink",
-    "description": "A transact plugin to display a link to a block explorer after a transaction completes.",
+    "description": "A transact plugin to display a link to a block explorer after a transaction is broadcast.",
     "version": "0.3.0-ui-15",
     "homepage": "https://github.com/wharfkit/transact-plugin-explorerlink",
     "license": "BSD-3-Clause",
@@ -19,7 +19,7 @@
         "tslib": "^2.1.0"
     },
     "peerDependencies": {
-        "@wharfkit/session": "^0.3.0-ui-14.1"
+        "@wharfkit/session": "^0.3.0-ui-16"
     },
     "devDependencies": {
         "@rollup/plugin-alias": "^3.1.4",
@@ -34,7 +34,7 @@
         "@types/node": "^18.7.18",
         "@typescript-eslint/eslint-plugin": "^5.20.0",
         "@typescript-eslint/parser": "^5.20.0",
-        "@wharfkit/session": "^0.3.0-ui-14.4",
+        "@wharfkit/session": "^0.3.0-ui-16",
         "@wharfkit/wallet-plugin-privatekey": "^0.3.0-ui-13.1",
         "chai": "^4.3.4",
         "eslint": "^8.13.0",

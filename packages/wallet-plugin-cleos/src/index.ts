@@ -1,7 +1,10 @@
 import {
+    ABIDef,
     AbstractWalletPlugin,
+    ActionType,
     LoginContext,
     ResolvedSigningRequest,
+    Serializer,
     TransactContext,
     TransactHookTypes,
     WalletPlugin,
@@ -74,9 +77,19 @@ export class WalletPluginCleos extends AbstractWalletPlugin implements WalletPlu
         }
         // During the signing process, add a hook to display the cleos command to the user
         context.addHook(TransactHookTypes.afterSign, async () => {
+            // Decode the transaction to be human readable
+            const actions: ActionType[] = []
+            for (const action of resolved.transaction.actions) {
+                const abi: ABIDef = await context.abiProvider.getAbi(action.account)
+                actions.push(Serializer.objectify(action.decodeData(abi)))
+            }
+            const decoded = {
+                ...resolved.transaction,
+                actions,
+            }
             // Create the cleos command that will be used to sign the transaction
             const command = `cleos -u ${context.chain.url} push transaction '${JSON.stringify(
-                resolved.transaction,
+                decoded,
                 null,
                 4
             )}'`

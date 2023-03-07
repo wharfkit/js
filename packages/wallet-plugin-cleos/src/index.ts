@@ -1,11 +1,6 @@
 import {
     AbstractWalletPlugin,
-    Checksum256,
     LoginContext,
-    PermissionLevel,
-    ResolvedSigningRequest,
-    Signature,
-    TransactContext,
     WalletPlugin,
     WalletPluginConfig,
     WalletPluginLoginResponse,
@@ -23,19 +18,16 @@ export class WalletPluginCleos extends AbstractWalletPlugin implements WalletPlu
 
         // Should the user interface display a permission selector?
         requiresPermissionSelect: false,
-
-        // Optionally specify if this plugin only works with specific blockchains.
-        // supportedChains: ['73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d']
     }
     /**
      * The metadata for the wallet plugin to be displayed in the user interface.
      */
     readonly metadata: WalletPluginMetadata = {
         name: 'Wallet Plugin Template',
-        description: 'A template that can be used to build wallet plugins!',
+        description: 'Copy and paste the transactions to sign in cleos.',
         logo: 'base_64_encoded_image',
-        homepage: 'https://someplace.com',
-        download: 'https://someplace.com/download',
+        homepage: 'https://github.com/antelopeio/leap',
+        download: 'https://github.com/antelopeio/leap',
     }
     /**
      * A unique string identifier for this wallet plugin.
@@ -51,15 +43,16 @@ export class WalletPluginCleos extends AbstractWalletPlugin implements WalletPlu
      * @param options WalletPluginLoginOptions
      * @returns Promise<WalletPluginLoginResponse>
      */
-    // TODO: Remove these eslint rule modifiers when you are implementing this method.
-    /* eslint-disable @typescript-eslint/no-unused-vars */
     async login(context: LoginContext): Promise<WalletPluginLoginResponse> {
-        // Example response...
+        if (!context.chain) {
+            throw new Error('The cleos wallet plugin requires a chain to be selected.')
+        }
+        if (!context.permissionLevel) {
+            throw new Error('The cleos wallet plugin requires a permissionLevel to be specified.')
+        }
         return {
-            chain: Checksum256.from(
-                '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d'
-            ),
-            permissionLevel: PermissionLevel.from('wharfkit1115@test'),
+            chain: context.chain.id,
+            permissionLevel: context.permissionLevel,
         }
     }
     /**
@@ -69,19 +62,9 @@ export class WalletPluginCleos extends AbstractWalletPlugin implements WalletPlu
      * @param resolved ResolvedSigningRequest
      * @returns Promise<Signature>
      */
-    // TODO: Remove these eslint rule modifiers when you are implementing this method.
-    /* eslint-disable @typescript-eslint/no-unused-vars */
-    async sign(
-        resolved: ResolvedSigningRequest,
-        context: TransactContext
-    ): Promise<WalletPluginSignResponse> {
-        // Example response...
+    async sign(): Promise<WalletPluginSignResponse> {
         return {
-            signatures: [
-                Signature.from(
-                    'SIG_K1_KfqBXGdSRnVgZbAXyL9hEYbAvrZjcaxUCenD7Z3aX6yzf6MEyc4Cy3ywToD4j3SKkzSg7L1uvRUirEPHwAwrbg5c9z27Z3'
-                ),
-            ],
+            signatures: [],
         }
     }
 }

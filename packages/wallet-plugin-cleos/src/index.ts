@@ -81,7 +81,10 @@ export class WalletPluginCleos extends AbstractWalletPlugin implements WalletPlu
             const actions: ActionType[] = []
             for (const action of resolved.transaction.actions) {
                 const abi: ABIDef = await context.abiProvider.getAbi(action.account)
-                actions.push(Serializer.objectify(action.decodeData(abi)))
+                actions.push({
+                    ...action,
+                    data: Serializer.objectify(action.decodeData(abi)),
+                })
             }
             const decoded = {
                 ...resolved.transaction,

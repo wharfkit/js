@@ -1,4 +1,4 @@
-# @wharfkit/wallet-plugin-template
+# @wharfkit/wallet-plugin-cleos
 
 A template to create a `WalletPlugin` for use within the `@wharfkit/session` library.
 

@@ -13,7 +13,7 @@ import {
     WalletPluginSignResponse,
 } from '@wharfkit/session'
 
-export class WalletPluginTEMPLATE extends AbstractWalletPlugin implements WalletPlugin {
+export class WalletPluginCleos extends AbstractWalletPlugin implements WalletPlugin {
     /**
      * The logic configuration for the wallet plugin.
      */
@@ -43,7 +43,7 @@ export class WalletPluginTEMPLATE extends AbstractWalletPlugin implements Wallet
      * It's recommended this is all lower case, no spaces, and only URL-friendly special characters (dashes, underscores, etc)
      */
     get id(): string {
-        return 'wallet-plugin-template'
+        return 'wallet-plugin-cleos'
     }
     /**
      * Performs the wallet logic required to login and return the chain and permission level to use.

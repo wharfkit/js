@@ -1,6 +1,9 @@
 import {
     AbstractWalletPlugin,
     LoginContext,
+    ResolvedSigningRequest,
+    TransactContext,
+    TransactHookTypes,
     WalletPlugin,
     WalletPluginConfig,
     WalletPluginLoginResponse,
@@ -62,7 +65,43 @@ export class WalletPluginCleos extends AbstractWalletPlugin implements WalletPlu
      * @param resolved ResolvedSigningRequest
      * @returns Promise<Signature>
      */
-    async sign(): Promise<WalletPluginSignResponse> {
+    async sign(
+        resolved: ResolvedSigningRequest,
+        context: TransactContext
+    ): Promise<WalletPluginSignResponse> {
+        if (!context.ui) {
+            throw new Error('The cleos wallet plugin requires a UI to be provided.')
+        }
+        // During the signing process, add a hook to display the cleos command to the user
+        context.addHook(TransactHookTypes.afterSign, async () => {
+            // Create the cleos command that will be used to sign the transaction
+            const command = `cleos -u ${context.chain.url} push transaction '${JSON.stringify(
+                resolved.transaction,
+                null,
+                4
+            )}'`
+            // Prompt the user with the command to sign the transaction
+            await context.ui?.prompt({
+                title: 'Sign with cleos',
+                body: 'Copy the command to sign the transaction using cleos.',
+                elements: [
+                    {
+                        type: 'textarea',
+                        data: {
+                            content: command,
+                        },
+                    },
+                    {
+                        type: 'button',
+                        data: {
+                            label: 'Copy to clipboard',
+                            onclick: () => navigator.clipboard.writeText(command),
+                        },
+                    },
+                ],
+            })
+        })
+        // Return no signatures, as the cleos command will be used to sign the transaction
         return {
             signatures: [],
         }

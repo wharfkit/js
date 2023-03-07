@@ -23,7 +23,7 @@ export class WalletPluginCleos extends AbstractWalletPlugin implements WalletPlu
      * The metadata for the wallet plugin to be displayed in the user interface.
      */
     readonly metadata: WalletPluginMetadata = {
-        name: 'Wallet Plugin Template',
+        name: 'cleos',
         description: 'Copy and paste the transactions to sign in cleos.',
         logo: 'base_64_encoded_image',
         homepage: 'https://github.com/antelopeio/leap',

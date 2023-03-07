@@ -24,6 +24,9 @@ export class WalletPluginCleos extends AbstractWalletPlugin implements WalletPlu
 
         // Should the user interface display a permission selector?
         requiresPermissionSelect: false,
+
+        // Should the user interface require input for the permission?
+        requiresPermissionEntry: true,
     }
     /**
      * The metadata for the wallet plugin to be displayed in the user interface.

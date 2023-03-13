@@ -1,0 +1,9 @@
+{
+    "complete": "Transaction Complete",
+    "click": "Click the button below to view the transaction in a block explorer.",
+    "visit": "Visit Explorer",
+    "no-result": "Unable to generate explorer link, no result.",
+    "no-chain": "Unable to generate explorer link, no chain definition.",
+    "no-explorer": "Unable to generate explorer link, chain definition doesnt defined an explorer.",
+    "no-resolved": "Unable to generate explorer link, no resolved transaction."
+}

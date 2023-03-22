@@ -10,7 +10,7 @@ import {
     TransactResult,
 } from '@wharfkit/session'
 
-import defaultTranslations from './translations.json'
+import defaultTranslations from './translations'
 
 export class TransactPluginExplorerLink extends AbstractTransactPlugin {
     id = 'transact-plugin-explorer-link'

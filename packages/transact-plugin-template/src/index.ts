@@ -6,7 +6,7 @@ import {
 } from '@wharfkit/session'
 
 /** Import JSON localization strings */
-import defaultTranslations from './translations.json'
+import defaultTranslations from './translations'
 
 export class TransactPluginTemplate extends AbstractTransactPlugin {
     /** A unique ID for this plugin */

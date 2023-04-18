@@ -44,13 +44,13 @@ export class WalletPluginMock extends AbstractWalletPlugin implements WalletPlug
     /**
      * The metadata for the wallet plugin to be displayed in the user interface.
      */
-    readonly metadata: WalletPluginMetadata = {
+    readonly metadata: WalletPluginMetadata = WalletPluginMetadata.from({
         name: 'Mock Wallet',
         description: '',
         logo: 'base_64_encoded_image',
         homepage: 'https://github.com/wharfkit/wallet-plugin-mock',
         download: 'https://github.com/wharfkit/wallet-plugin-mock',
-    }
+    })
 
     /**
      * A mock WalletPluginLoginResponse to be returned by the login method.

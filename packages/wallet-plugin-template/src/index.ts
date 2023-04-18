@@ -30,13 +30,13 @@ export class WalletPluginTEMPLATE extends AbstractWalletPlugin implements Wallet
     /**
      * The metadata for the wallet plugin to be displayed in the user interface.
      */
-    readonly metadata: WalletPluginMetadata = {
+    readonly metadata: WalletPluginMetadata = WalletPluginMetadata.from({
         name: 'Wallet Plugin Template',
         description: 'A template that can be used to build wallet plugins!',
         logo: 'base_64_encoded_image',
         homepage: 'https://someplace.com',
         download: 'https://someplace.com/download',
-    }
+    })
     /**
      * A unique string identifier for this wallet plugin.
      *

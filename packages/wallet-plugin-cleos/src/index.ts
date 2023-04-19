@@ -114,7 +114,16 @@ export class WalletPluginCleos extends AbstractWalletPlugin implements WalletPlu
                         type: 'button',
                         data: {
                             label: 'Copy to clipboard',
-                            onClick: () => navigator.clipboard.writeText(command),
+                            onClick: () => {
+                                // Ensure the copy to clipboard will work
+                                if (!navigator.clipboard || !window.isSecureContext) {
+                                    alert(
+                                        'Copy to clipboard is not supported in this browser. Please copy the command manually.'
+                                    )
+                                } else {
+                                    navigator.clipboard.writeText(command)
+                                }
+                            },
                         },
                     },
                 ],

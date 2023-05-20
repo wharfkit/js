@@ -4,7 +4,6 @@ import {
     ChainDefinition,
     Checksum256Type,
     PromptResponse,
-    SigningRequest,
     TransactContext,
     TransactHookTypes,
     TransactResult,
@@ -18,23 +17,10 @@ export class TransactPluginExplorerLink extends AbstractTransactPlugin {
     register(context: TransactContext): void {
         context.addHook(
             TransactHookTypes.afterBroadcast,
-            async (
-                request: SigningRequest,
-                context: TransactContext,
-                result: TransactResult | undefined
-            ) => {
+            async (result: TransactResult, context: TransactContext) => {
                 if (context.ui) {
                     // Retrieve translation helper from the UI, passing the app ID
                     const t = context.ui.getTranslate(this.id)
-
-                    // Ensure we have the data to build the link
-                    if (!result) {
-                        throw new Error(
-                            t('no-result', {
-                                default: 'Unable to generate explorer link, no result.',
-                            })
-                        )
-                    }
 
                     // Ensure we have a chain defined to base a link off
                     if (!result.chain) {

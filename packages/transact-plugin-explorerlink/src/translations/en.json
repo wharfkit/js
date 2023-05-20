@@ -1,6 +1,6 @@
 {
     "complete": "Transaction Complete",
-    "click": "Click the button below to view the transaction in a block explorer.",
+    "click": "Click the button below to view the transaction in a block explorer to verify its status.",
     "visit": "Visit Explorer",
     "no-result": "Unable to generate explorer link, no result.",
     "no-chain": "Unable to generate explorer link, no chain definition.",

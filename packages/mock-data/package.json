@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/mock-data",
     "description": "Sample data for usage in tests throughout @wharfkit",
-    "version": "1.0.0-beta1",
+    "version": "1.0.0-beta2",
     "homepage": "https://github.com/wharfkit/mock-data",
     "license": "BSD-3-Clause",
     "main": "lib/mock-data.js",
@@ -17,11 +17,13 @@
         "prepare": "make"
     },
     "dependencies": {
-        "@greymass/eosio": "^0.6.10",
         "@wharfkit/session": "^1.0.0-beta1",
         "@wharfkit/wallet-plugin-privatekey": "^0.5.0",
         "node-fetch": "^2.6.1",
         "tslib": "^2.1.0"
+    },
+    "peerDependencies": {
+        "@greymass/eosio": "^0.6.10"
     },
     "resolutions": {
         "@greymass/eosio": "^0.6.10"
@@ -58,6 +60,6 @@
         "typedoc": "^0.23.14",
         "typedoc-plugin-mermaid": "^1.10.0",
         "typescript": "^4.1.2",
-        "yarn-deduplicate": "^6.0.1"
+        "yarn-deduplicate": "^6.0.2"
     }
 }

@@ -4,6 +4,7 @@ import {
     Session,
     SessionArgs,
     SessionKit,
+    SessionKitArgs,
     SessionKitOptions,
     SessionOptions,
 } from '@wharfkit/session'
@@ -16,16 +17,19 @@ import {MockUserInterface} from './userinterface'
 
 const wallet = makeWallet()
 
-export const mockSessionKitOptions: SessionKitOptions = {
+export const mockSessionKitArgs: SessionKitArgs = {
     appName: 'unittest',
     chains: mockChainDefinitions,
     ui: new MockUserInterface(),
     walletPlugins: [wallet],
+}
+
+export const mockSessionKitOptions: SessionKitOptions = {
     fetch: mockFetch, // Required for unit tests
     storage: new MockStorage(),
 }
 
-export const mockSessionKit = new SessionKit(mockSessionKitOptions)
+export const mockSessionKit = new SessionKit(mockSessionKitArgs, mockSessionKitOptions)
 
 export const mockSessionArgs: SessionArgs = {
     chain: mockChainDefinition,

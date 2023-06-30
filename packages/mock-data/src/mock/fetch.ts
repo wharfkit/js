@@ -1,7 +1,7 @@
 import {join as joinPath} from 'path'
 import {promisify} from 'util'
 import {readFile as _readFile, writeFile as _writeFile} from 'fs'
-import {Bytes, Checksum160} from '@wharfkit/antelope'
+import {Bytes, Checksum160} from '@greymass/eosio'
 
 const readFile = promisify(_readFile)
 const writeFile = promisify(_writeFile)

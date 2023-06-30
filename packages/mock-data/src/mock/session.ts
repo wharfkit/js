@@ -1,4 +1,4 @@
-import {PermissionLevel} from '@wharfkit/antelope'
+import {PermissionLevel} from '@greymass/eosio'
 
 import {
     Session,

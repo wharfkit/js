@@ -10,7 +10,10 @@ function getFilename(path: string, params?: unknown) {
     const digest = Checksum160.hash(
         Bytes.from(path + (params ? JSON.stringify(params) : ''), 'utf8')
     ).hexString
-    return joinPath(__dirname, '../data', digest + '.json')
+    if (!process.env['MOCK_DIR']) {
+        throw new Error('MOCK_DIR environment variable not set')
+    }
+    return joinPath(__dirname, '../../../../', process.env['MOCK_DIR'], digest + '.json')
 }
 
 async function getExisting(filename: string) {

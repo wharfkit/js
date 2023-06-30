@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/mock-data",
     "description": "Sample data for usage in tests throughout @wharfkit",
-    "version": "1.0.0-beta5",
+    "version": "1.0.0-beta6",
     "homepage": "https://github.com/wharfkit/mock-data",
     "license": "BSD-3-Clause",
     "main": "lib/mock-data.js",

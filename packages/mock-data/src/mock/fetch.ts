@@ -36,6 +36,10 @@ export async function mockFetch(path, params) {
     if (process.env['MOCK'] !== 'overwrite') {
         const existing = await getExisting(filename)
         if (existing) {
+            if (process.env['LOGHTTP'] === 'size') {
+                const size = Buffer.byteLength(JSON.stringify(existing.json))
+                console.log('HTTP Response (from API)', {path, params, size}) // eslint-disable-line no-console
+            }
             return new Response(existing.text, {
                 status: existing.status,
                 headers: existing.headers,
@@ -45,7 +49,9 @@ export async function mockFetch(path, params) {
     if (process.env['MOCK']) {
         const response = await fetch(path, params)
         const cloned = await response.clone()
-        cloned.json().then((json) =>
+        let size = 0
+        cloned.json().then((json) => {
+            size = Buffer.byteLength(JSON.stringify(json))
             writeFile(
                 filename,
                 JSON.stringify(
@@ -63,7 +69,10 @@ export async function mockFetch(path, params) {
                     4
                 )
             )
-        )
+            if (process.env['LOGHTTP'] === 'size') {
+                console.log('HTTP Response (from API)', {path, params, size}) // eslint-disable-line no-console
+            }
+        })
         return response
     } else {
         throw new Error(`No data for ${path}`)

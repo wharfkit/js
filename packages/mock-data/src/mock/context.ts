@@ -1,4 +1,4 @@
-import {APIClient, FetchProvider, PermissionLevel} from '@greymass/eosio'
+import {APIClient, FetchProvider, PermissionLevel} from '@wharfkit/antelope'
 import {
     ABICache,
     ChainDefinition,

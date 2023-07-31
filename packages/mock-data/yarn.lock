@@ -1377,10 +1377,10 @@
     "@wharfkit/antelope" "^0.7.3"
     tslib "^2.0.3"
 
-"@wharfkit/wallet-plugin-privatekey@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@wharfkit/wallet-plugin-privatekey/-/wallet-plugin-privatekey-0.5.0.tgz#e6a954e08bf80777c4cb12c7ce69c1d9f5e62da2"
-  integrity sha512-dBpCLWnGfx2kUQUb3OKsKsTxbiFZvBkbh3v8LbnNHd4o/KyOCVbTwFQt6Jl+9QdlNzY2lESe+Ni/HDmfOHKVgg==
+"@wharfkit/wallet-plugin-privatekey@^1.0.0-beta1":
+  version "1.0.0-beta1"
+  resolved "https://registry.yarnpkg.com/@wharfkit/wallet-plugin-privatekey/-/wallet-plugin-privatekey-1.0.0-beta1.tgz#1205f311c915a064d3e9c0a7d80c1f475df86ec0"
+  integrity sha512-F6m2t9977OH31SsCRQUZIAHacgQdoqxQw0WxQGsdO/7fXmkLd6DTzRIjHtVQs/4RtHLMMWTs8Zs6akDTo/M9dA==
   dependencies:
     tslib "^2.1.0"
 

@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/mock-data",
     "description": "Sample data for usage in tests throughout @wharfkit",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "homepage": "https://github.com/wharfkit/mock-data",
     "license": "BSD-3-Clause",
     "main": "lib/mock-data.js",
@@ -19,7 +19,7 @@
     "dependencies": {
         "@wharfkit/antelope": "^0.7.3",
         "@wharfkit/session": "^1.0.0-beta9",
-        "@wharfkit/wallet-plugin-privatekey": "^0.5.0",
+        "@wharfkit/wallet-plugin-privatekey": "^1.0.0-beta1",
         "node-fetch": "^2.6.1",
         "tslib": "^2.1.0"
     },

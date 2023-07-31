@@ -1,7 +1,7 @@
-import {mockFetch} from '$test/utils/mock-fetch'
 import {TransactPluginTemplate} from '../../src/index'
 
 import {Session, SessionArgs, SessionOptions} from '@wharfkit/session'
+import {mockFetch} from '@wharfkit/mock-data'
 import {WalletPluginPrivateKey} from '@wharfkit/wallet-plugin-privatekey'
 
 const wallet = new WalletPluginPrivateKey('5Jtoxgny5tT7NiNFp1MLogviuPJ9NniWjnU4wKzaX4t7pL4kJ8s')

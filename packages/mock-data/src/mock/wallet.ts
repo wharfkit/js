@@ -1,4 +1,4 @@
-import {Checksum256, PermissionLevel, PrivateKey, Transaction} from '@greymass/eosio'
+import {Checksum256, PermissionLevel, PrivateKey, Transaction} from '@wharfkit/antelope'
 import {WalletPluginPrivateKey} from '@wharfkit/wallet-plugin-privatekey'
 
 import {

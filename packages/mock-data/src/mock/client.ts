@@ -1,4 +1,4 @@
-import {APIClient, FetchProvider} from '@greymass/eosio'
+import {APIClient, FetchProvider} from '@wharfkit/antelope'
 
 import {mockUrl} from './config'
 import {mockFetch} from './fetch'

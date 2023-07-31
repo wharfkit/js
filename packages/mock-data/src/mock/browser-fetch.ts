@@ -1,4 +1,4 @@
-import {Bytes, Checksum160} from '@greymass/eosio'
+import {Bytes, Checksum160} from '@wharfkit/antelope'
 
 const data = global.MOCK_DATA
 

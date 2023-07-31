@@ -1,4 +1,4 @@
-import {APIClient, FetchProvider, PermissionLevel} from '@greymass/eosio'
+import {APIClient, FetchProvider, PermissionLevel} from '@wharfkit/antelope'
 import {
     ABICache,
     ChainDefinition,
@@ -18,14 +18,14 @@ const client = new APIClient({
 })
 
 const session = new Session(mockSessionArgs, mockSessionOptions)
-const abiProvider = new ABICache(client)
+const abiCache = new ABICache(client)
 
 export const mockTransactContextOptions: TransactContextOptions = {
-    abiProvider,
+    abiCache,
     chain: ChainDefinition.from(mockChainDefinition),
     client,
     createRequest: async (args: TransactArgs): Promise<SigningRequest> =>
-        session.createRequest(args, abiProvider),
+        session.createRequest(args, abiCache),
     fetch: mockFetch,
     permissionLevel: PermissionLevel.from('wharfkit1125@test'),
 }

@@ -59,7 +59,7 @@ export class WalletPluginTEMPLATE extends AbstractWalletPlugin implements Wallet
             chain: Checksum256.from(
                 '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d'
             ),
-            permissionLevel: PermissionLevel.from('wharfkit1115@test'),
+            permissionLevel: PermissionLevel.from('wharfkit1111@test'),
         }
     }
     /**

@@ -83,7 +83,7 @@ export class WalletPluginCleos extends AbstractWalletPlugin implements WalletPlu
             // Decode the transaction to be human readable
             const actions: ActionType[] = []
             for (const action of resolved.transaction.actions) {
-                const abi: ABIDef = await context.abiProvider.getAbi(action.account)
+                const abi: ABIDef = await context.abiCache.getAbi(action.account)
                 actions.push({
                     ...action,
                     data: Serializer.objectify(action.decodeData(abi)),

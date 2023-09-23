@@ -1,0 +1,15 @@
+{
+    "request": {
+        "path": "https://wax.blokcrafters.io/v2/state/get_key_accounts?public_key=EOS8KmhygTrrvtW7zJd6HXWrNqA5WX9NzScZ37JyXRiwpiJN2g2rR",
+        "params": {
+            "method": "GET"
+        }
+    },
+    "status": 200,
+    "json": {
+        "account_names": [
+            "teamgreymass"
+        ]
+    },
+    "text": "{\"account_names\":[\"teamgreymass\"]}"
+}

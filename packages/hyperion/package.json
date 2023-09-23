@@ -19,7 +19,7 @@
         "prepare": "make"
     },
     "dependencies": {
-        "@wharfkit/antelope": "^0.9.1",
+        "@wharfkit/antelope": "^0.10.0-rc1",
         "tslib": "^2.0.3"
     },
     "resolutions": {

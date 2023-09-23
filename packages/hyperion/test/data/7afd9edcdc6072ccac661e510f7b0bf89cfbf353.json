@@ -1,0 +1,100 @@
+{
+    "request": {
+        "path": "https://wax.blokcrafters.io/v2/state/get_links?account=teamgreymass",
+        "params": {
+            "method": "GET"
+        }
+    },
+    "status": 200,
+    "json": {
+        "query_time_ms": 8.528,
+        "cached": false,
+        "total": {
+            "value": 10,
+            "relation": "eq"
+        },
+        "links": [
+            {
+                "block_num": 204446315,
+                "timestamp": "2022-09-20T14:25:46.500",
+                "account": "teamgreymass",
+                "permission": "killswitch",
+                "code": "eosio",
+                "action": "unregprod"
+            },
+            {
+                "block_num": 101699383,
+                "timestamp": "2021-02-02T16:58:53.500",
+                "account": "teamgreymass",
+                "permission": "transfer",
+                "code": "eosio.token",
+                "action": "transfer"
+            },
+            {
+                "block_num": 59569880,
+                "timestamp": "2020-06-03T19:45:35.000",
+                "account": "teamgreymass",
+                "permission": "oracle",
+                "code": "delphioracle",
+                "action": "write"
+            },
+            {
+                "block_num": 53901631,
+                "timestamp": "2020-05-01T23:54:04.500",
+                "account": "teamgreymass",
+                "permission": "claim",
+                "code": "eosio",
+                "action": "claimgbmprod"
+            },
+            {
+                "block_num": 53901604,
+                "timestamp": "2020-05-01T23:53:51.000",
+                "account": "teamgreymass",
+                "permission": "claim",
+                "code": "eosio",
+                "action": "claimgbmvote"
+            },
+            {
+                "block_num": 53901354,
+                "timestamp": "2020-05-01T23:51:46.000",
+                "account": "teamgreymass",
+                "permission": "claim",
+                "code": "eosio",
+                "action": "claimgenesis"
+            },
+            {
+                "block_num": 40400052,
+                "timestamp": "2020-02-13T19:50:37.000",
+                "account": "teamgreymass",
+                "permission": "producerjson",
+                "code": "producerjson",
+                "action": "set"
+            },
+            {
+                "block_num": 28565347,
+                "timestamp": "2019-12-07T07:52:09.000",
+                "account": "teamgreymass",
+                "permission": "failover",
+                "code": "eosio",
+                "action": "unregprod"
+            },
+            {
+                "block_num": 28565330,
+                "timestamp": "2019-12-07T07:52:00.500",
+                "account": "teamgreymass",
+                "permission": "failover",
+                "code": "eosio",
+                "action": "regproducer"
+            },
+            {
+                "block_num": 26609575,
+                "timestamp": "2019-11-25T23:44:03.500",
+                "account": "teamgreymass",
+                "permission": "claim",
+                "code": "eosio",
+                "action": "claimrewards"
+            }
+        ]
+    },
+    "text": "{\"query_time_ms\":8.528,\"cached\":false,\"total\":{\"value\":10,\"relation\":\"eq\"},\"links\":[{\"block_num\":204446315,\"timestamp\":\"2022-09-20T14:25:46.500\",\"account\":\"teamgreymass\",\"permission\":\"killswitch\",\"code\":\"eosio\",\"action\":\"unregprod\"},{\"block_num\":101699383,\"timestamp\":\"2021-02-02T16:58:53.500\",\"account\":\"teamgreymass\",\"permission\":\"transfer\",\"code\":\"eosio.token\",\"action\":\"transfer\"},{\"block_num\":59569880,\"timestamp\":\"2020-06-03T19:45:35.000\",\"account\":\"teamgreymass\",\"permission\":\"oracle\",\"code\":\"delphioracle\",\"action\":\"write\"},{\"block_num\":53901631,\"timestamp\":\"2020-05-01T23:54:04.500\",\"account\":\"teamgreymass\",\"permission\":\"claim\",\"code\":\"eosio\",\"action\":\"claimgbmprod\"},{\"block_num\":53901604,\"timestamp\":\"2020-05-01T23:53:51.000\",\"account\":\"teamgreymass\",\"permission\":\"claim\",\"code\":\"eosio\",\"action\":\"claimgbmvote\"},{\"block_num\":53901354,\"timestamp\":\"2020-05-01T23:51:46.000\",\"account\":\"teamgreymass\",\"permission\":\"claim\",\"code\":\"eosio\",\"action\":\"claimgenesis\"},{\"block_num\":40400052,\"timestamp\":\"2020-02-13T19:50:37.000\",\"account\":\"teamgreymass\",\"permission\":\"producerjson\",\"code\":\"producerjson\",\"action\":\"set\"},{\"block_num\":28565347,\"timestamp\":\"2019-12-07T07:52:09.000\",\"account\":\"teamgreymass\",\"permission\":\"failover\",\"code\":\"eosio\",\"action\":\"unregprod\"},{\"block_num\":28565330,\"timestamp\":\"2019-12-07T07:52:00.500\",\"account\":\"teamgreymass\",\"permission\":\"failover\",\"code\":\"eosio\",\"action\":\"regproducer\"},{\"block_num\":26609575,\"timestamp\":\"2019-11-25T23:44:03.500\",\"account\":\"teamgreymass\",\"permission\":\"claim\",\"code\":\"eosio\",\"action\":\"claimrewards\"}]}"
+}

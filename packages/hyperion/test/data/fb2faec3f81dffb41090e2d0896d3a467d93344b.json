@@ -1,0 +1,28 @@
+{
+    "request": {
+        "path": "https://wax.blokcrafters.io/v2/state/get_tokens?account=teamgreymass",
+        "params": {
+            "method": "GET"
+        }
+    },
+    "status": 200,
+    "json": {
+        "account": "teamgreymass",
+        "tokens": [
+            {
+                "symbol": "RICH",
+                "amount": 81.44848567,
+                "contract": "token.rich",
+                "error": "Table accounts is not specified in the ABI"
+            },
+            {
+                "symbol": "WAX",
+                "precision": 8,
+                "amount": 2393613.8538912,
+                "contract": "eosio.token"
+            }
+        ],
+        "query_time_ms": 59.622
+    },
+    "text": "{\"account\":\"teamgreymass\",\"tokens\":[{\"symbol\":\"RICH\",\"amount\":81.44848567,\"contract\":\"token.rich\",\"error\":\"Table accounts is not specified in the ABI\"},{\"symbol\":\"WAX\",\"precision\":8,\"amount\":2393613.8538912,\"contract\":\"eosio.token\"}],\"query_time_ms\":59.622}"
+}

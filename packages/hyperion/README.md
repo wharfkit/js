@@ -1,11 +1,9 @@
-# @wharfkit/api-client-template
+# @wharfkit/api-client-hyperion
 
-Template for creating new api-client instances for use in Wharf.
+API client for the Hyperion API.
 
 ## Running Tests
 
 ```
 make test
 ```
-
-The browser test suite for the current version of the library is available at: https://wharfkit.github.io/antelope/tests.html

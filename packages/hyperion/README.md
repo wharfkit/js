@@ -1,4 +1,4 @@
-# @wharfkit/api-client-hyperion
+# @wharfkit/hyperion
 
 API client for the Hyperion API.
 

@@ -1,23 +1,16 @@
 import {
     AbstractAccountCreationPlugin,
-    Checksum256,
-    LoginContext,
-    PermissionLevel,
-    ResolvedSigningRequest,
-    Signature,
-    TransactContext,
     AccountCreationPlugin,
     AccountCreationPluginConfig,
     CreateAccountResponse,
     Chains,
-    CreateAccountContextOptions,
     CreateAccountContext,
 } from '@wharfkit/session'
 import { AccountCreationPluginMetadata } from '@wharfkit/session'
 
 export class AccountCreationPluginTEMPLATE extends AbstractAccountCreationPlugin implements AccountCreationPlugin {
     /**
-     * The logic configuration for the wallet plugin.
+     * The logic configuration for the account-creation plugin.
      */
     readonly config: AccountCreationPluginConfig = {
         // Should the user interface display a chain selector?
@@ -27,7 +20,7 @@ export class AccountCreationPluginTEMPLATE extends AbstractAccountCreationPlugin
         // supportedChains: ['73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d']
     }
     /**
-     * The metadata for the wallet plugin to be displayed in the user interface.
+     * The metadata for the account-creation plugin to be displayed in the user interface.
      */
     readonly metadata: AccountCreationPluginMetadata = AccountCreationPluginMetadata.from({
         name: 'Account Creation Plugin Template',
@@ -36,16 +29,16 @@ export class AccountCreationPluginTEMPLATE extends AbstractAccountCreationPlugin
         homepage: 'https://someplace.com',
     })
     /**
-     * A unique string identifier for this wallet plugin.
+     * A unique string identifier for this account-creation plugin.
      *
      * It's recommended this is all lower case, no spaces, and only URL-friendly special characters (dashes, underscores, etc)
      */
     get id(): string {
-        return 'wallet-plugin-template'
+        return 'account-creation-plugin-template'
     }
 
     /**
-     * The name of the wallet plugin to be displayed in the user interface.
+     * The name of the account-creation plugin to be displayed in the user interface.
      */
     get name(): string {
         return 'Account Creation Plugin Template'

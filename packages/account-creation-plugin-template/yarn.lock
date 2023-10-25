@@ -597,7 +597,7 @@
   dependencies:
     "@wharfkit/antelope" "^0.7.3"
     "@wharfkit/session" "^1.0.0"
-    "@wharfkit/wallet-plugin-privatekey" "^1.0.0"
+    "@wharfkit/account-creation-plugin-privatekey" "^1.0.0"
     node-fetch "^2.6.1"
     tslib "^2.1.0"
 
@@ -631,9 +631,9 @@
     "@wharfkit/antelope" "^0.7.3"
     tslib "^2.0.3"
 
-"@wharfkit/wallet-plugin-privatekey@^1.0.0":
+"@wharfkit/account-creation-plugin-privatekey@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@wharfkit/wallet-plugin-privatekey/-/wallet-plugin-privatekey-1.0.0.tgz#2600cce1117ce9391c8078649e05ceaf93780f1d"
+  resolved "https://registry.yarnpkg.com/@wharfkit/account-creation-plugin-privatekey/-/account-creation-plugin-privatekey-1.0.0.tgz#2600cce1117ce9391c8078649e05ceaf93780f1d"
   integrity sha512-V+/7T/cwoHM8fDaM3MZ1DFKrX2+NddBkkWJ8BIFfmEZnGR1W8Qr77t+piOP0/6UM2etmuZh98XLwZS33vORQ0A==
   dependencies:
     tslib "^2.1.0"

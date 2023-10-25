@@ -9,7 +9,7 @@ import {
 
 import {AccountCreationPluginTEMPLATE} from '$lib'
 
-suite('wallet plugin', function () {
+suite('account-creation plugin', function () {
     test('login and sign', async function () {
         const kit = new SessionKit(
             {

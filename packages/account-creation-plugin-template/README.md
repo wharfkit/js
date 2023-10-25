@@ -1,13 +1,13 @@
 # WARNING: This is a work in progress and not ready for use.
 
-# @wharfkit/wallet-plugin-template
+# @wharfkit/account-creation-plugin-template
 
-A template to create a `WalletPlugin` for use within the `@wharfkit/session` library.
+A template to create a `account-creationPlugin` for use within the `@wharfkit/session` library.
 
 ## Usage
 
 -   [Use this as a template.](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
--   Write your wallet plugin's logic.
+-   Write your account-creation plugin's logic.
 -   Publish it on Github or npmjs.com
 -   Include it in your project and use it.
 

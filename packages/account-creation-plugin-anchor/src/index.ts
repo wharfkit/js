@@ -10,26 +10,27 @@ import {
 import {AccountCreationPluginMetadata} from '@wharfkit/session'
 import {AccountCreator} from './account-creator'
 
-export class AccountCreationPluginWhalesplainer
-    extends AbstractAccountCreationPlugin
-    implements AccountCreationPlugin
-{
-    /**
-     * The logic configuration for the wallet plugin.
-     */
-    readonly config: AccountCreationPluginConfig = {
-        // Should the user interface display a chain selector?
-        requiresChainSelect: true,
+interface AccountCreationPluginWhalesplainerConfig extends AccountCreationPluginConfig {
+    serviceUrl?: string
+}
 
-        // Optionally specify if this plugin only works with specific blockchains.
-        // supportedChains: ['73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d']
+export class AccountCreationPluginWhalesplainer extends AbstractAccountCreationPlugin implements AccountCreationPlugin {
+    readonly config: AccountCreationPluginWhalesplainerConfig
+    constructor(options?: AccountCreationPluginWhalesplainerConfig) {
+        super()
+
+        this.config = {
+            serviceUrl: options?.serviceUrl,
+            requiresChainSelect: options?.requiresChainSelect || true,
+            supportedChains: options?.supportedChains || [Chains.EOS.id, Chains.Telos.id, Chains.WAX.id, Chains.FIO.id],
+        }
     }
     /**
      * The metadata for the wallet plugin to be displayed in the user interface.
      */
     readonly metadata: AccountCreationPluginMetadata = AccountCreationPluginMetadata.from({
-        name: 'Account Creation Plugin Template',
-        description: 'A template that can be used to build account creation plugins!',
+        name: 'Account Creation Plugin Whalesplainer',
+        description: 'Create accounts through Whalesplainer!',
         logo: 'base_64_encoded_image',
         homepage: 'https://someplace.com',
     })
@@ -56,6 +57,7 @@ export class AccountCreationPluginWhalesplainer
      * @returns Promise<CreateAccountResponse>
      */
     async create(context: CreateAccountContext): Promise<CreateAccountResponse> {
+        console.log({context})
         const accountCreator = new AccountCreator({
             supportedChains: context.chain
                 ? [context.chain.id]

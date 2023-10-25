@@ -26,6 +26,8 @@ export class AccountCreator {
 
     constructor(public readonly options: AccountCreationOptions) {
         this.supportedChains = (options.supportedChains || []).map((id) => ChainId.from(id))
+
+        console.log({supportedChains: this.supportedChains})
         if (options.scope) {
             this.scope = Name.from(options.scope)
         }

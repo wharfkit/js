@@ -1,19 +1,14 @@
 import {
     AbstractAccountCreationPlugin,
-    Checksum256,
-    LoginContext,
-    PermissionLevel,
-    ResolvedSigningRequest,
-    Signature,
-    TransactContext,
     AccountCreationPlugin,
     AccountCreationPluginConfig,
     CreateAccountResponse,
     Chains,
-    CreateAccountContextOptions,
     CreateAccountContext,
+    chainIdsToIndices,
 } from '@wharfkit/session'
 import { AccountCreationPluginMetadata } from '@wharfkit/session'
+import { AccountCreator } from './account-creator'
 
 export class AccountCreationPluginTEMPLATE extends AbstractAccountCreationPlugin implements AccountCreationPlugin {
     /**
@@ -41,14 +36,14 @@ export class AccountCreationPluginTEMPLATE extends AbstractAccountCreationPlugin
      * It's recommended this is all lower case, no spaces, and only URL-friendly special characters (dashes, underscores, etc)
      */
     get id(): string {
-        return 'wallet-plugin-template'
+        return 'account-plugin'
     }
 
     /**
      * The name of the wallet plugin to be displayed in the user interface.
      */
     get name(): string {
-        return 'Account Creation Plugin Template'
+        return 'Account Creation Plugin'
     }
 
     /**
@@ -57,13 +52,32 @@ export class AccountCreationPluginTEMPLATE extends AbstractAccountCreationPlugin
      * @param options CreateAccountContext
      * @returns Promise<CreateAccountResponse>
      */
-    // TODO: Remove these eslint rule modifiers when you are implementing this method.
-    /* eslint-disable @typescript-eslint/no-unused-vars */
     async create(context: CreateAccountContext): Promise<CreateAccountResponse> {
-        // Example response...
+        const accountCreator = new AccountCreator({
+            supportedChains: context.chain ? [context.chain.id] : context.chains.map((chain) => chain.id),
+            scope: 'wallet', 
+        })
+
+        // Open a popup window prompting the user to create an account.
+        const { error: errorMessage, cid, sa} = await accountCreator.createAccount()
+
+        if (errorMessage) {
+            const error = new Error(errorMessage)
+            context.ui.onError(error)
+
+            throw error
+        }
+
+        if (!cid) {
+            const error = new Error('No chain ID was returned by the account creation service.')
+            context.ui.onError(error)
+
+            throw error
+        }
+
         return {
-            chain: Chains.EOS,
-            accountName: 'wharfkit1111',
+            chain: Chains[chainIdsToIndices[cid]],
+            accountName: sa
         }
     }
 }

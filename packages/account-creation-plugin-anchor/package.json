@@ -16,6 +16,7 @@
         "prepare": "make"
     },
     "dependencies": {
+        "@greymass/create-account": "greymass/create-account",
         "tslib": "^2.1.0"
     },
     "peerDependencies": {
@@ -35,7 +36,7 @@
         "@typescript-eslint/eslint-plugin": "^5.20.0",
         "@typescript-eslint/parser": "^5.20.0",
         "@wharfkit/mock-data": "^1.0.2",
-        "@wharfkit/session": "^1.0.0",
+        "@wharfkit/session": "../session",
         "chai": "^4.3.4",
         "eslint": "^8.13.0",
         "eslint-config-prettier": "^8.1.0",

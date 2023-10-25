@@ -9,20 +9,19 @@ import {
 
 import {AccountCreationPluginTEMPLATE} from '$lib'
 
-suite('account-creation plugin', function () {
-    test('login and sign', async function () {
-        const kit = new SessionKit(
-            {
-                ...mockSessionKitArgs,
-                accountCreationPlugins: [new AccountCreationPluginTEMPLATE()],
-            },
-            mockSessionKitOptions
-        )
-        const result = await kit.create({
-            chain: mockChainDefinition.id,
-            permissionLevel: mockPermissionLevel,
-        })
-        assert.equal(result.chain, Chains.EOS)
-        assert.equal(result.accountName, 'wharfkit1111')
+suite('AccountCreationPluginTEMPLATE', function () {
+    test('createAccount', async function () {
+        // const kit = new SessionKit(
+        //     {
+        //         ...mockSessionKitArgs,
+        //         accountCreationPlugins: [new AccountCreationPluginTEMPLATE()],
+        //     },
+        //     mockSessionKitOptions
+        // )
+        // const result = await kit.createAccount({
+        //     chain: mockChainDefinition.id,
+        //     permissionLevel: mockPermissionLevel,
+        // })
+        // Add your own assertions here...
     })
 })

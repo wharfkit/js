@@ -1,8 +1,7 @@
-import { Name, NameType } from '@wharfkit/antelope'
-import { ChainId } from '@wharfkit/signing-request'
-import { detectReturnPath } from '@greymass/return-path'
+import {Name, NameType} from '@wharfkit/antelope'
+import {ChainId} from '@wharfkit/signing-request'
 
-import type { CallbackPayload, ChainIdType } from '@wharfkit/signing-request'
+import type {CallbackPayload, ChainIdType} from '@wharfkit/signing-request'
 
 export interface AccountCreationOptions {
     scope: NameType
@@ -22,7 +21,7 @@ export class AccountCreator {
     private scope?: Name
     private supportedChains: ChainId[]
     private creationServiceUrl: string
-    private returnUrl: string
+    // private returnUrl: string
     private popupStatusInterval?: ReturnType<typeof setInterval>
 
     constructor(public readonly options: AccountCreationOptions) {
@@ -31,12 +30,12 @@ export class AccountCreator {
             this.scope = Name.from(options.scope)
         }
         this.creationServiceUrl = options.creationServiceUrl || 'https://create.anchor.link'
-        this.returnUrl = options.returnUrl || detectReturnPath()
+        // this.returnUrl = options.returnUrl || detectReturnPath()
     }
 
     async createAccount(): Promise<AccountCreationResponse> {
         const qs = new URLSearchParams()
-        qs.set('return_url', this.returnUrl)
+        // qs.set('return_url', this.returnUrl)
         if (this.supportedChains.length > 0) {
             qs.set('supported_chains', this.supportedChains.map(String).join(','))
         }

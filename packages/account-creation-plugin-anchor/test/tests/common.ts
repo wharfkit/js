@@ -1,28 +1,48 @@
-import {assert} from 'chai'
-import {Chains, PermissionLevel, SessionKit} from '@wharfkit/session'
+import {assert} from 'chai';
+import sinon from 'sinon';
+import {Chains, SessionKit} from '@wharfkit/session';
 import {
-    mockChainDefinition,
-    mockPermissionLevel,
     mockSessionKitArgs,
     mockSessionKitOptions,
-} from '@wharfkit/mock-data'
+} from '@wharfkit/mock-data';
 
-import {AccountCreationPluginTEMPLATE} from '$lib'
+import {AccountCreator} from '../../src/account-creator';
+import {AccountCreationPluginWhalesplainer} from '$lib';
 
-suite('wallet plugin', function () {
-    test('login and sign', async function () {
+suite('AccountCreationPluginWhalesplainer', function () {
+    let createAccountStub;
+
+    setup(function () {
+        // Before each test, replace the `createAccount` method with a stub
+        createAccountStub = sinon.stub(AccountCreator.prototype, 'createAccount');
+    });
+
+    teardown(function () {
+        // After each test, restore the original method
+        createAccountStub.restore();
+    });
+
+    test('createAccount', async function () {
+        // Make the stub resolve the desired values
+        createAccountStub.resolves({
+            cid: Chains.EOS.id,
+            sa: 'wharfkit1111',
+        });
+
         const kit = new SessionKit(
+            mockSessionKitArgs,
             {
-                ...mockSessionKitArgs,
-                accountCreationPlugins: [new AccountCreationPluginTEMPLATE()],
-            },
-            mockSessionKitOptions
-        )
-        const result = await kit.create({
-            chain: mockChainDefinition.id,
-            permissionLevel: mockPermissionLevel,
-        })
-        assert.equal(result.chain, Chains.EOS)
-        assert.equal(result.accountName, 'wharfkit1111')
-    })
-})
+                ...mockSessionKitOptions,
+                accountCreationPlugins: [new AccountCreationPluginWhalesplainer()],
+            }
+        );
+
+        const result = await kit.createAccount({
+            chain: Chains.EOS,
+            accountName: 'wharfkit1111',
+        });
+
+        assert.equal(result.chain, Chains.EOS);
+        assert.equal(result.accountName, 'wharfkit1111');
+    });
+});

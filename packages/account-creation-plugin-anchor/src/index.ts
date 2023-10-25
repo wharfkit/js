@@ -2,15 +2,18 @@ import {
     AbstractAccountCreationPlugin,
     AccountCreationPlugin,
     AccountCreationPluginConfig,
-    CreateAccountResponse,
+    chainIdsToIndices,
     Chains,
     CreateAccountContext,
-    chainIdsToIndices,
+    CreateAccountResponse,
 } from '@wharfkit/session'
-import { AccountCreationPluginMetadata } from '@wharfkit/session'
-import { AccountCreator } from './account-creator'
+import {AccountCreationPluginMetadata} from '@wharfkit/session'
+import {AccountCreator} from './account-creator'
 
-export class AccountCreationPluginTEMPLATE extends AbstractAccountCreationPlugin implements AccountCreationPlugin {
+export class AccountCreationPluginWhalesplainer
+    extends AbstractAccountCreationPlugin
+    implements AccountCreationPlugin
+{
     /**
      * The logic configuration for the wallet plugin.
      */
@@ -54,12 +57,14 @@ export class AccountCreationPluginTEMPLATE extends AbstractAccountCreationPlugin
      */
     async create(context: CreateAccountContext): Promise<CreateAccountResponse> {
         const accountCreator = new AccountCreator({
-            supportedChains: context.chain ? [context.chain.id] : context.chains.map((chain) => chain.id),
-            scope: 'wallet', 
+            supportedChains: context.chain
+                ? [context.chain.id]
+                : context.chains.map((chain) => chain.id),
+            scope: 'wallet',
         })
 
         // Open a popup window prompting the user to create an account.
-        const { error: errorMessage, cid, sa} = await accountCreator.createAccount()
+        const {error: errorMessage, cid, sa} = await accountCreator.createAccount()
 
         if (errorMessage) {
             const error = new Error(errorMessage)
@@ -75,9 +80,20 @@ export class AccountCreationPluginTEMPLATE extends AbstractAccountCreationPlugin
             throw error
         }
 
+        const chainIndex = chainIdsToIndices.get(String(cid))
+
+        if (!chainIndex) {
+            const error = new Error(
+                `The chain ID "${cid}" is not supported by this account creation plugin.`
+            )
+            context.ui.onError(error)
+
+            throw error
+        }
+
         return {
-            chain: Chains[chainIdsToIndices[cid]],
-            accountName: sa
+            chain: Chains[chainIndex],
+            accountName: sa,
         }
     }
 }

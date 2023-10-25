@@ -1,3 +1,5 @@
+# WARNING: This is a work in progress and not ready for use.
+
 # @wharfkit/wallet-plugin-template
 
 A template to create a `WalletPlugin` for use within the `@wharfkit/session` library.

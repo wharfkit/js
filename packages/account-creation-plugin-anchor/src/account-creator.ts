@@ -26,18 +26,14 @@ export class AccountCreator {
 
     constructor(public readonly options: AccountCreationOptions) {
         this.supportedChains = (options.supportedChains || []).map((id) => ChainId.from(id))
-
-        console.log({supportedChains: this.supportedChains})
         if (options.scope) {
             this.scope = Name.from(options.scope)
         }
         this.creationServiceUrl = options.creationServiceUrl || 'https://create.anchor.link'
-        // this.returnUrl = options.returnUrl || detectReturnPath()
     }
 
     async createAccount(): Promise<AccountCreationResponse> {
         const qs = new URLSearchParams()
-        // qs.set('return_url', this.returnUrl)
         if (this.supportedChains.length > 0) {
             qs.set('supported_chains', this.supportedChains.map(String).join(','))
         }

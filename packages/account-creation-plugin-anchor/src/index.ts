@@ -57,7 +57,6 @@ export class AccountCreationPluginWhalesplainer extends AbstractAccountCreationP
      * @returns Promise<CreateAccountResponse>
      */
     async create(context: CreateAccountContext): Promise<CreateAccountResponse> {
-        console.log({context})
         const accountCreator = new AccountCreator({
             supportedChains: context.chain
                 ? [context.chain.id]

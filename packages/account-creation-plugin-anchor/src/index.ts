@@ -22,7 +22,7 @@ export class AccountCreationPluginWhalesplainer extends AbstractAccountCreationP
         this.config = {
             serviceUrl: options?.serviceUrl,
             requiresChainSelect: options?.requiresChainSelect || true,
-            supportedChains: options?.supportedChains || [Chains.EOS.id, Chains.Telos.id, Chains.WAX.id, Chains.FIO.id],
+            supportedChains: options?.supportedChains || [Chains.EOS, Chains.Telos, Chains.WAX, Chains.FIO],
         }
     }
     /**
@@ -61,7 +61,7 @@ export class AccountCreationPluginWhalesplainer extends AbstractAccountCreationP
         const accountCreator = new AccountCreator({
             supportedChains: context.chain
                 ? [context.chain.id]
-                : context.chains.map((chain) => chain.id),
+                : (context.chains || this.config.supportedChains || []).map((chain) => chain.id),
             scope: 'wallet',
         })
 

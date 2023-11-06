@@ -8,46 +8,57 @@ import {
     CreateAccountResponse,
 } from '@wharfkit/session'
 import {AccountCreationPluginMetadata} from '@wharfkit/session'
-import {AccountCreator} from './account-creator'
+import {AccountCreationPluginGreymass} from './account-creator'
 
 interface AccountCreationPluginWhalesplainerConfig extends AccountCreationPluginConfig {
     serviceUrl?: string
 }
 
-export class AccountCreationPluginWhalesplainer extends AbstractAccountCreationPlugin implements AccountCreationPlugin {
+export class AccountCreationPluginWhalesplainer
+    extends AbstractAccountCreationPlugin
+    implements AccountCreationPlugin
+{
     readonly config: AccountCreationPluginWhalesplainerConfig
+
     constructor(options?: AccountCreationPluginWhalesplainerConfig) {
         super()
 
         this.config = {
             serviceUrl: options?.serviceUrl,
             requiresChainSelect: options?.requiresChainSelect || true,
-            supportedChains: options?.supportedChains || [Chains.EOS, Chains.Telos, Chains.WAX, Chains.FIO],
+            supportedChains: options?.supportedChains || [
+                Chains.EOS,
+                Chains.Telos,
+                Chains.WAX,
+                Chains.FIO,
+            ],
         }
     }
+
     /**
      * The metadata for the wallet plugin to be displayed in the user interface.
      */
     readonly metadata: AccountCreationPluginMetadata = AccountCreationPluginMetadata.from({
-        name: 'Account Creation Plugin Whalesplainer',
-        description: 'Create accounts through Whalesplainer!',
+        name: 'Greymass Account Creation',
+        description: 'Create an account using the Greymass Account Creation Service.',
         logo: 'base_64_encoded_image',
-        homepage: 'https://someplace.com',
+        homepage: 'https://create.anchor.link',
     })
+
     /**
      * A unique string identifier for this wallet plugin.
      *
      * It's recommended this is all lower case, no spaces, and only URL-friendly special characters (dashes, underscores, etc)
      */
     get id(): string {
-        return 'account-plugin'
+        return 'account-creation-plugin-greymass'
     }
 
     /**
      * The name of the wallet plugin to be displayed in the user interface.
      */
     get name(): string {
-        return 'Account Creation Plugin'
+        return this.metadata.name
     }
 
     /**
@@ -57,7 +68,7 @@ export class AccountCreationPluginWhalesplainer extends AbstractAccountCreationP
      * @returns Promise<CreateAccountResponse>
      */
     async create(context: CreateAccountContext): Promise<CreateAccountResponse> {
-        const accountCreator = new AccountCreator({
+        const accountCreator = new AccountCreationPluginGreymass({
             supportedChains: context.chain
                 ? [context.chain.id]
                 : (context.chains || this.config.supportedChains || []).map((chain) => chain.id),

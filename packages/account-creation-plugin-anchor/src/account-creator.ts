@@ -3,20 +3,20 @@ import {ChainId} from '@wharfkit/signing-request'
 
 import type {CallbackPayload, ChainIdType} from '@wharfkit/signing-request'
 
-export interface AccountCreationOptions {
+export interface GreymassAccountCreationOptions {
     scope: NameType
     supportedChains?: ChainIdType[]
     creationServiceUrl?: string
     returnUrl?: string
 }
 
-export interface AccountCreationErrorResponse {
+export interface GreymassAccountCreationErrorResponse {
     error: string
 }
 
-export type AccountCreationResponse = CallbackPayload & AccountCreationErrorResponse
+export type GreymassAccountCreationResponse = CallbackPayload & GreymassAccountCreationErrorResponse
 
-export class AccountCreator {
+export class AccountCreationPluginGreymass {
     private popupWindow?: Window
     private scope?: Name
     private supportedChains: ChainId[]
@@ -24,7 +24,7 @@ export class AccountCreator {
     // private returnUrl: string
     private popupStatusInterval?: ReturnType<typeof setInterval>
 
-    constructor(public readonly options: AccountCreationOptions) {
+    constructor(public readonly options: GreymassAccountCreationOptions) {
         this.supportedChains = (options.supportedChains || []).map((id) => ChainId.from(id))
         if (options.scope) {
             this.scope = Name.from(options.scope)
@@ -32,7 +32,7 @@ export class AccountCreator {
         this.creationServiceUrl = options.creationServiceUrl || 'https://create.anchor.link'
     }
 
-    async createAccount(): Promise<AccountCreationResponse> {
+    async createAccount(): Promise<GreymassAccountCreationResponse> {
         const qs = new URLSearchParams()
         if (this.supportedChains.length > 0) {
             qs.set('supported_chains', this.supportedChains.map(String).join(','))

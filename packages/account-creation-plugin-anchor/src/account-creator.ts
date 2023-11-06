@@ -1,22 +1,20 @@
-import {Name, NameType} from '@wharfkit/antelope'
-import {ChainId} from '@wharfkit/signing-request'
+import {ChainId, Name, NameType} from '@wharfkit/session'
+import type {CallbackPayload, ChainIdType} from '@wharfkit/session'
 
-import type {CallbackPayload, ChainIdType} from '@wharfkit/signing-request'
-
-export interface GreymassAccountCreationOptions {
+export interface AccountCreationOptions {
     scope: NameType
     supportedChains?: ChainIdType[]
     creationServiceUrl?: string
     returnUrl?: string
 }
 
-export interface GreymassAccountCreationErrorResponse {
+export interface AccountCreationErrorResponse {
     error: string
 }
 
-export type GreymassAccountCreationResponse = CallbackPayload & GreymassAccountCreationErrorResponse
+export type AccountCreationResponse = CallbackPayload & AccountCreationErrorResponse
 
-export class AccountCreationPluginGreymass {
+export class AccountCreator {
     private popupWindow?: Window
     private scope?: Name
     private supportedChains: ChainId[]
@@ -24,7 +22,7 @@ export class AccountCreationPluginGreymass {
     // private returnUrl: string
     private popupStatusInterval?: ReturnType<typeof setInterval>
 
-    constructor(public readonly options: GreymassAccountCreationOptions) {
+    constructor(public readonly options: AccountCreationOptions) {
         this.supportedChains = (options.supportedChains || []).map((id) => ChainId.from(id))
         if (options.scope) {
             this.scope = Name.from(options.scope)
@@ -32,7 +30,7 @@ export class AccountCreationPluginGreymass {
         this.creationServiceUrl = options.creationServiceUrl || 'https://create.anchor.link'
     }
 
-    async createAccount(): Promise<GreymassAccountCreationResponse> {
+    async createAccount(): Promise<AccountCreationResponse> {
         const qs = new URLSearchParams()
         if (this.supportedChains.length > 0) {
             qs.set('supported_chains', this.supportedChains.map(String).join(','))

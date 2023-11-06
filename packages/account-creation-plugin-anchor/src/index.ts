@@ -8,30 +8,25 @@ import {
     CreateAccountResponse,
 } from '@wharfkit/session'
 import {AccountCreationPluginMetadata} from '@wharfkit/session'
-import {AccountCreationPluginGreymass} from './account-creator'
+import {AccountCreator} from './account-creator'
 
-interface AccountCreationPluginWhalesplainerConfig extends AccountCreationPluginConfig {
+interface AccountCreationPluginGreymassConfig extends AccountCreationPluginConfig {
     serviceUrl?: string
 }
 
-export class AccountCreationPluginWhalesplainer
+export class AccountCreationPluginGreymass
     extends AbstractAccountCreationPlugin
     implements AccountCreationPlugin
 {
-    readonly config: AccountCreationPluginWhalesplainerConfig
+    readonly config: AccountCreationPluginGreymassConfig
 
-    constructor(options?: AccountCreationPluginWhalesplainerConfig) {
+    constructor(options?: AccountCreationPluginGreymassConfig) {
         super()
 
         this.config = {
             serviceUrl: options?.serviceUrl,
-            requiresChainSelect: options?.requiresChainSelect || true,
-            supportedChains: options?.supportedChains || [
-                Chains.EOS,
-                Chains.Telos,
-                Chains.WAX,
-                Chains.FIO,
-            ],
+            requiresChainSelect: false,
+            supportedChains: options?.supportedChains || [Chains.EOS, Chains.Telos, Chains.WAX],
         }
     }
 
@@ -68,7 +63,7 @@ export class AccountCreationPluginWhalesplainer
      * @returns Promise<CreateAccountResponse>
      */
     async create(context: CreateAccountContext): Promise<CreateAccountResponse> {
-        const accountCreator = new AccountCreationPluginGreymass({
+        const accountCreator = new AccountCreator({
             supportedChains: context.chain
                 ? [context.chain.id]
                 : (context.chains || this.config.supportedChains || []).map((chain) => chain.id),

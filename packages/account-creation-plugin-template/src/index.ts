@@ -6,9 +6,12 @@ import {
     Chains,
     CreateAccountContext,
 } from '@wharfkit/session'
-import { AccountCreationPluginMetadata } from '@wharfkit/session'
+import {AccountCreationPluginMetadata} from '@wharfkit/session'
 
-export class AccountCreationPluginTEMPLATE extends AbstractAccountCreationPlugin implements AccountCreationPlugin {
+export class AccountCreationPluginTEMPLATE
+    extends AbstractAccountCreationPlugin
+    implements AccountCreationPlugin
+{
     /**
      * The logic configuration for the account-creation plugin.
      */
@@ -17,7 +20,7 @@ export class AccountCreationPluginTEMPLATE extends AbstractAccountCreationPlugin
         requiresChainSelect: true,
 
         // Optionally specify if this plugin only works with specific blockchains.
-        // supportedChains: ['73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d']
+        // supportedChains: [Chains.Jungle4],
     }
     /**
      * The metadata for the account-creation plugin to be displayed in the user interface.

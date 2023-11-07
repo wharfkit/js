@@ -648,16 +648,6 @@
     node-fetch "^2.6.1"
     tslib "^2.1.0"
 
-"@wharfkit/session@../session":
-  version "1.1.0-rc2"
-  dependencies:
-    "@wharfkit/abicache" "^1.2.0-rc2"
-    "@wharfkit/antelope" "^0.9.1"
-    "@wharfkit/common" "^1.1.0"
-    "@wharfkit/signing-request" "^3.0.0"
-    pako "^2.0.4"
-    tslib "^2.1.0"
-
 "@wharfkit/session@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@wharfkit/session/-/session-1.0.0.tgz#09c60d01a6185ab2e451d34462d84de2d7013220"
@@ -665,6 +655,18 @@
   dependencies:
     "@wharfkit/abicache" "^1.1.1"
     "@wharfkit/antelope" "^0.7.3"
+    "@wharfkit/common" "^1.1.0"
+    "@wharfkit/signing-request" "^3.0.0"
+    pako "^2.0.4"
+    tslib "^2.1.0"
+
+"@wharfkit/session@^1.1.0-rc3":
+  version "1.1.0-rc3"
+  resolved "https://registry.yarnpkg.com/@wharfkit/session/-/session-1.1.0-rc3.tgz#18afdaee370a099dda7302baff924a35da021a2c"
+  integrity sha512-vwCXXgkDEDlvV1R6HKFYcd3N+EplhZp0NCQwDO6NyFZsRiHBpjpxD12lp3BsYs7mnYoBIk4RPzm4YmcP7zMD1Q==
+  dependencies:
+    "@wharfkit/abicache" "^1.2.0-rc2"
+    "@wharfkit/antelope" "^0.9.1"
     "@wharfkit/common" "^1.1.0"
     "@wharfkit/signing-request" "^3.0.0"
     pako "^2.0.4"

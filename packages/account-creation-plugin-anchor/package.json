@@ -1,12 +1,12 @@
 {
-    "name": "@wharfkit/account-creation-plugin-greymass",
+    "name": "@wharfkit/account-creation-plugin-anchor",
     "description": "An account creation plugin using the Greymass account creation service",
     "version": "1.2.0",
-    "homepage": "https://github.com/wharfkit/account-creation-plugin-greymass",
+    "homepage": "https://github.com/wharfkit/account-creation-plugin-anchor",
     "license": "BSD-3-Clause",
-    "main": "lib/account-creation-plugin-greymass.js",
-    "module": "lib/account-creation-plugin-greymass.m.js",
-    "types": "lib/account-creation-plugin-greymass.d.ts",
+    "main": "lib/account-creation-plugin-anchor.js",
+    "module": "lib/account-creation-plugin-anchor.m.js",
+    "types": "lib/account-creation-plugin-anchor.d.ts",
     "sideEffects": false,
     "files": [
         "lib/*",

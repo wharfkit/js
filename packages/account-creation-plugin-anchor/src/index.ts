@@ -15,7 +15,7 @@ interface AccountCreationPluginGreymassConfig extends AccountCreationPluginConfi
     serviceUrl?: string
 }
 
-export class AccountCreationPluginGreymass
+export class AccountCreationPluginAnchor
     extends AbstractAccountCreationPlugin
     implements AccountCreationPlugin
 {

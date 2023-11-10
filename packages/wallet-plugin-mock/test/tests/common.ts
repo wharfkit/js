@@ -1,10 +1,7 @@
 import {assert} from 'chai'
 import {PermissionLevel, SessionKit} from '@wharfkit/session'
 
-import {WalletPluginMock} from '$lib'
-import {mockFetch} from '$test/utils/mock-fetch'
-import {MockStorage} from '$test/utils/mock-storage'
-import {MockUserInterface} from '$test/utils/mock-ui'
+import {mockSessionKitArgs, mockSessionKitOptions} from '@wharfkit/mock-data'
 
 const mockChainDefinition = {
     id: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
@@ -13,18 +10,9 @@ const mockChainDefinition = {
 
 const mockPermissionLevel = PermissionLevel.from('wharfkit1115@test')
 
-const mockSessionKitOptions = {
-    appName: 'unittests',
-    chains: [mockChainDefinition],
-    fetch: mockFetch, // Required for unit tests
-    storage: new MockStorage(),
-    ui: new MockUserInterface(),
-    walletPlugins: [new WalletPluginMock()],
-}
-
 suite('wallet plugin', function () {
     test('login and sign', async function () {
-        const kit = new SessionKit(mockSessionKitOptions)
+        const kit = new SessionKit(mockSessionKitArgs, mockSessionKitOptions)
         const {session} = await kit.login({
             chain: mockChainDefinition.id,
             permissionLevel: mockPermissionLevel,

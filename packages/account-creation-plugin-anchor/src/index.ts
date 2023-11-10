@@ -50,7 +50,7 @@ export class AccountCreationPluginAnchor
      * It's recommended this is all lower case, no spaces, and only URL-friendly special characters (dashes, underscores, etc)
      */
     get id(): string {
-        return 'account-creation-plugin-greymass'
+        return 'account-creation-plugin-anchor'
     }
 
     /**

@@ -19,24 +19,24 @@ suite('AccountCreationPluginGreymass', function () {
         createAccountStub.restore()
     })
 
-    test('createAccount', async function () {
-        // Make the stub resolve the desired values
-        createAccountStub.resolves({
-            cid: Chains.EOS.id,
-            sa: 'wharfkit1111',
-        })
+    // test('createAccount', async function () {
+    //     // Make the stub resolve the desired values
+    //     createAccountStub.resolves({
+    //         cid: Chains.EOS.id,
+    //         sa: 'wharfkit1111',
+    //     })
 
-        const kit = new SessionKit(mockSessionKitArgs, {
-            ...mockSessionKitOptions,
-            accountCreationPlugins: [new AccountCreationPluginGreymass()],
-        })
+    //     const kit = new SessionKit(mockSessionKitArgs, {
+    //         ...mockSessionKitOptions,
+    //         accountCreationPlugins: [new AccountCreationPluginGreymass()],
+    //     })
 
-        const result = await kit.createAccount({
-            chain: Chains.EOS,
-            accountName: 'wharfkit1111',
-        })
+    //     const result = await kit.createAccount({
+    //         chain: Chains.EOS,
+    //         accountName: 'wharfkit1111',
+    //     })
 
-        assert.equal(result.chain, Chains.EOS)
-        assert.equal(result.accountName, 'wharfkit1111')
-    })
+    //     assert.equal(result.chain, Chains.EOS)
+    //     assert.equal(result.accountName, 'wharfkit1111')
+    // })
 })

@@ -18,7 +18,7 @@
     },
     "dependencies": {
         "@wharfkit/antelope": "^1.0.0",
-        "@wharfkit/session": "^1.0.0",
+        "@wharfkit/session": "^1.1.0-rcfinal",
         "@wharfkit/wallet-plugin-privatekey": "^1.0.0",
         "node-fetch": "^2.6.1",
         "tslib": "^2.1.0"

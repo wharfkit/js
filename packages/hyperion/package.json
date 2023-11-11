@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/hyperion",
     "description": "API Client to access Hyperion API endpoints",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "homepage": "https://github.com/wharfkit/hyperion",
     "main": "lib/hyperion.js",
     "module": "lib/hyperion.m.js",

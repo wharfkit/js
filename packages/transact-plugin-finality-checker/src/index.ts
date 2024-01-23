@@ -11,12 +11,26 @@ import defaultTranslations from './translations.json'
 
 const START_CHECKING_FINALITY_AFTER = 150000 // 2.5 minutes
 
+interface TransactPluginFinalityCheckerOptions {
+    logging?: boolean
+}
+
 export class TransactPluginFinalityChecker extends AbstractTransactPlugin {
+    logging: boolean
+
     /** A unique ID for this plugin */
     id = 'transact-plugin-finality-checker'
 
     /** Optional - The translation strings to use for the plugin */
     translations = defaultTranslations
+
+    constructor({
+        logging,
+    }: TransactPluginFinalityCheckerOptions = {}) {
+        super()
+
+        this.logging = logging || false
+    }
 
     /**
      * Register the hooks required for this plugin to function

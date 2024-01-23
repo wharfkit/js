@@ -54,19 +54,26 @@ export class TransactPluginFinalityChecker extends AbstractTransactPlugin {
                         Date.now() + START_CHECKING_FINALITY_AFTER
                     )
 
+                    console.log({ expectedFinalityTime })
+
                     // Prompt the user with the link to view the transaction
                     context.ui.prompt({
-                        title: t('title', {
+                        title: t('reversible.title', {
                             default: 'Transaction is not yet final',
                         }),
-                        body: t('body', {
+                        body: t('reversible.body', {
                             default:
-                                'Your transaction has been broadcasted to the network, but is still reversible. Finality expected in:',
+                                'Your transaction has been broadcasted to the network, but is still reversible.',
                         }),
                         elements: [
                             {
                                 type: 'countdown',
-                                data: expectedFinalityTime.toISOString(),
+                                data: {
+                                    label: t('reversible.countdown-label', {
+                                        default: 'Finality expected in:',
+                                    }),
+                                    end: expectedFinalityTime.toISOString(),
+                                },
                             },
                         ],
                     })
@@ -78,10 +85,10 @@ export class TransactPluginFinalityChecker extends AbstractTransactPlugin {
                                 this.log('Transaction finality reached')
 
                                 context.ui?.prompt({
-                                    title: t('title', {
+                                    title: t('title-final', {
                                         default: 'Transaction is final',
                                     }),
-                                    body: t('body', {
+                                    body: t('body-final', {
                                         default:
                                             'Your transaction has been broadcasted to the network and is now irrevirsible.',
                                     }),
@@ -105,6 +112,9 @@ export class TransactPluginFinalityChecker extends AbstractTransactPlugin {
     }
 
     log(...args: any[]) {
+        if (!this.logging) {
+            return
+        }
         // eslint-disable-next-line no-console
         console.log('TransactPluginFinalityChecker, LOG:', ...args)
     }

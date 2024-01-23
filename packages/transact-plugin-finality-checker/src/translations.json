@@ -2,7 +2,8 @@
     "en": {
         "reversible": {
             "title": "Transaction is not yet final",
-            "body": "Your transaction has been broadcasted to the network, but is still revirsible. Finality expected in:"
+            "body": "Your transaction has been broadcasted to the network, but is still revirsible.",
+            "countdown-label": "Finality expected in:"
         },
         "irrevirsible": {
             "title": "Transaction is final",

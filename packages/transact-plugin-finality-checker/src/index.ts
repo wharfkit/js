@@ -1,8 +1,11 @@
 import {
+    API,
     AbstractTransactPlugin,
+    Checksum256,
     TransactContext,
     TransactHookResponseType,
     TransactHookTypes,
+    TransactResult,
     Transaction,
 } from '@wharfkit/session'
 
@@ -41,49 +44,59 @@ export class TransactPluginFinalityChecker extends AbstractTransactPlugin {
         // Register any desired afterBroadcast hooks
         context.addHook(
             TransactHookTypes.afterBroadcast,
-            (request, context): Promise<TransactHookResponseType> =>
-                new Promise((resolve, reject) => {
-                    if (!context.ui) {
-                        throw new Error('UI not available')
-                    }
+            (
+                result: TransactResult,
+                context: TransactContext
+            ): Promise<TransactHookResponseType> => {
+                if (!context.ui) {
+                    throw new Error('UI not available')
+                }
 
-                    // Retrieve translation helper from the UI, passing the app ID
-                    const t = context.ui.getTranslate(this.id)
+                const {resolved} = result
 
-                    const expectedFinalityTime = new Date(
-                        Date.now() + START_CHECKING_FINALITY_AFTER
-                    )
+                const t = context.ui.getTranslate(this.id)
 
-                    console.log({ expectedFinalityTime })
-
-                    // Prompt the user with the link to view the transaction
-                    context.ui.prompt({
-                        title: t('reversible.title', {
-                            default: 'Transaction is not yet final',
-                        }),
-                        body: t('reversible.body', {
+                if (!resolved) {
+                    throw Error(
+                        t('resolved_request_not_returned', {
                             default:
-                                'Your transaction has been broadcasted to the network, but is still reversible.',
-                        }),
-                        elements: [
-                            {
-                                type: 'countdown',
-                                data: {
-                                    label: t('reversible.countdown-label', {
-                                        default: 'Finality expected in:',
-                                    }),
-                                    end: expectedFinalityTime.toISOString(),
-                                },
-                            },
-                        ],
-                    })
+                                'Resolved Request not returned on afterBroadcast hook. This value is needed for the Finality Callback plugin to work.',
+                        })
+                    )
+                }
 
+                const expectedFinalityTime = new Date(
+                    Date.now() + START_CHECKING_FINALITY_AFTER
+                )
+
+                // Prompt the user with the link to view the transaction
+                context.ui.prompt({
+                    title: t('reversible.title', {
+                        default: 'Transaction is not yet final',
+                    }),
+                    body: t('reversible.body', {
+                        default:
+                            'Your transaction has been broadcasted to the network, but is still reversible.',
+                    }),
+                    elements: [
+                        {
+                            type: 'countdown',
+                            data: {
+                                label: t('reversible.countdown-label', {
+                                    default: 'Finality expected in:',
+                                }),
+                                end: expectedFinalityTime.toISOString(),
+                            },
+                        },
+                    ],
+                })
+
+                return new Promise(resolve => {
                     setTimeout(async () => {
                         this.log('Checking transaction finality')
-                        waitForFinality(request.getRawTransaction(), context)
+                        waitForFinality(resolved.transaction.id, context)
                             .then(() => {
                                 this.log('Transaction finality reached')
-
                                 context.ui?.prompt({
                                     title: t('title-final', {
                                         default: 'Transaction is final',
@@ -98,16 +111,13 @@ export class TransactPluginFinalityChecker extends AbstractTransactPlugin {
                                         },
                                     ],
                                 })
-
-                                resolve()
                             })
                             .catch((error) => {
                                 this.log('Error while checking transaction finality', error)
-
-                                reject(error)
                             })
                     }, START_CHECKING_FINALITY_AFTER)
                 })
+            }
         )
     }
 
@@ -122,17 +132,20 @@ export class TransactPluginFinalityChecker extends AbstractTransactPlugin {
 
 let retries = 0
 
-async function waitForFinality(transaction: Transaction, context: TransactContext): Promise<void> {
+async function waitForFinality(
+    transactionId: Checksum256,
+    context: TransactContext
+): Promise<API.v1.GetTransactionStatusResponse> {
     return new Promise((resolve, reject) => {
         context.client.v1.chain
-            .get_transaction_status(transaction.id)
+            .get_transaction_status(transactionId)
             .then((response) => {
                 if (response.state === 'IRREVERSIBLE') {
-                    return resolve()
+                    return resolve(response)
                 }
 
                 setTimeout(() => {
-                    waitForFinality(transaction, context).then(resolve).catch(reject)
+                    waitForFinality(transactionId, context).then(resolve).catch(reject)
                 }, 5000)
             })
             .catch((error) => {
@@ -140,8 +153,12 @@ async function waitForFinality(transaction: Transaction, context: TransactContex
                     retries++
 
                     setTimeout(() => {
-                        waitForFinality(transaction, context).then(resolve).catch(reject)
+                        waitForFinality(transactionId, context).then(resolve).catch(reject)
                     }, 5000)
+                } else if (error.response.status === 500) {
+                    reject(
+                        `This API node cannot be used with the finality checker plugin. Full Error: ${error}`
+                    )
                 } else {
                     reject(error)
                 }

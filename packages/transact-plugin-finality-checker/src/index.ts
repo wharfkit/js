@@ -1,6 +1,6 @@
 import {
-    API,
     AbstractTransactPlugin,
+    API,
     Checksum256,
     TransactContext,
     TransactHookResponseType,
@@ -26,9 +26,7 @@ export class TransactPluginFinalityChecker extends AbstractTransactPlugin {
     /** Optional - The translation strings to use for the plugin */
     translations = defaultTranslations
 
-    constructor({
-        logging,
-    }: TransactPluginFinalityCheckerOptions = {}) {
+    constructor({logging}: TransactPluginFinalityCheckerOptions = {}) {
         super()
 
         this.logging = logging || false
@@ -64,9 +62,7 @@ export class TransactPluginFinalityChecker extends AbstractTransactPlugin {
                     )
                 }
 
-                const expectedFinalityTime = new Date(
-                    Date.now() + START_CHECKING_FINALITY_AFTER
-                )
+                const expectedFinalityTime = new Date(Date.now() + START_CHECKING_FINALITY_AFTER)
 
                 // Prompt the user with the link to view the transaction
                 context.ui.prompt({
@@ -90,7 +86,7 @@ export class TransactPluginFinalityChecker extends AbstractTransactPlugin {
                     ],
                 })
 
-                return new Promise(resolve => {
+                return new Promise(() => {
                     setTimeout(async () => {
                         this.log('Checking transaction finality')
                         waitForFinality(resolved.transaction.id, context)

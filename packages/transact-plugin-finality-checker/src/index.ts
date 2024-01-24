@@ -6,7 +6,6 @@ import {
     TransactHookResponseType,
     TransactHookTypes,
     TransactResult,
-    Transaction,
 } from '@wharfkit/session'
 
 /** Import JSON localization strings */
@@ -105,11 +104,7 @@ export class TransactPluginFinalityChecker extends AbstractTransactPlugin {
                                         default:
                                             'Your transaction has been broadcasted to the network and is now irrevirsible.',
                                     }),
-                                    elements: [
-                                        {
-                                            type: 'close',
-                                        },
-                                    ],
+                                    elements: [],
                                 })
                             })
                             .catch((error) => {

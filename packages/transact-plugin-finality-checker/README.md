@@ -1,6 +1,6 @@
 # @wharfkit/transact-plugin-finality-checker
 
-A template to create a `transactPlugin` for use during a `transact` call within the `@wharfkit/session` library.
+A [Transact plugin](https://wharfkit.com/docs/session-kit/plugin-transact) that displays the finality status of a transaction after it has been broadcasted to the blockchain.
 
 ## Usage
 

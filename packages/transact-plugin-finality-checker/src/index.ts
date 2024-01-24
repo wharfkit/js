@@ -12,7 +12,7 @@ import {
 /** Import JSON localization strings */
 import defaultTranslations from './translations.json'
 
-const START_CHECKING_FINALITY_AFTER = 150000 // 2.5 minutes
+const START_CHECKING_FINALITY_AFTER = 180000 // 3 minutes
 
 interface TransactPluginFinalityCheckerOptions {
     logging?: boolean

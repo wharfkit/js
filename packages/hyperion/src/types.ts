@@ -4,6 +4,7 @@ import {
     BlockTimestamp,
     Checksum256,
     Float64,
+    Int64,
     Name,
     PermissionLevel,
     Struct,
@@ -98,12 +99,41 @@ export namespace V2 {
         @Struct.field('any') declare data: any
     }
 
+    @Struct.type('account_sequence')
+    export class AccountSequence extends Struct {
+        @Struct.field(Name) declare account: Name
+        @Struct.field(UInt64) declare sequence: UInt64
+    }
+
+    @Struct.type('action_receipt')
+    export class ActionReceipt extends Struct {
+        @Struct.field(Name) declare receiver: Name
+        @Struct.field(UInt64) declare global_sequence: UInt64
+        @Struct.field(UInt64) declare recv_sequence: UInt64
+        @Struct.field(AccountSequence, {array: true}) declare auth_sequence: AccountSequence[]
+    }
+
+    @Struct.type('action_ram_delta')
+    export class ActionRamDelta extends Struct {
+        @Struct.field(Name) declare account: Name
+        @Struct.field(Int64) declare delta: Int64
+    }
+
     @Struct.type('action')
     export class Action extends Struct {
-        @Struct.field(UInt32) declare block_num: UInt32
         @Struct.field(BlockTimestamp) declare timestamp: BlockTimestamp
+        @Struct.field(UInt32) declare block_num: UInt32
+        @Struct.field(Checksum256, {optional: true}) declare block_id: Checksum256
         @Struct.field(Checksum256) declare trx_id: Checksum256
         @Struct.field(ActionAct) declare act: ActionAct
+        @Struct.field(ActionReceipt, {array: true, optional: true})
+        declare receipts: ActionReceipt[]
+        @Struct.field(ActionRamDelta, {array: true, optional: true})
+        declare account_ram_deltas: ActionRamDelta[]
+        @Struct.field(UInt64) declare global_sequence: UInt64
+        @Struct.field(Name) declare producer: Name
+        @Struct.field(UInt64) declare action_ordinal: UInt64
+        @Struct.field(UInt64) declare creator_action_ordinal: UInt64
     }
 
     @Struct.type('get_actions_response')

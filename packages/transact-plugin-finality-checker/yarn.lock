@@ -574,7 +574,7 @@
     "@typescript-eslint/types" "5.47.1"
     eslint-visitor-keys "^3.3.0"
 
-"@wharfkit/abicache@^1.2.1":
+"@wharfkit/abicache@^1.2.0", "@wharfkit/abicache@^1.2.1":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@wharfkit/abicache/-/abicache-1.2.2.tgz#c3d83485e3e3782ac94ced460915bad1ceee0be9"
   integrity sha512-yOsYz2qQpQy7Nb8XZj62pZqp8YnmWDqFlrenYksBb9jl+1aWIpFhWd+14VEez4tUAezRH4UWW+w1SX5vhmUY9A==
@@ -584,10 +584,22 @@
     pako "^2.0.4"
     tslib "^2.1.0"
 
-"@wharfkit/antelope@^1.0.0", "@wharfkit/antelope@^1.0.2":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@wharfkit/antelope/-/antelope-1.0.5.tgz#a33893137e9127847128725d185a2e940a2e243a"
-  integrity sha512-/ptouzm4cRVY5seLrvfQR8r5KzzHS+4UOycSiMNmZFmKRZWI/T29dMLJn4IXgakkghPB1iiSD+QcDpguyNGTpA==
+"@wharfkit/account@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@wharfkit/account/-/account-1.0.0.tgz#961af9a6b36208894b01c644031c7db873139451"
+  integrity sha512-I+5iT0DnE0oYQm9v/E+VIgyN+zd1jy8bbaJGxV2rAmHBPn48NKO9PV0EGWgZ8pfNvx/Tf5fG1kZpIbmTQ8Q+8A==
+  dependencies:
+    "@wharfkit/antelope" "^1.0.0"
+    "@wharfkit/common" "^1.2.0"
+    "@wharfkit/contract" "^1.0.0"
+    "@wharfkit/resources" "^1.1.0"
+    "@wharfkit/token" "^1.0.1"
+    tslib "^2.1.0"
+
+"@wharfkit/antelope@^1.0.0", "@wharfkit/antelope@^1.0.2", "@wharfkit/antelope@^1.0.4", "@wharfkit/antelope@^1.0.5":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@wharfkit/antelope/-/antelope-1.0.7.tgz#5ca010db963e061b2e8c47c14e55f86817718c2e"
+  integrity sha512-C4DRC4U+qC2XQKUgwznKX6i8xdKo+ZqxkZURrPTtY3v53IvKwj+3amTQQSpuECechS5x6ItcT+/fOFBNlQ2Juw==
   dependencies:
     bn.js "^4.11.9"
     brorand "^1.1.0"
@@ -603,23 +615,43 @@
   dependencies:
     tslib "^2.1.0"
 
-"@wharfkit/mock-data@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@wharfkit/mock-data/-/mock-data-1.2.1.tgz#f9e74887edf0927d1580589fc64310e398fccf42"
-  integrity sha512-foQDXyzK80woORqmV2OUBqy9Yy2trkyPmdURRaix2X3Hr9H9cEQBet63ipkTaEIUdeR+uPyx0kaoy0dlFECTqw==
+"@wharfkit/contract@^1.0.0", "@wharfkit/contract@^1.1.4":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@wharfkit/contract/-/contract-1.1.5.tgz#2ca10090330cbb458049890076089237b644eb0e"
+  integrity sha512-I4w2QFvD/zb4uj5z0U4uQJLRCiZEbrT+AJ9/5goGm6SU42fsRud/k55qSBzW8Ij00OAv2h1+e8rR7xzUruXC9g==
   dependencies:
-    "@wharfkit/antelope" "^1.0.0"
-    "@wharfkit/session" "^1.1.0-rcfinal"
+    "@wharfkit/abicache" "^1.2.0"
+    "@wharfkit/antelope" "^1.0.4"
+    "@wharfkit/signing-request" "^3.1.0"
+    tslib "^2.1.0"
+
+"@wharfkit/mock-data@^1.2.1":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@wharfkit/mock-data/-/mock-data-1.3.0.tgz#7a9caa7c7fb2ad839bc12593de1b7a546b673ae6"
+  integrity sha512-LkhAkrUOvG6o+lPWb2Q6JCrs9++F2XowGK42PODh35Xu9an5H+THMGjpUhTC1sPiYkfjhkmBbAzMpZbHjkXj4w==
+  dependencies:
+    "@wharfkit/antelope" "^1.0.5"
+    "@wharfkit/session" "^1.2.7"
     "@wharfkit/wallet-plugin-privatekey" "^1.1.0"
     node-fetch "^2.6.1"
     tslib "^2.1.0"
 
-"@wharfkit/session@^1.1.0-rcfinal", "@wharfkit/session@^1.2.5":
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/@wharfkit/session/-/session-1.2.5.tgz#56a8a99de0424d96d0b00488180db3c9729d3609"
-  integrity sha512-EXKA9EB/8zF1CtLU/0ZXGAzieD8/vZDLd3jzj+zSQjZ4TyI8m22qxU/78y3JOvAS6g1m6Mh5bqDPCZN6oBWtxA==
+"@wharfkit/resources@^1.1.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@wharfkit/resources/-/resources-1.2.1.tgz#02cbc3b2a986d622154bb71820b0af60bf0de59d"
+  integrity sha512-K5GCvps3wHnGk7z5wtQqtrrpt5gz18YUTYkuPXa6fPY/zim4QLFED5uNe9eULJ2dwNAJPZ9quGD8TxKtaCazrA==
+  dependencies:
+    "@wharfkit/antelope" "^1.0.0"
+    bn.js "^4.11.9"
+    tslib "^2.1.0"
+
+"@wharfkit/session@^1.2.5", "@wharfkit/session@^1.2.7":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@wharfkit/session/-/session-1.2.8.tgz#84de7a2343df4a45600af6e1e3fe294785da295f"
+  integrity sha512-F1oC+4rqCDbt84eKI0Vd2ahhR05Zi2FefqD14PLOo8sj1s5oR5uq7Zc9orSmprkkTqnYFAh9QOck+CWe+xR+8A==
   dependencies:
     "@wharfkit/abicache" "^1.2.1"
+    "@wharfkit/account" "^1.0.0"
     "@wharfkit/antelope" "^1.0.2"
     "@wharfkit/common" "^1.2.0"
     "@wharfkit/signing-request" "^3.1.0"
@@ -634,11 +666,14 @@
     "@wharfkit/antelope" "^1.0.0"
     tslib "^2.0.3"
 
-"@wharfkit/wallet-plugin-privatekey@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@wharfkit/wallet-plugin-privatekey/-/wallet-plugin-privatekey-0.3.0.tgz#a54b03c9b71cbdb132a33eceaf6afec5066be101"
-  integrity sha512-ysEqenJ5CrL4Aja0qVtr3ya4Ah2ADuA4e+16mPMtBGcdDpmFkK/rF8006icLuHNQRXYh5QQTRiVrkQN04V+mZQ==
+"@wharfkit/token@^1.0.1":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@wharfkit/token/-/token-1.1.2.tgz#de01dc211c10e6d3ccf9948357e8373bf6067259"
+  integrity sha512-LYAGB7LnE3hxwjNsYYwpxbJ8APi0Y8pmh7i1SeKv13HaPVjuHisTnuPxJm3ndwU7pX9GT3hPyo/By0l3CEuLfw==
   dependencies:
+    "@wharfkit/antelope" "^1.0.4"
+    "@wharfkit/contract" "^1.1.4"
+    bn.js "^4.11.9"
     tslib "^2.1.0"
 
 "@wharfkit/wallet-plugin-privatekey@^1.1.0":
@@ -2672,7 +2707,12 @@ tslib@^1.8.1:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.0.3, tslib@^2.1.0, tslib@^2.4.1:
+tslib@^2.0.3:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.2.tgz#703ac29425e7b37cd6fd456e92404d46d1f3e4ae"
+  integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
+
+tslib@^2.1.0, tslib@^2.4.1:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.5.0.tgz#42bfed86f5787aeb41d031866c8f402429e0fddf"
   integrity sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==

@@ -15,19 +15,19 @@ export class HyperionV1APIClient {
 class HyperionV1HistoryAPIClient {
     constructor(private client: APIClient) {}
 
-    async get_actions(): Promise<void> {
+    async get_actions() {
         throw new Error('Method not implemented.')
     }
 
-    async get_controlled_accounts(): Promise<void> {
+    async get_controlled_accounts() {
         throw new Error('Method not implemented.')
     }
 
-    async get_key_accounts(): Promise<void> {
+    async get_key_accounts() {
         throw new Error('Method not implemented.')
     }
 
-    async get_transaction(): Promise<void> {
+    async get_transaction() {
         throw new Error('Method not implemented.')
     }
 }
@@ -35,7 +35,7 @@ class HyperionV1HistoryAPIClient {
 class HyperionV1ChainAPIClient {
     constructor(private client: APIClient) {}
 
-    async get_block(): Promise<void> {
+    async get_block() {
         throw new Error('Method not implemented.')
     }
 }
@@ -43,7 +43,7 @@ class HyperionV1ChainAPIClient {
 class HyperionV1TraceApiClient {
     constructor(private client: APIClient) {}
 
-    async get_block(): Promise<void> {
+    async get_block() {
         throw new Error('Method not implemented.')
     }
 }

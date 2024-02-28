@@ -1,14 +1,6 @@
 import {assert} from 'chai'
 
-import {
-    APIClient,
-    Checksum256,
-    FetchProvider,
-    Float64,
-    Name,
-    Serializer,
-    UInt64,
-} from '@wharfkit/antelope'
+import {APIClient, Checksum256, FetchProvider, Float64, Name, UInt64} from '@wharfkit/antelope'
 import {mockFetch} from '@wharfkit/mock-data'
 
 import {HyperionAPIClient, Types} from '$lib'
@@ -27,7 +19,7 @@ suite('Hyperion API', function () {
         test('get_health', async function () {
             const response = await hyperion.v2.get_health()
 
-            assert.instanceOf(response, Types.V2.GetHealthResponse)
+            assert.instanceOf(response, Types.v2.GetHealthResponse)
             assert.equal(response.host, 'wax.blokcrafters.io')
             assert.equal(response.version, '3.3.9-4')
             assert.equal(response.version_hash, '498bc8ec75429476add847921738ae239ae2921a')
@@ -37,7 +29,7 @@ suite('Hyperion API', function () {
             test('get_voters', async function () {
                 const response = await hyperion.v2.state.get_voters('teamgreymass', true, 100, 200)
 
-                assert.instanceOf(response, Types.V2.GetVotersResponse)
+                assert.instanceOf(response, Types.v2.GetVotersResponse)
                 assert.equal(response.voters.length, 100)
                 assert.instanceOf(response.voters[0].account, Name)
                 assert.equal(String(response.voters[0].account), 'j3.rq.wam')
@@ -48,7 +40,7 @@ suite('Hyperion API', function () {
             test('get_links', async function () {
                 const response = await hyperion.v2.state.get_links('teamgreymass')
 
-                assert.instanceOf(response, Types.V2.GetLinksResponse)
+                assert.instanceOf(response, Types.v2.GetLinksResponse)
                 assert.isArray(response.links)
                 assert.equal(response.links.length, 10)
                 assert.instanceOf(response.links[0].account, Name)
@@ -60,7 +52,7 @@ suite('Hyperion API', function () {
                     limit: 10,
                 })
 
-                assert.instanceOf(response, Types.V2.GetProposalsResponse)
+                assert.instanceOf(response, Types.v2.GetProposalsResponse)
                 assert.isArray(response.proposals)
                 assert.equal(response.proposals.length, 10)
                 assert.instanceOf(response.proposals[0].proposer, Name)
@@ -71,7 +63,7 @@ suite('Hyperion API', function () {
                     'EOS8KmhygTrrvtW7zJd6HXWrNqA5WX9NzScZ37JyXRiwpiJN2g2rR'
                 )
 
-                assert.instanceOf(response, Types.V2.GetKeyAccountsResponse)
+                assert.instanceOf(response, Types.v2.GetKeyAccountsResponse)
                 assert.equal(response.account_names.length, 1)
                 assert.instanceOf(response.account_names[0], Name)
                 assert.equal(String(response.account_names[0]), 'teamgreymass')
@@ -80,7 +72,7 @@ suite('Hyperion API', function () {
             test('get_tokens', async function () {
                 const response = await hyperion.v2.state.get_tokens('teamgreymass')
 
-                assert.instanceOf(response, Types.V2.GetTokensResponse)
+                assert.instanceOf(response, Types.v2.GetTokensResponse)
                 assert.instanceOf(response.account, Name)
                 assert.equal(response.tokens.length, 2)
                 assert.instanceOf(response.tokens[0].amount, Float64)
@@ -89,7 +81,7 @@ suite('Hyperion API', function () {
             test('get_account', async function () {
                 const response = await hyperion.v2.state.get_account('teamgreymass')
 
-                assert.instanceOf(response, Types.V2.GetAccountResponse)
+                assert.instanceOf(response, Types.v2.GetAccountResponse)
                 assert.instanceOf(response.account.account_name, Name)
                 assert.equal(response.tokens.length, 2)
                 assert.instanceOf(response.tokens[0].amount, Float64)
@@ -105,7 +97,7 @@ suite('Hyperion API', function () {
                     true
                 )
 
-                assert.instanceOf(response, Types.V2.GetABISnapshotResponse)
+                assert.instanceOf(response, Types.v2.GetABISnapshotResponse)
                 assert.equal(response.abi.version, 'eosio::abi/1.1')
             })
 
@@ -116,7 +108,7 @@ suite('Hyperion API', function () {
                     limit: 5,
                 })
 
-                assert.instanceOf(response, Types.V2.GetActionsResponse)
+                assert.instanceOf(response, Types.v2.GetActionsResponse)
                 assert.isArray(response.actions)
                 assert.equal(response.actions.length, 5)
                 assert.instanceOf(response.actions[0].act.name, Name)
@@ -133,7 +125,7 @@ suite('Hyperion API', function () {
                     'a51a3cc53b2ff5d5b25ad44b1e3ef5f796ce3ca60101ea05b3be64e68b684ccb'
                 )
 
-                assert.instanceOf(response, Types.V2.GetTransactionResponse)
+                assert.instanceOf(response, Types.v2.GetTransactionResponse)
                 assert.instanceOf(response.trx_id, Checksum256)
                 assert.equal(response.actions.length, 5)
                 assert.instanceOf(response.actions[0].act.name, Name)
@@ -147,7 +139,7 @@ suite('Hyperion API', function () {
                     'teamgreymass'
                 )
 
-                assert.instanceOf(response, Types.V2.GetDeltasResponse)
+                assert.instanceOf(response, Types.v2.GetDeltasResponse)
                 assert.equal(response.deltas.length, 10)
                 assert.instanceOf(response.deltas[0].code, Name)
             })
@@ -159,7 +151,7 @@ suite('Hyperion API', function () {
                     267000000
                 )
 
-                assert.instanceOf(response, Types.V2.GetTableStateResponse)
+                assert.instanceOf(response, Types.v2.GetTableStateResponse)
                 assert.instanceOf(response.code, Name)
                 assert.equal(response.results.length, 1)
             })
@@ -167,7 +159,7 @@ suite('Hyperion API', function () {
             test('get_created_accounts', async function () {
                 const response = await hyperion.v2.history.get_created_accounts('teamgreymass')
 
-                assert.instanceOf(response, Types.V2.GetCreatedAccountsResponse)
+                assert.instanceOf(response, Types.v2.GetCreatedAccountsResponse)
                 assert.isArray(response.accounts)
                 assert.equal(response.accounts.length, 4)
                 assert.instanceOf(response.accounts[0].name, Name)
@@ -178,7 +170,7 @@ suite('Hyperion API', function () {
                     limit: 1,
                 })
 
-                assert.instanceOf(response, Types.V2.GetCreatedAccountsResponse)
+                assert.instanceOf(response, Types.v2.GetCreatedAccountsResponse)
                 assert.isArray(response.accounts)
                 assert.equal(response.accounts.length, 1)
                 assert.instanceOf(response.accounts[0].name, Name)
@@ -189,7 +181,7 @@ suite('Hyperion API', function () {
                     skip: 1,
                 })
 
-                assert.instanceOf(response2, Types.V2.GetCreatedAccountsResponse)
+                assert.instanceOf(response2, Types.v2.GetCreatedAccountsResponse)
                 assert.isArray(response2.accounts)
                 assert.equal(response2.accounts.length, 1)
                 assert.instanceOf(response2.accounts[0].name, Name)
@@ -199,10 +191,19 @@ suite('Hyperion API', function () {
             test('get_creator', async function () {
                 const response = await hyperion.v2.history.get_creator('teamgreymass')
 
-                assert.instanceOf(response, Types.V2.GetCreatorResponse)
+                assert.instanceOf(response, Types.v2.GetCreatorResponse)
                 assert.instanceOf(response.creator, Name)
                 assert.equal(String(response.creator), 'gqyqi.waa')
             })
+
+            // test('get_creator eosio', async function () {
+            //     const response = await hyperion.v2.history.get_creator('eosio')
+            //
+            //     assert.instanceOf(response, Types.v2.GetCreatorResponse)
+            //     assert.instanceOf(response.creator, Name)
+            //     assert.equal(String(response.creator), '__self__')
+            //     assert.equal(String(response.trx_id), '')
+            // })
         })
     })
 })

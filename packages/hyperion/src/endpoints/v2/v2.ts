@@ -17,11 +17,11 @@ export class HyperionV2APIClient {
         this.history = new HyperionV2HistoryAPIClient(client)
     }
 
-    get_health(): Promise<Types.V2.GetHealthResponse> {
+    get_health() {
         return this.client.call({
             path: `/v2/health`,
             method: 'GET',
-            responseType: Types.V2.GetHealthResponse,
+            responseType: Types.v2.GetHealthResponse,
         })
     }
 }
@@ -34,7 +34,7 @@ class HyperionV2StateAPIClient {
         proxy?: boolean,
         skip?: number,
         limit?: number
-    ): Promise<Types.V2.GetVotersResponse> {
+    ) {
         let queryParams = ''
         const queryParts: string[] = []
 
@@ -48,33 +48,46 @@ class HyperionV2StateAPIClient {
         return this.client.call({
             path: `/v2/state/get_voters${queryParams}`,
             method: 'GET',
-            responseType: Types.V2.GetVotersResponse,
+            responseType: Types.v2.GetVotersResponse,
         })
     }
 
-    async get_links(account?: NameType): Promise<Types.V2.GetLinksResponse> {
-        const queryParams = account ? `?account=${account}` : ''
+    async get_links(
+        account?: NameType,
+        code?: NameType,
+        action?: NameType,
+        permission?: NameType
+    ) {
+        let queryParams = ''
+        const queryParts: string[] = []
+
+        if (account !== undefined) queryParts.push(`account=${account}`)
+        if (code !== undefined) queryParts.push(`code=${code}`)
+        if (action !== undefined) queryParts.push(`action=${action}`)
+        if (permission !== undefined) queryParts.push(`permission=${permission}`)
+
+        queryParams = queryParts.length ? '?' + queryParts.join('&') : ''
 
         return this.client.call({
             path: `/v2/state/get_links${queryParams}`,
             method: 'GET',
-            responseType: Types.V2.GetLinksResponse,
+            responseType: Types.v2.GetLinksResponse,
         })
     }
 
-    async get_key_accounts(public_key: PublicKeyType): Promise<Types.V2.GetKeyAccountsResponse> {
+    async get_key_accounts(public_key: PublicKeyType) {
         return this.client.call({
             path: `/v2/state/get_key_accounts?public_key=${public_key}`,
             method: 'GET',
-            responseType: Types.V2.GetKeyAccountsResponse,
+            responseType: Types.v2.GetKeyAccountsResponse,
         })
     }
 
-    async get_tokens(account: NameType): Promise<Types.V2.GetTokensResponse> {
+    async get_tokens(account: NameType) {
         return this.client.call({
             path: `/v2/state/get_tokens?account=${account}`,
             method: 'GET',
-            responseType: Types.V2.GetTokensResponse,
+            responseType: Types.v2.GetTokensResponse,
         })
     }
 
@@ -87,7 +100,7 @@ class HyperionV2StateAPIClient {
         track?: number | boolean
         skip?: number
         limit?: number
-    }): Promise<Types.V2.GetProposalsResponse> {
+    }) {
         const queryParts: string[] = []
 
         for (const [key, value] of Object.entries(options || {})) {
@@ -99,15 +112,15 @@ class HyperionV2StateAPIClient {
         return this.client.call({
             path: `/v2/state/get_proposals${queryParams}`,
             method: 'GET',
-            responseType: Types.V2.GetProposalsResponse,
+            responseType: Types.v2.GetProposalsResponse,
         })
     }
 
-    async get_account(account: NameType): Promise<Types.V2.GetAccountResponse> {
+    async get_account(account: NameType) {
         return this.client.call({
             path: `/v2/state/get_account?account=${account}`,
             method: 'GET',
-            responseType: Types.V2.GetAccountResponse,
+            responseType: Types.v2.GetAccountResponse,
         })
     }
 }
@@ -119,7 +132,7 @@ export class HyperionV2HistoryAPIClient {
         contract: string,
         block?: number,
         fetch = false
-    ): Promise<Types.V2.GetABISnapshotResponse> {
+    ) {
         if (!block) {
             const info = await this.client.v1.chain.get_info()
 
@@ -131,7 +144,7 @@ export class HyperionV2HistoryAPIClient {
                 contract
             )}&block=${block}&fetch=${fetch}`,
             method: 'GET',
-            responseType: Types.V2.GetABISnapshotResponse,
+            responseType: Types.v2.GetABISnapshotResponse,
         })
     }
 
@@ -150,7 +163,7 @@ export class HyperionV2HistoryAPIClient {
             act_name?: string
             act_account?: NameType
         }
-    ): Promise<Types.V2.GetActionsResponse> {
+    ) {
         const queryParts: string[] = [`account=${account}`]
 
         for (const [key, value] of Object.entries(options || {})) {
@@ -162,7 +175,7 @@ export class HyperionV2HistoryAPIClient {
         return this.client.call({
             path: `/v2/history/get_actions${queryParams}`,
             method: 'GET',
-            responseType: Types.V2.GetActionsResponse,
+            responseType: Types.v2.GetActionsResponse,
         })
     }
 
@@ -172,7 +185,7 @@ export class HyperionV2HistoryAPIClient {
             skip?: number
             limit?: number
         }
-    ): Promise<Types.V2.GetCreatedAccountsResponse> {
+    ) {
         const queryParts: string[] = [`account=${account}`]
 
         for (const [key, value] of Object.entries(options || {})) {
@@ -184,15 +197,15 @@ export class HyperionV2HistoryAPIClient {
         return this.client.call({
             path: `/v2/history/get_created_accounts${queryParams}`,
             method: 'GET',
-            responseType: Types.V2.GetCreatedAccountsResponse,
+            responseType: Types.v2.GetCreatedAccountsResponse,
         })
     }
 
-    async get_creator(account: NameType): Promise<Types.V2.GetCreatorResponse> {
+    async get_creator(account: NameType) {
         return this.client.call({
             path: `/v2/history/get_creator?account=${account}`,
             method: 'GET',
-            responseType: Types.V2.GetCreatorResponse,
+            responseType: Types.v2.GetCreatorResponse,
         })
     }
 
@@ -201,11 +214,11 @@ export class HyperionV2HistoryAPIClient {
         scope: NameType,
         table: NameType,
         payer: NameType
-    ): Promise<Types.V2.GetDeltasResponse> {
+    ) {
         return this.client.call({
             path: `/v2/history/get_deltas?code=${code}&scope=${scope}&table=${table}&payer=${payer}`,
             method: 'GET',
-            responseType: Types.V2.GetDeltasResponse,
+            responseType: Types.v2.GetDeltasResponse,
         })
     }
 
@@ -214,27 +227,27 @@ export class HyperionV2HistoryAPIClient {
         table: NameType,
         block_num: Int64Type,
         after_key = ''
-    ): Promise<Types.V2.GetTableStateResponse> {
+    ) {
         return this.client.call({
             path: `/v2/history/get_table_state?code=${code}&table=${table}&block_num=${block_num}&after_key=${after_key}`,
             method: 'GET',
-            responseType: Types.V2.GetTableStateResponse,
+            responseType: Types.v2.GetTableStateResponse,
         })
     }
 
-    async get_transaction(id: Checksum256Type): Promise<Types.V2.GetTransactionResponse> {
+    async get_transaction(id: Checksum256Type) {
         return this.client.call({
             path: `/v2/history/get_transaction?id=${id}`,
             method: 'GET',
-            responseType: Types.V2.GetTransactionResponse,
+            responseType: Types.v2.GetTransactionResponse,
         })
     }
 
-    async get_transfers(): Promise<any> {
+    async get_transfers() {
         throw new Error('Method not implemented.')
     }
 
-    async get_transacted_accounts(): Promise<any> {
+    async get_transacted_accounts() {
         throw new Error('Method not implemented.')
     }
 }

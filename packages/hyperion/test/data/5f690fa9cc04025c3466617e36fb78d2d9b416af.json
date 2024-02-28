@@ -1,0 +1,21 @@
+{
+    "request": {
+        "path": "https://wax.blokcrafters.io/v2/history/get_created_accounts?account=gm&limit=1",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": {
+        "query_time_ms": 21.737,
+        "accounts": [
+            {
+                "name": "staygefil.gm",
+                "timestamp": "2024-02-28T17:17:39.000",
+                "trx_id": "a97c220e23c83c221e22a797131ca4ff976d81f7364d36d0eaf5d2810e3cd869"
+            }
+        ]
+    },
+    "text": "{\"query_time_ms\":21.737,\"accounts\":[{\"name\":\"staygefil.gm\",\"timestamp\":\"2024-02-28T17:17:39.000\",\"trx_id\":\"a97c220e23c83c221e22a797131ca4ff976d81f7364d36d0eaf5d2810e3cd869\"}]}"
+}

@@ -2,17 +2,19 @@
     "request": {
         "path": "https://wax.blokcrafters.io/v2/history/get_creator?account=teamgreymass",
         "params": {
-            "method": "GET"
+            "method": "GET",
+            "headers": {}
         }
     },
     "status": 200,
     "json": {
-        "query_time_ms": 23.85,
+        "query_time_ms": 0.272,
+        "cached": true,
         "account": "teamgreymass",
         "creator": "gqyqi.waa",
         "timestamp": "2019-07-12T05:18:07.000",
         "block_num": 2995721,
         "trx_id": "5e38203aad5921e179b87879226ee52e5c5ea66533af734057aa7220767aadd0"
     },
-    "text": "{\"query_time_ms\":23.85,\"account\":\"teamgreymass\",\"creator\":\"gqyqi.waa\",\"timestamp\":\"2019-07-12T05:18:07.000\",\"block_num\":2995721,\"trx_id\":\"5e38203aad5921e179b87879226ee52e5c5ea66533af734057aa7220767aadd0\"}"
+    "text": "{\"query_time_ms\":0.272,\"cached\":true,\"account\":\"teamgreymass\",\"creator\":\"gqyqi.waa\",\"timestamp\":\"2019-07-12T05:18:07.000\",\"block_num\":2995721,\"trx_id\":\"5e38203aad5921e179b87879226ee52e5c5ea66533af734057aa7220767aadd0\"}"
 }

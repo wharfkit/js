@@ -2,12 +2,13 @@
     "request": {
         "path": "https://wax.blokcrafters.io/v2/history/get_created_accounts?account=teamgreymass",
         "params": {
-            "method": "GET"
+            "method": "GET",
+            "headers": {}
         }
     },
     "status": 200,
     "json": {
-        "query_time_ms": 1215.821,
+        "query_time_ms": 38.084,
         "accounts": [
             {
                 "name": "ihasnocpunet",
@@ -31,5 +32,5 @@
             }
         ]
     },
-    "text": "{\"query_time_ms\":1215.821,\"accounts\":[{\"name\":\"ihasnocpunet\",\"timestamp\":\"2021-02-18T18:07:27.000\",\"trx_id\":\"6bf7d0743795a29c8810a7315907c8e4af17bddd6a9fcbeb03478f182ed88e0b\"},{\"name\":\"greymassnoop\",\"timestamp\":\"2021-02-16T19:15:20.000\",\"trx_id\":\"ed70c004a9b73e57a8345330dbd063da1c37e71da1ed7903efeaabacbcd8b15e\"},{\"name\":\"greymassfuel\",\"timestamp\":\"2021-02-16T19:10:33.000\",\"trx_id\":\"51b0ae4376ea09a1617501c81fe9dc5de4528bd389ecbb33aba1def07b80297f\"},{\"name\":\"gm\",\"timestamp\":\"2020-07-10T22:04:31.000\",\"trx_id\":\"f5ef8ac1492af3557f2d9a10cd601175d9ca22a16ac727ac74d1079a13f225a5\"}]}"
+    "text": "{\"query_time_ms\":38.084,\"accounts\":[{\"name\":\"ihasnocpunet\",\"timestamp\":\"2021-02-18T18:07:27.000\",\"trx_id\":\"6bf7d0743795a29c8810a7315907c8e4af17bddd6a9fcbeb03478f182ed88e0b\"},{\"name\":\"greymassnoop\",\"timestamp\":\"2021-02-16T19:15:20.000\",\"trx_id\":\"ed70c004a9b73e57a8345330dbd063da1c37e71da1ed7903efeaabacbcd8b15e\"},{\"name\":\"greymassfuel\",\"timestamp\":\"2021-02-16T19:10:33.000\",\"trx_id\":\"51b0ae4376ea09a1617501c81fe9dc5de4528bd389ecbb33aba1def07b80297f\"},{\"name\":\"gm\",\"timestamp\":\"2020-07-10T22:04:31.000\",\"trx_id\":\"f5ef8ac1492af3557f2d9a10cd601175d9ca22a16ac727ac74d1079a13f225a5\"}]}"
 }

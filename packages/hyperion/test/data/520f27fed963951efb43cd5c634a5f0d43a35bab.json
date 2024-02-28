@@ -1,0 +1,41 @@
+{
+    "request": {
+        "path": "https://wax.blokcrafters.io/v2/state/get_tokens?account=teamgreymass",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": {
+        "account": "teamgreymass",
+        "tokens": [
+            {
+                "symbol": "RICH",
+                "amount": 81.44848567,
+                "contract": "token.rich",
+                "error": "Table accounts is not specified in the ABI"
+            },
+            {
+                "symbol": "STAKE",
+                "precision": 8,
+                "amount": 1,
+                "contract": "kingsofgraff"
+            },
+            {
+                "symbol": "HITCOIN",
+                "precision": 8,
+                "amount": 0.0000042,
+                "contract": "gkniftyheads"
+            },
+            {
+                "symbol": "WAX",
+                "precision": 8,
+                "amount": 2786894.85649746,
+                "contract": "eosio.token"
+            }
+        ],
+        "query_time_ms": 56.184
+    },
+    "text": "{\"account\":\"teamgreymass\",\"tokens\":[{\"symbol\":\"RICH\",\"amount\":81.44848567,\"contract\":\"token.rich\",\"error\":\"Table accounts is not specified in the ABI\"},{\"symbol\":\"STAKE\",\"precision\":8,\"amount\":1,\"contract\":\"kingsofgraff\"},{\"symbol\":\"HITCOIN\",\"precision\":8,\"amount\":0.0000042,\"contract\":\"gkniftyheads\"},{\"symbol\":\"WAX\",\"precision\":8,\"amount\":2786894.85649746,\"contract\":\"eosio.token\"}],\"query_time_ms\":56.184}"
+}

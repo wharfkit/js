@@ -2,12 +2,13 @@
     "request": {
         "path": "https://wax.blokcrafters.io/v2/history/get_table_state?code=eosio.token&table=stat&block_num=267000000&after_key=",
         "params": {
-            "method": "GET"
+            "method": "GET",
+            "headers": {}
         }
     },
     "status": 200,
     "json": {
-        "query_time_ms": 13767.49,
+        "query_time_ms": 41.376,
         "code": "eosio.token",
         "table": "stat",
         "block_num": 267000000,
@@ -30,5 +31,5 @@
             }
         ]
     },
-    "text": "{\"query_time_ms\":13767.49,\"code\":\"eosio.token\",\"table\":\"stat\",\"block_num\":267000000,\"after_key\":\"\",\"next_key\":\"........f1.pb-5783895\",\"results\":[{\"scope\":\"........f1.pb\",\"primary_key\":\"5783895\",\"payer\":\"eosio.token\",\"timestamp\":\"2023-09-17T17:19:33.000\",\"block_num\":266999996,\"block_id\":\"0fea18bca71f5f7313ea8f1a0a03e1677018f3ec212c94e401a4eb88d7f74bcb\",\"present\":1,\"data\":{\"max_supply\":\"46116860184.27387903 WAX\",\"supply\":\"4049099831.80933812 WAX\",\"issuer\":\"eosio\"}}]}"
+    "text": "{\"query_time_ms\":41.376,\"code\":\"eosio.token\",\"table\":\"stat\",\"block_num\":267000000,\"after_key\":\"\",\"next_key\":\"........f1.pb-5783895\",\"results\":[{\"scope\":\"........f1.pb\",\"primary_key\":\"5783895\",\"payer\":\"eosio.token\",\"timestamp\":\"2023-09-17T17:19:33.000\",\"block_num\":266999996,\"block_id\":\"0fea18bca71f5f7313ea8f1a0a03e1677018f3ec212c94e401a4eb88d7f74bcb\",\"present\":1,\"data\":{\"max_supply\":\"46116860184.27387903 WAX\",\"supply\":\"4049099831.80933812 WAX\",\"issuer\":\"eosio\"}}]}"
 }

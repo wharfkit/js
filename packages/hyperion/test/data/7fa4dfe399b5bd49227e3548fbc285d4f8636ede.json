@@ -2,7 +2,8 @@
     "request": {
         "path": "https://wax.blokcrafters.io/v2/state/get_key_accounts?public_key=EOS8KmhygTrrvtW7zJd6HXWrNqA5WX9NzScZ37JyXRiwpiJN2g2rR",
         "params": {
-            "method": "GET"
+            "method": "GET",
+            "headers": {}
         }
     },
     "status": 200,

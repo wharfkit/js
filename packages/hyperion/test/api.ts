@@ -21,8 +21,8 @@ suite('Hyperion API', function () {
 
             assert.instanceOf(response, Types.v2.GetHealthResponse)
             assert.equal(response.host, 'wax.blokcrafters.io')
-            assert.equal(response.version, '3.3.9-4')
-            assert.equal(response.version_hash, '498bc8ec75429476add847921738ae239ae2921a')
+            assert.equal(response.version, '3.3.9-8')
+            assert.equal(response.version_hash, 'fb2fc20d1d0e0700d29865a57527b8fbd4cc30a2')
             assert.equal(response.features.tables.proposals, true)
         })
         suite('state', function () {
@@ -32,9 +32,9 @@ suite('Hyperion API', function () {
                 assert.instanceOf(response, Types.v2.GetVotersResponse)
                 assert.equal(response.voters.length, 100)
                 assert.instanceOf(response.voters[0].account, Name)
-                assert.equal(String(response.voters[0].account), 'j3.rq.wam')
-                assert.equal(Number(response.voters[0].weight), 1.5044807131168136e39)
-                assert.equal(Number(response.voters[0].last_vote), 266448316)
+                assert.equal(String(response.voters[0].account), 'ydeqk.wam')
+                assert.equal(Number(response.voters[0].weight), 4.9849102353891966e39)
+                assert.equal(Number(response.voters[0].last_vote), 290668173)
             })
 
             test('get_links', async function () {
@@ -74,7 +74,7 @@ suite('Hyperion API', function () {
 
                 assert.instanceOf(response, Types.v2.GetTokensResponse)
                 assert.instanceOf(response.account, Name)
-                assert.equal(response.tokens.length, 2)
+                assert.equal(response.tokens.length, 4)
                 assert.instanceOf(response.tokens[0].amount, Float64)
             })
 
@@ -83,9 +83,9 @@ suite('Hyperion API', function () {
 
                 assert.instanceOf(response, Types.v2.GetAccountResponse)
                 assert.instanceOf(response.account.account_name, Name)
-                assert.equal(response.tokens.length, 2)
+                assert.equal(response.tokens.length, 4)
                 assert.instanceOf(response.tokens[0].amount, Float64)
-                assert.equal(Number(response.total_actions), 1658951)
+                assert.equal(Number(response.total_actions), 1885932)
             })
         })
 

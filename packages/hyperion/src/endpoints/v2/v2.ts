@@ -29,12 +29,7 @@ export class HyperionV2APIClient {
 class HyperionV2StateAPIClient {
     constructor(private client: APIClient) {}
 
-    async get_voters(
-        producer?: NameType,
-        proxy?: boolean,
-        skip?: number,
-        limit?: number
-    ) {
+    async get_voters(producer?: NameType, proxy?: boolean, skip?: number, limit?: number) {
         let queryParams = ''
         const queryParts: string[] = []
 
@@ -52,12 +47,7 @@ class HyperionV2StateAPIClient {
         })
     }
 
-    async get_links(
-        account?: NameType,
-        code?: NameType,
-        action?: NameType,
-        permission?: NameType
-    ) {
+    async get_links(account?: NameType, code?: NameType, action?: NameType, permission?: NameType) {
         let queryParams = ''
         const queryParts: string[] = []
 
@@ -128,11 +118,7 @@ class HyperionV2StateAPIClient {
 export class HyperionV2HistoryAPIClient {
     constructor(private client: APIClient) {}
 
-    async get_abi_snapshot(
-        contract: string,
-        block?: number,
-        fetch = false
-    ) {
+    async get_abi_snapshot(contract: string, block?: number, fetch = false) {
         if (!block) {
             const info = await this.client.v1.chain.get_info()
 
@@ -209,12 +195,7 @@ export class HyperionV2HistoryAPIClient {
         })
     }
 
-    async get_deltas(
-        code: NameType,
-        scope: NameType,
-        table: NameType,
-        payer: NameType
-    ) {
+    async get_deltas(code: NameType, scope: NameType, table: NameType, payer: NameType) {
         return this.client.call({
             path: `/v2/history/get_deltas?code=${code}&scope=${scope}&table=${table}&payer=${payer}`,
             method: 'GET',
@@ -222,12 +203,7 @@ export class HyperionV2HistoryAPIClient {
         })
     }
 
-    async get_table_state(
-        code: NameType,
-        table: NameType,
-        block_num: Int64Type,
-        after_key = ''
-    ) {
+    async get_table_state(code: NameType, table: NameType, block_num: Int64Type, after_key = '') {
         return this.client.call({
             path: `/v2/history/get_table_state?code=${code}&table=${table}&block_num=${block_num}&after_key=${after_key}`,
             method: 'GET',

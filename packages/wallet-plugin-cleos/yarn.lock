@@ -540,20 +540,32 @@
     "@typescript-eslint/types" "5.50.0"
     eslint-visitor-keys "^3.3.0"
 
-"@wharfkit/abicache@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@wharfkit/abicache/-/abicache-1.2.0.tgz#f67f7bbd854adc443c3e363d5fbe3d27ac4f8383"
-  integrity sha512-1+564ODM1KhUs7chE8KpYhnxShuPLC1MvqYcXVuLosxXXwcYC4IiJ1V3VuikLG+xfBDp1GZivGjHQwv1awE2Zw==
+"@wharfkit/abicache@^1.2.0", "@wharfkit/abicache@^1.2.1":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@wharfkit/abicache/-/abicache-1.2.2.tgz#c3d83485e3e3782ac94ced460915bad1ceee0be9"
+  integrity sha512-yOsYz2qQpQy7Nb8XZj62pZqp8YnmWDqFlrenYksBb9jl+1aWIpFhWd+14VEez4tUAezRH4UWW+w1SX5vhmUY9A==
   dependencies:
-    "@wharfkit/antelope" "^1.0.0"
+    "@wharfkit/antelope" "^1.0.2"
     "@wharfkit/signing-request" "^3.1.0"
     pako "^2.0.4"
     tslib "^2.1.0"
 
-"@wharfkit/antelope@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@wharfkit/antelope/-/antelope-1.0.0.tgz#c3057b70575991be5de3aea19e0c474614783c80"
-  integrity sha512-gwc6L3AzceN/menx9HCV22Ekd3it1wRruY6dIkyfCaV2UBGmfvIVJ3wPaDi4Ppj2k50b86ShSSHdd52jOFd+dg==
+"@wharfkit/account@^1.0.0":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@wharfkit/account/-/account-1.1.1.tgz#44c6a33afe07001ae44009ac59e3492d830396dd"
+  integrity sha512-487SJwAR1hw80Xz5EJTSnBAwME1fHa35obIoStH1k/fXp8MsBgvnM1/xvCS/LNC7N7fFCIUeaYO4Qv4SitM5Fw==
+  dependencies:
+    "@wharfkit/antelope" "^1.0.7"
+    "@wharfkit/common" "^1.2.0"
+    "@wharfkit/contract" "^1.0.0"
+    "@wharfkit/resources" "^1.2.3"
+    "@wharfkit/token" "^1.1.2"
+    tslib "^2.1.0"
+
+"@wharfkit/antelope@^1.0.0", "@wharfkit/antelope@^1.0.2", "@wharfkit/antelope@^1.0.4", "@wharfkit/antelope@^1.0.7":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@wharfkit/antelope/-/antelope-1.0.8.tgz#e05a62f3b2598ca8b9e9a5ddd2e5a04937f3f1b8"
+  integrity sha512-RMpSHv5LteQtxiNlunLAwlaAGz4Gq4SErlyN1mVbqly14UB3GA1jRlosEZUGkCy7DdYDuY1tIFlAJJ+2lXeZIA==
   dependencies:
     bn.js "^4.11.9"
     brorand "^1.1.0"
@@ -569,13 +581,34 @@
   dependencies:
     tslib "^2.1.0"
 
-"@wharfkit/session@^1.1.0-rcfinal":
-  version "1.1.0-rcfinal"
-  resolved "https://registry.yarnpkg.com/@wharfkit/session/-/session-1.1.0-rcfinal.tgz#29a9f40dca8557e96d5e44c1498b09eb641f47e1"
-  integrity sha512-UijDlP2yE8WoprAXz8EpAyz1GyxWv9OloRGApTUKM/lMuSk1U2d7vefQzyXTn14f1npd7bfBzeTQ5piTerBHww==
+"@wharfkit/contract@^1.0.0", "@wharfkit/contract@^1.1.4":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@wharfkit/contract/-/contract-1.1.5.tgz#2ca10090330cbb458049890076089237b644eb0e"
+  integrity sha512-I4w2QFvD/zb4uj5z0U4uQJLRCiZEbrT+AJ9/5goGm6SU42fsRud/k55qSBzW8Ij00OAv2h1+e8rR7xzUruXC9g==
   dependencies:
     "@wharfkit/abicache" "^1.2.0"
+    "@wharfkit/antelope" "^1.0.4"
+    "@wharfkit/signing-request" "^3.1.0"
+    tslib "^2.1.0"
+
+"@wharfkit/resources@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@wharfkit/resources/-/resources-1.2.3.tgz#9360ff8a21181042e9d709169546ae3d13c46765"
+  integrity sha512-uOf52gdpxfIWOlo0Z/kdMPMpyVk9Rnb9f6O/FACm/VQ13xykrR4AoZGhUnejft2S7RcqVWLjb9oqpOxhDOywBg==
+  dependencies:
     "@wharfkit/antelope" "^1.0.0"
+    bn.js "^4.11.9"
+    js-big-decimal "^2.0.7"
+    tslib "^2.1.0"
+
+"@wharfkit/session@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@wharfkit/session/-/session-1.3.1.tgz#2cbfa14aafc21abba060e97dab24e9263c78ad6e"
+  integrity sha512-x+SV14arfhvuiDGyWAH2WIKW7v2WKQ1njc3EzU5ZzE6xVWRfKZ23mqtz83YemQ2h0562+QR712CzX5ZhAcdcpg==
+  dependencies:
+    "@wharfkit/abicache" "^1.2.1"
+    "@wharfkit/account" "^1.0.0"
+    "@wharfkit/antelope" "^1.0.2"
     "@wharfkit/common" "^1.2.0"
     "@wharfkit/signing-request" "^3.1.0"
     pako "^2.0.4"
@@ -588,6 +621,16 @@
   dependencies:
     "@wharfkit/antelope" "^1.0.0"
     tslib "^2.0.3"
+
+"@wharfkit/token@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@wharfkit/token/-/token-1.1.2.tgz#de01dc211c10e6d3ccf9948357e8373bf6067259"
+  integrity sha512-LYAGB7LnE3hxwjNsYYwpxbJ8APi0Y8pmh7i1SeKv13HaPVjuHisTnuPxJm3ndwU7pX9GT3hPyo/By0l3CEuLfw==
+  dependencies:
+    "@wharfkit/antelope" "^1.0.4"
+    "@wharfkit/contract" "^1.1.4"
+    bn.js "^4.11.9"
+    tslib "^2.1.0"
 
 "@yarnpkg/lockfile@^1.1.0":
   version "1.1.0"
@@ -1702,6 +1745,11 @@ jest-worker@^26.2.1:
     "@types/node" "*"
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
+
+js-big-decimal@^2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/js-big-decimal/-/js-big-decimal-2.0.7.tgz#fb9b44b4c1eae08903cb191c0cf37b82f3a8d7c4"
+  integrity sha512-XGc79t2Iv3b7LFlYaTT8WoQBuWL4K81aST+dq2YGHV6giedbnoG0s33ju24Uw/BGqLYfPPgn4HGRrPS2mfKk3Q==
 
 js-sdsl@^4.1.4:
   version "4.3.0"

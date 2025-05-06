@@ -1714,10 +1714,10 @@
     "@wharfkit/signing-request" "^3.1.0"
     tslib "^2.1.0"
 
-"@wharfkit/protocol-esr@^1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@wharfkit/protocol-esr/-/protocol-esr-1.3.2.tgz#b7df3124cc743c6adbe64f7779375fda816de4e5"
-  integrity sha512-LK/iP7T9ybGTl97SRtCNO2aBctY/JQ6yH9N+UkI7gthQPn4zmzAHr+Ew8rHlKSvX03FwoyD1EtB3klHRa00WLw==
+"@wharfkit/protocol-esr@^1.4.0-rc1":
+  version "1.4.0-rc1"
+  resolved "https://registry.yarnpkg.com/@wharfkit/protocol-esr/-/protocol-esr-1.4.0-rc1.tgz#f0df1b10093542571221a5ec3fc9e7dfaadfe342"
+  integrity sha512-0Cqsc3z01dpSkn8akn9oYcCH7pF7n0B5lVgCcwEazqDFJlb8rjUD2hYnvBmfyo3uFuUNZeFJA5mQW6X3589gTw==
   dependencies:
     "@greymass/buoy" "^1.0.3"
     "@greymass/miniaes" "^1.0.0"
@@ -1809,13 +1809,13 @@
   dependencies:
     tslib "^2.1.0"
 
-"@wharfkit/wallet-plugin-anchor@^1.3.5":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@wharfkit/wallet-plugin-anchor/-/wallet-plugin-anchor-1.4.0.tgz#4e0908f94ed81585252185e9cb8de1eb9cc02a51"
-  integrity sha512-4BHWmxTk/wYRwUfATTbxOY3WYvmURkaQojvmm6HM6PB4PRQqTVcl5F/DBJQHgwu83SW7wsQ+g01U+dSpEZ0a/A==
+"@wharfkit/wallet-plugin-anchor@^1.5.0-rc1":
+  version "1.5.0-rc1"
+  resolved "https://registry.yarnpkg.com/@wharfkit/wallet-plugin-anchor/-/wallet-plugin-anchor-1.5.0-rc1.tgz#b32720bc6fd0074da31a386b73151ddcd6309734"
+  integrity sha512-U0A+1B2UZmBonoN/GCV/TsrLiYkiT3GsXqjw5B1435Y6Wg39ASPzgXy20Wt92DIxnE/xW6X0gPJ5mkT75MSQ3Q==
   dependencies:
     "@wharfkit/antelope" "^1.0.5"
-    "@wharfkit/protocol-esr" "^1.3.2"
+    "@wharfkit/protocol-esr" "^1.4.0-rc1"
     isomorphic-ws "^5.0.0"
     ws "^8.13.0"
 

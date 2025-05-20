@@ -7,14 +7,14 @@ import {
     mockSessionKitOptions,
 } from '@wharfkit/mock-data'
 
-import {WalletPluginTEMPLATE} from '$lib'
+import {WalletPluginIMToken} from '$lib'
 
 suite('wallet plugin', function () {
     test('login and sign', async function () {
         const kit = new SessionKit(
             {
                 ...mockSessionKitArgs,
-                walletPlugins: [new WalletPluginTEMPLATE()],
+                walletPlugins: [new WalletPluginIMToken()],
             },
             mockSessionKitOptions
         )

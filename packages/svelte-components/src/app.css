@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+@import './lib/default.css';
+
+@layer base {
+	:root {
+		@apply bg-background text-on-background h-full;
+		color-scheme: dark light;
+		touch-action: manipulation;
+		scrollbar-gutter: stable;
+
+		::selection {
+			@apply bg-primary text-on-primary;
+		}
+	}
+}

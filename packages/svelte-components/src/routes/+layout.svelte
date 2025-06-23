@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { SchemeSwitch } from '$lib';
 	import { onMount } from 'svelte';
-  const version = import.meta.env.VERSION;
+	const version = import.meta.env.VERSION;
 
 	let props = $props();
 
@@ -36,6 +36,7 @@
 
 	<nav class="grow basis-0">
 		<menu class="sticky top-12 space-y-4">
+			<p>Version: {version}</p>
 			<SchemeSwitch />
 			{#each toc as item (item.id)}
 				<li class="text-nowrap"><a href={`#${item.id}`}>{item.title}</a></li>
@@ -43,8 +44,3 @@
 		</menu>
 	</nav>
 </div>
-
-<footer>
-  Version: {version}
-</footer>
-

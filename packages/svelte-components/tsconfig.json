@@ -10,9 +10,7 @@
 		"sourceMap": true,
 		"strict": true,
 		"experimentalDecorators": true,
-		"types": [
-			"node"
-		],
+		"types": ["node"],
 		"plugins": [
 			{
 				"name": "typescript-svelte-plugin",

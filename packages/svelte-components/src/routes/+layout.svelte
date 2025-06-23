@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { SchemeSwitch } from '$lib';
 	import { onMount } from 'svelte';
+  const version = import.meta.env.VERSION;
 
 	let props = $props();
 
@@ -42,3 +43,8 @@
 		</menu>
 	</nav>
 </div>
+
+<footer>
+  Version: {version}
+</footer>
+

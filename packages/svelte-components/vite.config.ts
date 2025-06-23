@@ -1,8 +1,11 @@
 import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
-import devtoolsJson from 'vite-plugin-devtools-json'
+import devtoolsJson from 'vite-plugin-devtools-json';
 
 export default defineConfig({
-	plugins: [devtoolsJson(), tailwindcss(), sveltekit()]
+	plugins: [devtoolsJson(), tailwindcss(), sveltekit()],
+	define: {
+		'import.meta.env.VERSION': JSON.stringify(process.env.VERSION || 'dev')
+	}
 });

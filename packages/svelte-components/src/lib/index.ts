@@ -1,20 +1,11 @@
 // $lib/index.ts
-export { DL, DLRow, DD, DT } from './components/descriptionlist';
-export { Table, TR, TD, TH, Col } from './components/table';
-export { Label, Form, FormHeader, FormContent, FormSection, Fieldset } from './components/forms';
-export { Account, Asset, Block, Datetime, Key, Number, Ram } from './components/elements';
-export {
-	AssetInput,
-	BytesInput,
-	DatetimeInput,
-	NameInput,
-	NumberInput,
-	PublicKeyInput,
-	SymbolInput,
-	TextInput
-} from './components/input';
-export { Stack, Cluster, Switcher } from './components/layout';
-export { Select, SelectItem, SelectTrigger, SelectMenu } from './components/select';
+export * from './components/descriptionlist';
+export * from './components/table';
+export * from './components/forms';
+export * from './components/elements';
+export * from './components/input';
+export * from './components/layout';
+export * from './components/select';
 
 export { default as Button } from './components/Button.svelte';
 export { default as IconButton } from './components/IconButton.svelte';

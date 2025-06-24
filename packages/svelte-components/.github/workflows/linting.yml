@@ -1,5 +1,5 @@
 
-name: Check
+name: Linting
 
 on:
   push:
@@ -18,4 +18,4 @@ jobs:
         uses: oven-sh/setup-bun@v1
 
       - name: Run bun check
-        run: bun check
+        run: bun lint

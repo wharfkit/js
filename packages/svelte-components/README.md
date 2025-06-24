@@ -2,6 +2,41 @@
 
 Svelte components for Unicove and related projects.
 
+## Using
+
+Install the component library and make sure all peerDependencies are also installed
+
+```bash
+bun install unicove-components 
+
+```
+
+Ensure tailwindcss is setup correctly. Then import the Unicove base styles and allow tailwind to detect the classes in the library components.
+
+```css
+/* app.css */
+@import "tailwindcss";
+@import "unicove-components/css";
+@source "../node_modules/unicove-components";
+```
+
+Then you can use the components in svelte 
+
+```svelte
+
+<script>
+	import { Button, Checkbox, CopyButton, Stack } from "unicove-components";
+</script>
+
+<Stack>
+	<Checkbox checked={false} id="a" />
+
+	<CopyButton data="test" />
+
+	<Button>Test</Button>
+</Stack>
+```
+
 ## Developing
 
 Once you've created a project and installed dependencies with `bun install` start a development server:

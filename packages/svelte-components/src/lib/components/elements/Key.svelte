@@ -4,13 +4,13 @@
 	import KeyRound from '@lucide/svelte/icons/key-round';
 	import type { HTMLAnchorAttributes } from 'svelte/elements';
 
-	interface Props extends HTMLAnchorAttributes {
+	export interface KeyProps extends HTMLAnchorAttributes {
 		key?: PublicKey | PrivateKey | string;
 		icon?: boolean;
 		href: string;
 	}
 
-	let { key, icon, href, ...props }: Props = $props();
+	let { key, icon, href, ...props }: KeyProps = $props();
 </script>
 
 {#if key}

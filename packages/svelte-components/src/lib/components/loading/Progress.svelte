@@ -3,12 +3,12 @@
 	import { cubicInOut } from 'svelte/easing';
 	import { type Snippet } from 'svelte';
 
-	interface Props {
+	export interface ProgressProps {
 		children?: Snippet;
 		percentage: number;
 	}
 
-	const { children, percentage = 0 }: Props = $props();
+	const { children, percentage = 0 }: ProgressProps = $props();
 
 	const tween = new Tween(0, {
 		duration: 400,

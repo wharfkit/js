@@ -4,7 +4,7 @@
 	import { createLabel, melt } from '@melt-ui/svelte';
 	import { cn } from '$lib/utils';
 
-	interface Props extends HTMLLabelAttributes {
+	export interface LabelProps extends HTMLLabelAttributes {
 		for: string;
 		children: Snippet;
 	}
@@ -13,7 +13,7 @@
 		elements: { root }
 	} = createLabel();
 
-	let props: Props = $props();
+	let props: LabelProps = $props();
 </script>
 
 <label for={props.for} use:melt={$root} class={cn('text-label', props.class)}>

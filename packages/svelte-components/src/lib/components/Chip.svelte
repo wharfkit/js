@@ -2,11 +2,11 @@
 	import { cn } from '$lib/utils';
 	import type { Snippet } from 'svelte';
 
-	interface Props {
+	export interface ChipProps {
 		class?: string;
 		children: Snippet;
 	}
-	const props: Props = $props();
+	const props: ChipProps = $props();
 </script>
 
 <div

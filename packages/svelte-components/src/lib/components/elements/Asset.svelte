@@ -4,7 +4,7 @@
 	import { cn } from '$lib/utils';
 	import Big from 'big.js';
 
-	interface AssetProps extends HTMLAttributes<HTMLSpanElement> {
+	export interface AssetProps extends HTMLAttributes<HTMLSpanElement> {
 		locale?: Intl.LocalesArgument;
 		value?: Asset;
 		variant?: 'value' | 'full' | 'short';

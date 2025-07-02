@@ -7,7 +7,7 @@
 
 	type HTMLAttributes = HTMLButtonAttributes & HTMLLinkAttributes;
 
-	interface ButtonProps extends HTMLAttributes {
+	export interface ButtonProps extends HTMLAttributes {
 		href?: string;
 		variant?: 'primary' | 'secondary' | 'text' | 'pill' | 'outlined';
 		disabled?: boolean;

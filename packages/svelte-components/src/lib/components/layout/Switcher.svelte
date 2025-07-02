@@ -8,7 +8,7 @@ Useful when all elements inside the switcher are considered equal. -->
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props extends HTMLAttributes<HTMLDivElement> {
+	export interface SwitcherProps extends HTMLAttributes<HTMLDivElement> {
 		tag?: string;
 		children: Snippet;
 		threshold?: string;
@@ -20,7 +20,7 @@ Useful when all elements inside the switcher are considered equal. -->
 		children,
 		threshold = '30rem',
 		...props
-	}: Props = $props();
+	}: SwitcherProps = $props();
 </script>
 
 <svelte:element

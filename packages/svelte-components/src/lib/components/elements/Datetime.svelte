@@ -1,13 +1,13 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props extends HTMLAttributes<HTMLSpanElement> {
+	export interface DatetimeProps extends HTMLAttributes<HTMLSpanElement> {
 		datetime: Date;
 		locale?: Intl.LocalesArgument;
 		options?: Intl.DateTimeFormatOptions;
 	}
 
-	let { datetime, locale = 'en-US', options, ...props }: Props = $props();
+	let { datetime, locale = 'en-US', options, ...props }: DatetimeProps = $props();
 
 	const defaultDateOptions: Intl.DateTimeFormatOptions = {
 		dateStyle: 'short',

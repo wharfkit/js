@@ -5,7 +5,7 @@
 	import Label from '../forms/Label.svelte';
 	import { Fieldset } from '$lib';
 
-	interface TextInputProps extends HTMLInputAttributes {
+	export interface TextInputProps extends HTMLInputAttributes {
 		ref?: HTMLInputElement;
 		children?: Snippet;
 		label?: string;

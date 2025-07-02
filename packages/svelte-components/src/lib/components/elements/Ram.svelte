@@ -2,11 +2,11 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { type Int } from '@wharfkit/antelope';
 
-	interface Props extends HTMLAttributes<HTMLSpanElement> {
+	export interface RamProps extends HTMLAttributes<HTMLSpanElement> {
 		bytes?: Int | number;
 	}
 
-	let props: Props = $props();
+	let props: RamProps = $props();
 
 	function bytesToKB(bytes: Int | number | undefined): string {
 		return ((Number(bytes) || 0) / 1000).toFixed(2);

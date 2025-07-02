@@ -5,11 +5,11 @@
 	import IconButton from './IconButton.svelte';
 	import ClipboardCheck from '@lucide/svelte/icons/clipboard-check';
 
-	interface Props extends Omit<ComponentProps<typeof IconButton>, 'icon'> {
+	export interface CopyButtonProps extends Omit<ComponentProps<typeof IconButton>, 'icon'> {
 		data: string;
 	}
 
-	let props: Props = $props();
+	let props: CopyButtonProps = $props();
 
 	let hint = $state(false);
 

@@ -1,9 +1,9 @@
 <script lang="ts">
-	interface Props {
+	export interface FormHeaderProps {
 		title: string;
 		text: string;
 	}
-	let props: Props = $props();
+	let props: FormHeaderProps = $props();
 </script>
 
 <header class="col-span-full space-y-2 @3xl:col-span-1">

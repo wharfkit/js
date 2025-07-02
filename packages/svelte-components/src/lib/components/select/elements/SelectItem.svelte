@@ -5,7 +5,7 @@
 	import type { Readable } from 'svelte/store';
 	import type { ExtendedSelectOption } from '../types';
 
-	interface Props {
+	export interface SelectItemProps {
 		variant?: 'pill' | 'form';
 		id: string;
 		// Upstream bug: https://github.com/melt-ui/melt-ui/issues/974
@@ -15,7 +15,7 @@
 		isSelected: Readable<(value: unknown) => boolean>;
 	}
 
-	const { option, isSelected, ...props }: Props = $props();
+	const { option, isSelected, ...props }: SelectItemProps = $props();
 </script>
 
 <div

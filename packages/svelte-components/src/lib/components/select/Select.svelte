@@ -6,7 +6,7 @@
 	import SelectItem from './elements/SelectItem.svelte';
 	import type { ExtendedSelectOption, SelectOptionVariant } from './types';
 
-	interface Props {
+	export interface SelectProps {
 		options: ExtendedSelectOption[];
 		selected?: ExtendedSelectOption;
 		onSelectedChange?: ChangeFn<ExtendedSelectOption | undefined>;
@@ -32,7 +32,7 @@
 		sameWidth = true,
 		triggerClass,
 		menuClass = ''
-	}: Props = $props();
+	}: SelectProps = $props();
 
 	const {
 		elements: { trigger, menu, option },
@@ -58,7 +58,7 @@
 	$effect(() => {
 		if (JSON.stringify(_selected) !== JSON.stringify(lastSelected)) {
 			lastSelected = _selected;
-			sync.selected(_selected, (v) => (_selected = v || options[0]));
+			sync.selected(_selected, (v) => (_selected = (v as ExtendedSelectOption) || options[0]));
 		}
 	});
 

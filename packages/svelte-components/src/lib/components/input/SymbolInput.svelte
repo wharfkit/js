@@ -3,7 +3,7 @@
 	import type { ComponentProps } from 'svelte';
 	import TextInput from './TextInput.svelte';
 
-	interface SymbolInputProps extends ComponentProps<typeof TextInput> {
+	export interface SymbolInputProps extends ComponentProps<typeof TextInput> {
 		optional?: boolean;
 		valid?: boolean;
 		value: Asset.SymbolType;

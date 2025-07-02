@@ -2,7 +2,7 @@
 	import { cn } from '$lib/utils';
 	import type { Snippet } from 'svelte';
 
-	interface Props {
+	export interface TableProps {
 		thead?: Snippet;
 		colgroup?: Snippet;
 		children: Snippet;
@@ -11,7 +11,7 @@
 		full?: boolean;
 	}
 
-	let props: Props = $props();
+	let props: TableProps = $props();
 </script>
 
 <table

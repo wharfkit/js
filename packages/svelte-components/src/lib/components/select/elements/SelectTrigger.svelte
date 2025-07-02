@@ -5,7 +5,7 @@
 	import { type Snippet } from 'svelte';
 	import { type Readable } from 'svelte/store';
 
-	interface Props {
+	export interface SelectTriggerProps {
 		variant?: 'pill' | 'form';
 		id: string;
 		children: Snippet;
@@ -15,7 +15,7 @@
 		class?: string;
 	}
 
-	const { trigger, open, class: className = '', ...props }: Props = $props();
+	const { trigger, open, class: className = '', ...props }: SelectTriggerProps = $props();
 </script>
 
 <button

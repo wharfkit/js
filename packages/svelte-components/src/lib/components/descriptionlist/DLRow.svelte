@@ -3,13 +3,13 @@
 	import DT from './DT.svelte';
 	import DD from './DD.svelte';
 
-	interface Props {
+	export interface DLRowProps {
 		title: string | Snippet;
 		description?: string;
 		children?: Snippet;
 	}
 
-	let { title = '', description, children }: Props = $props();
+	let { title = '', description, children }: DLRowProps = $props();
 </script>
 
 <div

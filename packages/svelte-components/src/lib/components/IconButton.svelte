@@ -7,7 +7,7 @@
 
 	type HTMLAttributes = HTMLButtonAttributes & HTMLLinkAttributes;
 
-	interface Props extends HTMLAttributes {
+	export interface IconButtonProps extends HTMLAttributes {
 		href?: string;
 		disabled?: boolean;
 		active?: boolean;
@@ -33,7 +33,7 @@
 		label,
 		type = 'button',
 		...props
-	}: Props = $props();
+	}: IconButtonProps = $props();
 
 	const ariaRole = props.href ? undefined : 'button'; // undefined because anchor tag with role=link gives a warning
 	const ariaCurrent = props['aria-current'] || active === false ? undefined : true; // removes aria-current if active===false

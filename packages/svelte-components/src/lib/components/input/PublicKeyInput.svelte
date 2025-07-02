@@ -3,7 +3,7 @@
 	import type { ComponentProps } from 'svelte';
 	import TextInput from './TextInput.svelte';
 
-	interface PublicKeyInputProps extends ComponentProps<typeof TextInput> {
+	export interface PublicKeyInputProps extends ComponentProps<typeof TextInput> {
 		optional?: boolean;
 		valid?: boolean;
 		value: PublicKeyType | undefined;

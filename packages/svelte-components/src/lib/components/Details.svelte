@@ -3,14 +3,14 @@
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 	import { type Snippet } from 'svelte';
 
-	interface AccordionProps {
+	export interface DetailsProps {
 		class?: string;
 		open?: boolean;
 		header: () => ReturnType<Snippet>;
 		children: Snippet;
 	}
 
-	let { open = $bindable(false), header, children, ...props }: AccordionProps = $props();
+	let { open = $bindable(false), header, children, ...props }: DetailsProps = $props();
 
 	let detailsElement = $state<HTMLDetailsElement>();
 

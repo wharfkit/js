@@ -1,6 +1,6 @@
 import { type SelectOption } from '@melt-ui/svelte';
 
-interface ExtendedSelectOption extends SelectOption {
+export interface ExtendedSelectOption extends SelectOption {
 	image?: string;
 }
 

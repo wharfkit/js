@@ -3,7 +3,7 @@
 	import Check from '@lucide/svelte/icons/check';
 	import Minus from '@lucide/svelte/icons/minus';
 
-	interface Props {
+	export interface CheckboxProps {
 		disabled?: boolean;
 		required?: boolean;
 		checked: boolean | 'indeterminate';
@@ -19,7 +19,7 @@
 		name,
 		value,
 		id
-	}: Props = $props();
+	}: CheckboxProps = $props();
 
 	const {
 		elements: { root, input },

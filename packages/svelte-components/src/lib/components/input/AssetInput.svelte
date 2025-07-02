@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { Asset, Int64 } from '@wharfkit/antelope';
-
+	import type { ComponentProps } from 'svelte';
 	import TextInput from './TextInput.svelte';
 	import Big from 'big.js';
 	import Code from '../Code.svelte';
 	import { ZeroUnits } from '$lib/types/token';
 
-	interface AssetInputProps extends ComponentProps<typeof TextInput> {
+	export interface AssetInputProps extends ComponentProps<typeof TextInput> {
 		min?: number;
 		max?: number;
 		valid?: boolean;

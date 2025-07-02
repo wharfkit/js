@@ -4,14 +4,14 @@
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props extends HTMLAttributes<HTMLDivElement> {
+	export interface CardProps extends HTMLAttributes<HTMLDivElement> {
 		title?: string;
 		titleTag?: string;
 		children: Snippet;
 		tag?: string;
 	}
 
-	const { title = '', titleTag = 'h3', tag = 'div', children, ...props }: Props = $props();
+	const { title = '', titleTag = 'h3', tag = 'div', children, ...props }: CardProps = $props();
 </script>
 
 <svelte:element this={tag} {...props} class={cn('bg-surface rounded-xl p-5', props.class)}>

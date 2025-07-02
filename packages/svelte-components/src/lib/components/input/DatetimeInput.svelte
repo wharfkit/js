@@ -4,7 +4,7 @@
 	import type { HTMLInputAttributes } from 'svelte/elements';
 	import Code from '../Code.svelte';
 
-	interface DatetimeInputProps extends HTMLInputAttributes {
+	export interface DatetimeInputProps extends HTMLInputAttributes {
 		date?: Date;
 		value?: string;
 		min?: string;

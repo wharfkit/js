@@ -8,13 +8,13 @@
 		description: string;
 	};
 
-	interface Props {
+	export interface DLProps {
 		items?: DescriptionItem[];
 		children?: Snippet;
 		class?: string;
 	}
 
-	let props: Props = $props();
+	let props: DLProps = $props();
 </script>
 
 <dl class={cn('@container', props.class)}>

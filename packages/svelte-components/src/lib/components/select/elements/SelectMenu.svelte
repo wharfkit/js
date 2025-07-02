@@ -5,10 +5,7 @@
 	import type { Readable } from 'svelte/store';
 	import { fade } from 'svelte/transition';
 
-	// import { getContext } from 'svelte';
-	// import type { UnicoveContext } from '$lib/state/client.svelte';
-
-	interface Props {
+	export interface SelectMenuProps {
 		variant: 'pill' | 'form';
 		id: string;
 		children: Snippet;
@@ -17,9 +14,7 @@
 		class?: string;
 	}
 
-	// const context = getContext<UnicoveContext>('state');
-
-	const { class: className, menu, open, ...props }: Props = $props();
+	const { class: className, menu, open, ...props }: SelectMenuProps = $props();
 </script>
 
 {#if $open}

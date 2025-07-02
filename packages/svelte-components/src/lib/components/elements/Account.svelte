@@ -5,14 +5,14 @@
 	import UserIcon from '@lucide/svelte/icons/user';
 	import { Name } from '@wharfkit/antelope';
 
-	interface Props extends HTMLAnchorAttributes {
+	export interface AccountProps extends HTMLAnchorAttributes {
 		name: Name | string;
 		href: string;
 		children?: Snippet;
 		icon?: boolean;
 	}
 
-	let { href, name, children, ...props }: Props = $props();
+	let { href, name, children, ...props }: AccountProps = $props();
 </script>
 
 <a

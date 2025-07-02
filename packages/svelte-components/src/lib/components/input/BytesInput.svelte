@@ -4,7 +4,7 @@
 	import Code from '../Code.svelte';
 	import ArrowUpDown from '@lucide/svelte/icons/arrow-up-down';
 
-	interface BytesInputProps extends ComponentProps<typeof TextInput> {
+	export interface BytesInputProps extends ComponentProps<typeof TextInput> {
 		valid?: boolean;
 		validMinimum?: boolean;
 		validMaximum?: boolean;

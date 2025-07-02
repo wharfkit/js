@@ -2,7 +2,7 @@
 	import { cn } from '$lib/utils';
 	import type { Snippet } from 'svelte';
 
-	interface CodeProps {
+	export interface CodeProps {
 		json?: unknown;
 		inline?: boolean;
 		children?: Snippet;

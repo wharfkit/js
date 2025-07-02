@@ -2,7 +2,7 @@
 	import { createSwitch, melt, createSync } from '@melt-ui/svelte';
 	import type { ChangeFn } from '@melt-ui/svelte/internal/helpers';
 
-	interface Props {
+	export interface SwitchProps {
 		disabled?: boolean;
 		required?: boolean;
 		checked: boolean;
@@ -20,7 +20,7 @@
 		value,
 		onCheckedChange,
 		id
-	}: Props = $props();
+	}: SwitchProps = $props();
 
 	const {
 		elements: { root, input },

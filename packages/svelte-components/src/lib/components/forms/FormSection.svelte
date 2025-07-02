@@ -1,10 +1,10 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 
-	interface Props {
+	export interface FormSectionProps {
 		children: Snippet;
 	}
-	let props: Props = $props();
+	let props: FormSectionProps = $props();
 </script>
 
 <section class="subgrid gap-8 @3xl:gap-12">

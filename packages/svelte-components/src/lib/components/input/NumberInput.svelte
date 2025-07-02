@@ -3,7 +3,7 @@
 	import Code from '../Code.svelte';
 	import type { ComponentProps } from 'svelte';
 
-	interface NumberInputProps extends ComponentProps<typeof TextInput> {
+	export interface NumberInputProps extends ComponentProps<typeof TextInput> {
 		ref?: HTMLInputElement;
 		valid?: boolean;
 		value?: number;

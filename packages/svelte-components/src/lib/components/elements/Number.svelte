@@ -3,7 +3,7 @@
 	import { Int, Int64 } from '@wharfkit/antelope';
 	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props extends HTMLAttributes<HTMLSpanElement> {
+	export interface NumberProps extends HTMLAttributes<HTMLSpanElement> {
 		number: Int | number;
 		locale?: Intl.LocalesArgument;
 		delta?: boolean;
@@ -18,7 +18,7 @@
 		prefixed = false,
 		locale = 'en-US',
 		...props
-	}: Props = $props();
+	}: NumberProps = $props();
 
 	const number = $derived(Int64.from(props.number));
 	const positive = $derived(number.gt(Int64.from(0)));

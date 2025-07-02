@@ -4,13 +4,13 @@
 	import type { HTMLAnchorAttributes } from 'svelte/elements';
 	import { cn } from '$lib/utils';
 
-	interface Props extends HTMLAnchorAttributes {
+	export interface BlockProps extends HTMLAnchorAttributes {
 		href: string;
 		number?: Int | number | string;
 		icon?: boolean;
 	}
 
-	let { number, href, icon, ...props }: Props = $props();
+	let { number, href, icon, ...props }: BlockProps = $props();
 </script>
 
 {#if number}

@@ -6,13 +6,13 @@ in small screen contexts. E.g. Buttons, Tags, Keywords, etc. -->
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props extends HTMLAttributes<HTMLDivElement> {
+	export interface ClusterProps extends HTMLAttributes<HTMLDivElement> {
 		children: Snippet;
 		tag?: string;
 		threshold?: string;
 	}
 
-	const { tag = 'div', ...props }: Props = $props();
+	const { tag = 'div', ...props }: ClusterProps = $props();
 </script>
 
 <svelte:element this={tag} {...props} class={cn('flex flex-wrap  gap-4', props.class)}>

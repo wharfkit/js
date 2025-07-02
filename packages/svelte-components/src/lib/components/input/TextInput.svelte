@@ -2,7 +2,7 @@
 	import { cn, createUID } from '$lib/utils';
 	import type { Snippet } from 'svelte';
 	import type { HTMLInputAttributes } from 'svelte/elements';
-	import { Label } from '../forms';
+	import Label from '../forms/Label.svelte';
 	import { Fieldset } from '$lib';
 
 	interface TextInputProps extends HTMLInputAttributes {

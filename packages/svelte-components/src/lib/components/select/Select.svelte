@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { createSelect, createSync } from '@melt-ui/svelte';
 	import type { ChangeFn } from '@melt-ui/svelte/internal/helpers';
-	import { SelectTrigger, SelectMenu, SelectItem } from './elements';
+	import SelectTrigger from './elements/SelectTrigger.svelte';
+	import SelectMenu from './elements/SelectMenu.svelte';
+	import SelectItem from './elements/SelectItem.svelte';
 	import type { ExtendedSelectOption, SelectOptionVariant } from './types';
 
 	interface Props {

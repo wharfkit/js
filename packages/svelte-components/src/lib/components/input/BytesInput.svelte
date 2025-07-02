@@ -143,15 +143,6 @@
 		isAddingDecimal = false;
 		onblur?.(event);
 	}
-
-	if (debug) {
-		$inspect({
-			input,
-			value,
-			unit,
-			valid
-		});
-	}
 </script>
 
 <TextInput

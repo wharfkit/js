@@ -47,13 +47,6 @@
 			_value = Name.from('');
 		}
 	});
-
-	if (debug) {
-		$inspect({
-			input,
-			satisfies
-		});
-	}
 </script>
 
 <TextInput bind:ref bind:value={input} {autofocus} {...props} />

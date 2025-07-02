@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Asset, Int64 } from '@wharfkit/antelope';
-	import type { ComponentProps } from 'svelte';
+
 	import TextInput from './TextInput.svelte';
 	import Big from 'big.js';
 	import Code from '../Code.svelte';
@@ -101,25 +101,6 @@
 			_value = zeroValue;
 		}
 	});
-
-	if (debug) {
-		$inspect({
-			input,
-			number,
-			decimals,
-			min,
-			max,
-			symbol,
-			precision: symbol.precision,
-			formatted,
-			asset,
-			satisfies,
-			satisfiesNumber,
-			satisfiesPrecision,
-			satisfiesMinimum,
-			satisfiesMaximum
-		});
-	}
 </script>
 
 <TextInput

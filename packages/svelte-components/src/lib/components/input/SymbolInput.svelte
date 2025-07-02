@@ -61,13 +61,6 @@
 			_value = Asset.Symbol.from('0,UNKNOWN');
 		}
 	});
-
-	if (debug) {
-		$inspect({
-			input,
-			satisfies
-		});
-	}
 </script>
 
 <TextInput bind:ref bind:value={input} {autofocus} {...props} />

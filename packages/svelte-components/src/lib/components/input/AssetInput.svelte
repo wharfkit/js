@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Asset, Int64 } from '@wharfkit/antelope';
+	import { Asset as AntelopeAsset, Int64 } from '@wharfkit/antelope';
 	import type { ComponentProps } from 'svelte';
 	import TextInput from './TextInput.svelte';
 	import Big from 'big.js';
@@ -13,7 +13,7 @@
 		validPrecision?: boolean;
 		validMinimum?: boolean;
 		validMaximum?: boolean;
-		value: Asset;
+		value: AntelopeAsset;
 		debug?: boolean;
 	}
 
@@ -32,7 +32,7 @@
 	}: AssetInputProps = $props();
 
 	/** A zero-value version of the passed in asset for placeholder */
-	const zeroValue = $derived(Asset.fromUnits(0, _value.symbol));
+	const zeroValue = $derived(AntelopeAsset.fromUnits(0, _value.symbol));
 
 	/** The string value bound to the form input */
 	let input: string | null = $state(_value.units.gt(ZeroUnits) ? _value.quantity : null);
@@ -47,7 +47,7 @@
 	const decimals = $derived(number.toFixed().split('.')[1]?.length || 0);
 
 	/** The symbol of the asset */
-	let symbol: Asset.Symbol = $state(_value.symbol);
+	let symbol: AntelopeAsset.Symbol = $state(_value.symbol);
 
 	/** The minimum allowed value */
 	const minUnits: Int64 = $derived(
@@ -63,7 +63,7 @@
 	const formatted = $derived((satisfiesNumber ? number : 0).toFixed(symbol.precision));
 
 	/** The derived asset from the formatted input */
-	const asset: Asset = $derived(Asset.from(`${formatted} ${symbol.code}`));
+	const asset: AntelopeAsset = $derived(AntelopeAsset.from(`${formatted} ${symbol.code}`));
 
 	/** Validation states */
 	const satisfiesPrecision = $derived(decimals <= symbol.precision);
@@ -76,7 +76,7 @@
 	);
 
 	/** Set the input value from a parent */
-	export function set(asset: Asset | null) {
+	export function set(asset: AntelopeAsset | null) {
 		if (!asset) {
 			input = null;
 		} else {

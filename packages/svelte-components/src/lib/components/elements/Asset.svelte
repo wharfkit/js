@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type { Asset } from '@wharfkit/antelope';
+	import type { Asset as AntelopeAsset } from '@wharfkit/antelope';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { cn } from '$lib/utils';
 	import Big from 'big.js';
 
 	export interface AssetProps extends HTMLAttributes<HTMLSpanElement> {
 		locale?: Intl.LocalesArgument;
-		value?: Asset;
+		value?: AntelopeAsset;
 		variant?: 'value' | 'full' | 'short';
 		fallback?: number;
 		increasedPrecision?: boolean;

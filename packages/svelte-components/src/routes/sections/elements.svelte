@@ -3,7 +3,7 @@
 	import Account from '$lib/components/elements/Account.svelte';
 	import AssetElement from '$lib/components/elements/Asset.svelte';
 	import Block from '$lib/components/elements/Block.svelte';
-	import Datetime from '$lib/components/elements/Datetime.svelte';
+	import DateTime from '$lib/components/elements/DateTime.svelte';
 	import Key from '$lib/components/elements/Key.svelte';
 	import Number from '$lib/components/elements/Number.svelte';
 	import Ram from '$lib/components/elements/Ram.svelte';
@@ -103,11 +103,11 @@
 		<Cluster class="gap-6">
 			<Stack class="gap-2">
 				<h4 class="text-label">Default</h4>
-				<Datetime datetime={new Date()} />
+				<DateTime datetime={new Date()} />
 			</Stack>
 			<Stack class="gap-2">
 				<h4 class="text-label">Different Locale</h4>
-				<Datetime locale="ko-KR" datetime={new Date()} />
+				<DateTime locale="ko-KR" datetime={new Date()} />
 			</Stack>
 		</Cluster>
 	</Card>

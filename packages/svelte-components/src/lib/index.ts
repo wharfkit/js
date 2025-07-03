@@ -62,6 +62,8 @@ export { default as SymbolInput } from './components/input/SymbolInput.svelte';
 export type { SymbolInputProps } from './components/input/SymbolInput.svelte';
 export { default as TextInput } from './components/input/TextInput.svelte';
 export type { TextInputProps } from './components/input/TextInput.svelte';
+export { default as FileUpload } from './components/input/FileUpload.svelte';
+export type { FileUploadProps } from './components/input/FileUpload.svelte';
 
 // Layout
 export { default as Cluster } from './components/layout/Cluster.svelte';

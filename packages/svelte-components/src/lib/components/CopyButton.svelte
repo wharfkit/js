@@ -7,18 +7,19 @@
 
 	export interface CopyButtonProps extends Omit<ComponentProps<typeof IconButton>, 'icon'> {
 		data: string;
+		label?: string;
 	}
 
 	let props: CopyButtonProps = $props();
 
-	let hint = $state(false);
+	let copied = $state(false);
 
 	async function copyToClipboard() {
 		try {
 			await navigator.clipboard.writeText(props.data);
 			if (DEV) console.info(props.data, 'copied to clipboard');
-			hint = true;
-			setTimeout(() => (hint = false), 500);
+			copied = true;
+			setTimeout(() => (copied = false), 500);
 		} catch (err) {
 			if (DEV) console.error('Failed to copy text: ', err);
 		}
@@ -26,9 +27,9 @@
 </script>
 
 {#if BROWSER && 'clipboard' in navigator}
-	{#if hint}
+	{#if copied}
 		<IconButton icon={ClipboardCheck} {...props} />
 	{:else}
-		<IconButton icon={Copy} onclick={copyToClipboard} {...props} />
+		<IconButton label={props.label || 'Copy'} icon={Copy} onclick={copyToClipboard} {...props} />
 	{/if}
 {/if}

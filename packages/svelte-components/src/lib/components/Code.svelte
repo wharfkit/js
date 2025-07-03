@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
 	import type { Snippet } from 'svelte';
+	import IconButton from './IconButton.svelte';
+	import { FoldVertical } from '@lucide/svelte';
 
 	export interface CodeProps {
 		json?: unknown;
@@ -12,7 +14,8 @@
 	}
 	const { indent = 2, collapsible = false, ...props }: CodeProps = $props();
 
-	let collapsed = $state<boolean>(false);
+	let collapsed = $state(false);
+	let recollapsible = $state(false);
 
 	const collapseThreshold = 220;
 
@@ -21,6 +24,7 @@
 	$effect(() => {
 		if (node && collapsible && node.offsetHeight > collapseThreshold) {
 			collapsed = true;
+			recollapsible = true;
 			node.classList.replace('overflow-x-auto', 'overflow-x-hidden');
 		}
 	});
@@ -29,7 +33,17 @@
 		if (node) {
 			collapsed = false;
 			node.classList.replace('max-h-56', 'max-h-full');
+			// Replace then remove is the only way this works
 			node.classList.replace('overflow-x-hidden', 'overflow-x-auto');
+			node.classList.remove('overflow-x-auto', 'overflow-y-hidden');
+		}
+	}
+
+	function collapseNode() {
+		if (node) {
+			collapsed = true;
+			node.classList.replace('max-h-full', 'max-h-56');
+			node.classList.add('overflow-x-hidden', 'overflow-y-hidden');
 		}
 	}
 </script>
@@ -65,7 +79,12 @@
 					More
 				</span>
 			</button>
+		{:else if recollapsible}
+			<div class="absolute top-4 right-4 h-full">
+				<IconButton class="sticky top-4" icon={FoldVertical} onclick={collapseNode} />
+			</div>
 		{/if}
+
 		{#if props.json}
 			<pre><code>{JSON.stringify(props.json, undefined, indent)}</code></pre>
 		{:else if props.children}

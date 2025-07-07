@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.1](https://github.com/greymass/unicove-components/compare/v0.2.0...v0.2.1) (2025-07-07)
+
+
+### Bug Fixes
+
+* add generic type to extended select option ([b46f055](https://github.com/greymass/unicove-components/commit/b46f055dc6f5d65905817d0d4b29b585cef6ef07))
+
 ## [0.2.0](https://github.com/greymass/unicove-components/compare/v0.1.0...v0.2.0) (2025-07-07)
 
 ### Features

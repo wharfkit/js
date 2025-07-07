@@ -1,91 +1,6 @@
-/* @plugin '@tailwindcss/container-queries'; */
-
 /* This library should have the unicove default colors e.g. Vaulta brand */
 /* Unicove itself can then override the theme seed per-network */
-
-:root {
-	--error-hue: 27;
-	--success-hue: 152;
-	--theme-seed: #2e3bff;
-
-	--role-primary: oklch(from var(--theme-seed) 0.4 c h);
-	--role-primary-hover: oklch(from var(--theme-seed) 0.5 c h);
-	--role-on-primary: oklch(from var(--theme-seed) 1 0 h);
-
-	--role-primary-container: oklch(from var(--theme-seed) 0.9 0.086 h);
-	--role-on-primary-container: oklch(from var(--theme-seed) 0.218 0.085 h);
-
-	--role-error: oklch(0.51 0.1927 var(--error-hue));
-	--role-on-error: oklch(1 0 var(--error-hue));
-	--role-error-container: oklch(0.92 0.042 var(--error-hue));
-	--role-on-error-container: oklch(0.42 0.17 var(--error-hue));
-
-	--role-success: oklch(0.51 0.1927 var(--success-hue));
-	--role-on-success: oklch(1 0 var(--success-hue));
-	--role-success-container: oklch(0.92 0.042 var(--success-hue));
-	--role-on-success-container: oklch(0.42 0.17 var(--success-hue));
-
-	--role-outline-variant: oklch(from var(--color-primary) 0.57 0.08 h);
-	--role-outline: oklch(from var(--color-outline-variant) 0.83 0.04 h);
-
-	/* --role-outline: oklch(from var(--color-primary) 0.57 0.08 h); */
-	/* --role-outline-variant: oklch(from var(--color-outline) 0.83 0.04 h); */
-
-	--role-surface: oklch(from var(--color-primary) 0.98 0.007 h);
-	--role-on-surface: oklch(from var(--color-surface) 0.22 c h);
-	--role-on-surface-variant: oklch(from var(--color-surface) 0.4 0.015 h);
-
-	/* Surface Containers are named by emphasis (contrast) relative to the Surface color */
-	--role-surface-container-lowest: oklch(from var(--color-surface) calc(l + 0.01) 0.01 h);
-	--role-surface-container-low: oklch(from var(--color-surface) calc(l - 0.01) 0.01 h);
-	--role-surface-container: oklch(from var(--color-surface) calc(l - 0.023) 0.01 h);
-	--role-surface-container-high: oklch(from var(--color-surface) calc(l - 0.05) 0.01 h);
-	--role-surface-container-highest: oklch(from var(--color-surface) calc(l - 0.1) 0.01 h);
-
-	/* In light mode, since the surfaces are near-white the background is derived from the surface */
-	--role-background: var(--color-surface-container-high);
-	--role-on-background: var(--color-on-surface);
-}
-
-[data-scheme='dark'] {
-	--role-primary: oklch(from var(--theme-seed) 0.82 c h);
-	--role-primary-hover: oklch(from var(--theme-seed) 0.9 c h);
-	--role-on-primary: oklch(from var(--theme-seed) 0.2 c h);
-
-	--role-primary-container: oklch(from var(--theme-seed) 0.39 0.086 h);
-	--role-on-primary-container: oklch(from var(--theme-seed) 0.9 0.085 h);
-
-	--role-error: oklch(0.84 0.089 var(--error-hue));
-	--role-on-error: oklch(0.33 0.134 var(--error-hue));
-	--role-error-container: oklch(0.42 0.17 var(--error-hue));
-	--role-on-error-container: oklch(0.92 0.042 var(--error-hue));
-
-	--role-success: oklch(0.84 0.089 var(--success-hue));
-	--role-on-success: oklch(0.33 0.134 var(--success-hue));
-	--role-success-container: oklch(0.42 0.17 var(--success-hue));
-	--role-on-success-container: oklch(0.92 0.042 var(--success-hue));
-
-	--role-outline-variant: oklch(from var(--color-primary) 0.65 0.08 h);
-	--role-outline: oklch(from var(--color-outline-variant) 0.4 0.05 h);
-
-	/* --role-outline: oklch(from var(--color-primary) 0.65 0.08 h); */
-	/* --role-outline-variant: oklch(from var(--color-outline) 0.4 0.05 h); */
-
-	--role-background: oklch(from var(--color-primary) 0.24 0.02 h);
-	--role-on-background: var(--color-on-surface);
-
-	/* In dark mode, the surfaces are derived from the background */
-	--role-surface: oklch(from var(--color-background) calc(l + 0.02) c h);
-	--role-on-surface: oklch(from var(--color-surface) 0.95 c h);
-	--role-on-surface-variant: oklch(from var(--color-surface) 0.8 calc(c * 2) h);
-
-	/* Surface Containers are named by emphasis (contrast) relative to the Surface color */
-	--role-surface-container-lowest: oklch(from var(--color-surface) calc(l - 0.01) c h);
-	--role-surface-container-low: oklch(from var(--color-surface) calc(l + 0.01) c h);
-	--role-surface-container: oklch(from var(--color-surface) calc(l + 0.023) c h);
-	--role-surface-container-high: oklch(from var(--color-surface) calc(l + 0.05) c h);
-	--role-surface-container-highest: oklch(from var(--color-surface) calc(l + 0.1) c h);
-}
+/* @layer base, components, utility */
 
 @theme inline {
 	/* Custom Values */
@@ -93,13 +8,38 @@
 
 	/* Fonts */
 	--font-sans:
-		Inter, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+		'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
 		'Segoe UI Symbol', 'Noto Color Emoji';
 	--font-sans-hero:
-		Inter, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+		'Inter Variable', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+		'Noto Color Emoji';
 	--font-mono:
-		JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-		'Courier New', monospace;
+		'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+		'Liberation Mono', 'Courier New', monospace;
+
+	/* Typography  */
+	--text-display: var(--text-3xl);
+	--text-display--line-height: 0;
+	--text-display--font-weight: 600;
+
+	--text-headline: var(--text-2xl);
+	--text-headline--line-height: 0;
+	--text-headline--font-weight: 600;
+
+	--text-title: var(--text-lg);
+	--text-title--line-height: 0;
+	--text-title--font-weight: 500;
+
+	--text-body: var(--text-base);
+	--text-body--font-weight: 400;
+
+	--text-label: var(--text-base);
+	--text-label--line-height: 0;
+	--text-label--font-weight: 500;
+
+	--text-label-sm: var(--text-sm);
+	--text-label-sm--line-height: 0;
+	--text-label-sm--font-weight: 500;
 
 	/* Colors */
 	--color-*: initial;
@@ -108,54 +48,6 @@
 	--color-inherit: inherit;
 	--color-black: #000;
 	--color-white: #fff;
-
-	--color-green-50: #f0fdf4;
-	--color-green-100: #dcfce7;
-	--color-green-200: #bbf7d0;
-	--color-green-300: #86efac;
-	--color-green-400: #4ade80;
-	--color-green-500: #22c55e;
-	--color-green-600: #16a34a;
-	--color-green-700: #15803d;
-	--color-green-800: #166534;
-	--color-green-900: #14532d;
-	--color-green-950: #052e16;
-
-	--color-mine-50: #f4f5f7;
-	--color-mine-100: #e4e7e9;
-	--color-mine-200: #cbd1d6;
-	--color-mine-300: #a7b1b9;
-	--color-mine-400: #7c8894;
-	--color-mine-500: #616d79;
-	--color-mine-600: #535c67;
-	--color-mine-700: #474d57;
-	--color-mine-800: #3f444b;
-	--color-mine-900: #383c41;
-	--color-mine-950: #22252a;
-
-	--color-sky-50: #eff9ff;
-	--color-sky-100: #def3ff;
-	--color-sky-200: #b6e8ff;
-	--color-sky-300: #75d9ff;
-	--color-sky-400: #2cc6ff;
-	--color-sky-500: #00b5ff;
-	--color-sky-600: #008cd4;
-	--color-sky-700: #006fab;
-	--color-sky-800: #005e8d;
-	--color-sky-900: #064e74;
-	--color-sky-950: #04314d;
-
-	--color-solar-50: #fffdea;
-	--color-solar-100: #fff8c5;
-	--color-solar-200: #fff185;
-	--color-solar-300: #ffe246;
-	--color-solar-400: #ffd11b;
-	--color-solar-500: #ffb000;
-	--color-solar-600: #e28600;
-	--color-solar-700: #bb5d02;
-	--color-solar-800: #984808;
-	--color-solar-900: #7c3b0b;
-	--color-solar-950: #481d00;
 
 	--color-primary: var(--role-primary);
 	--color-primary-hover: var(--role-primary-hover);
@@ -179,6 +71,7 @@
 	--color-surface: var(--role-surface);
 	--color-on-surface: var(--role-on-surface);
 	--color-on-surface-variant: var(--role-on-surface-variant);
+	--color-muted: var(--role-on-surface-variant);
 	--color-surface-container-lowest: var(--role-surface-container-lowest);
 	--color-surface-container-low: var(--role-surface-container-low);
 	--color-surface-container: var(--role-surface-container);
@@ -191,6 +84,97 @@
 @custom-variant dark (&:where([data-scheme=dark], [data-scheme=dark] *));
 
 @layer base {
+	:root {
+		/* Defaults to Vaulta colors */
+		--theme-seed: #2e3bff;
+
+		--error-hue: 27;
+		--success-hue: 152;
+
+		--role-primary: oklch(from var(--theme-seed) 0.4 c h);
+		--role-primary-hover: oklch(from var(--theme-seed) 0.5 c h);
+		--role-on-primary: oklch(from var(--theme-seed) 1 0 h);
+
+		--role-primary-container: oklch(from var(--theme-seed) 0.9 0.086 h);
+		--role-on-primary-container: oklch(from var(--theme-seed) 0.218 0.085 h);
+
+		--role-error: oklch(0.51 0.1927 var(--error-hue));
+		--role-on-error: oklch(1 0 var(--error-hue));
+		--role-error-container: oklch(0.92 0.042 var(--error-hue));
+		--role-on-error-container: oklch(0.42 0.17 var(--error-hue));
+
+		--role-success: oklch(0.51 0.1927 var(--success-hue));
+		--role-on-success: oklch(1 0 var(--success-hue));
+		--role-success-container: oklch(0.92 0.042 var(--success-hue));
+		--role-on-success-container: oklch(0.42 0.17 var(--success-hue));
+
+		--role-outline-variant: oklch(from var(--color-primary) 0.57 0.08 h);
+		--role-outline: oklch(from var(--color-outline-variant) 0.83 0.04 h);
+
+		--role-surface: oklch(from var(--color-primary) 0.98 0.007 h);
+		--role-on-surface: oklch(from var(--color-surface) 0.22 c h);
+		--role-on-surface-variant: oklch(from var(--color-surface) 0.4 0.015 h);
+
+		/* Surface Containers are named by emphasis (contrast) relative to the Surface color */
+		--role-surface-container-lowest: oklch(from var(--color-surface) calc(l + 0.01) 0.01 h);
+		--role-surface-container-low: oklch(from var(--color-surface) calc(l - 0.01) 0.01 h);
+		--role-surface-container: oklch(from var(--color-surface) calc(l - 0.023) 0.01 h);
+		--role-surface-container-high: oklch(from var(--color-surface) calc(l - 0.05) 0.01 h);
+		--role-surface-container-highest: oklch(from var(--color-surface) calc(l - 0.1) 0.01 h);
+
+		/* In light mode, since the surfaces are near-white the background is derived from the surface */
+		--role-background: var(--color-surface-container-high);
+		--role-on-background: var(--color-on-surface);
+	}
+
+	[data-scheme='dark'] {
+		--role-primary: oklch(from var(--theme-seed) 0.82 c h);
+		--role-primary-hover: oklch(from var(--theme-seed) 0.9 c h);
+		--role-on-primary: oklch(from var(--theme-seed) 0.2 c h);
+
+		--role-primary-container: oklch(from var(--theme-seed) 0.39 0.086 h);
+		--role-on-primary-container: oklch(from var(--theme-seed) 0.9 0.085 h);
+
+		--role-error: oklch(0.84 0.089 var(--error-hue));
+		--role-on-error: oklch(0.33 0.134 var(--error-hue));
+		--role-error-container: oklch(0.42 0.17 var(--error-hue));
+		--role-on-error-container: oklch(0.92 0.042 var(--error-hue));
+
+		--role-success: oklch(0.84 0.089 var(--success-hue));
+		--role-on-success: oklch(0.33 0.134 var(--success-hue));
+		--role-success-container: oklch(0.42 0.17 var(--success-hue));
+		--role-on-success-container: oklch(0.92 0.042 var(--success-hue));
+
+		--role-outline-variant: oklch(from var(--color-primary) 0.65 0.08 h);
+		--role-outline: oklch(from var(--color-outline-variant) 0.4 0.05 h);
+
+		--role-background: oklch(from var(--color-primary) 0.24 0.02 h);
+		--role-on-background: var(--color-on-surface);
+
+		/* In dark mode, the surfaces are derived from the background */
+		--role-surface: oklch(from var(--color-background) calc(l + 0.02) c h);
+		--role-on-surface: oklch(from var(--color-surface) 0.95 c h);
+		--role-on-surface-variant: oklch(from var(--color-surface) 0.8 calc(c * 2) h);
+
+		/* Surface Containers are named by emphasis (contrast) relative to the Surface color */
+		--role-surface-container-lowest: oklch(from var(--color-surface) calc(l - 0.01) c h);
+		--role-surface-container-low: oklch(from var(--color-surface) calc(l + 0.01) c h);
+		--role-surface-container: oklch(from var(--color-surface) calc(l + 0.023) c h);
+		--role-surface-container-high: oklch(from var(--color-surface) calc(l + 0.05) c h);
+		--role-surface-container-highest: oklch(from var(--color-surface) calc(l + 0.1) c h);
+	}
+
+	:root {
+		@apply bg-background text-on-background h-full;
+		color-scheme: dark light;
+		touch-action: manipulation;
+		scrollbar-gutter: stable;
+
+		::selection {
+			@apply bg-primary text-on-primary;
+		}
+	}
+
 	details > summary {
 		list-style: none;
 	}
@@ -208,48 +192,10 @@
 	}
 }
 
-/* Typography  */
-
-@utility text-display {
-	@apply text-3xl leading-none font-semibold;
-}
-
-@utility text-headline {
-	@apply text-2xl leading-none font-semibold;
-}
-
-@utility text-title {
-	@apply text-lg leading-none font-medium;
-}
-
-@utility text-body {
-	@apply text-base font-normal;
-}
-
-@utility text-label {
-	@apply text-muted text-base leading-none font-medium;
-}
-
-@utility text-label-sm {
-	@apply text-muted text-xs leading-none font-semibold;
-}
-
-@utility text-muted {
-	@apply text-on-surface-variant;
-}
-
 /* Layout */
 
 @utility card {
 	@apply bg-surface grid gap-4 rounded-xl p-5;
-}
-
-@utility layout-stack {
-	@apply flex flex-col gap-6;
-}
-
-@utility layout-center {
-	@apply mx-auto box-content max-w-prose;
 }
 
 @utility layout-switcher {
@@ -266,9 +212,11 @@
 	grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-itemWidth), 100%), 1fr));
 }
 
-@utility layout-cluster {
-	@apply flex flex-wrap gap-4;
+@utility subgrid {
+	@apply col-span-full grid grid-cols-subgrid;
 }
+
+/* Tables */
 
 @utility table-styles {
 	:where(&) {
@@ -295,14 +243,6 @@
 	}
 }
 
-@utility px-page {
-	@apply px-4;
-}
-
-@utility mx-page {
-	@apply px-4;
-}
-
 @utility table-row-border {
 	@apply border-outline border-b last:border-none;
 }
@@ -311,13 +251,7 @@
 	@apply odd:via-outline/10 data-[hover-effect=false]:odd:hover:via-outline-variant/10 hover:via-primary/5 data-[active=true]:via-primary/10 bg-linear-to-r from-transparent to-transparent data-[clickable=true]:cursor-pointer data-[hover-effect=false]:hover:via-transparent;
 }
 
-@utility bg-hero-gradient {
-	background-image: radial-gradient(var(--bg-menu) 0%, transparent 50%);
-}
-
-@utility subgrid {
-	@apply col-span-full grid grid-cols-subgrid;
-}
+/* Components */
 
 @layer components {
 }

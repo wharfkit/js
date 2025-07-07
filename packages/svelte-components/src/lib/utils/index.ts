@@ -1,6 +1,13 @@
 import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import { extendTailwindMerge } from 'tailwind-merge';
 
+const twMerge = extendTailwindMerge({
+	extend: {
+		theme: {
+			text: ['display', 'headline', 'title', 'body', 'label', 'label-sm']
+		}
+	}
+});
 /**
  * Appends strings of classes. If non-truthy values are passed, they are ignored.
  * Uses tailwind-merge to merge tailwind classes.

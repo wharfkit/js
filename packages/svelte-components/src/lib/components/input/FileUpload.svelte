@@ -4,9 +4,9 @@
 	import IconButton from '../IconButton.svelte';
 	import { X } from '@lucide/svelte';
 
-	export interface FileUploadProps extends MeltFileUploadProps {
+	export type FileUploadProps = MeltFileUploadProps & {
 		removeLabel?: string;
-	}
+	};
 
 	let props: FileUploadProps = $props();
 
@@ -26,7 +26,7 @@
 <!-- This input is hidden -->
 <input {...fileUpload.input} />
 <div
-	class="bg-surface-container data-dragging:bg-surface-container-high border-outline grid h-48 place-items-center rounded-lg border border-2 p-6 text-center text-balance"
+	class="bg-surface-container data-dragging:bg-surface-container-high border-outline grid h-48 place-items-center rounded-lg border border-2 border-dashed p-6 text-center text-balance"
 	{...fileUpload.dropzone}
 >
 	{#if fileUpload.isDragging}

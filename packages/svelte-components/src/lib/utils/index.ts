@@ -4,10 +4,30 @@ import { extendTailwindMerge } from 'tailwind-merge';
 const twMerge = extendTailwindMerge({
 	extend: {
 		theme: {
-			text: ['display', 'headline', 'title', 'body', 'label', 'label-sm']
+			text: [
+				'display',
+				'display--line-height',
+				'display--font-weight',
+				'headline',
+				'headline--line-height',
+				'headline--font-weight',
+				'title',
+				'title--line-height',
+				'title--font-weight',
+				'body',
+				'body--line-height',
+				'body--font-weight',
+				'label',
+				'label--line-height',
+				'label--font-weight',
+				'label-sm',
+				'label-sm--line-height',
+				'label-sm-weight'
+			]
 		}
 	}
 });
+
 /**
  * Appends strings of classes. If non-truthy values are passed, they are ignored.
  * Uses tailwind-merge to merge tailwind classes.

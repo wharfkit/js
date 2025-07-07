@@ -19,26 +19,26 @@
 
 	/* Typography  */
 	--text-display: var(--text-3xl);
-	--text-display--line-height: 0;
+	--text-display--line-height: 1;
 	--text-display--font-weight: 600;
 
 	--text-headline: var(--text-2xl);
-	--text-headline--line-height: 0;
+	--text-headline--line-height: 1;
 	--text-headline--font-weight: 600;
 
 	--text-title: var(--text-lg);
-	--text-title--line-height: 0;
+	--text-title--line-height: 1;
 	--text-title--font-weight: 500;
 
 	--text-body: var(--text-base);
 	--text-body--font-weight: 400;
 
 	--text-label: var(--text-base);
-	--text-label--line-height: 0;
+	--text-label--line-height: 1;
 	--text-label--font-weight: 500;
 
 	--text-label-sm: var(--text-sm);
-	--text-label-sm--line-height: 0;
+	--text-label-sm--line-height: 1;
 	--text-label-sm--font-weight: 500;
 
 	/* Colors */

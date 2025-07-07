@@ -38,7 +38,7 @@
 {#snippet input()}
 	<div
 		class={cn(
-			'border-outline bg-surface focus-within:border-primary  relative flex h-12 items-center gap-2 rounded-lg border-2 px-4',
+			'border-outline bg-surface focus-within:border-primary relative flex h-12 items-center gap-2 rounded-lg border-2 px-4',
 			props.disabled && 'text-muted border-outline',
 			className
 		)}

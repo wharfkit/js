@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.2](https://github.com/greymass/unicove-components/compare/v0.2.1...v0.2.2) (2025-07-08)
+
+
+### Bug Fixes
+
+* move required dependencies from devDependencies ([56fe5a2](https://github.com/greymass/unicove-components/commit/56fe5a23d50ada41607e43b2d3938d393566295e))
+
 ## [0.2.1](https://github.com/greymass/unicove-components/compare/v0.2.0...v0.2.1) (2025-07-07)
 
 

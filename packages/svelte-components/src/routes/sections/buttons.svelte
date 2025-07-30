@@ -64,6 +64,19 @@
 		</Cluster>
 	</Card>
 
+	<Card title="Destructive">
+		<Cluster>
+			<Stack class="gap-1">
+				<p class="text-label">Default</p>
+				<Button variant="destructive" onclick={() => {}}>EOS (MAX)</Button>
+			</Stack>
+			<Stack class="gap-1">
+				<p class="text-label">Disabled</p>
+				<Button variant="destructive" disabled onclick={() => {}}>EOS (MAX)</Button>
+			</Stack>
+		</Cluster>
+	</Card>
+
 	<Card title="Icon Buttons">
 		<Stack>
 			<Cluster>

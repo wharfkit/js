@@ -9,7 +9,7 @@
 
 	export interface ButtonProps extends HTMLAttributes {
 		href?: string;
-		variant?: 'primary' | 'secondary' | 'text' | 'pill' | 'outlined';
+		variant?: 'primary' | 'secondary' | 'text' | 'pill' | 'outlined' | 'destructive';
 		disabled?: boolean;
 		active?: boolean;
 		blank?: boolean;
@@ -62,12 +62,16 @@
 	const textStyles =
 		'inline-flex  h-10  rounded-lg px-3  text-primary   focus-visible:ring-inset focus-visible:ring-solar-500 focus-visible:outline-hidden focus-visible:ring  disabled:text-on-surface  disabled:hover:bg-transparent';
 
+	const destructiveStyles =
+		' inline-flex h-12 grow rounded-lg bg-destructive px-8 text-on-destructive focus:outline-transparent focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-solar-500 disabled:bg-surface-container-highest disabled:text-on-surface';
+
 	let styles = {
 		primary: filledStyles,
 		outlined: outlinedStyles,
 		secondary: secondaryFilledStyles,
 		pill: pillStyles,
-		text: textStyles
+		text: textStyles,
+		destructive: destructiveStyles
 	};
 </script>
 

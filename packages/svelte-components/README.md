@@ -11,7 +11,7 @@ bun install unicove-components
 
 ```
 
-Ensure tailwindcss is setup correctly in the v4 style. 
+Ensure tailwindcss is setup correctly in the v4 style.
 
 Then import the Unicove base styles and allow tailwind to detect the classes in the library components.
 

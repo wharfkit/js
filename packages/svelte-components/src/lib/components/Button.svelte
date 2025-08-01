@@ -63,7 +63,7 @@
 		'inline-flex  h-10  rounded-lg px-3  text-primary   focus-visible:ring-inset focus-visible:ring-solar-500 focus-visible:outline-hidden focus-visible:ring  disabled:text-on-surface  disabled:hover:bg-transparent';
 
 	const destructiveStyles =
-		' inline-flex h-12 grow rounded-lg bg-destructive px-8 text-on-destructive focus:outline-transparent focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-solar-500 disabled:bg-surface-container-highest disabled:text-on-surface';
+		' inline-flex h-12 grow rounded-lg bg-destructive text-on-destructive dark:bg-destructive/10 dark:text-destructive px-8 focus:outline-transparent focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-solar-500 disabled:bg-surface-container-highest disabled:text-on-surface';
 
 	let styles = {
 		primary: filledStyles,

@@ -62,10 +62,6 @@
 	--color-on-success: var(--role-on-success);
 	--color-success-container: var(--role-success-container);
 	--color-on-success-container: var(--role-on-success-container);
-	--color-warning: var(--role-warning);
-	--color-on-warning: var(--role-on-warning);
-	--color-warning-container: var(--role-warning-container);
-	--color-on-warning-container: var(--role-on-warning-container);
 	--color-destructive: var(--role-destructive);
 	--color-on-destructive: var(--role-on-destructive);
 	--color-destructive-container: var(--role-destructive-container);
@@ -98,8 +94,7 @@
 
 		--error-hue: 27;
 		--success-hue: 152;
-		--warning-hue: 80;
-		--destructive-hue: 350;
+		--destructive-hue: 53;
 
 		--role-primary: oklch(from var(--theme-seed) 0.4 c h);
 		--role-primary-hover: oklch(from var(--theme-seed) 0.5 c h);
@@ -118,15 +113,10 @@
 		--role-success-container: oklch(0.92 0.042 var(--success-hue));
 		--role-on-success-container: oklch(0.42 0.17 var(--success-hue));
 
-		--role-warning: oklch(0.51 0.15 var(--warning-hue));
-		--role-on-warning: oklch(1 0 var(--warning-hue));
-		--role-warning-container: oklch(0.92 0.05 var(--warning-hue));
-		--role-on-warning-container: oklch(0.42 0.15 var(--warning-hue));
-
-		--role-destructive: oklch(0.51 0.18 var(--destructive-hue));
+		--role-destructive: oklch(0.51 0.1927 var(--destructive-hue));
 		--role-on-destructive: oklch(1 0 var(--destructive-hue));
-		--role-destructive-container: oklch(0.92 0.04 var(--destructive-hue));
-		--role-on-destructive-container: oklch(0.42 0.15 var(--destructive-hue));
+		--role-destructive-container: oklch(0.92 0.042 var(--destructive-hue));
+		--role-on-destructive-container: oklch(0.42 0.17 var(--destructive-hue));
 
 		--role-outline-variant: oklch(from var(--color-primary) 0.57 0.08 h);
 		--role-outline: oklch(from var(--color-outline-variant) 0.83 0.04 h);
@@ -165,15 +155,10 @@
 		--role-success-container: oklch(0.42 0.17 var(--success-hue));
 		--role-on-success-container: oklch(0.92 0.042 var(--success-hue));
 
-		--role-warning: oklch(0.84 0.12 var(--warning-hue));
-		--role-on-warning: oklch(0.33 0.08 var(--warning-hue));
-		--role-warning-container: oklch(0.42 0.15 var(--warning-hue));
-		--role-on-warning-container: oklch(0.92 0.05 var(--warning-hue));
-
-		--role-destructive: oklch(0.84 0.12 var(--destructive-hue));
-		--role-on-destructive: oklch(0.33 0.1 var(--destructive-hue));
-		--role-destructive-container: oklch(0.42 0.15 var(--destructive-hue));
-		--role-on-destructive-container: oklch(0.92 0.04 var(--destructive-hue));
+		--role-destructive: oklch(0.84 0.089 var(--destructive-hue));
+		--role-on-destructive: oklch(0.33 0.134 var(--destructive-hue));
+		--role-destructive-container: oklch(0.42 0.17 var(--destructive-hue));
+		--role-on-destructive-container: oklch(0.92 0.042 var(--destructive-hue));
 
 		--role-outline-variant: oklch(from var(--color-primary) 0.65 0.08 h);
 		--role-outline: oklch(from var(--color-outline-variant) 0.4 0.05 h);

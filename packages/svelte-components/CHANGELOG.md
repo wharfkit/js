@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/greymass/unicove-components/compare/v0.2.2...v0.3.0) (2025-08-01)
+
+
+### Features
+
+* **theme:** add warning and destructive color theme ([#8](https://github.com/greymass/unicove-components/issues/8)) ([6ad1df1](https://github.com/greymass/unicove-components/commit/6ad1df107e6e47f58b8890a7ca2b24a4b656833b))
+
+
+### Bug Fixes
+
+* adjust the style of the destructive button ([#10](https://github.com/greymass/unicove-components/issues/10)) ([9924c74](https://github.com/greymass/unicove-components/commit/9924c74586f15a9b07fc3c66f04e0aaa91b19524))
+
 ## [0.2.2](https://github.com/greymass/unicove-components/compare/v0.2.1...v0.2.2) (2025-07-08)
 
 

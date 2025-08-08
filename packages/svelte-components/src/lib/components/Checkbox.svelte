@@ -23,7 +23,8 @@
 
 	const {
 		elements: { root, input },
-		states
+		states,
+		options
 	} = createCheckbox({
 		defaultChecked: checked,
 		disabled,
@@ -37,6 +38,10 @@
 		sync.checked(checked, (v) => (checked = v));
 	});
 
+	// Sync external "disabled" prop with Melt's internal store
+	$effect(() => {
+		options.disabled.set(disabled);
+	});
 	const ariaLabelledBy = `${id}-label`;
 </script>
 

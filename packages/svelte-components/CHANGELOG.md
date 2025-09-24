@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.1](https://github.com/greymass/unicove-components/compare/v0.3.0...v0.3.1) (2025-09-24)
+
+
+### Bug Fixes
+
+* enable dynamic disabled state for Checkbox ([#11](https://github.com/greymass/unicove-components/issues/11)) ([b4904d2](https://github.com/greymass/unicove-components/commit/b4904d25099b7729c69b4e401598f233c1687376))
+* font loading ([979bc35](https://github.com/greymass/unicove-components/commit/979bc355de41657a54d389dd201c2913def495e0))
+
 ## [0.3.0](https://github.com/greymass/unicove-components/compare/v0.2.2...v0.3.0) (2025-08-01)
 
 

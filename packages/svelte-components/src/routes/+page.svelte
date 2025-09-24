@@ -15,10 +15,13 @@
 	import Toggles from './sections/toggles.svelte';
 	import Inputs from './sections/inputs.svelte';
 	import Elements from './sections/elements.svelte';
+	import Colors from './sections/colors.svelte';
 </script>
 
 <Stack class="gap-12 *:scroll-m-4">
 	<Typography />
+	<HR />
+	<Colors />
 	<HR />
 	<Codeblocks />
 	<HR />

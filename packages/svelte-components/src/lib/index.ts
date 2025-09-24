@@ -1,5 +1,3 @@
-// $lib/index.ts
-
 // Description List
 export { default as DD } from './components/descriptionlist/DD.svelte';
 export { default as DL } from './components/descriptionlist/DL.svelte';

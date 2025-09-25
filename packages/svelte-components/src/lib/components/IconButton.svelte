@@ -20,6 +20,7 @@
 		variant?: 'filled' | 'standard';
 		hideBackground?: boolean;
 		label?: string;
+		labelWidth?: string;
 	}
 
 	let {
@@ -89,7 +90,10 @@
 	{#if label}
 		<div
 			{...tooltip.content}
-			class="text-on-surface bg-surface-container-high rounded-lg p-2 text-xs shadow-lg first-letter:uppercase"
+			class={cn(
+				'text-on-surface bg-surface-container-high max-w-sm rounded-lg p-2 text-xs shadow-lg first-letter:uppercase',
+				props.labelWidth
+			)}
 		>
 			<div {...tooltip.arrow} class="size-2 rounded-tl-xs bg-white"></div>
 			{label}

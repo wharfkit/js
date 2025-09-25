@@ -1,42 +1,53 @@
 <script lang="ts">
-	import { createSwitch, melt, createSync } from '@melt-ui/svelte';
-	import type { ChangeFn } from '@melt-ui/svelte/internal/helpers';
+	import { createSwitch, melt, type CreateSwitchProps } from '@melt-ui/svelte';
+	import { get, writable } from 'svelte/store';
 
-	export interface SwitchProps {
-		disabled?: boolean;
-		required?: boolean;
-		checked: boolean;
-		name?: string;
-		value?: string;
-		onCheckedChange?: ChangeFn<boolean>;
+	export interface SwitchProps extends Omit<CreateSwitchProps, 'checked'> {
 		id: string;
+		checked: boolean;
 	}
 
 	let {
+		id,
 		disabled = $bindable(false),
 		checked = $bindable(false),
 		required = false,
-		name,
-		value,
-		onCheckedChange,
-		id
+		...otherProps
 	}: SwitchProps = $props();
+
+	const internalCheckedStore = writable(checked);
 
 	const {
 		elements: { root, input },
-		states
+		options
 	} = createSwitch({
+		checked: internalCheckedStore,
 		disabled,
 		required,
 		defaultChecked: checked,
-		onCheckedChange,
-		value,
-		name
+		...otherProps
 	});
 
-	const sync = createSync(states);
 	$effect(() => {
-		sync.checked(checked, (v) => (checked = v));
+		// If the external prop changes, update the internal store.
+		if (get(internalCheckedStore) !== checked) {
+			internalCheckedStore.set(checked);
+		}
+
+		// If the internal store changes (from user click), update the external prop.
+		const unsubscribe = internalCheckedStore.subscribe((value) => {
+			if (value !== checked) {
+				checked = value;
+			}
+		});
+
+		// Cleanup the subscription.
+		return () => unsubscribe();
+	});
+
+	// Keep the Melt `disabled` option in sync with the prop.
+	$effect(() => {
+		options.disabled.set(disabled);
 	});
 
 	const ariaLabelledBy = `${id}-label`;

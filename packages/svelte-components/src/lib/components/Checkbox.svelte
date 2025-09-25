@@ -1,47 +1,57 @@
 <script lang="ts">
-	import { createCheckbox, melt, createSync } from '@melt-ui/svelte';
+	import { createCheckbox, type CreateCheckboxProps, melt } from '@melt-ui/svelte';
 	import Check from '@lucide/svelte/icons/check';
 	import Minus from '@lucide/svelte/icons/minus';
+	import { get, writable } from 'svelte/store';
 
-	export interface CheckboxProps {
-		disabled?: boolean;
-		required?: boolean;
-		checked: boolean | 'indeterminate';
-		name?: string;
-		value?: string;
+	export interface CheckboxProps extends Omit<CreateCheckboxProps, 'checked'> {
 		id: string;
+		checked?: boolean | 'indeterminate';
 	}
 
 	let {
+		id,
+		defaultChecked = false,
+		checked = $bindable(defaultChecked),
 		disabled = $bindable(false),
-		checked = $bindable(false),
-		required = false,
-		name,
-		value,
-		id
+		...otherProps
 	}: CheckboxProps = $props();
+
+	const internalCheckedStore = writable(checked);
 
 	const {
 		elements: { root, input },
-		states,
-		options
+		options,
+		helpers: { isChecked, isIndeterminate }
 	} = createCheckbox({
-		defaultChecked: checked,
+		checked: internalCheckedStore,
+		defaultChecked,
 		disabled,
-		name,
-		value,
-		required
+		...otherProps
 	});
 
-	const sync = createSync(states);
 	$effect(() => {
-		sync.checked(checked, (v) => (checked = v));
+		// When the external prop changes, update the internal store.
+		if (get(internalCheckedStore) !== checked) {
+			internalCheckedStore.set(checked);
+		}
+
+		// When the internal store changes (e.g., user clicks), update the external prop.
+		const unsubscribe = internalCheckedStore.subscribe((value) => {
+			if (value !== checked) {
+				checked = value;
+			}
+		});
+
+		// Cleanup the subscription
+		return () => unsubscribe();
 	});
 
 	// Sync external "disabled" prop with Melt's internal store
 	$effect(() => {
 		options.disabled.set(disabled);
 	});
+
 	const ariaLabelledBy = `${id}-label`;
 </script>
 
@@ -52,9 +62,9 @@
 		{id}
 		aria-labelledby={ariaLabelledBy}
 	>
-		{#if checked === true}
+		{#if $isChecked}
 			<Check class="size-3.5 stroke-[3.5px]" />
-		{:else if checked === 'indeterminate'}
+		{:else if $isIndeterminate}
 			<Minus class="text-on-surface/30 size-3.5 stroke-[3.5px]" />
 		{/if}
 		<input use:melt={$input} />

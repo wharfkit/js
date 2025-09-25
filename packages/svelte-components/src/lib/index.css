@@ -80,18 +80,26 @@
 	--color-on-primary: var(--role-on-primary);
 	--color-primary-container: var(--role-primary-container);
 	--color-on-primary-container: var(--role-on-primary-container);
+
 	--color-error: var(--role-error);
 	--color-on-error: var(--role-on-error);
 	--color-error-container: var(--role-error-container);
 	--color-on-error-container: var(--role-on-error-container);
+
 	--color-success: var(--role-success);
 	--color-on-success: var(--role-on-success);
 	--color-success-container: var(--role-success-container);
 	--color-on-success-container: var(--role-on-success-container);
+
 	--color-destructive: var(--role-destructive);
 	--color-on-destructive: var(--role-on-destructive);
 	--color-destructive-container: var(--role-destructive-container);
 	--color-on-destructive-container: var(--role-on-destructive-container);
+
+	--color-warning: var(--role-warning);
+	--color-on-warning: var(--role-on-warning);
+	--color-warning-container: var(--role-warning-container);
+	--color-on-warning-container: var(--role-on-warning-container);
 
 	--color-shadow: oklch(0 0 0);
 	--color-scrim: oklch(0 0 0 / 0.5);
@@ -121,6 +129,7 @@
 		--error-hue: 27;
 		--success-hue: 152;
 		--destructive-hue: 53;
+		--warning-hue: 85; /* Yellow hue for warnings */
 
 		--role-primary: oklch(from var(--theme-seed) 0.4 c h);
 		--role-primary-hover: oklch(from var(--theme-seed) 0.5 c h);
@@ -185,6 +194,11 @@
 		--role-on-destructive: oklch(0.33 0.134 var(--destructive-hue));
 		--role-destructive-container: oklch(0.42 0.17 var(--destructive-hue));
 		--role-on-destructive-container: oklch(0.92 0.042 var(--destructive-hue));
+
+		--role-warning: oklch(0.84 0.089 var(--warning-hue));
+		--role-on-warning: oklch(0.33 0.134 var(--warning-hue));
+		--role-warning-container: oklch(0.42 0.17 var(--warning-hue));
+		--role-on-warning-container: oklch(0.92 0.042 var(--warning-hue));
 
 		--role-outline-variant: oklch(from var(--color-primary) 0.65 0.08 h);
 		--role-outline: oklch(from var(--color-outline-variant) 0.4 0.05 h);

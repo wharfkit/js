@@ -189,5 +189,31 @@
 		<div class="bg-on-success-container min-h-20 p-4">
 			<span class="text-success-container font-bold">On success Container</span>
 		</div>
+
+		<div class="bg-destructive min-h-20 p-4">
+			<span class="text-on-destructive font-bold">destructive</span>
+		</div>
+		<div class="bg-on-destructive min-h-20 p-4">
+			<span class="text-destructive font-bold">On destructive</span>
+		</div>
+		<div class="bg-destructive-container min-h-20 p-4">
+			<span class="text-on-destructive-container font-bold">destructive Container</span>
+		</div>
+		<div class="bg-on-destructive-container min-h-20 p-4">
+			<span class="text-destructive-container font-bold">On destructive Container</span>
+		</div>
+
+		<div class="bg-warning min-h-20 p-4">
+			<span class="text-on-warning font-bold">warning</span>
+		</div>
+		<div class="bg-on-warning min-h-20 p-4">
+			<span class="text-warning font-bold">On warning</span>
+		</div>
+		<div class="bg-warning-container min-h-20 p-4">
+			<span class="text-on-warning-container font-bold">warning Container</span>
+		</div>
+		<div class="bg-on-warning-container min-h-20 p-4">
+			<span class="text-warning-container font-bold">On warning Container</span>
+		</div>
 	</div>
 </Stack>

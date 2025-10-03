@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/greymass/unicove-components/compare/v0.3.1...v0.4.0) (2025-10-03)
+
+
+### Features
+
+* add warning colors ([18f0f3d](https://github.com/greymass/unicove-components/commit/18f0f3d28fd42b91717859016bdf362915867b67))
+* expose `cn` function for merging classnames ([82756f2](https://github.com/greymass/unicove-components/commit/82756f2ea3ba2d0c4211ed6c246a56df2fa796df))
+* support controlling tooltip width on iconbutton labels ([1e4f0c4](https://github.com/greymass/unicove-components/commit/1e4f0c4b38f989e10d3441260d86d3b1835f551b))
+
 ## [0.3.1](https://github.com/greymass/unicove-components/compare/v0.3.0...v0.3.1) (2025-09-24)
 
 

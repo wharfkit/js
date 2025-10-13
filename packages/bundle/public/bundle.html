@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>bundle</title>
-    <script src="./wharf.bundle.js"></script>
+    <!-- <script src="./wharf.bundle.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@wharfkit/bundle@0.1.0"></script>
 
   </head>
   <body>
@@ -24,7 +25,6 @@
         new Wharf.WalletPluginCloudWallet(),
         new Wharf.WalletPluginMetaMask(),
         new Wharf.WalletPluginTokenPocket(),
-        new Wharf.WalletPluginWebAuthenticator(),
         new Wharf.WalletPluginWombat(),
       ],
       kit = new Wharf.SessionKit({

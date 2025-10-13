@@ -18,21 +18,41 @@
       Disconnect Wallet
     </button>
     <script type="module">      
-      import * as Wharf from './wharf.esm.js';
+      // import {
+      //   Chains,
+      //   SessionKit,
+      //   WalletPluginAnchor, 
+      //   WalletPluginCloudWallet, 
+      //   WalletPluginMetaMask, 
+      //   WalletPluginTokenPocket, 
+      //   WalletPluginWebAuthenticator, 
+      //   WalletPluginWombat,
+      //   WebRenderer
+      // } from './wharf.esm.js';
+      import {
+        Chains,
+        SessionKit,
+        WalletPluginAnchor, 
+        WalletPluginCloudWallet, 
+        WalletPluginMetaMask, 
+        WalletPluginTokenPocket, 
+        WalletPluginWebAuthenticator, 
+        WalletPluginWombat,
+        WebRenderer
+      } from 'https://cdn.jsdelivr.net/npm/@wharfkit/bundle@0.1.1/+esm'
 
       var walletPlugins = [
-        new Wharf.WalletPluginAnchor(),
-        new Wharf.WalletPluginCloudWallet(),
-        new Wharf.WalletPluginMetaMask(),
-        new Wharf.WalletPluginTokenPocket(),
-        new Wharf.WalletPluginWebAuthenticator(),
-        new Wharf.WalletPluginWombat(),
+        new WalletPluginAnchor(),
+        new WalletPluginCloudWallet(),
+        new WalletPluginMetaMask(),
+        new WalletPluginTokenPocket(),
+        new WalletPluginWombat(),
       ]
 
-      var kit = new Wharf.SessionKit({
+      var kit = new SessionKit({
         appName: 'authenticate',
-        chains: [Wharf.Chains.Jungle4, Wharf.Chains.Vaulta],
-        ui: new Wharf.WebRenderer(),
+        chains: [Chains.Jungle4, Chains.Vaulta],
+        ui: new WebRenderer(),
         walletPlugins
       })
 

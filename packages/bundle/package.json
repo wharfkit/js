@@ -1,12 +1,15 @@
 {
   "name": "@wharfkit/bundle",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "main": "dist/wharf.bundle.js",
   "module": "dist/wharf.bundle.js",
   "exports": {
-    ".": "./dist/wharf.bundle.js"
+    ".": {
+      "require": "./dist/wharf.bundle.js",
+      "import": "./dist/wharf.esm.js"
+    }
   },
   "files": [
     "dist/"

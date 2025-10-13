@@ -69,13 +69,10 @@ export async function handleLogin(context: LoginContext): Promise<WalletPluginLo
     let chainId: string
     if (account.chainId) {
         chainId = account.chainId
-    } else if (
-        account.blockchain &&
-        Object.keys(Chains).includes(account.blockchain.toUpperCase())
-    ) {
+    } else if (account.blockchain && Object.keys(Chains).includes(account.blockchain)) {
         chainId = Chains[account.blockchain.toUpperCase()].id
     } else {
-        throw new Error('Unknown chain')
+        throw new Error(`Unknown chain: ${account.blockchain}`)
     }
 
     return {

@@ -35,7 +35,7 @@
 	<h3 class="text-title">Text Input</h3>
 	<Card>
 		<Stack>
-			<TextInput placeholder="placeholder" />
+			<TextInput placeholder="Account Name" value="xpx1x12x3axp" />
 			<TextInput label="Input with Label" />
 		</Stack>
 	</Card>

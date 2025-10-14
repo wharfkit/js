@@ -36,12 +36,16 @@
 	--font-sans:
 		'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
 		'Segoe UI Symbol', 'Noto Color Emoji';
+	--font-sans--font-feature-settings: "calt" 0;
+
 	--font-sans-hero:
 		'Inter Variable', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
 		'Noto Color Emoji';
+
 	--font-mono:
 		'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
 		'Liberation Mono', 'Courier New', monospace;
+
 
 	/* Typography  */
 	--text-display: var(--text-3xl);

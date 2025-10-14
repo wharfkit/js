@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.1](https://github.com/greymass/unicove-components/compare/v0.4.0...v0.4.1) (2025-10-14)
+
+
+### Bug Fixes
+
+* disable contextual alternates in default sans-serif font (Inter) ([dd0c300](https://github.com/greymass/unicove-components/commit/dd0c300f2c82db261d2efd164c31b5fc3b1b8efd))
+
 ## [0.4.0](https://github.com/greymass/unicove-components/compare/v0.3.1...v0.4.0) (2025-10-03)
 
 

@@ -1,3 +1,13 @@
+<script module>
+	export const NameValidationError = {
+		INVALID_CHARACTERS: 'INVALID_CHARACTERS',
+		INVALID_LENGTH_MIN: 'INVALID_LENGTH_MIN',
+		INVALID_LENGTH_MAX: 'INVALID_LENGTH_MAX'
+	} as const;
+
+	export type NameValidationError = (typeof NameValidationError)[keyof typeof NameValidationError];
+</script>
+
 <script lang="ts">
 	import { Name, type NameType } from '@wharfkit/antelope';
 	import type { ComponentProps } from 'svelte';
@@ -5,9 +15,10 @@
 
 	export interface NameInputProps extends ComponentProps<typeof TextInput> {
 		optional?: boolean;
-		valid?: boolean;
 		value: NameType;
 		debug?: boolean;
+		valid?: boolean;
+		error?: NameValidationError;
 	}
 
 	let {
@@ -16,6 +27,7 @@
 		ref = $bindable(),
 		valid = $bindable(false),
 		value: _value = $bindable(),
+		error = $bindable(),
 		debug = false,
 		...props
 	}: NameInputProps = $props();
@@ -27,11 +39,14 @@
 	const name: Name = $derived(Name.from(input));
 
 	/** Validation states */
-	const satisfiesLength = $derived(String(name).length > 0 && String(name).length <= 12);
+	const satisfiesMinLength = $derived(String(name).length > 0);
+	const satisfiesMaxLength = $derived(String(name).length <= 12);
 	const satisfiesNameMatch = $derived(String(name) === input);
 
 	/** Whether or not the input value is valid */
-	const satisfies: boolean = $derived(optional || (satisfiesLength && satisfiesNameMatch));
+	const satisfies: boolean = $derived(
+		optional || (satisfiesMinLength && satisfiesMaxLength && satisfiesNameMatch)
+	);
 
 	/** Set the input value from a parent */
 	export function set(name: string) {
@@ -43,8 +58,12 @@
 		valid = satisfies;
 		if (satisfies) {
 			_value = name;
+			error = undefined;
 		} else {
-			_value = Name.from('');
+			_value = Name.from(''); // Still return a $bindable Name
+			if (!satisfiesNameMatch) error = NameValidationError.INVALID_CHARACTERS;
+			if (!satisfiesMinLength) error = NameValidationError.INVALID_LENGTH_MIN;
+			if (!satisfiesMaxLength) error = NameValidationError.INVALID_LENGTH_MAX;
 		}
 	});
 </script>
@@ -60,7 +79,8 @@ Name:             {name}
 ---
 
 Valid Input:       {satisfies}
-Valid Length:      {satisfiesLength}
+Valid Min Length:  {satisfiesMinLength}
+Valid Max Length:  {satisfiesMaxLength}
 Valid Name:        {satisfiesNameMatch}
 </pre>
 {/if}

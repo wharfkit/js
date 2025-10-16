@@ -3,7 +3,7 @@
 	import AssetInput from '$lib/components/input/AssetInput.svelte';
 	import BytesInput from '$lib/components/input/BytesInput.svelte';
 	import DatetimeInput from '$lib/components/input/DatetimeInput.svelte';
-	import NameInput from '$lib/components/input/NameInput.svelte';
+	import NameInput, { NameValidationError } from '$lib/components/input/NameInput.svelte';
 	import NumberInput from '$lib/components/input/NumberInput.svelte';
 	import PublicKeyInput from '$lib/components/input/PublicKeyInput.svelte';
 	import SymbolInput from '$lib/components/input/SymbolInput.svelte';
@@ -27,6 +27,10 @@
 	let symbolinput: Asset.SymbolType = $state(Asset.Symbol.from('0,UNKNOWN'));
 
 	let nameinput: Name = $state(Name.from('teamgreymass'));
+
+	let nameInput1Error = $state<NameValidationError>();
+	let nameInput2Error = $state<NameValidationError>();
+	let nameInput3Error = $state<NameValidationError>();
 </script>
 
 <Stack tag="section" id="inputs">
@@ -160,7 +164,31 @@
 	<h3 class="text-title">Name Input</h3>
 	<Card>
 		<Stack>
-			<NameInput id="nameinput" bind:value={nameinput} debug />
+			<NameInput id="nameinput" bind:value={nameinput} />
+			<NameInput
+				id="invalid-name"
+				label="Invalid Name"
+				value="999.gm"
+				bind:error={nameInput1Error}
+			/>
+			<!-- In real usage, you'd handle each error on each input with translated error text -->
+			<!-- Here we're just doing one per input as an example -->
+			{#if nameInput1Error === NameValidationError.INVALID_CHARACTERS}
+				<small class="text-error">Error: Invalid Name</small>
+			{/if}
+			<NameInput
+				id="invalid-length"
+				label="Invalid Length"
+				value="1234512345123"
+				bind:error={nameInput2Error}
+			/>
+			{#if nameInput2Error === NameValidationError.INVALID_LENGTH_MAX}
+				<small class="text-error">Error: Invalid Maximum length</small>
+			{/if}
+			<NameInput id="invalid-length" label="Invalid Length" value="" bind:error={nameInput3Error} />
+			{#if nameInput3Error === NameValidationError.INVALID_LENGTH_MIN}
+				<small class="text-error">Error: Invalid Minimum length</small>
+			{/if}
 		</Stack>
 	</Card>
 

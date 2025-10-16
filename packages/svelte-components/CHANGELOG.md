@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/greymass/unicove-components/compare/v0.4.1...v0.5.0) (2025-10-16)
+
+
+### Features
+
+* export errors from name input ([d287cdf](https://github.com/greymass/unicove-components/commit/d287cdf944b4e9a386ca8e8a9a989ff411a30d49))
+
 ## [0.4.1](https://github.com/greymass/unicove-components/compare/v0.4.0...v0.4.1) (2025-10-14)
 
 

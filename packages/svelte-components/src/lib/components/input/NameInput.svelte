@@ -61,9 +61,9 @@
 			error = undefined;
 		} else {
 			_value = Name.from(''); // Still return a $bindable Name
-			if (!satisfiesNameMatch) error = NameValidationError.INVALID_CHARACTERS;
 			if (!satisfiesMinLength) error = NameValidationError.INVALID_LENGTH_MIN;
 			if (!satisfiesMaxLength) error = NameValidationError.INVALID_LENGTH_MAX;
+			if (!satisfiesNameMatch) error = NameValidationError.INVALID_CHARACTERS;
 		}
 	});
 </script>

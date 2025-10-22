@@ -63,9 +63,7 @@
 	});
 
 	// Get the whole option object
-	let selectedOption = $derived.by(
-		() => options.find((o) => o.label === $selectedLabel) || options[0]
-	);
+	let selectedOption = $derived.by(() => options.find((o) => o.value === $selected) || options[0]);
 </script>
 
 <SelectTrigger class={triggerClass} {variant} {id} {open} {trigger} {disabled}>

@@ -2,4 +2,4 @@
 	let props = $props();
 </script>
 
-<dt class="caption self-start text-nowrap">{@render props.children()}</dt>
+<dt class="text-muted self-start text-nowrap">{@render props.children()}</dt>

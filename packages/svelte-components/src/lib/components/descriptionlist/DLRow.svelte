@@ -2,26 +2,32 @@
 	import type { Snippet } from 'svelte';
 	import DT from './DT.svelte';
 	import DD from './DD.svelte';
+	import { cn } from '$lib/utils';
 
 	export interface DLRowProps {
 		title: string | Snippet;
 		description?: string;
+		class?: string;
 		children?: Snippet;
 	}
 
-	let { title = '', description, children }: DLRowProps = $props();
+	let { title = '', description, children, ...props }: DLRowProps = $props();
 </script>
 
 <div
-	class="border-outline flex flex-wrap items-center justify-between gap-x-4 border-b py-3 last:border-none @xs:flex-nowrap"
+	class={cn(
+		'border-outline flex flex-wrap items-center justify-between gap-x-4 border-b py-3 last:border-none @xs:flex-nowrap',
+		"bg-error-container grow before:content-['ERROR_Missing_DT_element_'] has-[dt]:bg-transparent has-[dt]:before:hidden",
+		props.class
+	)}
 >
-	<DT>
-		{#if typeof title === 'string'}
+	{#if typeof title === 'string'}
+		<DT>
 			{title}
-		{:else}
-			{@render title()}
-		{/if}
-	</DT>
+		</DT>
+	{:else}
+		{@render title()}
+	{/if}
 	<div
 		class="bg-error-container grow before:content-['ERROR_Missing_DD_element_'] has-[dd]:bg-transparent has-[dd]:before:hidden"
 	>

@@ -1,5 +1,5 @@
 <script>
-	import { Col, Table, Button, TH, TD, TR, Card, Chip, DD, DL, DLRow, Stack } from '$lib';
+	import { Col, Table, Button, TH, TD, TR, Card, Chip, DD, DL, DLRow, Stack, DT } from '$lib';
 
 	const items = [
 		{ title: 'Some title', description: String(Math.random()) },
@@ -36,7 +36,7 @@
 			or you'll get a warning. There are CSS rules that'll visually yell at you to fix it :)
 		</p>
 
-		<Card class="max-w-md">
+		<Card class="max-w-lg">
 			<DL>
 				<DLRow title="First">
 					<DD>
@@ -47,13 +47,31 @@
 				<DLRow title="Second">
 					<DD>
 						<!-- <Account name="unicove.gm" /> -->
+						<Chip>teamgreymass</Chip>
 					</DD>
 					<DD>
 						<!-- <Account name="test.gm" /> -->
+						<Chip>teamgreymass</Chip>
 					</DD>
 				</DLRow>
 				<DLRow title="Warning">
 					<!-- <Account name="unicove.gm" /> -->
+				</DLRow>
+				<DLRow>
+					{#snippet title()}
+						<DT>Manual Title</DT>
+					{/snippet}
+					<DD>
+						<Chip>teamgreymass</Chip>
+					</DD>
+				</DLRow>
+				<DLRow>
+					{#snippet title()}
+						<span>Missing DT</span>
+					{/snippet}
+					<DD>
+						<Chip>teamgreymass</Chip>
+					</DD>
 				</DLRow>
 			</DL>
 		</Card>

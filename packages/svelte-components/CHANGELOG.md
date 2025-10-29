@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/greymass/unicove-components/compare/v0.5.1...v0.6.0) (2025-10-29)
+
+
+### Features
+
+* allow manual description list titles ([2dad87c](https://github.com/greymass/unicove-components/commit/2dad87c15ce470bfdc7f85bec9bdef4b1c20ecdb))
+
 ## [0.5.1](https://github.com/greymass/unicove-components/compare/v0.5.0...v0.5.1) (2025-10-22)
 
 

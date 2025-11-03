@@ -2,27 +2,27 @@
 	import type { Snippet } from 'svelte';
 	import Dlrow from './DLRow.svelte';
 	import { cn } from '$lib/utils';
+	import type { HTMLAttributes } from 'svelte/elements';
 
 	type DescriptionItem = {
 		title: string;
 		description: string;
 	};
 
-	export interface DLProps {
+	export interface DLProps extends HTMLAttributes<HTMLDListElement> {
 		items?: DescriptionItem[];
 		children?: Snippet;
-		class?: string;
 	}
 
-	let props: DLProps = $props();
+	let { items, children, ...props }: DLProps = $props();
 </script>
 
-<dl class={cn('@container', props.class)}>
-	{#if props.items}
-		{#each props.items as { title, description }, index (index)}
+<dl {...props} class={cn('@container', props.class)}>
+	{#if items}
+		{#each items as { title, description }, index (index)}
 			<Dlrow {title} {description} />
 		{/each}
-	{:else if props.children}
-		{@render props.children()}
+	{:else if children}
+		{@render children()}
 	{/if}
 </dl>

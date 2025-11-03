@@ -1,5 +1,15 @@
 <script lang="ts">
-	let props = $props();
+	import { cn } from '$lib/utils';
+	import type { Snippet } from 'svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
+
+	interface Props extends HTMLAttributes<HTMLElement> {
+		children: Snippet;
+	}
+
+	let { children, ...props }: Props = $props();
 </script>
 
-<dt class="text-muted self-start text-nowrap">{@render props.children()}</dt>
+<dt {...props} class={cn('text-muted self-start text-nowrap', props.class)}>
+	{@render children()}
+</dt>

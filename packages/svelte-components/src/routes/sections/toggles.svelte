@@ -61,6 +61,22 @@
 					</Stack>
 				</Cluster>
 			</Stack>
+
+			<Stack>
+				<p class="text-title">Change listener</p>
+				<Cluster>
+					<Stack class="gap-4">
+						<p class="text-label">Default</p>
+						<Switch
+							id="4"
+							onCheckedChange={({ curr, next }) => {
+								console.log('Toggled', next, 'from', curr);
+								return next;
+							}}
+						/>
+					</Stack>
+				</Cluster>
+			</Stack>
 		</Stack>
 	</Card>
 
@@ -108,6 +124,22 @@
 						>
 							{checkBoxDisabled ? 'Set Enabled' : 'Set Disabled'}
 						</Button>
+					</Stack>
+				</Cluster>
+			</Stack>
+
+			<Stack>
+				<p class="text-title">Change listener</p>
+				<Cluster>
+					<Stack class="gap-4">
+						<p class="text-label">Default</p>
+						<Checkbox
+							id="2"
+							onCheckedChange={({ curr, next }) => {
+								console.log('Toggled', next, 'from', curr);
+								return next;
+							}}
+						/>
 					</Stack>
 				</Cluster>
 			</Stack>

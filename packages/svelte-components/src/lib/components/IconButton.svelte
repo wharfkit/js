@@ -63,7 +63,7 @@
 	use:melt={$meltElement}
 	data-size={size}
 	class={cn(
-		'touch-target group  focus-visible:text-solar-500 relative grid size-10 cursor-pointer  place-items-center rounded-full transition-all  *:col-start-1  *:row-start-1   focus-visible:outline-hidden disabled:cursor-default disabled:opacity-30  disabled:hover:bg-transparent data-[size=large]:size-12 md:size-fit',
+		'touch-target group  focus-visible:text-solar-500 relative grid size-10 cursor-pointer  place-items-center rounded-full transition-all  *:col-start-1  *:row-start-1   focus-visible:outline-hidden disabled:cursor-default disabled:opacity-30  disabled:hover:bg-transparent data-[size=large]:size-12',
 		className
 	)}
 	role={ariaRole}

@@ -135,7 +135,7 @@ export class HyperionV2HistoryAPIClient {
     }
 
     async get_actions(
-        account: NameType,
+        account?: NameType | null,
         options?: {
             filter?: string
             skip?: number
@@ -150,7 +150,11 @@ export class HyperionV2HistoryAPIClient {
             act_account?: NameType
         }
     ) {
-        const queryParts: string[] = [`account=${account}`]
+        const queryParts: string[] = []
+
+        if (account) {
+            queryParts.push(`account=${account}`)
+        }
 
         for (const [key, value] of Object.entries(options || {})) {
             queryParts.push(`${key}=${value}`)

@@ -1,0 +1,38 @@
+{
+    "request": {
+        "path": "https://eos.light-api.net/api/rexraw/eos/teamgreymass",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": {
+        "rexraw": {
+            "fund": "0.000000000000000000000000",
+            "pool": {
+                "total_rent": "3796.235300000000000000000000",
+                "namebid_proceeds": "0.000000000000000000000000",
+                "total_lendable": "59394726.320200000000000000000000",
+                "total_rex": "587072315799.259000000000000000000000",
+                "total_lent": "7435673.204700000000000000000000",
+                "total_unlent": "51959053.115500000000000000000000",
+                "loan_num": 496487
+            }
+        },
+        "chain": {
+            "chainid": "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906",
+            "production": 1,
+            "decimals": 4,
+            "block_num": 490174685,
+            "sync": 0,
+            "block_time": "2026-03-24 19:56:50",
+            "rex_enabled": 1,
+            "network": "eos",
+            "systoken": "EOS",
+            "description": "EOS Mainnet"
+        },
+        "account_name": "teamgreymass"
+    },
+    "text": "{\"rexraw\":{\"fund\":\"0.000000000000000000000000\",\"pool\":{\"total_rent\":\"3796.235300000000000000000000\",\"namebid_proceeds\":\"0.000000000000000000000000\",\"total_lendable\":\"59394726.320200000000000000000000\",\"total_rex\":\"587072315799.259000000000000000000000\",\"total_lent\":\"7435673.204700000000000000000000\",\"total_unlent\":\"51959053.115500000000000000000000\",\"loan_num\":496487}},\"chain\":{\"chainid\":\"aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906\",\"production\":1,\"decimals\":4,\"block_num\":490174685,\"sync\":0,\"block_time\":\"2026-03-24 19:56:50\",\"rex_enabled\":1,\"network\":\"eos\",\"systoken\":\"EOS\",\"description\":\"EOS Mainnet\"},\"account_name\":\"teamgreymass\"}"
+}

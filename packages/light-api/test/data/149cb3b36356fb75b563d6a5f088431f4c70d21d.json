@@ -1,0 +1,22 @@
+{
+    "request": {
+        "path": "https://eos.light-api.net/api/sync/eos",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "headers": {
+        "access-control-allow-headers": "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range",
+        "access-control-allow-methods": "GET",
+        "access-control-allow-origin": "*",
+        "access-control-expose-headers": "Content-Length,Content-Range",
+        "connection": "keep-alive",
+        "content-type": "text/plain",
+        "date": "Tue, 24 Mar 2026 19:52:05 GMT",
+        "server": "nginx/1.18.0 (Ubuntu)",
+        "transfer-encoding": "chunked"
+    },
+    "text": "0 OK"
+}

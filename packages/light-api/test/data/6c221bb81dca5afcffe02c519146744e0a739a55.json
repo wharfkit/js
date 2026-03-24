@@ -1,0 +1,53 @@
+{
+    "request": {
+        "path": "https://eos.light-api.net/api/topholders/eos/eosio.token/EOS/10",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": [
+        [
+            "core.vaulta",
+            "1035816036.0540"
+        ],
+        [
+            "eosio",
+            "469320647.0673"
+        ],
+        [
+            "eosio.rex",
+            "273740418.5797"
+        ],
+        [
+            "eosio.stake",
+            "109961016.8048"
+        ],
+        [
+            "aslkggpoerss",
+            "29705844.7001"
+        ],
+        [
+            "kjhbgvcfghfd",
+            "27249789.7943"
+        ],
+        [
+            "eosio.ram",
+            "23933530.1365"
+        ],
+        [
+            "vcxydi5dfufx",
+            "15874425.2354"
+        ],
+        [
+            "ixhu2a4twcnu",
+            "11526480.4604"
+        ],
+        [
+            "csg2ys5bznni",
+            "11059379.9642"
+        ]
+    ],
+    "text": "[[\"core.vaulta\",\"1035816036.0540\"],[\"eosio\",\"469320647.0673\"],[\"eosio.rex\",\"273740418.5797\"],[\"eosio.stake\",\"109961016.8048\"],[\"aslkggpoerss\",\"29705844.7001\"],[\"kjhbgvcfghfd\",\"27249789.7943\"],[\"eosio.ram\",\"23933530.1365\"],[\"vcxydi5dfufx\",\"15874425.2354\"],[\"ixhu2a4twcnu\",\"11526480.4604\"],[\"csg2ys5bznni\",\"11059379.9642\"]]"
+}

@@ -1,0 +1,12 @@
+{
+    "request": {
+        "path": "https://eos.light-api.net/api/holdercount/eos/eosio.token/EOS",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": 1653061,
+    "text": "1653061"
+}

@@ -25,16 +25,21 @@ export interface WebUIOptions {
     closeOnEscape?: boolean
     zIndex?: number
     logging?: boolean
+    minimal?: boolean
 }
 
 export const defaultOptions: Required<
-    Pick<WebUIOptions, 'theme' | 'closeOnOverlayClick' | 'closeOnEscape' | 'zIndex' | 'logging'>
+    Pick<
+        WebUIOptions,
+        'theme' | 'closeOnOverlayClick' | 'closeOnEscape' | 'zIndex' | 'logging' | 'minimal'
+    >
 > = {
     theme: 'auto',
     closeOnOverlayClick: true,
     closeOnEscape: true,
     zIndex: 999999,
     logging: false,
+    minimal: false,
 }
 
 export type WebUIView =

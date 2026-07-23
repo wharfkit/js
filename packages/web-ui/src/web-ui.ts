@@ -37,7 +37,10 @@ export class WebUI implements UserInterface {
     static version = '__ver'
 
     private options: Required<
-        Pick<WebUIOptions, 'theme' | 'closeOnOverlayClick' | 'closeOnEscape' | 'zIndex' | 'logging'>
+        Pick<
+            WebUIOptions,
+            'theme' | 'closeOnOverlayClick' | 'closeOnEscape' | 'zIndex' | 'logging' | 'minimal'
+        >
     > &
         WebUIOptions
     private element: HTMLElement | undefined
@@ -55,6 +58,7 @@ export class WebUI implements UserInterface {
         if (options.theme) themeState.theme = options.theme
         if (options.appearance) themeState.appearance = options.appearance
         if (options.appName) uiState.appName = options.appName
+        uiState.minimal = this.options.minimal
 
         if (typeof document !== 'undefined') {
             this.initialize()
@@ -191,11 +195,20 @@ export class WebUI implements UserInterface {
         if (context.appName) uiState.appName = context.appName
         uiState.view = 'login'
         this.show()
-        return this.setPending<UserInterfaceLoginResponse>()
+        const response = await this.setPending<UserInterfaceLoginResponse>()
+        if (uiState.minimal) {
+            this.hide()
+        }
+        return response
     }
 
     async onError(error: Error): Promise<void> {
         this.log('onError', error)
+        if (uiState.minimal) {
+            this.hide()
+            uiState.reset()
+            return
+        }
         const {message, details} = humanizeError(error)
         uiState.view = 'error'
         uiState.errorMessage = message
@@ -240,6 +253,7 @@ export class WebUI implements UserInterface {
             // Non-minimal: hold the success state until the user taps Done.
             uiState.transactStage = 'complete'
         } else {
+            this.hide()
             uiState.reset()
         }
     }
@@ -266,11 +280,14 @@ export class WebUI implements UserInterface {
 
     prompt(args: PromptArgs): Cancelable<PromptResponse> {
         this.log('prompt', args)
-        uiState.view = 'prompt'
-        uiState.promptTitle = args.title || 'Confirm'
-        uiState.promptBody = args.body || ''
-        uiState.promptElements = args.elements || []
-        this.show()
+        // Minimal mode leaves optional prompts to the host app; required ones still render.
+        if (!uiState.minimal || !args.optional) {
+            uiState.view = 'prompt'
+            uiState.promptTitle = args.title || 'Confirm'
+            uiState.promptBody = args.body || ''
+            uiState.promptElements = args.elements || []
+            this.show()
+        }
 
         return cancelable(this.setPending<PromptResponse>(), () => {
             this.handleCancel()

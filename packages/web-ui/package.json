@@ -1,6 +1,6 @@
 {
     "name": "@wharfkit/web-ui",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Modern embedded UI renderer for WharfKit SessionKit",
     "type": "module",
     "license": "BSD-3-Clause",

@@ -1,5 +1,6 @@
 node_modules/
-lib/
+/lib/
 coverage/
 .DS_Store
 *.log
+src/locales/.wuchale/

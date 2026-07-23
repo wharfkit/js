@@ -6,7 +6,14 @@
         "useIgnoreFile": true
     },
     "files": {
-        "includes": ["src/**/*.ts", "dev/**/*.ts", "test/**/*.ts", "*.ts", "*.json"]
+        "includes": [
+            "src/**/*.ts",
+            "!src/lib/qrcode",
+            "dev/**/*.ts",
+            "test/**/*.ts",
+            "*.ts",
+            "*.json"
+        ]
     },
     "assist": {
         "enabled": false

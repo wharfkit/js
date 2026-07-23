@@ -3,7 +3,56 @@ import {svelte} from '@sveltejs/vite-plugin-svelte'
 import dts from 'vite-plugin-dts'
 import net from 'node:net'
 import {readFile, writeFile} from 'node:fs/promises'
-import {resolve} from 'node:path'
+import {dirname, resolve} from 'node:path'
+import ts from 'typescript'
+
+// Splice below only handles string-literal unions; a reference to another named type would go unresolved.
+function assertLiteralUnionOnly(node: ts.TypeNode, name: string, sourceFile: string): void {
+    const isStringLiteral = (n: ts.TypeNode) =>
+        ts.isLiteralTypeNode(n) && ts.isStringLiteral(n.literal)
+    const members = ts.isUnionTypeNode(node) ? node.types : [node]
+    if (!members.every(isStringLiteral)) {
+        throw new Error(
+            `extractTypeAliasText: '${name}' in ${sourceFile} is no longer a plain string-literal ` +
+                `union; the textual splice cannot resolve references to other named types. Update ` +
+                `extractTypeAliasText (or the build pipeline) before shipping.`
+        )
+    }
+}
+
+// api-extractor's rollup drops pure re-exported types and strips `export` from survivors; patch both after rollup.
+function extractTypeAliasText(sourceText: string, sourceFile: string, name: string): string {
+    const source = ts.createSourceFile(sourceFile, sourceText, ts.ScriptTarget.Latest, true)
+    for (const statement of source.statements) {
+        if (ts.isTypeAliasDeclaration(statement) && statement.name.text === name) {
+            assertLiteralUnionOnly(statement.type, name, sourceFile)
+            const text = statement.getFullText(source).trim()
+            return text.startsWith('export ') ? text : `export ${text}`
+        }
+    }
+    throw new Error(`Could not find type alias '${name}' in ${sourceFile}`)
+}
+
+// api-extractor's rollup silently drops pure type-only re-exports; collect them all so they can be re-added.
+function collectTypeReexports(
+    sourceText: string,
+    sourceFile: string
+): {name: string; module: string}[] {
+    const source = ts.createSourceFile(sourceFile, sourceText, ts.ScriptTarget.Latest, true)
+    const result: {name: string; module: string}[] = []
+    for (const statement of source.statements) {
+        if (!ts.isExportDeclaration(statement) || !statement.moduleSpecifier) continue
+        if (!ts.isStringLiteral(statement.moduleSpecifier)) continue
+        const module = statement.moduleSpecifier.text
+        if (!statement.exportClause || !ts.isNamedExports(statement.exportClause)) continue
+        for (const element of statement.exportClause.elements) {
+            const isTypeOnly = statement.isTypeOnly || element.isTypeOnly
+            if (!isTypeOnly) continue
+            result.push({name: element.name.text, module})
+        }
+    }
+    return result
+}
 
 function isPortFree(port: number): Promise<boolean> {
     return new Promise((resolve) => {
@@ -51,13 +100,37 @@ export default defineConfig(async ({mode}) => {
                 rollupTypes: true,
                 outDir: 'lib',
                 entryRoot: 'src',
-                // api-extractor drops the aliased default export; re-add it
                 afterBuild: async () => {
                     const file = resolve(process.cwd(), 'lib/web-ui.d.ts')
-                    const dts = await readFile(file, 'utf8')
-                    if (!/export default WebUI/.test(dts)) {
-                        await writeFile(file, `${dts}\nexport default WebUI\n`)
+                    let dts = await readFile(file, 'utf8')
+
+                    dts = dts.replace(
+                        /^declare (type|interface|const|let|var|function|class|enum) /gm,
+                        'export declare $1 '
+                    )
+
+                    const indexFile = resolve(process.cwd(), 'src/index.ts')
+                    const indexSource = await readFile(indexFile, 'utf8')
+                    for (const {name, module} of collectTypeReexports(indexSource, indexFile)) {
+                        if (new RegExp(`\\b${name}\\b`).test(dts)) continue
+                        if (module.startsWith('.')) {
+                            const localFile = resolve(
+                                dirname(indexFile),
+                                module.replace(/\.js$/, '.ts')
+                            )
+                            const localSource = await readFile(localFile, 'utf8')
+                            dts += `\n${extractTypeAliasText(localSource, localFile, name)}\n`
+                        } else {
+                            dts += `\nexport type {${name}} from '${module}'\n`
+                        }
                     }
+
+                    // api-extractor drops the aliased default export; re-add it
+                    if (!/export default WebUI/.test(dts)) {
+                        dts += '\nexport default WebUI\n'
+                    }
+
+                    await writeFile(file, dts)
                 },
             }),
         ],

@@ -1,0 +1,69 @@
+:host {
+    color-scheme: light;
+
+    --web-ui-bg: oklch(0.995 0.002 75);
+    --web-ui-surface: oklch(0.97 0.003 75);
+    --web-ui-text: oklch(0.22 0.008 75);
+    --web-ui-text-secondary: oklch(0.52 0.006 75);
+    --web-ui-border: oklch(0.90 0.004 75);
+    --web-ui-backdrop: oklch(0.22 0.008 75 / 0.35);
+    --web-ui-shadow: 0 10px 30px -12px oklch(0.22 0.008 75 / 0.18);
+    --web-ui-success: oklch(0.62 0.11 155);
+    --web-ui-error: oklch(0.58 0.15 28);
+    --web-ui-warning: oklch(0.72 0.14 70);
+
+    --web-ui-accent: oklch(0.22 0.008 75);
+    --web-ui-accent-hover: oklch(0.32 0.008 75);
+    --web-ui-accent-text: oklch(0.995 0.002 75);
+    --web-ui-ring: oklch(0.22 0.008 75);
+
+    --web-ui-radius: 12px;
+    --web-ui-radius-sm: 8px;
+    --web-ui-radius-xs: 4px;
+    --web-ui-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI Variable',
+        'Segoe UI', Roboto, sans-serif;
+    --web-ui-font-mono: ui-monospace, 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+    --web-ui-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+    font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-color-scheme: dark) {
+    :host(:not([data-theme='light'])) {
+        color-scheme: dark;
+        --web-ui-bg: oklch(0.18 0.006 75);
+        --web-ui-surface: oklch(0.22 0.008 75);
+        --web-ui-text: oklch(0.95 0.003 75);
+        --web-ui-text-secondary: oklch(0.66 0.006 75);
+        --web-ui-border: oklch(0.28 0.008 75);
+        --web-ui-backdrop: oklch(0.10 0.005 75 / 0.55);
+        --web-ui-shadow: 0 10px 30px -12px oklch(0 0 0 / 0.5);
+        --web-ui-success: oklch(0.70 0.11 155);
+        --web-ui-error: oklch(0.66 0.15 28);
+        --web-ui-warning: oklch(0.78 0.13 70);
+
+        --web-ui-accent: oklch(0.95 0.003 75);
+        --web-ui-accent-hover: oklch(0.85 0.003 75);
+        --web-ui-accent-text: oklch(0.18 0.006 75);
+        --web-ui-ring: oklch(0.95 0.003 75);
+    }
+}
+
+:host([data-theme='dark']) {
+    color-scheme: dark;
+    --web-ui-bg: oklch(0.18 0.006 75);
+    --web-ui-surface: oklch(0.22 0.008 75);
+    --web-ui-text: oklch(0.95 0.003 75);
+    --web-ui-text-secondary: oklch(0.66 0.006 75);
+    --web-ui-border: oklch(0.28 0.008 75);
+    --web-ui-backdrop: oklch(0.10 0.005 75 / 0.55);
+    --web-ui-shadow: 0 10px 30px -12px oklch(0 0 0 / 0.5);
+    --web-ui-success: oklch(0.70 0.11 155);
+    --web-ui-error: oklch(0.66 0.15 28);
+    --web-ui-warning: oklch(0.78 0.13 70);
+
+    --web-ui-accent: oklch(0.95 0.003 75);
+    --web-ui-accent-hover: oklch(0.85 0.003 75);
+    --web-ui-accent-text: oklch(0.18 0.006 75);
+    --web-ui-ring: oklch(0.95 0.003 75);
+}

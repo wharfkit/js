@@ -1,5 +1,6 @@
 import {defineConfig} from 'vite'
 import {svelte} from '@sveltejs/vite-plugin-svelte'
+import {wuchale} from '@wuchale/vite-plugin'
 import dts from 'vite-plugin-dts'
 import net from 'node:net'
 import {readFile, writeFile} from 'node:fs/promises'
@@ -76,6 +77,7 @@ export default defineConfig(async ({mode}) => {
         return {
             root: 'dev',
             plugins: [
+                wuchale(),
                 svelte({
                     compilerOptions: {
                         css: 'injected',
@@ -91,6 +93,7 @@ export default defineConfig(async ({mode}) => {
 
     return {
         plugins: [
+            wuchale(),
             svelte({
                 compilerOptions: {
                     css: 'injected',

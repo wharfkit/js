@@ -21,6 +21,7 @@ export interface WebUIOptions {
     appearance?: WebUIAppearance
     appName?: string
     appLogo?: string
+    locale?: string
     closeOnOverlayClick?: boolean
     closeOnEscape?: boolean
     zIndex?: number

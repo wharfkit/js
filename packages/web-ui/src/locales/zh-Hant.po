@@ -1,0 +1,323 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: zh-Hant\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/lib/errors.ts
+msgid "Something went wrong."
+msgstr "發生錯誤。"
+
+#: src/lib/errors.ts
+msgid "The request was cancelled."
+msgstr "請求已取消。"
+
+#: src/lib/errors.ts
+msgid "Couldn't reach the network. Check your connection and try again."
+msgstr "無法連線至網路。請檢查您的連線，然後再試一次。"
+
+#: src/lib/errors.ts
+msgid "The transaction expired before it completed. Please try again."
+msgstr "交易在完成前已逾時。請再試一次。"
+
+#: src/lib/errors.ts
+msgid "Your account needs more network resources (CPU, NET, or RAM) to complete this."
+msgstr "您的帳戶需要更多網路資源（CPU、NET 或 RAM）才能完成此操作。"
+
+#: src/lib/errors.ts
+msgid "Insufficient balance to complete this transaction."
+msgstr "餘額不足，無法完成此交易。"
+
+#: src/lib/errors.ts
+msgid "The transaction could not be completed."
+msgstr "無法完成交易。"
+
+#: src/ui/components/ErrorView.svelte
+msgid "Error"
+msgstr "錯誤"
+
+#: src/ui/components/ErrorView.svelte
+msgid "Hide technical details"
+msgstr "隱藏技術詳細資訊"
+
+#: src/ui/components/ErrorView.svelte
+msgid "Show technical details"
+msgstr "顯示技術詳細資訊"
+
+#: src/ui/components/ErrorView.svelte
+#: src/ui/components/Header.svelte
+msgid "Close"
+msgstr "關閉"
+
+#: src/ui/components/ErrorView.svelte
+msgid "Retry"
+msgstr "重試"
+
+#: src/ui/components/Modal.svelte
+msgid "Escape"
+msgstr "離開"
+
+#: src/ui/components/Modal.svelte
+msgid "Tab"
+msgstr "分頁"
+
+#. 0: uiState.appName
+#: src/ui/views/Login.svelte
+msgid "Connect to {0}"
+msgstr "連線至 {0}"
+
+#: src/ui/views/Login.svelte
+msgid "Connect Wallet"
+msgstr "連接錢包"
+
+#: src/ui/views/Login.svelte
+msgid "Select a wallet to continue"
+msgstr "選擇錢包以繼續"
+
+#: src/ui/views/Login.svelte
+msgid "Loading wallets..."
+msgstr "正在載入錢包…"
+
+#. 0: i + 1
+#: src/ui/views/Login.svelte
+msgid "Wallet {0}"
+msgstr "錢包 {0}"
+
+#. 0: origin
+#: src/ui/views/Login.svelte
+msgid "Requested by {0}"
+msgstr "由 {0} 請求"
+
+#: src/ui/views/Prompt.svelte
+msgid "Waiting for response…"
+msgstr "等待回應…"
+
+#: src/ui/views/Prompt.svelte
+#: src/ui/views/SessionKeyConflict.svelte
+msgid "Cancel"
+msgstr "取消"
+
+#: src/ui/views/Prompt.svelte
+msgid "Confirm"
+msgstr "確認"
+
+#: src/ui/views/SessionKeyConflict.svelte
+#: src/ui/views/SessionKeyMismatch.svelte
+#: src/ui/views/SessionKeyRemove.svelte
+msgid "Permission Request"
+msgstr "權限請求"
+
+#: src/ui/views/SessionKeyConflict.svelte
+msgid "already has permissions on <0/>."
+msgstr "已在 <0/> 上擁有權限。"
+
+#: src/ui/views/SessionKeyConflict.svelte
+msgid "Add this device"
+msgstr "新增此裝置"
+
+#: src/ui/views/SessionKeyConflict.svelte
+msgid "All devices will continue to work"
+msgstr "所有裝置將繼續運作"
+
+#: src/ui/views/SessionKeyConflict.svelte
+msgid "Only use this device"
+msgstr "僅使用此裝置"
+
+#: src/ui/views/SessionKeyConflict.svelte
+msgid "Other devices will stop working"
+msgstr "其他裝置將停止運作"
+
+#. 0: uiState.skAppName
+#: src/ui/views/SessionKeyConflict.svelte
+msgid "This only affects {0}. Your wallet still works everywhere."
+msgstr "這只會影響 {0}。您的錢包仍可在任何地方使用。"
+
+#: src/ui/views/SessionKeyConflict.svelte
+msgid "Continue"
+msgstr "繼續"
+
+#. 0: uiState.skAppName
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Allow {0} to act for you?"
+msgstr "允許 {0} 代您執行操作嗎？"
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Allow this app to act for you?"
+msgstr "允許此應用程式代您執行操作嗎？"
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Can move tokens from your account"
+msgstr "可以從您的帳戶轉移代幣"
+
+#. 0: uiState.skAppName
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "{0} can run these actions without asking your wallet each time, until you remove it."
+msgstr "在您移除前，{0} 可以無需每次詢問您的錢包，執行這些操作。"
+
+#. 0: permissionCount; 1: permissionCount !== 1 ? 's' : ''; 2: contractCount; 3: contractCount !== 1 ? 's' : ''
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "{0} permission{1} on {2} contract{3}"
+msgstr "{0} 個權限{1}，涉及 {2} 份合約{3}"
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Hide details"
+msgstr "隱藏詳細資訊"
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Show details"
+msgstr "顯示詳細資訊"
+
+#. 0: uiState.skAppName
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "If approved, {0} can perform these actions without wallet approval:"
+msgstr "如果獲准，{0} 可以在無需錢包核准的情況下執行這些操作："
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Full access, including future actions"
+msgstr "完整存取權，包括未來的操作"
+
+#. 0: group.contract
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Full access to {0}, including future actions"
+msgstr "完整存取 {0} 的權限，包括未來的操作"
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Any other action will still require wallet approval."
+msgstr "任何其他操作仍需要錢包核准。"
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "What's a session key?"
+msgstr "什麼是工作階段金鑰？"
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "A session key lets this app sign the actions listed above for you, using a key stored in this browser that you can remove at any time. It can't sign anything else."
+msgstr "工作階段金鑰可讓此應用程式使用儲存在此瀏覽器中的金鑰，代您簽署上方列出的操作；您隨時可以移除該金鑰。它無法簽署其他任何內容。"
+
+#. 0: uiState.skAppName
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "{0} works without this. You'll just approve each action individually instead."
+msgstr "{0} 不使用此功能也能運作。您只需改為逐一核准每個操作。"
+
+#: src/ui/views/SessionKeyConsent.svelte
+#: src/ui/views/SessionKeyMismatch.svelte
+msgid "Not Now"
+msgstr "現在不要"
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Allow"
+msgstr "允許"
+
+#: src/ui/views/SessionKeyRemove.svelte
+msgid "has active permissions on this device."
+msgstr "在此裝置上擁有有效權限。"
+
+#: src/ui/views/SessionKeyRemove.svelte
+msgid "Your wallet will ask you to sign a transaction to remove this permission."
+msgstr "您的錢包會要求您簽署一筆交易，以移除此權限。"
+
+#: src/ui/views/SessionKeyRemove.svelte
+msgid "Log Out Only"
+msgstr "僅登出"
+
+#: src/ui/views/SessionKeyRemove.svelte
+msgid "Remove and Log Out"
+msgstr "移除並登出"
+
+#. 0: entry.contract
+#: src/ui/views/SessionKeyMismatch.svelte
+msgid "All actions ({0})"
+msgstr "所有操作（{0}）"
+
+#: src/ui/views/SessionKeyMismatch.svelte
+msgid "needs updated permissions."
+msgstr "需要更新權限。"
+
+#: src/ui/views/SessionKeyMismatch.svelte
+msgid "New permissions:"
+msgstr "新權限："
+
+#: src/ui/views/SessionKeyMismatch.svelte
+msgid "Permissions no longer needed:"
+msgstr "不再需要的權限："
+
+#: src/ui/views/SessionKeyMismatch.svelte
+msgid "Update"
+msgstr "更新"
+
+#: src/ui/views/Transact.svelte
+msgid "Preparing transaction"
+msgstr "正在準備交易"
+
+#: src/ui/views/Transact.svelte
+msgid "Awaiting signature"
+msgstr "等待簽署"
+
+#: src/ui/views/Transact.svelte
+msgid "Signed"
+msgstr "已簽署"
+
+#: src/ui/views/Transact.svelte
+msgid "Broadcasting"
+msgstr "廣播中"
+
+#: src/ui/views/Transact.svelte
+msgid "Confirming"
+msgstr "確認中"
+
+#: src/ui/views/Transact.svelte
+msgid "Transaction complete"
+msgstr "交易完成"
+
+#: src/ui/views/Transact.svelte
+msgid "Processing"
+msgstr "處理中"
+
+#: src/ui/views/Transact.svelte
+msgid "Transaction"
+msgstr "交易"
+
+#. 0: uiState.chainName
+#: src/ui/views/Transact.svelte
+msgid "Confirmed on {0}"
+msgstr "已在 {0} 上確認"
+
+#: src/ui/views/Transact.svelte
+msgid "Network"
+msgstr "網路"
+
+#: src/ui/views/Transact.svelte
+msgid "Account"
+msgstr "帳戶"
+
+#: src/ui/views/Transact.svelte
+msgid "Elapsed"
+msgstr "經過時間"
+
+#. 0: elapsed
+#: src/ui/views/Transact.svelte
+msgid "{0}s"
+msgstr "{0} 秒"
+
+#: src/ui/views/Transact.svelte
+msgid "Done"
+msgstr "完成"
+
+#: src/ui/components/prompt/PromptAccept.svelte
+msgid "Decline"
+msgstr "拒絕"
+
+#: src/ui/components/prompt/PromptAccept.svelte
+msgid "Accept"
+msgstr "接受"
+
+#: src/ui/components/prompt/PromptQr.svelte
+msgid "QR code unavailable. Use the link below to continue."
+msgstr "QR 碼無法使用。請使用下方連結繼續。"
+
+#: src/ui/components/prompt/PromptLink.svelte
+#: src/ui/components/prompt/PromptLink.svelte
+msgid "Open Link"
+msgstr "開啟連結"

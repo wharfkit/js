@@ -1,0 +1,323 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/lib/errors.ts
+msgid "Something went wrong."
+msgstr "문제가 발생했습니다."
+
+#: src/lib/errors.ts
+msgid "The request was cancelled."
+msgstr "요청이 취소되었습니다."
+
+#: src/lib/errors.ts
+msgid "Couldn't reach the network. Check your connection and try again."
+msgstr "네트워크에 연결할 수 없습니다. 연결 상태를 확인한 후 다시 시도하세요."
+
+#: src/lib/errors.ts
+msgid "The transaction expired before it completed. Please try again."
+msgstr "거래가 완료되기 전에 만료되었습니다. 다시 시도하세요."
+
+#: src/lib/errors.ts
+msgid "Your account needs more network resources (CPU, NET, or RAM) to complete this."
+msgstr "이 작업을 완료하려면 계정에 더 많은 네트워크 리소스(CPU, NET 또는 RAM)가 필요합니다."
+
+#: src/lib/errors.ts
+msgid "Insufficient balance to complete this transaction."
+msgstr "이 거래를 완료하기에 잔액이 부족합니다."
+
+#: src/lib/errors.ts
+msgid "The transaction could not be completed."
+msgstr "거래를 완료할 수 없습니다."
+
+#: src/ui/components/ErrorView.svelte
+msgid "Error"
+msgstr "오류"
+
+#: src/ui/components/ErrorView.svelte
+msgid "Hide technical details"
+msgstr "기술 세부 정보 숨기기"
+
+#: src/ui/components/ErrorView.svelte
+msgid "Show technical details"
+msgstr "기술 세부 정보 표시"
+
+#: src/ui/components/ErrorView.svelte
+#: src/ui/components/Header.svelte
+msgid "Close"
+msgstr "닫기"
+
+#: src/ui/components/ErrorView.svelte
+msgid "Retry"
+msgstr "다시 시도"
+
+#: src/ui/components/Modal.svelte
+msgid "Escape"
+msgstr "닫기"
+
+#: src/ui/components/Modal.svelte
+msgid "Tab"
+msgstr "탭"
+
+#. 0: uiState.appName
+#: src/ui/views/Login.svelte
+msgid "Connect to {0}"
+msgstr "{0}에 연결"
+
+#: src/ui/views/Login.svelte
+msgid "Connect Wallet"
+msgstr "지갑 연결"
+
+#: src/ui/views/Login.svelte
+msgid "Select a wallet to continue"
+msgstr "계속하려면 지갑을 선택하세요"
+
+#: src/ui/views/Login.svelte
+msgid "Loading wallets..."
+msgstr "지갑 로딩 중..."
+
+#. 0: i + 1
+#: src/ui/views/Login.svelte
+msgid "Wallet {0}"
+msgstr "지갑 {0}"
+
+#. 0: origin
+#: src/ui/views/Login.svelte
+msgid "Requested by {0}"
+msgstr "{0}에서 요청함"
+
+#: src/ui/views/Prompt.svelte
+msgid "Waiting for response…"
+msgstr "응답 대기 중…"
+
+#: src/ui/views/Prompt.svelte
+#: src/ui/views/SessionKeyConflict.svelte
+msgid "Cancel"
+msgstr "취소"
+
+#: src/ui/views/Prompt.svelte
+msgid "Confirm"
+msgstr "확인"
+
+#: src/ui/views/SessionKeyConflict.svelte
+#: src/ui/views/SessionKeyMismatch.svelte
+#: src/ui/views/SessionKeyRemove.svelte
+msgid "Permission Request"
+msgstr "권한 요청"
+
+#: src/ui/views/SessionKeyConflict.svelte
+msgid "already has permissions on <0/>."
+msgstr "이미 <0/>에 대한 권한이 있습니다."
+
+#: src/ui/views/SessionKeyConflict.svelte
+msgid "Add this device"
+msgstr "이 기기 추가"
+
+#: src/ui/views/SessionKeyConflict.svelte
+msgid "All devices will continue to work"
+msgstr "모든 기기가 계속 작동합니다"
+
+#: src/ui/views/SessionKeyConflict.svelte
+msgid "Only use this device"
+msgstr "이 기기만 사용"
+
+#: src/ui/views/SessionKeyConflict.svelte
+msgid "Other devices will stop working"
+msgstr "다른 기기는 작동을 멈춥니다"
+
+#. 0: uiState.skAppName
+#: src/ui/views/SessionKeyConflict.svelte
+msgid "This only affects {0}. Your wallet still works everywhere."
+msgstr "이는 {0}에만 영향을 줍니다. 지갑은 계속 어디서나 작동합니다."
+
+#: src/ui/views/SessionKeyConflict.svelte
+msgid "Continue"
+msgstr "계속"
+
+#. 0: uiState.skAppName
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Allow {0} to act for you?"
+msgstr "{0}이(가) 대신 작업하도록 허용하시겠습니까?"
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Allow this app to act for you?"
+msgstr "이 앱이 대신 작업하도록 허용하시겠습니까?"
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Can move tokens from your account"
+msgstr "계정에서 토큰을 이동할 수 있음"
+
+#. 0: uiState.skAppName
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "{0} can run these actions without asking your wallet each time, until you remove it."
+msgstr "{0}은(는) 삭제할 때까지 매번 지갑에 요청하지 않고 이러한 작업을 실행할 수 있습니다."
+
+#. 0: permissionCount; 1: permissionCount !== 1 ? 's' : ''; 2: contractCount; 3: contractCount !== 1 ? 's' : ''
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "{0} permission{1} on {2} contract{3}"
+msgstr "권한 {0}개{1}, 컨트랙트 {2}개{3}"
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Hide details"
+msgstr "세부 정보 숨기기"
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Show details"
+msgstr "세부 정보 표시"
+
+#. 0: uiState.skAppName
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "If approved, {0} can perform these actions without wallet approval:"
+msgstr "승인하면 {0}이(가) 지갑 승인 없이 다음 작업을 수행할 수 있습니다:"
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Full access, including future actions"
+msgstr "향후 작업을 포함한 모든 권한"
+
+#. 0: group.contract
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Full access to {0}, including future actions"
+msgstr "향후 작업을 포함한 {0}에 대한 모든 권한"
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Any other action will still require wallet approval."
+msgstr "그 외의 작업은 계속 지갑 승인이 필요합니다."
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "What's a session key?"
+msgstr "세션 키란 무엇인가요?"
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "A session key lets this app sign the actions listed above for you, using a key stored in this browser that you can remove at any time. It can't sign anything else."
+msgstr "세션 키를 사용하면 이 앱이 위에 나열된 작업을 대신 서명할 수 있습니다. 키는 이 브라우저에 저장되며 언제든지 삭제할 수 있습니다. 그 외의 작업에는 서명할 수 없습니다."
+
+#. 0: uiState.skAppName
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "{0} works without this. You'll just approve each action individually instead."
+msgstr "{0} 없이도 사용할 수 있습니다. 대신 각 작업을 개별적으로 승인하면 됩니다."
+
+#: src/ui/views/SessionKeyConsent.svelte
+#: src/ui/views/SessionKeyMismatch.svelte
+msgid "Not Now"
+msgstr "나중에"
+
+#: src/ui/views/SessionKeyConsent.svelte
+msgid "Allow"
+msgstr "허용"
+
+#: src/ui/views/SessionKeyRemove.svelte
+msgid "has active permissions on this device."
+msgstr "이 기기에 활성 권한이 있습니다."
+
+#: src/ui/views/SessionKeyRemove.svelte
+msgid "Your wallet will ask you to sign a transaction to remove this permission."
+msgstr "지갑에서 이 권한을 제거하기 위한 트랜잭션 서명을 요청합니다."
+
+#: src/ui/views/SessionKeyRemove.svelte
+msgid "Log Out Only"
+msgstr "로그아웃만"
+
+#: src/ui/views/SessionKeyRemove.svelte
+msgid "Remove and Log Out"
+msgstr "제거하고 로그아웃"
+
+#. 0: entry.contract
+#: src/ui/views/SessionKeyMismatch.svelte
+msgid "All actions ({0})"
+msgstr "모든 작업 ({0})"
+
+#: src/ui/views/SessionKeyMismatch.svelte
+msgid "needs updated permissions."
+msgstr "업데이트된 권한이 필요합니다."
+
+#: src/ui/views/SessionKeyMismatch.svelte
+msgid "New permissions:"
+msgstr "새 권한:"
+
+#: src/ui/views/SessionKeyMismatch.svelte
+msgid "Permissions no longer needed:"
+msgstr "더 이상 필요하지 않은 권한:"
+
+#: src/ui/views/SessionKeyMismatch.svelte
+msgid "Update"
+msgstr "업데이트"
+
+#: src/ui/views/Transact.svelte
+msgid "Preparing transaction"
+msgstr "거래 준비 중"
+
+#: src/ui/views/Transact.svelte
+msgid "Awaiting signature"
+msgstr "서명 대기 중"
+
+#: src/ui/views/Transact.svelte
+msgid "Signed"
+msgstr "서명 완료"
+
+#: src/ui/views/Transact.svelte
+msgid "Broadcasting"
+msgstr "브로드캐스트 중"
+
+#: src/ui/views/Transact.svelte
+msgid "Confirming"
+msgstr "확인 중"
+
+#: src/ui/views/Transact.svelte
+msgid "Transaction complete"
+msgstr "거래 완료"
+
+#: src/ui/views/Transact.svelte
+msgid "Processing"
+msgstr "처리 중"
+
+#: src/ui/views/Transact.svelte
+msgid "Transaction"
+msgstr "거래"
+
+#. 0: uiState.chainName
+#: src/ui/views/Transact.svelte
+msgid "Confirmed on {0}"
+msgstr "{0}에서 확인됨"
+
+#: src/ui/views/Transact.svelte
+msgid "Network"
+msgstr "네트워크"
+
+#: src/ui/views/Transact.svelte
+msgid "Account"
+msgstr "계정"
+
+#: src/ui/views/Transact.svelte
+msgid "Elapsed"
+msgstr "경과 시간"
+
+#. 0: elapsed
+#: src/ui/views/Transact.svelte
+msgid "{0}s"
+msgstr "{0}초"
+
+#: src/ui/views/Transact.svelte
+msgid "Done"
+msgstr "완료"
+
+#: src/ui/components/prompt/PromptAccept.svelte
+msgid "Decline"
+msgstr "거절"
+
+#: src/ui/components/prompt/PromptAccept.svelte
+msgid "Accept"
+msgstr "수락"
+
+#: src/ui/components/prompt/PromptQr.svelte
+msgid "QR code unavailable. Use the link below to continue."
+msgstr "QR 코드를 사용할 수 없습니다. 계속하려면 아래 링크를 사용하세요."
+
+#: src/ui/components/prompt/PromptLink.svelte
+#: src/ui/components/prompt/PromptLink.svelte
+msgid "Open Link"
+msgstr "링크 열기"

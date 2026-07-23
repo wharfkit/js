@@ -26,6 +26,11 @@ import {themeState} from './ui/stores/theme.svelte.js'
 import type {WebUIOptions} from './types.js'
 import {defaultOptions} from './types.js'
 import tokensCSS from './ui/styles/tokens.css?inline'
+import type {SupportedLocale} from './lib/locale.js'
+import {detectLocale, normalizeLocale, sourceLocale} from './lib/locale.js'
+import {PluginCatalog} from './lib/plugin-catalog.js'
+import {setLocale as setMainLocale} from './locales/main.loader.svelte.js'
+import {setLocale as setErrorsLocale} from './locales/js.loader.js'
 
 type Pending<T = unknown> = {
     resolve: (value: T) => void
@@ -51,6 +56,8 @@ export class WebUI implements UserInterface {
     private pending: Pending | null = null
     private hideTimer: ReturnType<typeof setTimeout> | null = null
     private domReadyHandler: (() => void) | null = null
+    private catalog = new PluginCatalog()
+    private locale: SupportedLocale = sourceLocale
 
     constructor(options: WebUIOptions = {}) {
         this.options = {...defaultOptions, ...options}
@@ -59,6 +66,17 @@ export class WebUI implements UserInterface {
         if (options.appearance) themeState.appearance = options.appearance
         if (options.appName) uiState.appName = options.appName
         uiState.minimal = this.options.minimal
+
+        if (options.locale === undefined) {
+            this.locale = detectLocale()
+        } else {
+            const requested = normalizeLocale(options.locale)
+            this.locale = requested ?? sourceLocale
+            if (!requested) {
+                this.log(`Unsupported locale "${options.locale}", falling back to ${this.locale}`)
+            }
+        }
+        this.applyLocale()
 
         if (typeof document !== 'undefined') {
             this.initialize()
@@ -334,16 +352,32 @@ export class WebUI implements UserInterface {
         this.log('status', message)
     }
 
-    translate(key: string, options?: UserInterfaceTranslateOptions, _namespace?: string): string {
-        return options?.default ?? key
+    translate(key: string, options?: UserInterfaceTranslateOptions, namespace?: string): string {
+        return this.catalog.translate(this.locale, key, options, namespace)
     }
 
     getTranslate(namespace?: string): UserInterfaceTranslateFunction {
         return (key, options) => this.translate(key, options, namespace)
     }
 
-    addTranslations(_translations: LocaleDefinitions): void {
-        this.log('addTranslations')
+    addTranslations(translations: LocaleDefinitions): void {
+        this.catalog.merge(translations)
+    }
+
+    setLocale(tag: string): void {
+        this.locale = normalizeLocale(tag) ?? sourceLocale
+        this.applyLocale()
+        this.log('setLocale', this.locale)
+    }
+
+    // Every wuchale adapter holds its own locale state; all of them must be driven.
+    private applyLocale() {
+        setMainLocale(this.locale)
+        setErrorsLocale(this.locale)
+    }
+
+    getLocale(): SupportedLocale {
+        return this.locale
     }
 
     getMinimal(): boolean {

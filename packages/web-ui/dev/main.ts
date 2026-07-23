@@ -1,8 +1,9 @@
-import SessionKit, {Chains} from '@wharfkit/session'
+import SessionKit, {Chains, getPluginTranslations} from '@wharfkit/session'
 import {WalletPluginAnchor} from '@wharfkit/wallet-plugin-anchor'
 import {WalletPluginWebAuthenticator} from '@wharfkit/wallet-plugin-web-authenticator'
 import {WalletPluginMetaMask} from '@wharfkit/wallet-plugin-metamask'
 import {WalletPluginPrivateKey} from '@wharfkit/wallet-plugin-privatekey'
+import {TransactPluginResourceProvider} from '@wharfkit/transact-plugin-resource-provider'
 import {WebUI} from '../src/index'
 
 const logEl = document.getElementById('log')!
@@ -20,13 +21,20 @@ const webUI = new WebUI({
     theme: 'auto',
 })
 
+// Register real plugin catalogs (as SessionKit does) so the mock prompts below localize.
+const anchorPlugin = new WalletPluginAnchor()
+const resourceProviderPlugin = new TransactPluginResourceProvider()
+for (const plugin of [anchorPlugin, resourceProviderPlugin]) {
+    webUI.addTranslations(getPluginTranslations(plugin))
+}
+
 const sessionKit = new SessionKit(
     {
         appName: 'WebUI Dev',
         chains: [Chains.Jungle4],
         ui: webUI,
         walletPlugins: [
-            new WalletPluginAnchor(),
+            anchorPlugin,
             new WalletPluginWebAuthenticator({
                 urls: {
                     '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d':
@@ -244,14 +252,19 @@ document.getElementById('btn-mock-error')!.addEventListener('click', async () =>
 
 document.getElementById('btn-prompt-fee')!.addEventListener('click', () => {
     log('Prompt: Resource fee...')
+    const t = webUI.getTranslate(resourceProviderPlugin.id)
     const result = webUI.prompt({
-        title: 'Accept Transaction Fee?',
-        body: 'Additional resources (CPU/NET) are required for your account to perform this transaction. Would you like to automatically purchase these resources from the network and proceed?',
+        title: t('fee.title', {default: 'Accept Transaction Fee?'}),
+        body: t('fee.body', {
+            default:
+                'Additional resources ({{resource}}) are required for your account to perform this transaction. Would you like to automatically purchase these resources and proceed?',
+            resource: 'CPU/NET',
+        }),
         elements: [
             {
                 type: 'asset',
                 data: {
-                    label: 'Cost of CPU/NET',
+                    label: t('fee.cost', {default: 'Cost of {{resource}}', resource: 'CPU/NET'}),
                     value: '0.0102 WAX',
                 },
             },
@@ -290,15 +303,20 @@ document.getElementById('btn-prompt-finality')!.addEventListener('click', () => 
 
 document.getElementById('btn-prompt-anchor')!.addEventListener('click', () => {
     log('Prompt: Anchor sign (same device)...')
+    const t = webUI.getTranslate(anchorPlugin.id)
     const end = new Date(Date.now() + 120 * 1000).toISOString()
     const result = webUI.prompt({
-        title: 'Complete using Anchor',
-        body: 'Please open your Anchor Wallet on "MacBook Pro" to review and approve this transaction.',
+        title: t('transact.title', {default: 'Complete using Anchor'}),
+        body: t('transact.body', {
+            default:
+                'Please open your Anchor Wallet on "{{channelName}}" to review and approve this transaction.',
+            channelName: 'MacBook Pro',
+        }),
         elements: [
             {
                 type: 'countdown',
                 data: {
-                    label: 'Waiting for response from Anchor',
+                    label: t('transact.await', {default: 'Waiting for response from Anchor'}),
                     end,
                 },
             },
@@ -307,7 +325,7 @@ document.getElementById('btn-prompt-anchor')!.addEventListener('click', () => {
                 data: {
                     button: true,
                     variant: 'primary',
-                    label: 'Launch Anchor',
+                    label: t('transact.link', {default: 'Trigger Manually'}),
                     href: 'esr://example',
                 },
             },
@@ -321,10 +339,14 @@ document.getElementById('btn-prompt-anchor')!.addEventListener('click', () => {
 
 document.getElementById('btn-prompt-anchor-qr')!.addEventListener('click', () => {
     log('Prompt: Anchor sign (another device)...')
+    const t = webUI.getTranslate(anchorPlugin.id)
     const end = new Date(Date.now() + 120 * 1000).toISOString()
     const result = webUI.prompt({
-        title: 'Sign with Anchor',
-        body: 'Scan with Anchor on your mobile device or use the button to open on this device.',
+        title: t('login.title', {default: 'Connect with Anchor'}),
+        body: t('login.body', {
+            default:
+                'Scan with Anchor on your mobile device or click the button below to open on this device.',
+        }),
         elements: [
             {
                 type: 'qr',
@@ -333,7 +355,7 @@ document.getElementById('btn-prompt-anchor-qr')!.addEventListener('click', () =>
             {
                 type: 'countdown',
                 data: {
-                    label: 'Waiting for response from Anchor',
+                    label: t('transact.await', {default: 'Waiting for response from Anchor'}),
                     end,
                 },
             },
@@ -341,7 +363,7 @@ document.getElementById('btn-prompt-anchor-qr')!.addEventListener('click', () =>
                 type: 'link',
                 data: {
                     button: false,
-                    label: 'Open on this device',
+                    label: t('login.link', {default: 'Launch Anchor'}),
                     href: 'esr://example',
                 },
             },
@@ -449,6 +471,13 @@ document.getElementById('btn-dark')!.addEventListener('click', () => {
 document.getElementById('btn-auto')!.addEventListener('click', () => {
     log('Theme: auto')
     ;(webUI as any).shadow?.host?.removeAttribute('data-theme')
+})
+
+const localeSelect = document.getElementById('locale-select') as HTMLSelectElement
+localeSelect.value = webUI.getLocale()
+localeSelect.addEventListener('change', () => {
+    webUI.setLocale(localeSelect.value)
+    log(`Locale: ${webUI.getLocale()} (open a flow after switching to see plugin strings)`)
 })
 
 sessionKit.restore().then((restored) => {

@@ -43,6 +43,7 @@
         "@sveltejs/vite-plugin-svelte": "^6.2.4",
         "@wharfkit/common": "^1.5.0",
         "@wharfkit/session": "^1.8.0-rc1",
+        "@wharfkit/transact-plugin-resource-provider": "^2.0.0",
         "@wharfkit/wallet-plugin-anchor": "^1.6.1",
         "@wharfkit/wallet-plugin-cloudwallet": "^1.6.2",
         "@wharfkit/wallet-plugin-metamask": "^1.2.1",

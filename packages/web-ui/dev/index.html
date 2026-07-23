@@ -31,6 +31,14 @@
         button:hover { border-color: #3b82f6; color: #3b82f6; }
         button.primary { background: #3b82f6; color: #fff; border-color: #3b82f6; }
         button.primary:hover { background: #2563eb; }
+        select {
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            font-size: 14px;
+            cursor: pointer;
+        }
         .session-info { font-size: 14px; font-weight: 500; margin-bottom: 12px; }
         .sk-status { font-size: 12px; margin-top: 8px; }
         .sk-status.active { color: #10b981; }
@@ -104,6 +112,19 @@
             <button id="btn-light">Light</button>
             <button id="btn-dark">Dark</button>
             <button id="btn-auto">Auto</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Language</h2>
+        <div class="btn-group">
+            <select id="locale-select">
+                <option value="en">English (en)</option>
+                <option value="ko">한국어 (ko)</option>
+                <option value="zh-Hans">简体中文 (zh-Hans)</option>
+                <option value="zh-Hant">繁體中文 (zh-Hant)</option>
+                <option value="tr">Türkçe (tr)</option>
+            </select>
         </div>
     </div>
 

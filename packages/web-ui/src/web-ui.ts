@@ -267,13 +267,8 @@ export class WebUI implements UserInterface {
 
     async onTransactComplete(): Promise<void> {
         this.log('onTransactComplete')
-        if (!uiState.minimal) {
-            // Non-minimal: hold the success state until the user taps Done.
-            uiState.transactStage = 'complete'
-        } else {
-            this.hide()
-            uiState.reset()
-        }
+        this.hide()
+        uiState.reset()
     }
 
     async onSign(): Promise<void> {
@@ -284,6 +279,10 @@ export class WebUI implements UserInterface {
     async onSignComplete(): Promise<void> {
         this.log('onSignComplete')
         uiState.transactStage = 'signed'
+        if (!uiState.minimal) {
+            uiState.view = 'transact'
+            this.show()
+        }
     }
 
     async onBroadcast(): Promise<void> {

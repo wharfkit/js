@@ -6,6 +6,7 @@
         href?: string
         target?: string
         block?: boolean
+        multiline?: boolean
         children: import('svelte').Snippet
     }
 
@@ -16,6 +17,7 @@
         href,
         target,
         block = false,
+        multiline = false,
         children,
     }: Props = $props()
 </script>
@@ -26,6 +28,7 @@
         class:primary={variant === 'primary'}
         class:secondary={variant === 'secondary'}
         class:block
+        class:multiline
         {href}
         {target}
         rel="noreferrer"
@@ -38,6 +41,7 @@
         class:primary={variant === 'primary'}
         class:secondary={variant === 'secondary'}
         class:block
+        class:multiline
         {onclick}
         {disabled}
     >
@@ -70,6 +74,14 @@
 
     .btn.block {
         width: 100%;
+    }
+
+    .btn.multiline {
+        height: auto;
+        min-height: 44px;
+        padding: 16px 20px;
+        line-height: 1.45;
+        white-space: pre-line;
     }
 
     .btn:focus-visible {

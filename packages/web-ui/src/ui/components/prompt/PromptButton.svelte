@@ -9,7 +9,12 @@
 </script>
 
 <div class="prompt-button">
-    <Button variant={data.variant ?? 'secondary'} onclick={data.onClick}>
+    <Button
+        block
+        multiline={data.label?.includes('\n')}
+        variant={data.variant ?? 'secondary'}
+        onclick={data.onClick}
+    >
         {data.label ?? 'OK'}
     </Button>
 </div>
@@ -17,6 +22,6 @@
 <style>
     .prompt-button {
         display: flex;
-        justify-content: center;
+        width: 100%;
     }
 </style>

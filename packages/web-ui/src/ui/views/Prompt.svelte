@@ -28,11 +28,7 @@
     )
 </script>
 
-<Header {title} {onclose} />
-
-{#if body}
-    <p class="body">{body}</p>
-{/if}
+<Header {title} subtitle={body} {onclose} />
 
 {#if uiState.promptElements.length === 0}
     <div class="waiting">
@@ -67,19 +63,10 @@
 {/if}
 
 <style>
-    .body {
-        margin: 0 0 4px;
-        font-size: 15px;
-        line-height: 1.5;
-        color: var(--web-ui-text-secondary);
-        font-family: var(--web-ui-font);
-        white-space: pre-line;
-    }
-
     .elements {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 16px;
     }
 
     .waiting {

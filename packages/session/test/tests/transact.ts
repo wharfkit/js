@@ -909,3 +909,29 @@ suite('transact', function () {
         })
     })
 })
+
+suite('transact abi cache poisoning', function () {
+    test('a prior typed action does not break a later request on the same account', async function () {
+        const session = new Session(mockSessionArgs, mockSessionOptions)
+
+        // A typed transfer seeds the shared abiCache for eosio.token with a transfer-only ABI.
+        await session.transact({action: makeMockAction()}, {broadcast: false})
+
+        // The request path is not seeded by getMergedAbiCache, so it relies on the cached ABI.
+        const request = await SigningRequest.create(
+            {
+                action: {
+                    account: 'eosio.token',
+                    name: 'close',
+                    authorization: [PermissionLevel.from(mockPermissionLevel)],
+                    data: {owner: 'wharfkit1111', symbol: '4,EOS'},
+                },
+            },
+            {abiProvider: new ABICache(client), zlib}
+        )
+
+        const result = await session.transact({request}, {broadcast: false})
+        assetValidTransactResponse(result)
+        assert.equal(String(result.resolved?.transaction.actions[0].name), 'close')
+    })
+})

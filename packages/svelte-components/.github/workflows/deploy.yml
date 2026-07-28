@@ -1,8 +1,11 @@
 name: Deploy to GitHub Pages
 
+# Deploys on release, not on push: the showcase must demo what is published to
+# npm, not what is on main. Its audience can only install released versions.
 on:
-  push:
-    branches: [main]
+  release:
+    types: [published]
+  workflow_dispatch:
 
 jobs:
   build_site:

@@ -1,74 +1,39 @@
-/* This library should have the unicove default colors e.g. Vaulta brand */
-/* Unicove itself can then override the theme seed per-network */
-/* @layer base, components, utility */
-
-/* inter-latin-wght-normal */
-@font-face {
-	font-family: 'Inter Variable';
-	font-style: normal;
-	font-display: swap;
-	font-weight: 100 900;
-	src: url(@fontsource-variable/inter/files/inter-latin-wght-normal.woff2)
-		format('woff2-variations');
-	unicode-range:
-		U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
-		U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* jetbrains-mono-latin-wght-normal */
-@font-face {
-	font-family: 'JetBrains Mono Variable';
-	font-style: normal;
-	font-display: swap;
-	font-weight: 100 800;
-	src: url(@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2)
-		format('woff2-variations');
-	unicode-range:
-		U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
-		U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+/* Self-registered so consumers write no @source line; without it a consuming app builds clean and ships unstyled. */
+@source "./components";
 
 @theme inline {
-	/* Custom Values */
+	/* Build-time only: @media (width >= var(--x)) is not valid CSS. */
 	--breakpoint-xs: 480px;
 
 	/* Fonts */
-	--font-sans:
-		'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-		'Segoe UI Symbol', 'Noto Color Emoji';
-	--font-sans--font-feature-settings: 'calt' 0;
+	--font-sans: var(--theme-font-sans);
+	--font-sans--font-feature-settings: var(--theme-font-sans-feature-settings);
+	--font-sans-hero: var(--theme-font-sans-hero);
+	--font-mono: var(--theme-font-mono);
 
-	--font-sans-hero:
-		'Inter Variable', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-		'Noto Color Emoji';
+	/* Typography */
+	--text-display: var(--theme-text-display);
+	--text-display--line-height: var(--theme-text-display-line-height);
+	--text-display--font-weight: var(--theme-text-display-font-weight);
 
-	--font-mono:
-		'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-		'Liberation Mono', 'Courier New', monospace;
+	--text-headline: var(--theme-text-headline);
+	--text-headline--line-height: var(--theme-text-headline-line-height);
+	--text-headline--font-weight: var(--theme-text-headline-font-weight);
 
-	/* Typography  */
-	--text-display: var(--text-3xl);
-	--text-display--line-height: 1;
-	--text-display--font-weight: 600;
+	--text-title: var(--theme-text-title);
+	--text-title--line-height: var(--theme-text-title-line-height);
+	--text-title--font-weight: var(--theme-text-title-font-weight);
 
-	--text-headline: var(--text-2xl);
-	--text-headline--line-height: 1;
-	--text-headline--font-weight: 600;
+	--text-body: var(--theme-text-body);
+	--text-body--font-weight: var(--theme-text-body-font-weight);
 
-	--text-title: var(--text-lg);
-	--text-title--line-height: 1;
-	--text-title--font-weight: 500;
+	--text-label: var(--theme-text-label);
+	--text-label--line-height: var(--theme-text-label-line-height);
+	--text-label--font-weight: var(--theme-text-label-font-weight);
 
-	--text-body: var(--text-base);
-	--text-body--font-weight: 400;
-
-	--text-label: var(--text-base);
-	--text-label--line-height: 1;
-	--text-label--font-weight: 500;
-
-	--text-label-sm: var(--text-sm);
-	--text-label-sm--line-height: 1;
-	--text-label-sm--font-weight: 500;
+	--text-label-sm: var(--theme-text-label-sm);
+	--text-label-sm--line-height: var(--theme-text-label-sm-line-height);
+	--text-label-sm--font-weight: var(--theme-text-label-sm-font-weight);
 
 	/* Colors */
 	--color-*: initial;
@@ -104,8 +69,10 @@
 	--color-warning-container: var(--role-warning-container);
 	--color-on-warning-container: var(--role-on-warning-container);
 
-	--color-shadow: oklch(0 0 0);
-	--color-scrim: oklch(0 0 0 / 0.5);
+	--color-shadow: var(--role-shadow);
+	--color-scrim: var(--role-scrim);
+
+	--color-focus: var(--role-focus);
 
 	--color-outline: var(--role-outline);
 	--color-outline-variant: var(--role-outline-variant);
@@ -122,17 +89,61 @@
 	--color-on-background: var(--role-on-background);
 }
 
-@custom-variant dark (&:where([data-scheme=dark], [data-scheme=dark] *));
+/* .dark is accepted alongside the primary [data-scheme=dark] so class-toggle consumers work unchanged. */
+@custom-variant dark (&:where([data-scheme=dark], [data-scheme=dark] *, .dark, .dark *));
 
 @layer base {
 	:root {
-		/* Defaults to Vaulta colors */
+		/* Override these, not --font-* */
+		--theme-font-sans:
+			'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+			'Segoe UI Symbol', 'Noto Color Emoji';
+		--theme-font-sans-feature-settings: 'calt' 0;
+
+		--theme-font-sans-hero:
+			'Inter Variable', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+			'Noto Color Emoji';
+
+		--theme-font-mono:
+			'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+			'Liberation Mono', 'Courier New', monospace;
+
+		/* Override these, not --text-* */
+		--theme-text-display: var(--text-3xl);
+		--theme-text-display-line-height: 1;
+		--theme-text-display-font-weight: 600;
+
+		--theme-text-headline: var(--text-2xl);
+		--theme-text-headline-line-height: 1;
+		--theme-text-headline-font-weight: 600;
+
+		--theme-text-title: var(--text-lg);
+		--theme-text-title-line-height: 1;
+		--theme-text-title-font-weight: 500;
+
+		--theme-text-body: var(--text-base);
+		--theme-text-body-font-weight: 400;
+
+		--theme-text-label: var(--text-base);
+		--theme-text-label-line-height: 1;
+		--theme-text-label-font-weight: 500;
+
+		--theme-text-label-sm: var(--text-sm);
+		--theme-text-label-sm-line-height: 1;
+		--theme-text-label-sm-font-weight: 500;
+
 		--theme-seed: #2e3bff;
 
 		--error-hue: 27;
 		--success-hue: 152;
 		--destructive-hue: 53;
 		--warning-hue: 85; /* Yellow hue for warnings */
+
+		--role-shadow: oklch(0 0 0);
+		--role-scrim: oklch(0 0 0 / 0.5);
+
+		/* Deliberately not seed-derived: a focus ring must contrast against the brand, not match it. */
+		--role-focus: oklch(0.58 0.125 76);
 
 		--role-primary: oklch(from var(--theme-seed) 0.4 c h);
 		--role-primary-hover: oklch(from var(--theme-seed) 0.5 c h);
@@ -156,6 +167,11 @@
 		--role-destructive-container: oklch(0.92 0.042 var(--destructive-hue));
 		--role-on-destructive-container: oklch(0.42 0.17 var(--destructive-hue));
 
+		--role-warning: oklch(0.51 0.1927 var(--warning-hue));
+		--role-on-warning: oklch(1 0 var(--warning-hue));
+		--role-warning-container: oklch(0.92 0.042 var(--warning-hue));
+		--role-on-warning-container: oklch(0.42 0.17 var(--warning-hue));
+
 		--role-outline-variant: oklch(from var(--color-primary) 0.57 0.08 h);
 		--role-outline: oklch(from var(--color-outline-variant) 0.83 0.04 h);
 
@@ -175,7 +191,11 @@
 		--role-on-background: var(--color-on-surface);
 	}
 
-	[data-scheme='dark'] {
+	[data-scheme='dark'],
+	.dark {
+		/* Lighter than the light-mode value: a focus ring tracks its own scheme's surfaces. */
+		--role-focus: oklch(0.81 0.17 76);
+
 		--role-primary: oklch(from var(--theme-seed) 0.82 c h);
 		--role-primary-hover: oklch(from var(--theme-seed) 0.9 c h);
 		--role-on-primary: oklch(from var(--theme-seed) 0.2 c h);
@@ -233,20 +253,70 @@
 		}
 	}
 
-	details > summary {
+	/* :where() drops these to zero specificity so a host style wins; scoping them away would restyle ~187 consumer files. */
+	:where(details > summary) {
 		list-style: none;
 	}
-	details > summary::-webkit-details-marker {
+	:where(details > summary)::-webkit-details-marker {
 		display: none;
 	}
 
-	p,
-	li {
+	:where(p, li) {
 		@apply text-body text-muted;
 	}
 
-	hr {
+	:where(hr) {
 		@apply text-outline;
+	}
+}
+
+/* Without relative colour every structural role goes invalid at once — text inherits, backgrounds go transparent. Neutral grey, so no brand is imposed. */
+@supports not (color: oklch(from red l c h)) {
+	@layer base {
+		:root {
+			--role-primary: #3b46c4;
+			--role-primary-hover: #4d59d8;
+			--role-on-primary: #ffffff;
+			--role-primary-container: #dcdefa;
+			--role-on-primary-container: #1a1d4d;
+
+			--role-outline: #c9c9cf;
+			--role-outline-variant: #8b8b93;
+
+			--role-surface: #fafafa;
+			--role-on-surface: #2b2b2e;
+			--role-on-surface-variant: #5c5c63;
+			--role-surface-container-lowest: #ffffff;
+			--role-surface-container-low: #f4f4f5;
+			--role-surface-container: #ededee;
+			--role-surface-container-high: #e4e4e6;
+			--role-surface-container-highest: #d8d8da;
+			--role-background: #e4e4e6;
+			--role-on-background: #2b2b2e;
+		}
+
+		[data-scheme='dark'],
+		.dark {
+			--role-primary: #b3b9f2;
+			--role-primary-hover: #cdd1f7;
+			--role-on-primary: #1a1d4d;
+			--role-primary-container: #3b4194;
+			--role-on-primary-container: #dcdefa;
+
+			--role-outline: #4a4a52;
+			--role-outline-variant: #6f6f78;
+
+			--role-surface: #26262a;
+			--role-on-surface: #f0f0f2;
+			--role-on-surface-variant: #c2c2c8;
+			--role-surface-container-lowest: #202024;
+			--role-surface-container-low: #2b2b30;
+			--role-surface-container: #313136;
+			--role-surface-container-high: #3a3a40;
+			--role-surface-container-highest: #46464d;
+			--role-background: #1c1c20;
+			--role-on-background: #f0f0f2;
+		}
 	}
 }
 

@@ -30,7 +30,7 @@
 	{open}
 >
 	<summary
-		class="focus-visible:outline-solar-500 @container flex cursor-pointer justify-between gap-4 rounded-xl p-5 select-none focus-visible:outline"
+		class="focus-visible:outline-focus @container flex cursor-pointer justify-between gap-4 rounded-xl p-5 select-none focus-visible:outline"
 		onclick={syncOpen}
 	>
 		<div class="text-muted flex flex-1 flex-wrap justify-between gap-y-4 text-nowrap">

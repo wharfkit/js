@@ -1,6 +1,16 @@
 {
-	"name": "unicove-components",
-	"version": "0.6.1",
+	"name": "@wharfkit/svelte-components",
+	"version": "0.7.0",
+	"description": "Svelte 5 and Tailwind v4 component library for Antelope applications",
+	"license": "BSD-3-Clause",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/wharfkit/svelte-components.git"
+	},
+	"homepage": "https://wharfkit.github.io/svelte-components",
+	"bugs": {
+		"url": "https://github.com/wharfkit/svelte-components/issues"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
@@ -10,13 +20,14 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint .",
-		"release": "standard-version"
+		"lint": "prettier --check . && eslint ."
 	},
 	"files": [
 		"dist",
 		"!dist/**/*.test.*",
-		"!dist/**/*.spec.*"
+		"!dist/**/*.spec.*",
+		"LICENSE",
+		"LICENSE-OFL"
 	],
 	"sideEffects": [
 		"**/*.css"
@@ -30,7 +41,8 @@
 			"svelte": "./dist/index.js",
 			"style": "./dist/index.css",
 			"default": "./dist/index.js"
-		}
+		},
+		"./fonts.css": "./dist/fonts.css"
 	},
 	"peerDependencies": {
 		"svelte": "^5.0.0",
@@ -59,7 +71,6 @@
 		"prettier-plugin-svelte": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
 		"publint": "^0.3.2",
-		"standard-version": "^9.5.0",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
 		"tailwindcss": "^4.0.0",
@@ -70,13 +81,11 @@
 		"vite-plugin-devtools-json": "^0.2.0"
 	},
 	"dependencies": {
-		"@fontsource-variable/inter": "^5.2.6",
-		"@fontsource-variable/jetbrains-mono": "^5.2.6",
 		"@lucide/svelte": "^0.516.0",
 		"@melt-ui/svelte": "^0.86.6",
 		"@wharfkit/antelope": "^1.0.13",
-		"@wharfkit/common": "^1.5.0",
 		"big.js": "^7.0.1",
+		"clsx": "^2.1.1",
 		"esm-env": "^1.2.2",
 		"melt": "^0.35.1",
 		"tailwind-merge": "^3.3.1"

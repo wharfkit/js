@@ -107,6 +107,7 @@ export type { CheckboxProps } from './components/Checkbox.svelte';
 // Loading
 export { default as Progress } from './components/loading/Progress.svelte';
 export type { ProgressProps } from './components/loading/Progress.svelte';
+export { default as Skeleton } from './components/loading/Skeleton.svelte';
 
 // Utils
 export { cn } from './utils';

@@ -26,7 +26,7 @@
 
 <div class="relative h-[80px] w-[80px]">
 	<svg viewBox="0 0 60 60">
-		<circle cx="30" cy="30" r="28" class="fill-none stroke-[#575757] stroke-4" />
+		<circle cx="30" cy="30" r="28" class="stroke-outline fill-none stroke-4" />
 		<circle
 			cx="30"
 			cy="30"

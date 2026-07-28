@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import './lib';
+@import './lib/fonts.css';
 
 @layer base {
 	:root {

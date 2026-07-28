@@ -55,7 +55,7 @@
 
 <div
 	class={cn(
-		'border-outline focus-within:border-primary focus-within:ring-primary relative flex h-12 gap-2 rounded-lg border-2 px-4 *:content-center focus-within:ring-1 focus-within:ring-3 focus-within:ring-inset',
+		'border-outline focus-within:border-focus focus-within:ring-focus relative flex h-12 gap-2 rounded-lg border-2 px-4 *:content-center focus-within:ring-1 focus-within:ring-3 focus-within:ring-inset',
 		className
 	)}
 >

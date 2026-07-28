@@ -58,7 +58,7 @@
 <div class="flex items-center">
 	<button
 		use:melt={$root}
-		class=" border-outline focus-visible:border-solar-500 focus-visible:outline-solar-500 disabled:border-on-surface disabled:bg-on-surface data-[state=checked]:disabled:border-on-surface data-[state=checked]:disabled:bg-on-surface text-on-primary data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:hover:border-primary data-[state=checked]:hover:bg-primary/90 disabled:text-surface flex size-5 cursor-pointer appearance-none items-center justify-center rounded border border-solid bg-transparent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] disabled:cursor-not-allowed disabled:opacity-30"
+		class=" border-outline focus-visible:border-focus focus-visible:outline-focus disabled:border-on-surface disabled:bg-on-surface data-[state=checked]:disabled:border-on-surface data-[state=checked]:disabled:bg-on-surface text-on-primary data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:hover:border-primary data-[state=checked]:hover:bg-primary/90 disabled:text-surface flex size-5 cursor-pointer appearance-none items-center justify-center rounded border border-solid bg-transparent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] disabled:cursor-not-allowed disabled:opacity-30"
 		{id}
 		aria-labelledby={ariaLabelledBy}
 	>

@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main
+      - master
 
 permissions:
   contents: write
@@ -20,6 +20,7 @@ jobs:
         id: release
         with:
           release-type: node
+          target-branch: master
 
   publish:
     needs: release-please

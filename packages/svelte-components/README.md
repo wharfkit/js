@@ -185,9 +185,18 @@ Everything in `src/lib` is the published library; `src/routes` is the showcase.
 
 ## Releasing
 
-Releases are automated. [release-please](https://github.com/googleapis/release-please) opens a release PR from conventional commits; merging it tags the release and CI publishes to npm.
+[release-please](https://github.com/googleapis/release-please) opens a release PR from conventional commits and tags the release when it merges. **Publishing is manual**, from a maintainer's machine:
 
-> Do not run `bun publish` — it ignores the `files` field and would ship the entire repository. The CI job uses `npm publish`.
+```bash
+git pull                 # get the release commit release-please merged
+bun install
+bun run build
+npm publish              # not bun publish
+```
+
+> **Never run `bun publish`** — it ignores the `files` field and would ship `src/`, `.svelte-kit/`, `build/` and `bun.lock`: about 2.9 MB across 506 files. Version 0.6.1 shipped that way. A `prepublishOnly` guard now refuses bun and aborts if the tarball exceeds 400 kB or contains any of those paths, but the guard is a backstop, not a licence to guess.
+
+Publishing locally means releases carry **no npm provenance** — provenance requires CI's OIDC token and cannot be generated from a laptop.
 
 ## License
 

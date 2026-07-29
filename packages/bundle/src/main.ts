@@ -14,5 +14,4 @@ export * from '@wharfkit/wallet-plugin-imtoken';
 export * from '@wharfkit/wallet-plugin-metamask';
 export * from '@wharfkit/wallet-plugin-tokenpocket';
 export * from '@wharfkit/wallet-plugin-web-authenticator';
-export * from '@wharfkit/wallet-plugin-wombat';
 export * from '@wharfkit/web-renderer';

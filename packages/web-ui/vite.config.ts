@@ -55,6 +55,46 @@ function collectTypeReexports(
     return result
 }
 
+const CSS_PLACEHOLDER = '__WEB_UI_COMPONENT_CSS__'
+const componentsModule = 'src/ui/styles/components.ts'
+
+// Folds the externally-extracted component CSS back into the bundle as a string for the shadow root to adopt.
+function inlineComponentCss(isDev: boolean) {
+    return {
+        name: 'web-ui-inline-css',
+        enforce: 'post' as const,
+        transform(code: string, id: string) {
+            if (!isDev || !id.endsWith(componentsModule)) return null
+            return {code: code.replace(`'${CSS_PLACEHOLDER}'`, "''"), map: null}
+        },
+        generateBundle(_options: unknown, bundle: Record<string, any>) {
+            if (isDev) return
+            const css = Object.entries(bundle)
+                .filter(
+                    ([fileName, output]) => output.type === 'asset' && fileName.endsWith('.css')
+                )
+                .map(([fileName, output]) => {
+                    delete bundle[fileName]
+                    return String(output.source)
+                })
+                .join('\n')
+            if (!css) throw new Error('web-ui-inline-css: no CSS asset was emitted')
+
+            let substituted = 0
+            for (const output of Object.values(bundle)) {
+                if (output.type !== 'chunk') continue
+                const pattern = new RegExp(`(["'])${CSS_PLACEHOLDER}\\1`, 'g')
+                if (!pattern.test(output.code)) continue
+                output.code = output.code.replace(pattern, () => JSON.stringify(css))
+                substituted++
+            }
+            if (substituted === 0) {
+                throw new Error(`web-ui-inline-css: ${CSS_PLACEHOLDER} not found in any chunk`)
+            }
+        },
+    }
+}
+
 function isPortFree(port: number): Promise<boolean> {
     return new Promise((resolve) => {
         const srv = net.createServer()
@@ -83,6 +123,7 @@ export default defineConfig(async ({mode}) => {
                         css: 'injected',
                     },
                 }),
+                inlineComponentCss(true),
             ],
             server: {
                 port,
@@ -96,9 +137,10 @@ export default defineConfig(async ({mode}) => {
             wuchale(),
             svelte({
                 compilerOptions: {
-                    css: 'injected',
+                    css: 'external',
                 },
             }),
+            inlineComponentCss(false),
             dts({
                 rollupTypes: true,
                 outDir: 'lib',

@@ -26,6 +26,7 @@ import {themeState} from './ui/stores/theme.svelte.js'
 import type {WebUIOptions} from './types.js'
 import {defaultOptions} from './types.js'
 import tokensCSS from './ui/styles/tokens.css?inline'
+import {componentCSS} from './ui/styles/components.js'
 import type {SupportedLocale} from './lib/locale.js'
 import {detectLocale, normalizeLocale, sourceLocale} from './lib/locale.js'
 import {PluginCatalog} from './lib/plugin-catalog.js'
@@ -92,9 +93,9 @@ export class WebUI implements UserInterface {
 
         this.shadow = this.element.attachShadow({mode: 'open'})
 
-        const style = document.createElement('style')
-        style.textContent = tokensCSS
-        this.shadow.appendChild(style)
+        const sheet = new CSSStyleSheet()
+        sheet.replaceSync(`${tokensCSS}\n${componentCSS}`)
+        this.shadow.adoptedStyleSheets = [sheet]
 
         const appTarget = document.createElement('div')
         this.shadow.appendChild(appTarget)

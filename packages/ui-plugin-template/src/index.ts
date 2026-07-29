@@ -108,7 +108,7 @@ export class UserInterfaceTEMPLATE implements UserInterface {
          * wallets like Ledger. When using a Ledger directly, the user interface should be able to retrieve the public
          * key from the device here, and then do account lookups to display choices.
          *
-         * Most wallets (Anchor, Scatter, Wombat, PrivateKeyPlugin, etc) won't use this step since they will return
+         * Most wallets (Anchor, Scatter, PrivateKeyPlugin, etc) won't use this step since they will return
          * the permission level directly from the wallet.
          */
         return PermissionLevel.from('teamgreymass@active')

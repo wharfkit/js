@@ -110,7 +110,7 @@ export abstract class PowerUpStateResource extends Struct {
             )
             fee += Number(
                 intToBigDecimal(this.price_function(adjusted_utilization) * min)
-                    .divide(intToBigDecimal(weight))
+                    .divide(intToBigDecimal(weight), 18)
                     .getValue()
             )
 

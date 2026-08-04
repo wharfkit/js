@@ -334,12 +334,12 @@ suite('[wax] powerup - net calculations', function () {
         const sample = await resources_wax.getSampledUsage()
 
         const price = powerup.net.price_per_kb(sample, 1000, this.testFixture)
-        assert.equal(price, 0.00013288)
+        assert.equal(price, 0.00013289)
 
         const asset = Asset.from(price, '8,WAX')
-        assert.equal(String(asset), '0.00013288 WAX')
-        assert.equal(asset.value, 0.00013288)
-        assert.equal(Number(asset.units), 13288)
+        assert.equal(String(asset), '0.00013289 WAX')
+        assert.equal(asset.value, 0.00013289)
+        assert.equal(Number(asset.units), 13289)
     })
     test('powerup.net.frac()', async function () {
         const powerup = await resources_wax.v1.powerup.get_state()

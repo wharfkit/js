@@ -108,12 +108,39 @@ suite('[eos] powerup - cpu calculations', function () {
         const sample = await resources_eos.getSampledUsage()
 
         const price = powerup.cpu.price_per_ms(sample, 1000, this.testFixture)
-        assert.equal(price, 0.106)
+        assert.equal(price, 0.1999)
 
         const asset = Asset.from(price, '4,EOS')
-        assert.equal(String(asset), '0.1060 EOS')
-        assert.equal(asset.value, 0.106)
-        assert.equal(Number(asset.units), 1060)
+        assert.equal(String(asset), '0.1999 EOS')
+        assert.equal(asset.value, 0.1999)
+        assert.equal(Number(asset.units), 1999)
+    })
+    test('powerup.cpu.determine_adjusted_utilization', async function () {
+        const powerup = await resources_eos.v1.powerup.get_state()
+
+        // Fixture has utilization < adjusted_utilization, so the value decays over time
+        const utilization_ts = Number(powerup.cpu.utilization_timestamp.value)
+        const decay_secs = Number(powerup.cpu.decay_secs)
+
+        // At one decay constant, the gap of 5871642335 has decayed by a factor of e
+        const one_decay = powerup.cpu.determine_adjusted_utilization({
+            timestamp: utilization_ts + decay_secs,
+        })
+        assert.equal(
+            one_decay.equals(23126085607985),
+            true,
+            `got ${one_decay} instead of 23126085607985`
+        )
+
+        // At ten decay constants, almost all of the gap is gone
+        const ten_decays = powerup.cpu.determine_adjusted_utilization({
+            timestamp: utilization_ts + decay_secs * 10,
+        })
+        assert.equal(
+            ten_decays.equals(23123925818057),
+            true,
+            `got ${ten_decays} instead of 23123925818057`
+        )
     })
     test('powerup.cpu.frac()', async function () {
         const powerup = await resources_eos.v1.powerup.get_state()
@@ -220,12 +247,12 @@ suite('[jungle] powerup - cpu calculations', function () {
         const sample = await resources_eos.getSampledUsage()
 
         const price = powerup.cpu.price_per_ms(sample, 1000000, this.testFixture)
-        assert.equal(price, 87.0144)
+        assert.equal(price, 3814.2618)
 
         const asset = Asset.from(price, '4,EOS')
-        assert.equal(String(asset), '87.0144 EOS')
-        assert.equal(asset.value, 87.0144)
-        assert.equal(Number(asset.units), 870144)
+        assert.equal(String(asset), '3814.2618 EOS')
+        assert.equal(asset.value, 3814.2618)
+        assert.equal(Number(asset.units), 38142618)
     })
 })
 
@@ -274,12 +301,12 @@ suite('[wax] powerup - cpu calculations', function () {
         const sample = await resources_wax.getSampledUsage()
 
         const price = powerup.cpu.price_per_ms(sample, 1000000, this.testFixture)
-        assert.equal(price, 131.30369093)
+        assert.equal(price, 1790.00486874)
 
         const asset = Asset.from(price, '8,WAX')
-        assert.equal(String(asset), '131.30369093 WAX')
-        assert.equal(asset.value, 131.30369093)
-        assert.equal(Number(asset.units), 13130369093)
+        assert.equal(String(asset), '1790.00486874 WAX')
+        assert.equal(asset.value, 1790.00486874)
+        assert.equal(Number(asset.units), 179000486874)
     })
 })
 

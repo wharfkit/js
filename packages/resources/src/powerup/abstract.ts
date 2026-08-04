@@ -81,8 +81,12 @@ export abstract class PowerUpStateResource extends Struct {
             this.symbol
         )
         const coefficient = difference.value / this.exponent.value
-        const start_u = Number(start_utilization.dividing(this.weight))
-        const end_u = Number(end_utilization.dividing(this.weight))
+        const start_u = Number(
+            intToBigDecimal(start_utilization).divide(intToBigDecimal(this.weight), 18).getValue()
+        )
+        const end_u = Number(
+            intToBigDecimal(end_utilization).divide(intToBigDecimal(this.weight), 18).getValue()
+        )
         const delta =
             this.min_price.value * end_u -
             this.min_price.value * start_u +
@@ -120,19 +124,15 @@ export abstract class PowerUpStateResource extends Struct {
 
     // Mimic: https://github.com/EOSIO/eosio.contracts/blob/d7bc0a5cc8c0c2edd4dc61b0126517d0cb46fd94/contracts/eosio.system/src/powerup.cpp#L105-L117
     determine_adjusted_utilization(options?: PowerUpStateOptions) {
-        // Casting EOSIO types to usable formats for JS calculations
         const {decay_secs, utilization, utilization_timestamp} = this
         let {adjusted_utilization} = this
-        // If utilization is less than adjusted, calculate real time value
         if (utilization.lt(adjusted_utilization)) {
-            // Create now & adjust JS timestamp to match EOSIO timestamp values
             const ts = options && options.timestamp ? options.timestamp : new Date()
             const now = TimePointSec.from(ts).toMilliseconds() / 1000
+            const utilization_ts = utilization_timestamp.toMilliseconds() / 1000
             const diff = adjusted_utilization.subtracting(utilization).toNumber()
-            let delta: number =
-                diff *
-                Math.exp(-(now - utilization_timestamp.toMilliseconds()) / Number(decay_secs))
-            delta = Math.min(Math.max(delta, 0), diff) // Clamp the delta
+            let delta: number = diff * Math.exp(-(now - utilization_ts) / Number(decay_secs))
+            delta = Math.min(Math.max(delta, 0), diff)
             adjusted_utilization = utilization.adding(delta)
         }
         return adjusted_utilization

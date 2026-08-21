@@ -1,0 +1,5 @@
+build/*.debug.*
+codegen/*.ts
+node_modules
+*.log
+.vscode

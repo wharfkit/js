@@ -2,7 +2,6 @@ import {defineConfig} from 'vite'
 import {svelte} from '@sveltejs/vite-plugin-svelte'
 import {wuchale} from '@wuchale/vite-plugin'
 import dts from 'vite-plugin-dts'
-import net from 'node:net'
 import {readFile, writeFile} from 'node:fs/promises'
 import {dirname, resolve} from 'node:path'
 import ts from 'typescript'
@@ -95,25 +94,8 @@ function inlineComponentCss(isDev: boolean) {
     }
 }
 
-function isPortFree(port: number): Promise<boolean> {
-    return new Promise((resolve) => {
-        const srv = net.createServer()
-        srv.once('error', () => resolve(false))
-        srv.once('listening', () => srv.close(() => resolve(true)))
-        srv.listen(port, '0.0.0.0')
-    })
-}
-
-async function findFreePort(start: number, tries = 20): Promise<number> {
-    for (let i = 0; i < tries; i++) {
-        if (await isPortFree(start + i)) return start + i
-    }
-    return start
-}
-
-export default defineConfig(async ({mode}) => {
+export default defineConfig(({mode}) => {
     if (mode === 'development') {
-        const port = await findFreePort(5173)
         return {
             root: 'dev',
             plugins: [
@@ -126,8 +108,8 @@ export default defineConfig(async ({mode}) => {
                 inlineComponentCss(true),
             ],
             server: {
-                port,
-                strictPort: true,
+                port: 5173,
+                strictPort: false,
             },
         }
     }

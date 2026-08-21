@@ -108,7 +108,8 @@ export class WebUI implements UserInterface {
                 closeOnOverlayClick: this.options.closeOnOverlayClick,
                 closeOnEscape: this.options.closeOnEscape,
                 oncancel: () => this.handleCancel(),
-                onloginselect: (index: number) => this.resolvePending({walletPluginIndex: index}),
+                onlogincomplete: (response: UserInterfaceLoginResponse) =>
+                    this.resolvePending(response),
                 onpromptconfirm: () => this.resolvePending({}, true),
                 onskconsentapprove: () => this.resolvePending(true, true),
                 onskconflictselect: (choice: SessionKeyConflictResponse) =>

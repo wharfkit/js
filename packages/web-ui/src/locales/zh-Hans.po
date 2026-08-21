@@ -56,14 +56,6 @@ msgstr "关闭"
 msgid "Retry"
 msgstr "重试"
 
-#: src/ui/components/Modal.svelte
-msgid "Escape"
-msgstr "退出"
-
-#: src/ui/components/Modal.svelte
-msgid "Tab"
-msgstr "标签页"
-
 #. 0: uiState.appName
 #: src/ui/views/Login.svelte
 msgid "Connect to {0}"
@@ -76,10 +68,6 @@ msgstr "连接钱包"
 #: src/ui/views/Login.svelte
 msgid "Select a wallet to continue"
 msgstr "选择钱包以继续"
-
-#: src/ui/views/Login.svelte
-msgid "Loading wallets..."
-msgstr "正在加载钱包……"
 
 #. 0: i + 1
 #: src/ui/views/Login.svelte
@@ -135,6 +123,8 @@ msgstr "其他设备将停止工作"
 msgid "This only affects {0}. Your wallet still works everywhere."
 msgstr "这只会影响 {0}。您的钱包仍可在任何地方使用。"
 
+#: src/ui/components/login/AccountEntry.svelte
+#: src/ui/components/login/PermissionChoice.svelte
 #: src/ui/views/SessionKeyConflict.svelte
 msgid "Continue"
 msgstr "继续"
@@ -321,3 +311,103 @@ msgstr "二维码不可用。请使用下面的链接继续。"
 #: src/ui/components/prompt/PromptLink.svelte
 msgid "Open Link"
 msgstr "打开链接"
+
+#: src/ui/components/Header.svelte
+msgid "Back"
+msgstr "返回"
+
+#: src/ui/views/Login.svelte
+msgid "Select a blockchain"
+msgstr "选择区块链"
+
+#: src/ui/views/Login.svelte
+msgid "Select an account"
+msgstr "选择账户"
+
+#: src/ui/views/Login.svelte
+msgid "Enter your account"
+msgstr "输入您的账户"
+
+#. 0: walletPlugin?.metadata?.name ?? 'this wallet'
+#: src/ui/views/Login.svelte
+msgid "Choose the blockchain to use with {0}"
+msgstr "选择要与 {0} 一起使用的区块链"
+
+#: src/ui/views/Login.svelte
+msgid "These accounts can be signed for by this wallet"
+msgstr "此钱包可以代表以下账户签名"
+
+#: src/ui/views/Login.svelte
+msgid "Continue in your wallet"
+msgstr "在您的钱包中继续"
+
+#: src/ui/views/Login.svelte
+msgid "Waiting for your wallet…"
+msgstr "正在等待您的钱包…"
+
+#: src/ui/views/Login.svelte
+msgid "Loading wallets…"
+msgstr "正在加载钱包…"
+
+#: src/ui/components/login/AccountEntry.svelte
+msgid "Account name"
+msgstr "账户名"
+
+#: src/ui/components/login/PermissionChoice.svelte
+msgid "Permission"
+msgstr "权限"
+
+#: src/ui/components/login/PermissionSelect.svelte
+msgid "Looking up your accounts…"
+msgstr "正在查找您的账户…"
+
+#. 0: chain.name
+#: src/ui/components/login/PermissionSelect.svelte
+msgid "No accounts on {0} use the key this wallet provided. Go back to pick a different wallet."
+msgstr "{0} 上没有账户使用此钱包提供的密钥。返回以选择其他钱包。"
+
+#: src/ui/views/Login.svelte
+msgid "Select a permission"
+msgstr "选择权限"
+
+#: src/ui/views/Login.svelte
+msgid "Name the account this wallet signs for"
+msgstr "命名此钱包代表其签名的账户"
+
+#. 0: enteredAccount
+#: src/ui/views/Login.svelte
+msgid "Choose the permission on {0} to sign with"
+msgstr "选择要代表 {0} 签名的权限"
+
+#: src/ui/components/login/AccountEntry.svelte
+msgid "Account names use the letters a–z, the digits 1–5, and periods, up to 12 characters."
+msgstr "账户名只能使用字母 a–z、数字 1–5 和句点，最多 12 个字符。"
+
+#. 0: account
+#: src/ui/components/login/PermissionChoice.svelte
+msgid "Looking up {0}…"
+msgstr "正在查找 {0}…"
+
+#. 0: account
+#: src/ui/components/login/PermissionChoice.svelte
+msgid "The permissions on {0} can't be listed without a blockchain to read them from. Name the permission you sign with."
+msgstr "无法列出 {0} 上的权限，因为没有可读取权限的区块链。请命名您用于签名的权限。"
+
+#: src/ui/components/login/PermissionChoice.svelte
+msgid "Permission names use the letters a–z, the digits 1–5, and periods, up to 12 characters."
+msgstr "权限名称最多 12 个字符，可使用字母 a–z、数字 1–5 和句点。"
+
+#. 0: permission.parent
+#: src/ui/components/login/PermissionChoice.svelte
+msgid "Under {0}"
+msgstr "位于 {0} 下"
+
+#. 0: lookupFailure.account; 1: chain.name
+#: src/ui/views/Login.svelte
+msgid "No account named {0} exists on {1}. Check the spelling and try again."
+msgstr "{1} 上不存在名为 {0} 的账户。请检查拼写后重试。"
+
+#. 0: chain.name; 1: lookupFailure.account
+#: src/ui/views/Login.svelte
+msgid "Could not reach {0}, so the name {1} was not checked. Try again."
+msgstr "无法访问 {0}，因此未检查名称 {1}。请重试。"

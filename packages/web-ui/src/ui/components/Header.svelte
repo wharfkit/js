@@ -2,13 +2,27 @@
     interface Props {
         title: string
         subtitle?: string
+        onback?: () => void
         onclose?: () => void
     }
 
-    let {title, subtitle, onclose}: Props = $props()
+    let {title, subtitle, onback, onclose}: Props = $props()
 </script>
 
 <div class="header">
+    {#if onback}
+        <button class="icon-btn" onclick={onback} aria-label="Back">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                    d="M12 4L6 10l6 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+            </svg>
+        </button>
+    {/if}
     <div class="header-text">
         <h2 id="web-ui-modal-title">{title}</h2>
         {#if subtitle}
@@ -16,7 +30,7 @@
         {/if}
     </div>
     {#if onclose}
-        <button class="close-btn" onclick={onclose} aria-label="Close">
+        <button class="icon-btn" onclick={onclose} aria-label="Close">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path
                     d="M15 5L5 15M5 5l10 10"
@@ -62,7 +76,7 @@
         line-height: 1.45;
     }
 
-    .close-btn {
+    .icon-btn {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -80,18 +94,18 @@
         flex-shrink: 0;
     }
 
-    .close-btn:hover {
+    .icon-btn:hover {
         background: var(--web-ui-border);
         color: var(--web-ui-text);
     }
 
-    .close-btn:focus-visible {
+    .icon-btn:focus-visible {
         outline: 2px solid var(--web-ui-ring);
         outline-offset: 2px;
     }
 
     @media (max-width: 640px) {
-        .close-btn {
+        .icon-btn {
             width: 44px;
             height: 44px;
         }

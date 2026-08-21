@@ -1,4 +1,5 @@
 <script lang="ts">
+    import type {UserInterfaceLoginResponse} from '@wharfkit/session'
     import Modal from './components/Modal.svelte'
     import ErrorView from './components/ErrorView.svelte'
     import Login from './views/Login.svelte'
@@ -14,7 +15,7 @@
         closeOnOverlayClick?: boolean
         closeOnEscape?: boolean
         oncancel?: () => void
-        onloginselect?: (index: number) => void
+        onlogincomplete?: (response: UserInterfaceLoginResponse) => void
         onpromptconfirm?: () => void
         onskconsentapprove?: () => void
         onskconflictselect?: (choice: 'add' | 'replace' | 'cancel') => void
@@ -27,7 +28,7 @@
         closeOnOverlayClick = true,
         closeOnEscape = true,
         oncancel,
-        onloginselect,
+        onlogincomplete,
         onpromptconfirm,
         onskconsentapprove,
         onskconflictselect,
@@ -39,7 +40,7 @@
 
 <Modal {closeOnOverlayClick} {closeOnEscape} onclose={oncancel}>
     {#if uiState.view === 'login'}
-        <Login onclose={oncancel} onselect={onloginselect} />
+        <Login onclose={oncancel} oncomplete={onlogincomplete} />
     {:else if uiState.view === 'transact'}
         <Transact onclose={oncancel} ondone={ontransactdone} />
     {:else if uiState.view === 'prompt'}

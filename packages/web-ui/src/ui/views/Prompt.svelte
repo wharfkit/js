@@ -9,6 +9,7 @@
     import PromptLink from '../components/prompt/PromptLink.svelte'
     import PromptButton from '../components/prompt/PromptButton.svelte'
     import PromptQr from '../components/prompt/PromptQr.svelte'
+    import PromptTextarea from '../components/prompt/PromptTextarea.svelte'
     import {uiState} from '../stores/state.svelte.js'
 
     interface Props {
@@ -51,6 +52,8 @@
             <PromptButton data={element.data as any} />
         {:else if element.type === 'qr'}
             <PromptQr data={element.data as any} />
+        {:else if element.type === 'textarea'}
+            <PromptTextarea data={element.data as any} />
         {/if}
     {/each}
 </div>

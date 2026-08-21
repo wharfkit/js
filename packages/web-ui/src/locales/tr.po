@@ -56,14 +56,6 @@ msgstr "Kapat"
 msgid "Retry"
 msgstr "Yeniden dene"
 
-#: src/ui/components/Modal.svelte
-msgid "Escape"
-msgstr "Çıkış"
-
-#: src/ui/components/Modal.svelte
-msgid "Tab"
-msgstr "Sekme"
-
 #. 0: uiState.appName
 #: src/ui/views/Login.svelte
 msgid "Connect to {0}"
@@ -76,10 +68,6 @@ msgstr "Cüzdanı Bağla"
 #: src/ui/views/Login.svelte
 msgid "Select a wallet to continue"
 msgstr "Devam etmek için bir cüzdan seçin"
-
-#: src/ui/views/Login.svelte
-msgid "Loading wallets..."
-msgstr "Cüzdanlar yükleniyor..."
 
 #. 0: i + 1
 #: src/ui/views/Login.svelte
@@ -135,6 +123,8 @@ msgstr "Diğer cihazlar çalışmayı durduracak"
 msgid "This only affects {0}. Your wallet still works everywhere."
 msgstr "Bu yalnızca {0} uygulamasını etkiler. Cüzdanınız hâlâ her yerde çalışır."
 
+#: src/ui/components/login/AccountEntry.svelte
+#: src/ui/components/login/PermissionChoice.svelte
 #: src/ui/views/SessionKeyConflict.svelte
 msgid "Continue"
 msgstr "Devam et"
@@ -321,3 +311,103 @@ msgstr "QR kodu kullanılamıyor. Devam etmek için aşağıdaki bağlantıyı k
 #: src/ui/components/prompt/PromptLink.svelte
 msgid "Open Link"
 msgstr "Bağlantıyı Aç"
+
+#: src/ui/components/Header.svelte
+msgid "Back"
+msgstr "Geri"
+
+#: src/ui/views/Login.svelte
+msgid "Select a blockchain"
+msgstr "Bir blok zinciri seçin"
+
+#: src/ui/views/Login.svelte
+msgid "Select an account"
+msgstr "Bir hesap seçin"
+
+#: src/ui/views/Login.svelte
+msgid "Enter your account"
+msgstr "Hesabınızı girin"
+
+#. 0: walletPlugin?.metadata?.name ?? 'this wallet'
+#: src/ui/views/Login.svelte
+msgid "Choose the blockchain to use with {0}"
+msgstr "{0} ile kullanılacak blok zincirini seçin"
+
+#: src/ui/views/Login.svelte
+msgid "These accounts can be signed for by this wallet"
+msgstr "Bu cüzdan tarafından imzalanabilecek hesaplar"
+
+#: src/ui/views/Login.svelte
+msgid "Continue in your wallet"
+msgstr "Cüzdanınızda devam edin"
+
+#: src/ui/views/Login.svelte
+msgid "Waiting for your wallet…"
+msgstr "Cüzdanınız bekleniyor…"
+
+#: src/ui/views/Login.svelte
+msgid "Loading wallets…"
+msgstr "Cüzdanlar yükleniyor…"
+
+#: src/ui/components/login/AccountEntry.svelte
+msgid "Account name"
+msgstr "Hesap adı"
+
+#: src/ui/components/login/PermissionChoice.svelte
+msgid "Permission"
+msgstr "İzin"
+
+#: src/ui/components/login/PermissionSelect.svelte
+msgid "Looking up your accounts…"
+msgstr "Hesaplarınız aranıyor…"
+
+#. 0: chain.name
+#: src/ui/components/login/PermissionSelect.svelte
+msgid "No accounts on {0} use the key this wallet provided. Go back to pick a different wallet."
+msgstr "{0} üzerinde, bu cüzdanın sağladığı anahtarı kullanan hesap yok. Farklı bir cüzdan seçmek için geri dönün."
+
+#: src/ui/views/Login.svelte
+msgid "Select a permission"
+msgstr "Bir izin seçin"
+
+#: src/ui/views/Login.svelte
+msgid "Name the account this wallet signs for"
+msgstr "Bu cüzdanın imzaladığı hesabı adlandırın"
+
+#. 0: enteredAccount
+#: src/ui/views/Login.svelte
+msgid "Choose the permission on {0} to sign with"
+msgstr "İmzalamak için {0} üzerindeki izni seçin"
+
+#: src/ui/components/login/AccountEntry.svelte
+msgid "Account names use the letters a–z, the digits 1–5, and periods, up to 12 characters."
+msgstr "Hesap adlarında a–z harfleri, 1–5 rakamları ve noktalar kullanılabilir; uzunluk en fazla 12 karakterdir."
+
+#. 0: account
+#: src/ui/components/login/PermissionChoice.svelte
+msgid "Looking up {0}…"
+msgstr "{0} aranıyor…"
+
+#. 0: account
+#: src/ui/components/login/PermissionChoice.svelte
+msgid "The permissions on {0} can't be listed without a blockchain to read them from. Name the permission you sign with."
+msgstr "{0} üzerindeki izinler, okunacak bir blokzincir olmadan listelenemez. İmza attığınız iznin adını yazın."
+
+#: src/ui/components/login/PermissionChoice.svelte
+msgid "Permission names use the letters a–z, the digits 1–5, and periods, up to 12 characters."
+msgstr "İzin adları a–z harflerini, 1–5 rakamlarını ve noktaları kullanır; en fazla 12 karakter olabilir."
+
+#. 0: permission.parent
+#: src/ui/components/login/PermissionChoice.svelte
+msgid "Under {0}"
+msgstr "{0} altında"
+
+#. 0: lookupFailure.account; 1: chain.name
+#: src/ui/views/Login.svelte
+msgid "No account named {0} exists on {1}. Check the spelling and try again."
+msgstr "{1} üzerinde {0} adlı bir hesap yok. Yazımı kontrol edip tekrar deneyin."
+
+#. 0: chain.name; 1: lookupFailure.account
+#: src/ui/views/Login.svelte
+msgid "Could not reach {0}, so the name {1} was not checked. Try again."
+msgstr "{0} sunucusuna ulaşılamadığı için {1} adı kontrol edilmedi. Tekrar deneyin."

@@ -56,14 +56,6 @@ msgstr "닫기"
 msgid "Retry"
 msgstr "다시 시도"
 
-#: src/ui/components/Modal.svelte
-msgid "Escape"
-msgstr "닫기"
-
-#: src/ui/components/Modal.svelte
-msgid "Tab"
-msgstr "탭"
-
 #. 0: uiState.appName
 #: src/ui/views/Login.svelte
 msgid "Connect to {0}"
@@ -76,10 +68,6 @@ msgstr "지갑 연결"
 #: src/ui/views/Login.svelte
 msgid "Select a wallet to continue"
 msgstr "계속하려면 지갑을 선택하세요"
-
-#: src/ui/views/Login.svelte
-msgid "Loading wallets..."
-msgstr "지갑 로딩 중..."
 
 #. 0: i + 1
 #: src/ui/views/Login.svelte
@@ -135,6 +123,8 @@ msgstr "다른 기기는 작동을 멈춥니다"
 msgid "This only affects {0}. Your wallet still works everywhere."
 msgstr "이는 {0}에만 영향을 줍니다. 지갑은 계속 어디서나 작동합니다."
 
+#: src/ui/components/login/AccountEntry.svelte
+#: src/ui/components/login/PermissionChoice.svelte
 #: src/ui/views/SessionKeyConflict.svelte
 msgid "Continue"
 msgstr "계속"
@@ -321,3 +311,103 @@ msgstr "QR 코드를 사용할 수 없습니다. 계속하려면 아래 링크�
 #: src/ui/components/prompt/PromptLink.svelte
 msgid "Open Link"
 msgstr "링크 열기"
+
+#: src/ui/components/Header.svelte
+msgid "Back"
+msgstr "뒤로"
+
+#: src/ui/views/Login.svelte
+msgid "Select a blockchain"
+msgstr "블록체인 선택"
+
+#: src/ui/views/Login.svelte
+msgid "Select an account"
+msgstr "계정 선택"
+
+#: src/ui/views/Login.svelte
+msgid "Enter your account"
+msgstr "계정을 입력하세요"
+
+#. 0: walletPlugin?.metadata?.name ?? 'this wallet'
+#: src/ui/views/Login.svelte
+msgid "Choose the blockchain to use with {0}"
+msgstr "{0}에서 사용할 블록체인을 선택하세요"
+
+#: src/ui/views/Login.svelte
+msgid "These accounts can be signed for by this wallet"
+msgstr "이 지갑으로 서명할 수 있는 계정입니다"
+
+#: src/ui/views/Login.svelte
+msgid "Continue in your wallet"
+msgstr "지갑에서 계속하세요"
+
+#: src/ui/views/Login.svelte
+msgid "Waiting for your wallet…"
+msgstr "지갑을 기다리는 중…"
+
+#: src/ui/views/Login.svelte
+msgid "Loading wallets…"
+msgstr "지갑을 불러오는 중…"
+
+#: src/ui/components/login/AccountEntry.svelte
+msgid "Account name"
+msgstr "계정 이름"
+
+#: src/ui/components/login/PermissionChoice.svelte
+msgid "Permission"
+msgstr "권한"
+
+#: src/ui/components/login/PermissionSelect.svelte
+msgid "Looking up your accounts…"
+msgstr "계정을 조회하는 중…"
+
+#. 0: chain.name
+#: src/ui/components/login/PermissionSelect.svelte
+msgid "No accounts on {0} use the key this wallet provided. Go back to pick a different wallet."
+msgstr "{0}의 어떤 계정도 이 지갑이 제공한 키를 사용하지 않습니다. 돌아가서 다른 지갑을 선택하세요."
+
+#: src/ui/views/Login.svelte
+msgid "Select a permission"
+msgstr "권한 선택"
+
+#: src/ui/views/Login.svelte
+msgid "Name the account this wallet signs for"
+msgstr "이 지갑이 서명할 계정 이름을 지정하세요"
+
+#. 0: enteredAccount
+#: src/ui/views/Login.svelte
+msgid "Choose the permission on {0} to sign with"
+msgstr "서명에 사용할 {0}의 권한을 선택하세요"
+
+#: src/ui/components/login/AccountEntry.svelte
+msgid "Account names use the letters a–z, the digits 1–5, and periods, up to 12 characters."
+msgstr "계정 이름은 a–z 문자, 1–5 숫자 및 마침표를 사용하며, 최대 12자입니다."
+
+#. 0: account
+#: src/ui/components/login/PermissionChoice.svelte
+msgid "Looking up {0}…"
+msgstr "{0} 조회 중…"
+
+#. 0: account
+#: src/ui/components/login/PermissionChoice.svelte
+msgid "The permissions on {0} can't be listed without a blockchain to read them from. Name the permission you sign with."
+msgstr "{0}의 권한을 조회할 블록체인이 없으면 권한을 나열할 수 없습니다. 서명할 권한 이름을 입력하세요."
+
+#: src/ui/components/login/PermissionChoice.svelte
+msgid "Permission names use the letters a–z, the digits 1–5, and periods, up to 12 characters."
+msgstr "권한 이름은 a–z 문자, 숫자 1–5 및 마침표를 사용하며 최대 12자까지 입력할 수 있습니다."
+
+#. 0: permission.parent
+#: src/ui/components/login/PermissionChoice.svelte
+msgid "Under {0}"
+msgstr "{0} 하위"
+
+#. 0: lookupFailure.account; 1: chain.name
+#: src/ui/views/Login.svelte
+msgid "No account named {0} exists on {1}. Check the spelling and try again."
+msgstr "{1}에 {0}이라는 계정이 없습니다. 철자를 확인하고 다시 시도하세요."
+
+#. 0: chain.name; 1: lookupFailure.account
+#: src/ui/views/Login.svelte
+msgid "Could not reach {0}, so the name {1} was not checked. Try again."
+msgstr "{0}에 연결할 수 없어 {1} 이름을 확인하지 못했습니다. 다시 시도하세요."

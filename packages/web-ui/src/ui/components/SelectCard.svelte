@@ -1,26 +1,33 @@
 <script lang="ts">
     interface Props {
-        name: string
+        label: string
+        caption?: string
         logo?: string
+        icon?: boolean
         onclick?: () => void
     }
 
-    let {name, logo, onclick}: Props = $props()
+    let {label, caption, logo, icon = true, onclick}: Props = $props()
 </script>
 
-<button class="wallet-card" {onclick}>
+<button class="select-card" {onclick}>
     {#if logo}
-        <img src={logo} alt="" class="wallet-logo" />
-    {:else}
-        <div class="wallet-logo-placeholder" aria-hidden="true">
-            {name.charAt(0).toUpperCase()}
+        <img src={logo} alt="" class="select-logo" />
+    {:else if icon}
+        <div class="select-logo-placeholder" aria-hidden="true">
+            {label.charAt(0).toUpperCase()}
         </div>
     {/if}
-    <span class="wallet-name">{name}</span>
+    <span class="select-text">
+        <span class="select-label">{label}</span>
+        {#if caption}
+            <span class="select-caption">{caption}</span>
+        {/if}
+    </span>
 </button>
 
 <style>
-    .wallet-card {
+    .select-card {
         display: flex;
         align-items: center;
         gap: 14px;
@@ -42,21 +49,21 @@
         box-sizing: border-box;
     }
 
-    .wallet-card:hover {
+    .select-card:hover {
         background: var(--web-ui-surface);
         border-color: var(--web-ui-text-secondary);
     }
 
-    .wallet-card:focus-visible {
+    .select-card:focus-visible {
         outline: 2px solid var(--web-ui-ring);
         outline-offset: 2px;
     }
 
-    .wallet-card:active {
+    .select-card:active {
         transform: scale(0.995);
     }
 
-    .wallet-logo {
+    .select-logo {
         width: 32px;
         height: 32px;
         border-radius: var(--web-ui-radius-xs);
@@ -64,7 +71,7 @@
         flex-shrink: 0;
     }
 
-    .wallet-logo-placeholder {
+    .select-logo-placeholder {
         width: 32px;
         height: 32px;
         border-radius: var(--web-ui-radius-xs);
@@ -79,7 +86,23 @@
         flex-shrink: 0;
     }
 
-    .wallet-name {
+    .select-text {
         flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .select-label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .select-caption {
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--web-ui-text-secondary);
     }
 </style>

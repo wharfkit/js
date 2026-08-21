@@ -55,11 +55,13 @@
         })
 
         const onKeydown = (e: KeyboardEvent) => {
+            // @wc-ignore
             if (e.key === 'Escape' && closeOnEscape) {
                 e.preventDefault()
                 onclose?.()
                 return
             }
+            // @wc-ignore
             if (e.key !== 'Tab') return
             const focusable = getFocusable()
             if (focusable.length === 0) {

@@ -139,9 +139,12 @@ function verify(opts: {install: boolean}) {
     log(`verify complete across ${ordered.length} member(s)`)
 }
 
+function prereleaseBlocked(version: string): boolean {
+    return semver.prerelease(version) === null && existsSync(join(ROOT, '.prerelease-only'))
+}
+
 function guardPrereleaseOnly(version: string) {
-    const marker = join(ROOT, '.prerelease-only')
-    if (!semver.prerelease(version) && existsSync(marker)) {
+    if (prereleaseBlocked(version)) {
         fail(`.prerelease-only is present; stable version ${version} is blocked until the go/no-go checkpoint removes it`)
     }
 }
@@ -256,7 +259,10 @@ function publish() {
     const root = rootManifest()
     const version = root.version
     const tag = `v${version}`
-    guardPrereleaseOnly(version)
+    if (prereleaseBlocked(version)) {
+        log(`.prerelease-only is present and ${version} is stable; nothing to publish`)
+        return
+    }
 
     if (trySh('git', ['rev-parse', '--verify', `refs/tags/${tag}`]) !== null || trySh('git', ['ls-remote', '--exit-code', '--tags', 'origin', `refs/tags/${tag}`]) !== null) {
         log(`tag ${tag} already exists; nothing to publish`)

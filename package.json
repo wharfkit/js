@@ -1,0 +1,12 @@
+{
+    "name": "wharfkit-js",
+    "private": true,
+    "version": "0.0.0",
+    "workspaces": [
+        "packages/*"
+    ],
+    "devDependencies": {
+        "@types/semver": "^7.5.8",
+        "semver": "^7.6.0"
+    }
+}

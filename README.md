@@ -6,6 +6,7 @@ Monorepo for the `@wharfkit/*` TypeScript packages. Every member package lives u
 
 - `packages/<name>/` holds one npm package per directory, imported with full history from its standalone repository.
 - `scripts/` holds the workspace tooling: `release.ts` (version bump and publish), `import-package.ts` (standalone repo import), `check-closure.ts` (membership closure check).
+- `scripts/vendor/git-filter-repo` is a vendored, version-pinned copy of [git-filter-repo](https://github.com/newren/git-filter-repo) (v2.47.0, byte-identical to the upstream release, MIT licensed with the notice at `scripts/vendor/COPYING.mit`), invoked by `import-package.ts` via `python3`. No system install is required.
 
 ## Toolchain
 

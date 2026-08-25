@@ -4,6 +4,7 @@ import {tmpdir} from 'node:os'
 import {join} from 'node:path'
 
 const ROOT = new URL('..', import.meta.url).pathname
+const FILTER_REPO = join(ROOT, 'scripts', 'vendor', 'git-filter-repo')
 
 function sh(cmd: string, args: string[], opts: {cwd?: string} = {}): string {
     return execFileSync(cmd, args, {
@@ -61,8 +62,8 @@ function parseArgs() {
 function main() {
     const {source, branch, sha, phantoms} = parseArgs()
 
-    if (trySh('git', ['filter-repo', '--version']) === null) {
-        fail('git-filter-repo is not installed (brew install git-filter-repo)')
+    if (trySh('python3', [FILTER_REPO, '--version']) === null) {
+        fail('the vendored scripts/vendor/git-filter-repo does not run; python3 is required')
     }
     if (sh('git', ['status', '--porcelain']) !== '') fail('working tree is not clean')
 
@@ -89,7 +90,7 @@ function main() {
         run('bun', [join(ROOT, 'scripts', 'check-closure.ts'), '--candidate', tmp])
 
         log(`rewriting history under packages/${unscoped}`)
-        run('git', ['filter-repo', '--to-subdirectory-filter', `packages/${unscoped}`, '--force'], {cwd: tmp})
+        run('python3', [FILTER_REPO, '--to-subdirectory-filter', `packages/${unscoped}`, '--force'], {cwd: tmp})
 
         const importBranch = `import/${unscoped}`
         run('git', ['checkout', '-b', importBranch, 'master'])

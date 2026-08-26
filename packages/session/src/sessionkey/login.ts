@@ -5,6 +5,7 @@ import {SessionKeyManager} from './manager'
 /**
  * Configuration options for the [[SessionKeyLoginPlugin]].
  */
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SessionKeyLoginPluginOptions extends SessionKeyConfig {}
 
 /**

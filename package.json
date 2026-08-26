@@ -10,6 +10,7 @@
             "@babel/core": "^7.20.12",
             "@babel/preset-env": "^7.20.2",
             "@babel/runtime": "^7.22.6",
+            "@eslint/js": "^10.0.0",
             "@greymass/buoy": "^1.0.3",
             "@rollup/plugin-alias": "^6.0.0",
             "@rollup/plugin-babel": "^6.0.3",
@@ -26,6 +27,9 @@
             "@types/node": "^22.20.1",
             "assert": "^2.0.0",
             "crypto-js": "^4.1.1",
+            "eslint": "^10.8.0",
+            "eslint-config-prettier": "^10.1.8",
+            "eslint-plugin-prettier": "^5.5.6",
             "gh-pages": "^4.0.0",
             "isomorphic-ws": "^5.0.0",
             "jsdom": "^26.0.0",
@@ -40,6 +44,7 @@
             "tslib": "^2.8.1",
             "typedoc-plugin-mermaid": "^1.10.0",
             "typescript": "^5.9.3",
+            "typescript-eslint": "^8.66.0",
             "ws": "^8.13.0"
         }
     },
@@ -48,7 +53,6 @@
         "@types/semver": "^7.5.8",
         "eslint": "^10.8.0",
         "eslint-config-prettier": "^10.1.8",
-        "eslint-plugin-es-x": "^10.0.0",
         "eslint-plugin-prettier": "^5.5.6",
         "prettier": "^3.9.6",
         "semver": "^7.6.0",

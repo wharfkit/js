@@ -147,7 +147,7 @@ export class TransactContext {
     }
 
     async getInfo(): Promise<API.v1.GetInfoResponse> {
-        let info: API.v1.GetInfoResponse | undefined = this.info
+        let info: API.v1.GetInfoResponse | undefined
         if (this.info) {
             info = this.info
         } else {

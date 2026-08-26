@@ -388,14 +388,14 @@ export class TransactPluginAutoCorrect extends AbstractTransactPlugin {
         // Determine price of resources
         const minPriceValue = Number(Asset.fromUnits(1, config.symbol).value)
 
-        let cpuPrice = 0
+        let cpuPrice: number
         try {
             cpuPrice = Number(powerup.cpu.price_per(this.sample, cpu))
         } catch {
             cpuPrice = cpu > 0 ? minPriceValue : 0
         }
 
-        let netPrice = 0
+        let netPrice: number
         try {
             netPrice = Number(powerup.net.price_per(this.sample, net))
         } catch {

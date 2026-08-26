@@ -33,7 +33,7 @@ export interface ChainDefinitionArgs {
  */
 export class ChainDefinition<
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    AccountDataType extends API.v1.AccountObject = API.v1.AccountObject
+    AccountDataType extends API.v1.AccountObject = API.v1.AccountObject,
 > {
     /**
      * The chain ID.

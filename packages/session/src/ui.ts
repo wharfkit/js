@@ -27,6 +27,7 @@ export interface PromptElement {
 /**
  * The response for a [[UserInterface.prompt]] call.
  */
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface PromptResponse {}
 
 /**

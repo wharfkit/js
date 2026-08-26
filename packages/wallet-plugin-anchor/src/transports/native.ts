@@ -154,7 +154,7 @@ export class NativeTransport {
                         this.options.data.launchUrl = metadata.launchUrl
                         this.options.data.triggerUrl = metadata.triggerUrl
                     }
-                } catch (e) {
+                } catch {
                     // link_meta is advisory; a malformed value must not fail the login
                 }
             }

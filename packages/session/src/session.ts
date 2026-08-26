@@ -294,7 +294,7 @@ export class Session {
                 anyArgs.max_cpu_usage_ms ||
                 anyArgs.delay_sec)
         ) {
-            return (args = {
+            return {
                 transaction: {
                     expiration: '1970-01-01T00:00:00',
                     ref_block_num: 0,
@@ -304,7 +304,7 @@ export class Session {
                     delay_sec: 0,
                     ...anyArgs,
                 },
-            })
+            }
         }
         // if any context free data is provided, upgrade to a transaction and include them
         if (args.context_free_actions || args.context_free_data) {

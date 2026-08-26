@@ -17,7 +17,7 @@ coverage: node_modules
 
 .PHONY: lint
 lint: node_modules
-	@${BIN}/eslint src --ext .ts --fix
+	@${BIN}/eslint src --fix
 
 .PHONY: ci-test
 ci-test: node_modules
@@ -26,7 +26,7 @@ ci-test: node_modules
 
 .PHONY: ci-lint
 ci-lint: node_modules
-	@${BIN}/eslint src --ext .ts --max-warnings 0 --format unix && echo "Ok"
+	@${BIN}/eslint src --max-warnings 0 && echo "Ok"
 
 docs: $(SRC_FILES) node_modules
 	@${BIN}/typedoc --out docs \

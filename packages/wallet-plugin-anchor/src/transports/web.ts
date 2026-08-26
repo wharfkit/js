@@ -199,7 +199,8 @@ export class WebTransport {
                 }
             }, 1000)
 
-            waitForCallback(receiveOptions, this.options.buoyWs, t)
+            const onCallback = this.options.waitForCallback ?? waitForCallback
+            onCallback(receiveOptions, this.options.buoyWs, t)
                 .then((response) => {
                     popup.close()
                     resolve({payload: response})
@@ -252,7 +253,8 @@ export class WebTransport {
                 ],
             }).catch(reject)
 
-            waitForCallback(receiveOptions, this.options.buoyWs, t)
+            const onCallback = this.options.waitForCallback ?? waitForCallback
+            onCallback(receiveOptions, this.options.buoyWs, t)
                 .then((response) => resolve({payload: response}))
                 .catch((error) => {
                     if (error instanceof Error && error.message === cancelledMessage) {

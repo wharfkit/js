@@ -125,11 +125,9 @@ export class NativeTransport {
             default: 'The request was cancelled from Anchor.',
         })
         try {
-            const callbackResponse: CallbackPayload = await waitForCallback(
-                callback,
-                this.options.buoyWs,
-                t
-            )
+            const callbackResponse: CallbackPayload = await (
+                this.options.waitForCallback ?? waitForCallback
+            )(callback, this.options.buoyWs, t)
             verifyLoginCallbackResponse(callbackResponse, context)
 
             if (!callbackResponse.cid || !callbackResponse.sa || !callbackResponse.sp) {
@@ -211,7 +209,7 @@ export class NativeTransport {
         const isSameDevice = data.sameDevice !== false
 
         const sameDeviceRequest = modifiedRequest.clone()
-        const returnUrl = generateReturnUrl()
+        const returnUrl = (this.options.generateReturnUrl ?? generateReturnUrl)()
         sameDeviceRequest.setInfoKey('same_device', true)
         if (returnUrl) {
             sameDeviceRequest.setInfoKey('return_path', returnUrl)
@@ -302,9 +300,13 @@ export class NativeTransport {
         // A WebSocket left open while Safari suspends this page can swallow the signature; connect after return.
         const callbackPromise = deferCallbackUntilReturn
             ? waitForPageReturn(returnUrl!, callbackController.signal).then(() =>
-                  waitForCallback(callback, this.options.buoyWs, t)
+                  (this.options.waitForCallback ?? waitForCallback)(
+                      callback,
+                      this.options.buoyWs,
+                      t
+                  )
               )
-            : waitForCallback(callback, this.options.buoyWs, t)
+            : (this.options.waitForCallback ?? waitForCallback)(callback, this.options.buoyWs, t)
 
         try {
             if (data.channelUrl) {
@@ -323,14 +325,14 @@ export class NativeTransport {
 
                 if (data.sameDevice) {
                     // Safari suspends this page the instant Anchor opens; the request must reach buoy first.
-                    await send(payload, {service, channel})
+                    await (this.options.send ?? send)(payload, {service, channel})
                     if (data.launchUrl) {
                         window.location.href = data.launchUrl
                     } else if (isAppleHandheld()) {
                         window.location.href = 'anchor://link'
                     }
                 } else {
-                    send(payload, {service, channel})
+                    ;(this.options.send ?? send)(payload, {service, channel})
                 }
             } else {
                 // If no channel is defined, fallback to the same device request and trigger immediately

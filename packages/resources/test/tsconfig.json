@@ -2,8 +2,13 @@
     "extends": "../tsconfig.json",
     "compilerOptions": {
         "isolatedModules": false,
-        "module": "commonjs",
-        "target": "es6",
+        "module": "nodenext",
+        "target": "es2022",
+        "moduleResolution": "nodenext",
+        "useDefineForClassFields": false
     },
-    "include": ["./**/*.ts"]
+    "include": [
+        "./**/*.ts",
+        "../src/**/*.ts"
+    ]
 }

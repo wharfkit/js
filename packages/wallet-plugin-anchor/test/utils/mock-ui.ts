@@ -1,4 +1,10 @@
-import {Cancelable, PromptArgs, PromptElement, PromptResponse, UserInterface} from '@wharfkit/session'
+import {
+    Cancelable,
+    PromptArgs,
+    PromptElement,
+    PromptResponse,
+    UserInterface,
+} from '@wharfkit/session'
 
 export interface RecordingUserInterface extends UserInterface {
     prompts: PromptArgs[]

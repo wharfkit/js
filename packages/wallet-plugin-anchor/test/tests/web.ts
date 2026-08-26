@@ -125,7 +125,7 @@ suite('web transport', function () {
     })
 
     test('a blocked login still completes once the callback arrives', async function () {
-        const receive = sinon.stub(buoy, 'receive').resolves(JSON.stringify(mockCallbackPayload))
+        const callback = sinon.stub().resolves(mockCallbackPayload)
         const originalOpen = window.open
         ;(window as any).open = () => null
         try {
@@ -134,6 +134,7 @@ suite('web transport', function () {
                 id: 'anchor',
                 data: {},
                 buoyUrl: 'https://cb.anchor.link',
+                waitForCallback: callback,
             })
             const response = await transport.login(
                 makeLoginContext(ui),
@@ -143,7 +144,7 @@ suite('web transport', function () {
             assert.equal(String(response.permissionLevel), 'wharfkit1115@test')
         } finally {
             ;(window as any).open = originalOpen
-            receive.restore()
+            callback.resetHistory()
         }
     })
 

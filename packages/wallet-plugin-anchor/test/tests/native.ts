@@ -47,7 +47,9 @@ suite('native transport', function () {
             buoyUrl: 'https://cb.anchor.link',
         })
         // Never resolves in this test — we only assert on what was rendered.
-        transport.login(makeLoginContext(ui), makeBundle(), ui.getTranslate()).catch(() => undefined)
+        transport
+            .login(makeLoginContext(ui), makeBundle(), ui.getTranslate())
+            .catch(() => undefined)
 
         const args = ui.lastPrompt()
         assert.exists(args)
@@ -63,7 +65,9 @@ suite('native transport', function () {
             data: {},
             buoyUrl: 'https://cb.anchor.link',
         })
-        transport.login(makeLoginContext(ui), makeBundle(), ui.getTranslate()).catch(() => undefined)
+        transport
+            .login(makeLoginContext(ui), makeBundle(), ui.getTranslate())
+            .catch(() => undefined)
         assert.equal(window.location.href, 'esr://same-device')
     })
 
@@ -101,7 +105,9 @@ suite('native transport', function () {
             data: {},
             buoyUrl: 'https://cb.anchor.link',
         })
-        transport.login(makeLoginContext(ui), makeBundle(), ui.getTranslate()).catch(() => undefined)
+        transport
+            .login(makeLoginContext(ui), makeBundle(), ui.getTranslate())
+            .catch(() => undefined)
         await new Promise((resolve) => setTimeout(resolve, 30))
         assert.equal(ui.prompts.length, 1)
     })

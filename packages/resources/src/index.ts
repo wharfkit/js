@@ -84,7 +84,7 @@ function divCeil(num: BN, den: BN): UInt128 {
     if (num.mod(den).gt(zero) && v.gt(one)) {
         v = v.sub(one)
     }
-    return UInt128.from(v)
+    return UInt128.from(String(v))
 }
 
 export function intToBigDecimal(value: Int | number) {

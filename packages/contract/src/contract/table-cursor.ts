@@ -1,4 +1,4 @@
-import {ABI, ABIDef, API, APIClient, Name} from '@wharfkit/antelope'
+import {ABI, ABIDef, API, APIClient, Name, UInt32} from '@wharfkit/antelope'
 import {wrapIndexValue} from '../utils'
 
 /** Mashup of valid types for an APIClient call to v1.chain.get_table_rows */
@@ -139,7 +139,11 @@ export abstract class TableCursor<RowType = any> {
         const rowsRemaining = this.maxRows - this.rowsCount
 
         // Find the lowest amount between rows remaining, rows per request, or the provided query params limit
-        const limit = Math.min(rowsRemaining, rowsPerAPIRequest, this.params.limit)
+        const limit = Math.min(
+            rowsRemaining,
+            rowsPerAPIRequest,
+            this.params.limit === undefined ? Infinity : UInt32.from(this.params.limit).toNumber()
+        )
 
         // Assemble and perform the v1/chain/get_table_rows query
         const query = {

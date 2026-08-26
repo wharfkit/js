@@ -1,4 +1,4 @@
-import {API} from '@wharfkit/antelope'
+import {API, UInt32} from '@wharfkit/antelope'
 import {TableCursor} from './table-cursor'
 
 export class TableScopeCursor extends TableCursor {
@@ -26,7 +26,11 @@ export class TableScopeCursor extends TableCursor {
         const rowsRemaining = this.maxRows - this.rowsCount
 
         // Find the lowest amount between rows remaining, rows per request, or the provided query params limit
-        const limit = Math.min(rowsRemaining, rowsPerAPIRequest, this.params.limit)
+        const limit = Math.min(
+            rowsRemaining,
+            rowsPerAPIRequest,
+            this.params.limit === undefined ? Infinity : UInt32.from(this.params.limit).toNumber()
+        )
 
         // Assemble and perform the v1/chain/get_table_rows query
         const query: API.v1.GetTableByScopeParams = {

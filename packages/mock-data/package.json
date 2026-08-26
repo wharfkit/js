@@ -6,6 +6,9 @@
     "license": "BSD-3-Clause",
     "main": "lib/mock-data.js",
     "module": "lib/mock-data.m.js",
+    "browser": {
+        "./lib/mock-data.m.js": "./lib/mock-data.browser.m.js"
+    },
     "types": "lib/mock-data.d.ts",
     "unpkg": "lib/mock-data.bundle.js",
     "sideEffects": false,

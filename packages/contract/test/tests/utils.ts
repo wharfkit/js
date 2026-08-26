@@ -1,7 +1,8 @@
 import {assert} from 'chai'
-import fs from 'fs'
 
 import {ABI, Blob, Int64, Name, Serializer, UInt128, UInt32, UInt64} from '@wharfkit/antelope'
+
+import rewardsAbi from '../data/abis/rewards.gm.json'
 import {
     abiToBlob,
     blobStringToAbi,
@@ -105,7 +106,7 @@ suite('Utility functions', function () {
         })
     })
 
-    const testABI = ABI.from(fs.readFileSync(`test/data/abis/rewards.gm.json`, {encoding: 'utf8'}))
+    const testABI = ABI.from(rewardsAbi)
 
     // Blob created from the testABI
     const testBlob = new Blob(Serializer.encode({object: testABI, type: ABI}).array)

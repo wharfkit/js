@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import {fileURLToPath} from 'url'
+import alias from '@rollup/plugin-alias'
 import dts from 'rollup-plugin-dts'
 import typescript from '@rollup/plugin-typescript'
 import cleanup from 'rollup-plugin-cleanup'
@@ -33,6 +34,25 @@ export default [
             sourcemap: true,
         },
         plugins: [typescript({target: 'es2020'}), cleanup({extensions: ['js', 'ts']})],
+        external,
+    },
+    {
+        input: 'src/index.ts',
+        output: {
+            file: pkg.browser[`./${pkg.module}`],
+            format: 'esm',
+            sourcemap: true,
+        },
+        plugins: [
+            alias({
+                entries: [
+                    {find: './mock/fetch', replacement: './mock/browser-fetch.ts'},
+                    {find: './fetch', replacement: './browser-fetch.ts'},
+                ],
+            }),
+            typescript({target: 'es2020'}),
+            cleanup({extensions: ['js', 'ts']}),
+        ],
         external,
     },
     {

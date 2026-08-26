@@ -15,10 +15,11 @@ import virtual from '@rollup/plugin-virtual'
 // eslint-disable-next-line es-x/no-import-meta
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
+const dataDir = path.join(__dirname, 'data')
 const mockData = Object.fromEntries(
-    fs
-        .readdirSync(path.join(__dirname, 'data'))
-        .map((f) => path.join(__dirname, 'data', f))
+    (fs.existsSync(dataDir) ? fs.readdirSync(dataDir) : [])
+        .map((f) => path.join(dataDir, f))
+        .filter((f) => fs.statSync(f).isFile())
         .map((f) => [path.basename(f), JSON.parse(fs.readFileSync(f))])
 )
 
@@ -35,12 +36,12 @@ const template = `
     <meta charset="utf-8" />
     <title>Tests</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+    <link rel="stylesheet" href="https://unpkg.com/mocha@11/mocha.css" />
   </head>
   <body>
     <div id="mocha"></div>
-    <script src="https://unpkg.com/chai/chai.js"></script>
-    <script src="https://unpkg.com/mocha/mocha.js"></script>
+    <script src="https://unpkg.com/chai@4/chai.js"></script>
+    <script src="https://unpkg.com/mocha@11/mocha.js"></script>
     <script class="mocha-init">
       mocha.setup('tdd');
       mocha.checkLeaks();

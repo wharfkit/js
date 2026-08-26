@@ -1,13 +1,8 @@
-import chai, {expect} from 'chai'
+import {expect} from 'chai'
 import {PermissionLevel, SessionKit} from '@wharfkit/session'
 import sinon from 'sinon'
-import sinonChai from 'sinon-chai'
-import * as buoy from '@greymass/buoy'
-
-chai.use(sinonChai)
 
 import {mockSessionKitArgs, mockSessionKitOptions} from '@wharfkit/mock-data'
-import {mockCallbackPayload} from '$test/utils/mock-esr'
 import {mockChainId} from '$test/utils/mock-config'
 
 const mockPermissionLevel = PermissionLevel.from('wharfkit1115@test')
@@ -22,9 +17,6 @@ suite('wallet plugin', function () {
 
     // TODO: Implement a real test, this currently open a socket and expects Anchor to respond.
     test('login and sign', async function () {
-        sinon.stub(buoy, 'receive').resolves(JSON.stringify(mockCallbackPayload))
-        sinon.stub(buoy, 'send')
-
         const kit = new SessionKit(mockSessionKitArgs, mockSessionKitOptions)
         const {session} = await kit.login({
             chain: mockChainId,

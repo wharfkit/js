@@ -41,7 +41,6 @@ const template = `
   </head>
   <body>
     <div id="mocha"></div>
-    <script src="https://unpkg.com/chai@4/chai.js"></script>
     <script src="https://unpkg.com/mocha@11/mocha.js"></script>
     <script class="mocha-init">
       mocha.setup('tdd');
@@ -81,13 +80,12 @@ export default [
             format: 'iife',
             sourcemap: true,
             globals: {
-                chai: 'chai',
                 mocha: 'mocha',
                 util: 'undefined',
                 crypto: 'undefined',
             },
         },
-        external: ['chai', 'mocha', 'crypto', 'util'],
+        external: ['mocha', 'crypto', 'util'],
         plugins: [
             virtual({
                 'tests.ts': testFiles.map((f) => `import '${f.slice(0, -3)}'`).join('\n'),

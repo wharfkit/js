@@ -164,6 +164,7 @@ export function receiveReturnedTransaction(options: {
     now?: number
     storage?: Storage
     WebSocket?: typeof WebSocket
+    receive?: typeof receive
     abiProvider: AbiProvider
 }): Cancelable<SignedTransaction> | null {
     const storage = options.storage ?? window.localStorage
@@ -171,7 +172,7 @@ export function receiveReturnedTransaction(options: {
     const handoff = findReturnedTransactionHandoff(options.currentUrl, now, storage)
     if (!handoff) return null
     const ctx: ReceiveContext = {}
-    const pending = receive(
+    const pending = (options.receive ?? receive)(
         {
             ...handoff.callback,
             WebSocket: options.WebSocket ?? WebSocket,

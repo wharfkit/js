@@ -51,7 +51,10 @@ suite('mode', function () {
 
     test('infers app mode from a v1.x native session', function () {
         // Sessions serialized before 2.0 have no `mode`, but always carry a buoy channel.
-        assert.equal(readMode({channelUrl: 'https://cb.anchor.link/abc', channelName: 'laptop'}), 'app')
+        assert.equal(
+            readMode({channelUrl: 'https://cb.anchor.link/abc', channelName: 'laptop'}),
+            'app'
+        )
     })
 
     test('infers web mode from web transport keys', function () {
@@ -197,7 +200,7 @@ suite('login options', function () {
         assert.isUndefined(readLoginOptions('anchor', {anchor: {popup: null}}).popup)
     })
 
-    test('another plugin\'s options are ignored', function () {
+    test("another plugin's options are ignored", function () {
         assert.deepEqual(readLoginOptions('anchor', {other: {mode: 'web'}}), {})
     })
 

@@ -1,4 +1,6 @@
+import type {send} from '@greymass/buoy'
 import {PrivateKey, PublicKey} from '@wharfkit/antelope'
+import type {generateReturnUrl, waitForCallback} from '@wharfkit/protocol-esr'
 import {UserInterfaceTranslateFunction} from '@wharfkit/session'
 import {SigningRequest} from '@wharfkit/signing-request'
 import WebSocket from 'isomorphic-ws'
@@ -22,6 +24,10 @@ export interface TransportOptions {
     data: Record<string, any>
     buoyUrl: string
     buoyWs?: WebSocket
+    // Overridable so tests can substitute them; ESM namespaces cannot be stubbed in place.
+    send?: typeof send
+    waitForCallback?: typeof waitForCallback
+    generateReturnUrl?: typeof generateReturnUrl
 }
 
 /** An offer to move this login to the other Anchor transport. */

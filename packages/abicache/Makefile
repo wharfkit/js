@@ -2,23 +2,25 @@ SHELL := /bin/bash
 SRC_FILES := $(shell find src -name '*.ts')
 TEST_FILES := $(shell find test/tests -name '*.ts')
 BIN := ./node_modules/.bin
-MOCHA_OPTS := -u tdd -r ts-node/register -r tsconfig-paths/register --extension ts --reporter-option maxDiffSize=0
+MOCHA_OPTS := -u tdd --require tsx --extension ts --reporter-option maxDiffSize=0
 NYC_OPTS := --temp-dir build/nyc_output --report-dir build/coverage
+STRIP_TYPES_FLAG := $(shell node -e 'const [a,b]=process.versions.node.split(".").map(Number); if (a>22||(a===22&&b>=6)) console.log("--no-experimental-strip-types")')
+MOCHA_ENV := TSX_TSCONFIG_PATH=test/tsconfig.json NODE_OPTIONS='$(STRIP_TYPES_FLAG)'
 
 lib: ${SRC_FILES} package.json tsconfig.json node_modules rollup.config.mjs
 	@${BIN}/rollup -c && touch lib
 
 .PHONY: test
 test: node_modules
-	@TS_NODE_PROJECT='./test/tsconfig.json' MOCK_DIR='./test/data' \
+	@${MOCHA_ENV} MOCK_DIR='./test/data' \
 		${BIN}/mocha ${MOCHA_OPTS} ${TEST_FILES} --no-timeout --grep '$(grep)'
 
 test/watch: node_modules
-	@TS_NODE_PROJECT='./test/tsconfig.json' \
+	@${MOCHA_ENV} \
 		${BIN}/mocha --watch ${MOCHA_OPTS} ${TEST_FILES} --no-timeout --grep '$(grep)'
 
 build/coverage: ${SRC_FILES} ${TEST_FILES} node_modules
-	@TS_NODE_PROJECT='./test/tsconfig.json' \
+	@${MOCHA_ENV} \
 		${BIN}/nyc ${NYC_OPTS} --reporter=html \
 		${BIN}/mocha ${MOCHA_OPTS} -R nyan ${TEST_FILES}
 
@@ -28,7 +30,7 @@ coverage: build/coverage
 
 .PHONY: ci-test
 ci-test: node_modules
-	@TS_NODE_PROJECT='./test/tsconfig.json' MOCK_DIR='./test/data' \
+	@${MOCHA_ENV} MOCK_DIR='./test/data' \
 		${BIN}/nyc ${NYC_OPTS} --reporter=text \
 		${BIN}/mocha ${MOCHA_OPTS} -R list ${TEST_FILES}
 
@@ -87,4 +89,4 @@ distclean: clean
 
 .PHONY: accounts
 accounts: node_modules
-	${BIN}/ts-node --project test/utils/setup/tsconfig.json test/utils/setup/accounts.ts
+	TSX_TSCONFIG_PATH=test/utils/setup/tsconfig.json ${BIN}/tsx test/utils/setup/accounts.ts

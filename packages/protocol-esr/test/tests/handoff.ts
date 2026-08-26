@@ -309,7 +309,7 @@ suite('handoff', () => {
                 ex: '2026-08-15T08:00:00',
             }
             storeTransactionHandoff(handoff, storage)
-            const receiveStub = sinon.stub(buoy, 'receive').resolves(JSON.stringify(payload))
+            const receiveStub = sinon.stub().resolves(JSON.stringify(payload))
             const fromPayload = sinon.stub(ResolvedSigningRequest, 'fromPayload').resolves({
                 transaction,
                 chainId,
@@ -321,6 +321,7 @@ suite('handoff', () => {
                 now: Date.parse('2026-08-15T07:59:00Z'),
                 storage,
                 WebSocket: MockWebSocket as unknown as typeof WebSocket,
+                receive: receiveStub as unknown as typeof buoy.receive,
                 abiProvider,
             })
             if (!pending) throw new Error('Expected a returned transaction')
@@ -337,7 +338,7 @@ suite('handoff', () => {
         test('cancels the buoy receive', async () => {
             const handoff = makeHandoff()
             storeTransactionHandoff(handoff, storage)
-            sinon.stub(buoy, 'receive').callsFake(
+            const receiveStub = sinon.stub().callsFake(
                 (_options, ctx) =>
                     new Promise((_resolve, reject) => {
                         if (ctx) ctx.cancel = () => reject(new Error('Cancelled'))
@@ -349,6 +350,7 @@ suite('handoff', () => {
                 now: Date.parse('2026-08-15T07:59:00Z'),
                 storage,
                 WebSocket: MockWebSocket as unknown as typeof WebSocket,
+                receive: receiveStub as unknown as typeof buoy.receive,
                 abiProvider: {getAbi: sinon.fake()},
             })
             if (!pending) throw new Error('Expected a returned transaction')
@@ -369,9 +371,9 @@ suite('handoff', () => {
                 Checksum256.hash(new TextEncoder().encode('returned'))
             )
             storeTransactionHandoff(handoff, storage)
-            sinon.stub(buoy, 'receive').resolves(
-                JSON.stringify({tx: String(transaction.id), sig: String(signature)})
-            )
+            const receiveStub = sinon
+                .stub()
+                .resolves(JSON.stringify({tx: String(transaction.id), sig: String(signature)}))
             sinon.stub(ResolvedSigningRequest, 'fromPayload').resolves({
                 transaction,
                 chainId,
@@ -383,6 +385,7 @@ suite('handoff', () => {
                 now: Date.parse('2026-08-15T07:59:00Z'),
                 storage,
                 WebSocket: MockWebSocket as unknown as typeof WebSocket,
+                receive: receiveStub as unknown as typeof buoy.receive,
                 abiProvider: {getAbi: sinon.fake()},
             })
             if (!pending) throw new Error('Expected a returned transaction')

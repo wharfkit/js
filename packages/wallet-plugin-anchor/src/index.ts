@@ -46,6 +46,8 @@ export interface WalletPluginAnchorOptions {
     webFallbackDelayMs?: number
     /** Explicit login route; omit it to ask on each supported-chain login. */
     mode?: AnchorMode
+    /** Buoy and callback overrides forwarded to both transports. */
+    transport?: Pick<TransportOptions, 'send' | 'waitForCallback' | 'generateReturnUrl'>
 }
 
 /** Default delay before app login offers the browser fallback, in milliseconds. */
@@ -95,6 +97,7 @@ export class WalletPluginAnchor extends AbstractWalletPlugin {
             },
             buoyUrl: this.buoyUrl,
             buoyWs: this.buoyWs,
+            ...options?.transport,
         }
         this.native = new NativeTransport(transportOptions)
         this.web = new WebTransport(transportOptions)

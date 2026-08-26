@@ -34,11 +34,17 @@ suite('chains', function () {
     })
 
     test('overrides add chains that have no default', function () {
-        assert.equal(resolveWebAuthenticatorUrl(wax, {[wax]: 'https://wax.example.com'}), 'https://wax.example.com')
+        assert.equal(
+            resolveWebAuthenticatorUrl(wax, {[wax]: 'https://wax.example.com'}),
+            'https://wax.example.com'
+        )
     })
 
     test('chain id matching is case insensitive', function () {
-        assert.equal(resolveWebAuthenticatorUrl(vaulta.toUpperCase()), 'https://vaulta.anchorwallet.io')
+        assert.equal(
+            resolveWebAuthenticatorUrl(vaulta.toUpperCase()),
+            'https://vaulta.anchorwallet.io'
+        )
     })
 
     test('strips trailing slashes so callers can append paths', function () {
@@ -49,6 +55,9 @@ suite('chains', function () {
     })
 
     test('exposes exactly the two supported chains by default', function () {
-        assert.deepEqual(Object.keys(DEFAULT_WEB_AUTHENTICATOR_URLS).sort(), [jungle4, vaulta].sort())
+        assert.deepEqual(
+            Object.keys(DEFAULT_WEB_AUTHENTICATOR_URLS).sort(),
+            [jungle4, vaulta].sort()
+        )
     })
 })

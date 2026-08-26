@@ -208,7 +208,7 @@ suite('router signing', function () {
     this.timeout(10 * 1000)
 
     test('cancels the native prompt after a successful wallet callback', async function () {
-        const receive = sinon.stub(buoy, 'receive').resolves(JSON.stringify(mockCallbackPayload))
+        const callback = sinon.stub().resolves(mockCallbackPayload)
         try {
             const ui = makeMockUI()
             const originalPrompt = ui.prompt.bind(ui)
@@ -223,13 +223,13 @@ suite('router signing', function () {
                 return pending
             }) as typeof ui.prompt
 
-            const plugin = new WalletPluginAnchor()
+            const plugin = new WalletPluginAnchor({transport: {waitForCallback: callback}})
             const resolved = await makeMockResolvedSigningRequest()
             await plugin.sign(resolved, makeTransactContext(ui, jungle4)).catch(() => undefined)
 
             assert.equal(cancelCount, 1, 'the completed prompt is settled exactly once')
         } finally {
-            receive.restore()
+            callback.resetHistory()
         }
     })
 
@@ -499,12 +499,15 @@ suite('cancelled login recovery', function () {
 
     test('an Anchor app rejection offers both routes again', async function () {
         ;(window.open as any).calls.length = 0
-        const receive = sinon.stub(buoy, 'receive')
-        receive.onFirstCall().resolves(JSON.stringify({}))
-        receive.onSecondCall().returns(new Promise(() => undefined))
+        const callback = sinon.stub()
+        callback.onFirstCall().rejects(new Error('The request was cancelled from Anchor.'))
+        callback.onSecondCall().returns(new Promise(() => undefined))
         try {
             const ui = makeMockUI()
-            const plugin = new WalletPluginAnchor({mode: 'app'})
+            const plugin = new WalletPluginAnchor({
+                mode: 'app',
+                transport: {waitForCallback: callback},
+            })
             plugin.login(makeLoginContext(ui, jungle4)).catch(() => undefined)
             await settle()
 
@@ -517,7 +520,7 @@ suite('cancelled login recovery', function () {
             ui.clickButton(0)
             assert.equal((window.open as any).calls.length > 0, true)
         } finally {
-            receive.restore()
+            callback.resetHistory()
         }
     })
 })
@@ -535,7 +538,10 @@ suite('mode option', function () {
     })
 
     test('the constructor option rejects garbage', function () {
-        assert.throws(() => new WalletPluginAnchor({mode: 'sideways' as any}), /Invalid Anchor mode/)
+        assert.throws(
+            () => new WalletPluginAnchor({mode: 'sideways' as any}),
+            /Invalid Anchor mode/
+        )
     })
 
     test('the constructor option skips the choice screen', async function () {
@@ -573,7 +579,11 @@ suite('restored session', function () {
         plugin.sign(resolved, makeTransactContext(ui, jungle4)).catch(() => undefined)
         await settle()
 
-        assert.equal((window.open as any).calls.length, 1, 'the web transport saw the restored keys')
+        assert.equal(
+            (window.open as any).calls.length,
+            1,
+            'the web transport saw the restored keys'
+        )
     })
 
     test('a reassigned v1.x session still signs natively', async function () {
@@ -679,9 +689,7 @@ suite('per-call mode', function () {
     test('a per-call web mode skips the choice screen', async function () {
         const ui = makeMockUI()
         const plugin = new WalletPluginAnchor()
-        plugin
-            .login(contextWith(ui, jungle4, {anchor: {mode: 'web'}}))
-            .catch(() => undefined)
+        plugin.login(contextWith(ui, jungle4, {anchor: {mode: 'web'}})).catch(() => undefined)
         await settle()
         assert.equal(ui.lastPrompt()!.title, 'Approve in Anchor', 'straight to the popup')
     })
@@ -689,9 +697,7 @@ suite('per-call mode', function () {
     test('a per-call app mode skips the choice screen', async function () {
         const ui = makeMockUI()
         const plugin = new WalletPluginAnchor()
-        plugin
-            .login(contextWith(ui, jungle4, {anchor: {mode: 'app'}}))
-            .catch(() => undefined)
+        plugin.login(contextWith(ui, jungle4, {anchor: {mode: 'app'}})).catch(() => undefined)
         await settle()
         assert.equal(ui.lastPrompt()!.title, 'Connect with Anchor')
     })
@@ -700,9 +706,7 @@ suite('per-call mode', function () {
         const ui = makeMockUI()
         const plugin = new WalletPluginAnchor()
         plugin.setMode('app')
-        plugin
-            .login(contextWith(ui, jungle4, {anchor: {mode: 'web'}}))
-            .catch(() => undefined)
+        plugin.login(contextWith(ui, jungle4, {anchor: {mode: 'web'}})).catch(() => undefined)
         await settle()
         assert.equal(ui.lastPrompt()!.title, 'Approve in Anchor')
     })
@@ -710,9 +714,7 @@ suite('per-call mode', function () {
     test('the per-call mode reaches the session data for signing', async function () {
         const ui = makeMockUI()
         const plugin = new WalletPluginAnchor()
-        plugin
-            .login(contextWith(ui, jungle4, {anchor: {mode: 'web'}}))
-            .catch(() => undefined)
+        plugin.login(contextWith(ui, jungle4, {anchor: {mode: 'web'}})).catch(() => undefined)
         await settle()
         assert.equal(plugin.getMode(), 'web')
     })
@@ -720,9 +722,7 @@ suite('per-call mode', function () {
     test('the per-call mode does not leak into the next login', async function () {
         const ui = makeMockUI()
         const plugin = new WalletPluginAnchor()
-        plugin
-            .login(contextWith(ui, jungle4, {anchor: {mode: 'web'}}))
-            .catch(() => undefined)
+        plugin.login(contextWith(ui, jungle4, {anchor: {mode: 'web'}})).catch(() => undefined)
         await settle()
 
         plugin.login(makeLoginContext(ui, jungle4)).catch(() => undefined)
@@ -814,7 +814,9 @@ suite('caller-opened popup', function () {
         const ui = makeMockUI()
         const popup = makeCallerPopup()
         const plugin = new WalletPluginAnchor()
-        plugin.login(contextWith(ui, jungle4, {anchor: {mode: 'web', popup}})).catch(() => undefined)
+        plugin
+            .login(contextWith(ui, jungle4, {anchor: {mode: 'web', popup}}))
+            .catch(() => undefined)
         await settle()
 
         assert.include((popup as any).location.href, 'https://jungle4.anchorwallet.io/sign?')
@@ -822,16 +824,19 @@ suite('caller-opened popup', function () {
     })
 
     test('a completed login closes the caller popup', async function () {
-        const receive = sinon.stub(buoy, 'receive').resolves(JSON.stringify(mockCallbackPayload))
+        const callback = sinon.stub().resolves(mockCallbackPayload)
         try {
             const ui = makeMockUI()
             const popup = makeCallerPopup()
-            const plugin = new WalletPluginAnchor({mode: 'web'})
+            const plugin = new WalletPluginAnchor({
+                mode: 'web',
+                transport: {waitForCallback: callback},
+            })
             const response = await plugin.login(contextWith(ui, jungle4, {anchor: {popup}}))
             assert.equal(String(response.permissionLevel), 'wharfkit1115@test')
             assert.isTrue((popup as any).closed, 'the popup is closed after the callback')
         } finally {
-            receive.restore()
+            callback.resetHistory()
         }
     })
 

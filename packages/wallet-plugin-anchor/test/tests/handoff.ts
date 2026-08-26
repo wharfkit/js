@@ -35,8 +35,13 @@ function makeSameDeviceData() {
     }
 }
 
-function makeTransport(data: Record<string, unknown>) {
-    return new NativeTransport({id: 'anchor', data, buoyUrl: 'https://cb.anchor.link'})
+function makeTransport(data: Record<string, unknown>, overrides: Record<string, any> = {}) {
+    return new NativeTransport({
+        id: 'anchor',
+        data,
+        buoyUrl: 'https://cb.anchor.link',
+        ...overrides,
+    })
 }
 
 function makeResolved(): ResolvedSigningRequest {
@@ -102,12 +107,12 @@ suite('native signing handoff', function () {
 
     test('same-device delivery reaches buoy before the app is launched', async function () {
         let resolveSend: () => void = () => undefined
-        const sendStub = sinon.stub(buoy, 'send').returns(
+        const sendStub = sinon.stub().returns(
             new Promise((resolve) => {
                 resolveSend = () => resolve(undefined as any)
             })
         )
-        const transport = makeTransport(makeSameDeviceData())
+        const transport = makeTransport(makeSameDeviceData(), {send: sendStub})
         transport.sign(makeResolved(), makeTransactContext(makeMockUI())).catch(() => undefined)
         await settle()
 
@@ -120,16 +125,20 @@ suite('native signing handoff', function () {
     })
 
     test('a same-page return defers the callback connection and stores a handoff', async function () {
-        sinon.stub(buoy, 'send').resolves(undefined as any)
-        sinon.stub(protocol, 'generateReturnUrl').returns(RETURN_URL)
+        const sendStub = sinon.stub().resolves(undefined as any)
+        const returnUrlStub = sinon.stub().returns(RETURN_URL)
         let resolveCallback: (payload: any) => void = () => undefined
-        const callbackStub = sinon.stub(protocol, 'waitForCallback').returns(
+        const callbackStub = sinon.stub().returns(
             new Promise((resolve) => {
                 resolveCallback = resolve
             })
         )
 
-        const transport = makeTransport(makeSameDeviceData())
+        const transport = makeTransport(makeSameDeviceData(), {
+            send: sendStub,
+            generateReturnUrl: returnUrlStub,
+            waitForCallback: callbackStub,
+        })
         const signing = transport
             .sign(makeResolved(), makeTransactContext(makeMockUI()))
             .catch(() => undefined)
@@ -157,11 +166,15 @@ suite('native signing handoff', function () {
     })
 
     test('a cross-page return keeps the immediate callback connection', async function () {
-        sinon.stub(buoy, 'send').resolves(undefined as any)
-        sinon.stub(protocol, 'generateReturnUrl').returns('googlechrome://')
-        const callbackStub = sinon.stub(protocol, 'waitForCallback').returns(new Promise(() => {}))
+        const sendStub = sinon.stub().resolves(undefined as any)
+        const returnUrlStub = sinon.stub().returns('googlechrome://')
+        const callbackStub = sinon.stub().returns(new Promise(() => {}))
 
-        const transport = makeTransport(makeSameDeviceData())
+        const transport = makeTransport(makeSameDeviceData(), {
+            send: sendStub,
+            generateReturnUrl: returnUrlStub,
+            waitForCallback: callbackStub,
+        })
         transport.sign(makeResolved(), makeTransactContext(makeMockUI())).catch(() => undefined)
         await settle()
 
@@ -170,11 +183,14 @@ suite('native signing handoff', function () {
     })
 
     test('a cross-device session keeps the immediate callback connection', async function () {
-        sinon.stub(buoy, 'send').resolves(undefined as any)
-        sinon.stub(protocol, 'generateReturnUrl').returns(RETURN_URL)
-        const callbackStub = sinon.stub(protocol, 'waitForCallback').returns(new Promise(() => {}))
+        const sendStub = sinon.stub().resolves(undefined as any)
+        const returnUrlStub = sinon.stub().returns(RETURN_URL)
+        const callbackStub = sinon.stub().returns(new Promise(() => {}))
 
-        const transport = makeTransport({...makeSameDeviceData(), sameDevice: false})
+        const transport = makeTransport(
+            {...makeSameDeviceData(), sameDevice: false},
+            {send: sendStub, generateReturnUrl: returnUrlStub, waitForCallback: callbackStub}
+        )
         transport.sign(makeResolved(), makeTransactContext(makeMockUI())).catch(() => undefined)
         await settle()
 
@@ -184,7 +200,7 @@ suite('native signing handoff', function () {
     })
 
     test('a delivery failure cancels the prompt and rethrows', async function () {
-        sinon.stub(buoy, 'send').rejects(new Error('buoy unavailable'))
+        const sendStub = sinon.stub().rejects(new Error('buoy unavailable'))
         const ui = makeMockUI()
         let cancelCount = 0
         const originalPrompt = ui.prompt.bind(ui)
@@ -198,7 +214,7 @@ suite('native signing handoff', function () {
             return pending
         }) as typeof ui.prompt
 
-        const transport = makeTransport(makeSameDeviceData())
+        const transport = makeTransport(makeSameDeviceData(), {send: sendStub})
         let message = ''
         await transport.sign(makeResolved(), makeTransactContext(ui)).catch((error) => {
             message = error.message

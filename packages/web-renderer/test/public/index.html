@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html data-color-mode="auto" lang="en">
     <head>
         <title>@wharfkit/web-renderer</title>
@@ -267,18 +267,15 @@
                     account = result
                     document.getElementById('account-balance').textContent =
                         account.core_liquid_balance ? account.core_liquid_balance : '0.0000'
-                    document.getElementById(
-                        'cpu'
-                    ).textContent = `${account.cpu_limit.available} / ${account.cpu_limit.max}`
-                    document.getElementById(
-                        'net'
-                    ).textContent = `${account.net_limit.available} / ${account.net_limit.max}`
+                    document.getElementById('cpu').textContent =
+                        `${account.cpu_limit.available} / ${account.cpu_limit.max}`
+                    document.getElementById('net').textContent =
+                        `${account.net_limit.available} / ${account.net_limit.max}`
                     document.getElementById('ram').textContent = `${
                         account.ram_quota - account.ram_usage
                     } / ${account.ram_quota}`
-                    document.getElementById(
-                        'explorer'
-                    ).href = `https://jungle4.unicove.com/en/jungle4/account/${session.actor}`
+                    document.getElementById('explorer').href =
+                        `https://jungle4.unicove.com/en/jungle4/account/${session.actor}`
                 })
             }
 
@@ -519,9 +516,8 @@
                 document.getElementById('account-name').textContent = session.actor
                 document.getElementById('account-permission').textContent = session.permission
                 document.getElementById('chain-id').textContent = session.chain.name
-                document.getElementById(
-                    'account-name-logout'
-                ).textContent = `Logout ${session.actor}`
+                document.getElementById('account-name-logout').textContent =
+                    `Logout ${session.actor}`
                 document.body.classList.add('logged-in')
                 await updateSessionKeyStatus()
             }
@@ -880,31 +876,37 @@
                                 <button class="btn btn-primary" onclick="login()">Login</button>
                                 <button
                                     class="btn"
-                                    onclick="login({
-                                    chain: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
-                                    permissionLevel: 'wharfkit1111@test',
-                                    walletPlugin: 'wallet-plugin-privatekey'
-                                })"
+                                    onclick="
+                                        login({
+                                            chain: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
+                                            permissionLevel: 'wharfkit1111@test',
+                                            walletPlugin: 'wallet-plugin-privatekey',
+                                        })
+                                    "
                                 >
                                     Test Account (Resources)
                                 </button>
                                 <button
                                     class="btn"
-                                    onclick="login({
-                                    chain: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
-                                    permissionLevel: 'wharfkit1112@test',
-                                    walletPlugin: 'wallet-plugin-privatekey'
-                                })"
+                                    onclick="
+                                        login({
+                                            chain: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
+                                            permissionLevel: 'wharfkit1112@test',
+                                            walletPlugin: 'wallet-plugin-privatekey',
+                                        })
+                                    "
                                 >
                                     Test Account (No CPU)
                                 </button>
                                 <button
                                     class="btn"
-                                    onclick="login({
-                                    chain: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
-                                    permissionLevel: 'wharfkit1115@test',
-                                    walletPlugin: 'wallet-plugin-privatekey'
-                                })"
+                                    onclick="
+                                        login({
+                                            chain: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
+                                            permissionLevel: 'wharfkit1115@test',
+                                            walletPlugin: 'wallet-plugin-privatekey',
+                                        })
+                                    "
                                 >
                                     Test Account (No RAM)
                                 </button>
@@ -929,7 +931,9 @@
                                     </button>
                                     <button
                                         class="btn btn-sm"
-                                        onclick="createAccount('account-creation-plugin-anchor', 'EOS')"
+                                        onclick="
+                                            createAccount('account-creation-plugin-anchor', 'EOS')
+                                        "
                                     >
                                         Create EOS Account w/ Anchor
                                     </button>
@@ -1095,42 +1099,51 @@
                                             <button
                                                 class="btn btn-block"
                                                 type="button"
-                                                onclick="loginTransfer(
-                                                {
-                                                    chain: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
-                                                    permissionLevel: 'wharfkit1111@test',
-                                                    walletPlugin: 'wallet-plugin-privatekey'
-                                                },
-                                                {broadcast: true}
-                                            )"
+                                                onclick="
+                                                    loginTransfer(
+                                                        {
+                                                            chain: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
+                                                            permissionLevel: 'wharfkit1111@test',
+                                                            walletPlugin:
+                                                                'wallet-plugin-privatekey',
+                                                        },
+                                                        {broadcast: true}
+                                                    )
+                                                "
                                             >
                                                 Token send 0.0001 from wharfkit111 to teamgreymass
                                             </button>
                                             <button
                                                 class="btn btn-block"
                                                 type="button"
-                                                onclick="loginTransfer(
-                                                {
-                                                    chain: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
-                                                    permissionLevel: 'wharfkit1115@test',
-                                                    walletPlugin: 'wallet-plugin-privatekey'
-                                                },
-                                                {broadcast: true}
-                                            )"
+                                                onclick="
+                                                    loginTransfer(
+                                                        {
+                                                            chain: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
+                                                            permissionLevel: 'wharfkit1115@test',
+                                                            walletPlugin:
+                                                                'wallet-plugin-privatekey',
+                                                        },
+                                                        {broadcast: true}
+                                                    )
+                                                "
                                             >
                                                 Token send that causes CPU/NET error
                                             </button>
                                             <button
                                                 class="btn btn-block"
                                                 type="button"
-                                                onclick="loginTransfer(
-                                                {
-                                                    chain: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
-                                                    permissionLevel: 'wharfkit1114@test',
-                                                    walletPlugin: 'wallet-plugin-privatekey'
-                                                },
-                                                {broadcast: true}
-                                            )"
+                                                onclick="
+                                                    loginTransfer(
+                                                        {
+                                                            chain: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
+                                                            permissionLevel: 'wharfkit1114@test',
+                                                            walletPlugin:
+                                                                'wallet-plugin-privatekey',
+                                                        },
+                                                        {broadcast: true}
+                                                    )
+                                                "
                                             >
                                                 Token send that causes RAM error
                                             </button>
@@ -1160,14 +1173,20 @@
                                             <button
                                                 class="btn btn-block"
                                                 type="button"
-                                                onclick="transfer({transactPlugins: [mockTransactPlugin]})"
+                                                onclick="
+                                                    transfer({
+                                                        transactPlugins: [mockTransactPlugin],
+                                                    })
+                                                "
                                             >
                                                 transact with TransactPluginMock
                                             </button>
                                             <button
                                                 class="btn btn-block"
                                                 type="button"
-                                                onclick="transfer({transactPlugins: [explorerLink]})"
+                                                onclick="
+                                                    transfer({transactPlugins: [explorerLink]})
+                                                "
                                             >
                                                 transact with TransactPluginExplorerLink
                                             </button>
@@ -1181,7 +1200,9 @@
                                             <button
                                                 class="btn btn-block"
                                                 type="button"
-                                                onclick="transfer({transactPlugins: [resourceProvider]})"
+                                                onclick="
+                                                    transfer({transactPlugins: [resourceProvider]})
+                                                "
                                             >
                                                 transact with TransactPluginResourceProvider
                                             </button>

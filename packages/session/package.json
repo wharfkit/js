@@ -49,7 +49,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-cleanup": "catalog:",
         "rollup-plugin-dts": "catalog:",

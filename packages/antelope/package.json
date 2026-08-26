@@ -48,7 +48,7 @@
         "gh-pages": "^6.3.0",
         "mocha": "^11.8.0",
         "nyc": "^18.0.0",
-        "prettier": "^3.9.6",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "tsx": "^4.19.0",

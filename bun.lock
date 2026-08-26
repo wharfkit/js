@@ -49,7 +49,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-cleanup": "catalog:",
         "rollup-plugin-dts": "catalog:",
@@ -92,7 +92,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "sinon": "catalog:",
@@ -133,7 +133,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "ts-node": "^10.9.1",
@@ -174,7 +174,7 @@
         "gh-pages": "^6.3.0",
         "mocha": "^11.8.0",
         "nyc": "^18.0.0",
-        "prettier": "^3.9.6",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "tsx": "^4.19.0",
@@ -214,7 +214,7 @@
         "gh-pages": "catalog:",
         "mocha": "^10.0.0",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-cleanup": "catalog:",
         "rollup-plugin-dts": "catalog:",
@@ -262,7 +262,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "prettier-plugin-organize-imports": "^3.2.3",
         "rollup": "catalog:",
         "rollup-plugin-cleanup": "catalog:",
@@ -306,7 +306,7 @@
         "gh-pages": "catalog:",
         "mocha": "^10.0.0",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-cleanup": "catalog:",
         "rollup-plugin-dts": "catalog:",
@@ -355,7 +355,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "sinon": "catalog:",
@@ -402,7 +402,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "rollup-plugin-polyfill-node": "catalog:",
@@ -436,7 +436,7 @@
         "mocha": "^8.2.1",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "ts-node": "^9.1.0",
@@ -476,7 +476,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "text-encoding": "^0.7.0",
@@ -525,7 +525,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-cleanup": "catalog:",
         "rollup-plugin-dts": "catalog:",
@@ -556,7 +556,7 @@
         "mocha": "^9.1.1",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "ts-node": "^10.0.0",
@@ -596,7 +596,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "ts-node": "^10.9.1",
@@ -636,7 +636,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "ts-node": "^10.9.1",
@@ -679,7 +679,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "ts-node": "^10.9.1",
@@ -720,7 +720,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "ts-node": "^10.9.1",
@@ -767,7 +767,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "ts-node": "^10.9.1",
@@ -819,7 +819,7 @@
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
         "pako": "^2.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "sinon": "catalog:",
@@ -862,7 +862,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "ts-node": "^10.9.1",
@@ -902,7 +902,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "ts-node": "^10.9.1",
@@ -943,7 +943,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "ts-node": "^10.9.1",
@@ -984,7 +984,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "ts-node": "^10.9.1",
@@ -1025,7 +1025,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "ts-node": "^10.9.1",
@@ -1067,7 +1067,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "rollup-plugin-polyfill-node": "catalog:",
@@ -1110,7 +1110,7 @@
         "mocha": "^10.0.0",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "rollup-plugin-polyfill-node": "catalog:",
@@ -1162,7 +1162,7 @@
         "eslint": "catalog:",
         "eslint-config-prettier": "catalog:",
         "eslint-plugin-prettier": "catalog:",
-        "prettier": "^2.8.3",
+        "prettier": "catalog:",
         "rollup": "^2.70.2",
         "rollup-plugin-analyzer": "^4.0.0",
         "rollup-plugin-dts": "^4.2.1",
@@ -1215,6 +1215,7 @@
     "isomorphic-ws": "^5.0.0",
     "jsdom": "^26.0.0",
     "node-fetch": "^2.7.0",
+    "prettier": "^3.9.6",
     "rollup": "^4.62.4",
     "rollup-plugin-cleanup": "^3.2.1",
     "rollup-plugin-dts": "^6.5.1",
@@ -2891,12 +2892,6 @@
 
     "@typescript-eslint/eslint-plugin/ignore": ["ignore@7.0.6", "", {}, "sha512-BAg6QkE8W+TuQLrrw0Ugr7HegXduRuuj8/ti2kSOc+jz1dmx8/WNcjr6XGnq5YpDWxFwwaavqD0+jIUOKelTsw=="],
 
-    "@wharfkit/abicache/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/account-creation-plugin-anchor/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/account-creation-plugin-jungle4/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
     "@wharfkit/antelope/@types/mocha": ["@types/mocha@10.0.10", "", {}, "sha512-xPyYSz1cMPnJQhl0CLMH68j3gprKZaTjG3s5Vi+fDgx+uhG9NOXwbVt52eFS8ECyXhyKcjDLCBEqBExKuiZb7Q=="],
 
     "@wharfkit/antelope/chai": ["chai@6.2.2", "", {}, "sha512-NUPRluOfOiTKBKvWPtSD4PhFvWCqOi0BGStNWs57X9js7XGTprSmFoz5F0tWhR4WPjNeR9jXqdC7/UpSJTnlRg=="],
@@ -2911,17 +2906,7 @@
 
     "@wharfkit/antelope/typedoc": ["typedoc@0.28.20", "", { "dependencies": { "@gerrit0/mini-shiki": "^3.23.0", "lunr": "^2.3.9", "markdown-it": "^14.3.0", "minimatch": "^10.2.5", "yaml": "^2.9.0" }, "peerDependencies": { "typescript": "5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x || 5.5.x || 5.6.x || 5.7.x || 5.8.x || 5.9.x || 6.0.x" }, "bin": { "typedoc": "bin/typedoc" } }, "sha512-uSKqkh8Cr48vllnEy+jdaAgOeR6Y+QCBW7usgUsKj7gJEfR7stw9U/fE49LBnj2tPRKPY0c0EBJSWe9Appmplg=="],
 
-    "@wharfkit/common/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/contract/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
     "@wharfkit/contract/typedoc": ["typedoc@0.24.8", "", { "dependencies": { "lunr": "^2.3.9", "marked": "^4.3.0", "minimatch": "^9.0.0", "shiki": "^0.14.1" }, "peerDependencies": { "typescript": "4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x" }, "bin": { "typedoc": "bin/typedoc" } }, "sha512-ahJ6Cpcvxwaxfu4KtjA8qZNqS43wYt6JL27wYiIgl1vd38WW/KWX11YuAeZhuz9v+ttrutSsgK+XO1CjL1kA3w=="],
-
-    "@wharfkit/mock-data/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/protocol-esr/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/protocol-scatter/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
 
     "@wharfkit/resources/@types/mocha": ["@types/mocha@8.2.3", "", {}, "sha512-ekGvFhFgrc2zYQoX4JeZPmVzZxw6Dtllga7iGHzfbYIYkAMUx/sAFP2GdFpLff+vdHXu5fl7WX9AT+TtqYcsyw=="],
 
@@ -2931,45 +2916,11 @@
 
     "@wharfkit/resources/mocha": ["mocha@8.4.0", "", { "dependencies": { "@ungap/promise-all-settled": "1.1.2", "ansi-colors": "4.1.1", "browser-stdout": "1.3.1", "chokidar": "3.5.1", "debug": "4.3.1", "diff": "5.0.0", "escape-string-regexp": "4.0.0", "find-up": "5.0.0", "glob": "7.1.6", "growl": "1.10.5", "he": "1.2.0", "js-yaml": "4.0.0", "log-symbols": "4.0.0", "minimatch": "3.0.4", "ms": "2.1.3", "nanoid": "3.1.20", "serialize-javascript": "5.0.1", "strip-json-comments": "3.1.1", "supports-color": "8.1.1", "which": "2.0.2", "wide-align": "1.1.3", "workerpool": "6.1.0", "yargs": "16.2.0", "yargs-parser": "20.2.4", "yargs-unparser": "2.0.0" }, "bin": { "mocha": "bin/mocha", "_mocha": "bin/_mocha" } }, "sha512-hJaO0mwDXmZS4ghXsvPVriOhsxQ7ofcpQdm8dE+jISUOKopitvnXFQmpRR7jd2K6VBG6E26gU3IAbXXGIbu4sQ=="],
 
-    "@wharfkit/resources/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
     "@wharfkit/resources/ts-node": ["ts-node@9.1.1", "", { "dependencies": { "arg": "^4.1.0", "create-require": "^1.1.0", "diff": "^4.0.1", "make-error": "^1.1.1", "source-map-support": "^0.5.17", "yn": "3.1.1" }, "peerDependencies": { "typescript": ">=2.7" }, "bin": { "ts-node": "dist/bin.js", "ts-script": "dist/bin-script-deprecated.js", "ts-node-script": "dist/bin-script.js", "ts-node-transpile-only": "dist/bin-transpile.js" } }, "sha512-hPlt7ZACERQGf03M253ytLY3dHbGNGrAq9qIHWUY9XHYl1z7wYngSr3OQ5xmui8o2AaxsONxIzjafLUiWBo1Fg=="],
 
     "@wharfkit/resources/typedoc": ["typedoc@0.20.37", "", { "dependencies": { "colors": "^1.4.0", "fs-extra": "^9.1.0", "handlebars": "^4.7.7", "lodash": "^4.17.21", "lunr": "^2.3.9", "marked": "~2.0.3", "minimatch": "^3.0.0", "progress": "^2.0.3", "shelljs": "^0.8.4", "shiki": "^0.9.3", "typedoc-default-themes": "^0.12.10" }, "peerDependencies": { "typescript": "3.9.x || 4.0.x || 4.1.x || 4.2.x" }, "bin": { "typedoc": "bin/typedoc" } }, "sha512-9+qDhdc4X00qTNOtii6QX2z7ndAeWVOso7w3MPSoSJdXlVhpwPfm1yEp4ooKuWA9fiQILR8FKkyjmeqa13hBbw=="],
 
-    "@wharfkit/sealed-messages/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/session/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
     "@wharfkit/signing-request/mocha": ["mocha@9.2.2", "", { "dependencies": { "@ungap/promise-all-settled": "1.1.2", "ansi-colors": "4.1.1", "browser-stdout": "1.3.1", "chokidar": "3.5.3", "debug": "4.3.3", "diff": "5.0.0", "escape-string-regexp": "4.0.0", "find-up": "5.0.0", "glob": "7.2.0", "growl": "1.10.5", "he": "1.2.0", "js-yaml": "4.1.0", "log-symbols": "4.1.0", "minimatch": "4.2.1", "ms": "2.1.3", "nanoid": "3.3.1", "serialize-javascript": "6.0.0", "strip-json-comments": "3.1.1", "supports-color": "8.1.1", "which": "2.0.2", "workerpool": "6.2.0", "yargs": "16.2.0", "yargs-parser": "20.2.4", "yargs-unparser": "2.0.0" }, "bin": { "mocha": "bin/mocha", "_mocha": "bin/_mocha" } }, "sha512-L6XC3EdwT6YrIk0yXpavvLkn8h+EU+Y5UcCHKECyMbdUIxyMuZj4bX4U9e1nvnvUUvQVsV2VHQr5zLdcUkhW/g=="],
-
-    "@wharfkit/signing-request/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/transact-plugin-autocorrect/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/transact-plugin-cosigner/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/transact-plugin-explorerlink/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/transact-plugin-mock/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/transact-plugin-resource-provider/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/wallet-plugin-anchor/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/wallet-plugin-cleos/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/wallet-plugin-cloudwallet/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/wallet-plugin-metamask/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/wallet-plugin-mock/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/wallet-plugin-privatekey/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/wallet-plugin-scatter/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
-
-    "@wharfkit/wallet-plugin-tokenpocket/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
 
     "@wharfkit/web-renderer/@rollup/plugin-commonjs": ["@rollup/plugin-commonjs@24.1.0", "", { "dependencies": { "@rollup/pluginutils": "^5.0.1", "commondir": "^1.0.1", "estree-walker": "^2.0.2", "glob": "^8.0.3", "is-reference": "1.2.1", "magic-string": "^0.27.0" }, "peerDependencies": { "rollup": "^2.68.0||^3.0.0" }, "optionalPeers": ["rollup"] }, "sha512-eSL45hjhCWI0jCCXcNtLVqM5N1JlBGvlFfY0m6oOYnLCJ6N0qEXoZql4sY2MOUArzhH4SA/qBpTxvvZp2Sc+DQ=="],
 
@@ -2978,8 +2929,6 @@
     "@wharfkit/web-renderer/@rollup/plugin-replace": ["@rollup/plugin-replace@5.0.7", "", { "dependencies": { "@rollup/pluginutils": "^5.0.1", "magic-string": "^0.30.3" }, "peerDependencies": { "rollup": "^1.20.0||^2.0.0||^3.0.0||^4.0.0" }, "optionalPeers": ["rollup"] }, "sha512-PqxSfuorkHz/SPpyngLyg5GCEkOcee9M1bkxiVDr41Pd61mqP1PLOoDPbpl44SB2mQGKwV/In74gqQmGITOhEQ=="],
 
     "@wharfkit/web-renderer/@rollup/plugin-typescript": ["@rollup/plugin-typescript@11.1.6", "", { "dependencies": { "@rollup/pluginutils": "^5.1.0", "resolve": "^1.22.1" }, "peerDependencies": { "rollup": "^2.14.0||^3.0.0||^4.0.0", "tslib": "*", "typescript": ">=3.7.0" }, "optionalPeers": ["rollup", "tslib"] }, "sha512-R92yOmIACgYdJ7dJ97p4K69I8gg6IEHt8M7dUBxN3W6nrO8uUxX5ixl0yU/N3aZTi8WhPuICvOHXQvF6FaykAA=="],
-
-    "@wharfkit/web-renderer/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
 
     "@wharfkit/web-renderer/rollup": ["rollup@2.80.0", "", { "optionalDependencies": { "fsevents": "~2.3.2" }, "bin": { "rollup": "dist/bin/rollup" } }, "sha512-cIFJOD1DESzpjOBl763Kp1AH7UE/0fcdHe6rZXUdQ9c50uvgigvW97u3IcSeBwOkgqL/PXPBktBCh0KEu5L8XQ=="],
 

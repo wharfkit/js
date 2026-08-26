@@ -216,9 +216,11 @@ function bump(arg: string, dryRun: boolean) {
         fail('no origin remote configured')
     }
     for (const member of list) {
-        if (member.json.version !== root.version) {
-            fail(`${member.name} is ${member.json.version}, root is ${root.version}`)
+        if (member.json.version === root.version) continue
+        if (semver.gt(member.json.version, root.version)) {
+            fail(`${member.name} is ${member.json.version}, ahead of root ${root.version}`)
         }
+        log(`${member.name} ${member.json.version} joins the lockstep with this bump`)
     }
     guardInternalRefs(list)
 

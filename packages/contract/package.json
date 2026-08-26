@@ -43,7 +43,6 @@
         "esm": "^3.2.25",
         "gh-pages": "catalog:",
         "mocha": "^11.8.0",
-        "node-fetch": "catalog:",
         "nyc": "^18.0.0",
         "prettier": "catalog:",
         "prettier-plugin-organize-imports": "^3.2.3",

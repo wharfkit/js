@@ -23,8 +23,8 @@
     "dependencies": {
         "@noble/curves": "^2.2.0",
         "@noble/hashes": "^2.2.0",
-        "bn.js": "^5.2.5",
-        "pako": "^3.0.1",
+        "bn.js": "catalog:",
+        "pako": "catalog:",
         "tslib": "catalog:"
     },
     "devDependencies": {

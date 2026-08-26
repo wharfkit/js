@@ -18,7 +18,7 @@
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/sealed-messages": "workspace:*",
         "isomorphic-ws": "catalog:",
-        "pako": "^2.1.0",
+        "pako": "catalog:",
         "ws": "catalog:",
         "@wharfkit/session": "workspace:*"
     },
@@ -44,7 +44,6 @@
         "eslint-plugin-prettier": "catalog:",
         "gh-pages": "catalog:",
         "mocha": "^11.8.0",
-        "node-fetch": "catalog:",
         "nyc": "^18.0.0",
         "prettier": "catalog:",
         "rollup": "catalog:",

@@ -1,6 +1,5 @@
 import 'mocha'
 import {strict as assert} from 'assert'
-import fetch from 'node-fetch'
 
 import {APIClient} from '@wharfkit/antelope'
 

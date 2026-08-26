@@ -1,4 +1,3 @@
-import fetch from 'node-fetch'
 import {WalletPluginPrivateKey} from '@wharfkit/wallet-plugin-privatekey'
 import {Action, AssetType, Name, NameType, PermissionLevel, Session, TransactResult} from '$lib'
 

@@ -21,7 +21,6 @@
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/session": "workspace:*",
         "@wharfkit/wallet-plugin-privatekey": "workspace:*",
-        "node-fetch": "catalog:",
         "tslib": "catalog:"
     },
     "devDependencies": {

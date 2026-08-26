@@ -17,7 +17,7 @@
     "dependencies": {
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/signing-request": "workspace:*",
-        "pako": "^2.0.4",
+        "pako": "catalog:",
         "tslib": "catalog:"
     },
     "devDependencies": {
@@ -42,7 +42,6 @@
         "eslint-plugin-prettier": "catalog:",
         "gh-pages": "catalog:",
         "mocha": "catalog:",
-        "node-fetch": "catalog:",
         "nyc": "catalog:",
         "prettier": "catalog:",
         "rollup": "catalog:",

@@ -12,11 +12,9 @@
         "src/*",
         "lib/*"
     ],
-    "scripts": {
-        "prepare": "make"
-    },
+    "scripts": {},
     "dependencies": {
-        "@wharfkit/antelope": "^1.1.1",
+        "@wharfkit/antelope": "workspace:*",
         "tslib": "^2.0.3"
     },
     "devDependencies": {

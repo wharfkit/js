@@ -1,0 +1,285 @@
+{
+  "version": "eosio::abi/1.2",
+  "types": [],
+  "structs": [{
+      "name": "addcontract",
+      "base": "",
+      "fields": [{
+          "name": "contract",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "addtoken",
+      "base": "",
+      "fields": [{
+          "name": "creator",
+          "type": "name"
+        },{
+          "name": "ticker",
+          "type": "symbol_code"
+        }
+      ]
+    },{
+      "name": "balance_row",
+      "base": "",
+      "fields": [{
+          "name": "account",
+          "type": "name"
+        },{
+          "name": "balance",
+          "type": "asset"
+        }
+      ]
+    },{
+      "name": "closebalance",
+      "base": "",
+      "fields": [{
+          "name": "account",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "config_row",
+      "base": "",
+      "fields": [{
+          "name": "enabled",
+          "type": "bool"
+        },{
+          "name": "fees",
+          "type": "fees_config"
+        },{
+          "name": "regtoken",
+          "type": "regtoken_config"
+        }
+      ]
+    },{
+      "name": "contract_row",
+      "base": "",
+      "fields": [{
+          "name": "account",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "disable",
+      "base": "",
+      "fields": []
+    },{
+      "name": "enable",
+      "base": "",
+      "fields": []
+    },{
+      "name": "fees_config",
+      "base": "",
+      "fields": [{
+          "name": "token",
+          "type": "token_definition"
+        },{
+          "name": "receiver",
+          "type": "name"
+        },{
+          "name": "regtoken",
+          "type": "asset"
+        }
+      ]
+    },{
+      "name": "openbalance",
+      "base": "",
+      "fields": [{
+          "name": "account",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "regtoken",
+      "base": "",
+      "fields": [{
+          "name": "creator",
+          "type": "name"
+        },{
+          "name": "ticker",
+          "type": "symbol_code"
+        },{
+          "name": "payment",
+          "type": "asset"
+        }
+      ]
+    },{
+      "name": "regtoken_config",
+      "base": "",
+      "fields": [{
+          "name": "minlength",
+          "type": "uint8"
+        }
+      ]
+    },{
+      "name": "reset",
+      "base": "",
+      "fields": []
+    },{
+      "name": "rmcontract",
+      "base": "",
+      "fields": [{
+          "name": "contract",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "rmtoken",
+      "base": "",
+      "fields": [{
+          "name": "ticker",
+          "type": "symbol_code"
+        }
+      ]
+    },{
+      "name": "setconfig",
+      "base": "",
+      "fields": [{
+          "name": "config",
+          "type": "config_row"
+        }
+      ]
+    },{
+      "name": "setcontract",
+      "base": "",
+      "fields": [{
+          "name": "ticker",
+          "type": "symbol_code"
+        },{
+          "name": "contract",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "token_definition",
+      "base": "",
+      "fields": [{
+          "name": "chain",
+          "type": "checksum256?"
+        },{
+          "name": "contract",
+          "type": "name"
+        },{
+          "name": "symbol",
+          "type": "symbol"
+        }
+      ]
+    },{
+      "name": "token_row",
+      "base": "",
+      "fields": [{
+          "name": "ticker",
+          "type": "symbol_code"
+        },{
+          "name": "creator",
+          "type": "name"
+        },{
+          "name": "contract",
+          "type": "name?"
+        }
+      ]
+    },{
+      "name": "withdraw",
+      "base": "",
+      "fields": [{
+          "name": "account",
+          "type": "name"
+        },{
+          "name": "quantity",
+          "type": "asset"
+        }
+      ]
+    }
+  ],
+  "actions": [{
+      "name": "addcontract",
+      "type": "addcontract",
+      "ricardian_contract": ""
+    },{
+      "name": "addtoken",
+      "type": "addtoken",
+      "ricardian_contract": ""
+    },{
+      "name": "closebalance",
+      "type": "closebalance",
+      "ricardian_contract": ""
+    },{
+      "name": "disable",
+      "type": "disable",
+      "ricardian_contract": ""
+    },{
+      "name": "enable",
+      "type": "enable",
+      "ricardian_contract": ""
+    },{
+      "name": "openbalance",
+      "type": "openbalance",
+      "ricardian_contract": ""
+    },{
+      "name": "regtoken",
+      "type": "regtoken",
+      "ricardian_contract": ""
+    },{
+      "name": "reset",
+      "type": "reset",
+      "ricardian_contract": ""
+    },{
+      "name": "rmcontract",
+      "type": "rmcontract",
+      "ricardian_contract": ""
+    },{
+      "name": "rmtoken",
+      "type": "rmtoken",
+      "ricardian_contract": ""
+    },{
+      "name": "setconfig",
+      "type": "setconfig",
+      "ricardian_contract": ""
+    },{
+      "name": "setcontract",
+      "type": "setcontract",
+      "ricardian_contract": ""
+    },{
+      "name": "withdraw",
+      "type": "withdraw",
+      "ricardian_contract": ""
+    }
+  ],
+  "tables": [{
+      "name": "balance",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "balance_row"
+    },{
+      "name": "config",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "config_row"
+    },{
+      "name": "contracts",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "contract_row"
+    },{
+      "name": "tokens",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "token_row"
+    }
+  ],
+  "ricardian_clauses": [{
+      "id": "registry",
+      "body": "registry"
+    }
+  ],
+  "error_messages": [],
+  "abi_extensions": [],
+  "variants": [],
+  "action_results": []
+}

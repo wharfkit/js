@@ -15,7 +15,7 @@ describe('misc', function () {
         assert.equal(id2.chainVariant.variantName, 'chain_id')
         assert.equal(id2.chainVariant.chainId.equals(id2), true)
         assert.throws(() => {
-            ChainId.from(99)
+            ChainId.from(99 as ChainName)
         })
         assert.throws(() => {
             ChainIdVariant.from(['chain_alias', 0]).chainId

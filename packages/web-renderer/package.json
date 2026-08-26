@@ -85,7 +85,7 @@
         "svelte-preprocess": "^5.0.4",
         "sveltekit-i18n": "^2.2.2",
         "tslib": "catalog:",
-        "typescript": "^5.0.0",
+        "typescript": "catalog:",
         "vite": "^4.1.4",
         "vite-plugin-mkcert": "^1.17.9",
         "@wharfkit/antelope": "workspace:*"

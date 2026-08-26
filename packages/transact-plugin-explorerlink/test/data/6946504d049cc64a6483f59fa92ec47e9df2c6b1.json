@@ -1,21 +1,11 @@
 {
     "request": {
-        "path": "https://jungle4.greymass.com/v1/chain/send_transaction",
+        "path": "https://jungle4.greymass.com/v1/chain/send_transaction2",
         "params": {
             "method": "POST",
-            "body": "{\"signatures\":[\"SIG_K1_KeHWSbtNdqUcoSFZu9VPA2xR61wbTcaRGmFx8AWhewJ41HH8RnRvHD9JkttksRa5zMfZ5xSy7U2GWZra2PEChq1x4W9fFb\"],\"compression\":0,\"packed_context_free_data\":\"00\",\"packed_trx\":\"96fdfb63c21f26737838000000000100a6823403ea3055000000572d3ccdcd01104208d9c1754de3000000000090b1ca5a104208d9c1754de390b1cad9c1754de3010000000000000004454f53000000003977686172666b697420706c7567696e202d207265736f757263652070726f7669646572207465737420286d61784665653a20302e303030312900\"}",
+            "body": "{\"return_failure_trace\":true,\"retry_trx\":false,\"retry_trx_num_blocks\":0,\"transaction\":{\"signatures\":[\"SIG_K1_KeHWSbtNdqUcoSFZu9VPA2xR61wbTcaRGmFx8AWhewJ41HH8RnRvHD9JkttksRa5zMfZ5xSy7U2GWZra2PEChq1x4W9fFb\"],\"compression\":1,\"packed_context_free_data\":\"789c63000000010001\",\"packed_trx\":\"789c9bf6f777f22179b5e20a0b060606064686654d26ccaf0c42191818c2756dce9e651470e2b879b0d4f731489661c2c653513081091b4f81694606086071f50f06d196e519894569d999250a0539a5e999790aba0a45a9c5f9a545c9a90a0545f9659929a9450a25a9c5250a1ab989156ea9a9560a067a060606869a0c000a3a2ddb\"}}",
             "headers": {}
         }
-    },
-    "headers": {
-        "access-control-allow-headers": "X-Requested-With,Accept,Content-Type,Origin",
-        "access-control-allow-methods": "GET, POST, OPTIONS",
-        "access-control-allow-origin": "*",
-        "connection": "close",
-        "content-length": "3751",
-        "content-type": "application/json",
-        "date": "Mon, 27 Feb 2023 00:45:17 GMT",
-        "server": "nginx/1.18.0 (Ubuntu)"
     },
     "status": 202,
     "json": {

@@ -2,21 +2,9 @@
     "request": {
         "path": "https://jungle4.greymass.com/v1/chain/get_info",
         "params": {
-            "method": "POST",
+            "method": "GET",
             "headers": {}
         }
-    },
-    "headers": {
-        "access-control-allow-headers": "X-Requested-With,Accept,Content-Type,Origin",
-        "access-control-allow-methods": "GET, POST, OPTIONS",
-        "access-control-allow-origin": "*",
-        "connection": "close",
-        "content-length": "964",
-        "content-type": "application/json",
-        "date": "Mon, 27 Feb 2023 00:45:17 GMT",
-        "host": "jungle4.greymass.com",
-        "server": "nginx/1.18.0 (Ubuntu)",
-        "x-cached": "EXPIRED"
     },
     "status": 200,
     "json": {

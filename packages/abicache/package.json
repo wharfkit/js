@@ -13,12 +13,10 @@
         "lib/*",
         "src/*"
     ],
-    "scripts": {
-        "prepare": "make"
-    },
+    "scripts": {},
     "dependencies": {
-        "@wharfkit/antelope": "^1.0.2",
-        "@wharfkit/signing-request": "^3.1.0",
+        "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/signing-request": "workspace:*",
         "pako": "^2.0.4",
         "tslib": "^2.1.0"
     },
@@ -37,8 +35,8 @@
         "@types/node": "^18.7.18",
         "@typescript-eslint/eslint-plugin": "^5.20.0",
         "@typescript-eslint/parser": "^5.20.0",
-        "@wharfkit/mock-data": "^1.2.1",
-        "@wharfkit/wallet-plugin-privatekey": "^1.1.0",
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/wallet-plugin-privatekey": "workspace:*",
         "chai": "^4.3.4",
         "eslint": "^8.13.0",
         "eslint-config-prettier": "^8.1.0",

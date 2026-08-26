@@ -13,18 +13,13 @@
         "lib/*",
         "src/*"
     ],
-    "scripts": {
-        "prepare": "make"
-    },
+    "scripts": {},
     "dependencies": {
-        "@wharfkit/antelope": "^1.0.5",
-        "@wharfkit/session": "^1.2.7",
-        "@wharfkit/wallet-plugin-privatekey": "^1.1.0",
+        "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "@wharfkit/wallet-plugin-privatekey": "workspace:*",
         "node-fetch": "^2.6.1",
         "tslib": "^2.1.0"
-    },
-    "resolutions": {
-        "@wharfkit/antelope": "^1.0.5"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.20.2",

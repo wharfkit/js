@@ -1,0 +1,25 @@
+{
+    "api": "https://jungle4.api.eosnation.io",
+    "headers": {
+        "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept",
+        "access-control-allow-methods": "GET, POST, HEAD, OPTIONS",
+        "access-control-allow-origin": "*",
+        "content-length": "468",
+        "content-type": "application/json",
+        "date": "Wed, 05 Aug 2026 19:53:34 GMT",
+        "server": "nginx/1.30.4"
+    },
+    "status": 200,
+    "json": {
+        "state": "UNKNOWN",
+        "head_number": 279977022,
+        "head_id": "10b01c3ebcb39cb7df9ab3ba6be0aa2a60d98c9611e242eb5a946579980c6b61",
+        "head_timestamp": "2026-08-05T19:53:35.000",
+        "irreversible_number": 279977020,
+        "irreversible_id": "10b01c3c4f99a4b038f69fc22f4a3956584d38891939136358908462d2dcdccc",
+        "irreversible_timestamp": "2026-08-05T19:53:34.000",
+        "earliest_tracked_block_id": "10affe56a86f2cc1bff4c3ee042df6b5cba044a6e7de47a6c5f7ad219414f5de",
+        "earliest_tracked_block_number": 279969366
+    },
+    "text": "{\"state\":\"UNKNOWN\",\"head_number\":279977022,\"head_id\":\"10b01c3ebcb39cb7df9ab3ba6be0aa2a60d98c9611e242eb5a946579980c6b61\",\"head_timestamp\":\"2026-08-05T19:53:35.000\",\"irreversible_number\":279977020,\"irreversible_id\":\"10b01c3c4f99a4b038f69fc22f4a3956584d38891939136358908462d2dcdccc\",\"irreversible_timestamp\":\"2026-08-05T19:53:34.000\",\"earliest_tracked_block_id\":\"10affe56a86f2cc1bff4c3ee042df6b5cba044a6e7de47a6c5f7ad219414f5de\",\"earliest_tracked_block_number\":279969366}"
+}

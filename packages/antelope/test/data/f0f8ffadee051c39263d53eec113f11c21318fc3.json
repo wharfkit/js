@@ -1,0 +1,37 @@
+{
+    "api": "https://jungle4.api.eosnation.io",
+    "headers": {
+        "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept",
+        "access-control-allow-methods": "GET, POST, HEAD, OPTIONS",
+        "access-control-allow-origin": "*",
+        "connection": "keep-alive",
+        "content-length": "963",
+        "content-type": "application/json",
+        "date": "Fri, 21 Aug 2026 17:44:53 GMT",
+        "server": "nginx/1.30.4"
+    },
+    "status": 200,
+    "json": {
+        "server_version": "42b514a1",
+        "chain_id": "73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d",
+        "head_block_num": 282726093,
+        "last_irreversible_block_num": 282726091,
+        "last_irreversible_block_id": "10da0ecb89252fb1c01f0e0d74f77f5f4edb8c4766ba019a8d3f69de71b71d75",
+        "head_block_id": "10da0ecd54eed3c17eed7b2f02ae17fd037976f3cc8c49bf1f5ca63b5b53adf3",
+        "head_block_time": "2026-08-21T17:44:52.000",
+        "head_block_producer": "eosamsterdam",
+        "virtual_block_cpu_limit": 265490,
+        "virtual_block_net_limit": 1048576000,
+        "block_cpu_limit": 200000,
+        "block_net_limit": 1048576,
+        "server_version_string": "v1.2.1",
+        "fork_db_head_block_num": 282726093,
+        "fork_db_head_block_id": "10da0ecd54eed3c17eed7b2f02ae17fd037976f3cc8c49bf1f5ca63b5b53adf3",
+        "server_full_version_string": "v1.2.1-42b514a1566f46a3c652e5025911b295214d3ce4-dirty",
+        "total_cpu_weight": "120573497843143",
+        "total_net_weight": "117540229097142",
+        "earliest_available_block_num": 1,
+        "last_irreversible_block_time": "2026-08-21T17:44:51.000"
+    },
+    "text": "{\"server_version\":\"42b514a1\",\"chain_id\":\"73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d\",\"head_block_num\":282726093,\"last_irreversible_block_num\":282726091,\"last_irreversible_block_id\":\"10da0ecb89252fb1c01f0e0d74f77f5f4edb8c4766ba019a8d3f69de71b71d75\",\"head_block_id\":\"10da0ecd54eed3c17eed7b2f02ae17fd037976f3cc8c49bf1f5ca63b5b53adf3\",\"head_block_time\":\"2026-08-21T17:44:52.000\",\"head_block_producer\":\"eosamsterdam\",\"virtual_block_cpu_limit\":265490,\"virtual_block_net_limit\":1048576000,\"block_cpu_limit\":200000,\"block_net_limit\":1048576,\"server_version_string\":\"v1.2.1\",\"fork_db_head_block_num\":282726093,\"fork_db_head_block_id\":\"10da0ecd54eed3c17eed7b2f02ae17fd037976f3cc8c49bf1f5ca63b5b53adf3\",\"server_full_version_string\":\"v1.2.1-42b514a1566f46a3c652e5025911b295214d3ce4-dirty\",\"total_cpu_weight\":\"120573497843143\",\"total_net_weight\":\"117540229097142\",\"earliest_available_block_num\":1,\"last_irreversible_block_time\":\"2026-08-21T17:44:51.000\"}"
+}

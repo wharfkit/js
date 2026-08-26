@@ -1,0 +1,21 @@
+{
+    "api": "https://jungle4.api.eosnation.io",
+    "headers": {
+        "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept",
+        "access-control-allow-methods": "GET, POST, HEAD, OPTIONS",
+        "access-control-allow-origin": "*",
+        "content-length": "95",
+        "content-type": "application/json",
+        "date": "Wed, 05 Aug 2026 19:53:28 GMT",
+        "server": "nginx/1.30.4"
+    },
+    "status": 200,
+    "json": {
+        "EOS": {
+            "supply": "21135907701.8179 EOS",
+            "max_supply": "100000000000.0000 EOS",
+            "issuer": "eosio"
+        }
+    },
+    "text": "{\"EOS\":{\"supply\":\"21135907701.8179 EOS\",\"max_supply\":\"100000000000.0000 EOS\",\"issuer\":\"eosio\"}}"
+}

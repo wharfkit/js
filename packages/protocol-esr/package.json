@@ -12,22 +12,15 @@
         "lib/*",
         "src/*"
     ],
-    "scripts": {
-        "prepare": "make"
-    },
+    "scripts": {},
     "dependencies": {
         "@greymass/buoy": "^1.0.3",
-        "@wharfkit/antelope": "^1.1.0",
-        "@wharfkit/sealed-messages": "^1.2.0",
+        "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/sealed-messages": "workspace:*",
         "isomorphic-ws": "^5.0.0",
         "pako": "^2.1.0",
-        "ws": "^8.13.0"
-    },
-    "peerDependencies": {
-        "@wharfkit/session": "^1.2.7"
-    },
-    "resolutions": {
-        "@wharfkit/antelope": "^1.1.0"
+        "ws": "^8.13.0",
+        "@wharfkit/session": "workspace:*"
     },
     "devDependencies": {
         "@rollup/plugin-alias": "^3.1.4",
@@ -42,10 +35,10 @@
         "@types/node": "^18.7.18",
         "@typescript-eslint/eslint-plugin": "^5.20.0",
         "@typescript-eslint/parser": "^5.20.0",
-        "@wharfkit/mock-data": "^1.3.0",
-        "@wharfkit/session": "^1.2.7",
-        "@wharfkit/signing-request": "^3.1.0",
-        "@wharfkit/wallet-plugin-privatekey": "^1.1.0",
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "@wharfkit/signing-request": "workspace:*",
+        "@wharfkit/wallet-plugin-privatekey": "workspace:*",
         "chai": "^4.3.4",
         "eslint": "^8.13.0",
         "eslint-config-prettier": "^8.1.0",

@@ -1,20 +1,11 @@
 {
     "request": {
-        "path": "https://jungle4.greymass.com/v1/chain/send_transaction",
+        "path": "https://jungle4.greymass.com/v1/chain/send_transaction2",
         "params": {
             "method": "POST",
-            "body": "{\"signatures\":[\"SIG_K1_KfDAiPpXUzkNzrS9heRaTxgqtpdQpu3e6FF91SPyPuvLjnP7VKWcNFhybf7g8G7ma11P8csTjk6P3ogEY47ZwdLKW2v9Te\",\"SIG_K1_KYkHzCjnQaYJizEoEaaJroErfa9Tf27pdbEzVJyUafVZv4nTiXkeGfatPxaf3uvX3z9qVKWbXowJtXQxozfeymtrU7And5\"],\"compression\":1,\"packed_context_free_data\":\"789c63000000010001\",\"packed_trx\":\"789cdb90e1971ae461c3314d900108980234e74a48bfbc9a0ae23000398c407cf360a9ef6310dfe799812b03c3b22613e65706a1407eb8aecdd9b38c024e1c70150c13369eb2810900d9609a910102585cfd8341b474794662515a76668942727e71667a9e42414e697a669e42496a7109030060122d57\"}"
+            "body": "{\"return_failure_trace\":true,\"retry_trx\":false,\"retry_trx_num_blocks\":0,\"transaction\":{\"signatures\":[\"SIG_K1_KfDAiPpXUzkNzrS9heRaTxgqtpdQpu3e6FF91SPyPuvLjnP7VKWcNFhybf7g8G7ma11P8csTjk6P3ogEY47ZwdLKW2v9Te\",\"SIG_K1_KYkHzCjnQaYJizEoEaaJroErfa9Tf27pdbEzVJyUafVZv4nTiXkeGfatPxaf3uvX3z9qVKWbXowJtXQxozfeymtrU7And5\"],\"compression\":1,\"packed_context_free_data\":\"789c63000000010001\",\"packed_trx\":\"789cdb90e1971ae461c3314d9081818181294073ae84f4cbaba9200e4380e65cc600cdb9370f96fa3e06f17d9e19b832302c6b32617e6510cac0c010ae6b73f62ca38013075c05c3848da76c600213369e02d38c0c10c0e2ea1f0ca2a5cb33128bd2b2334b1492f38b33d3f3140a724ad333f3144a528b4b180060122d57\"}}",
+            "headers": {}
         }
-    },
-    "headers": {
-        "access-control-allow-headers": "X-Requested-With,Accept,Content-Type,Origin",
-        "access-control-allow-methods": "GET, POST, OPTIONS",
-        "access-control-allow-origin": "*",
-        "connection": "close",
-        "content-length": "4262",
-        "content-type": "application/json",
-        "date": "Fri, 10 Nov 2023 17:28:22 GMT",
-        "server": "nginx/1.18.0 (Ubuntu)"
     },
     "status": 202,
     "json": {

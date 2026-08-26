@@ -3,7 +3,8 @@
         "path": "https://jungle4.greymass.com/v1/chain/send_transaction",
         "params": {
             "method": "POST",
-            "body": "{\"signatures\":[\"SIG_K1_JvDmuvn5Y9Zs1BCToSMUasjzkPmQqkyxgdZtvsKSSem7FKsv5sDUyGZmdvQmRvoCbbVxryuKcUyJoRdLQse2qAp8JQD9tX\",\"SIG_K1_KhtAnr45F23EwyvZWtCxgKKbnSsrqWuxeKzFPCdQVtq6SJXYEdrkepNG4y3qTkym1J2CMuuYTTBsgfcJ8eSSaBrRkd88i1\"],\"compression\":1,\"packed_context_free_data\":\"789c63000000010001\",\"packed_trx\":\"789cdb90e1971ae461c3314d900108980234e74a48bfbc9a0ae23000398c0c0d3e0ccbb377ec02f17d9e19b832302c6b32617e65100ae487ebda9c3dcb28e0c471f360a9ef63b096091b4fd9c004806c30cdc800012caefec1205aba3c23b1282d3bb3442139bf38333d4fa120a7343d334fa124b5b8840100efe02c52\"}"
+            "body": "{\"signatures\":[\"SIG_K1_JvDmuvn5Y9Zs1BCToSMUasjzkPmQqkyxgdZtvsKSSem7FKsv5sDUyGZmdvQmRvoCbbVxryuKcUyJoRdLQse2qAp8JQD9tX\",\"SIG_K1_KhtAnr45F23EwyvZWtCxgKKbnSsrqWuxeKzFPCdQVtq6SJXYEdrkepNG4y3qTkym1J2CMuuYTTBsgfcJ8eSSaBrRkd88i1\"],\"compression\":1,\"packed_context_free_data\":\"789c63000000010001\",\"packed_trx\":\"789cdb90e1971ae461c3314d900108980234e74a48bfbc9a0ae23000398c0c0d3e0ccbb377ec02f17d9e19b832302c6b32617e65100ae487ebda9c3dcb28e0c471f360a9ef63b096091b4fd9c004806c30cdc800012caefec1205aba3c23b1282d3bb3442139bf38333d4fa120a7343d334fa124b5b8840100efe02c52\"}",
+            "headers": {}
         }
     },
     "headers": {

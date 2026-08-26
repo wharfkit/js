@@ -54,7 +54,7 @@ suite('Cursor', () => {
                 assert.lengthOf(result, 1)
                 assert.isObject(result[0])
                 assert.notInstanceOf(result[0], DelegatedBandwidth)
-                assert.instanceOf(result[0].from, Name)
+                assert.instanceOf((result[0] as any).from, Name)
             })
             test('with generics and type', async function () {
                 const cursor = new TableRowCursor<DelegatedBandwidth>({

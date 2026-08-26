@@ -4,24 +4,13 @@
         "noEmit": true,
         "allowImportingTsExtensions": true,
         "isolatedModules": false,
-        "lib": [
-            "esnext",
-            "dom"
-        ],
+        "lib": ["esnext", "dom"],
         "resolveJsonModule": true,
         "baseUrl": ".",
         "paths": {
-            "$lib": [
-                "src/lib"
-            ],
-            "$ui": [
-                "src/ui/*"
-            ]
+            "$lib": ["src/lib"],
+            "$ui": ["src/ui/*"]
         }
     },
-    "include": [
-        "src/*",
-        "src/lib/*",
-        "src/lib/**/*"
-    ]
+    "include": ["src/*", "src/lib/*", "src/lib/**/*"]
 }

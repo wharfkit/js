@@ -71,7 +71,7 @@
         "eslint": "catalog:",
         "eslint-config-prettier": "catalog:",
         "eslint-plugin-prettier": "catalog:",
-        "prettier": "^2.8.3",
+        "prettier": "catalog:",
         "rollup": "^2.70.2",
         "rollup-plugin-analyzer": "^4.0.0",
         "rollup-plugin-dts": "^4.2.1",

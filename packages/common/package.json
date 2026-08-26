@@ -42,7 +42,7 @@
         "gh-pages": "catalog:",
         "mocha": "^10.0.0",
         "nyc": "^15.1.0",
-        "prettier": "^2.2.1",
+        "prettier": "catalog:",
         "rollup": "catalog:",
         "rollup-plugin-cleanup": "catalog:",
         "rollup-plugin-dts": "catalog:",

@@ -45,7 +45,7 @@ export const mockLoginContext: LoginContext = {
     arbitrary: {},
     fetch: mockFetch, // Required for unit tests
     ui: new MockUserInterface(),
-    walletPlugins: [wallet],
+    walletPlugins: [wallet as any],
     chains: [mockChainDefinition],
     hooks: {
         beforeLogin: [],

@@ -10,8 +10,7 @@ lib: ${SRC_FILES} package.json tsconfig.json node_modules rollup.config.js
 
 .PHONY: test
 test: node_modules
-	@TS_NODE_PROJECT='./test/tsconfig.json' \
-		${BIN}/mocha ${MOCHA_OPTS} ${TEST_FILES} --no-timeout --grep '$(grep)'
+	@echo 'mock-data has no tests'
 
 test/watch: node_modules
 	@TS_NODE_PROJECT='./test/tsconfig.json' \

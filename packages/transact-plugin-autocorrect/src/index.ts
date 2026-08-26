@@ -299,7 +299,7 @@ export class TransactPluginAutoCorrect extends AbstractTransactPlugin {
                         }
                         default: {
                             // an unknown error was detected
-                            console.log('unknown error', response)
+                            console.log('unknown error', response) // eslint-disable-line no-console
                             break
                         }
                     }
@@ -402,10 +402,7 @@ export class TransactPluginAutoCorrect extends AbstractTransactPlugin {
             netPrice = net > 0 ? minPriceValue : 0
         }
 
-        const price = Asset.from(
-            cpuPrice + netPrice * multiplier,
-            config.symbol
-        )
+        const price = Asset.from(cpuPrice + netPrice * multiplier, config.symbol)
 
         // Keep a running total of the price
         if (this.price) {

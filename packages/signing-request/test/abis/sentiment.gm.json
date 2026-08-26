@@ -1,0 +1,887 @@
+{
+  "version": "eosio::abi/1.2",
+  "types": [],
+  "structs": [
+    {
+      "name": "account_vote_row",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "account",
+          "type": "name"
+        },
+        {
+          "name": "vote_type",
+          "type": "uint8"
+        }
+      ]
+    },
+    {
+      "name": "balance_row",
+      "base": "",
+      "fields": [
+        {
+          "name": "account",
+          "type": "name"
+        },
+        {
+          "name": "balance",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "bulkrmvotes",
+      "base": "",
+      "fields": [
+        {
+          "name": "topic_id",
+          "type": "name"
+        },
+        {
+          "name": "num_votes",
+          "type": "uint32"
+        }
+      ]
+    },
+    {
+      "name": "changevote",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "topic_id",
+          "type": "name"
+        },
+        {
+          "name": "vote_type",
+          "type": "uint8"
+        }
+      ]
+    },
+    {
+      "name": "config_row",
+      "base": "",
+      "fields": [
+        {
+          "name": "enabled",
+          "type": "bool"
+        },
+        {
+          "name": "system_contract",
+          "type": "name"
+        },
+        {
+          "name": "fees",
+          "type": "fees_config"
+        }
+      ]
+    },
+    {
+      "name": "createtopic",
+      "base": "",
+      "fields": [
+        {
+          "name": "creator",
+          "type": "name"
+        },
+        {
+          "name": "id",
+          "type": "name"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "payment",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "deletetopic",
+      "base": "",
+      "fields": [
+        {
+          "name": "id",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "disable",
+      "base": "",
+      "fields": []
+    },
+    {
+      "name": "enable",
+      "base": "",
+      "fields": []
+    },
+    {
+      "name": "fees_config",
+      "base": "",
+      "fields": [
+        {
+          "name": "token",
+          "type": "token_definition"
+        },
+        {
+          "name": "receiver",
+          "type": "name"
+        },
+        {
+          "name": "createtopic",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "name": "get_account_vote_response",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "account",
+          "type": "name"
+        },
+        {
+          "name": "vote_type",
+          "type": "uint8"
+        }
+      ]
+    },
+    {
+      "name": "get_msig_vote_response",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "proposer",
+          "type": "name"
+        },
+        {
+          "name": "proposal_name",
+          "type": "name"
+        },
+        {
+          "name": "vote_type",
+          "type": "uint8"
+        }
+      ]
+    },
+    {
+      "name": "get_topic_response",
+      "base": "",
+      "fields": [
+        {
+          "name": "id",
+          "type": "name"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "get_topic_vote_response",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "topic_id",
+          "type": "name"
+        },
+        {
+          "name": "vote_type",
+          "type": "uint8"
+        }
+      ]
+    },
+    {
+      "name": "get_voter_weight_response",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "weight",
+          "type": "int64"
+        }
+      ]
+    },
+    {
+      "name": "getacctvote",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "account",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "getactvtrs",
+      "base": "",
+      "fields": [
+        {
+          "name": "account",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "getmsigvote",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "proposer",
+          "type": "name"
+        },
+        {
+          "name": "proposal_name",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "getmsigvtrs",
+      "base": "",
+      "fields": [
+        {
+          "name": "proposer",
+          "type": "name"
+        },
+        {
+          "name": "proposal_name",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "gettopic",
+      "base": "",
+      "fields": [
+        {
+          "name": "id",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "gettopics",
+      "base": "",
+      "fields": []
+    },
+    {
+      "name": "gettopicvote",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "topic_id",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "gettopicvtrs",
+      "base": "",
+      "fields": [
+        {
+          "name": "topic_id",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "getvote",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "topic_id",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "getvoters",
+      "base": "",
+      "fields": [
+        {
+          "name": "topic_id",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "getweight",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "getweights",
+      "base": "",
+      "fields": [
+        {
+          "name": "voters",
+          "type": "name[]"
+        }
+      ]
+    },
+    {
+      "name": "msig_vote_row",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "proposer",
+          "type": "name"
+        },
+        {
+          "name": "proposal_name",
+          "type": "name"
+        },
+        {
+          "name": "vote_type",
+          "type": "uint8"
+        }
+      ]
+    },
+    {
+      "name": "removevote",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "topic_id",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "reset",
+      "base": "",
+      "fields": []
+    },
+    {
+      "name": "rmacctvote",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "account",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "rmmsigvote",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "proposer",
+          "type": "name"
+        },
+        {
+          "name": "proposal_name",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "rmtopicvote",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "topic_id",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "setconfig",
+      "base": "",
+      "fields": [
+        {
+          "name": "config",
+          "type": "config_row"
+        }
+      ]
+    },
+    {
+      "name": "token_definition",
+      "base": "",
+      "fields": [
+        {
+          "name": "chain",
+          "type": "checksum256?"
+        },
+        {
+          "name": "contract",
+          "type": "name"
+        },
+        {
+          "name": "symbol",
+          "type": "symbol"
+        }
+      ]
+    },
+    {
+      "name": "topic_row",
+      "base": "",
+      "fields": [
+        {
+          "name": "id",
+          "type": "name"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "type": "name"
+        }
+      ]
+    },
+    {
+      "name": "topic_vote_row",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "topic_id",
+          "type": "name"
+        },
+        {
+          "name": "vote_type",
+          "type": "uint8"
+        }
+      ]
+    },
+    {
+      "name": "updatetopic",
+      "base": "",
+      "fields": [
+        {
+          "name": "id",
+          "type": "name"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "vote",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "topic_id",
+          "type": "name"
+        },
+        {
+          "name": "vote_type",
+          "type": "uint8"
+        }
+      ]
+    },
+    {
+      "name": "voteaccount",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "account",
+          "type": "name"
+        },
+        {
+          "name": "vote_type",
+          "type": "uint8"
+        }
+      ]
+    },
+    {
+      "name": "votemsig",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "proposer",
+          "type": "name"
+        },
+        {
+          "name": "proposal_name",
+          "type": "name"
+        },
+        {
+          "name": "vote_type",
+          "type": "uint8"
+        }
+      ]
+    },
+    {
+      "name": "votetopic",
+      "base": "",
+      "fields": [
+        {
+          "name": "voter",
+          "type": "name"
+        },
+        {
+          "name": "topic_id",
+          "type": "name"
+        },
+        {
+          "name": "vote_type",
+          "type": "uint8"
+        }
+      ]
+    },
+    {
+      "name": "withdraw",
+      "base": "",
+      "fields": [
+        {
+          "name": "account",
+          "type": "name"
+        },
+        {
+          "name": "quantity",
+          "type": "asset"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "name": "bulkrmvotes",
+      "type": "bulkrmvotes",
+      "ricardian_contract": "---\n\nspec_version: \"0.2.0\"\ntitle: 'Bulk Remove Votes'\nsummary: 'Maintainer action to remove multiple votes from a topic for administrative purposes. Removes up to the specified number of votes.'\nicon: https://avatars.githubusercontent.com/u/147292861?s=400&u=3b1af66e90dd851f4d7c096ed6a2fbb4b9e190da\n\n---"
+    },
+    {
+      "name": "changevote",
+      "type": "changevote",
+      "ricardian_contract": "---\n\nspec_version: \"0.2.0\"\ntitle: 'Change Vote'\nsummary: 'Allows a user to change their existing vote on a topic from support to opposition or vice versa.'\nicon: https://avatars.githubusercontent.com/u/147292861?s=400&u=3b1af66e90dd851f4d7c096ed6a2fbb4b9e190da\n\n---"
+    },
+    {
+      "name": "createtopic",
+      "type": "createtopic",
+      "ricardian_contract": "---\n\nspec_version: \"0.2.0\"\ntitle: 'Create Topic'\nsummary: 'Creates a new topic with the specified ID and description.'\nicon: https://avatars.githubusercontent.com/u/147292861?s=400&u=3b1af66e90dd851f4d7c096ed6a2fbb4b9e190da\n\n---"
+    },
+    {
+      "name": "deletetopic",
+      "type": "deletetopic",
+      "ricardian_contract": "---\n\nspec_version: \"0.2.0\"\ntitle: 'Delete Topic'\nsummary: 'Deletes an existing topic from the registry.'\nicon: https://avatars.githubusercontent.com/u/147292861?s=400&u=3b1af66e90dd851f4d7c096ed6a2fbb4b9e190da\n\n---"
+    },
+    {
+      "name": "disable",
+      "type": "disable",
+      "ricardian_contract": "---\n\nspec_version: \"0.2.0\"\ntitle: 'Disable Contract'\nsummary: 'Maintainer action to disable the contract, preventing user actions from being executed.'\nicon: https://avatars.githubusercontent.com/u/147292861?s=400&u=3b1af66e90dd851f4d7c096ed6a2fbb4b9e190da\n\n---"
+    },
+    {
+      "name": "enable",
+      "type": "enable",
+      "ricardian_contract": "---\n\nspec_version: \"0.2.0\"\ntitle: 'Enable Contract'\nsummary: 'Maintainer action to enable the contract, allowing user actions to be executed.'\nicon: https://avatars.githubusercontent.com/u/147292861?s=400&u=3b1af66e90dd851f4d7c096ed6a2fbb4b9e190da\n\n---"
+    },
+    {
+      "name": "getacctvote",
+      "type": "getacctvote",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "getactvtrs",
+      "type": "getactvtrs",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "getmsigvote",
+      "type": "getmsigvote",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "getmsigvtrs",
+      "type": "getmsigvtrs",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "gettopic",
+      "type": "gettopic",
+      "ricardian_contract": "---\n\nspec_version: \"0.2.0\"\ntitle: 'Get Topic'\nsummary: 'Read-only action to retrieve a topic by its ID.'\nicon: https://avatars.githubusercontent.com/u/147292861?s=400&u=3b1af66e90dd851f4d7c096ed6a2fbb4b9e190da\n\n---"
+    },
+    {
+      "name": "gettopics",
+      "type": "gettopics",
+      "ricardian_contract": "---\n\nspec_version: \"0.2.0\"\ntitle: 'Get All Topics'\nsummary: 'Read-only action to retrieve all topics from the registry.'\nicon: https://avatars.githubusercontent.com/u/147292861?s=400&u=3b1af66e90dd851f4d7c096ed6a2fbb4b9e190da\n\n---"
+    },
+    {
+      "name": "gettopicvote",
+      "type": "gettopicvote",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "gettopicvtrs",
+      "type": "gettopicvtrs",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "getvote",
+      "type": "getvote",
+      "ricardian_contract": "---\n\nspec_version: \"0.2.0\"\ntitle: 'Get Vote'\nsummary: 'Read-only action to retrieve a specific user\\'s vote on a topic.'\nicon: https://avatars.githubusercontent.com/u/147292861?s=400&u=3b1af66e90dd851f4d7c096ed6a2fbb4b9e190da\n\n---"
+    },
+    {
+      "name": "getvoters",
+      "type": "getvoters",
+      "ricardian_contract": "---\n\nspec_version: \"0.2.0\"\ntitle: 'Get All Voters'\nsummary: 'Read-only action to retrieve all voters and their votes for a specific topic.'\nicon: https://avatars.githubusercontent.com/u/147292861?s=400&u=3b1af66e90dd851f4d7c096ed6a2fbb4b9e190da\n\n---"
+    },
+    {
+      "name": "getweight",
+      "type": "getweight",
+      "ricardian_contract": "---\n\nspec_version: \"0.2.0\"\ntitle: 'Get Voter Weight'\nsummary: 'Read-only action to retrieve the voting weight of a voter based on their staked tokens in the system contract.'\nicon: https://avatars.githubusercontent.com/u/147292861?s=400&u=3b1af66e90dd851f4d7c096ed6a2fbb4b9e190da\n\n---"
+    },
+    {
+      "name": "getweights",
+      "type": "getweights",
+      "ricardian_contract": "---\n\nspec_version: \"0.2.0\"\ntitle: 'Get Multiple Voter Weights'\nsummary: 'Read-only action to retrieve the voting weights of multiple voters based on their staked tokens in the system contract.'\nicon: https://avatars.githubusercontent.com/u/147292861?s=400&u=3b1af66e90dd851f4d7c096ed6a2fbb4b9e190da\n\n---"
+    },
+    {
+      "name": "removevote",
+      "type": "removevote",
+      "ricardian_contract": "---\n\nspec_version: \"0.2.0\"\ntitle: 'Remove Vote'\nsummary: 'Allows a user to remove their vote from a topic.'\nicon: https://avatars.githubusercontent.com/u/147292861?s=400&u=3b1af66e90dd851f4d7c096ed6a2fbb4b9e190da\n\n---"
+    },
+    {
+      "name": "reset",
+      "type": "reset",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "rmacctvote",
+      "type": "rmacctvote",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "rmmsigvote",
+      "type": "rmmsigvote",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "rmtopicvote",
+      "type": "rmtopicvote",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "setconfig",
+      "type": "setconfig",
+      "ricardian_contract": "---\n\nspec_version: \"0.2.0\"\ntitle: 'Set Contract Configuration'\nsummary: 'Maintainer action to set the values of the config table to update how this contract operates.'\nicon: https://avatars.githubusercontent.com/u/147292861?s=400&u=3b1af66e90dd851f4d7c096ed6a2fbb4b9e190da\n\n---"
+    },
+    {
+      "name": "updatetopic",
+      "type": "updatetopic",
+      "ricardian_contract": "---\n\nspec_version: \"0.2.0\"\ntitle: 'Update Topic'\nsummary: 'Updates the description of an existing topic.'\nicon: https://avatars.githubusercontent.com/u/147292861?s=400&u=3b1af66e90dd851f4d7c096ed6a2fbb4b9e190da\n\n---"
+    },
+    {
+      "name": "vote",
+      "type": "vote",
+      "ricardian_contract": "---\n\nspec_version: \"0.2.0\"\ntitle: 'Vote on Topic'\nsummary: 'Allows a user to express their sentiment (support or opposition) on a topic.'\nicon: https://avatars.githubusercontent.com/u/147292861?s=400&u=3b1af66e90dd851f4d7c096ed6a2fbb4b9e190da\n\n---"
+    },
+    {
+      "name": "voteaccount",
+      "type": "voteaccount",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "votemsig",
+      "type": "votemsig",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "votetopic",
+      "type": "votetopic",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "withdraw",
+      "type": "withdraw",
+      "ricardian_contract": ""
+    }
+  ],
+  "tables": [
+    {
+      "name": "accountvotes",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "account_vote_row"
+    },
+    {
+      "name": "balance",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "balance_row"
+    },
+    {
+      "name": "config",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "config_row"
+    },
+    {
+      "name": "msigvotes",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "msig_vote_row"
+    },
+    {
+      "name": "topics",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "topic_row"
+    },
+    {
+      "name": "votes",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "topic_vote_row"
+    }
+  ],
+  "ricardian_clauses": [
+    {
+      "id": "sentiment",
+      "body": "sentiment"
+    }
+  ],
+  "error_messages": [],
+  "abi_extensions": [],
+  "variants": [],
+  "action_results": [
+    {
+      "name": "getacctvote",
+      "result_type": "get_account_vote_response"
+    },
+    {
+      "name": "getactvtrs",
+      "result_type": "get_account_vote_response[]"
+    },
+    {
+      "name": "getmsigvote",
+      "result_type": "get_msig_vote_response"
+    },
+    {
+      "name": "getmsigvtrs",
+      "result_type": "get_msig_vote_response[]"
+    },
+    {
+      "name": "gettopic",
+      "result_type": "get_topic_response"
+    },
+    {
+      "name": "gettopics",
+      "result_type": "get_topic_response[]"
+    },
+    {
+      "name": "gettopicvote",
+      "result_type": "get_topic_vote_response"
+    },
+    {
+      "name": "gettopicvtrs",
+      "result_type": "get_topic_vote_response[]"
+    },
+    {
+      "name": "getvote",
+      "result_type": "get_topic_vote_response"
+    },
+    {
+      "name": "getvoters",
+      "result_type": "get_topic_vote_response[]"
+    },
+    {
+      "name": "getweight",
+      "result_type": "get_voter_weight_response"
+    },
+    {
+      "name": "getweights",
+      "result_type": "get_voter_weight_response[]"
+    }
+  ]
+}

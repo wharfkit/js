@@ -12,7 +12,7 @@ import {
     SigningRequestEncodingOptions,
 } from '../src'
 import * as TSModule from '../src'
-import {Name, PrivateKey, Serializer, Signature, UInt64} from '@wharfkit/antelope'
+import {ABI, Action, Bytes, Name, PrivateKey, Serializer, Signature, Transaction, UInt64} from '@wharfkit/antelope'
 import {IdentityProof} from '../src/identity-proof'
 
 let {SigningRequest, PlaceholderAuth, PlaceholderName} = TSModule
@@ -694,6 +694,173 @@ describe('signing request', function () {
             ),
             'does not verify expired proof'
         )
+    })
+})
+
+describe('optional checksum256 in ESR', function () {
+    const expectedActionDataHex =
+        '010000000000ea305500004c8eda6ca02e450441000000000000000000403290b1ca10270000000000000441000000000000'
+
+    it('should create and preserve action data with null optional checksum256', async function () {
+        const request = await SigningRequest.create(
+            {
+                action: {
+                    account: 'sentiment.gm',
+                    name: 'setconfig',
+                    authorization: [{actor: 'sentiment.gm', permission: 'owner'}],
+                    data: Bytes.from(expectedActionDataHex, 'hex'),
+                },
+            },
+            options
+        )
+        const actions = request.getRawActions()
+        assert.strictEqual(actions[0].data.hexString, expectedActionDataHex)
+    })
+
+    it('should decode action data with null optional checksum256', async function () {
+        const request = await SigningRequest.create(
+            {
+                action: {
+                    account: 'sentiment.gm',
+                    name: 'setconfig',
+                    authorization: [{actor: 'sentiment.gm', permission: 'owner'}],
+                    data: Bytes.from(expectedActionDataHex, 'hex'),
+                },
+            },
+            options
+        )
+        const actions = request.getRawActions()
+        const abi = await abiProvider.getAbi(actions[0].account)
+        const decoded = actions[0].decodeData(abi) as any
+        assert.ok(decoded.config.fees, 'fees should exist')
+        assert.strictEqual(decoded.config.fees.token.chain, null, 'chain should be null')
+        assert.strictEqual(String(decoded.config.fees.token.contract), 'core.vaulta')
+    })
+
+    it('should preserve data through resolve cycle with null optional', async function () {
+        const request = await SigningRequest.create(
+            {
+                action: {
+                    account: 'sentiment.gm',
+                    name: 'setconfig',
+                    authorization: [{actor: 'sentiment.gm', permission: 'owner'}],
+                    data: Bytes.from(expectedActionDataHex, 'hex'),
+                },
+            },
+            options
+        )
+
+        const abis = new Map<string, any>()
+        const rawAbi = await abiProvider.getAbi(Name.from('sentiment.gm'))
+        const abi = ABI.from(rawAbi)
+        abis.set('sentiment.gm', abi)
+
+        const resolved = request.resolve(abis, {actor: 'sentiment.gm', permission: 'owner'}, {
+            timestamp: '2024-01-01T00:00:00',
+            block_num: 1,
+            expire_seconds: 120,
+            ref_block_prefix: 0,
+        })
+
+        const resolvedAction = resolved.transaction.actions[0]
+        assert.strictEqual(
+            resolvedAction.data.hexString,
+            expectedActionDataHex,
+            'resolved action data should match original'
+        )
+    })
+
+    it('should preserve data through resolve + create new request', async function () {
+        const request = await SigningRequest.create(
+            {
+                action: {
+                    account: 'sentiment.gm',
+                    name: 'setconfig',
+                    authorization: [{actor: 'sentiment.gm', permission: 'owner'}],
+                    data: Bytes.from(expectedActionDataHex, 'hex'),
+                },
+            },
+            options
+        )
+
+        const abis = new Map<string, any>()
+        const rawAbi = await abiProvider.getAbi(Name.from('sentiment.gm'))
+        const abi = ABI.from(rawAbi)
+        abis.set('sentiment.gm', abi)
+
+        const resolved = request.resolve(abis, {actor: 'sentiment.gm', permission: 'owner'}, {
+            timestamp: '2024-01-01T00:00:00',
+            block_num: 1,
+            expire_seconds: 120,
+            ref_block_prefix: 0,
+        })
+
+        const newRequest = await SigningRequest.create(
+            {
+                transaction: resolved.transaction,
+                chainId: request.getChainId(),
+            },
+            options
+        )
+
+        const newTx = newRequest.getRawTransaction()
+        assert.strictEqual(
+            newTx.actions[0].data.hexString,
+            expectedActionDataHex,
+            'action data should survive create-from-resolved-transaction'
+        )
+    })
+
+    it('should preserve data through full ESR encode/decode roundtrip', async function () {
+        const request = await SigningRequest.create(
+            {
+                action: {
+                    account: 'sentiment.gm',
+                    name: 'setconfig',
+                    authorization: [{actor: 'sentiment.gm', permission: 'owner'}],
+                    data: Bytes.from(expectedActionDataHex, 'hex'),
+                },
+            },
+            options
+        )
+
+        const abis = new Map<string, any>()
+        const rawAbi = await abiProvider.getAbi(Name.from('sentiment.gm'))
+        const abi = ABI.from(rawAbi)
+        abis.set('sentiment.gm', abi)
+
+        const resolved = request.resolve(abis, {actor: 'sentiment.gm', permission: 'owner'}, {
+            timestamp: '2024-01-01T00:00:00',
+            block_num: 1,
+            expire_seconds: 120,
+            ref_block_prefix: 0,
+        })
+
+        const newRequest = await SigningRequest.create(
+            {
+                transaction: resolved.transaction,
+                chainId: request.getChainId(),
+            },
+            options
+        )
+
+        const encoded = newRequest.encode()
+        const reparsed = SigningRequest.from(encoded, options)
+        const reparsedTx = reparsed.getRawTransaction()
+
+        assert.strictEqual(
+            reparsedTx.actions[0].data.hexString,
+            expectedActionDataHex,
+            'action data should survive full ESR roundtrip'
+        )
+
+        const decodedFinal = reparsedTx.actions[0].decodeData(abi) as any
+        assert.strictEqual(
+            decodedFinal.config.fees.token.chain,
+            null,
+            'chain should still be null after roundtrip'
+        )
+        assert.ok(decodedFinal.config.fees, 'fees should exist after roundtrip')
     })
 })
 

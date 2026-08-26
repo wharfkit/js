@@ -19,9 +19,7 @@
         "lib/*",
         "src/*"
     ],
-    "scripts": {
-        "prepare": "make"
-    },
+    "scripts": {},
     "dependencies": {
         "@noble/curves": "^2.2.0",
         "@noble/hashes": "^2.2.0",

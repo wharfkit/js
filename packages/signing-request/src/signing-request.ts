@@ -661,7 +661,7 @@ export class SigningRequest {
         let header = this.version
         const data = this.getData()
         const sigData = this.getSignatureData()
-        let array = new Uint8Array(data.byteLength + sigData.byteLength)
+        let array: Uint8Array = new Uint8Array(data.byteLength + sigData.byteLength)
         array.set(data, 0)
         array.set(sigData, data.byteLength)
         if (shouldCompress) {

@@ -122,6 +122,9 @@ function runScript(member: Member, script: string) {
     } else if (script === 'build' && existsSync(join(member.dir, 'Makefile'))) {
         log(`${member.name}: make`)
         execFileSync('make', ['-C', member.dir], {stdio: 'inherit'})
+    } else if (existsSync(join(member.dir, 'Makefile')) && trySh('make', ['-C', member.dir, '-n', '--', script]) !== null) {
+        log(`${member.name}: make ${script}`)
+        execFileSync('make', ['-C', member.dir, script], {stdio: 'inherit'})
     } else {
         log(`${member.name}: no ${script} entry point, skipping`)
     }

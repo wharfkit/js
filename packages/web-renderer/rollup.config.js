@@ -49,7 +49,7 @@ export default [
             // gzipPlugin(),
             analyze({summaryOnly: true, hideDeps: true, limit: 10}),
         ],
-        external: Object.keys({...pkg.dependencies, ...pkg.peerDependencies}),
+        external: Object.keys(pkg.dependencies),
     },
     {
         input: 'src/index.ts',
@@ -73,7 +73,7 @@ export default [
             // terser(),
             // gzipPlugin(),
         ],
-        external: Object.keys({...pkg.dependencies, ...pkg.peerDependencies}),
+        external: Object.keys(pkg.dependencies),
     },
     {
         input: 'src/index.ts',

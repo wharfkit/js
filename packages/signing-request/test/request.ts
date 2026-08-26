@@ -15,6 +15,13 @@ import * as TSModule from '../src'
 import {ABI, Action, Bytes, Name, PrivateKey, Serializer, Signature, Transaction, UInt64} from '@wharfkit/antelope'
 import {IdentityProof} from '../src/identity-proof'
 
+// zlib output differs across zlib versions; compare inflated payloads, never compressed text
+import {inflateRawSync} from 'zlib'
+function rawPayload(uri: string): Buffer {
+    const b64 = uri.slice('esr://'.length).replace(/-/g, '+').replace(/_/g, '/')
+    return inflateRawSync(Buffer.from(b64, 'base64').subarray(1))
+}
+
 let {SigningRequest, PlaceholderAuth, PlaceholderName} = TSModule
 if (process.env['TEST_UMD']) {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -337,9 +344,9 @@ describe('signing request', function () {
             options
         )
         const encoded = req1.encode()
-        assert.strictEqual(
-            encoded,
-            'esr://gmNgZGBY1mTC_MoglIGBIVzX5uxZRqAQGMBoExgDAjRi4fwAVz93ICUckpGYl12skJZfpFCSkaqQllmcwczAAAA'
+        assert.deepStrictEqual(
+            rawPayload(encoded),
+            rawPayload('esr://gmNgZGBY1mTC_MoglIGBIVzX5uxZRqAQGMBoExgDAjRi4fwAVz93ICUckpGYl12skJZfpFCSkaqQllmcwczAAAA')
         )
         const req2 = SigningRequest.from(encoded, options)
         assert.deepStrictEqual(recode(req2.data), recode(req1.data))
@@ -418,9 +425,9 @@ describe('signing request', function () {
         )
         assert.deepStrictEqual(recode(req1.signature), mockSig)
         const encoded = req1.encode()
-        assert.strictEqual(
-            encoded,
-            'esr://gmNgZGBY1mTC_MoglIGBIVzX5uxZoAgIaMSCyBVvjYx0kAUYGNZZvmCGsJhd_YNBNHdGak5OvkJJRmpRKlQ3WLl8anjWFNWd23XWfvzTcy_qmtRx5mtMXlkSC23ZXle6K_NJFJ4SVTb4O026Wb1G5Wx0u1A3-_G4rAPsBp78z9lN7nddAQA'
+        assert.deepStrictEqual(
+            rawPayload(encoded),
+            rawPayload('esr://gmNgZGBY1mTC_MoglIGBIVzX5uxZoAgIaMSCyBVvjYx0kAUYGNZZvmCGsJhd_YNBNHdGak5OvkJJRmpRKlQ3WLl8anjWFNWd23XWfvzTcy_qmtRx5mtMXlkSC23ZXle6K_NJFJ4SVTb4O026Wb1G5Wx0u1A3-_G4rAPsBp78z9lN7nddAQA')
         )
         const req2 = SigningRequest.from(encoded, options)
         assert.deepStrictEqual(recode(req2.data), recode(req1.data))
@@ -444,8 +451,8 @@ describe('signing request', function () {
             signature:
                 'SIG_K1_KBub1qmdiPpWA2XKKEZEG3EfKJBf38GETHzbd4t3CBdWLgdvFRLCqbcUsBbbYga6jmxfdSFfodMdhMYraKLhEzjSCsiuMs',
         })
-        assert.strictEqual(req1.encode(), req1uri)
-        assert.strictEqual(req2.encode(), req2uri)
+        assert.deepStrictEqual(rawPayload(req1.encode()), rawPayload(req1uri))
+        assert.deepStrictEqual(rawPayload(req2.encode()), rawPayload(req2uri))
     })
 
     it('should generate correct identity requests', async function () {

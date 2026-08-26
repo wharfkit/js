@@ -3,6 +3,7 @@ import {
     Cancelable,
     ChainDefinition,
     Checksum256Type,
+    ExplorerDefinition,
     PromptResponse,
     TransactContext,
     TransactHookTypes,
@@ -105,6 +106,6 @@ export class TransactPluginExplorerLink extends AbstractTransactPlugin {
                 })
             )
         }
-        return chain.explorer?.url(String(transaction))
+        return ExplorerDefinition.from(chain.explorer).url(String(transaction))
     }
 }

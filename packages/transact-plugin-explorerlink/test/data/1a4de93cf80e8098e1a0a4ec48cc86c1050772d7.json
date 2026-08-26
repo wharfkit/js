@@ -2,7 +2,8 @@
     "request": {
         "path": "https://jungle4.greymass.com/v1/chain/get_info",
         "params": {
-            "method": "POST"
+            "method": "POST",
+            "headers": {}
         }
     },
     "headers": {

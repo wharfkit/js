@@ -1,0 +1,66 @@
+import {expect, assert} from 'chai'
+import {extractSignaturesFromCallback} from 'src/esr'
+import {Signature} from '@wharfkit/session'
+import {mockCallbackPayload} from '$test/utils/mock-esr'
+
+suite('esr', () => {
+    suite('extractSignaturesFromCallback', () => {
+        test('should extract signatures from the callback payload', () => {
+            const payload = {
+                ...mockCallbackPayload,
+                sig0: 'SIG_K1_KdHDFseJF6paedvSbfHFZzhbtBDVAM8LxeDJsrG33sENRbUQMFHX8CvtT9wRLo4fE4QGYtbp1rF6BqNQ6Pv5XgSocXwM67',
+                sig1: 'SIG_K1_K6PhJrD6wvjzVQRwTUd82fk3Z4jznnUszjeBH7xGCAsfByCunzSN2KQ2A9ALetFwLTqnK4xvES6Bstt6NNSvGgjgM1Tcxn',
+                sig2: 'SIG_K1_KBub1qmdiPpWA2XKKEZEG3EfKJBf38GETHzbd4t3CBdWLgdvFRLCqbcUsBbbYga6jmxfdSFfodMdhMYraKLhEzjSCsiuMs',
+            }
+            const actualSignatures = extractSignaturesFromCallback(payload)
+
+            expect(String(actualSignatures[0])).to.equal(payload['sig'])
+            expect(String(actualSignatures[1])).to.equal(payload['sig0'])
+            expect(String(actualSignatures[2])).to.equal(payload['sig1'])
+            expect(String(actualSignatures[3])).to.equal(payload['sig2'])
+            expect(actualSignatures.length).to.equal(4)
+        })
+        test('should extract signatures when numbering starts at sig1 (swift-eosio)', () => {
+            // Anchor iOS emits {sig, sig1, ...} with no sig0; the parser must not stop at the gap.
+            const payload = {
+                ...mockCallbackPayload,
+                sig1: 'SIG_K1_K6PhJrD6wvjzVQRwTUd82fk3Z4jznnUszjeBH7xGCAsfByCunzSN2KQ2A9ALetFwLTqnK4xvES6Bstt6NNSvGgjgM1Tcxn',
+                sig2: 'SIG_K1_KBub1qmdiPpWA2XKKEZEG3EfKJBf38GETHzbd4t3CBdWLgdvFRLCqbcUsBbbYga6jmxfdSFfodMdhMYraKLhEzjSCsiuMs',
+            }
+            const actualSignatures = extractSignaturesFromCallback(payload)
+
+            expect(String(actualSignatures[0])).to.equal(payload['sig'])
+            expect(String(actualSignatures[1])).to.equal(payload['sig1'])
+            expect(String(actualSignatures[2])).to.equal(payload['sig2'])
+            expect(actualSignatures.length).to.equal(3)
+        })
+        test('should extract signatures across a gap in numbering', () => {
+            // Non-contiguous indices (sig0 then sig2, no sig1) must all be collected.
+            const payload = {
+                ...mockCallbackPayload,
+                sig0: 'SIG_K1_KdHDFseJF6paedvSbfHFZzhbtBDVAM8LxeDJsrG33sENRbUQMFHX8CvtT9wRLo4fE4QGYtbp1rF6BqNQ6Pv5XgSocXwM67',
+                sig2: 'SIG_K1_KBub1qmdiPpWA2XKKEZEG3EfKJBf38GETHzbd4t3CBdWLgdvFRLCqbcUsBbbYga6jmxfdSFfodMdhMYraKLhEzjSCsiuMs',
+            }
+            const actualSignatures = extractSignaturesFromCallback(payload)
+
+            expect(String(actualSignatures[0])).to.equal(payload['sig'])
+            expect(String(actualSignatures[1])).to.equal(payload['sig0'])
+            expect(String(actualSignatures[2])).to.equal(payload['sig2'])
+            expect(actualSignatures.length).to.equal(3)
+        })
+        test('should deduplicate signatures if needed', () => {
+            const payload = {
+                ...mockCallbackPayload,
+                // Callback returns duplicate of sig and sig0, should be deduped
+                sig0: 'SIG_K1_K4nkCupUx3hDXSHq4rhGPpDMPPPjJyvmF3M6j7ppYUzkR3L93endwnxf3YhJSG4SSvxxU1ytD8hj39kukTeYxjwy5H3XNJ',
+                sig1: 'SIG_K1_K6PhJrD6wvjzVQRwTUd82fk3Z4jznnUszjeBH7xGCAsfByCunzSN2KQ2A9ALetFwLTqnK4xvES6Bstt6NNSvGgjgM1Tcxn',
+                sig2: 'SIG_K1_KBub1qmdiPpWA2XKKEZEG3EfKJBf38GETHzbd4t3CBdWLgdvFRLCqbcUsBbbYga6jmxfdSFfodMdhMYraKLhEzjSCsiuMs',
+            }
+            const actualSignatures = extractSignaturesFromCallback(payload)
+            expect(String(actualSignatures[0])).to.equal(payload['sig'])
+            expect(String(actualSignatures[1])).to.equal(payload['sig1'])
+            expect(String(actualSignatures[2])).to.equal(payload['sig2'])
+            expect(actualSignatures.length).to.equal(3)
+        })
+    })
+})

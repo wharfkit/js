@@ -8,5 +8,9 @@
     "devDependencies": {
         "@types/semver": "^7.5.8",
         "semver": "^7.6.0"
+    },
+    "overrides": {
+        "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/signing-request": "workspace:*"
     }
 }

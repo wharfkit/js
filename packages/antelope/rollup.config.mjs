@@ -29,6 +29,7 @@ export default [
             banner,
             file: pkg.main,
             format: 'cjs',
+            esModule: true,
             sourcemap: true,
         },
         plugins: [typescript({target: 'es6'})],

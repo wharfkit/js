@@ -12,15 +12,11 @@
         "lib/*",
         "src/*"
     ],
-    "scripts": {
-        "prepare": "make"
-    },
+    "scripts": {},
     "dependencies": {
         "@greymass/miniaes": "^1.0.0",
-        "@wharfkit/antelope": "^1.1.0"
+        "@wharfkit/antelope": "workspace:*"
     },
-    "resolutions": {},
-    "peerDependencies": {},
     "devDependencies": {
         "@rollup/plugin-alias": "^3.1.4",
         "@rollup/plugin-commonjs": "^22.0.0",

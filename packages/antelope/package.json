@@ -25,7 +25,7 @@
         "@noble/hashes": "^2.2.0",
         "bn.js": "^5.2.5",
         "pako": "^3.0.1",
-        "tslib": "^2.8.1"
+        "tslib": "catalog:"
     },
     "devDependencies": {
         "@eslint/js": "^10.0.0",
@@ -37,7 +37,7 @@
         "@rollup/plugin-terser": "^1.0.0",
         "@rollup/plugin-typescript": "^12.3.0",
         "@rollup/plugin-virtual": "^3.0.2",
-        "@types/bn.js": "^5.2.0",
+        "@types/bn.js": "catalog:",
         "@types/mocha": "^10.0.10",
         "@types/node": "^22.20.1",
         "chai": "^6.2.2",

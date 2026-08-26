@@ -2,7 +2,8 @@ SRC_FILES := $(shell find src -name '*.ts')
 TEST_FILES := $(wildcard test/*.ts)
 BIN := ./node_modules/.bin
 MOCHA_OPTS := -u tdd --require tsx --extension ts
-MOCHA_ENV := TSX_TSCONFIG_PATH=test/tsconfig.json NODE_OPTIONS='--no-experimental-strip-types'
+STRIP_TYPES_FLAG := $(shell node -e 'const [a,b]=process.versions.node.split(".").map(Number); if (a>22||(a===22&&b>=6)) console.log("--no-experimental-strip-types")')
+MOCHA_ENV := TSX_TSCONFIG_PATH=test/tsconfig.json NODE_OPTIONS='$(STRIP_TYPES_FLAG)'
 
 lib: ${SRC_FILES} package.json tsconfig.json node_modules rollup.config.mjs
 	@${BIN}/rollup -c && touch lib

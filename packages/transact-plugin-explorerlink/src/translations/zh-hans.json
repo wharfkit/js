@@ -1,0 +1,9 @@
+{
+    "complete": "交易完成",
+    "click": "点击下面的按钮在区块浏览器中查看交易。",
+    "visit": "访问区块浏览器",
+    "no-result": "无法生成区块浏览器链接，result 参数错误。",
+    "no-chain": "无法生成区块浏览器链接，chain 参数错误。",
+    "no-explorer": "无法生成区块浏览器链接，chain 参数中未包含区块浏览器。",
+    "no-resolved": "无法生成区块浏览器链接，resolved 参数错误。"
+}

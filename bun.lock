@@ -11,7 +11,7 @@
     },
     "packages/abicache": {
       "name": "@wharfkit/abicache",
-      "version": "0.0.0",
+      "version": "4.0.0-rc1",
       "dependencies": {
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/signing-request": "workspace:*",
@@ -58,7 +58,7 @@
     },
     "packages/antelope": {
       "name": "@wharfkit/antelope",
-      "version": "0.0.0",
+      "version": "4.0.0-rc1",
       "dependencies": {
         "@noble/curves": "^2.2.0",
         "@noble/hashes": "^2.2.0",
@@ -98,7 +98,7 @@
     },
     "packages/common": {
       "name": "@wharfkit/common",
-      "version": "0.0.0",
+      "version": "4.0.0-rc1",
       "dependencies": {
         "@wharfkit/antelope": "workspace:*",
         "tslib": "^2.1.0",
@@ -142,7 +142,7 @@
     },
     "packages/contract": {
       "name": "@wharfkit/contract",
-      "version": "0.0.0",
+      "version": "4.0.0-rc1",
       "dependencies": {
         "@wharfkit/abicache": "workspace:*",
         "@wharfkit/antelope": "workspace:*",
@@ -191,7 +191,7 @@
     },
     "packages/mock-data": {
       "name": "@wharfkit/mock-data",
-      "version": "0.0.0",
+      "version": "4.0.0-rc1",
       "dependencies": {
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/session": "workspace:*",
@@ -236,7 +236,7 @@
     },
     "packages/protocol-esr": {
       "name": "@wharfkit/protocol-esr",
-      "version": "0.0.0",
+      "version": "4.0.0-rc1",
       "dependencies": {
         "@greymass/buoy": "^1.0.3",
         "@wharfkit/antelope": "workspace:*",
@@ -287,7 +287,7 @@
     },
     "packages/resources": {
       "name": "@wharfkit/resources",
-      "version": "0.0.0",
+      "version": "4.0.0-rc1",
       "dependencies": {
         "@wharfkit/antelope": "workspace:*",
         "bn.js": "^4.11.9",
@@ -319,7 +319,7 @@
     },
     "packages/sealed-messages": {
       "name": "@wharfkit/sealed-messages",
-      "version": "0.0.0",
+      "version": "4.0.0-rc1",
       "dependencies": {
         "@greymass/miniaes": "^1.0.0",
         "@wharfkit/antelope": "workspace:*",
@@ -362,7 +362,7 @@
     },
     "packages/session": {
       "name": "@wharfkit/session",
-      "version": "0.0.0",
+      "version": "4.0.0-rc1",
       "dependencies": {
         "@wharfkit/abicache": "workspace:*",
         "@wharfkit/antelope": "workspace:*",
@@ -413,7 +413,7 @@
     },
     "packages/signing-request": {
       "name": "@wharfkit/signing-request",
-      "version": "0.0.0",
+      "version": "4.0.0-rc1",
       "dependencies": {
         "@wharfkit/antelope": "workspace:*",
         "tslib": "^2.0.3",
@@ -440,7 +440,7 @@
     },
     "packages/transact-plugin-autocorrect": {
       "name": "@wharfkit/transact-plugin-autocorrect",
-      "version": "0.0.0",
+      "version": "4.0.0-rc1",
       "dependencies": {
         "@wharfkit/resources": "workspace:*",
         "@wharfkit/session": "workspace:*",
@@ -483,7 +483,7 @@
     },
     "packages/transact-plugin-resource-provider": {
       "name": "@wharfkit/transact-plugin-resource-provider",
-      "version": "0.0.0",
+      "version": "4.0.0-rc1",
       "dependencies": {
         "@wharfkit/resources": "workspace:*",
         "@wharfkit/session": "workspace:*",
@@ -533,7 +533,7 @@
     },
     "packages/wallet-plugin-anchor": {
       "name": "@wharfkit/wallet-plugin-anchor",
-      "version": "0.0.0",
+      "version": "4.0.0-rc1",
       "dependencies": {
         "@greymass/buoy": "^1.0.3",
         "@wharfkit/antelope": "workspace:*",
@@ -587,7 +587,7 @@
     },
     "packages/wallet-plugin-privatekey": {
       "name": "@wharfkit/wallet-plugin-privatekey",
-      "version": "0.0.0",
+      "version": "4.0.0-rc1",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
         "tslib": "^2.1.0",

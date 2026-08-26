@@ -64,9 +64,10 @@ function publishable(list: Member[]): Member[] {
     return list.filter((m) => m.json.private !== true)
 }
 
+// build order follows the runtime graph; devDependencies would make it cyclic
 function internalDeps(json: any): string[] {
     const found = new Set<string>()
-    for (const type of ['dependencies', 'devDependencies', 'optionalDependencies', 'peerDependencies']) {
+    for (const type of ['dependencies', 'optionalDependencies', 'peerDependencies']) {
         for (const name of Object.keys(json[type] ?? {})) {
             if (name.startsWith('@wharfkit/')) found.add(name)
         }

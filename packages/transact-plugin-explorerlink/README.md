@@ -7,24 +7,26 @@ A plugin to display a link to a block explorer after a transaction has been comp
 When instantiating your Session Kit, ensure you have the `explorer` parameter defined on the `ChainDefintion` for each blockchain, and then add the `TransactPluginExplorerLink` as a `transactPlugin`.
 
 ```ts
-import {TransactPluginExplorerLink} from '@wharfkit/transact-plugin-resource-provider'
+import {TransactPluginExplorerLink} from '@wharfkit/transact-plugin-explorerlink'
 
-const kit = new SessionKit({
-    // ... all your other options
-    chains: [
-        {
-            id: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
-            url: 'https://jungle4.greymass.com',
-            // Make sure to define the structure of an explorer link for each chain in your chain definitions.
-            explorer: {
-                prefix: 'https://jungle4.eosq.eosnation.io/tx/',
-                suffix: '',
+const kit = new SessionKit(
+    {
+        // ... your other SessionKit args (appName, ui, walletPlugins)
+        chains: [
+            {
+                id: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
+                url: 'https://jungle4.greymass.com',
+                explorer: {
+                    prefix: 'https://jungle4.eosq.eosnation.io/tx/',
+                    suffix: '',
+                },
             },
-        },
-    ],
-    // Include the explorer link plugin
-    transactPlugins: [new TransactPluginExplorerLink()],
-})
+        ],
+    },
+    {
+        transactPlugins: [new TransactPluginExplorerLink()],
+    }
+)
 ```
 
 ## Developing

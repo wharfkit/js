@@ -20,7 +20,7 @@
         "@wharfkit/common": "workspace:*",
         "@wharfkit/contract": "workspace:*",
         "@wharfkit/signing-request": "workspace:*",
-        "pako": "^2.0.4",
+        "pako": "catalog:",
         "tslib": "catalog:"
     },
     "devDependencies": {
@@ -46,7 +46,6 @@
         "eslint-plugin-prettier": "catalog:",
         "gh-pages": "catalog:",
         "mocha": "^11.8.0",
-        "node-fetch": "catalog:",
         "nyc": "^18.0.0",
         "prettier": "catalog:",
         "rollup": "catalog:",

@@ -1,0 +1,65 @@
+{
+    "api": "https://eos.greymass.com",
+    "headers": {
+        "access-control-allow-headers": "X-Requested-With,Accept,Content-Type,Origin",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+        "access-control-allow-origin": "*",
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a26858f9cdab001b-LHR",
+        "content-encoding": "br",
+        "content-type": "application/json",
+        "date": "Wed, 05 Aug 2026 19:53:23 GMT",
+        "host": "eos.greymass.com",
+        "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=4uu6NE69fk2ckwt%2BcD8m06KCPl%2Fg37dcddeZHI0Ucrt0RpFTzlWez%2FHwoE%2FQJW8M7Ovv9pKvvsWAsokvbwGhp4eTpDoGHocV8Hd1p7SSDHpm9ujWfNZXZaakiKF9D71NOg8%3D\"}]}",
+        "server": "cloudflare",
+        "x-cached": "EXPIRED"
+    },
+    "status": 200,
+    "json": {
+        "block_num": 323978187,
+        "dpos_proposed_irreversible_blocknum": 0,
+        "dpos_irreversible_blocknum": 0,
+        "active_schedule": {
+            "version": 0,
+            "producers": []
+        },
+        "blockroot_merkle": {
+            "_active_nodes": [],
+            "_node_count": 0
+        },
+        "producer_to_last_produced": [],
+        "producer_to_last_implied_irb": [],
+        "valid_block_signing_authority": [
+            0,
+            {
+                "threshold": 0,
+                "keys": []
+            }
+        ],
+        "confirm_count": [],
+        "id": "134f83cb546315f79cace4cb806cb083ba7a01618bf87cfeb0cb82cb35cd104b",
+        "header": {
+            "timestamp": "2023-08-04T18:57:16.500",
+            "producer": "ivote4eosusa",
+            "confirmed": 0,
+            "previous": "134f83ca1e16cb7eea1fc0557729cb509e038cd3dfbb18f577d562abd096ac58",
+            "transaction_mroot": "893441af2bfff336c35673bb64d502d3add09e49f9faaf20cb0c3d659fc7d793",
+            "action_mroot": "fdb29d682f2d3e7bb6c3cdf1b0bb0f3a3354f22c5eca4f48fbbb9c0a49a3e267",
+            "schedule_version": 2083,
+            "header_extensions": [],
+            "producer_signature": "SIG_K1_JxL8qFxSRMAYKX5wEWyx7j6j2Vitu3k43RShVZ9NL2acATvLx9PyciFLSu7BFC7w1DPL4qwLSm7NxE7vBwGEChV6YFk1NN"
+        },
+        "pending_schedule": {
+            "schedule_lib_num": 0,
+            "schedule_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+            "schedule": {
+                "version": 0,
+                "producers": []
+            }
+        },
+        "activated_protocol_features": null,
+        "additional_signatures": []
+    },
+    "text": "{\"block_num\":323978187,\"dpos_proposed_irreversible_blocknum\":0,\"dpos_irreversible_blocknum\":0,\"active_schedule\":{\"version\":0,\"producers\":[]},\"blockroot_merkle\":{\"_active_nodes\":[],\"_node_count\":0},\"producer_to_last_produced\":[],\"producer_to_last_implied_irb\":[],\"valid_block_signing_authority\":[0,{\"threshold\":0,\"keys\":[]}],\"confirm_count\":[],\"id\":\"134f83cb546315f79cace4cb806cb083ba7a01618bf87cfeb0cb82cb35cd104b\",\"header\":{\"timestamp\":\"2023-08-04T18:57:16.500\",\"producer\":\"ivote4eosusa\",\"confirmed\":0,\"previous\":\"134f83ca1e16cb7eea1fc0557729cb509e038cd3dfbb18f577d562abd096ac58\",\"transaction_mroot\":\"893441af2bfff336c35673bb64d502d3add09e49f9faaf20cb0c3d659fc7d793\",\"action_mroot\":\"fdb29d682f2d3e7bb6c3cdf1b0bb0f3a3354f22c5eca4f48fbbb9c0a49a3e267\",\"schedule_version\":2083,\"header_extensions\":[],\"producer_signature\":\"SIG_K1_JxL8qFxSRMAYKX5wEWyx7j6j2Vitu3k43RShVZ9NL2acATvLx9PyciFLSu7BFC7w1DPL4qwLSm7NxE7vBwGEChV6YFk1NN\"},\"pending_schedule\":{\"schedule_lib_num\":0,\"schedule_hash\":\"0000000000000000000000000000000000000000000000000000000000000000\",\"schedule\":{\"version\":0,\"producers\":[]}},\"activated_protocol_features\":null,\"additional_signatures\":[]}"
+}

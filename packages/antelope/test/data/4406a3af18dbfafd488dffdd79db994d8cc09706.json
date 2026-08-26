@@ -1,0 +1,98 @@
+{
+    "api": "https://jungle4.api.eosnation.io",
+    "headers": {
+        "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept",
+        "access-control-allow-methods": "GET, POST, HEAD, OPTIONS",
+        "access-control-allow-origin": "*",
+        "content-length": "1210",
+        "content-type": "application/json",
+        "date": "Wed, 05 Aug 2026 19:53:17 GMT",
+        "server": "nginx/1.30.4"
+    },
+    "status": 200,
+    "json": {
+        "accounts": [
+            {
+                "account_name": "eosio",
+                "permission_name": "active",
+                "authorizing_account": {
+                    "actor": "eosio.prods",
+                    "permission": "active"
+                },
+                "weight": 1,
+                "threshold": 1
+            },
+            {
+                "account_name": "vaulta",
+                "permission_name": "owner",
+                "authorizing_account": {
+                    "actor": "eosio.prods",
+                    "permission": "active"
+                },
+                "weight": 1,
+                "threshold": 1
+            },
+            {
+                "account_name": "vaulta",
+                "permission_name": "active",
+                "authorizing_account": {
+                    "actor": "eosio.prods",
+                    "permission": "active"
+                },
+                "weight": 1,
+                "threshold": 1
+            },
+            {
+                "account_name": "funeralparty",
+                "permission_name": "owner",
+                "authorizing_account": {
+                    "actor": "eosio.prods",
+                    "permission": "active"
+                },
+                "weight": 1,
+                "threshold": 1
+            },
+            {
+                "account_name": "funeralparty",
+                "permission_name": "active",
+                "authorizing_account": {
+                    "actor": "eosio.prods",
+                    "permission": "active"
+                },
+                "weight": 1,
+                "threshold": 1
+            },
+            {
+                "account_name": "aplayboicart",
+                "permission_name": "owner",
+                "authorizing_account": {
+                    "actor": "eosio.prods",
+                    "permission": "active"
+                },
+                "weight": 1,
+                "threshold": 1
+            },
+            {
+                "account_name": "aplayboicart",
+                "permission_name": "active",
+                "authorizing_account": {
+                    "actor": "eosio.prods",
+                    "permission": "active"
+                },
+                "weight": 1,
+                "threshold": 1
+            },
+            {
+                "account_name": "eosio.wram",
+                "permission_name": "active",
+                "authorizing_account": {
+                    "actor": "eosio.prods",
+                    "permission": "prod.minor"
+                },
+                "weight": 1,
+                "threshold": 2
+            }
+        ]
+    },
+    "text": "{\"accounts\":[{\"account_name\":\"eosio\",\"permission_name\":\"active\",\"authorizing_account\":{\"actor\":\"eosio.prods\",\"permission\":\"active\"},\"weight\":1,\"threshold\":1},{\"account_name\":\"vaulta\",\"permission_name\":\"owner\",\"authorizing_account\":{\"actor\":\"eosio.prods\",\"permission\":\"active\"},\"weight\":1,\"threshold\":1},{\"account_name\":\"vaulta\",\"permission_name\":\"active\",\"authorizing_account\":{\"actor\":\"eosio.prods\",\"permission\":\"active\"},\"weight\":1,\"threshold\":1},{\"account_name\":\"funeralparty\",\"permission_name\":\"owner\",\"authorizing_account\":{\"actor\":\"eosio.prods\",\"permission\":\"active\"},\"weight\":1,\"threshold\":1},{\"account_name\":\"funeralparty\",\"permission_name\":\"active\",\"authorizing_account\":{\"actor\":\"eosio.prods\",\"permission\":\"active\"},\"weight\":1,\"threshold\":1},{\"account_name\":\"aplayboicart\",\"permission_name\":\"owner\",\"authorizing_account\":{\"actor\":\"eosio.prods\",\"permission\":\"active\"},\"weight\":1,\"threshold\":1},{\"account_name\":\"aplayboicart\",\"permission_name\":\"active\",\"authorizing_account\":{\"actor\":\"eosio.prods\",\"permission\":\"active\"},\"weight\":1,\"threshold\":1},{\"account_name\":\"eosio.wram\",\"permission_name\":\"active\",\"authorizing_account\":{\"actor\":\"eosio.prods\",\"permission\":\"prod.minor\"},\"weight\":1,\"threshold\":2}]}"
+}

@@ -15,7 +15,8 @@
     "scripts": {},
     "dependencies": {
         "@greymass/miniaes": "^1.0.0",
-        "@wharfkit/antelope": "workspace:*"
+        "@wharfkit/antelope": "workspace:*",
+        "tslib": "^2.0.3"
     },
     "devDependencies": {
         "@rollup/plugin-alias": "^3.1.4",

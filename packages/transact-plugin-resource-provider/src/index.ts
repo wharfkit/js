@@ -189,7 +189,7 @@ export class TransactPluginResourceProvider extends AbstractTransactPlugin {
                 }),
             })
             json = await response.json()
-        } catch (e) {
+        } catch {
             return {
                 request,
             }
@@ -335,10 +335,13 @@ export class TransactPluginResourceProvider extends AbstractTransactPlugin {
         }
 
         const allFees = [...transferFees, ...ramFees]
-        const addedFees = allFees.reduce((total: Asset, fee: Asset) => {
-            total.units.add(fee.units)
-            return total
-        }, Asset.fromUnits(0, allFees.length > 0 ? allFees[0].symbol : '4,TOKEN'))
+        const addedFees = allFees.reduce(
+            (total: Asset, fee: Asset) => {
+                total.units.add(fee.units)
+                return total
+            },
+            Asset.fromUnits(0, allFees.length > 0 ? allFees[0].symbol : '4,TOKEN')
+        )
 
         // If the resource provider offered transaction with a fee, but the fee was higher than allowed, return the original transaction.
         if (this.maxFee) {

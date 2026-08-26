@@ -419,7 +419,7 @@ export class WebRenderer extends AbstractUserInterface implements UserInterface 
             active.set(false)
             resetState()
             return result
-        } catch (error) {
+        } catch {
             active.set(false)
             resetState()
             return false
@@ -449,7 +449,7 @@ export class WebRenderer extends AbstractUserInterface implements UserInterface 
             active.set(false)
             resetState()
             return result
-        } catch (error) {
+        } catch {
             active.set(false)
             resetState()
             return 'cancel'
@@ -479,7 +479,7 @@ export class WebRenderer extends AbstractUserInterface implements UserInterface 
             active.set(false)
             resetState()
             return result
-        } catch (error) {
+        } catch {
             active.set(false)
             resetState()
             return 'dismiss'
@@ -522,7 +522,7 @@ export class WebRenderer extends AbstractUserInterface implements UserInterface 
                 resetState()
             }
             return result
-        } catch (error) {
+        } catch {
             active.set(false)
             resetState()
             return false

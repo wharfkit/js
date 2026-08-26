@@ -63,8 +63,8 @@ export async function createIdentityRequest(
     const chainId: ChainId | null = isMultiChain
         ? null
         : context.chain
-        ? ChainId.from(context.chain.id.array)
-        : null
+          ? ChainId.from(context.chain.id.array)
+          : null
 
     const chainIds: ChainId[] = isMultiChain
         ? context.chains.map((c) => ChainId.from(c.id.array))

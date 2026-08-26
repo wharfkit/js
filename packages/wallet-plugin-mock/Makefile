@@ -30,11 +30,11 @@ ci-test: node_modules
 
 .PHONY: check
 check: node_modules
-	@${BIN}/eslint src --ext .ts --max-warnings 0 --format unix && echo "Ok"
+	@${BIN}/eslint src --max-warnings 0 && echo "Ok"
 
 .PHONY: format
 format: node_modules
-	@${BIN}/eslint src --ext .ts --fix
+	@${BIN}/eslint src --fix
 
 .PHONY: publish
 publish: | distclean node_modules

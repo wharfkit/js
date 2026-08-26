@@ -22,6 +22,7 @@
         "@wharfkit/session": "workspace:*"
     },
     "devDependencies": {
+        "@eslint/js": "catalog:",
         "@rollup/plugin-alias": "catalog:",
         "@rollup/plugin-commonjs": "catalog:",
         "@rollup/plugin-json": "catalog:",
@@ -34,17 +35,15 @@
         "@types/jsdom": "catalog:",
         "@types/mocha": "^9.0.0",
         "@types/node": "catalog:",
-        "@typescript-eslint/eslint-plugin": "^5.20.0",
-        "@typescript-eslint/parser": "^5.20.0",
         "@wharfkit/mock-data": "workspace:*",
         "@wharfkit/sealed-messages": "workspace:*",
         "@wharfkit/session": "workspace:*",
         "@wharfkit/signing-request": "workspace:*",
         "@wharfkit/wallet-plugin-privatekey": "workspace:*",
         "chai": "^4.3.4",
-        "eslint": "^8.13.0",
-        "eslint-config-prettier": "^8.1.0",
-        "eslint-plugin-prettier": "^4.0.0",
+        "eslint": "catalog:",
+        "eslint-config-prettier": "catalog:",
+        "eslint-plugin-prettier": "catalog:",
         "gh-pages": "catalog:",
         "jsdom": "catalog:",
         "mocha": "^10.0.0",
@@ -60,7 +59,8 @@
         "tsconfig-paths": "catalog:",
         "tslib": "catalog:",
         "typedoc": "^0.23.14",
-        "typescript": "catalog:"
+        "typescript": "catalog:",
+        "typescript-eslint": "catalog:"
     },
     "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
     "repository": {

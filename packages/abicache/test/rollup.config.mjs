@@ -13,7 +13,6 @@ import resolve from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
 import virtual from '@rollup/plugin-virtual'
 
-// eslint-disable-next-line es-x/no-import-meta
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const dataDir = path.join(__dirname, 'data')

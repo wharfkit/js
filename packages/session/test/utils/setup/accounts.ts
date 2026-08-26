@@ -419,7 +419,7 @@ async function run() {
             await masterSession.client.v1.chain.get_account(Name.from(account.name))
             // eslint-disable-next-line no-console
             console.log(`account ${account.name} already exists`)
-        } catch (e) {
+        } catch {
             // Create account
             const result = await createAccount(masterSession, account)
             // eslint-disable-next-line no-console

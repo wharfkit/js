@@ -84,7 +84,9 @@ export class AccountCreator {
     }
 
     cleanup() {
-        this.popupStatusInterval && clearInterval(this.popupStatusInterval)
+        if (this.popupStatusInterval) {
+            clearInterval(this.popupStatusInterval)
+        }
         this.popupStatusInterval = undefined
         this.popupWindow = undefined
     }

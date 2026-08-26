@@ -18,15 +18,14 @@
         "tslib": "catalog:"
     },
     "devDependencies": {
+        "@eslint/js": "catalog:",
         "@rollup/plugin-typescript": "catalog:",
         "@types/bn.js": "catalog:",
         "@types/mocha": "^9.0.0",
         "@types/node": "catalog:",
-        "@typescript-eslint/eslint-plugin": "^5.22.0",
-        "@typescript-eslint/parser": "^5.22.0",
-        "eslint": "^8.14.0",
-        "eslint-config-prettier": "^8.1.0",
-        "eslint-plugin-prettier": "^4.0.0",
+        "eslint": "catalog:",
+        "eslint-config-prettier": "catalog:",
+        "eslint-plugin-prettier": "catalog:",
         "mocha": "^9.1.1",
         "node-fetch": "catalog:",
         "nyc": "^15.1.0",
@@ -34,7 +33,8 @@
         "rollup": "catalog:",
         "rollup-plugin-dts": "catalog:",
         "ts-node": "^10.0.0",
-        "typescript": "catalog:"
+        "typescript": "catalog:",
+        "typescript-eslint": "catalog:"
     },
     "repository": {
         "type": "git",

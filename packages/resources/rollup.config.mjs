@@ -4,7 +4,6 @@ import fs from 'fs'
 import dts from 'rollup-plugin-dts'
 import typescript from '@rollup/plugin-typescript'
 
-// eslint-disable-next-line es-x/no-import-meta
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json')))
 

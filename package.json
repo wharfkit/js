@@ -2,9 +2,37 @@
     "name": "wharfkit-js",
     "private": true,
     "version": "4.0.0-rc2",
-    "workspaces": [
-        "packages/*"
-    ],
+    "workspaces": {
+        "packages": [
+            "packages/*"
+        ],
+        "catalog": {
+            "@babel/core": "^7.20.12",
+            "@babel/preset-env": "^7.20.2",
+            "@babel/runtime": "^7.22.6",
+            "@greymass/buoy": "^1.0.3",
+            "@rollup/plugin-babel": "^6.0.3",
+            "@rollup/plugin-replace": "^5.0.2",
+            "@types/bn.js": "^5.2.0",
+            "@types/chai": "^4.3.1",
+            "@types/jsdom": "^21.1.7",
+            "assert": "^2.0.0",
+            "crypto-js": "^4.1.1",
+            "gh-pages": "^4.0.0",
+            "isomorphic-ws": "^5.0.0",
+            "jsdom": "^26.0.0",
+            "node-fetch": "^2.7.0",
+            "rollup-plugin-cleanup": "^3.2.1",
+            "rollup-plugin-polyfill-node": "^0.12.0",
+            "rollup-plugin-terser": "^7.0.2",
+            "sinon": "^17.0.0",
+            "sinon-chai": "^3.7.0",
+            "tsconfig-paths": "^4.1.1",
+            "tslib": "^2.8.1",
+            "typedoc-plugin-mermaid": "^1.10.0",
+            "ws": "^8.13.0"
+        }
+    },
     "devDependencies": {
         "@types/semver": "^7.5.8",
         "semver": "^7.6.0"

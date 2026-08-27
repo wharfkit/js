@@ -1,0 +1,30 @@
+{
+    "name": "@wharfkit/account-creation-plugin-template",
+    "description": "A template to create account-creation plugins for use with @wharfkit/session.",
+    "version": "4.0.0-rc2",
+    "private": true,
+    "homepage": "https://github.com/wharfkit/account-creation-plugin-template",
+    "license": "BSD-3-Clause",
+    "main": "lib/account-creation-plugin-template.js",
+    "module": "lib/account-creation-plugin-template.m.js",
+    "types": "lib/account-creation-plugin-template.d.ts",
+    "sideEffects": false,
+    "files": [
+        "lib/*",
+        "src/*"
+    ],
+    "scripts": {},
+    "dependencies": {
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:"
+    },
+    "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/session": "workspace:*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wharfkit/js.git",
+        "directory": "packages/account-creation-plugin-template"
+    }
+}

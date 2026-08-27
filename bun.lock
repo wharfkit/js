@@ -81,6 +81,18 @@
         "@wharfkit/session": "workspace:*",
       },
     },
+    "packages/account-creation-plugin-template": {
+      "name": "@wharfkit/account-creation-plugin-template",
+      "version": "4.0.0-rc2",
+      "dependencies": {
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+      },
+    },
     "packages/antelope": {
       "name": "@wharfkit/antelope",
       "version": "4.0.0-rc2",
@@ -120,6 +132,19 @@
         "@wharfkit/mock-data": "workspace:*",
         "@wharfkit/session": "workspace:*",
         "esm": "^3.2.25",
+      },
+    },
+    "packages/login-plugin-template": {
+      "name": "@wharfkit/login-plugin-template",
+      "version": "4.0.0-rc2",
+      "dependencies": {
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "@wharfkit/wallet-plugin-privatekey": "workspace:*",
       },
     },
     "packages/mock-data": {
@@ -256,6 +281,31 @@
         "@wharfkit/wallet-plugin-privatekey": "workspace:*",
       },
     },
+    "packages/transact-plugin-finality-callback": {
+      "name": "@wharfkit/transact-plugin-finality-callback",
+      "version": "4.0.0-rc2",
+      "dependencies": {
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/session": "workspace:*",
+        "@wharfkit/wallet-plugin-privatekey": "workspace:*",
+      },
+    },
+    "packages/transact-plugin-finality-checker": {
+      "name": "@wharfkit/transact-plugin-finality-checker",
+      "version": "4.0.0-rc2",
+      "dependencies": {
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "@wharfkit/wallet-plugin-privatekey": "workspace:*",
+      },
+    },
     "packages/transact-plugin-mock": {
       "name": "@wharfkit/transact-plugin-mock",
       "version": "4.0.0-rc2",
@@ -265,6 +315,19 @@
       },
       "devDependencies": {
         "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "@wharfkit/wallet-plugin-privatekey": "workspace:*",
+      },
+    },
+    "packages/transact-plugin-msig-propose": {
+      "name": "@wharfkit/transact-plugin-msig-propose",
+      "version": "4.0.0-rc2",
+      "dependencies": {
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
         "@wharfkit/session": "workspace:*",
         "@wharfkit/wallet-plugin-privatekey": "workspace:*",
       },
@@ -283,6 +346,31 @@
         "@wharfkit/mock-data": "workspace:*",
         "@wharfkit/session": "workspace:*",
         "@wharfkit/wallet-plugin-privatekey": "workspace:*",
+      },
+    },
+    "packages/transact-plugin-template": {
+      "name": "@wharfkit/transact-plugin-template",
+      "version": "4.0.0-rc2",
+      "dependencies": {
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "@wharfkit/wallet-plugin-privatekey": "workspace:*",
+      },
+    },
+    "packages/ui-plugin-template": {
+      "name": "@wharfkit/ui-plugin-template",
+      "version": "4.0.0-rc2",
+      "dependencies": {
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/session": "workspace:*",
       },
     },
     "packages/wallet-plugin-anchor": {
@@ -330,11 +418,51 @@
         "@wharfkit/session": "workspace:*",
       },
     },
+    "packages/wallet-plugin-gatewallet": {
+      "name": "@wharfkit/wallet-plugin-gatewallet",
+      "version": "4.0.0-rc2",
+      "dependencies": {
+        "@wharfkit/protocol-scatter": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/protocol-scatter": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+      },
+    },
+    "packages/wallet-plugin-imtoken": {
+      "name": "@wharfkit/wallet-plugin-imtoken",
+      "version": "4.0.0-rc2",
+      "dependencies": {
+        "@wharfkit/protocol-scatter": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/protocol-scatter": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+      },
+    },
     "packages/wallet-plugin-metamask": {
       "name": "@wharfkit/wallet-plugin-metamask",
       "version": "4.0.0-rc2",
       "dependencies": {
         "@metamask/providers": "^17.0.0",
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+      },
+    },
+    "packages/wallet-plugin-mimic": {
+      "name": "@wharfkit/wallet-plugin-mimic",
+      "version": "4.0.0-rc2",
+      "dependencies": {
         "@wharfkit/session": "workspace:*",
         "tslib": "catalog:",
       },
@@ -352,6 +480,19 @@
       },
       "devDependencies": {
         "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+      },
+    },
+    "packages/wallet-plugin-paycash": {
+      "name": "@wharfkit/wallet-plugin-paycash",
+      "version": "4.0.0-rc2",
+      "dependencies": {
+        "@wharfkit/protocol-esr": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
         "@wharfkit/session": "workspace:*",
       },
@@ -379,6 +520,18 @@
       },
       "devDependencies": {
         "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+      },
+    },
+    "packages/wallet-plugin-template": {
+      "name": "@wharfkit/wallet-plugin-template",
+      "version": "4.0.0-rc2",
+      "dependencies": {
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
         "@wharfkit/session": "workspace:*",
       },
     },
@@ -848,11 +1001,15 @@
 
     "@wharfkit/account-creation-plugin-jungle4": ["@wharfkit/account-creation-plugin-jungle4@workspace:packages/account-creation-plugin-jungle4"],
 
+    "@wharfkit/account-creation-plugin-template": ["@wharfkit/account-creation-plugin-template@workspace:packages/account-creation-plugin-template"],
+
     "@wharfkit/antelope": ["@wharfkit/antelope@workspace:packages/antelope"],
 
     "@wharfkit/common": ["@wharfkit/common@workspace:packages/common"],
 
     "@wharfkit/contract": ["@wharfkit/contract@workspace:packages/contract"],
+
+    "@wharfkit/login-plugin-template": ["@wharfkit/login-plugin-template@workspace:packages/login-plugin-template"],
 
     "@wharfkit/mock-data": ["@wharfkit/mock-data@workspace:packages/mock-data"],
 
@@ -874,9 +1031,19 @@
 
     "@wharfkit/transact-plugin-explorerlink": ["@wharfkit/transact-plugin-explorerlink@workspace:packages/transact-plugin-explorerlink"],
 
+    "@wharfkit/transact-plugin-finality-callback": ["@wharfkit/transact-plugin-finality-callback@workspace:packages/transact-plugin-finality-callback"],
+
+    "@wharfkit/transact-plugin-finality-checker": ["@wharfkit/transact-plugin-finality-checker@workspace:packages/transact-plugin-finality-checker"],
+
     "@wharfkit/transact-plugin-mock": ["@wharfkit/transact-plugin-mock@workspace:packages/transact-plugin-mock"],
 
+    "@wharfkit/transact-plugin-msig-propose": ["@wharfkit/transact-plugin-msig-propose@workspace:packages/transact-plugin-msig-propose"],
+
     "@wharfkit/transact-plugin-resource-provider": ["@wharfkit/transact-plugin-resource-provider@workspace:packages/transact-plugin-resource-provider"],
+
+    "@wharfkit/transact-plugin-template": ["@wharfkit/transact-plugin-template@workspace:packages/transact-plugin-template"],
+
+    "@wharfkit/ui-plugin-template": ["@wharfkit/ui-plugin-template@workspace:packages/ui-plugin-template"],
 
     "@wharfkit/wallet-plugin-anchor": ["@wharfkit/wallet-plugin-anchor@workspace:packages/wallet-plugin-anchor"],
 
@@ -884,13 +1051,23 @@
 
     "@wharfkit/wallet-plugin-cloudwallet": ["@wharfkit/wallet-plugin-cloudwallet@workspace:packages/wallet-plugin-cloudwallet"],
 
+    "@wharfkit/wallet-plugin-gatewallet": ["@wharfkit/wallet-plugin-gatewallet@workspace:packages/wallet-plugin-gatewallet"],
+
+    "@wharfkit/wallet-plugin-imtoken": ["@wharfkit/wallet-plugin-imtoken@workspace:packages/wallet-plugin-imtoken"],
+
     "@wharfkit/wallet-plugin-metamask": ["@wharfkit/wallet-plugin-metamask@workspace:packages/wallet-plugin-metamask"],
 
+    "@wharfkit/wallet-plugin-mimic": ["@wharfkit/wallet-plugin-mimic@workspace:packages/wallet-plugin-mimic"],
+
     "@wharfkit/wallet-plugin-mock": ["@wharfkit/wallet-plugin-mock@workspace:packages/wallet-plugin-mock"],
+
+    "@wharfkit/wallet-plugin-paycash": ["@wharfkit/wallet-plugin-paycash@workspace:packages/wallet-plugin-paycash"],
 
     "@wharfkit/wallet-plugin-privatekey": ["@wharfkit/wallet-plugin-privatekey@workspace:packages/wallet-plugin-privatekey"],
 
     "@wharfkit/wallet-plugin-scatter": ["@wharfkit/wallet-plugin-scatter@workspace:packages/wallet-plugin-scatter"],
+
+    "@wharfkit/wallet-plugin-template": ["@wharfkit/wallet-plugin-template@workspace:packages/wallet-plugin-template"],
 
     "@wharfkit/wallet-plugin-tokenpocket": ["@wharfkit/wallet-plugin-tokenpocket@workspace:packages/wallet-plugin-tokenpocket"],
 

@@ -1,0 +1,31 @@
+{
+    "name": "@wharfkit/wallet-plugin-gatewallet",
+    "description": "A template to create wallet plugins for use with @wharfkit/session.",
+    "version": "4.0.0-rc2",
+    "homepage": "https://github.com/wharfkit/wallet-plugin-template",
+    "license": "BSD-3-Clause",
+    "main": "lib/wallet-plugin-template.js",
+    "module": "lib/wallet-plugin-template.m.js",
+    "types": "lib/wallet-plugin-template.d.ts",
+    "sideEffects": false,
+    "files": [
+        "lib/*",
+        "src/*"
+    ],
+    "scripts": {},
+    "dependencies": {
+        "@wharfkit/protocol-scatter": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:"
+    },
+    "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/protocol-scatter": "workspace:*",
+        "@wharfkit/session": "workspace:*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wharfkit/js.git",
+        "directory": "packages/wallet-plugin-gatewallet"
+    }
+}

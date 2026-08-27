@@ -1,0 +1,30 @@
+{
+    "name": "@wharfkit/ui-plugin-template",
+    "description": "A template to create user interfaces for use with @wharfkit/session.",
+    "version": "4.0.0-rc2",
+    "private": true,
+    "homepage": "https://github.com/wharfkit/ui-plugin-template",
+    "license": "BSD-3-Clause",
+    "main": "lib/ui-plugin-template.js",
+    "module": "lib/ui-plugin-template.m.js",
+    "types": "lib/ui-plugin-template.d.ts",
+    "sideEffects": false,
+    "files": [
+        "lib/*",
+        "src/*"
+    ],
+    "scripts": {},
+    "dependencies": {
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:"
+    },
+    "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/session": "workspace:*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wharfkit/js.git",
+        "directory": "packages/ui-plugin-template"
+    }
+}

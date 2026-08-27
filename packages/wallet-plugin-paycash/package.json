@@ -1,0 +1,30 @@
+{
+    "name": "@wharfkit/wallet-plugin-paycash",
+    "description": "A Wharf wallet plugin for the PayCash wallet",
+    "version": "4.0.0-rc2",
+    "homepage": "https://github.com/wharfkit/wallet-plugin-paycash",
+    "license": "BSD-3-Clause",
+    "main": "lib/wallet-plugin-paycash.js",
+    "module": "lib/wallet-plugin-paycash.m.js",
+    "types": "lib/wallet-plugin-paycash.d.ts",
+    "sideEffects": false,
+    "files": [
+        "lib/*",
+        "src/*"
+    ],
+    "scripts": {},
+    "dependencies": {
+        "@wharfkit/protocol-esr": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:"
+    },
+    "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/session": "workspace:*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wharfkit/js.git",
+        "directory": "packages/wallet-plugin-paycash"
+    }
+}

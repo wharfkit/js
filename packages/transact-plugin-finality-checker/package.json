@@ -1,0 +1,30 @@
+{
+    "name": "@wharfkit/transact-plugin-finality-checker",
+    "description": "A template to create plugins for use with @wharfkit/session transact method.",
+    "version": "4.0.0-rc2",
+    "homepage": "https://github.com/wharfkit/transact-plugin-finality-checker",
+    "license": "BSD-3-Clause",
+    "main": "lib/transact-plugin-finality-checker.js",
+    "module": "lib/transact-plugin-finality-checker.m.js",
+    "types": "lib/transact-plugin-finality-checker.d.ts",
+    "sideEffects": false,
+    "files": [
+        "lib/*",
+        "src/*"
+    ],
+    "scripts": {},
+    "dependencies": {
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:"
+    },
+    "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "@wharfkit/wallet-plugin-privatekey": "workspace:*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wharfkit/js.git",
+        "directory": "packages/transact-plugin-finality-checker"
+    }
+}

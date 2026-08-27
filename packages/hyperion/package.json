@@ -3,6 +3,7 @@
     "description": "API Client to access Hyperion API endpoints",
     "version": "4.0.0-rc3",
     "homepage": "https://github.com/wharfkit/hyperion",
+    "license": "BSD-3-Clause",
     "main": "lib/hyperion.js",
     "module": "lib/hyperion.m.js",
     "types": "lib/hyperion.d.ts",

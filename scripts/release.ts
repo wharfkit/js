@@ -3,6 +3,7 @@ import {existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSyn
 import {tmpdir} from 'node:os'
 import {join} from 'node:path'
 import semver from 'semver'
+import {checkDependencyLicenses, checkMemberLicenses} from './check-licenses.ts'
 
 const ROOT = new URL('..', import.meta.url).pathname
 
@@ -120,6 +121,12 @@ function guardInternalRefs(list: Member[]) {
     }
 }
 
+function guardLicenses(list: Member[]) {
+    checkMemberLicenses(list)
+    const deps = checkDependencyLicenses(list)
+    log(`license check passed across ${list.length} member(s) and ${deps} dependencies`)
+}
+
 // Every member must reach every gate stage. A member that cannot is named here with its
 // reason, so an exemption is a decision on the record rather than a renamed target.
 const GATE_EXEMPT: Record<string, string> = {
@@ -158,6 +165,7 @@ function verify(opts: {install: boolean}) {
         execFileSync('bun', ['install', '--ignore-scripts'], {cwd: ROOT, stdio: 'inherit'})
     }
     const ordered = topological(members())
+    guardLicenses(ordered)
     for (const member of ordered) runScript(member, 'build')
     for (const member of ordered) runScript(member, 'check')
     for (const member of ordered) runScript(member, 'test')
@@ -248,6 +256,7 @@ function bump(arg: string, dryRun: boolean) {
         log(`${member.name} ${member.json.version} joins the lockstep with this bump`)
     }
     guardInternalRefs(list)
+    guardLicenses(list)
 
     const target = resolveTarget(root.version, arg)
     guardPrereleaseOnly(target)

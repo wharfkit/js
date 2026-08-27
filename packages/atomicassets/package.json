@@ -3,6 +3,7 @@
     "description": "AtomicAsset library for Wharf",
     "version": "4.0.0-rc3",
     "homepage": "https://github.com/wharfkit/atomicassets",
+    "license": "BSD-3-Clause",
     "main": "lib/atomicassets.js",
     "module": "lib/atomicassets.m.js",
     "types": "lib/atomicassets.d.ts",

@@ -3,6 +3,7 @@
     "description": "API Client to access Roborovski API endpoints",
     "version": "4.0.0-rc3",
     "homepage": "https://github.com/wharfkit/roborovski",
+    "license": "BSD-3-Clause",
     "main": "lib/roborovski.js",
     "module": "lib/roborovski.m.js",
     "types": "lib/roborovski.d.ts",

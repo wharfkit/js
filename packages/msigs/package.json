@@ -3,6 +3,7 @@
     "description": "API Client to access Roborovski msigs API endpoints",
     "version": "4.0.0-rc3",
     "homepage": "https://github.com/wharfkit/msigs",
+    "license": "BSD-3-Clause",
     "main": "lib/msigs.js",
     "module": "lib/msigs.m.js",
     "types": "lib/msigs.d.ts",

@@ -25,19 +25,19 @@ coverage: node_modules
 
 .PHONY: format
 format: node_modules
-	@./node_modules/.bin/prettier -w .
-
-.PHONY: lint
-lint: node_modules
 	@./node_modules/.bin/eslint src --fix
 
 .PHONY: ci-test
 ci-test: node_modules
 	@echo "web-renderer has no test suite; the mocha target was broken in the standalone repo"
 
-.PHONY: ci-lint
-ci-lint: node_modules
+.PHONY: check
+check: node_modules
 	@./node_modules/.bin/eslint src --max-warnings 0 && echo "Ok"
+
+.PHONY: browser
+browser:
+	@echo 'web-renderer has no browser bundle'
 
 docs: $(SRC_FILES) node_modules
 	./node_modules/.bin/typedoc \

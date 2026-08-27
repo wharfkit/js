@@ -15,7 +15,6 @@
     "scripts": {},
     "dependencies": {
         "@greymass/buoy": "catalog:",
-        "@wharfkit/antelope": "workspace:*",
         "@wharfkit/sealed-messages": "workspace:*",
         "isomorphic-ws": "catalog:",
         "pako": "catalog:",
@@ -23,6 +22,7 @@
         "@wharfkit/session": "workspace:*"
     },
     "devDependencies": {
+        "@wharfkit/antelope": "workspace:*",
         "@wharfkit/mock-data": "workspace:*",
         "@wharfkit/session": "workspace:*",
         "@wharfkit/signing-request": "workspace:*",

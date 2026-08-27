@@ -2,7 +2,6 @@ import {expect} from 'chai'
 import {PermissionLevel, SessionKit} from '@wharfkit/session'
 import sinon from 'sinon'
 
-
 import {mockSessionKitArgs, mockSessionKitOptions} from '@wharfkit/mock-data'
 import {mockChainId} from '$test/utils/mock-config'
 
@@ -14,7 +13,6 @@ suite('wallet plugin', function () {
 
     // TODO: Implement a real test, this currently open a socket and expects Anchor to respond.
     test('login and sign', async function () {
-
         const kit = new SessionKit(mockSessionKitArgs, mockSessionKitOptions)
         const {session} = await kit.login({
             chain: mockChainId,

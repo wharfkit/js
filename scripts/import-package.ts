@@ -54,7 +54,9 @@ function parseArgs() {
         else fail(`unexpected argument ${arg}`)
     }
     if (!source) {
-        fail('usage: import-package.ts <source-repo-url-or-path> [--branch <branch>] [--sha <sha>] [--phantom <@wharfkit/pkg>]...')
+        fail(
+            'usage: import-package.ts <source-repo-url-or-path> [--branch <branch>] [--sha <sha>] [--phantom <@wharfkit/pkg>]...'
+        )
     }
     return {source, branch, sha, phantoms}
 }
@@ -75,13 +77,15 @@ function main() {
         run('git', [...cloneArgs, source, tmp])
         if (sha) run('git', ['checkout', sha], {cwd: tmp})
         const importedSha = sh('git', ['rev-parse', 'HEAD'], {cwd: tmp})
-        const importedBranch = branch ?? sh('git', ['rev-parse', '--abbrev-ref', 'HEAD'], {cwd: tmp})
+        const importedBranch =
+            branch ?? sh('git', ['rev-parse', '--abbrev-ref', 'HEAD'], {cwd: tmp})
 
         const manifestPath = join(tmp, 'package.json')
         if (!existsSync(manifestPath)) fail('source repo has no package.json at its root')
         const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'))
         const name: string = manifest.name
-        if (!name?.startsWith('@wharfkit/')) fail(`source package is ${name}, expected an @wharfkit/* package`)
+        if (!name?.startsWith('@wharfkit/'))
+            fail(`source package is ${name}, expected an @wharfkit/* package`)
         const unscoped = name.slice('@wharfkit/'.length)
         const targetDir = join(ROOT, 'packages', unscoped)
         if (existsSync(targetDir)) fail(`packages/${unscoped} already exists`)
@@ -90,7 +94,11 @@ function main() {
         run('bun', [join(ROOT, 'scripts', 'check-closure.ts'), '--candidate', tmp])
 
         log(`rewriting history under packages/${unscoped}`)
-        run('python3', [FILTER_REPO, '--to-subdirectory-filter', `packages/${unscoped}`, '--force'], {cwd: tmp})
+        run(
+            'python3',
+            [FILTER_REPO, '--to-subdirectory-filter', `packages/${unscoped}`, '--force'],
+            {cwd: tmp}
+        )
 
         const importBranch = `import/${unscoped}`
         run('git', ['checkout', '-b', importBranch, 'master'])
@@ -117,7 +125,9 @@ function main() {
         }
         for (const phantom of phantoms) {
             imported.devDependencies = imported.devDependencies ?? {}
-            imported.devDependencies[phantom] = phantom.startsWith('@wharfkit/') ? 'workspace:*' : fail(`phantom ${phantom} is not @wharfkit/*; declare it by hand`)
+            imported.devDependencies[phantom] = phantom.startsWith('@wharfkit/')
+                ? 'workspace:*'
+                : fail(`phantom ${phantom} is not @wharfkit/*; declare it by hand`)
         }
         delete imported.resolutions
         if (imported.scripts?.prepare) delete imported.scripts.prepare
@@ -134,15 +144,19 @@ function main() {
         log('verification gate')
         run('bun', [join(ROOT, 'scripts', 'check-closure.ts')])
         run('bun', [join(ROOT, 'scripts', 'release.ts'), 'verify', '--no-install'])
-        const instances = sh('bun', ['pm', 'ls', '--all']).split('\n').filter((line) => line.includes('@wharfkit/antelope@'))
+        const instances = sh('bun', ['pm', 'ls', '--all'])
+            .split('\n')
+            .filter((line) => line.includes('@wharfkit/antelope@'))
         const versions = new Set(instances.map((line) => line.trim()))
-        if (versions.size > 1) fail(`multiple @wharfkit/antelope instances resolved:\n${[...versions].join('\n')}`)
+        if (versions.size > 1)
+            fail(`multiple @wharfkit/antelope instances resolved:\n${[...versions].join('\n')}`)
         const packDir = mkdtempSync(join(tmpdir(), 'wharfkit-import-pack-'))
         try {
             sh('bun', ['pm', 'pack', '--destination', packDir], {cwd: targetDir})
             for (const tarball of readdirSync(packDir)) {
                 const packed = sh('tar', ['-xzOf', join(packDir, tarball), 'package/package.json'])
-                if (packed.includes('workspace:')) fail(`${tarball} still contains workspace:* after pack`)
+                if (packed.includes('workspace:'))
+                    fail(`${tarball} still contains workspace:* after pack`)
             }
         } finally {
             rmSync(packDir, {recursive: true, force: true})

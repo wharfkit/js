@@ -161,7 +161,10 @@ suite('chain', function () {
         assert.equal(Float32.from(small.toString()).value, small.value)
         const pi = Float32.from(3.1415925)
         assert.equal(String(pi), '3.1415925')
-        assert.equal(String(Serializer.decode({data: Serializer.encode({object: pi}), type: Float32})), '3.141592502593994')
+        assert.equal(
+            String(Serializer.decode({data: Serializer.encode({object: pi}), type: Float32})),
+            '3.141592502593994'
+        )
         const d = Float64.from(0.1 + 0.2)
         assert.equal(String(d), '0.30000000000000004')
         assert.equal(Float64.from(d.toString()).value, d.value)
@@ -205,7 +208,10 @@ suite('chain', function () {
 
     test('float from a negative nan word carries the sign into bytes and text', function () {
         assert.equal(Serializer.encode({object: Float32.from('-nan')}).hexString, '0000c0ff')
-        assert.equal(Serializer.encode({object: Float64.from('-nan')}).hexString, '000000000000f8ff')
+        assert.equal(
+            Serializer.encode({object: Float64.from('-nan')}).hexString,
+            '000000000000f8ff'
+        )
         assert.equal(String(Float32.from('-nan')), '-nan')
         assert.equal(Serializer.encode({object: Float32.from('nan')}).hexString, '0000c07f')
         assert.equal(String(Float32.from('nan')), 'nan')

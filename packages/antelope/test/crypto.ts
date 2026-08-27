@@ -212,7 +212,7 @@ suite('crypto', function () {
             )
         }
         //PVT_R1_111111111111111111111111111111117FF8iA
-        keyStr = 'PVT_R1_' + Base58.encodeRipemd160Check(zeroBytes, 'R1');
+        keyStr = 'PVT_R1_' + Base58.encodeRipemd160Check(zeroBytes, 'R1')
         try {
             PrivateKey.from(keyStr)
             assert.fail()

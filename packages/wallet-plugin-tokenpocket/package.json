@@ -19,6 +19,7 @@
         "@wharfkit/session": "workspace:*"
     },
     "devDependencies": {
+        "@wharfkit/antelope": "workspace:*",
         "@wharfkit/session": "workspace:*"
     },
     "repository": {

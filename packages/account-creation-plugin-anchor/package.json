@@ -14,7 +14,6 @@
     ],
     "scripts": {},
     "dependencies": {
-        "@greymass/create-account": "^1.1.0",
         "tslib": "catalog:",
         "@wharfkit/session": "workspace:*"
     },

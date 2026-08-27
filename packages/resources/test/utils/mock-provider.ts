@@ -10,7 +10,10 @@ import {APIProvider, Bytes, Checksum160, FetchProvider} from '@wharfkit/antelope
 export class MockProvider implements APIProvider {
     recordProvider = new FetchProvider(this.api, {fetch})
 
-    constructor(private dir: string, private api: string = 'https://jungle3.greymass.com') {}
+    constructor(
+        private dir: string,
+        private api: string = 'https://jungle3.greymass.com'
+    ) {}
 
     getFilename(path: string, params?: unknown) {
         const digest = Checksum160.hash(

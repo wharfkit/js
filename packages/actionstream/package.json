@@ -1,0 +1,34 @@
+{
+    "name": "@wharfkit/actionstream",
+    "description": "Client library for subscribing to Roborovski action streams",
+    "version": "4.0.0-rc2",
+    "homepage": "https://github.com/wharfkit/actionstream",
+    "license": "BSD-3-Clause",
+    "main": "lib/actionstream.js",
+    "module": "lib/actionstream.m.js",
+    "types": "lib/actionstream.d.ts",
+    "browser": {
+        "buffer": false,
+        "crypto": false
+    },
+    "sideEffects": false,
+    "files": [
+        "lib/*",
+        "src/*"
+    ],
+    "scripts": {},
+    "dependencies": {
+        "@wharfkit/antelope": "workspace:*",
+        "tslib": "catalog:"
+    },
+    "devDependencies": {
+        "@types/ws": "^8.18.1",
+        "ws": "catalog:"
+    },
+    "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wharfkit/js.git",
+        "directory": "packages/actionstream"
+    }
+}

@@ -1,0 +1,263 @@
+{
+    "request": {
+        "path": "https://wax.blokcrafters.io/v2/state/get_proposals?skip=1&limit=10",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": {
+        "query_time": null,
+        "cached": false,
+        "total": {
+            "value": 10000,
+            "relation": "gte"
+        },
+        "proposals": [
+            {
+                "provided_approvals": [
+                    {
+                        "actor": "gj1xc.wam",
+                        "permission": "active",
+                        "time": "2024-02-28T16:25:33.000"
+                    }
+                ],
+                "block_num": 295330121,
+                "proposer": "reu4s.c.wam",
+                "requested_approvals": [],
+                "executed": true,
+                "proposal_name": "yzbmub",
+                "primary_key": "17856540645829640192"
+            },
+            {
+                "provided_approvals": [
+                    {
+                        "actor": "ja.nefty",
+                        "permission": "active",
+                        "time": "2024-02-28T12:54:22.000"
+                    },
+                    {
+                        "actor": "jp.nefty",
+                        "permission": "active",
+                        "time": "2024-02-28T12:54:22.500"
+                    }
+                ],
+                "block_num": 295304509,
+                "proposer": "ja.nefty",
+                "requested_approvals": [
+                    {
+                        "actor": "sa.nefty",
+                        "permission": "active",
+                        "time": "1970-01-01T00:00:00.000"
+                    }
+                ],
+                "executed": true,
+                "proposal_name": "bpila5",
+                "primary_key": "4421711385767968768"
+            },
+            {
+                "provided_approvals": [],
+                "block_num": 295304178,
+                "proposer": "ja.nefty",
+                "requested_approvals": [
+                    {
+                        "actor": "ja.nefty",
+                        "permission": "active",
+                        "time": "1970-01-01T00:00:00.000"
+                    },
+                    {
+                        "actor": "jp.nefty",
+                        "permission": "active",
+                        "time": "1970-01-01T00:00:00.000"
+                    },
+                    {
+                        "actor": "sa.nefty",
+                        "permission": "active",
+                        "time": "1970-01-01T00:00:00.000"
+                    }
+                ],
+                "executed": false,
+                "proposal_name": "axu5tb",
+                "primary_key": "3995920594469126144"
+            },
+            {
+                "provided_approvals": [
+                    {
+                        "actor": "jp.nefty",
+                        "permission": "active",
+                        "time": "2024-02-28T12:50:05.500"
+                    }
+                ],
+                "block_num": 295303986,
+                "proposer": "nefty",
+                "requested_approvals": [
+                    {
+                        "actor": "ja.nefty",
+                        "permission": "active",
+                        "time": "1970-01-01T00:00:00.000"
+                    }
+                ],
+                "executed": false,
+                "proposal_name": "t.yu5ec1",
+                "primary_key": "14428867627914887168"
+            },
+            {
+                "provided_approvals": [
+                    {
+                        "actor": "jp.nefty",
+                        "permission": "active",
+                        "time": "2024-02-28T12:48:50.000"
+                    },
+                    {
+                        "actor": "ja.nefty",
+                        "permission": "active",
+                        "time": "2024-02-28T12:48:58.500"
+                    }
+                ],
+                "block_num": 295303869,
+                "proposer": "nefty",
+                "requested_approvals": [],
+                "executed": true,
+                "proposal_name": "2f.lgevt",
+                "primary_key": "1351385739157307392"
+            },
+            {
+                "provided_approvals": [
+                    {
+                        "actor": "ameet.worlds",
+                        "permission": "active",
+                        "time": "2024-02-28T11:54:33.000"
+                    }
+                ],
+                "block_num": 295297321,
+                "proposer": "ameet.worlds",
+                "requested_approvals": [
+                    {
+                        "actor": "aamir.worlds",
+                        "permission": "active",
+                        "time": "1970-01-01T00:00:00.000"
+                    },
+                    {
+                        "actor": "aarav.worlds",
+                        "permission": "active",
+                        "time": "1970-01-01T00:00:00.000"
+                    },
+                    {
+                        "actor": "anya.worlds",
+                        "permission": "active",
+                        "time": "1970-01-01T00:00:00.000"
+                    }
+                ],
+                "executed": false,
+                "proposal_name": "previewacc",
+                "primary_key": "12526119336164851712"
+            },
+            {
+                "provided_approvals": [
+                    {
+                        "actor": "ameet.worlds",
+                        "permission": "active",
+                        "time": "2024-02-28T11:25:55.000"
+                    }
+                ],
+                "block_num": 295293885,
+                "proposer": "ameet.worlds",
+                "requested_approvals": [
+                    {
+                        "actor": "aamir.worlds",
+                        "permission": "active",
+                        "time": "1970-01-01T00:00:00.000"
+                    },
+                    {
+                        "actor": "aarav.worlds",
+                        "permission": "active",
+                        "time": "1970-01-01T00:00:00.000"
+                    },
+                    {
+                        "actor": "anya.worlds",
+                        "permission": "active",
+                        "time": "1970-01-01T00:00:00.000"
+                    }
+                ],
+                "executed": false,
+                "proposal_name": "msigsupply1",
+                "primary_key": "10816745163721769472"
+            },
+            {
+                "provided_approvals": [
+                    {
+                        "actor": "gj1xc.wam",
+                        "permission": "active",
+                        "time": "2024-02-28T09:44:49.500"
+                    }
+                ],
+                "block_num": 295281755,
+                "proposer": "reu4s.c.wam",
+                "requested_approvals": [],
+                "executed": false,
+                "proposal_name": "yzbmua",
+                "primary_key": "17856540628649771008"
+            },
+            {
+                "provided_approvals": [
+                    {
+                        "actor": "gj1xc.wam",
+                        "permission": "active",
+                        "time": "2024-02-28T09:42:12.500"
+                    }
+                ],
+                "block_num": 295281441,
+                "proposer": "reu4s.c.wam",
+                "requested_approvals": [
+                    {
+                        "actor": "admin.wax",
+                        "permission": "active",
+                        "time": "1970-01-01T00:00:00.000"
+                    },
+                    {
+                        "actor": "managed.wax",
+                        "permission": "eosio.code",
+                        "time": "1970-01-01T00:00:00.000"
+                    }
+                ],
+                "executed": false,
+                "proposal_name": "yzbmuw",
+                "primary_key": "17856541006606893056"
+            },
+            {
+                "provided_approvals": [
+                    {
+                        "actor": "admin3.wax",
+                        "permission": "active",
+                        "time": "2024-02-28T00:33:27.500"
+                    },
+                    {
+                        "actor": "admin2.wax",
+                        "permission": "active",
+                        "time": "2024-02-28T05:25:12.000"
+                    }
+                ],
+                "block_num": 295250624,
+                "proposer": "admin3.wax",
+                "requested_approvals": [
+                    {
+                        "actor": "admin1.wax",
+                        "permission": "active",
+                        "time": "1970-01-01T00:00:00.000"
+                    },
+                    {
+                        "actor": "admin4.wax",
+                        "permission": "active",
+                        "time": "1970-01-01T00:00:00.000"
+                    }
+                ],
+                "executed": true,
+                "proposal_name": "quoobh",
+                "primary_key": "13162125826340159488"
+            }
+        ],
+        "query_time_ms": 5.502
+    },
+    "text": "{\"query_time\":null,\"cached\":false,\"total\":{\"value\":10000,\"relation\":\"gte\"},\"proposals\":[{\"provided_approvals\":[{\"actor\":\"gj1xc.wam\",\"permission\":\"active\",\"time\":\"2024-02-28T16:25:33.000\"}],\"block_num\":295330121,\"proposer\":\"reu4s.c.wam\",\"requested_approvals\":[],\"executed\":true,\"proposal_name\":\"yzbmub\",\"primary_key\":\"17856540645829640192\"},{\"provided_approvals\":[{\"actor\":\"ja.nefty\",\"permission\":\"active\",\"time\":\"2024-02-28T12:54:22.000\"},{\"actor\":\"jp.nefty\",\"permission\":\"active\",\"time\":\"2024-02-28T12:54:22.500\"}],\"block_num\":295304509,\"proposer\":\"ja.nefty\",\"requested_approvals\":[{\"actor\":\"sa.nefty\",\"permission\":\"active\",\"time\":\"1970-01-01T00:00:00.000\"}],\"executed\":true,\"proposal_name\":\"bpila5\",\"primary_key\":\"4421711385767968768\"},{\"provided_approvals\":[],\"block_num\":295304178,\"proposer\":\"ja.nefty\",\"requested_approvals\":[{\"actor\":\"ja.nefty\",\"permission\":\"active\",\"time\":\"1970-01-01T00:00:00.000\"},{\"actor\":\"jp.nefty\",\"permission\":\"active\",\"time\":\"1970-01-01T00:00:00.000\"},{\"actor\":\"sa.nefty\",\"permission\":\"active\",\"time\":\"1970-01-01T00:00:00.000\"}],\"executed\":false,\"proposal_name\":\"axu5tb\",\"primary_key\":\"3995920594469126144\"},{\"provided_approvals\":[{\"actor\":\"jp.nefty\",\"permission\":\"active\",\"time\":\"2024-02-28T12:50:05.500\"}],\"block_num\":295303986,\"proposer\":\"nefty\",\"requested_approvals\":[{\"actor\":\"ja.nefty\",\"permission\":\"active\",\"time\":\"1970-01-01T00:00:00.000\"}],\"executed\":false,\"proposal_name\":\"t.yu5ec1\",\"primary_key\":\"14428867627914887168\"},{\"provided_approvals\":[{\"actor\":\"jp.nefty\",\"permission\":\"active\",\"time\":\"2024-02-28T12:48:50.000\"},{\"actor\":\"ja.nefty\",\"permission\":\"active\",\"time\":\"2024-02-28T12:48:58.500\"}],\"block_num\":295303869,\"proposer\":\"nefty\",\"requested_approvals\":[],\"executed\":true,\"proposal_name\":\"2f.lgevt\",\"primary_key\":\"1351385739157307392\"},{\"provided_approvals\":[{\"actor\":\"ameet.worlds\",\"permission\":\"active\",\"time\":\"2024-02-28T11:54:33.000\"}],\"block_num\":295297321,\"proposer\":\"ameet.worlds\",\"requested_approvals\":[{\"actor\":\"aamir.worlds\",\"permission\":\"active\",\"time\":\"1970-01-01T00:00:00.000\"},{\"actor\":\"aarav.worlds\",\"permission\":\"active\",\"time\":\"1970-01-01T00:00:00.000\"},{\"actor\":\"anya.worlds\",\"permission\":\"active\",\"time\":\"1970-01-01T00:00:00.000\"}],\"executed\":false,\"proposal_name\":\"previewacc\",\"primary_key\":\"12526119336164851712\"},{\"provided_approvals\":[{\"actor\":\"ameet.worlds\",\"permission\":\"active\",\"time\":\"2024-02-28T11:25:55.000\"}],\"block_num\":295293885,\"proposer\":\"ameet.worlds\",\"requested_approvals\":[{\"actor\":\"aamir.worlds\",\"permission\":\"active\",\"time\":\"1970-01-01T00:00:00.000\"},{\"actor\":\"aarav.worlds\",\"permission\":\"active\",\"time\":\"1970-01-01T00:00:00.000\"},{\"actor\":\"anya.worlds\",\"permission\":\"active\",\"time\":\"1970-01-01T00:00:00.000\"}],\"executed\":false,\"proposal_name\":\"msigsupply1\",\"primary_key\":\"10816745163721769472\"},{\"provided_approvals\":[{\"actor\":\"gj1xc.wam\",\"permission\":\"active\",\"time\":\"2024-02-28T09:44:49.500\"}],\"block_num\":295281755,\"proposer\":\"reu4s.c.wam\",\"requested_approvals\":[],\"executed\":false,\"proposal_name\":\"yzbmua\",\"primary_key\":\"17856540628649771008\"},{\"provided_approvals\":[{\"actor\":\"gj1xc.wam\",\"permission\":\"active\",\"time\":\"2024-02-28T09:42:12.500\"}],\"block_num\":295281441,\"proposer\":\"reu4s.c.wam\",\"requested_approvals\":[{\"actor\":\"admin.wax\",\"permission\":\"active\",\"time\":\"1970-01-01T00:00:00.000\"},{\"actor\":\"managed.wax\",\"permission\":\"eosio.code\",\"time\":\"1970-01-01T00:00:00.000\"}],\"executed\":false,\"proposal_name\":\"yzbmuw\",\"primary_key\":\"17856541006606893056\"},{\"provided_approvals\":[{\"actor\":\"admin3.wax\",\"permission\":\"active\",\"time\":\"2024-02-28T00:33:27.500\"},{\"actor\":\"admin2.wax\",\"permission\":\"active\",\"time\":\"2024-02-28T05:25:12.000\"}],\"block_num\":295250624,\"proposer\":\"admin3.wax\",\"requested_approvals\":[{\"actor\":\"admin1.wax\",\"permission\":\"active\",\"time\":\"1970-01-01T00:00:00.000\"},{\"actor\":\"admin4.wax\",\"permission\":\"active\",\"time\":\"1970-01-01T00:00:00.000\"}],\"executed\":true,\"proposal_name\":\"quoobh\",\"primary_key\":\"13162125826340159488\"}],\"query_time_ms\":5.502}"
+}

@@ -1,0 +1,26 @@
+{
+    "name": "@wharfkit/msigs",
+    "description": "API Client to access Roborovski msigs API endpoints",
+    "version": "4.0.0-rc2",
+    "homepage": "https://github.com/wharfkit/msigs",
+    "main": "lib/msigs.js",
+    "module": "lib/msigs.m.js",
+    "types": "lib/msigs.d.ts",
+    "files": [
+        "lib/*",
+        "src/*"
+    ],
+    "scripts": {},
+    "dependencies": {
+        "@wharfkit/antelope": "workspace:*",
+        "tslib": "catalog:"
+    },
+    "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wharfkit/js.git",
+        "directory": "packages/msigs"
+    }
+}

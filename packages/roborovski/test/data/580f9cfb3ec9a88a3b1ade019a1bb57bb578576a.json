@@ -1,0 +1,68 @@
+{
+    "request": {
+        "path": "https://jungle4.roborovski.io/account/gm/activity",
+        "params": {
+            "method": "POST",
+            "body": "{\"limit\":1,\"order\":\"desc\",\"decode\":true,\"cursor\":\"eyJnIjozMjA1MDYxNzYsIm8iOiJkZXNjIiwicSI6IkNxSi95NUtmSU9NPSJ9\"}",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": {
+        "results": [
+            {
+                "global_action_seq": 320506174,
+                "block_num": 245208079,
+                "block_time": "2026-01-15T07:21:54.500",
+                "action_trace": {
+                    "creator_action_ordinal": 22,
+                    "closest_unnotified_ancestor_action_ordinal": 22,
+                    "receipt": {
+                        "receiver": "gm",
+                        "act_digest": "fc3bd433f0025a8bb43674f0c80e7b5890b58095099c31ab8c9a39f3eb875074",
+                        "global_sequence": 320506174,
+                        "recv_sequence": 13051,
+                        "auth_sequence": [
+                            [
+                                "gm",
+                                40423
+                            ]
+                        ],
+                        "code_sequence": 4,
+                        "abi_sequence": 5
+                    },
+                    "receiver": "gm",
+                    "act": {
+                        "name": "transfer",
+                        "authorization": [
+                            {
+                                "actor": "gm",
+                                "permission": "active"
+                            }
+                        ],
+                        "hex_data": "00000000000080640014341903ea305540420f000000000004454f53000000000f7374616b652062616e647769647468",
+                        "data": {
+                            "memo": "stake bandwidth",
+                            "from": "gm",
+                            "to": "eosio.stake",
+                            "quantity": "100.0000 EOS"
+                        },
+                        "account": "eosio.token"
+                    },
+                    "context_free": false,
+                    "elapsed": 2,
+                    "block_num": 245208079,
+                    "action_ordinal": 23,
+                    "trx_id": "cf11a7828f0ef85845188b5388ca3a6c6322646cf969377f74ac0ebf5e07ba46",
+                    "block_time": "2026-01-15T07:21:54.500",
+                    "producer_block_id": "0e9d940f5b71495d568350522af9519be780e4ec54317e3d9a8d957bd050c0e1",
+                    "account_ram_deltas": []
+                },
+                "irreversible": true
+            }
+        ],
+        "next_cursor": "eyJnIjozMjA1MDYxNzQsIm8iOiJkZXNjIiwicSI6IkNxSi95NUtmSU9NPSJ9",
+        "prev_cursor": "eyJnIjozMjA1MDYxNzQsIm8iOiJhc2MiLCJxIjoiQ3FKL3k1S2ZJT009In0="
+    },
+    "text": "{\"results\":[{\"global_action_seq\":320506174,\"block_num\":245208079,\"block_time\":\"2026-01-15T07:21:54.500\",\"action_trace\":{\"creator_action_ordinal\":22,\"closest_unnotified_ancestor_action_ordinal\":22,\"receipt\":{\"receiver\":\"gm\",\"act_digest\":\"fc3bd433f0025a8bb43674f0c80e7b5890b58095099c31ab8c9a39f3eb875074\",\"global_sequence\":320506174,\"recv_sequence\":13051,\"auth_sequence\":[[\"gm\",40423]],\"code_sequence\":4,\"abi_sequence\":5},\"receiver\":\"gm\",\"act\":{\"name\":\"transfer\",\"authorization\":[{\"actor\":\"gm\",\"permission\":\"active\"}],\"hex_data\":\"00000000000080640014341903ea305540420f000000000004454f53000000000f7374616b652062616e647769647468\",\"data\":{\"memo\":\"stake bandwidth\",\"from\":\"gm\",\"to\":\"eosio.stake\",\"quantity\":\"100.0000 EOS\"},\"account\":\"eosio.token\"},\"context_free\":false,\"elapsed\":2,\"block_num\":245208079,\"action_ordinal\":23,\"trx_id\":\"cf11a7828f0ef85845188b5388ca3a6c6322646cf969377f74ac0ebf5e07ba46\",\"block_time\":\"2026-01-15T07:21:54.500\",\"producer_block_id\":\"0e9d940f5b71495d568350522af9519be780e4ec54317e3d9a8d957bd050c0e1\",\"account_ram_deltas\":[]},\"irreversible\":true}],\"next_cursor\":\"eyJnIjozMjA1MDYxNzQsIm8iOiJkZXNjIiwicSI6IkNxSi95NUtmSU9NPSJ9\",\"prev_cursor\":\"eyJnIjozMjA1MDYxNzQsIm8iOiJhc2MiLCJxIjoiQ3FKL3k1S2ZJT009In0=\"}"
+}

@@ -1,0 +1,516 @@
+{
+    "request": {
+        "path": "https://wax.blokcrafters.io/v2/state/get_voters?producer=teamgreymass&proxy=true&skip=100&limit=200",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": {
+        "query_time_ms": 16.31,
+        "voters": [
+            {
+                "account": "ydeqk.wam",
+                "weight": 4.9849102353891966e+39,
+                "last_vote": 290668173
+            },
+            {
+                "account": ".npak.wam",
+                "weight": 4.730070075270181e+39,
+                "last_vote": 294911121
+            },
+            {
+                "account": "kz5cs.wam",
+                "weight": 4.165468522154791e+39,
+                "last_vote": 291271847
+            },
+            {
+                "account": "ppxba.wam",
+                "weight": 4.100614004050089e+39,
+                "last_vote": 295217132
+            },
+            {
+                "account": "oeltw.wam",
+                "weight": 4.0940218323417905e+39,
+                "last_vote": 290171753
+            },
+            {
+                "account": "waxgbmproxy1",
+                "weight": 4.0456739920625295e+39,
+                "last_vote": 291741604
+            },
+            {
+                "account": "stockholmwax",
+                "weight": 3.917417168535788e+39,
+                "last_vote": 292602354
+            },
+            {
+                "account": "kp2sk.wam",
+                "weight": 3.904986537414029e+39,
+                "last_vote": 295114341
+            },
+            {
+                "account": "3azm.wam",
+                "weight": 3.6879142283545566e+39,
+                "last_vote": 293080726
+            },
+            {
+                "account": "3mhb4.wam",
+                "weight": 3.5796407033670406e+39,
+                "last_vote": 289793846
+            },
+            {
+                "account": "opzbg.wam",
+                "weight": 3.209245228196779e+39,
+                "last_vote": 293168314
+            },
+            {
+                "account": "jizqy.wam",
+                "weight": 3.176789013347607e+39,
+                "last_vote": 295296763
+            },
+            {
+                "account": "luisfgonzaga",
+                "weight": 3.095059427897698e+39,
+                "last_vote": 290326263
+            },
+            {
+                "account": "vopds.wam",
+                "weight": 2.961934145749585e+39,
+                "last_vote": 289044324
+            },
+            {
+                "account": "je4ay.wam",
+                "weight": 2.868083790939778e+39,
+                "last_vote": 293673202
+            },
+            {
+                "account": "3f4b.wam",
+                "weight": 2.76711439680581e+39,
+                "last_vote": 286230872
+            },
+            {
+                "account": "gy3tcnbqhege",
+                "weight": 2.7246312700253086e+39,
+                "last_vote": 287736650
+            },
+            {
+                "account": "mr5ak.waa",
+                "weight": 2.573383762437808e+39,
+                "last_vote": 294094255
+            },
+            {
+                "account": "leygk.wam",
+                "weight": 2.391085088759469e+39,
+                "last_vote": 294419580
+            },
+            {
+                "account": "s33ek.wam",
+                "weight": 2.2006633845929796e+39,
+                "last_vote": 293734106
+            },
+            {
+                "account": "fwkam.waa",
+                "weight": 2.1663669114526065e+39,
+                "last_vote": 292338602
+            },
+            {
+                "account": "g.qrg.wam",
+                "weight": 1.946438122438849e+39,
+                "last_vote": 295279734
+            },
+            {
+                "account": "22worldwaxon",
+                "weight": 1.8778717590111003e+39,
+                "last_vote": 294545309
+            },
+            {
+                "account": "taxidriver24",
+                "weight": 1.8542601699838512e+39,
+                "last_vote": 292169991
+            },
+            {
+                "account": "xrmww.wam",
+                "weight": 1.8009007071704297e+39,
+                "last_vote": 269777711
+            },
+            {
+                "account": "buvle.c.wam",
+                "weight": 1.7675890136779788e+39,
+                "last_vote": 292598416
+            },
+            {
+                "account": "e1rao.wam",
+                "weight": 1.6853013054741538e+39,
+                "last_vote": 293734120
+            },
+            {
+                "account": "bigbakerplan",
+                "weight": 1.578747913187371e+39,
+                "last_vote": 288726333
+            },
+            {
+                "account": "starblock313",
+                "weight": 1.5022887876436697e+39,
+                "last_vote": 294599302
+            },
+            {
+                "account": "quoclequocle",
+                "weight": 1.4926593944831958e+39,
+                "last_vote": 287845407
+            },
+            {
+                "account": "ecjay.wam",
+                "weight": 1.4742760043565532e+39,
+                "last_vote": 292597238
+            },
+            {
+                "account": "jspades.gm",
+                "weight": 1.4636848038298778e+39,
+                "last_vote": 292905400
+            },
+            {
+                "account": "marklarxnfts",
+                "weight": 1.367994419652468e+39,
+                "last_vote": 290159677
+            },
+            {
+                "account": "fyfr4.wam",
+                "weight": 1.2808121016839503e+39,
+                "last_vote": 291620097
+            },
+            {
+                "account": "kentlord1234",
+                "weight": 1.2461886155005067e+39,
+                "last_vote": 289992205
+            },
+            {
+                "account": "h4hj2.wam",
+                "weight": 1.2286332046819883e+39,
+                "last_vote": 280003071
+            },
+            {
+                "account": "vvmbg.wam",
+                "weight": 1.1932126588390682e+39,
+                "last_vote": 294646119
+            },
+            {
+                "account": "waxxbrendenx",
+                "weight": 1.1899916743800185e+39,
+                "last_vote": 293074438
+            },
+            {
+                "account": "k11b2.wam",
+                "weight": 1.1536398532381177e+39,
+                "last_vote": 257982077
+            },
+            {
+                "account": "o4pr.wam",
+                "weight": 1.1503334797130664e+39,
+                "last_vote": 290312660
+            },
+            {
+                "account": "exmpy.waa",
+                "weight": 1.1471897143040332e+39,
+                "last_vote": 293967570
+            },
+            {
+                "account": "m.obc.wam",
+                "weight": 1.1035535021855562e+39,
+                "last_vote": 295160560
+            },
+            {
+                "account": "waxanchor.gm",
+                "weight": 1.027796215477478e+39,
+                "last_vote": 285272999
+            },
+            {
+                "account": "q.4qw.wam",
+                "weight": 1.0147452764033144e+39,
+                "last_vote": 295164458
+            },
+            {
+                "account": "decentraliza",
+                "weight": 9.427105804012848e+38,
+                "last_vote": 289736456
+            },
+            {
+                "account": "jm4ra.wam",
+                "weight": 9.121370731995242e+38,
+                "last_vote": 295289460
+            },
+            {
+                "account": "t.axa.wam",
+                "weight": 8.754219949314463e+38,
+                "last_vote": 290363331
+            },
+            {
+                "account": "fnwr2.wam",
+                "weight": 8.7128214245032e+38,
+                "last_vote": 292191819
+            },
+            {
+                "account": "q.vnc.wam",
+                "weight": 8.243812018856737e+38,
+                "last_vote": 291306081
+            },
+            {
+                "account": "qavk2.c.wam",
+                "weight": 8.042890160427104e+38,
+                "last_vote": 270191323
+            },
+            {
+                "account": ".kzqw.wam",
+                "weight": 7.824424985481395e+38,
+                "last_vote": 282201608
+            },
+            {
+                "account": "ir2rc.wam",
+                "weight": 7.709409229686847e+38,
+                "last_vote": 292920032
+            },
+            {
+                "account": "yffqu.wam",
+                "weight": 7.684474611061043e+38,
+                "last_vote": 288808491
+            },
+            {
+                "account": "deniz1111ded",
+                "weight": 7.190300348689758e+38,
+                "last_vote": 271739941
+            },
+            {
+                "account": "justdat.gm",
+                "weight": 7.128376842021885e+38,
+                "last_vote": 275857530
+            },
+            {
+                "account": "5bjba.wam",
+                "weight": 7.00049445515525e+38,
+                "last_vote": 285330821
+            },
+            {
+                "account": "suobq.wam",
+                "weight": 6.778315043384133e+38,
+                "last_vote": 290820718
+            },
+            {
+                "account": "y3bvi.wam",
+                "weight": 6.701664876164148e+38,
+                "last_vote": 287202855
+            },
+            {
+                "account": "dm11g.c.wam",
+                "weight": 5.672891503598334e+38,
+                "last_vote": 293967630
+            },
+            {
+                "account": "ibotyourgame",
+                "weight": 5.602916187953981e+38,
+                "last_vote": 274261013
+            },
+            {
+                "account": "fjc3i.c.wam",
+                "weight": 5.350892046105029e+38,
+                "last_vote": 289501793
+            },
+            {
+                "account": "cndqo.wam",
+                "weight": 5.291585332014186e+38,
+                "last_vote": 289846087
+            },
+            {
+                "account": "hw1bc.wam",
+                "weight": 5.168204304096573e+38,
+                "last_vote": 268777109
+            },
+            {
+                "account": "jpgartifacts",
+                "weight": 5.077276975132212e+38,
+                "last_vote": 281458141
+            },
+            {
+                "account": "antr2.wam",
+                "weight": 5.068815139323661e+38,
+                "last_vote": 276863690
+            },
+            {
+                "account": "y3qba.wam",
+                "weight": 4.970990593320094e+38,
+                "last_vote": 245541453
+            },
+            {
+                "account": "tsoutsounaki",
+                "weight": 4.881289492948404e+38,
+                "last_vote": 279209450
+            },
+            {
+                "account": "xdcay.wam",
+                "weight": 4.87207812688968e+38,
+                "last_vote": 293425693
+            },
+            {
+                "account": "mr5xo.wam",
+                "weight": 4.831060283304513e+38,
+                "last_vote": 295073436
+            },
+            {
+                "account": "qwrqq.wam",
+                "weight": 4.816913504601546e+38,
+                "last_vote": 283022785
+            },
+            {
+                "account": "pa3jm.wam",
+                "weight": 4.780805847450716e+38,
+                "last_vote": 289074084
+            },
+            {
+                "account": "k4.qq.waa",
+                "weight": 4.44891967016652e+38,
+                "last_vote": 290317889
+            },
+            {
+                "account": "iauga.wam",
+                "weight": 4.301922355717964e+38,
+                "last_vote": 294207919
+            },
+            {
+                "account": "lk.b2.wam",
+                "weight": 4.2310988788864464e+38,
+                "last_vote": 289613579
+            },
+            {
+                "account": "km4mm.c.wam",
+                "weight": 4.051001216382811e+38,
+                "last_vote": 292338894
+            },
+            {
+                "account": "soulhero1234",
+                "weight": 3.976885426402263e+38,
+                "last_vote": 294475007
+            },
+            {
+                "account": "qy3x2usoy.gm",
+                "weight": 3.8406631638131665e+38,
+                "last_vote": 291925111
+            },
+            {
+                "account": "qp1jy.wam",
+                "weight": 3.654125216913693e+38,
+                "last_vote": 293356096
+            },
+            {
+                "account": ".3ybg.wam",
+                "weight": 3.610817251352578e+38,
+                "last_vote": 288102992
+            },
+            {
+                "account": "proxy.oig",
+                "weight": 3.567666137045314e+38,
+                "last_vote": 289258717
+            },
+            {
+                "account": "hycec.wam",
+                "weight": 3.4872035563371935e+38,
+                "last_vote": 292675143
+            },
+            {
+                "account": "icuewaxaccth",
+                "weight": 3.2972225983944056e+38,
+                "last_vote": 262454652
+            },
+            {
+                "account": "babebron1111",
+                "weight": 3.266458176166687e+38,
+                "last_vote": 294815131
+            },
+            {
+                "account": "tlaaw.wam",
+                "weight": 3.1175846519138057e+38,
+                "last_vote": 244853447
+            },
+            {
+                "account": "hzqra.wam",
+                "weight": 3.1136138308500198e+38,
+                "last_vote": 281284848
+            },
+            {
+                "account": "mlnba.wam",
+                "weight": 3.0779873292480587e+38,
+                "last_vote": 270400038
+            },
+            {
+                "account": "kroqu.wam",
+                "weight": 2.890474761949532e+38,
+                "last_vote": 277599208
+            },
+            {
+                "account": "jcfhs.wam",
+                "weight": 2.6156824039846534e+38,
+                "last_vote": 239506667
+            },
+            {
+                "account": "qcxbq.wam",
+                "weight": 2.554453223325096e+38,
+                "last_vote": 291511948
+            },
+            {
+                "account": "think.gm",
+                "weight": 2.4018995914623426e+38,
+                "last_vote": 292169805
+            },
+            {
+                "account": "2ssq2.wam",
+                "weight": 2.354258078198445e+38,
+                "last_vote": 291528515
+            },
+            {
+                "account": "jtfqw.wam",
+                "weight": 2.2919029046926032e+38,
+                "last_vote": 250449844
+            },
+            {
+                "account": "cy.aw.wam",
+                "weight": 2.2892768917783357e+38,
+                "last_vote": 287087751
+            },
+            {
+                "account": "1rprc.wam",
+                "weight": 2.2855531706813678e+38,
+                "last_vote": 270191004
+            },
+            {
+                "account": "todesengel11",
+                "weight": 2.2792260415165718e+38,
+                "last_vote": 256028726
+            },
+            {
+                "account": "pzj42.wam",
+                "weight": 2.2763754788467434e+38,
+                "last_vote": 291725250
+            },
+            {
+                "account": "dienpeax2121",
+                "weight": 2.2536327431399706e+38,
+                "last_vote": 284970384
+            },
+            {
+                "account": "hw.ri.wam",
+                "weight": 2.167735147628864e+38,
+                "last_vote": 291512022
+            },
+            {
+                "account": "t4e3y.c.wam",
+                "weight": 2.073578764293366e+38,
+                "last_vote": 293161519
+            },
+            {
+                "account": "uj2ai.waa",
+                "weight": 1.9692989440507308e+38,
+                "last_vote": 266643940
+            }
+        ]
+    },
+    "text": "{\"query_time_ms\":16.31,\"voters\":[{\"account\":\"ydeqk.wam\",\"weight\":4.9849102353891966e+39,\"last_vote\":290668173},{\"account\":\".npak.wam\",\"weight\":4.730070075270181e+39,\"last_vote\":294911121},{\"account\":\"kz5cs.wam\",\"weight\":4.165468522154791e+39,\"last_vote\":291271847},{\"account\":\"ppxba.wam\",\"weight\":4.100614004050089e+39,\"last_vote\":295217132},{\"account\":\"oeltw.wam\",\"weight\":4.0940218323417905e+39,\"last_vote\":290171753},{\"account\":\"waxgbmproxy1\",\"weight\":4.0456739920625295e+39,\"last_vote\":291741604},{\"account\":\"stockholmwax\",\"weight\":3.917417168535788e+39,\"last_vote\":292602354},{\"account\":\"kp2sk.wam\",\"weight\":3.904986537414029e+39,\"last_vote\":295114341},{\"account\":\"3azm.wam\",\"weight\":3.6879142283545566e+39,\"last_vote\":293080726},{\"account\":\"3mhb4.wam\",\"weight\":3.5796407033670406e+39,\"last_vote\":289793846},{\"account\":\"opzbg.wam\",\"weight\":3.209245228196779e+39,\"last_vote\":293168314},{\"account\":\"jizqy.wam\",\"weight\":3.176789013347607e+39,\"last_vote\":295296763},{\"account\":\"luisfgonzaga\",\"weight\":3.095059427897698e+39,\"last_vote\":290326263},{\"account\":\"vopds.wam\",\"weight\":2.961934145749585e+39,\"last_vote\":289044324},{\"account\":\"je4ay.wam\",\"weight\":2.868083790939778e+39,\"last_vote\":293673202},{\"account\":\"3f4b.wam\",\"weight\":2.76711439680581e+39,\"last_vote\":286230872},{\"account\":\"gy3tcnbqhege\",\"weight\":2.7246312700253086e+39,\"last_vote\":287736650},{\"account\":\"mr5ak.waa\",\"weight\":2.573383762437808e+39,\"last_vote\":294094255},{\"account\":\"leygk.wam\",\"weight\":2.391085088759469e+39,\"last_vote\":294419580},{\"account\":\"s33ek.wam\",\"weight\":2.2006633845929796e+39,\"last_vote\":293734106},{\"account\":\"fwkam.waa\",\"weight\":2.1663669114526065e+39,\"last_vote\":292338602},{\"account\":\"g.qrg.wam\",\"weight\":1.946438122438849e+39,\"last_vote\":295279734},{\"account\":\"22worldwaxon\",\"weight\":1.8778717590111003e+39,\"last_vote\":294545309},{\"account\":\"taxidriver24\",\"weight\":1.8542601699838512e+39,\"last_vote\":292169991},{\"account\":\"xrmww.wam\",\"weight\":1.8009007071704297e+39,\"last_vote\":269777711},{\"account\":\"buvle.c.wam\",\"weight\":1.7675890136779788e+39,\"last_vote\":292598416},{\"account\":\"e1rao.wam\",\"weight\":1.6853013054741538e+39,\"last_vote\":293734120},{\"account\":\"bigbakerplan\",\"weight\":1.578747913187371e+39,\"last_vote\":288726333},{\"account\":\"starblock313\",\"weight\":1.5022887876436697e+39,\"last_vote\":294599302},{\"account\":\"quoclequocle\",\"weight\":1.4926593944831958e+39,\"last_vote\":287845407},{\"account\":\"ecjay.wam\",\"weight\":1.4742760043565532e+39,\"last_vote\":292597238},{\"account\":\"jspades.gm\",\"weight\":1.4636848038298778e+39,\"last_vote\":292905400},{\"account\":\"marklarxnfts\",\"weight\":1.367994419652468e+39,\"last_vote\":290159677},{\"account\":\"fyfr4.wam\",\"weight\":1.2808121016839503e+39,\"last_vote\":291620097},{\"account\":\"kentlord1234\",\"weight\":1.2461886155005067e+39,\"last_vote\":289992205},{\"account\":\"h4hj2.wam\",\"weight\":1.2286332046819883e+39,\"last_vote\":280003071},{\"account\":\"vvmbg.wam\",\"weight\":1.1932126588390682e+39,\"last_vote\":294646119},{\"account\":\"waxxbrendenx\",\"weight\":1.1899916743800185e+39,\"last_vote\":293074438},{\"account\":\"k11b2.wam\",\"weight\":1.1536398532381177e+39,\"last_vote\":257982077},{\"account\":\"o4pr.wam\",\"weight\":1.1503334797130664e+39,\"last_vote\":290312660},{\"account\":\"exmpy.waa\",\"weight\":1.1471897143040332e+39,\"last_vote\":293967570},{\"account\":\"m.obc.wam\",\"weight\":1.1035535021855562e+39,\"last_vote\":295160560},{\"account\":\"waxanchor.gm\",\"weight\":1.027796215477478e+39,\"last_vote\":285272999},{\"account\":\"q.4qw.wam\",\"weight\":1.0147452764033144e+39,\"last_vote\":295164458},{\"account\":\"decentraliza\",\"weight\":9.427105804012848e+38,\"last_vote\":289736456},{\"account\":\"jm4ra.wam\",\"weight\":9.121370731995242e+38,\"last_vote\":295289460},{\"account\":\"t.axa.wam\",\"weight\":8.754219949314463e+38,\"last_vote\":290363331},{\"account\":\"fnwr2.wam\",\"weight\":8.7128214245032e+38,\"last_vote\":292191819},{\"account\":\"q.vnc.wam\",\"weight\":8.243812018856737e+38,\"last_vote\":291306081},{\"account\":\"qavk2.c.wam\",\"weight\":8.042890160427104e+38,\"last_vote\":270191323},{\"account\":\".kzqw.wam\",\"weight\":7.824424985481395e+38,\"last_vote\":282201608},{\"account\":\"ir2rc.wam\",\"weight\":7.709409229686847e+38,\"last_vote\":292920032},{\"account\":\"yffqu.wam\",\"weight\":7.684474611061043e+38,\"last_vote\":288808491},{\"account\":\"deniz1111ded\",\"weight\":7.190300348689758e+38,\"last_vote\":271739941},{\"account\":\"justdat.gm\",\"weight\":7.128376842021885e+38,\"last_vote\":275857530},{\"account\":\"5bjba.wam\",\"weight\":7.00049445515525e+38,\"last_vote\":285330821},{\"account\":\"suobq.wam\",\"weight\":6.778315043384133e+38,\"last_vote\":290820718},{\"account\":\"y3bvi.wam\",\"weight\":6.701664876164148e+38,\"last_vote\":287202855},{\"account\":\"dm11g.c.wam\",\"weight\":5.672891503598334e+38,\"last_vote\":293967630},{\"account\":\"ibotyourgame\",\"weight\":5.602916187953981e+38,\"last_vote\":274261013},{\"account\":\"fjc3i.c.wam\",\"weight\":5.350892046105029e+38,\"last_vote\":289501793},{\"account\":\"cndqo.wam\",\"weight\":5.291585332014186e+38,\"last_vote\":289846087},{\"account\":\"hw1bc.wam\",\"weight\":5.168204304096573e+38,\"last_vote\":268777109},{\"account\":\"jpgartifacts\",\"weight\":5.077276975132212e+38,\"last_vote\":281458141},{\"account\":\"antr2.wam\",\"weight\":5.068815139323661e+38,\"last_vote\":276863690},{\"account\":\"y3qba.wam\",\"weight\":4.970990593320094e+38,\"last_vote\":245541453},{\"account\":\"tsoutsounaki\",\"weight\":4.881289492948404e+38,\"last_vote\":279209450},{\"account\":\"xdcay.wam\",\"weight\":4.87207812688968e+38,\"last_vote\":293425693},{\"account\":\"mr5xo.wam\",\"weight\":4.831060283304513e+38,\"last_vote\":295073436},{\"account\":\"qwrqq.wam\",\"weight\":4.816913504601546e+38,\"last_vote\":283022785},{\"account\":\"pa3jm.wam\",\"weight\":4.780805847450716e+38,\"last_vote\":289074084},{\"account\":\"k4.qq.waa\",\"weight\":4.44891967016652e+38,\"last_vote\":290317889},{\"account\":\"iauga.wam\",\"weight\":4.301922355717964e+38,\"last_vote\":294207919},{\"account\":\"lk.b2.wam\",\"weight\":4.2310988788864464e+38,\"last_vote\":289613579},{\"account\":\"km4mm.c.wam\",\"weight\":4.051001216382811e+38,\"last_vote\":292338894},{\"account\":\"soulhero1234\",\"weight\":3.976885426402263e+38,\"last_vote\":294475007},{\"account\":\"qy3x2usoy.gm\",\"weight\":3.8406631638131665e+38,\"last_vote\":291925111},{\"account\":\"qp1jy.wam\",\"weight\":3.654125216913693e+38,\"last_vote\":293356096},{\"account\":\".3ybg.wam\",\"weight\":3.610817251352578e+38,\"last_vote\":288102992},{\"account\":\"proxy.oig\",\"weight\":3.567666137045314e+38,\"last_vote\":289258717},{\"account\":\"hycec.wam\",\"weight\":3.4872035563371935e+38,\"last_vote\":292675143},{\"account\":\"icuewaxaccth\",\"weight\":3.2972225983944056e+38,\"last_vote\":262454652},{\"account\":\"babebron1111\",\"weight\":3.266458176166687e+38,\"last_vote\":294815131},{\"account\":\"tlaaw.wam\",\"weight\":3.1175846519138057e+38,\"last_vote\":244853447},{\"account\":\"hzqra.wam\",\"weight\":3.1136138308500198e+38,\"last_vote\":281284848},{\"account\":\"mlnba.wam\",\"weight\":3.0779873292480587e+38,\"last_vote\":270400038},{\"account\":\"kroqu.wam\",\"weight\":2.890474761949532e+38,\"last_vote\":277599208},{\"account\":\"jcfhs.wam\",\"weight\":2.6156824039846534e+38,\"last_vote\":239506667},{\"account\":\"qcxbq.wam\",\"weight\":2.554453223325096e+38,\"last_vote\":291511948},{\"account\":\"think.gm\",\"weight\":2.4018995914623426e+38,\"last_vote\":292169805},{\"account\":\"2ssq2.wam\",\"weight\":2.354258078198445e+38,\"last_vote\":291528515},{\"account\":\"jtfqw.wam\",\"weight\":2.2919029046926032e+38,\"last_vote\":250449844},{\"account\":\"cy.aw.wam\",\"weight\":2.2892768917783357e+38,\"last_vote\":287087751},{\"account\":\"1rprc.wam\",\"weight\":2.2855531706813678e+38,\"last_vote\":270191004},{\"account\":\"todesengel11\",\"weight\":2.2792260415165718e+38,\"last_vote\":256028726},{\"account\":\"pzj42.wam\",\"weight\":2.2763754788467434e+38,\"last_vote\":291725250},{\"account\":\"dienpeax2121\",\"weight\":2.2536327431399706e+38,\"last_vote\":284970384},{\"account\":\"hw.ri.wam\",\"weight\":2.167735147628864e+38,\"last_vote\":291512022},{\"account\":\"t4e3y.c.wam\",\"weight\":2.073578764293366e+38,\"last_vote\":293161519},{\"account\":\"uj2ai.waa\",\"weight\":1.9692989440507308e+38,\"last_vote\":266643940}]}"
+}

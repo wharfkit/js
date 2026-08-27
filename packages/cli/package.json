@@ -1,0 +1,43 @@
+{
+    "name": "@wharfkit/cli",
+    "version": "4.0.0-rc2",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/wharfkit/cli#readme",
+    "description": "Command line utilities for Wharf",
+    "scripts": {},
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "main": "lib/cli.js",
+    "module": "lib/cli.m.js",
+    "types": "lib/cli.d.ts",
+    "sideEffects": false,
+    "bin": {
+        "wharfkit": "./lib/cli.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wharfkit/js.git",
+        "directory": "packages/cli"
+    },
+    "bugs": {
+        "url": "https://github.com/wharfkit/cli/issues"
+    },
+    "dependencies": {
+        "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/common": "workspace:*",
+        "@wharfkit/contract": "workspace:*",
+        "commander": "^11.0.0",
+        "eslint": "^8.48.0",
+        "prettier": "^2.2.1",
+        "typescript": "^4.9.5"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^6.6.0",
+        "@typescript-eslint/parser": "^6.6.0",
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/signing-request": "workspace:*",
+        "eslint-config-prettier": "^8.1.0",
+        "eslint-plugin-prettier": "^4.0.0"
+    }
+}

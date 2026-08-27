@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/ui-plugin-template",
     "description": "A template to create user interfaces for use with @wharfkit/session.",
-    "version": "4.0.0-rc2",
+    "version": "4.0.0-rc3",
     "private": true,
     "homepage": "https://github.com/wharfkit/ui-plugin-template",
     "license": "BSD-3-Clause",

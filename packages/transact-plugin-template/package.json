@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/transact-plugin-template",
     "description": "A template to create plugins for use with @wharfkit/session transact method.",
-    "version": "4.0.0-rc2",
+    "version": "4.0.0-rc3",
     "private": true,
     "homepage": "https://github.com/wharfkit/transact-plugin-template",
     "license": "BSD-3-Clause",

@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/webauthn",
     "description": "WebAuthn helpers for antelope core",
-    "version": "4.0.0-rc2",
+    "version": "4.0.0-rc3",
     "homepage": "https://github.com/greymass/eosio-webauthn",
     "license": "BSD-3-Clause",
     "main": "lib/eosio-webauthn.js",

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import type {
     Action,
     AssetType,
@@ -1375,8 +1375,7 @@ export namespace ActionParams {
             block_signing_key: PublicKeyType
         }
         export type variant_block_signing_authority_v0 =
-            | Type.block_signing_authority_v0
-            | Types.variant_block_signing_authority_v0
+            Type.block_signing_authority_v0 | Types.variant_block_signing_authority_v0
         export interface block_signing_authority_v0 {
             threshold: UInt32Type
             keys: Type.key_weight[]

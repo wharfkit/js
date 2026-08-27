@@ -1,9 +1,9 @@
 {
     "request": {
-        "path": "https://jungle4.greymass.com/v1/chain/send_transaction",
+        "path": "https://jungle4.greymass.com/v1/chain/send_transaction2",
         "params": {
             "method": "POST",
-            "body": "{\"signatures\":[\"SIG_K1_KXwaY5vAJuBGkRMNQosoPNjE3uJtE6Pe1KoN1iWjaD4fQmSz8pZppVgCXKH9YozEH3YM8dizdTBMMRtmkQfDRqExRZvd1r\"],\"compression\":1,\"packed_context_free_data\":\"789c63000000010001\",\"packed_trx\":\"789ce36bbc977a8f79b3cf972006206004110caf0c42191c4edf5a91137495d1c08de3e6c152dfc720f1156f8d8cbcd1054074c36ab5e58c60ed4c278f554ed57fa8b47cd10c3d01ef2de76ece130b525bb33d59e273fa81bb33b578432136400100515127f8\"}",
+            "body": "{\"return_failure_trace\":true,\"retry_trx\":false,\"retry_trx_num_blocks\":0,\"transaction\":{\"signatures\":[\"SIG_K1_KXwaY5vAJuBGkRMNQosoPNjE3uJtE6Pe1KoN1iWjaD4fQmSz8pZppVgCXKH9YozEH3YM8dizdTBMMRtmkQfDRqExRZvd1r\"],\"compression\":1,\"packed_context_free_data\":\"789c63000000010001\",\"packed_trx\":\"789ce36bbc977a8f79b3cf9720060606064610c1f0ca2094c1e1f4ad15394157190ddc386e1e2cf57d0c125ff1d6c8c81b5d004437ac565bce08d6ce74f258e554fd874acb17cdd013f0de72eee63cb120b535db93253ea71fb83b538b37146203140000515127f8\"}}",
             "headers": {}
         }
     },

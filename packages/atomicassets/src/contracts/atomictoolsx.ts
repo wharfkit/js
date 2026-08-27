@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import type {Action, NameType, PublicKeyType, SignatureType, UInt64Type} from '@wharfkit/antelope'
 import {ABI, Blob, Name, PublicKey, Signature, Struct, UInt64} from '@wharfkit/antelope'
 import type {ActionOptions, ContractArgs, PartialBy, Table} from '@wharfkit/contract'

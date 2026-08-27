@@ -1,9 +1,9 @@
 {
     "request": {
-        "path": "https://jungle4.greymass.com/v1/chain/send_transaction",
+        "path": "https://jungle4.greymass.com/v1/chain/send_transaction2",
         "params": {
             "method": "POST",
-            "body": "{\"signatures\":[\"SIG_K1_JzZgTH3gQSozHhEnwvRkHsP4kAfGqHZEPr9jM9f2oSeahymNg7G5r3iTq8xSyxAo1MWpK5SY4rHbn1aXVxrhRtR8GysRtT\"],\"compression\":1,\"packed_context_free_data\":\"789c63000000010001\",\"packed_trx\":\"789ce36bbc977a8f79b3cf972006206004110caf0c42191c4edf5a91137495d1c08de3e6c152dfc720f1156f8d8cf2d1054074c36ab5e520ad4c0c4c07ee5dda232fccfa9b7fd5d16707ec1e2f9ce4643223447d9b58cdd2cc8bb65f4ccf0395319d3c563955ffa1d2f24533f404bcb79cbb394f2c486dcdf66489cfe907eeced4e20d85b8020a0019e038db\"}",
+            "body": "{\"return_failure_trace\":true,\"retry_trx\":false,\"retry_trx_num_blocks\":0,\"transaction\":{\"signatures\":[\"SIG_K1_JzZgTH3gQSozHhEnwvRkHsP4kAfGqHZEPr9jM9f2oSeahymNg7G5r3iTq8xSyxAo1MWpK5SY4rHbn1aXVxrhRtR8GysRtT\"],\"compression\":1,\"packed_context_free_data\":\"789c63000000010001\",\"packed_trx\":\"789ce36bbc977a8f79b3cf9720060606064610c1f0ca2094c1e1f4ad15394157190ddc386e1e2cf57d0c125ff1d6c8281f5d004437ac565b0ed2cac4c074e0dea53df2c2acbff9571d7d76c0eef1c2494e263342d4b789d52ccdbc68fbc5f43c230303d3c9639553f51f2a2d5f34434fc07bcbb99bf3c482d4d66c4f96f89c7ee0ee4c2dde50882ba0000019e038db\"}}",
             "headers": {}
         }
     },

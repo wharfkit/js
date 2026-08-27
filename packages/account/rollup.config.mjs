@@ -1,6 +1,23 @@
+import path from 'path'
+import {fileURLToPath} from 'url'
+import fs from 'fs'
 import dts from 'rollup-plugin-dts'
 import typescript from '@rollup/plugin-typescript'
-import pkg from './package.json' assert {type: 'json'}
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json')))
+
+const name = pkg.name
+const license = fs.readFileSync('LICENSE').toString('utf-8').trim()
+const banner = `
+/**
+ * ${name} v${pkg.version}
+ * ${pkg.homepage}
+ *
+ * @license
+ * ${license.replace(/\n/g, '\n * ')}
+ */
+`.trim()
 
 const external = Object.keys(pkg.dependencies)
 
@@ -9,9 +26,12 @@ export default [
     {
         input: 'src/index.ts',
         output: {
+            banner,
             file: pkg.main,
             format: 'cjs',
+            esModule: true,
             sourcemap: true,
+            exports: 'named',
         },
         plugins: [typescript({target: 'es6'})],
         external,
@@ -19,6 +39,7 @@ export default [
     {
         input: 'src/index.ts',
         output: {
+            banner,
             file: pkg.module,
             format: 'esm',
             sourcemap: true,
@@ -28,7 +49,7 @@ export default [
     },
     {
         input: 'src/index.ts',
-        output: {file: pkg.types, format: 'esm'},
+        output: {banner, file: pkg.types, format: 'esm'},
         plugins: [dts()],
     },
 ]

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import type {
     Action,
     AssetType,
@@ -118,30 +119,29 @@ export namespace ActionParams {
             value: Type.variant_int8_int16_int32_int64_uint8_uint16_uint32_uint64_float32_float64_string_INT8_VEC_INT16_VEC_INT32_VEC_INT64_VEC_UINT8_VEC_UINT16_VEC_UINT32_VEC_UINT64_VEC_FLOAT_VEC_DOUBLE_VEC_STRING_VEC
         }
         export type variant_int8_int16_int32_int64_uint8_uint16_uint32_uint64_float32_float64_string_INT8_VEC_INT16_VEC_INT32_VEC_INT64_VEC_UINT8_VEC_UINT16_VEC_UINT32_VEC_UINT64_VEC_FLOAT_VEC_DOUBLE_VEC_STRING_VEC =
-
-                | Int8Type
-                | Int16Type
-                | Int32Type
-                | Int64Type
-                | UInt8Type
-                | UInt16Type
-                | UInt32Type
-                | UInt64Type
-                | Float32Type
-                | Float64Type
-                | string
-                | BytesType
-                | Int16Type[]
-                | Int32Type[]
-                | Int64Type[]
-                | UInt8Type[]
-                | UInt16Type[]
-                | UInt32Type[]
-                | UInt64Type[]
-                | Float32Type[]
-                | Float64Type[]
-                | string[]
-                | Types.variant_int8_int16_int32_int64_uint8_uint16_uint32_uint64_float32_float64_string_INT8_VEC_INT16_VEC_INT32_VEC_INT64_VEC_UINT8_VEC_UINT16_VEC_UINT32_VEC_UINT64_VEC_FLOAT_VEC_DOUBLE_VEC_STRING_VEC
+            | Int8Type
+            | Int16Type
+            | Int32Type
+            | Int64Type
+            | UInt8Type
+            | UInt16Type
+            | UInt32Type
+            | UInt64Type
+            | Float32Type
+            | Float64Type
+            | string
+            | BytesType
+            | Int16Type[]
+            | Int32Type[]
+            | Int64Type[]
+            | UInt8Type[]
+            | UInt16Type[]
+            | UInt32Type[]
+            | UInt64Type[]
+            | Float32Type[]
+            | Float64Type[]
+            | string[]
+            | Types.variant_int8_int16_int32_int64_uint8_uint16_uint32_uint64_float32_float64_string_INT8_VEC_INT16_VEC_INT32_VEC_INT64_VEC_UINT8_VEC_UINT16_VEC_UINT32_VEC_UINT64_VEC_FLOAT_VEC_DOUBLE_VEC_STRING_VEC
         export interface FORMAT_TYPE {
             name: string
             mediatype: string

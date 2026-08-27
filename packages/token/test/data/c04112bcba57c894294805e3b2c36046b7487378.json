@@ -3,7 +3,7 @@
         "path": "https://eos.greymass.com/v1/chain/get_table_rows",
         "params": {
             "method": "POST",
-            "body": "{\"table\":\"accounts\",\"code\":\"eosio.token\",\"scope\":\"teamgreymass\",\"limit\":1,\"lower_bound\":\"\",\"upper_bound\":\"\",\"index_position\":\"primary\",\"key_type\":\"name\",\"json\":false}",
+            "body": "{\"table\":\"accounts\",\"code\":\"eosio.token\",\"scope\":\"teamgreymass\",\"limit\":1,\"lower_bound\":\"5459781\",\"upper_bound\":\"5459781\",\"index_position\":\"primary\",\"key_type\":\"i64\",\"json\":false}",
             "headers": {}
         }
     },

@@ -1,8 +1,12 @@
+import path from 'path'
+import {fileURLToPath} from 'url'
 import fs from 'fs'
 import dts from 'rollup-plugin-dts'
 import typescript from '@rollup/plugin-typescript'
+import json from '@rollup/plugin-json'
 
-import pkg from './package.json'
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json')))
 
 const name = pkg.name
 const license = fs.readFileSync('LICENSE').toString('utf-8').trim()
@@ -16,7 +20,7 @@ const banner = `
  */
 `.trim()
 
-const external = Object.keys(pkg.peerDependencies)
+const external = Object.keys(pkg.dependencies)
 
 /** @type {import('rollup').RollupOptions} */
 export default [
@@ -26,10 +30,11 @@ export default [
             banner,
             file: pkg.main,
             format: 'cjs',
+            esModule: true,
             sourcemap: true,
             exports: 'named',
         },
-        plugins: [typescript({target: 'es6'})],
+        plugins: [typescript({target: 'es6'}), json()],
         external,
     },
     {
@@ -40,7 +45,7 @@ export default [
             format: 'esm',
             sourcemap: true,
         },
-        plugins: [typescript({target: 'es2020'})],
+        plugins: [typescript({target: 'es2020'}), json()],
         external,
     },
     {

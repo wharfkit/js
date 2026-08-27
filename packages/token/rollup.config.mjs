@@ -1,8 +1,11 @@
+import path from 'path'
+import {fileURLToPath} from 'url'
 import fs from 'fs'
 import dts from 'rollup-plugin-dts'
 import typescript from '@rollup/plugin-typescript'
 
-import pkg from './package.json'
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json')))
 
 const name = pkg.name
 const license = fs.readFileSync('LICENSE').toString('utf-8').trim()
@@ -18,6 +21,7 @@ const banner = `
 
 const external = Object.keys(pkg.dependencies)
 
+/** @type {import('rollup').RollupOptions} */
 export default [
     {
         input: 'src/index.ts',
@@ -25,11 +29,12 @@ export default [
             banner,
             file: pkg.main,
             format: 'cjs',
+            esModule: true,
             sourcemap: true,
+            exports: 'named',
         },
         plugins: [typescript({target: 'es6'})],
         external,
-        onwarn,
     },
     {
         input: 'src/index.ts',
@@ -41,29 +46,10 @@ export default [
         },
         plugins: [typescript({target: 'es2020'})],
         external,
-        onwarn,
     },
     {
         input: 'src/index.ts',
         output: {banner, file: pkg.types, format: 'esm'},
-        onwarn,
         plugins: [dts()],
     },
 ]
-
-function onwarn(warning, rollupWarn) {
-    if (warning.code === 'CIRCULAR_DEPENDENCY') {
-        // unnecessary warning
-        return
-    }
-    if (
-        warning.code === 'UNUSED_EXTERNAL_IMPORT' &&
-        warning.source === 'tslib' &&
-        warning.names[0] === '__read'
-    ) {
-        // when using ts with importHelpers: true rollup complains about this
-        // seems safe to ignore since __read is not actually imported or used anywhere in the resulting bundles
-        return
-    }
-    rollupWarn(warning)
-}

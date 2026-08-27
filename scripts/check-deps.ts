@@ -22,15 +22,22 @@ const ALLOW_UNUSED: Record<string, string> = {
 }
 const ALLOW_UNDECLARED: Record<string, string> = {
     '@wharfkit/web-renderer:svelte': 'framework supplied by the consuming application',
+    '@wharfkit/web-renderer:@wharfkit/antelope': 'type-only import in src/lib/translations.ts',
+    '@wharfkit/web-renderer:sveltekit-i18n': 'not external to rollup, so it is bundled into lib',
+    '@wharfkit/web-ui:svelte': 'framework supplied by the consuming application',
+    '@wharfkit/web-ui:wuchale': 'compiled away by the wuchale vite plugin at build time',
+    '@wharfkit/svelte-components:svelte': 'framework supplied by the consuming application',
 }
 
-function walk(dir: string, out: string[] = []): string[] {
+// `lib` and `build` are build output at the package root; nested ones (SvelteKit's src/lib) are source.
+function walk(dir: string, out: string[] = [], top = true): string[] {
     if (!existsSync(dir)) return out
     for (const entry of readdirSync(dir)) {
-        if (entry === 'node_modules' || entry === 'lib' || entry === 'build') continue
+        if (entry === 'node_modules') continue
+        if (top && (entry === 'lib' || entry === 'build')) continue
         const path = join(dir, entry)
-        if (statSync(path).isDirectory()) walk(path, out)
-        else if (/\.(ts|mjs|js)$/.test(entry)) out.push(path)
+        if (statSync(path).isDirectory()) walk(path, out, false)
+        else if (/\.(ts|mjs|js|svelte)$/.test(entry)) out.push(path)
     }
     return out
 }
@@ -78,7 +85,7 @@ for (const name of readdirSync(join(ROOT, 'packages'))) {
     const self = json.name
 
     const runtimeUsed = new Set<string>()
-    for (const file of walk(join(dir, 'src'))) {
+    for (const file of walk(join(dir, 'src'), [], false)) {
         for (const specifier of imports(file)) {
             const pkg = packageName(specifier)
             if (!pkg || pkg === self) continue
@@ -101,7 +108,10 @@ for (const name of readdirSync(join(ROOT, 'packages'))) {
         }
     }
 
-    const outside = [...walk(join(dir, 'test')), ...walk(dir).filter((f) => f.endsWith('.mjs'))]
+    const outside = [
+        ...walk(join(dir, 'test'), [], false),
+        ...walk(dir).filter((f) => f.endsWith('.mjs')),
+    ]
     for (const file of outside) {
         for (const specifier of imports(file)) {
             const pkg = packageName(specifier)

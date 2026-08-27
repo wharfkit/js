@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "noEmit": true,
+        "allowImportingTsExtensions": true,
+        "downlevelIteration": true,
+        "esModuleInterop": true,
+        "importHelpers": true,
+        "lib": ["esnext", "dom"],
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "noImplicitAny": false,
+        "sourceMap": true,
+        "strict": true,
+        "target": "es2020",
+        "useUnknownInCatchVariables": false,
+        "resolveJsonModule": true,
+        "verbatimModuleSyntax": true
+    },
+    "include": ["src/**/*", "dev/**/*"]
+}

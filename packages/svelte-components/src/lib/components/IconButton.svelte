@@ -1,0 +1,102 @@
+<script lang="ts">
+	import { cn } from '$lib/utils';
+	import { type Icon } from '@lucide/svelte';
+	import type { HTMLButtonAttributes, HTMLLinkAttributes } from 'svelte/elements';
+	import { emptyMeltElement, melt, type AnyMeltElement } from '@melt-ui/svelte';
+	import { Tooltip } from 'melt/builders';
+
+	type HTMLAttributes = HTMLButtonAttributes & HTMLLinkAttributes;
+
+	export interface IconButtonProps extends HTMLAttributes {
+		href?: string;
+		disabled?: boolean;
+		active?: boolean;
+		blank?: boolean;
+		class?: string;
+		onclick?: (event: MouseEvent) => void;
+		meltAction?: AnyMeltElement;
+		icon: typeof Icon;
+		size?: 'large' | 'small';
+		variant?: 'filled' | 'standard';
+		hideBackground?: boolean;
+		label?: string;
+		labelWidth?: string;
+	}
+
+	let {
+		meltAction,
+		onclick,
+		active,
+		disabled = false,
+		size = 'small',
+		variant = 'standard',
+		class: className,
+		label,
+		type = 'button',
+		...props
+	}: IconButtonProps = $props();
+
+	const ariaRole = props.href ? undefined : 'button'; // undefined because anchor tag with role=link gives a warning
+	const ariaCurrent = props['aria-current'] || active === false ? undefined : true; // removes aria-current if active===false
+	const tag = props.href ? 'a' : 'button';
+
+	// Only use melt builder element if passed as a prop
+	let meltElement = $derived(meltAction ?? emptyMeltElement);
+
+	let linkProps = $derived(() =>
+		props.href && props.blank
+			? {
+					target: '_blank',
+					rel: 'noopener noreferrer'
+				}
+			: {}
+	);
+
+	const tooltip = new Tooltip({
+		openDelay: 600,
+		disableHoverableContent: true
+	});
+</script>
+
+<svelte:element
+	this={tag}
+	use:melt={$meltElement}
+	data-size={size}
+	class={cn(
+		'touch-target group  focus-visible:text-focus relative grid size-10 cursor-pointer  place-items-center rounded-full transition-all  *:col-start-1  *:row-start-1   focus-visible:outline-hidden disabled:cursor-default disabled:opacity-30  disabled:hover:bg-transparent data-[size=large]:size-12',
+		className
+	)}
+	role={ariaRole}
+	aria-current={ariaCurrent}
+	aria-label={label}
+	{disabled}
+	{onclick}
+	{type}
+	{...props}
+	{...linkProps}
+	{...tooltip.trigger}
+>
+	<div
+		data-variant={variant}
+		class:bg-transparent={props.hideBackground}
+		class="state-layer bg-on-surface-variant pointer-events-none size-8 rounded-[inherit] opacity-0 transition-opacity group-hover:opacity-8 group-focus-visible:opacity-10 group-active:group-hover:opacity-16 group-disabled:hidden group-data-[size=large]:size-10 data-[variant=filled]:opacity-8"
+	></div>
+
+	{#if props.icon}
+		{@const IconComponent = props.icon}
+		<IconComponent class="pointer-events-none z-50 size-4 group-data-[size=large]:size-6" />
+	{/if}
+
+	{#if label}
+		<div
+			{...tooltip.content}
+			class={cn(
+				'text-on-surface bg-surface-container-high max-w-sm rounded-lg p-2 text-xs shadow-lg first-letter:uppercase',
+				props.labelWidth
+			)}
+		>
+			<div {...tooltip.arrow} class="bg-surface-container-high size-2 rounded-tl-xs"></div>
+			{label}
+		</div>
+	{/if}
+</svelte:element>

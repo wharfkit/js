@@ -17,9 +17,10 @@
         "@greymass/buoy": "catalog:",
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/protocol-esr": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "@wharfkit/signing-request": "workspace:*",
         "isomorphic-ws": "catalog:",
-        "ws": "catalog:",
-        "@wharfkit/session": "workspace:*"
+        "ws": "catalog:"
     },
     "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",

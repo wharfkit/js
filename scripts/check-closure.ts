@@ -41,12 +41,16 @@ function main() {
         for (const type of DEP_TYPES) {
             for (const [name, range] of wharfRefs(member, type)) {
                 if (range !== 'workspace:*') {
-                    errors.push(`${member.name}: ${type} ${name} is "${range}", expected "workspace:*"`)
+                    errors.push(
+                        `${member.name}: ${type} ${name} is "${range}", expected "workspace:*"`
+                    )
                 }
             }
         }
         for (const [name] of wharfRefs(member, 'peerDependencies')) {
-            errors.push(`${member.name}: peer dependency on ${name}; the workspace policy has no @wharfkit/* peers`)
+            errors.push(
+                `${member.name}: peer dependency on ${name}; the workspace policy has no @wharfkit/* peers`
+            )
         }
     }
 
@@ -70,7 +74,9 @@ function main() {
             }
         }
         if (missing.size > 0) {
-            console.error(`check-closure: importing ${candidate.name} requires these packages in the same batch or already imported:`)
+            console.error(
+                `check-closure: importing ${candidate.name} requires these packages in the same batch or already imported:`
+            )
             for (const name of [...missing].sort()) console.error(`  ${name}`)
             process.exit(1)
         }

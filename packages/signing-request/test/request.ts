@@ -12,7 +12,17 @@ import {
     SigningRequestEncodingOptions,
 } from '../src'
 import * as TSModule from '../src'
-import {ABI, Action, Bytes, Name, PrivateKey, Serializer, Signature, Transaction, UInt64} from '@wharfkit/antelope'
+import {
+    ABI,
+    Action,
+    Bytes,
+    Name,
+    PrivateKey,
+    Serializer,
+    Signature,
+    Transaction,
+    UInt64,
+} from '@wharfkit/antelope'
 import {IdentityProof} from '../src/identity-proof'
 
 // zlib output differs across zlib versions; compare inflated payloads, never compressed text
@@ -346,7 +356,9 @@ describe('signing request', function () {
         const encoded = req1.encode()
         assert.deepStrictEqual(
             rawPayload(encoded),
-            rawPayload('esr://gmNgZGBY1mTC_MoglIGBIVzX5uxZRqAQGMBoExgDAjRi4fwAVz93ICUckpGYl12skJZfpFCSkaqQllmcwczAAAA')
+            rawPayload(
+                'esr://gmNgZGBY1mTC_MoglIGBIVzX5uxZRqAQGMBoExgDAjRi4fwAVz93ICUckpGYl12skJZfpFCSkaqQllmcwczAAAA'
+            )
         )
         const req2 = SigningRequest.from(encoded, options)
         assert.deepStrictEqual(recode(req2.data), recode(req1.data))
@@ -427,7 +439,9 @@ describe('signing request', function () {
         const encoded = req1.encode()
         assert.deepStrictEqual(
             rawPayload(encoded),
-            rawPayload('esr://gmNgZGBY1mTC_MoglIGBIVzX5uxZoAgIaMSCyBVvjYx0kAUYGNZZvmCGsJhd_YNBNHdGak5OvkJJRmpRKlQ3WLl8anjWFNWd23XWfvzTcy_qmtRx5mtMXlkSC23ZXle6K_NJFJ4SVTb4O026Wb1G5Wx0u1A3-_G4rAPsBp78z9lN7nddAQA')
+            rawPayload(
+                'esr://gmNgZGBY1mTC_MoglIGBIVzX5uxZoAgIaMSCyBVvjYx0kAUYGNZZvmCGsJhd_YNBNHdGak5OvkJJRmpRKlQ3WLl8anjWFNWd23XWfvzTcy_qmtRx5mtMXlkSC23ZXle6K_NJFJ4SVTb4O026Wb1G5Wx0u1A3-_G4rAPsBp78z9lN7nddAQA'
+            )
         )
         const req2 = SigningRequest.from(encoded, options)
         assert.deepStrictEqual(recode(req2.data), recode(req1.data))
@@ -762,12 +776,16 @@ describe('optional checksum256 in ESR', function () {
         const abi = ABI.from(rawAbi)
         abis.set('sentiment.gm', abi)
 
-        const resolved = request.resolve(abis, {actor: 'sentiment.gm', permission: 'owner'}, {
-            timestamp: '2024-01-01T00:00:00',
-            block_num: 1,
-            expire_seconds: 120,
-            ref_block_prefix: 0,
-        })
+        const resolved = request.resolve(
+            abis,
+            {actor: 'sentiment.gm', permission: 'owner'},
+            {
+                timestamp: '2024-01-01T00:00:00',
+                block_num: 1,
+                expire_seconds: 120,
+                ref_block_prefix: 0,
+            }
+        )
 
         const resolvedAction = resolved.transaction.actions[0]
         assert.strictEqual(
@@ -795,12 +813,16 @@ describe('optional checksum256 in ESR', function () {
         const abi = ABI.from(rawAbi)
         abis.set('sentiment.gm', abi)
 
-        const resolved = request.resolve(abis, {actor: 'sentiment.gm', permission: 'owner'}, {
-            timestamp: '2024-01-01T00:00:00',
-            block_num: 1,
-            expire_seconds: 120,
-            ref_block_prefix: 0,
-        })
+        const resolved = request.resolve(
+            abis,
+            {actor: 'sentiment.gm', permission: 'owner'},
+            {
+                timestamp: '2024-01-01T00:00:00',
+                block_num: 1,
+                expire_seconds: 120,
+                ref_block_prefix: 0,
+            }
+        )
 
         const newRequest = await SigningRequest.create(
             {
@@ -836,12 +858,16 @@ describe('optional checksum256 in ESR', function () {
         const abi = ABI.from(rawAbi)
         abis.set('sentiment.gm', abi)
 
-        const resolved = request.resolve(abis, {actor: 'sentiment.gm', permission: 'owner'}, {
-            timestamp: '2024-01-01T00:00:00',
-            block_num: 1,
-            expire_seconds: 120,
-            ref_block_prefix: 0,
-        })
+        const resolved = request.resolve(
+            abis,
+            {actor: 'sentiment.gm', permission: 'owner'},
+            {
+                timestamp: '2024-01-01T00:00:00',
+                block_num: 1,
+                expire_seconds: 120,
+                ref_block_prefix: 0,
+            }
+        )
 
         const newRequest = await SigningRequest.create(
             {

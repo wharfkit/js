@@ -85,9 +85,16 @@ ifneq ($(strip $(BROWSER_OUT)),)
 $(BROWSER_OUT): $(SRC_FILES) $(TEST_FILES) test/rollup.config.mjs $(ROOT)/node_modules
 	@$(BIN)/rollup -c test/rollup.config.mjs
 
+.PHONY: browser
+browser: $(BROWSER_OUT)
+
 .PHONY: browser-test
 browser-test: $(BROWSER_OUT)
 	@open $(BROWSER_OUT)
+else
+.PHONY: browser
+browser:
+	@echo '$(notdir $(CURDIR)) has no browser bundle'
 endif
 
 build/pages: build/docs build/coverage $(BROWSER_OUT)

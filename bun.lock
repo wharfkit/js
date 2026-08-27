@@ -61,7 +61,6 @@
       "name": "@wharfkit/account-creation-plugin-anchor",
       "version": "4.0.0-rc2",
       "dependencies": {
-        "@greymass/create-account": "^1.1.0",
         "@wharfkit/session": "workspace:*",
         "tslib": "catalog:",
       },
@@ -138,7 +137,6 @@
       "version": "4.0.0-rc2",
       "dependencies": {
         "@greymass/buoy": "catalog:",
-        "@wharfkit/antelope": "workspace:*",
         "@wharfkit/sealed-messages": "workspace:*",
         "@wharfkit/session": "workspace:*",
         "isomorphic-ws": "catalog:",
@@ -146,6 +144,7 @@
         "ws": "catalog:",
       },
       "devDependencies": {
+        "@wharfkit/antelope": "workspace:*",
         "@wharfkit/mock-data": "workspace:*",
         "@wharfkit/session": "workspace:*",
         "@wharfkit/signing-request": "workspace:*",
@@ -162,6 +161,7 @@
         "tslib": "catalog:",
       },
       "devDependencies": {
+        "@wharfkit/antelope": "workspace:*",
         "@wharfkit/common": "workspace:*",
         "@wharfkit/session": "workspace:*",
       },
@@ -293,6 +293,7 @@
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/protocol-esr": "workspace:*",
         "@wharfkit/session": "workspace:*",
+        "@wharfkit/signing-request": "workspace:*",
         "isomorphic-ws": "catalog:",
         "ws": "catalog:",
       },
@@ -321,11 +322,11 @@
       "name": "@wharfkit/wallet-plugin-cloudwallet",
       "version": "4.0.0-rc2",
       "dependencies": {
-        "@wharfkit/antelope": "workspace:*",
         "@wharfkit/session": "workspace:*",
         "tslib": "catalog:",
       },
       "devDependencies": {
+        "@wharfkit/antelope": "workspace:*",
         "@wharfkit/session": "workspace:*",
       },
     },
@@ -377,6 +378,7 @@
         "tslib": "catalog:",
       },
       "devDependencies": {
+        "@wharfkit/antelope": "workspace:*",
         "@wharfkit/session": "workspace:*",
       },
     },
@@ -389,6 +391,7 @@
         "tslib": "catalog:",
       },
       "devDependencies": {
+        "@wharfkit/antelope": "workspace:*",
         "@wharfkit/session": "workspace:*",
       },
     },
@@ -589,11 +592,7 @@
 
     "@greymass/buoy": ["@greymass/buoy@1.0.4", "", { "dependencies": { "eventemitter3": "^4.0.7", "tslib": "^2.1.0" } }, "sha512-/O9EsjWJw81TiJcvKqMKxjrJpEfHKh8WcUK07gFT+uS0+JUKfoVrYVQn1qNOAdYWU+AZrhZJop8xP/LYmKfGHg=="],
 
-    "@greymass/create-account": ["@greymass/create-account@1.1.0", "", { "dependencies": { "@greymass/return-path": "^0.0.1", "@wharfkit/antelope": "^1.0.13", "@wharfkit/signing-request": "^3.2.0", "tslib": "^2.1.0" } }, "sha512-6FT1Kwx7t5gL75PklNoMTH+CHCaT6/RZAMW48YvnNEdJyL8m5j5FTn8p5zzU9xaVIKzJSvjA1gkK1mjeXIxmIQ=="],
-
     "@greymass/miniaes": ["@greymass/miniaes@1.0.0", "", { "dependencies": { "tslib": "^2.1.0" } }, "sha512-xKYTnAyyoq3gpJS11JvU4dkju28M8Zbp06CuP3aKR4DMH6B2z64LauGGGzKksKh5Qd770JA/dzhLbImnBlymbg=="],
-
-    "@greymass/return-path": ["@greymass/return-path@0.0.1", "", { "dependencies": { "tslib": "^2.1.0" } }, "sha512-PMPgSJYSHeaYXbURj4JfsEeReWkJqlTKFMn2iTPhvb+6ICR5GhVPDJKewqZPqpZumcD13M1c701YYWKHZlMsxw=="],
 
     "@humanfs/core": ["@humanfs/core@0.19.2", "", { "dependencies": { "@humanfs/types": "^0.15.0" } }, "sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA=="],
 

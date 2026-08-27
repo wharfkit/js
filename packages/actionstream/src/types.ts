@@ -107,7 +107,4 @@ export interface WsAckMessage {
 }
 
 export type WsServerMessage =
-    | WsActionMessage
-    | WsHeartbeatMessage
-    | WsCatchupCompleteMessage
-    | WsErrorMessage
+    WsActionMessage | WsHeartbeatMessage | WsCatchupCompleteMessage | WsErrorMessage

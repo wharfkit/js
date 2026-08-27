@@ -190,7 +190,7 @@ export function recoverPotentialPublicKeysFromAssertion(
             const signature = new Signature(KeyType.WA, encoder.getBytes())
             const key = recoverPublic(signature, message, logging)
             keys.push(key)
-        } catch (e) {
+        } catch {
             // Ignore errors, try next recid
         }
     }
@@ -210,7 +210,7 @@ function decodeAuthData(authData: Uint8Array) {
     const credentialId = decoder.readArray(decoder.readNum(2))
     const [credentialPublicKey] = decodeFirst(decoder.remainder(), {useMaps: true}) as [
         Map<number, any>,
-        Uint8Array
+        Uint8Array,
     ]
 
     return {

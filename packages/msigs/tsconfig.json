@@ -1,16 +1,6 @@
 {
-    "compilerOptions": {
-        "esModuleInterop": true,
-        "importHelpers": true,
-        "isolatedModules": true,
-        "lib": ["esnext"],
-        "module": "esnext",
-        "moduleResolution": "node",
-        "noImplicitAny": false,
-        "sourceMap": true,
-        "strict": true,
-        "useUnknownInCatchVariables": false,
-        "target": "es2020"
-    },
-    "include": ["src/**/*"]
+    "extends": "../../tsconfig.base.json",
+    "include": [
+        "src/**/*"
+    ]
 }

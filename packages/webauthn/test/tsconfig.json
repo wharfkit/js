@@ -1,14 +1,25 @@
 {
-    "extends": "../tsconfig.json",
+    "extends": [
+        "../tsconfig.json",
+        "../../../tsconfig.test.json"
+    ],
     "compilerOptions": {
-        "isolatedModules": false,
-        "module": "commonjs",
-        "target": "es6",
-        "types": ["mocha"],
-        "baseUrl": ".",
+        "baseUrl": "..",
         "paths": {
-            "$lib": ["../src"]
-        },
+            "$lib": [
+                "src"
+            ],
+            "$test": [
+                "test"
+            ],
+            "$test/*": [
+                "test/*"
+            ]
+        }
     },
-    "include": ["./**/*.ts"]
+    "include": [
+        "*.ts",
+        "**/*.ts",
+        "../src/**/*.ts"
+    ]
 }

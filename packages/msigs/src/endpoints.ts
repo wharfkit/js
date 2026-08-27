@@ -67,7 +67,10 @@ export class MsigsClient {
     private maxApprovalLimit?: number
     private limitsInitialized = false
 
-    constructor(private client: APIClient, private options?: MsigsClientOptions) {
+    constructor(
+        private client: APIClient,
+        private options?: MsigsClientOptions
+    ) {
         this.maxProposalLimit = options ? options.maxProposalLimit : undefined
         this.maxApprovalLimit = options ? options.maxApprovalLimit : undefined
     }
@@ -91,7 +94,7 @@ export class MsigsClient {
                 this.maxApprovalLimit = status.max_approval_results || 100
             }
             this.limitsInitialized = true
-        } catch (error) {
+        } catch {
             if (this.maxProposalLimit === undefined) {
                 this.maxProposalLimit = 20
             }

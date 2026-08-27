@@ -253,8 +253,7 @@ export class HealthEntry extends Struct {
     @Struct.field('string') declare service: string
     @Struct.field('string') declare status: string
     @Struct.field('any', {optional: true}) declare service_data?:
-        | NodeosRPCServiceData
-        | ElasticsearchServiceData
+        NodeosRPCServiceData | ElasticsearchServiceData
     @Struct.field(UInt64) declare time: UInt64
 }
 

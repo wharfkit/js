@@ -362,12 +362,16 @@ suite('ActionStreamClient', function () {
 
         test('should advance the resume position past a delivered action', function (done) {
             this.timeout(15000)
-            const client = new ActionStreamClient(server.url, {
-                contracts: ['eosio.token'],
-            }, {
-                reconnectDelay: 50,
-                reconnectMaxDelay: 50,
-            })
+            const client = new ActionStreamClient(
+                server.url,
+                {
+                    contracts: ['eosio.token'],
+                },
+                {
+                    reconnectDelay: 50,
+                    reconnectMaxDelay: 50,
+                }
+            )
 
             let heartbeats = 0
             client.onHeartbeat = () => {
@@ -433,11 +437,15 @@ suite('ActionStreamClient', function () {
 
     suite('ack', function () {
         test('should send ack after ackInterval actions', function (done) {
-            const client = new ActionStreamClient(server.url, {
-                contracts: ['eosio.token'],
-            }, {
-                ackInterval: 3,
-            })
+            const client = new ActionStreamClient(
+                server.url,
+                {
+                    contracts: ['eosio.token'],
+                },
+                {
+                    ackInterval: 3,
+                }
+            )
 
             client.onConnect = () => {
                 for (let i = 0; i < 5; i++) {
@@ -468,11 +476,15 @@ suite('ActionStreamClient', function () {
 
     suite('start at head', function () {
         test('should subscribe past head when startSeq is head', function (done) {
-            const client = new ActionStreamClient(server.url, {
-                contracts: ['eosio.token'],
-            }, {
-                startSeq: 'head',
-            })
+            const client = new ActionStreamClient(
+                server.url,
+                {
+                    contracts: ['eosio.token'],
+                },
+                {
+                    startSeq: 'head',
+                }
+            )
 
             client.onHeartbeat = () => {
                 assert.equal(server.lastSubscribe!.start_seq, '18446744073709551615')
@@ -483,11 +495,15 @@ suite('ActionStreamClient', function () {
         })
 
         test('should resume from the first delivered action, not the sentinel', function (done) {
-            const client = new ActionStreamClient(server.url, {
-                contracts: ['eosio.token'],
-            }, {
-                startSeq: 'head',
-            })
+            const client = new ActionStreamClient(
+                server.url,
+                {
+                    contracts: ['eosio.token'],
+                },
+                {
+                    startSeq: 'head',
+                }
+            )
 
             client.onHeartbeat = () => {
                 server.sendAction({
@@ -508,13 +524,17 @@ suite('ActionStreamClient', function () {
 
     suite('overflow', function () {
         test('should resume from the last accepted seq instead of dropping', function (done) {
-            const client = new ActionStreamClient(server.url, {
-                contracts: ['eosio.token'],
-            }, {
-                queueSize: 2,
-                reconnectDelay: 50,
-                reconnectMaxDelay: 50,
-            })
+            const client = new ActionStreamClient(
+                server.url,
+                {
+                    contracts: ['eosio.token'],
+                },
+                {
+                    queueSize: 2,
+                    reconnectDelay: 50,
+                    reconnectMaxDelay: 50,
+                }
+            )
 
             let overflow: {droppedFrom: string; resumeSeq: string; queueSize: number} | undefined
             client.onOverflow = (info) => {
@@ -557,13 +577,17 @@ suite('ActionStreamClient', function () {
 
         test('should back off while recovery makes no progress', function (done) {
             this.timeout(15000)
-            const client = new ActionStreamClient(server.url, {
-                contracts: ['eosio.token'],
-            }, {
-                queueSize: 1,
-                reconnectDelay: 60,
-                reconnectMaxDelay: 2000,
-            })
+            const client = new ActionStreamClient(
+                server.url,
+                {
+                    contracts: ['eosio.token'],
+                },
+                {
+                    queueSize: 1,
+                    reconnectDelay: 60,
+                    reconnectMaxDelay: 2000,
+                }
+            )
 
             let nextSeq = 10
             measureReconnectDelays(
@@ -581,12 +605,16 @@ suite('ActionStreamClient', function () {
     suite('reconnect backoff', function () {
         test('should grow backoff across repeated resync disconnects', function (done) {
             this.timeout(15000)
-            const client = new ActionStreamClient(server.url, {
-                contracts: ['eosio.token'],
-            }, {
-                reconnectDelay: 60,
-                reconnectMaxDelay: 2000,
-            })
+            const client = new ActionStreamClient(
+                server.url,
+                {
+                    contracts: ['eosio.token'],
+                },
+                {
+                    reconnectDelay: 60,
+                    reconnectMaxDelay: 2000,
+                }
+            )
 
             client.onError = () => {
                 // code 6 is expected on every cycle
@@ -604,13 +632,17 @@ suite('ActionStreamClient', function () {
 
         test('should reset backoff after a connection stays live past the threshold', function (done) {
             this.timeout(15000)
-            const client = new ActionStreamClient(server.url, {
-                contracts: ['eosio.token'],
-            }, {
-                reconnectDelay: 60,
-                reconnectMaxDelay: 2000,
-                healthyThreshold: 150,
-            })
+            const client = new ActionStreamClient(
+                server.url,
+                {
+                    contracts: ['eosio.token'],
+                },
+                {
+                    reconnectDelay: 60,
+                    reconnectMaxDelay: 2000,
+                    healthyThreshold: 150,
+                }
+            )
 
             client.onError = () => {
                 // code 6 is expected on every cycle
@@ -646,12 +678,16 @@ suite('ActionStreamClient', function () {
 
         test('should not reset backoff on a gap-triggered resubscribe', function (done) {
             this.timeout(15000)
-            const client = new ActionStreamClient(server.url, {
-                contracts: ['eosio.token'],
-            }, {
-                reconnectDelay: 60,
-                reconnectMaxDelay: 2000,
-            })
+            const client = new ActionStreamClient(
+                server.url,
+                {
+                    contracts: ['eosio.token'],
+                },
+                {
+                    reconnectDelay: 60,
+                    reconnectMaxDelay: 2000,
+                }
+            )
 
             let nextSeq = 100
             measureReconnectDelays(
@@ -679,13 +715,17 @@ suite('ActionStreamClient', function () {
     suite('stale actions', function () {
         test('should not rewind the resume cursor or the ack watermark', function (done) {
             this.timeout(15000)
-            const client = new ActionStreamClient(server.url, {
-                contracts: ['eosio.token'],
-            }, {
-                reconnectDelay: 50,
-                reconnectMaxDelay: 50,
-                ackInterval: 1000,
-            })
+            const client = new ActionStreamClient(
+                server.url,
+                {
+                    contracts: ['eosio.token'],
+                },
+                {
+                    reconnectDelay: 50,
+                    reconnectMaxDelay: 50,
+                    ackInterval: 1000,
+                }
+            )
 
             let heartbeats = 0
             client.onHeartbeat = () => {
@@ -716,12 +756,16 @@ suite('ActionStreamClient', function () {
     suite('reconnect', function () {
         test('should not re-request queued actions after a reconnect', function (done) {
             this.timeout(15000)
-            const client = new ActionStreamClient(server.url, {
-                contracts: ['eosio.token'],
-            }, {
-                reconnectDelay: 100,
-                reconnectMaxDelay: 500,
-            })
+            const client = new ActionStreamClient(
+                server.url,
+                {
+                    contracts: ['eosio.token'],
+                },
+                {
+                    reconnectDelay: 100,
+                    reconnectMaxDelay: 500,
+                }
+            )
 
             let heartbeats = 0
             client.onHeartbeat = () => {
@@ -756,12 +800,16 @@ suite('ActionStreamClient', function () {
 
         test('should reconnect after server closes connection', function (done) {
             this.timeout(15000)
-            const client = new ActionStreamClient(server.url, {
-                contracts: ['eosio.token'],
-            }, {
-                reconnectDelay: 100,
-                reconnectMaxDelay: 500,
-            })
+            const client = new ActionStreamClient(
+                server.url,
+                {
+                    contracts: ['eosio.token'],
+                },
+                {
+                    reconnectDelay: 100,
+                    reconnectMaxDelay: 500,
+                }
+            )
 
             let connectCount = 0
             client.onConnect = () => {
@@ -794,9 +842,24 @@ suite('ActionStreamClient', function () {
             client.onConnect = () => {
                 if (!first) return
                 first = false
-                server.sendAction({globalSeq: 5000, contract: 'eosio.token', action: 'transfer', subSeq: 1})
-                server.sendAction({globalSeq: 5001, contract: 'eosio.token', action: 'transfer', subSeq: 2})
-                server.sendAction({globalSeq: 5010, contract: 'eosio.token', action: 'transfer', subSeq: 5})
+                server.sendAction({
+                    globalSeq: 5000,
+                    contract: 'eosio.token',
+                    action: 'transfer',
+                    subSeq: 1,
+                })
+                server.sendAction({
+                    globalSeq: 5001,
+                    contract: 'eosio.token',
+                    action: 'transfer',
+                    subSeq: 2,
+                })
+                server.sendAction({
+                    globalSeq: 5010,
+                    contract: 'eosio.token',
+                    action: 'transfer',
+                    subSeq: 5,
+                })
             }
             client.onGap = (gap) => {
                 assert.equal(gap.expected, 3)
@@ -827,9 +890,24 @@ suite('ActionStreamClient', function () {
                 }
             })()
             client.onConnect = () => {
-                server.sendAction({globalSeq: 100, contract: 'eosio.token', action: 'transfer', subSeq: 1})
-                server.sendAction({globalSeq: 101, contract: 'eosio.token', action: 'transfer', subSeq: 2})
-                server.sendAction({globalSeq: 102, contract: 'eosio.token', action: 'transfer', subSeq: 3})
+                server.sendAction({
+                    globalSeq: 100,
+                    contract: 'eosio.token',
+                    action: 'transfer',
+                    subSeq: 1,
+                })
+                server.sendAction({
+                    globalSeq: 101,
+                    contract: 'eosio.token',
+                    action: 'transfer',
+                    subSeq: 2,
+                })
+                server.sendAction({
+                    globalSeq: 102,
+                    contract: 'eosio.token',
+                    action: 'transfer',
+                    subSeq: 3,
+                })
             }
             client.connect()
         })
@@ -867,10 +945,25 @@ suite('ActionStreamClient', function () {
             client.onConnect = () => {
                 connects++
                 if (connects === 1) {
-                    server.sendAction({globalSeq: 100, contract: 'eosio.token', action: 'transfer', subSeq: 1})
-                    server.sendAction({globalSeq: 300, contract: 'eosio.token', action: 'transfer', subSeq: 3})
+                    server.sendAction({
+                        globalSeq: 100,
+                        contract: 'eosio.token',
+                        action: 'transfer',
+                        subSeq: 1,
+                    })
+                    server.sendAction({
+                        globalSeq: 300,
+                        contract: 'eosio.token',
+                        action: 'transfer',
+                        subSeq: 3,
+                    })
                 } else {
-                    server.sendAction({globalSeq: 101, contract: 'eosio.token', action: 'transfer', subSeq: 1})
+                    server.sendAction({
+                        globalSeq: 101,
+                        contract: 'eosio.token',
+                        action: 'transfer',
+                        subSeq: 1,
+                    })
                 }
             }
             client.connect()

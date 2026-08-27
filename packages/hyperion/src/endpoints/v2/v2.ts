@@ -30,7 +30,6 @@ class HyperionV2StateAPIClient {
     constructor(private client: APIClient) {}
 
     async get_voters(producer?: NameType, proxy?: boolean, skip?: number, limit?: number) {
-        let queryParams = ''
         const queryParts: string[] = []
 
         if (producer) queryParts.push(`producer=${producer}`)
@@ -38,7 +37,7 @@ class HyperionV2StateAPIClient {
         if (skip !== undefined) queryParts.push(`skip=${skip}`)
         if (limit !== undefined) queryParts.push(`limit=${limit}`)
 
-        queryParams = queryParts.length ? '?' + queryParts.join('&') : ''
+        const queryParams = queryParts.length ? '?' + queryParts.join('&') : ''
 
         return this.client.call({
             path: `/v2/state/get_voters${queryParams}`,
@@ -48,7 +47,6 @@ class HyperionV2StateAPIClient {
     }
 
     async get_links(account?: NameType, code?: NameType, action?: NameType, permission?: NameType) {
-        let queryParams = ''
         const queryParts: string[] = []
 
         if (account !== undefined) queryParts.push(`account=${account}`)
@@ -56,7 +54,7 @@ class HyperionV2StateAPIClient {
         if (action !== undefined) queryParts.push(`action=${action}`)
         if (permission !== undefined) queryParts.push(`permission=${permission}`)
 
-        queryParams = queryParts.length ? '?' + queryParts.join('&') : ''
+        const queryParams = queryParts.length ? '?' + queryParts.join('&') : ''
 
         return this.client.call({
             path: `/v2/state/get_links${queryParams}`,

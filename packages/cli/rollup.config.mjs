@@ -1,12 +1,15 @@
+import path from 'path'
+import {fileURLToPath} from 'url'
+import fs from 'fs'
 import typescript from '@rollup/plugin-typescript'
 import cleanup from 'rollup-plugin-cleanup'
 import json from '@rollup/plugin-json'
 
-import pkg from './package.json'
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json')))
 
 const external = ['fs', ...Object.keys(pkg.dependencies)]
 
-// Add shebang + disable experimental fetch warning
 const banner = `
 #!/usr/bin/env node
 process.removeAllListeners('warning')

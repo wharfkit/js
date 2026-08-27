@@ -50,7 +50,8 @@ suite('functionality', function () {
                     type: Claim,
                 })
                 assert.isTrue(decoded.account.equals(PlaceholderName))
-                assert.isNull(decoded.amount)
+                // antelope 2.0 leaves an absent optional undefined where 1.x set it to null
+                assert.isNotOk(decoded.amount)
             })
             test('typed values', function () {
                 const action = rewardsContract.action('claim', {

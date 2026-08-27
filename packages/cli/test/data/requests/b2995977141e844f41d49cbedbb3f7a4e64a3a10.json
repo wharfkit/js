@@ -3,7 +3,8 @@
         "path": "https://jungle4.greymass.com/v1/chain/get_table_rows",
         "params": {
             "method": "POST",
-            "body": "{\"table\":\"proposal\",\"code\":\"eosio.msig\",\"scope\":\"msigtestert1\",\"limit\":1,\"lower_bound\":\"rebrand\",\"upper_bound\":\"rebrand\",\"key_type\":\"name\",\"json\":false}"
+            "body": "{\"table\":\"proposal\",\"code\":\"eosio.msig\",\"scope\":\"msigtestert1\",\"limit\":1,\"lower_bound\":\"rebrand\",\"upper_bound\":\"rebrand\",\"key_type\":\"name\",\"json\":false}",
+            "headers": {}
         }
     },
     "status": 200,

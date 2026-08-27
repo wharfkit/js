@@ -122,10 +122,18 @@ function guardInternalRefs(list: Member[]) {
 
 // Every member must reach every gate stage. A member that cannot is named here with its
 // reason, so an exemption is a decision on the record rather than a renamed target.
-const GATE_EXEMPT: Record<string, string> = {}
+const GATE_EXEMPT: Record<string, string> = {
+    '@wharfkit/conformance:build':
+        'the contract build needs Docker and the CDT toolchain; run make -C packages/conformance contract',
+    '@wharfkit/conformance:test':
+        'the suite runs under bun against a debug wasm built by Docker and CDT',
+    '@wharfkit/conformance:browser': 'a C++ contract harness has no browser bundle',
+}
 
 function runScript(member: Member, script: string) {
-    if (member.json.scripts?.[script]) {
+    if (GATE_EXEMPT[`${member.name}:${script}`]) {
+        log(`${member.name}: ${script} exempt (${GATE_EXEMPT[`${member.name}:${script}`]})`)
+    } else if (member.json.scripts?.[script]) {
         log(`${member.name}: bun run ${script}`)
         execFileSync('bun', ['run', script], {cwd: member.dir, stdio: 'inherit'})
     } else if (script === 'build' && existsSync(join(member.dir, 'Makefile'))) {
@@ -137,8 +145,6 @@ function runScript(member: Member, script: string) {
     ) {
         log(`${member.name}: make ${script}`)
         execFileSync('make', ['-C', member.dir, script], {stdio: 'inherit'})
-    } else if (GATE_EXEMPT[`${member.name}:${script}`]) {
-        log(`${member.name}: ${script} exempt (${GATE_EXEMPT[`${member.name}:${script}`]})`)
     } else {
         fail(
             `${member.name}: no ${script} entry point; add one or record an exemption in GATE_EXEMPT`

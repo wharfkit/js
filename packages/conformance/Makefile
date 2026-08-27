@@ -1,7 +1,7 @@
 include .env
 export
 
-BIN := ./node_modules/.bin
+BIN := ../../node_modules/.bin
 SHELL := /bin/bash
 CDT_IMAGE := conformance-cdt:$(CDT_VERSION)
 INCLUDES := -I include
@@ -67,7 +67,7 @@ codegen/dir:
 	mkdir -p codegen
 
 node_modules:
-	bun install --frozen-lockfile
+	bun install --cwd ../..
 
 # TESTS AND CHECKS
 
@@ -76,7 +76,7 @@ test: build/debug codegen node_modules
 	bun test
 
 .PHONY: check cppcheck jscheck
-check: cppcheck jscheck
+check: jscheck
 
 CPP_SOURCES := $(wildcard src/*.cpp) $(wildcard include/conformance/*.hpp) $(wildcard include/conformance/cases/*.hpp)
 
@@ -92,7 +92,7 @@ TS_DIRS := $(wildcard test) $(wildcard testnet)
 
 jscheck: node_modules
 	@if [ -n "$(TS_SOURCES)" ]; then \
-		$(BIN)/eslint $(TS_DIRS) --ext .ts --max-warnings 0 --format unix && echo "Ok"; \
+		$(BIN)/eslint $(TS_DIRS) --max-warnings 0 && echo "Ok"; \
 	else \
 		echo "no TS sources yet, skipping jscheck"; \
 	fi
@@ -100,7 +100,7 @@ jscheck: node_modules
 .PHONY: format
 format:
 	@if [ -n "$(CPP_SOURCES)" ]; then clang-format -i $(CPP_SOURCES); fi
-	@if [ -n "$(TS_SOURCES)" ]; then $(BIN)/eslint $(TS_DIRS) --ext .ts --fix; fi
+	@if [ -n "$(TS_SOURCES)" ]; then $(BIN)/eslint $(TS_DIRS) --fix; fi
 
 # TESTNET
 

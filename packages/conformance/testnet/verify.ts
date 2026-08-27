@@ -275,7 +275,7 @@ for (let start = 0; start < decodedRows.length; start += BATCH_SIZE) {
     let returned: string[] | undefined
     try {
         returned = await sendReadOnly(batch.map(actionFor))
-    } catch (error) {
+    } catch {
         returned = undefined
         for (const decoded of batch) {
             try {

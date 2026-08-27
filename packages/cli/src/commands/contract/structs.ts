@@ -272,7 +272,7 @@ function findDependencies(
     if (struct.base?.length) {
         const baseStruct = allStructs.find((s) => s.name === struct.base)
 
-        baseStruct && dependencies.push(baseStruct)
+        if (baseStruct) dependencies.push(baseStruct)
     }
 
     for (const field of struct.fields) {

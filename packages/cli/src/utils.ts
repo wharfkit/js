@@ -1,11 +1,10 @@
 import {APIClient, FetchProvider} from '@wharfkit/antelope'
 import {capitalize} from '@wharfkit/contract'
-import fetch from 'node-fetch'
 
 type logLevel = 'info' | 'debug'
 
 export function makeClient(url: string): APIClient {
-    const provider = new FetchProvider(url, {fetch})
+    const provider = new FetchProvider(url)
     return new APIClient({provider})
 }
 

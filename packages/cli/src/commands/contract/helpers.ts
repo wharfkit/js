@@ -86,8 +86,6 @@ function structIsUsedInActionParams(struct: ABI.Struct, abi: ABI.Def) {
         return true
     }
 
-    let isUsedByActionStruct = false
-
     const alias = findAliasFromType(struct.name, abi)
 
     const structsUsingStruct = abi.structs.filter((abiStruct) => {
@@ -100,7 +98,7 @@ function structIsUsedInActionParams(struct: ABI.Struct, abi: ABI.Def) {
         return false
     }
 
-    isUsedByActionStruct = abi.actions.some((action) =>
+    let isUsedByActionStruct = abi.actions.some((action) =>
         structsUsingStruct.map((s) => s.name).includes(action.type)
     )
 

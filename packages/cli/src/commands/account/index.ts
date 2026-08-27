@@ -1,7 +1,6 @@
 import type {PublicKeyType} from '@wharfkit/antelope'
 import {KeyType, type NameType, PrivateKey} from '@wharfkit/antelope'
 import {type ChainDefinition, type ChainIndices, Chains} from '@wharfkit/common'
-import fetch from 'node-fetch'
 
 import {log, makeClient} from '../../utils'
 

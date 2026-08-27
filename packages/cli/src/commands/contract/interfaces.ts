@@ -42,7 +42,6 @@ export function generateActionInterface(
         const abiVariant = findVariant(field.type, abi)
 
         let types
-        let variantType
         const aliasType = findTypeFromAlias(field.type, abi)
 
         if (abiVariant) {
@@ -68,8 +67,6 @@ export function generateActionInterface(
             types = [field.type]
         }
 
-        const variantName = variantType && `Type.${variantType}`
-
         types.forEach((type) => {
             const typeStruct = findAbiStruct(type, abi)
 
@@ -80,7 +77,7 @@ export function generateActionInterface(
         })
 
         const typeReferenceNode = ts.factory.createTypeReferenceNode(
-            variantName || findParamTypeString(aliasType || field.type, 'Type.', abi)
+            findParamTypeString(aliasType || field.type, 'Type.', abi)
         )
 
         let isOptional = false

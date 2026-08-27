@@ -1,0 +1,345 @@
+import {
+    createIdentityRequest,
+    extractSignaturesFromCallback,
+    isCallback,
+    LinkInfo,
+    setTransactionCallback,
+    waitForCallback,
+} from '@wharfkit/protocol-esr'
+import {ReceiveOptions} from '@greymass/buoy'
+import {
+    AbstractWalletPlugin,
+    CallbackPayload,
+    Checksum256,
+    LoginContext,
+    PermissionLevel,
+    ResolvedSigningRequest,
+    TransactContext,
+    UserInterface,
+    WalletPlugin,
+    WalletPluginConfig,
+    WalletPluginLoginResponse,
+    WalletPluginMetadata,
+    WalletPluginSignResponse,
+} from '@wharfkit/session'
+import {PrivateKey, PublicKey, UInt64} from '@wharfkit/antelope'
+import {sealMessage} from '@wharfkit/sealed-messages'
+import WebSocket from 'isomorphic-ws'
+
+import defaultTranslations from './translations'
+
+export function openPopupWindow(url: string): Window | null {
+    const width = 450
+    const height = 750
+    const left = Math.round(window.screenX + (window.outerWidth - width) / 2)
+    const top = Math.round(window.screenY + (window.outerHeight - height) / 2)
+    return window.open(
+        url,
+        'web-authenticator',
+        `width=${width},height=${height},left=${left},top=${top}`
+    )
+}
+
+export function openWallet(url: string): Window | null {
+    return openPopupWindow(url)
+}
+
+interface WebAuthenticatorOptions {
+    /** The URLs for the web authenticator service, keyed by chain ID */
+    urls: Record<string, string>
+    /** The buoy service URL for messaging */
+    buoyServiceUrl?: string
+    /** The buoy WebSocket for messaging */
+    buoyWs?: WebSocket
+}
+
+export class WalletPluginWebAuthenticator extends AbstractWalletPlugin implements WalletPlugin {
+    private urls: Record<string, string>
+    private buoyServiceUrl: string
+    private buoyWs?: WebSocket
+
+    constructor(options: WebAuthenticatorOptions) {
+        super()
+        this.urls = options.urls
+        this.buoyServiceUrl = options.buoyServiceUrl || 'https://cb.anchor.link'
+        this.buoyWs = options?.buoyWs
+    }
+
+    /**
+     * The logic configuration for the wallet plugin.
+     */
+    readonly config: WalletPluginConfig = {
+        // Allow chain selection since the web authenticator may support multiple chains
+        requiresChainSelect: false,
+        // Allow permission selection
+        requiresPermissionSelect: false,
+        // Currently only supports Jungle 4 and Vaulta:
+        supportedChains: [
+            '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
+            'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
+        ],
+    }
+
+    /**
+     * The metadata for the wallet plugin to be displayed in the user interface.
+     */
+    readonly metadata: WalletPluginMetadata = WalletPluginMetadata.from({
+        name: 'Web Authenticator',
+        description: 'Sign transactions using a web-based authenticator',
+        homepage: 'https://github.com/wharfkit/wallet-plugin-web-authenticator',
+    })
+
+    /**
+     * Unique identifier for this wallet plugin
+     */
+    get id(): string {
+        return 'web-authenticator'
+    }
+
+    /**
+     * The translations for this plugin
+     */
+    translations = defaultTranslations
+
+    getChainUrl(context: LoginContext | TransactContext): string {
+        // default to first
+        let url = this.urls[0]
+
+        // override if chain specified
+        if (context.chain) {
+            url = this.urls[String(context.chain.id)]
+        }
+
+        if (!url) {
+            throw new Error(
+                `No web authenticator URL configured for chain ID: ${context.chain?.id}`
+            )
+        }
+
+        return url
+    }
+
+    /**
+     * Opens a popup window with the given URL and waits for it to complete
+     */
+    private async openPopup(
+        url: string,
+        receiveOptions: ReceiveOptions,
+        ui?: UserInterface
+    ): Promise<{payload: CallbackPayload}> {
+        return new Promise((resolve, reject) => {
+            const t = ui?.getTranslate(this.id)
+
+            // Show status message using WharfKit UI
+            ui?.status('Opening wallet window...')
+
+            const popup = openPopupWindow(url)
+
+            if (!popup) {
+                return this.showManualPopupPrompt(url, receiveOptions, ui)
+                    .then((response) => {
+                        resolve(response)
+                    })
+                    .catch((error) => {
+                        reject(error)
+                    })
+            }
+
+            // Update status
+            ui?.prompt({
+                title: 'Approve',
+                body: 'Please approve the transaction in the wallet window.',
+                elements: [],
+            })
+
+            const checkClosedInterval = setInterval(() => {
+                if (popup?.closed) {
+                    clearInterval(checkClosedInterval)
+                    ui?.status('Transaction cancelled')
+                    reject(new Error('Transaction cancelled by user'))
+                }
+            }, 1000)
+
+            waitForCallback(receiveOptions, this.buoyWs, t)
+                .then((response) => {
+                    popup?.close()
+                    ui?.status('Transaction approved successfully')
+                    resolve({payload: response})
+                })
+                .catch(() => {
+                    popup?.close()
+                    ui?.status('Transaction cancelled')
+                    reject(new Error('Transaction cancelled by user'))
+                })
+                .finally(() => {
+                    clearInterval(checkClosedInterval)
+                })
+        })
+    }
+
+    /**
+     * Shows error prompt and handles retry logic
+     */
+    private showManualPopupPrompt(
+        url: string,
+        receiveOptions: ReceiveOptions,
+        ui?: UserInterface
+    ): Promise<{payload: CallbackPayload}> {
+        return new Promise((resolve, reject) => {
+            ui?.prompt({
+                title: 'Pop-up blocked',
+                body: `Pop-up blocked by your browser. Open the wallet window manually.`,
+                elements: [
+                    {
+                        type: 'button',
+                        data: {
+                            label: 'Open Wallet',
+                            onClick: () => {
+                                this.openPopup(url, receiveOptions, ui)
+                                    .then((response) => {
+                                        resolve(response)
+                                    })
+                                    .catch((error) => {
+                                        reject(error)
+                                    })
+                            },
+                        },
+                    },
+                ],
+            })
+        })
+    }
+
+    /**
+     * Performs login by opening the web authenticator in a popup
+     */
+    async login(context: LoginContext): Promise<WalletPluginLoginResponse> {
+        try {
+            context.appName = context.appName || 'Unknown App'
+
+            // Create the identity request to be presented to the user
+            const {
+                callback: receiveOptions,
+                request,
+                requestKey,
+                privateKey,
+            } = await createIdentityRequest(context, this.buoyServiceUrl)
+
+            const url = this.getChainUrl(context)
+            const loginUrl = `${url}/sign?esr=${request.encode()}&chain=${
+                context.chain?.id
+            }&requestKey=${requestKey}`
+
+            const {payload}: {payload: CallbackPayload} = await this.openPopup(
+                loginUrl,
+                receiveOptions,
+                context.ui
+            )
+
+            this.data.encryptionKey = String(privateKey)
+            this.data.messageKey = payload.link_key
+
+            if (!payload.cid) {
+                throw new Error('Login failed: No chain ID returned')
+            }
+
+            // Prepare the basic login response
+            const loginResponse: WalletPluginLoginResponse = {
+                chain: Checksum256.from(payload.cid),
+                permissionLevel: PermissionLevel.from({
+                    actor: payload.sa,
+                    permission: payload.sp,
+                }),
+            }
+
+            // Store the identity request and signature for verification
+            // The 3rd party app can use this to verify the authentication
+            if (payload.sig) {
+                // Create identity proof object for third-party verification
+                Object.assign(loginResponse, {
+                    identityProof: {
+                        signature: payload.sig,
+                        signedRequest: request.encode(),
+                    },
+                })
+            }
+
+            return loginResponse
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                throw new Error(`Login failed: ${error.message}`)
+            }
+            throw new Error('Login failed: Unknown error')
+        }
+    }
+
+    /**
+     * Signs a transaction by opening the web authenticator in a popup
+     */
+    async sign(
+        resolved: ResolvedSigningRequest,
+        context: TransactContext
+    ): Promise<WalletPluginSignResponse> {
+        try {
+            // Ensure we have a request key from login
+            if (!this.data.encryptionKey || !this.data.messageKey) {
+                throw new Error('No request keys available - please login first')
+            }
+
+            const expiration = resolved.transaction.expiration.toDate()
+
+            // Create a new signing request based on the existing resolved request
+            const modifiedRequest = await context.createRequest({transaction: resolved.transaction})
+
+            // Set the expiration on the request LinkInfo
+            modifiedRequest.setInfoKey(
+                'link',
+                LinkInfo.from({
+                    expiration,
+                })
+            )
+
+            // Add the callback to the request
+            const callback = setTransactionCallback(modifiedRequest, this.buoyServiceUrl)
+
+            // Seal the request using the shared secret
+            const nonce = UInt64.from(Math.floor(Math.random() * Number.MAX_SAFE_INTEGER))
+
+            const sealedRequest = await sealMessage(
+                modifiedRequest.encode(),
+                PrivateKey.from(this.data.encryptionKey),
+                PublicKey.from(this.data.messageKey),
+                nonce
+            )
+
+            const url = this.getChainUrl(context)
+            const signUrl = `${url}/sign?sealed=${sealedRequest.toString(
+                'hex'
+            )}&nonce=${nonce.toString()}&chain=${context.chain?.id}&accountName=${
+                context.accountName
+            }&permissionName=${context.permissionName}&appName=${
+                context.appName
+            }&requestKey=${String(PrivateKey.from(this.data.encryptionKey).toPublic())}`
+
+            const response = await this.openPopup(signUrl, callback, context.ui)
+
+            const signatures = extractSignaturesFromCallback(response.payload)
+            const wasSuccessful = isCallback(response.payload) && signatures.length > 0
+
+            if (wasSuccessful) {
+                // Return the signatures from the wallet
+                return {
+                    signatures: extractSignaturesFromCallback(response.payload),
+                    resolved: resolved, // Return the original resolved request for testing
+                }
+            } else {
+                throw new Error('Signing failed: No signatures returned')
+            }
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                throw new Error(`Signing failed: ${error.message}`)
+            }
+            throw new Error('Signing failed: Unknown error')
+        }
+    }
+}

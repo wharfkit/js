@@ -1,0 +1,385 @@
+/* Self-registered so consumers write no @source line; without it a consuming app builds clean and ships unstyled. */
+@source "./components";
+
+@theme inline {
+	/* Build-time only: @media (width >= var(--x)) is not valid CSS. */
+	--breakpoint-xs: 480px;
+
+	/* Fonts */
+	--font-sans: var(--theme-font-sans);
+	--font-sans--font-feature-settings: var(--theme-font-sans-feature-settings);
+	--font-sans-hero: var(--theme-font-sans-hero);
+	--font-mono: var(--theme-font-mono);
+
+	/* Typography */
+	--text-display: var(--theme-text-display);
+	--text-display--line-height: var(--theme-text-display-line-height);
+	--text-display--font-weight: var(--theme-text-display-font-weight);
+
+	--text-headline: var(--theme-text-headline);
+	--text-headline--line-height: var(--theme-text-headline-line-height);
+	--text-headline--font-weight: var(--theme-text-headline-font-weight);
+
+	--text-title: var(--theme-text-title);
+	--text-title--line-height: var(--theme-text-title-line-height);
+	--text-title--font-weight: var(--theme-text-title-font-weight);
+
+	--text-body: var(--theme-text-body);
+	--text-body--font-weight: var(--theme-text-body-font-weight);
+
+	--text-label: var(--theme-text-label);
+	--text-label--line-height: var(--theme-text-label-line-height);
+	--text-label--font-weight: var(--theme-text-label-font-weight);
+
+	--text-label-sm: var(--theme-text-label-sm);
+	--text-label-sm--line-height: var(--theme-text-label-sm-line-height);
+	--text-label-sm--font-weight: var(--theme-text-label-sm-font-weight);
+
+	/* Colors */
+	--color-*: initial;
+	--color-transparent: transparent;
+	--color-current-color: currentColor;
+	--color-inherit: inherit;
+	--color-black: #000;
+	--color-white: #fff;
+
+	--color-primary: var(--role-primary);
+	--color-primary-hover: var(--role-primary-hover);
+	--color-on-primary: var(--role-on-primary);
+	--color-primary-container: var(--role-primary-container);
+	--color-on-primary-container: var(--role-on-primary-container);
+
+	--color-error: var(--role-error);
+	--color-on-error: var(--role-on-error);
+	--color-error-container: var(--role-error-container);
+	--color-on-error-container: var(--role-on-error-container);
+
+	--color-success: var(--role-success);
+	--color-on-success: var(--role-on-success);
+	--color-success-container: var(--role-success-container);
+	--color-on-success-container: var(--role-on-success-container);
+
+	--color-destructive: var(--role-destructive);
+	--color-on-destructive: var(--role-on-destructive);
+	--color-destructive-container: var(--role-destructive-container);
+	--color-on-destructive-container: var(--role-on-destructive-container);
+
+	--color-warning: var(--role-warning);
+	--color-on-warning: var(--role-on-warning);
+	--color-warning-container: var(--role-warning-container);
+	--color-on-warning-container: var(--role-on-warning-container);
+
+	--color-shadow: var(--role-shadow);
+	--color-scrim: var(--role-scrim);
+
+	--color-focus: var(--role-focus);
+
+	--color-outline: var(--role-outline);
+	--color-outline-variant: var(--role-outline-variant);
+	--color-surface: var(--role-surface);
+	--color-on-surface: var(--role-on-surface);
+	--color-on-surface-variant: var(--role-on-surface-variant);
+	--color-muted: var(--role-on-surface-variant);
+	--color-surface-container-lowest: var(--role-surface-container-lowest);
+	--color-surface-container-low: var(--role-surface-container-low);
+	--color-surface-container: var(--role-surface-container);
+	--color-surface-container-high: var(--role-surface-container-high);
+	--color-surface-container-highest: var(--role-surface-container-highest);
+	--color-background: var(--role-background);
+	--color-on-background: var(--role-on-background);
+}
+
+/* .dark is accepted alongside the primary [data-scheme=dark] so class-toggle consumers work unchanged. */
+@custom-variant dark (&:where([data-scheme=dark], [data-scheme=dark] *, .dark, .dark *));
+
+@layer base {
+	:root {
+		/* Override these, not --font-* */
+		--theme-font-sans:
+			'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+			'Segoe UI Symbol', 'Noto Color Emoji';
+		--theme-font-sans-feature-settings: 'calt' 0;
+
+		--theme-font-sans-hero:
+			'Inter Variable', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+			'Noto Color Emoji';
+
+		--theme-font-mono:
+			'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+			'Liberation Mono', 'Courier New', monospace;
+
+		/* Override these, not --text-* */
+		--theme-text-display: var(--text-3xl);
+		--theme-text-display-line-height: 1;
+		--theme-text-display-font-weight: 600;
+
+		--theme-text-headline: var(--text-2xl);
+		--theme-text-headline-line-height: 1;
+		--theme-text-headline-font-weight: 600;
+
+		--theme-text-title: var(--text-lg);
+		--theme-text-title-line-height: 1;
+		--theme-text-title-font-weight: 500;
+
+		--theme-text-body: var(--text-base);
+		--theme-text-body-font-weight: 400;
+
+		--theme-text-label: var(--text-base);
+		--theme-text-label-line-height: 1;
+		--theme-text-label-font-weight: 500;
+
+		--theme-text-label-sm: var(--text-sm);
+		--theme-text-label-sm-line-height: 1;
+		--theme-text-label-sm-font-weight: 500;
+
+		--theme-seed: #2e3bff;
+
+		--error-hue: 27;
+		--success-hue: 152;
+		--destructive-hue: 53;
+		--warning-hue: 85; /* Yellow hue for warnings */
+
+		--role-shadow: oklch(0 0 0);
+		--role-scrim: oklch(0 0 0 / 0.5);
+
+		/* Deliberately not seed-derived: a focus ring must contrast against the brand, not match it. */
+		--role-focus: oklch(0.58 0.125 76);
+
+		--role-primary: oklch(from var(--theme-seed) 0.4 c h);
+		--role-primary-hover: oklch(from var(--theme-seed) 0.5 c h);
+		--role-on-primary: oklch(from var(--theme-seed) 1 0 h);
+
+		--role-primary-container: oklch(from var(--theme-seed) 0.9 0.086 h);
+		--role-on-primary-container: oklch(from var(--theme-seed) 0.218 0.085 h);
+
+		--role-error: oklch(0.51 0.1927 var(--error-hue));
+		--role-on-error: oklch(1 0 var(--error-hue));
+		--role-error-container: oklch(0.92 0.042 var(--error-hue));
+		--role-on-error-container: oklch(0.42 0.17 var(--error-hue));
+
+		--role-success: oklch(0.51 0.1927 var(--success-hue));
+		--role-on-success: oklch(1 0 var(--success-hue));
+		--role-success-container: oklch(0.92 0.042 var(--success-hue));
+		--role-on-success-container: oklch(0.42 0.17 var(--success-hue));
+
+		--role-destructive: oklch(0.51 0.1927 var(--destructive-hue));
+		--role-on-destructive: oklch(1 0 var(--destructive-hue));
+		--role-destructive-container: oklch(0.92 0.042 var(--destructive-hue));
+		--role-on-destructive-container: oklch(0.42 0.17 var(--destructive-hue));
+
+		--role-warning: oklch(0.51 0.1927 var(--warning-hue));
+		--role-on-warning: oklch(1 0 var(--warning-hue));
+		--role-warning-container: oklch(0.92 0.042 var(--warning-hue));
+		--role-on-warning-container: oklch(0.42 0.17 var(--warning-hue));
+
+		--role-outline-variant: oklch(from var(--color-primary) 0.57 0.08 h);
+		--role-outline: oklch(from var(--color-outline-variant) 0.83 0.04 h);
+
+		--role-surface: oklch(from var(--color-primary) 0.98 0.007 h);
+		--role-on-surface: oklch(from var(--color-surface) 0.22 c h);
+		--role-on-surface-variant: oklch(from var(--color-surface) 0.4 0.015 h);
+
+		/* Surface Containers are named by emphasis (contrast) relative to the Surface color */
+		--role-surface-container-lowest: oklch(from var(--color-surface) calc(l + 0.01) 0.01 h);
+		--role-surface-container-low: oklch(from var(--color-surface) calc(l - 0.01) 0.01 h);
+		--role-surface-container: oklch(from var(--color-surface) calc(l - 0.023) 0.01 h);
+		--role-surface-container-high: oklch(from var(--color-surface) calc(l - 0.05) 0.01 h);
+		--role-surface-container-highest: oklch(from var(--color-surface) calc(l - 0.1) 0.01 h);
+
+		/* In light mode, since the surfaces are near-white the background is derived from the surface */
+		--role-background: var(--color-surface-container-high);
+		--role-on-background: var(--color-on-surface);
+	}
+
+	[data-scheme='dark'],
+	.dark {
+		/* Lighter than the light-mode value: a focus ring tracks its own scheme's surfaces. */
+		--role-focus: oklch(0.81 0.17 76);
+
+		--role-primary: oklch(from var(--theme-seed) 0.82 c h);
+		--role-primary-hover: oklch(from var(--theme-seed) 0.9 c h);
+		--role-on-primary: oklch(from var(--theme-seed) 0.2 c h);
+
+		--role-primary-container: oklch(from var(--theme-seed) 0.39 0.086 h);
+		--role-on-primary-container: oklch(from var(--theme-seed) 0.9 0.085 h);
+
+		--role-error: oklch(0.84 0.089 var(--error-hue));
+		--role-on-error: oklch(0.33 0.134 var(--error-hue));
+		--role-error-container: oklch(0.42 0.17 var(--error-hue));
+		--role-on-error-container: oklch(0.92 0.042 var(--error-hue));
+
+		--role-success: oklch(0.84 0.089 var(--success-hue));
+		--role-on-success: oklch(0.33 0.134 var(--success-hue));
+		--role-success-container: oklch(0.42 0.17 var(--success-hue));
+		--role-on-success-container: oklch(0.92 0.042 var(--success-hue));
+
+		--role-destructive: oklch(0.84 0.089 var(--destructive-hue));
+		--role-on-destructive: oklch(0.33 0.134 var(--destructive-hue));
+		--role-destructive-container: oklch(0.42 0.17 var(--destructive-hue));
+		--role-on-destructive-container: oklch(0.92 0.042 var(--destructive-hue));
+
+		--role-warning: oklch(0.84 0.089 var(--warning-hue));
+		--role-on-warning: oklch(0.33 0.134 var(--warning-hue));
+		--role-warning-container: oklch(0.42 0.17 var(--warning-hue));
+		--role-on-warning-container: oklch(0.92 0.042 var(--warning-hue));
+
+		--role-outline-variant: oklch(from var(--color-primary) 0.65 0.08 h);
+		--role-outline: oklch(from var(--color-outline-variant) 0.4 0.05 h);
+
+		--role-background: oklch(from var(--color-primary) 0.24 0.02 h);
+		--role-on-background: var(--color-on-surface);
+
+		/* In dark mode, the surfaces are derived from the background */
+		--role-surface: oklch(from var(--color-background) calc(l + 0.02) c h);
+		--role-on-surface: oklch(from var(--color-surface) 0.95 c h);
+		--role-on-surface-variant: oklch(from var(--color-surface) 0.8 calc(c * 2) h);
+
+		/* Surface Containers are named by emphasis (contrast) relative to the Surface color */
+		--role-surface-container-lowest: oklch(from var(--color-surface) calc(l - 0.01) c h);
+		--role-surface-container-low: oklch(from var(--color-surface) calc(l + 0.01) c h);
+		--role-surface-container: oklch(from var(--color-surface) calc(l + 0.023) c h);
+		--role-surface-container-high: oklch(from var(--color-surface) calc(l + 0.05) c h);
+		--role-surface-container-highest: oklch(from var(--color-surface) calc(l + 0.1) c h);
+	}
+
+	:root {
+		@apply bg-background text-on-background h-full font-sans;
+		color-scheme: dark light;
+		touch-action: manipulation;
+		scrollbar-gutter: stable;
+
+		::selection {
+			@apply bg-primary text-on-primary;
+		}
+	}
+
+	/* :where() drops these to zero specificity so a host style wins; scoping them away would restyle ~187 consumer files. */
+	:where(details > summary) {
+		list-style: none;
+	}
+	:where(details > summary)::-webkit-details-marker {
+		display: none;
+	}
+
+	:where(p, li) {
+		@apply text-body text-muted;
+	}
+
+	:where(hr) {
+		@apply text-outline;
+	}
+}
+
+/* Without relative colour every structural role goes invalid at once — text inherits, backgrounds go transparent. Neutral grey, so no brand is imposed. */
+@supports not (color: oklch(from red l c h)) {
+	@layer base {
+		:root {
+			--role-primary: #3b46c4;
+			--role-primary-hover: #4d59d8;
+			--role-on-primary: #ffffff;
+			--role-primary-container: #dcdefa;
+			--role-on-primary-container: #1a1d4d;
+
+			--role-outline: #c9c9cf;
+			--role-outline-variant: #8b8b93;
+
+			--role-surface: #fafafa;
+			--role-on-surface: #2b2b2e;
+			--role-on-surface-variant: #5c5c63;
+			--role-surface-container-lowest: #ffffff;
+			--role-surface-container-low: #f4f4f5;
+			--role-surface-container: #ededee;
+			--role-surface-container-high: #e4e4e6;
+			--role-surface-container-highest: #d8d8da;
+			--role-background: #e4e4e6;
+			--role-on-background: #2b2b2e;
+		}
+
+		[data-scheme='dark'],
+		.dark {
+			--role-primary: #b3b9f2;
+			--role-primary-hover: #cdd1f7;
+			--role-on-primary: #1a1d4d;
+			--role-primary-container: #3b4194;
+			--role-on-primary-container: #dcdefa;
+
+			--role-outline: #4a4a52;
+			--role-outline-variant: #6f6f78;
+
+			--role-surface: #26262a;
+			--role-on-surface: #f0f0f2;
+			--role-on-surface-variant: #c2c2c8;
+			--role-surface-container-lowest: #202024;
+			--role-surface-container-low: #2b2b30;
+			--role-surface-container: #313136;
+			--role-surface-container-high: #3a3a40;
+			--role-surface-container-highest: #46464d;
+			--role-background: #1c1c20;
+			--role-on-background: #f0f0f2;
+		}
+	}
+}
+
+/* Layout */
+
+@utility card {
+	@apply bg-surface grid gap-4 rounded-xl p-5;
+}
+
+@utility layout-switcher {
+	@apply flex flex-wrap gap-4;
+
+	& > * {
+		flex-grow: 1;
+		flex-basis: calc((var(--switcher-threshold) - 100%) * 999);
+	}
+}
+
+@utility layout-grid {
+	@apply grid gap-4;
+	grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-itemWidth), 100%), 1fr));
+}
+
+@utility subgrid {
+	@apply col-span-full grid grid-cols-subgrid;
+}
+
+/* Tables */
+
+@utility table-styles {
+	:where(&) {
+		@apply w-full table-auto overflow-x-auto;
+
+		thead tr {
+			@apply bg-none;
+		}
+
+		tr,
+		.table-row-styles {
+			@apply table-row-border table-row-background;
+		}
+
+		th,
+		.table-head-styles {
+			@apply text-muted py-1.5 pr-2 pl-2 text-left text-base font-medium first:pl-0 last:pr-0;
+		}
+
+		td,
+		.table-cell-styles {
+			@apply py-3 pr-2 pl-2 text-base first:pl-0 last:pr-0;
+		}
+	}
+}
+
+@utility table-row-border {
+	@apply border-outline border-b last:border-none;
+}
+
+@utility table-row-background {
+	@apply odd:via-outline/10 data-[hover-effect=false]:odd:hover:via-outline-variant/10 hover:via-primary/5 data-[active=true]:via-primary/10 bg-linear-to-r from-transparent to-transparent data-[clickable=true]:cursor-pointer data-[hover-effect=false]:hover:via-transparent;
+}
+
+/* Components */
+
+@layer components {
+}

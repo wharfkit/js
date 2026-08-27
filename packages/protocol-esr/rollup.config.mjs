@@ -58,6 +58,6 @@ export default [
     {
         input: 'src/index.ts',
         output: {banner, file: pkg.types, format: 'esm'},
-        plugins: [replaceVersion, dts()],
+        plugins: [replaceVersion, dts({compilerOptions: {stripInternal: true}})],
     },
 ]

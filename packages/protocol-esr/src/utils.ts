@@ -1,6 +1,5 @@
 /**
  * Return PascalCase version of snake_case string.
- * @internal
  */
 export function snakeToPascal(name: string): string {
     return name
@@ -11,7 +10,6 @@ export function snakeToPascal(name: string): string {
 
 /**
  * Return camelCase version of snake_case string.
- * @internal
  */
 export function snakeToCamel(name: string): string {
     const pascal = snakeToPascal(name)
@@ -21,7 +19,6 @@ export function snakeToCamel(name: string): string {
 
 /**
  * Print a warning message to console.
- * @internal
  **/
 export function logWarn(...args: any[]) {
     // eslint-disable-next-line no-console
@@ -30,7 +27,6 @@ export function logWarn(...args: any[]) {
 
 /**
  * Generate a UUID.
- *  @internal
  * */
 
 export function uuid(): string {

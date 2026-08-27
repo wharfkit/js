@@ -8,7 +8,7 @@ import {
 } from '@wharfkit/antelope'
 import type {ChainDefinition, Fetch} from '@wharfkit/common'
 import {SigningRequestEncodingOptions} from '@wharfkit/signing-request'
-import zlib from 'pako'
+import * as zlib from 'pako'
 
 import type {Session} from './session'
 import {UserInterface} from './ui'

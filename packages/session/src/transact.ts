@@ -1,7 +1,7 @@
 import type {ChainDefinition, Fetch, LocaleDefinitions} from '@wharfkit/common'
 import type {Contract} from '@wharfkit/contract'
 
-import zlib from 'pako'
+import * as zlib from 'pako'
 import {
     ABIDef,
     ActionType,

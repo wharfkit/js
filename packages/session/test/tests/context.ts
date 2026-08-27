@@ -1,7 +1,7 @@
 import {assert} from 'chai'
 
 import {Checksum256, PermissionLevel, Transaction} from '@wharfkit/antelope'
-import zlib from 'pako'
+import * as zlib from 'pako'
 
 import {SigningRequest} from '$lib'
 import {makeMockAction} from '@wharfkit/mock-data'

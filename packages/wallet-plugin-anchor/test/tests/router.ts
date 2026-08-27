@@ -4,7 +4,7 @@ import {ResolvedSigningRequest} from '@wharfkit/signing-request'
 import {APIClient, PermissionLevel, PrivateKey} from '@wharfkit/antelope'
 import * as buoy from '@greymass/buoy'
 import sinon from 'sinon'
-import zlib from 'pako'
+import * as zlib from 'pako'
 
 import {WalletPluginAnchor} from '$lib'
 import {mockCallbackPayload} from '$test/utils/mock-esr'

@@ -1,6 +1,6 @@
 import {assert} from 'chai'
 
-import zlib from 'pako'
+import * as zlib from 'pako'
 
 import {ChainDefinition, Logo, SigningRequest, Transaction} from '$lib'
 import {makeMockAction} from '@wharfkit/mock-data'

@@ -17,7 +17,10 @@
 	<a
 		{href}
 		{...props}
-		class={cn('text-primary hover:text-primary-hover inline-flex items-center gap-2', props.class)}
+		class={cn(
+			'text-primary hover:text-primary-hover inline-flex items-center gap-2',
+			props.class
+		)}
 	>
 		{#if icon}
 			<Box class="size-4" />

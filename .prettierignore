@@ -9,4 +9,6 @@ packages/*/test/data/
 packages/antelope/test/*.json
 bun.lock
 *.svelte
+packages/svelte-components/
+packages/web-ui/
 packages/session/src/sessionkey/systemcontract.ts

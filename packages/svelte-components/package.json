@@ -1,25 +1,22 @@
 {
 	"name": "@wharfkit/svelte-components",
-	"version": "0.7.0",
+	"version": "4.0.0-rc2",
 	"description": "Svelte 5 and Tailwind v4 component library for Antelope applications",
 	"license": "BSD-3-Clause",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/wharfkit/svelte-components.git"
+		"url": "git+https://github.com/wharfkit/js.git",
+		"directory": "packages/svelte-components"
 	},
 	"homepage": "https://wharfkit.github.io/svelte-components",
 	"bugs": {
 		"url": "https://github.com/wharfkit/svelte-components/issues"
 	},
 	"scripts": {
+		"build": "vite build && svelte-kit sync && svelte-package && publint",
 		"dev": "vite dev",
-		"build": "vite build && npm run prepack",
 		"preview": "vite preview",
-		"prepare": "husky",
-		"prepack": "svelte-kit sync && svelte-package && publint",
-		"prepublishOnly": "node scripts/publish-guard.mjs",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint ."
 	},
@@ -50,8 +47,6 @@
 		"tailwindcss": "^4.0.0"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^19.8.1",
-		"@commitlint/config-conventional": "^19.8.1",
 		"@eslint/compat": "^1.2.5",
 		"@eslint/js": "^9.18.0",
 		"@melt-ui/pp": "^0.3.2",
@@ -66,11 +61,10 @@
 		"eslint-config-prettier": "^10.0.1",
 		"eslint-plugin-svelte": "^3.0.0",
 		"globals": "^16.0.0",
-		"husky": "^9.1.7",
 		"prettier": "^3.4.2",
 		"prettier-plugin-organize-imports": "^4.1.0",
-		"prettier-plugin-svelte": "^3.3.3",
-		"prettier-plugin-tailwindcss": "^0.6.11",
+		"prettier-plugin-svelte": "^3.4.0",
+		"prettier-plugin-tailwindcss": "^0.7.0",
 		"publint": "^0.3.2",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
@@ -84,7 +78,7 @@
 	"dependencies": {
 		"@lucide/svelte": "^0.516.0",
 		"@melt-ui/svelte": "^0.86.6",
-		"@wharfkit/antelope": "^1.0.13",
+		"@wharfkit/antelope": "workspace:*",
 		"big.js": "^7.0.1",
 		"clsx": "^2.1.1",
 		"esm-env": "^1.2.2",

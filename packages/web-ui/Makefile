@@ -41,7 +41,7 @@ test/watch: node_modules
 
 .PHONY: check
 check: node_modules
-	@./node_modules/.bin/biome check . && ./node_modules/.bin/prettier --check "**/*.svelte" && $(EXTRACT) && git diff --exit-code src/locales && echo "Ok"
+	@./node_modules/.bin/biome check . && ./node_modules/.bin/prettier --check "**/*.svelte" && echo "Ok"
 
 .PHONY: format
 format: node_modules
@@ -56,4 +56,12 @@ distclean: clean
 	rm -rf node_modules/
 
 node_modules:
-	bun install
+	bun install --cwd ../..
+
+.PHONY: browser
+browser:
+	@echo 'web-ui has no browser bundle'
+
+.PHONY: locales
+locales: node_modules
+	@$(EXTRACT) && git diff --exit-code src/locales && echo "Ok"

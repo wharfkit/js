@@ -179,7 +179,8 @@ export class TokenHistoricPrices extends Struct {
 @Struct.type('system_historic_prices')
 export class SystemHistoricPrices extends Struct {
 	@Struct.field(TokenHistoricPrices, { optional: true }) declare ram?: TokenHistoricPrices;
-	@Struct.field(TokenHistoricPrices, { optional: true }) declare systemtoken?: TokenHistoricPrices;
+	@Struct.field(TokenHistoricPrices, { optional: true })
+	declare systemtoken?: TokenHistoricPrices;
 }
 
 @Struct.type('token_sources')

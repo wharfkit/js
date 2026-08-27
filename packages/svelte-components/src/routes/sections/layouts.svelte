@@ -5,8 +5,8 @@
 <Stack tag="section" id="layout" class="max-w-prose">
 	<h2 class="text-headline">Layout</h2>
 	<p>
-		These layout components are inspired by the elemental layouts defined by Heydon Pickering and
-		Andy Bell in <a class="underline" href="https://every-layout.dev/">Every Layout</a>.
+		These layout components are inspired by the elemental layouts defined by Heydon Pickering
+		and Andy Bell in <a class="underline" href="https://every-layout.dev/">Every Layout</a>.
 	</p>
 	<p>
 		We're only using a couple here; the others are either easy enough to implement on an ad-hoc
@@ -30,8 +30,8 @@
 		</Stack>
 
 		<p>
-			You can push items to the top or bottom of the stack by using mt-auto or mb-auto if the parent
-			has a defined height
+			You can push items to the top or bottom of the stack by using mt-auto or mb-auto if the
+			parent has a defined height
 		</p>
 		<Stack class="h-72">
 			<Card>
@@ -70,8 +70,8 @@
 			importance.
 		</p>
 		<p>
-			For example, if the breakpoint is 30rem the layout will switch to vertical when the parent
-			container itself is less than 30rem wide.
+			For example, if the breakpoint is 30rem the layout will switch to vertical when the
+			parent container itself is less than 30rem wide.
 		</p>
 
 		<Switcher threshold="30rem">
@@ -104,8 +104,8 @@
 	<Stack>
 		<h3 class="text-title">Cluster</h3>
 		<p>
-			Clusters children horizontally with a default gap. The cluster will re-flow when the screen
-			size changes.
+			Clusters children horizontally with a default gap. The cluster will re-flow when the
+			screen size changes.
 		</p>
 		<p>This is essentially just typical flex-wrap behaviour with some default gaps.</p>
 		<p>Note: no leading or trailing horizontal gap.</p>

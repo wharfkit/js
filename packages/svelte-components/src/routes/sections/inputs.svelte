@@ -90,7 +90,10 @@
 				<Button variant="secondary" onclick={() => input.set(Asset.from('1.0000 EOS'))}
 					>EOS (1)</Button
 				>
-				<Button variant="secondary" onclick={() => input.set(Asset.from('2100000000.0000 EOS'))}>
+				<Button
+					variant="secondary"
+					onclick={() => input.set(Asset.from('2100000000.0000 EOS'))}
+				>
 					EOS (MAX)
 				</Button>
 
@@ -137,7 +140,9 @@
 				</label>
 			</div>
 
-			<Button disabled={!valid} onclick={() => alert(value)}>Do a thing with the token!</Button>
+			<Button disabled={!valid} onclick={() => alert(value)}
+				>Do a thing with the token!</Button
+			>
 
 			<Stack>
 				<h4>Page State</h4>
@@ -185,7 +190,12 @@
 			{#if nameInput2Error === NameValidationError.INVALID_LENGTH_MAX}
 				<small class="text-error">Error: Invalid Maximum length</small>
 			{/if}
-			<NameInput id="invalid-length" label="Invalid Length" value="" bind:error={nameInput3Error} />
+			<NameInput
+				id="invalid-length"
+				label="Invalid Length"
+				value=""
+				bind:error={nameInput3Error}
+			/>
 			{#if nameInput3Error === NameValidationError.INVALID_LENGTH_MIN}
 				<small class="text-error">Error: Invalid Minimum length</small>
 			{/if}

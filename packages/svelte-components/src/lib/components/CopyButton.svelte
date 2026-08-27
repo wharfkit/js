@@ -30,6 +30,11 @@
 	{#if copied}
 		<IconButton icon={ClipboardCheck} {...props} />
 	{:else}
-		<IconButton label={props.label || 'Copy'} icon={Copy} onclick={copyToClipboard} {...props} />
+		<IconButton
+			label={props.label || 'Copy'}
+			icon={Copy}
+			onclick={copyToClipboard}
+			{...props}
+		/>
 	{/if}
 {/if}

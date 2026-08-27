@@ -17,9 +17,9 @@
 		<h3 class="text-title">Description List</h3>
 
 		<p>
-			For a two-column key-value type data we can use the description list component. This will
-			collapse the value under the key and right-align it on smaller screens. Note there is no row
-			striping here.
+			For a two-column key-value type data we can use the description list component. This
+			will collapse the value under the key and right-align it on smaller screens. Note there
+			is no row striping here.
 		</p>
 
 		<Card class="max-w-md" title="Some items">
@@ -27,13 +27,14 @@
 		</Card>
 
 		<p>
-			For displaying a component in the description, or multiple values under a single key, you can
-			use the components declaratively.
+			For displaying a component in the description, or multiple values under a single key,
+			you can use the components declaratively.
 		</p>
 
 		<p>
-			Note: If using the components declaratively you'll need to wrap the child component correctly
-			or you'll get a warning. There are CSS rules that'll visually yell at you to fix it :)
+			Note: If using the components declaratively you'll need to wrap the child component
+			correctly or you'll get a warning. There are CSS rules that'll visually yell at you to
+			fix it :)
 		</p>
 
 		<Card class="max-w-lg">
@@ -80,12 +81,13 @@
 	<Stack>
 		<h3 class="text-title">Tables</h3>
 		<p>
-			For tabular data with more than two columns and with simple layout requirements (i.e. displays
-			the same on mobile) you can use the Table elements.
+			For tabular data with more than two columns and with simple layout requirements (i.e.
+			displays the same on mobile) you can use the Table elements.
 		</p>
 		<p>
-			For tabular data with more advanced layout requirements (e.g. transitions from card on mobile
-			to table on desktop) a custom component with a grid context should probably be used instead.
+			For tabular data with more advanced layout requirements (e.g. transitions from card on
+			mobile to table on desktop) a custom component with a grid context should probably be
+			used instead.
 		</p>
 
 		<Card title="Default Table">

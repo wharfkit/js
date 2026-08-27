@@ -8,11 +8,11 @@ const bundles = ['web-ui.m.js', 'web-ui.cjs'].map((name) => ({
     code: readFileSync(resolve(libDir, name), 'utf8'),
 }))
 
-// The lookbehind spares `removeAttribute('style')` — the style attribute is a separate, permitted directive.
+// The lookbehinds spare `removeAttribute('style')` and svelte's internal `Symbol('style')`.
 test('no bundle ever creates a style element', () => {
     for (const {name, code} of bundles) {
         expect(code, `${name} creates a <style> element`).not.toMatch(
-            /(?<!Attribute)\(\s*['"]style['"]\s*\)/
+            /(?<!Attribute)(?<!Symbol)\(\s*['"]style['"]\s*\)/
         )
     }
 })

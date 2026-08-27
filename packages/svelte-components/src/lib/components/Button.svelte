@@ -95,7 +95,10 @@
 		class="state-layer pointer-events-none absolute inset-0 rounded-[inherit] bg-current opacity-0 transition-opacity group-hover/button:opacity-8 group-focus-visible/button:opacity-10 group-active/button:group-hover/button:opacity-16 group-disabled/button:hidden"
 	></div>
 	<span
-		class={cn('content-layer pointer-events-none relative text-inherit', props.contentLayerClass)}
+		class={cn(
+			'content-layer pointer-events-none relative text-inherit',
+			props.contentLayerClass
+		)}
 	>
 		{@render props.children()}
 		<ExternalLink

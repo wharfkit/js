@@ -28,8 +28,12 @@
 		inputValue = String(value || '');
 	}
 
-	let satisfiesMinimum = $derived(!!inputValue && (!props.min || Number(inputValue) >= props.min));
-	let satisfiesMaxmimum = $derived(!!inputValue && (!props.max || Number(inputValue) <= props.max));
+	let satisfiesMinimum = $derived(
+		!!inputValue && (!props.min || Number(inputValue) >= props.min)
+	);
+	let satisfiesMaxmimum = $derived(
+		!!inputValue && (!props.max || Number(inputValue) <= props.max)
+	);
 	let satisfies = $derived(satisfiesMinimum && satisfiesMaxmimum);
 
 	$effect(() => {

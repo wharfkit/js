@@ -26,7 +26,10 @@
 	<Card>
 		<Form>
 			<FormSection>
-				<FormHeader title="Section 1" text="These are some standard fields in section one" />
+				<FormHeader
+					title="Section 1"
+					text="These are some standard fields in section one"
+				/>
 
 				<FormContent>
 					<ul class="space-y-4">
@@ -51,7 +54,9 @@
 				<FormContent>
 					<ul class="@container grid grid-cols-[1fr_auto] gap-x-2">
 						{#each test as item, index (index)}
-							<li class="subgrid text-on-surface my-2 items-center first:mt-0 last:mb-0">
+							<li
+								class="subgrid text-on-surface my-2 items-center first:mt-0 last:mb-0"
+							>
 								<Fieldset>
 									{#if index === 0}
 										<Label for={String(index)}>

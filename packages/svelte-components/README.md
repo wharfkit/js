@@ -35,7 +35,7 @@ npm install @wharfkit/svelte-components
 Some dependency layouts can defeat the self-registered path. If your app builds cleanly but the components are unstyled, add the `@source` line manually, pointing at wherever the package actually resolved:
 
 ```css
-@source "../node_modules/@wharfkit/svelte-components/dist";
+@source '../node_modules/@wharfkit/svelte-components/dist';
 ```
 
 The symptom to look for is emitted CSS in the ~10 kB range instead of ~45 kB.

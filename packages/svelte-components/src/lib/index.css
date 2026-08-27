@@ -1,5 +1,5 @@
 /* Self-registered so consumers write no @source line; without it a consuming app builds clean and ships unstyled. */
-@source "./components";
+@source './components';
 
 @theme inline {
 	/* Build-time only: @media (width >= var(--x)) is not valid CSS. */
@@ -96,8 +96,8 @@
 	:root {
 		/* Override these, not --font-* */
 		--theme-font-sans:
-			'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-			'Segoe UI Symbol', 'Noto Color Emoji';
+			'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+			'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 		--theme-font-sans-feature-settings: 'calt' 0;
 
 		--theme-font-sans-hero:

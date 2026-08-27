@@ -15,26 +15,28 @@
 	</p>
 	<Stack tag="ul" class="list-disc  gap-2">
 		<li>
-			<strong>Surface</strong> – A role used for backgrounds and large, low-emphasis areas of the screen.
+			<strong>Surface</strong> – A role used for backgrounds and large, low-emphasis areas of the
+			screen.
 		</li>
 		<li>
 			<strong>Primary (and Secondary, Tertiary, etc.)</strong> – Accent color roles used to emphasize
 			or de-emphasize foreground elements.
 		</li>
 		<li>
-			<strong>Container</strong> – Roles used as a fill color for foreground elements like buttons. They
-			should not be used for text or icons.
+			<strong>Container</strong> – Roles used as a fill color for foreground elements like buttons.
+			They should not be used for text or icons.
 		</li>
 		<li>
-			<strong>On</strong> – Roles starting with this term indicate a color for text or icons on top of
-			its paired parent color. For example, "on primary" is used for text and icons against the "primary"
-			fill color.
+			<strong>On</strong> – Roles starting with this term indicate a color for text or icons on
+			top of its paired parent color. For example, "on primary" is used for text and icons against
+			the "primary" fill color.
 		</li>
 		<li>
-			<strong>Variant</strong> – Roles ending with this term offer a lower emphasis alternative to
-			its non-variant pair. For example, "outline variant" is a <strike>less</strike>
-			<strong>more</strong> emphasized version of the "outline" color. <strong>Note:</strong> this is
-			inverted from MD3 in our system.
+			<strong>Variant</strong> – Roles ending with this term offer a lower emphasis
+			alternative to its non-variant pair. For example, "outline variant" is a
+			<strike>less</strike>
+			<strong>more</strong> emphasized version of the "outline" color. <strong>Note:</strong> this
+			is inverted from MD3 in our system.
 		</li>
 	</Stack>
 
@@ -46,11 +48,14 @@
 				</span>
 			</div>
 			<div class="bg-on-primary min-h-20 p-4">
-				<span class="text-primary font-bold"> On primary: Text and icons against primary </span>
+				<span class="text-primary font-bold">
+					On primary: Text and icons against primary
+				</span>
 			</div>
 			<div class="bg-primary-container min-h-20 p-4">
 				<span class="text-on-primary-container font-bold">
-					Primary container: Standout fill color against surface, for key components like a FAB
+					Primary container: Standout fill color against surface, for key components like
+					a FAB
 				</span>
 			</div>
 			<div class="bg-on-primary-container min-h-20 p-4">
@@ -69,11 +74,12 @@
 				</span>
 				<div class=" rounded-lg p-6">
 					<div class="text-on-surface font-black">
-						Text On Surface: Text and icons against any surface or surface container color
+						Text On Surface: Text and icons against any surface or surface container
+						color
 					</div>
 					<div class="text-on-surface-variant font-bold">
-						Text On Surface Variant: Lower-emphasis color for text and icons against any surface or
-						surface container color
+						Text On Surface Variant: Lower-emphasis color for text and icons against any
+						surface or surface container color
 					</div>
 					<div class="border-outline text-outline mt-6 rounded-lg border p-4 font-bold">
 						Outline
@@ -86,19 +92,30 @@
 				</div>
 
 				<Stack>
-					<p>There are also five surface container roles named based on their level of emphasis:</p>
+					<p>
+						There are also five surface container roles named based on their level of
+						emphasis:
+					</p>
 					<Stack tag="ul" class="list-inside list-disc gap-2">
-						<li><strong>Surface container lowest</strong>: Lowest-emphasis container color</li>
-						<li><strong>Surface container low</strong>: Low-emphasis container color</li>
-						<li><strong>Surface container</strong>: Default container color</li>
-						<li><strong>Surface container high</strong>: High-emphasis container color</li>
 						<li>
-							<strong>Surface container highest</strong>: Highest-emphasis container color
+							<strong>Surface container lowest</strong>: Lowest-emphasis container
+							color
+						</li>
+						<li>
+							<strong>Surface container low</strong>: Low-emphasis container color
+						</li>
+						<li><strong>Surface container</strong>: Default container color</li>
+						<li>
+							<strong>Surface container high</strong>: High-emphasis container color
+						</li>
+						<li>
+							<strong>Surface container highest</strong>: Highest-emphasis container
+							color
 						</li></Stack
 					>
 					<p>
-						<strong>Surface container</strong> is the default role, but the others are especially helpful
-						for creating hierarchy and nested containers
+						<strong>Surface container</strong> is the default role, but the others are especially
+						helpful for creating hierarchy and nested containers
 					</p>
 
 					<p>Here they are shown against the surface as a background:</p>
@@ -159,8 +176,8 @@
 
 		<div class="bg-error min-h-20 p-4">
 			<span class="text-on-error font-bold"
-				>Error: Attention-grabbing color against surface for fills, icons, and text, indicating
-				urgency</span
+				>Error: Attention-grabbing color against surface for fills, icons, and text,
+				indicating urgency</span
 			>
 		</div>
 		<div class="bg-on-error min-h-20 p-4">

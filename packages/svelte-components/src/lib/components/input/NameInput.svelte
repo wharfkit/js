@@ -5,7 +5,8 @@
 		INVALID_LENGTH_MAX: 'INVALID_LENGTH_MAX'
 	} as const;
 
-	export type NameValidationError = (typeof NameValidationError)[keyof typeof NameValidationError];
+	export type NameValidationError =
+		(typeof NameValidationError)[keyof typeof NameValidationError];
 </script>
 
 <script lang="ts">

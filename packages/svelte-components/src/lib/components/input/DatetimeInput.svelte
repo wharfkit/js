@@ -12,6 +12,7 @@
 		debug?: boolean;
 	}
 
+	// eslint-disable-next-line svelte/prefer-svelte-reactivity -- read once to seed `min`, never mutated reactively
 	var now = new Date();
 	now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
 
@@ -30,6 +31,7 @@
 
 	value = undefined;
 	if (date) {
+		// eslint-disable-next-line svelte/prefer-svelte-reactivity -- local conversion value, never held in state
 		const utc = new Date(date);
 		utc.setMinutes(utc.getMinutes() - utc.getTimezoneOffset());
 		value = dateToInputString(utc);

@@ -75,7 +75,9 @@
 				class="from-surface-container-low group absolute inset-0 top-0 left-0 flex cursor-pointer items-end justify-center bg-linear-to-t to-transparent to-40% pb-4 font-sans font-semibold"
 				onclick={expandNode}
 			>
-				<span class="group-hover:bg-surface-container-high rounded-full bg-transparent px-4 py-2">
+				<span
+					class="group-hover:bg-surface-container-high rounded-full bg-transparent px-4 py-2"
+				>
 					More
 				</span>
 			</button>

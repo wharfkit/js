@@ -32,5 +32,10 @@ export default ts.config(
 				svelteConfig
 			}
 		}
+	},
+	{
+		// These elements render a caller-supplied external explorer link, never a SvelteKit route.
+		files: ['src/lib/components/elements/*.svelte'],
+		rules: { 'svelte/no-navigation-without-resolve': 'off' }
 	}
 );

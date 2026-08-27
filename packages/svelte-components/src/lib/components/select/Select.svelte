@@ -58,17 +58,26 @@
 	$effect(() => {
 		if (JSON.stringify(_selected) !== JSON.stringify(lastSelected)) {
 			lastSelected = _selected;
-			sync.selected(_selected, (v) => (_selected = (v as ExtendedSelectOption) || options[0]));
+			sync.selected(
+				_selected,
+				(v) => (_selected = (v as ExtendedSelectOption) || options[0])
+			);
 		}
 	});
 
 	// Get the whole option object
-	let selectedOption = $derived.by(() => options.find((o) => o.value === $selected) || options[0]);
+	let selectedOption = $derived.by(
+		() => options.find((o) => o.value === $selected) || options[0]
+	);
 </script>
 
 <SelectTrigger class={triggerClass} {variant} {id} {open} {trigger} {disabled}>
 	{#if selectedOption.image && typeof selectedOption.image === 'string'}
-		<img src={selectedOption.image} alt={selectedOption.label} class="mr-2 size-5 object-contain" />
+		<img
+			src={selectedOption.image}
+			alt={selectedOption.label}
+			class="mr-2 size-5 object-contain"
+		/>
 	{/if}
 	{$selectedLabel || 'Select an option'}
 </SelectTrigger>

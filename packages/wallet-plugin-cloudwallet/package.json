@@ -19,32 +19,7 @@
         "@wharfkit/session": "workspace:*"
     },
     "devDependencies": {
-        "@eslint/js": "catalog:",
-        "@rollup/plugin-alias": "catalog:",
-        "@rollup/plugin-commonjs": "catalog:",
-        "@rollup/plugin-json": "catalog:",
-        "@rollup/plugin-node-resolve": "catalog:",
-        "@rollup/plugin-replace": "catalog:",
-        "@rollup/plugin-terser": "catalog:",
-        "@rollup/plugin-typescript": "catalog:",
-        "@rollup/plugin-virtual": "catalog:",
-        "@types/mocha": "^10.0.10",
-        "@types/node": "catalog:",
-        "@wharfkit/session": "workspace:*",
-        "chai": "^6.2.2",
-        "eslint": "catalog:",
-        "eslint-config-prettier": "catalog:",
-        "eslint-plugin-prettier": "catalog:",
-        "gh-pages": "catalog:",
-        "mocha": "^11.8.0",
-        "nyc": "^18.0.0",
-        "prettier": "catalog:",
-        "rollup": "catalog:",
-        "rollup-plugin-dts": "catalog:",
-        "tsx": "^4.19.0",
-        "typedoc": "^0.23.14",
-        "typescript": "catalog:",
-        "typescript-eslint": "catalog:"
+        "@wharfkit/session": "workspace:*"
     },
     "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
     "repository": {

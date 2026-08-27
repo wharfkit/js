@@ -17,7 +17,6 @@
     "dependencies": {
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/signing-request": "workspace:*",
-        "pako": "catalog:",
         "tslib": "catalog:"
     },
     "devDependencies": {

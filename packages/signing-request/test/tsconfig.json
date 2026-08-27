@@ -1,14 +1,4 @@
 {
-    "extends": "../tsconfig.json",
-    "compilerOptions": {
-        "isolatedModules": false,
-        "module": "nodenext",
-        "target": "es2022",
-        "moduleResolution": "nodenext",
-        "useDefineForClassFields": false
-    },
-    "include": [
-        "./**/*.ts",
-        "../src/**/*.ts"
-    ]
+    "extends": ["../tsconfig.json", "../../../tsconfig.test.json"],
+    "include": ["./**/*.ts", "../src/**/*.ts"]
 }

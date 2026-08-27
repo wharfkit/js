@@ -1,7 +1,7 @@
 TEST_FILES := $(wildcard test/*.ts)
 TEST_DEPS := lib
 BROWSER_OUT := test/browser.html
-CLEAN_EXTRA := site/ test/browser.html
+CLEAN_EXTRA := site/ test/browser.html test/browser.html.map
 
 include ../../common.mk
 

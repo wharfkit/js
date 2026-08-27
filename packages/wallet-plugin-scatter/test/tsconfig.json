@@ -1,32 +1,12 @@
 {
-    "extends": "../tsconfig.json",
+    "extends": ["../tsconfig.json", "../../../tsconfig.test.json"],
     "compilerOptions": {
-        "isolatedModules": false,
-        "resolveJsonModule": true,
-        "module": "nodenext",
-        "target": "es2022",
-        "types": [
-            "mocha",
-            "node"
-        ],
         "baseUrl": "..",
         "paths": {
-            "$lib": [
-                "src"
-            ],
-            "$test": [
-                "test"
-            ],
-            "$test/*": [
-                "test/*"
-            ]
-        },
-        "moduleResolution": "nodenext",
-        "useDefineForClassFields": false
+            "$lib": ["src"],
+            "$test": ["test"],
+            "$test/*": ["test/*"]
+        }
     },
-    "include": [
-        "*.ts",
-        "**/*.ts",
-        "../src/**/*.ts"
-    ]
+    "include": ["*.ts", "**/*.ts", "../src/**/*.ts"]
 }

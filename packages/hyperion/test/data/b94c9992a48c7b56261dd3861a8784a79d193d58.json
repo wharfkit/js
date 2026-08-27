@@ -1,0 +1,21 @@
+{
+    "request": {
+        "path": "https://wax.blokcrafters.io/v2/history/get_created_accounts?account=gm&limit=1&skip=1",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": {
+        "query_time_ms": 20.679,
+        "accounts": [
+            {
+                "name": "fgwskm51s.gm",
+                "timestamp": "2024-02-28T15:51:42.000",
+                "trx_id": "5d7778fdd3f460301383ce1d669fdfc5b615db7e2128c3406f2a5db0c040321d"
+            }
+        ]
+    },
+    "text": "{\"query_time_ms\":20.679,\"accounts\":[{\"name\":\"fgwskm51s.gm\",\"timestamp\":\"2024-02-28T15:51:42.000\",\"trx_id\":\"5d7778fdd3f460301383ce1d669fdfc5b615db7e2128c3406f2a5db0c040321d\"}]}"
+}

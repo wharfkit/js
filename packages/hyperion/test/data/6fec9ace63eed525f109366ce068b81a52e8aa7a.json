@@ -1,0 +1,1656 @@
+{
+    "request": {
+        "path": "https://wax.blokcrafters.io/v2/state/get_account?account=teamgreymass",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": {
+        "query_time_ms": 81.852,
+        "account": {
+            "account_name": "teamgreymass",
+            "head_block_num": 295339033,
+            "head_block_time": "2024-02-28T17:42:09.000",
+            "privileged": false,
+            "last_code_update": "1970-01-01T00:00:00.000",
+            "created": "2019-07-12T05:18:07.000",
+            "core_liquid_balance": "2786894.85649746 WAX",
+            "ram_quota": 740973,
+            "net_weight": "455096542392",
+            "cpu_weight": "2555196542594",
+            "net_limit": {
+                "used": 262510,
+                "available": 570672993,
+                "max": 570935503,
+                "last_usage_update_time": "2024-02-28T17:41:18.500",
+                "current_used": 262357
+            },
+            "cpu_limit": {
+                "used": 696752,
+                "available": 1264335,
+                "max": 1961087,
+                "last_usage_update_time": "2024-02-28T17:41:18.500",
+                "current_used": 696345
+            },
+            "ram_usage": 12635,
+            "permissions": [
+                {
+                    "perm_name": "active",
+                    "parent": "owner",
+                    "required_auth": {
+                        "threshold": 1,
+                        "keys": [
+                            {
+                                "key": "EOS8KmhygTrrvtW7zJd6HXWrNqA5WX9NzScZ37JyXRiwpiJN2g2rR",
+                                "weight": 1
+                            }
+                        ],
+                        "accounts": [],
+                        "waits": []
+                    },
+                    "linked_actions": []
+                },
+                {
+                    "perm_name": "claim",
+                    "parent": "active",
+                    "required_auth": {
+                        "threshold": 1,
+                        "keys": [
+                            {
+                                "key": "EOS6DLD9HxMcwn73U41jjdGsNe9vDFRKB26um6qTAqrtYcJFtED4C",
+                                "weight": 1
+                            }
+                        ],
+                        "accounts": [],
+                        "waits": []
+                    },
+                    "linked_actions": [
+                        {
+                            "account": "eosio",
+                            "action": "claimrewards"
+                        },
+                        {
+                            "account": "eosio",
+                            "action": "claimgenesis"
+                        },
+                        {
+                            "account": "eosio",
+                            "action": "claimgbmvote"
+                        },
+                        {
+                            "account": "eosio",
+                            "action": "claimgbmprod"
+                        }
+                    ]
+                },
+                {
+                    "perm_name": "failover",
+                    "parent": "active",
+                    "required_auth": {
+                        "threshold": 1,
+                        "keys": [
+                            {
+                                "key": "EOS8NKyWVSfbfmyU98y6AfvJ8QfwbtNKAgfnZ9BbWd3UvQzMHhJY6",
+                                "weight": 1
+                            }
+                        ],
+                        "accounts": [],
+                        "waits": []
+                    },
+                    "linked_actions": [
+                        {
+                            "account": "eosio",
+                            "action": "regproducer"
+                        }
+                    ]
+                },
+                {
+                    "perm_name": "killswitch",
+                    "parent": "active",
+                    "required_auth": {
+                        "threshold": 1,
+                        "keys": [
+                            {
+                                "key": "EOS7CjC7GL71msPzAuAzd2WwiBEAzTcPL47ACrjSuiNmnnGGufYSn",
+                                "weight": 1
+                            }
+                        ],
+                        "accounts": [],
+                        "waits": []
+                    },
+                    "linked_actions": [
+                        {
+                            "account": "eosio",
+                            "action": "unregprod"
+                        }
+                    ]
+                },
+                {
+                    "perm_name": "oracle",
+                    "parent": "active",
+                    "required_auth": {
+                        "threshold": 1,
+                        "keys": [
+                            {
+                                "key": "EOS88VqmDmJJ9S23eNqdeWYf2zySxv3ckQrWBKy7EvVRCUuhSU4f3",
+                                "weight": 1
+                            }
+                        ],
+                        "accounts": [],
+                        "waits": []
+                    },
+                    "linked_actions": [
+                        {
+                            "account": "delphioracle",
+                            "action": "write"
+                        }
+                    ]
+                },
+                {
+                    "perm_name": "owner",
+                    "parent": "",
+                    "required_auth": {
+                        "threshold": 1,
+                        "keys": [
+                            {
+                                "key": "EOS76TP8M48sRBGdPmsKyy3qAMCYgBNswjaWaXGR4jkS5Hro16khr",
+                                "weight": 1
+                            }
+                        ],
+                        "accounts": [],
+                        "waits": []
+                    },
+                    "linked_actions": []
+                },
+                {
+                    "perm_name": "producerjson",
+                    "parent": "active",
+                    "required_auth": {
+                        "threshold": 1,
+                        "keys": [
+                            {
+                                "key": "EOS5JCEciUdfXnQmTyj85T98bXTAZZ1g7Nmajseu7ZWB8DrDa6Etp",
+                                "weight": 1
+                            }
+                        ],
+                        "accounts": [],
+                        "waits": []
+                    },
+                    "linked_actions": [
+                        {
+                            "account": "producerjson",
+                            "action": "set"
+                        }
+                    ]
+                },
+                {
+                    "perm_name": "transfer",
+                    "parent": "active",
+                    "required_auth": {
+                        "threshold": 1,
+                        "keys": [
+                            {
+                                "key": "EOS6AkZZ5YZ6G5eCQGJBAPbkmouEaiSKFkdM289wEMKcf2rnx7mrb",
+                                "weight": 1
+                            },
+                            {
+                                "key": "EOS6RWZ1CmDL4B6LdixuertnzxcRuUDac3NQspJEvMnebGcUwhvfX",
+                                "weight": 1
+                            }
+                        ],
+                        "accounts": [],
+                        "waits": []
+                    },
+                    "linked_actions": [
+                        {
+                            "account": "eosio.token",
+                            "action": "transfer"
+                        }
+                    ]
+                }
+            ],
+            "total_resources": {
+                "owner": "teamgreymass",
+                "net_weight": "4550.96542392 WAX",
+                "cpu_weight": "25551.96542594 WAX",
+                "ram_bytes": 739573
+            },
+            "self_delegated_bandwidth": {
+                "from": "teamgreymass",
+                "to": "teamgreymass",
+                "net_weight": "4550.96542392 WAX",
+                "cpu_weight": "25551.96542594 WAX"
+            },
+            "refund_request": null,
+            "voter_info": {
+                "owner": "teamgreymass",
+                "proxy": "",
+                "producers": [
+                    "3dkrenderwax",
+                    "alohaeosprod",
+                    "amsterdamwax",
+                    "blacklusionx",
+                    "blokcrafters",
+                    "bountyblokbp",
+                    "bp.box",
+                    "bp.wecan",
+                    "cryptolions1",
+                    "dapplica",
+                    "eosauthority",
+                    "eosdacserver",
+                    "eosdublinwow",
+                    "eosiodetroit",
+                    "eosphereiobp",
+                    "eosriobrazil",
+                    "greeneosiobp",
+                    "guild.nefty",
+                    "hkeosguildhk",
+                    "ivote4waxusa",
+                    "ledgerwiseio",
+                    "liquidstudio",
+                    "nation.wax",
+                    "pink.gg",
+                    "sentnlagents",
+                    "teamgreymass",
+                    "tokengamerio",
+                    "wax.eastern",
+                    "waxhiveguild",
+                    "waxswedenorg"
+                ],
+                "staked": "54029093084986",
+                "unpaid_voteshare": "0.00000000000000000",
+                "unpaid_voteshare_last_updated": "2024-02-27T19:36:42.000",
+                "unpaid_voteshare_change_rate": "5023145082162604762150619062722348225396736.00000000000000000",
+                "last_claim_time": "2024-02-27T19:36:42.000",
+                "last_vote_weight": "5023145082162604762150619062722348225396736.00000000000000000",
+                "proxied_vote_weight": "0.00000000000000000",
+                "is_proxy": 0,
+                "flags1": 0,
+                "reserved2": 0,
+                "reserved3": "0 "
+            },
+            "rex_info": null,
+            "subjective_cpu_bill_limit": {
+                "used": 0,
+                "available": 0,
+                "max": 0,
+                "last_usage_update_time": "2000-01-01T00:00:00.000",
+                "current_used": 0
+            },
+            "eosio_any_linked_actions": []
+        },
+        "links": [
+            {
+                "timestamp": "2022-09-20T14:25:46.500",
+                "permission": "killswitch",
+                "code": "eosio",
+                "action": "unregprod"
+            },
+            {
+                "timestamp": "2021-02-02T16:58:53.500",
+                "permission": "transfer",
+                "code": "eosio.token",
+                "action": "transfer"
+            },
+            {
+                "timestamp": "2020-06-03T19:45:35.000",
+                "permission": "oracle",
+                "code": "delphioracle",
+                "action": "write"
+            },
+            {
+                "timestamp": "2020-05-01T23:54:04.500",
+                "permission": "claim",
+                "code": "eosio",
+                "action": "claimgbmprod"
+            },
+            {
+                "timestamp": "2020-05-01T23:53:51.000",
+                "permission": "claim",
+                "code": "eosio",
+                "action": "claimgbmvote"
+            },
+            {
+                "timestamp": "2020-05-01T23:51:46.000",
+                "permission": "claim",
+                "code": "eosio",
+                "action": "claimgenesis"
+            },
+            {
+                "timestamp": "2020-02-13T19:50:37.000",
+                "permission": "producerjson",
+                "code": "producerjson",
+                "action": "set"
+            },
+            {
+                "timestamp": "2019-12-07T07:52:09.000",
+                "permission": "failover",
+                "code": "eosio",
+                "action": "unregprod"
+            },
+            {
+                "timestamp": "2019-12-07T07:52:00.500",
+                "permission": "failover",
+                "code": "eosio",
+                "action": "regproducer"
+            },
+            {
+                "timestamp": "2019-11-25T23:44:03.500",
+                "permission": "claim",
+                "code": "eosio",
+                "action": "claimrewards"
+            }
+        ],
+        "tokens": [
+            {
+                "symbol": "RICH",
+                "amount": 81.44848567,
+                "contract": "token.rich"
+            },
+            {
+                "symbol": "STAKE",
+                "precision": 8,
+                "amount": 1,
+                "contract": "kingsofgraff"
+            },
+            {
+                "symbol": "HITCOIN",
+                "precision": 8,
+                "amount": 0.0000042,
+                "contract": "gkniftyheads"
+            },
+            {
+                "symbol": "WAX",
+                "precision": 8,
+                "amount": 2786894.85649746,
+                "contract": "eosio.token"
+            }
+        ],
+        "total_actions": 1885932,
+        "actions": [
+            {
+                "@timestamp": "2024-02-28T17:41:18.500",
+                "timestamp": "2024-02-28T17:41:18.500",
+                "block_num": 295338932,
+                "block_id": "119a83b4b8bbcbfb36a064fe787fafcd896e70cbc3924f250cf1a95729cc5bba",
+                "trx_id": "c83677e096f94be2704618877dd9ed1ef36fb764cf0ac187a284b38d46cdeac7",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "753",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "10008",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9998",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2151",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88419105093,
+                        "recv_sequence": 55055969,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894604
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 434,
+                "net_usage_words": 23,
+                "global_sequence": 88419105093,
+                "producer": "bountyblokbp",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_Km2XJWKjACS2w8KN5kf8M9LzBAN526oBitb4ck7SbHh4LT28imyH9Pgw5MgVMYASKnGV3yZbhqvmvTf71yp9fRro9iLj2C"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:40:18.500",
+                "timestamp": "2024-02-28T17:40:18.500",
+                "block_num": 295338812,
+                "block_id": "119a833c5555b0225f1c4712b10a002fd37c6fdaf36c6d41510777f7be35fa9a",
+                "trx_id": "ba6ed5cf045740dc67ed7c0f0b6b515a41b9476b550cb78ebfb39a56a7bc062c",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "753",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "10006",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9998",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2151",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88419092633,
+                        "recv_sequence": 55055938,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894603
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 225,
+                "net_usage_words": 23,
+                "global_sequence": 88419092633,
+                "producer": "waxhiveguild",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_JySH2jqAhXw6KScjuddUyqp5c9RHBpgqAtDyBZtyx7ULYsRMUsMyz241veA1dULrjxNVhvUxoCTt4jGvBgdyNzc7PozM4a"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:39:21.500",
+                "timestamp": "2024-02-28T17:39:21.500",
+                "block_num": 295338698,
+                "block_id": "119a82ca47e46a68e2ee26c6a9d27832858b26d21072ba07a310c766f7b840dc",
+                "trx_id": "78dfd250b9752025ab5f507161b50b59d094878b5b685ce5a8f160fe65bd84ce",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "753",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "9999",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9990",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2151",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88419080676,
+                        "recv_sequence": 55055906,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894602
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 378,
+                "net_usage_words": 23,
+                "global_sequence": 88419080676,
+                "producer": "eosdacserver",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_Kcy2TFrrkZssA1Mkxa7tRP8xwADd1K4bQ3L3yxNguxLDaqDFsFEcSehwn3EX2YUMFfM3yacZRqQQZQsY6nT9JVf7nvGLt7"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:38:18.000",
+                "timestamp": "2024-02-28T17:38:18.000",
+                "block_num": 295338571,
+                "block_id": "119a824bfc890639fe3edd0db22572517841d25160f70b9637ee26227d6a1f0f",
+                "trx_id": "fae4e5e334715a27ad8ac46c5900e683537b18589af62dfcf5131051a3ac3264",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "10003",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9991",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2151",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88419068378,
+                        "recv_sequence": 55055878,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894601
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 426,
+                "net_usage_words": 23,
+                "global_sequence": 88419068378,
+                "producer": "eosphereiobp",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_Kd8Su5gVca1ZmmThWwrGEasjXHYNhH3adU6cJKX9HGnGYtxFGXbYhfcjkzFmnCHzQEUuu55PchnBv9rAL9PycoWQznRXGu"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:37:18.000",
+                "timestamp": "2024-02-28T17:37:18.000",
+                "block_num": 295338451,
+                "block_id": "119a81d3a6ecc3fed8083cf5d1314f58350ba0085745c2a7472b67f6313c833c",
+                "trx_id": "dc14bd1ffcd991c953254e2d3a8a395bdc97ad0f5e40bf1450dec3fb8b5747b2",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "9989",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9990",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2308",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88419054965,
+                        "recv_sequence": 55055847,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894600
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 662,
+                "net_usage_words": 23,
+                "global_sequence": 88419054965,
+                "producer": "teamgreymass",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_KgSwcbHcPjKahTAf6v5fAKBeWWNmhTuRfgXvKphepX9rir2BPWTPeotM46Y9g9Roqrq563doenGeCcwwZLomEHFHKAgPNf"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:36:18.000",
+                "timestamp": "2024-02-28T17:36:18.000",
+                "block_num": 295338331,
+                "block_id": "119a815b852eb258754456dac7caaa6ffcb977e0e3c4a5b95fc6c0b87975d49b",
+                "trx_id": "73fa31e63568fa7b4707368aeb4eb3b3cd3a12f9b7b9aff19cf3c5c421e215e0",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "10000",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9993",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2308",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88419043775,
+                        "recv_sequence": 55055816,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894599
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 817,
+                "net_usage_words": 23,
+                "global_sequence": 88419043775,
+                "producer": "bp.alcor",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_KbMaggaBNDYEXgV1tg6aYvgay7FBR4oHfdYBCg3DGPKb6qUjNRid3eYiRrpzWLDPph3UhKJaVman684EZy7bzM28pWG6Sf"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:35:17.500",
+                "timestamp": "2024-02-28T17:35:17.500",
+                "block_num": 295338210,
+                "block_id": "119a80e237011b78941de181e895890b007872614d3243ac37c67046cb1c3abf",
+                "trx_id": "458cdf32787389a350c05765ba0293e7ae50f6b97d348f20b026ec93e23682dd",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "9997",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9982",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2308",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88419033991,
+                        "recv_sequence": 55055785,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894598
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 675,
+                "net_usage_words": 23,
+                "global_sequence": 88419033991,
+                "producer": "teamgreymass",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_KY6CCMj3QzrvDkbG98zFFcANBbWW3qcbVBsKzfRFqkKQ6TvSsM2c3ijQo79gRnE1CYvdB459VhB15yDsNshaa3GwczYRtF"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:34:18.500",
+                "timestamp": "2024-02-28T17:34:18.500",
+                "block_num": 295338092,
+                "block_id": "119a806cc24198e0801ad9a3891c6bd04c38e7456dc5204499ba8c1082ec32dd",
+                "trx_id": "f0c91841b617c68450ff4a3c04261b5ce9398fd837c7155d140e2fc4e604ca5b",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "9993",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9972",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2308",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88419021671,
+                        "recv_sequence": 55055754,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894597
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 484,
+                "net_usage_words": 23,
+                "global_sequence": 88419021671,
+                "producer": "bp.wecan",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_K1c4rRRNQ6XrRftDTVU4PNGrNa7HhjAtXm2Kho8LH4EpFRjT9X1c418E4VNZQgMHJiPNER5o9CtTp5Wwv7BSZJzVAgYJaz"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:33:18.000",
+                "timestamp": "2024-02-28T17:33:18.000",
+                "block_num": 295337971,
+                "block_id": "119a7ff3458f2b6312316f9be8da0f4509cf1fa2cc1e5858ecbefac4603595df",
+                "trx_id": "d46caa3f8107a64f123325a0dee9bb90f532d740663c8b242a339dd393189696",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "9987",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9979",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2308",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88419009924,
+                        "recv_sequence": 55055724,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894596
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 545,
+                "net_usage_words": 23,
+                "global_sequence": 88419009924,
+                "producer": "eosauthority",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_KbZb72euktPNrSwCbRengq5CiyYPCrfCTSZUES6WFGZv6GijDD7FhPiH5UkVi9SZZMN8tpEpp8BQCzFtTjgf9QRjALxYT2"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:32:18.000",
+                "timestamp": "2024-02-28T17:32:18.000",
+                "block_num": 295337851,
+                "block_id": "119a7f7b4f401d1224d5b2c292e84620d1d455404d1e99e1e7da359b9b7873a6",
+                "trx_id": "a135e58b23f542f2230387a87525789c2c2349a69f00804089f8fdc000ce3da4",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "10008",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9984",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2194",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88418996850,
+                        "recv_sequence": 55055694,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894595
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 366,
+                "net_usage_words": 23,
+                "global_sequence": 88418996850,
+                "producer": "guild.waxdao",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_Kb5eh9NFBP5NhuQYC1Vnu2dmz8DTxWnMGfJ5VytMwtVLgZc2MtYtEWYncNBgPTJbj1NQ6LXAwb6NpF6bgTf9WVehXhwz7M"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:31:17.500",
+                "timestamp": "2024-02-28T17:31:17.500",
+                "block_num": 295337730,
+                "block_id": "119a7f02bb464ec941e57c9499df28912007837632ae1dc337cdc5d1d7214535",
+                "trx_id": "1fee6bee7747b1a301d2e45e38397eb2b0dcf06cbe9109b75d794e72ec865df4",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "10012",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9987",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2197",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88418983897,
+                        "recv_sequence": 55055663,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894594
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 510,
+                "net_usage_words": 23,
+                "global_sequence": 88418983897,
+                "producer": "eosauthority",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_Kiy3ezdZueBMEfCVJ5dBnKBhvHKdLpDLzVEpWnnDoy6X5Zsh59zhFjzdnR9Ssu87djnZNRK7Grv9yZiERw3aj1vEVwyamu"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:30:18.000",
+                "timestamp": "2024-02-28T17:30:18.000",
+                "block_num": 295337611,
+                "block_id": "119a7e8ba5820ea32691d4e33a85f5c3367b3797a847f691a741c4dd4e921f48",
+                "trx_id": "3d83e6bc8c337618bcb7528989c99c9fcdacf3decc3edaf89e0006269d4009ac",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "10014",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9995",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2197",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88418972611,
+                        "recv_sequence": 55055635,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894593
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 394,
+                "net_usage_words": 23,
+                "global_sequence": 88418972611,
+                "producer": "guild.nefty",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_KfW8xKcCxdPieuakwDTwF83CaFBHbnRmKqkQJMwVMxrVcRrDnf3WJS41x4WhJ65TiyTiB1v5TBqtm887DReuKNttbi2xXv"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:29:17.500",
+                "timestamp": "2024-02-28T17:29:17.500",
+                "block_num": 295337490,
+                "block_id": "119a7e12566d945a4199323f05d72c078166413de81df0c9b8238261a9705fa8",
+                "trx_id": "649e6f633e7d6555c1699b98abbc2adee2c9fe5a6ecef41b0ae37ba53b972cf6",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "10014",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9999",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2197",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88418959343,
+                        "recv_sequence": 55055603,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894592
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 588,
+                "net_usage_words": 23,
+                "global_sequence": 88418959343,
+                "producer": "amsterdamwax",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_K1HqpNuCCgXq7i6RfPBn6r1FqfQLEwnMxRWuguuBEBuFf6oUFbUJFCNwssch8qHFgxuuMLtwdiCsE6YbDY5Ed1gfFp1x5F"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:28:18.000",
+                "timestamp": "2024-02-28T17:28:18.000",
+                "block_num": 295337371,
+                "block_id": "119a7d9bfc90227b9b593f0ef8456d6a2f3327d551eabf65013e4d2ffae41ec5",
+                "trx_id": "25e8b23d3dab0c87a1374a53338151971825e7fc2a860c313ef82ed0f1e96174",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "10013",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9998",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2197",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88418949241,
+                        "recv_sequence": 55055572,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894591
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 358,
+                "net_usage_words": 23,
+                "global_sequence": 88418949241,
+                "producer": "alohaeosprod",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_Kbx1FvsSpRcTEV3QJpibVA1LkN5XC9t9ZoaGH7RRtibD1MnveSivxnsvUoiMgJc8nE3nGBWZUwkMDnuVGzp24dGXXkqS49"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:27:18.000",
+                "timestamp": "2024-02-28T17:27:18.000",
+                "block_num": 295337251,
+                "block_id": "119a7d23a38ab933b46d90e8d0ea6800d95bdc00bf56b0440f7109daecfa53e9",
+                "trx_id": "31b20d01c320a2f3c63786f3e9476790e0c338faae0f944c2abc91dfebf88822",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "10012",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "10000",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2212",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88418937747,
+                        "recv_sequence": 55055540,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894590
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 438,
+                "net_usage_words": 23,
+                "global_sequence": 88418937747,
+                "producer": "cryptolions1",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_K3SUQr5P4nsTjNB4dGW7W9r9mwcMrY9TeHcUtNk66gGPmxsPx8sSKVA4iJen4WfyaLin81mX5wB5FsqXw98R8dZdtMXLmE"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:26:17.500",
+                "timestamp": "2024-02-28T17:26:17.500",
+                "block_num": 295337130,
+                "block_id": "119a7caacb58dfba034c870fe9571a793cd13492c998005b0ec77b6444bc0222",
+                "trx_id": "a39a200388dea97f06d30422148532bb43bafe461ac0a719f4af338a21b0cda2",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "10012",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9990",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2217",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88418924653,
+                        "recv_sequence": 55055512,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894589
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 412,
+                "net_usage_words": 23,
+                "global_sequence": 88418924653,
+                "producer": "alohaeosprod",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_K3UbvjoYL2HmZWWJeQ346XZ3Cgh6rUZRaHzzfdFR7Vt4Ur7BZgyNGPGzRWJGCYvLSNrexk8eYefCNZs8vS9kizmaTUVaYe"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:25:17.500",
+                "timestamp": "2024-02-28T17:25:17.500",
+                "block_num": 295337010,
+                "block_id": "119a7c32e189ef24f9bb386fdd7789cacd32518a804a3db044db958cfd790030",
+                "trx_id": "4de1d1b20b45e55b3d508521928a10c01c39c1a1b945b57fe9d5532c2dd52582",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "10015",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9997",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2211",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88418913244,
+                        "recv_sequence": 55055484,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894588
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 509,
+                "net_usage_words": 23,
+                "global_sequence": 88418913244,
+                "producer": "cryptolions1",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_Kbn1NY1EYSy8152ZZkdprBoQuD4QtDT122zR9guANEU56x1x5ajzGq9qbJDMHXru9BvvjhgVM74B4Fdoj26enL3FwnvpcG"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:24:17.000",
+                "timestamp": "2024-02-28T17:24:17.000",
+                "block_num": 295336889,
+                "block_id": "119a7bb9f105617ae63772c4fb6344de7875eeb0b07eda709449f2afa58c10c4",
+                "trx_id": "a51e5ccfadccb810850440fcc0bf5aae068f2e12e40dab0aa1d23c49c86483a6",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "10014",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9999",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2231",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88418898268,
+                        "recv_sequence": 55055455,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894587
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 427,
+                "net_usage_words": 23,
+                "global_sequence": 88418898268,
+                "producer": "wombatblockx",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_KWja7CapJaUdifRLfgSPJdAiwMxynMT6noEr6UgN9y8svZ4WZtkpDWUd6BmUcKZWT3vHYr1Ny6pxwAaoijZpGqXke2NDvq"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:23:17.500",
+                "timestamp": "2024-02-28T17:23:17.500",
+                "block_num": 295336770,
+                "block_id": "119a7b42519ce9ec7cfab329f27efff7b102e1cca38f79663edacafa941daf9c",
+                "trx_id": "f4831e65cd495e999a2998ccbb548ab7625591e1d883a914690486bc08c6212c",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "10014",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "10000",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2231",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88418886331,
+                        "recv_sequence": 55055422,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894586
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 304,
+                "net_usage_words": 23,
+                "global_sequence": 88418886331,
+                "producer": "guild.taco",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_JxZv3uA54dT5VadYVyt8j1CwkJHrGp8A2on3eWtbpa84vT4EpwHAd691fJd4dDCnVcWuVyCjC6H3wDXatBtBjyBUNF839T"
+                ]
+            },
+            {
+                "@timestamp": "2024-02-28T17:22:18.000",
+                "timestamp": "2024-02-28T17:22:18.000",
+                "block_num": 295336651,
+                "block_id": "119a7acbb7e85b53d19414a8fd576443587fb340de19bd2cfc6bedc835d1b48b",
+                "trx_id": "6bb5eb716350a6d7dc0fc6ad64c0a1a6c82c70513f2951560bc5893822e28e46",
+                "act": {
+                    "account": "delphioracle",
+                    "name": "write",
+                    "authorization": [
+                        {
+                            "actor": "teamgreymass",
+                            "permission": "oracle"
+                        }
+                    ],
+                    "data": {
+                        "owner": "teamgreymass",
+                        "quotes": [
+                            {
+                                "value": "754",
+                                "pair": "waxpusd"
+                            },
+                            {
+                                "value": "128",
+                                "pair": "waxpbtc"
+                            },
+                            {
+                                "value": "10014",
+                                "pair": "usdtusd"
+                            },
+                            {
+                                "value": "9999",
+                                "pair": "usdcusd"
+                            },
+                            {
+                                "value": "2231",
+                                "pair": "waxpeth"
+                            }
+                        ]
+                    }
+                },
+                "receipts": [
+                    {
+                        "receiver": "delphioracle",
+                        "global_sequence": 88418875817,
+                        "recv_sequence": 55055393,
+                        "auth_sequence": [
+                            {
+                                "account": "teamgreymass",
+                                "sequence": 1894585
+                            }
+                        ]
+                    }
+                ],
+                "cpu_usage_us": 325,
+                "net_usage_words": 23,
+                "global_sequence": 88418875817,
+                "producer": "eosriobrazil",
+                "action_ordinal": 1,
+                "creator_action_ordinal": 0,
+                "signatures": [
+                    "SIG_K1_KePMReEypvZ1x7Z81c53if6TGGq7gTMCgzuXcf9op77g1hfsbMooJKMWbG4pAutG75zW5t3LAr7VwYHaJjbP8WZfhnMUQ6"
+                ]
+            }
+        ]
+    },
+    "text": "{\"query_time_ms\":81.852,\"account\":{\"account_name\":\"teamgreymass\",\"head_block_num\":295339033,\"head_block_time\":\"2024-02-28T17:42:09.000\",\"privileged\":false,\"last_code_update\":\"1970-01-01T00:00:00.000\",\"created\":\"2019-07-12T05:18:07.000\",\"core_liquid_balance\":\"2786894.85649746 WAX\",\"ram_quota\":740973,\"net_weight\":\"455096542392\",\"cpu_weight\":\"2555196542594\",\"net_limit\":{\"used\":262510,\"available\":570672993,\"max\":570935503,\"last_usage_update_time\":\"2024-02-28T17:41:18.500\",\"current_used\":262357},\"cpu_limit\":{\"used\":696752,\"available\":1264335,\"max\":1961087,\"last_usage_update_time\":\"2024-02-28T17:41:18.500\",\"current_used\":696345},\"ram_usage\":12635,\"permissions\":[{\"perm_name\":\"active\",\"parent\":\"owner\",\"required_auth\":{\"threshold\":1,\"keys\":[{\"key\":\"EOS8KmhygTrrvtW7zJd6HXWrNqA5WX9NzScZ37JyXRiwpiJN2g2rR\",\"weight\":1}],\"accounts\":[],\"waits\":[]},\"linked_actions\":[]},{\"perm_name\":\"claim\",\"parent\":\"active\",\"required_auth\":{\"threshold\":1,\"keys\":[{\"key\":\"EOS6DLD9HxMcwn73U41jjdGsNe9vDFRKB26um6qTAqrtYcJFtED4C\",\"weight\":1}],\"accounts\":[],\"waits\":[]},\"linked_actions\":[{\"account\":\"eosio\",\"action\":\"claimrewards\"},{\"account\":\"eosio\",\"action\":\"claimgenesis\"},{\"account\":\"eosio\",\"action\":\"claimgbmvote\"},{\"account\":\"eosio\",\"action\":\"claimgbmprod\"}]},{\"perm_name\":\"failover\",\"parent\":\"active\",\"required_auth\":{\"threshold\":1,\"keys\":[{\"key\":\"EOS8NKyWVSfbfmyU98y6AfvJ8QfwbtNKAgfnZ9BbWd3UvQzMHhJY6\",\"weight\":1}],\"accounts\":[],\"waits\":[]},\"linked_actions\":[{\"account\":\"eosio\",\"action\":\"regproducer\"}]},{\"perm_name\":\"killswitch\",\"parent\":\"active\",\"required_auth\":{\"threshold\":1,\"keys\":[{\"key\":\"EOS7CjC7GL71msPzAuAzd2WwiBEAzTcPL47ACrjSuiNmnnGGufYSn\",\"weight\":1}],\"accounts\":[],\"waits\":[]},\"linked_actions\":[{\"account\":\"eosio\",\"action\":\"unregprod\"}]},{\"perm_name\":\"oracle\",\"parent\":\"active\",\"required_auth\":{\"threshold\":1,\"keys\":[{\"key\":\"EOS88VqmDmJJ9S23eNqdeWYf2zySxv3ckQrWBKy7EvVRCUuhSU4f3\",\"weight\":1}],\"accounts\":[],\"waits\":[]},\"linked_actions\":[{\"account\":\"delphioracle\",\"action\":\"write\"}]},{\"perm_name\":\"owner\",\"parent\":\"\",\"required_auth\":{\"threshold\":1,\"keys\":[{\"key\":\"EOS76TP8M48sRBGdPmsKyy3qAMCYgBNswjaWaXGR4jkS5Hro16khr\",\"weight\":1}],\"accounts\":[],\"waits\":[]},\"linked_actions\":[]},{\"perm_name\":\"producerjson\",\"parent\":\"active\",\"required_auth\":{\"threshold\":1,\"keys\":[{\"key\":\"EOS5JCEciUdfXnQmTyj85T98bXTAZZ1g7Nmajseu7ZWB8DrDa6Etp\",\"weight\":1}],\"accounts\":[],\"waits\":[]},\"linked_actions\":[{\"account\":\"producerjson\",\"action\":\"set\"}]},{\"perm_name\":\"transfer\",\"parent\":\"active\",\"required_auth\":{\"threshold\":1,\"keys\":[{\"key\":\"EOS6AkZZ5YZ6G5eCQGJBAPbkmouEaiSKFkdM289wEMKcf2rnx7mrb\",\"weight\":1},{\"key\":\"EOS6RWZ1CmDL4B6LdixuertnzxcRuUDac3NQspJEvMnebGcUwhvfX\",\"weight\":1}],\"accounts\":[],\"waits\":[]},\"linked_actions\":[{\"account\":\"eosio.token\",\"action\":\"transfer\"}]}],\"total_resources\":{\"owner\":\"teamgreymass\",\"net_weight\":\"4550.96542392 WAX\",\"cpu_weight\":\"25551.96542594 WAX\",\"ram_bytes\":739573},\"self_delegated_bandwidth\":{\"from\":\"teamgreymass\",\"to\":\"teamgreymass\",\"net_weight\":\"4550.96542392 WAX\",\"cpu_weight\":\"25551.96542594 WAX\"},\"refund_request\":null,\"voter_info\":{\"owner\":\"teamgreymass\",\"proxy\":\"\",\"producers\":[\"3dkrenderwax\",\"alohaeosprod\",\"amsterdamwax\",\"blacklusionx\",\"blokcrafters\",\"bountyblokbp\",\"bp.box\",\"bp.wecan\",\"cryptolions1\",\"dapplica\",\"eosauthority\",\"eosdacserver\",\"eosdublinwow\",\"eosiodetroit\",\"eosphereiobp\",\"eosriobrazil\",\"greeneosiobp\",\"guild.nefty\",\"hkeosguildhk\",\"ivote4waxusa\",\"ledgerwiseio\",\"liquidstudio\",\"nation.wax\",\"pink.gg\",\"sentnlagents\",\"teamgreymass\",\"tokengamerio\",\"wax.eastern\",\"waxhiveguild\",\"waxswedenorg\"],\"staked\":\"54029093084986\",\"unpaid_voteshare\":\"0.00000000000000000\",\"unpaid_voteshare_last_updated\":\"2024-02-27T19:36:42.000\",\"unpaid_voteshare_change_rate\":\"5023145082162604762150619062722348225396736.00000000000000000\",\"last_claim_time\":\"2024-02-27T19:36:42.000\",\"last_vote_weight\":\"5023145082162604762150619062722348225396736.00000000000000000\",\"proxied_vote_weight\":\"0.00000000000000000\",\"is_proxy\":0,\"flags1\":0,\"reserved2\":0,\"reserved3\":\"0 \"},\"rex_info\":null,\"subjective_cpu_bill_limit\":{\"used\":0,\"available\":0,\"max\":0,\"last_usage_update_time\":\"2000-01-01T00:00:00.000\",\"current_used\":0},\"eosio_any_linked_actions\":[]},\"links\":[{\"timestamp\":\"2022-09-20T14:25:46.500\",\"permission\":\"killswitch\",\"code\":\"eosio\",\"action\":\"unregprod\"},{\"timestamp\":\"2021-02-02T16:58:53.500\",\"permission\":\"transfer\",\"code\":\"eosio.token\",\"action\":\"transfer\"},{\"timestamp\":\"2020-06-03T19:45:35.000\",\"permission\":\"oracle\",\"code\":\"delphioracle\",\"action\":\"write\"},{\"timestamp\":\"2020-05-01T23:54:04.500\",\"permission\":\"claim\",\"code\":\"eosio\",\"action\":\"claimgbmprod\"},{\"timestamp\":\"2020-05-01T23:53:51.000\",\"permission\":\"claim\",\"code\":\"eosio\",\"action\":\"claimgbmvote\"},{\"timestamp\":\"2020-05-01T23:51:46.000\",\"permission\":\"claim\",\"code\":\"eosio\",\"action\":\"claimgenesis\"},{\"timestamp\":\"2020-02-13T19:50:37.000\",\"permission\":\"producerjson\",\"code\":\"producerjson\",\"action\":\"set\"},{\"timestamp\":\"2019-12-07T07:52:09.000\",\"permission\":\"failover\",\"code\":\"eosio\",\"action\":\"unregprod\"},{\"timestamp\":\"2019-12-07T07:52:00.500\",\"permission\":\"failover\",\"code\":\"eosio\",\"action\":\"regproducer\"},{\"timestamp\":\"2019-11-25T23:44:03.500\",\"permission\":\"claim\",\"code\":\"eosio\",\"action\":\"claimrewards\"}],\"tokens\":[{\"symbol\":\"RICH\",\"amount\":81.44848567,\"contract\":\"token.rich\"},{\"symbol\":\"STAKE\",\"precision\":8,\"amount\":1,\"contract\":\"kingsofgraff\"},{\"symbol\":\"HITCOIN\",\"precision\":8,\"amount\":0.0000042,\"contract\":\"gkniftyheads\"},{\"symbol\":\"WAX\",\"precision\":8,\"amount\":2786894.85649746,\"contract\":\"eosio.token\"}],\"total_actions\":1885932,\"actions\":[{\"@timestamp\":\"2024-02-28T17:41:18.500\",\"timestamp\":\"2024-02-28T17:41:18.500\",\"block_num\":295338932,\"block_id\":\"119a83b4b8bbcbfb36a064fe787fafcd896e70cbc3924f250cf1a95729cc5bba\",\"trx_id\":\"c83677e096f94be2704618877dd9ed1ef36fb764cf0ac187a284b38d46cdeac7\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"753\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"10008\",\"pair\":\"usdtusd\"},{\"value\":\"9998\",\"pair\":\"usdcusd\"},{\"value\":\"2151\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88419105093,\"recv_sequence\":55055969,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894604}]}],\"cpu_usage_us\":434,\"net_usage_words\":23,\"global_sequence\":88419105093,\"producer\":\"bountyblokbp\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_Km2XJWKjACS2w8KN5kf8M9LzBAN526oBitb4ck7SbHh4LT28imyH9Pgw5MgVMYASKnGV3yZbhqvmvTf71yp9fRro9iLj2C\"]},{\"@timestamp\":\"2024-02-28T17:40:18.500\",\"timestamp\":\"2024-02-28T17:40:18.500\",\"block_num\":295338812,\"block_id\":\"119a833c5555b0225f1c4712b10a002fd37c6fdaf36c6d41510777f7be35fa9a\",\"trx_id\":\"ba6ed5cf045740dc67ed7c0f0b6b515a41b9476b550cb78ebfb39a56a7bc062c\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"753\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"10006\",\"pair\":\"usdtusd\"},{\"value\":\"9998\",\"pair\":\"usdcusd\"},{\"value\":\"2151\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88419092633,\"recv_sequence\":55055938,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894603}]}],\"cpu_usage_us\":225,\"net_usage_words\":23,\"global_sequence\":88419092633,\"producer\":\"waxhiveguild\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_JySH2jqAhXw6KScjuddUyqp5c9RHBpgqAtDyBZtyx7ULYsRMUsMyz241veA1dULrjxNVhvUxoCTt4jGvBgdyNzc7PozM4a\"]},{\"@timestamp\":\"2024-02-28T17:39:21.500\",\"timestamp\":\"2024-02-28T17:39:21.500\",\"block_num\":295338698,\"block_id\":\"119a82ca47e46a68e2ee26c6a9d27832858b26d21072ba07a310c766f7b840dc\",\"trx_id\":\"78dfd250b9752025ab5f507161b50b59d094878b5b685ce5a8f160fe65bd84ce\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"753\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"9999\",\"pair\":\"usdtusd\"},{\"value\":\"9990\",\"pair\":\"usdcusd\"},{\"value\":\"2151\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88419080676,\"recv_sequence\":55055906,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894602}]}],\"cpu_usage_us\":378,\"net_usage_words\":23,\"global_sequence\":88419080676,\"producer\":\"eosdacserver\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_Kcy2TFrrkZssA1Mkxa7tRP8xwADd1K4bQ3L3yxNguxLDaqDFsFEcSehwn3EX2YUMFfM3yacZRqQQZQsY6nT9JVf7nvGLt7\"]},{\"@timestamp\":\"2024-02-28T17:38:18.000\",\"timestamp\":\"2024-02-28T17:38:18.000\",\"block_num\":295338571,\"block_id\":\"119a824bfc890639fe3edd0db22572517841d25160f70b9637ee26227d6a1f0f\",\"trx_id\":\"fae4e5e334715a27ad8ac46c5900e683537b18589af62dfcf5131051a3ac3264\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"10003\",\"pair\":\"usdtusd\"},{\"value\":\"9991\",\"pair\":\"usdcusd\"},{\"value\":\"2151\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88419068378,\"recv_sequence\":55055878,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894601}]}],\"cpu_usage_us\":426,\"net_usage_words\":23,\"global_sequence\":88419068378,\"producer\":\"eosphereiobp\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_Kd8Su5gVca1ZmmThWwrGEasjXHYNhH3adU6cJKX9HGnGYtxFGXbYhfcjkzFmnCHzQEUuu55PchnBv9rAL9PycoWQznRXGu\"]},{\"@timestamp\":\"2024-02-28T17:37:18.000\",\"timestamp\":\"2024-02-28T17:37:18.000\",\"block_num\":295338451,\"block_id\":\"119a81d3a6ecc3fed8083cf5d1314f58350ba0085745c2a7472b67f6313c833c\",\"trx_id\":\"dc14bd1ffcd991c953254e2d3a8a395bdc97ad0f5e40bf1450dec3fb8b5747b2\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"9989\",\"pair\":\"usdtusd\"},{\"value\":\"9990\",\"pair\":\"usdcusd\"},{\"value\":\"2308\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88419054965,\"recv_sequence\":55055847,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894600}]}],\"cpu_usage_us\":662,\"net_usage_words\":23,\"global_sequence\":88419054965,\"producer\":\"teamgreymass\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_KgSwcbHcPjKahTAf6v5fAKBeWWNmhTuRfgXvKphepX9rir2BPWTPeotM46Y9g9Roqrq563doenGeCcwwZLomEHFHKAgPNf\"]},{\"@timestamp\":\"2024-02-28T17:36:18.000\",\"timestamp\":\"2024-02-28T17:36:18.000\",\"block_num\":295338331,\"block_id\":\"119a815b852eb258754456dac7caaa6ffcb977e0e3c4a5b95fc6c0b87975d49b\",\"trx_id\":\"73fa31e63568fa7b4707368aeb4eb3b3cd3a12f9b7b9aff19cf3c5c421e215e0\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"10000\",\"pair\":\"usdtusd\"},{\"value\":\"9993\",\"pair\":\"usdcusd\"},{\"value\":\"2308\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88419043775,\"recv_sequence\":55055816,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894599}]}],\"cpu_usage_us\":817,\"net_usage_words\":23,\"global_sequence\":88419043775,\"producer\":\"bp.alcor\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_KbMaggaBNDYEXgV1tg6aYvgay7FBR4oHfdYBCg3DGPKb6qUjNRid3eYiRrpzWLDPph3UhKJaVman684EZy7bzM28pWG6Sf\"]},{\"@timestamp\":\"2024-02-28T17:35:17.500\",\"timestamp\":\"2024-02-28T17:35:17.500\",\"block_num\":295338210,\"block_id\":\"119a80e237011b78941de181e895890b007872614d3243ac37c67046cb1c3abf\",\"trx_id\":\"458cdf32787389a350c05765ba0293e7ae50f6b97d348f20b026ec93e23682dd\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"9997\",\"pair\":\"usdtusd\"},{\"value\":\"9982\",\"pair\":\"usdcusd\"},{\"value\":\"2308\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88419033991,\"recv_sequence\":55055785,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894598}]}],\"cpu_usage_us\":675,\"net_usage_words\":23,\"global_sequence\":88419033991,\"producer\":\"teamgreymass\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_KY6CCMj3QzrvDkbG98zFFcANBbWW3qcbVBsKzfRFqkKQ6TvSsM2c3ijQo79gRnE1CYvdB459VhB15yDsNshaa3GwczYRtF\"]},{\"@timestamp\":\"2024-02-28T17:34:18.500\",\"timestamp\":\"2024-02-28T17:34:18.500\",\"block_num\":295338092,\"block_id\":\"119a806cc24198e0801ad9a3891c6bd04c38e7456dc5204499ba8c1082ec32dd\",\"trx_id\":\"f0c91841b617c68450ff4a3c04261b5ce9398fd837c7155d140e2fc4e604ca5b\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"9993\",\"pair\":\"usdtusd\"},{\"value\":\"9972\",\"pair\":\"usdcusd\"},{\"value\":\"2308\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88419021671,\"recv_sequence\":55055754,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894597}]}],\"cpu_usage_us\":484,\"net_usage_words\":23,\"global_sequence\":88419021671,\"producer\":\"bp.wecan\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_K1c4rRRNQ6XrRftDTVU4PNGrNa7HhjAtXm2Kho8LH4EpFRjT9X1c418E4VNZQgMHJiPNER5o9CtTp5Wwv7BSZJzVAgYJaz\"]},{\"@timestamp\":\"2024-02-28T17:33:18.000\",\"timestamp\":\"2024-02-28T17:33:18.000\",\"block_num\":295337971,\"block_id\":\"119a7ff3458f2b6312316f9be8da0f4509cf1fa2cc1e5858ecbefac4603595df\",\"trx_id\":\"d46caa3f8107a64f123325a0dee9bb90f532d740663c8b242a339dd393189696\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"9987\",\"pair\":\"usdtusd\"},{\"value\":\"9979\",\"pair\":\"usdcusd\"},{\"value\":\"2308\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88419009924,\"recv_sequence\":55055724,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894596}]}],\"cpu_usage_us\":545,\"net_usage_words\":23,\"global_sequence\":88419009924,\"producer\":\"eosauthority\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_KbZb72euktPNrSwCbRengq5CiyYPCrfCTSZUES6WFGZv6GijDD7FhPiH5UkVi9SZZMN8tpEpp8BQCzFtTjgf9QRjALxYT2\"]},{\"@timestamp\":\"2024-02-28T17:32:18.000\",\"timestamp\":\"2024-02-28T17:32:18.000\",\"block_num\":295337851,\"block_id\":\"119a7f7b4f401d1224d5b2c292e84620d1d455404d1e99e1e7da359b9b7873a6\",\"trx_id\":\"a135e58b23f542f2230387a87525789c2c2349a69f00804089f8fdc000ce3da4\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"10008\",\"pair\":\"usdtusd\"},{\"value\":\"9984\",\"pair\":\"usdcusd\"},{\"value\":\"2194\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88418996850,\"recv_sequence\":55055694,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894595}]}],\"cpu_usage_us\":366,\"net_usage_words\":23,\"global_sequence\":88418996850,\"producer\":\"guild.waxdao\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_Kb5eh9NFBP5NhuQYC1Vnu2dmz8DTxWnMGfJ5VytMwtVLgZc2MtYtEWYncNBgPTJbj1NQ6LXAwb6NpF6bgTf9WVehXhwz7M\"]},{\"@timestamp\":\"2024-02-28T17:31:17.500\",\"timestamp\":\"2024-02-28T17:31:17.500\",\"block_num\":295337730,\"block_id\":\"119a7f02bb464ec941e57c9499df28912007837632ae1dc337cdc5d1d7214535\",\"trx_id\":\"1fee6bee7747b1a301d2e45e38397eb2b0dcf06cbe9109b75d794e72ec865df4\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"10012\",\"pair\":\"usdtusd\"},{\"value\":\"9987\",\"pair\":\"usdcusd\"},{\"value\":\"2197\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88418983897,\"recv_sequence\":55055663,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894594}]}],\"cpu_usage_us\":510,\"net_usage_words\":23,\"global_sequence\":88418983897,\"producer\":\"eosauthority\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_Kiy3ezdZueBMEfCVJ5dBnKBhvHKdLpDLzVEpWnnDoy6X5Zsh59zhFjzdnR9Ssu87djnZNRK7Grv9yZiERw3aj1vEVwyamu\"]},{\"@timestamp\":\"2024-02-28T17:30:18.000\",\"timestamp\":\"2024-02-28T17:30:18.000\",\"block_num\":295337611,\"block_id\":\"119a7e8ba5820ea32691d4e33a85f5c3367b3797a847f691a741c4dd4e921f48\",\"trx_id\":\"3d83e6bc8c337618bcb7528989c99c9fcdacf3decc3edaf89e0006269d4009ac\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"10014\",\"pair\":\"usdtusd\"},{\"value\":\"9995\",\"pair\":\"usdcusd\"},{\"value\":\"2197\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88418972611,\"recv_sequence\":55055635,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894593}]}],\"cpu_usage_us\":394,\"net_usage_words\":23,\"global_sequence\":88418972611,\"producer\":\"guild.nefty\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_KfW8xKcCxdPieuakwDTwF83CaFBHbnRmKqkQJMwVMxrVcRrDnf3WJS41x4WhJ65TiyTiB1v5TBqtm887DReuKNttbi2xXv\"]},{\"@timestamp\":\"2024-02-28T17:29:17.500\",\"timestamp\":\"2024-02-28T17:29:17.500\",\"block_num\":295337490,\"block_id\":\"119a7e12566d945a4199323f05d72c078166413de81df0c9b8238261a9705fa8\",\"trx_id\":\"649e6f633e7d6555c1699b98abbc2adee2c9fe5a6ecef41b0ae37ba53b972cf6\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"10014\",\"pair\":\"usdtusd\"},{\"value\":\"9999\",\"pair\":\"usdcusd\"},{\"value\":\"2197\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88418959343,\"recv_sequence\":55055603,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894592}]}],\"cpu_usage_us\":588,\"net_usage_words\":23,\"global_sequence\":88418959343,\"producer\":\"amsterdamwax\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_K1HqpNuCCgXq7i6RfPBn6r1FqfQLEwnMxRWuguuBEBuFf6oUFbUJFCNwssch8qHFgxuuMLtwdiCsE6YbDY5Ed1gfFp1x5F\"]},{\"@timestamp\":\"2024-02-28T17:28:18.000\",\"timestamp\":\"2024-02-28T17:28:18.000\",\"block_num\":295337371,\"block_id\":\"119a7d9bfc90227b9b593f0ef8456d6a2f3327d551eabf65013e4d2ffae41ec5\",\"trx_id\":\"25e8b23d3dab0c87a1374a53338151971825e7fc2a860c313ef82ed0f1e96174\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"10013\",\"pair\":\"usdtusd\"},{\"value\":\"9998\",\"pair\":\"usdcusd\"},{\"value\":\"2197\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88418949241,\"recv_sequence\":55055572,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894591}]}],\"cpu_usage_us\":358,\"net_usage_words\":23,\"global_sequence\":88418949241,\"producer\":\"alohaeosprod\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_Kbx1FvsSpRcTEV3QJpibVA1LkN5XC9t9ZoaGH7RRtibD1MnveSivxnsvUoiMgJc8nE3nGBWZUwkMDnuVGzp24dGXXkqS49\"]},{\"@timestamp\":\"2024-02-28T17:27:18.000\",\"timestamp\":\"2024-02-28T17:27:18.000\",\"block_num\":295337251,\"block_id\":\"119a7d23a38ab933b46d90e8d0ea6800d95bdc00bf56b0440f7109daecfa53e9\",\"trx_id\":\"31b20d01c320a2f3c63786f3e9476790e0c338faae0f944c2abc91dfebf88822\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"10012\",\"pair\":\"usdtusd\"},{\"value\":\"10000\",\"pair\":\"usdcusd\"},{\"value\":\"2212\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88418937747,\"recv_sequence\":55055540,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894590}]}],\"cpu_usage_us\":438,\"net_usage_words\":23,\"global_sequence\":88418937747,\"producer\":\"cryptolions1\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_K3SUQr5P4nsTjNB4dGW7W9r9mwcMrY9TeHcUtNk66gGPmxsPx8sSKVA4iJen4WfyaLin81mX5wB5FsqXw98R8dZdtMXLmE\"]},{\"@timestamp\":\"2024-02-28T17:26:17.500\",\"timestamp\":\"2024-02-28T17:26:17.500\",\"block_num\":295337130,\"block_id\":\"119a7caacb58dfba034c870fe9571a793cd13492c998005b0ec77b6444bc0222\",\"trx_id\":\"a39a200388dea97f06d30422148532bb43bafe461ac0a719f4af338a21b0cda2\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"10012\",\"pair\":\"usdtusd\"},{\"value\":\"9990\",\"pair\":\"usdcusd\"},{\"value\":\"2217\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88418924653,\"recv_sequence\":55055512,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894589}]}],\"cpu_usage_us\":412,\"net_usage_words\":23,\"global_sequence\":88418924653,\"producer\":\"alohaeosprod\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_K3UbvjoYL2HmZWWJeQ346XZ3Cgh6rUZRaHzzfdFR7Vt4Ur7BZgyNGPGzRWJGCYvLSNrexk8eYefCNZs8vS9kizmaTUVaYe\"]},{\"@timestamp\":\"2024-02-28T17:25:17.500\",\"timestamp\":\"2024-02-28T17:25:17.500\",\"block_num\":295337010,\"block_id\":\"119a7c32e189ef24f9bb386fdd7789cacd32518a804a3db044db958cfd790030\",\"trx_id\":\"4de1d1b20b45e55b3d508521928a10c01c39c1a1b945b57fe9d5532c2dd52582\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"10015\",\"pair\":\"usdtusd\"},{\"value\":\"9997\",\"pair\":\"usdcusd\"},{\"value\":\"2211\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88418913244,\"recv_sequence\":55055484,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894588}]}],\"cpu_usage_us\":509,\"net_usage_words\":23,\"global_sequence\":88418913244,\"producer\":\"cryptolions1\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_Kbn1NY1EYSy8152ZZkdprBoQuD4QtDT122zR9guANEU56x1x5ajzGq9qbJDMHXru9BvvjhgVM74B4Fdoj26enL3FwnvpcG\"]},{\"@timestamp\":\"2024-02-28T17:24:17.000\",\"timestamp\":\"2024-02-28T17:24:17.000\",\"block_num\":295336889,\"block_id\":\"119a7bb9f105617ae63772c4fb6344de7875eeb0b07eda709449f2afa58c10c4\",\"trx_id\":\"a51e5ccfadccb810850440fcc0bf5aae068f2e12e40dab0aa1d23c49c86483a6\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"10014\",\"pair\":\"usdtusd\"},{\"value\":\"9999\",\"pair\":\"usdcusd\"},{\"value\":\"2231\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88418898268,\"recv_sequence\":55055455,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894587}]}],\"cpu_usage_us\":427,\"net_usage_words\":23,\"global_sequence\":88418898268,\"producer\":\"wombatblockx\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_KWja7CapJaUdifRLfgSPJdAiwMxynMT6noEr6UgN9y8svZ4WZtkpDWUd6BmUcKZWT3vHYr1Ny6pxwAaoijZpGqXke2NDvq\"]},{\"@timestamp\":\"2024-02-28T17:23:17.500\",\"timestamp\":\"2024-02-28T17:23:17.500\",\"block_num\":295336770,\"block_id\":\"119a7b42519ce9ec7cfab329f27efff7b102e1cca38f79663edacafa941daf9c\",\"trx_id\":\"f4831e65cd495e999a2998ccbb548ab7625591e1d883a914690486bc08c6212c\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"10014\",\"pair\":\"usdtusd\"},{\"value\":\"10000\",\"pair\":\"usdcusd\"},{\"value\":\"2231\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88418886331,\"recv_sequence\":55055422,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894586}]}],\"cpu_usage_us\":304,\"net_usage_words\":23,\"global_sequence\":88418886331,\"producer\":\"guild.taco\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_JxZv3uA54dT5VadYVyt8j1CwkJHrGp8A2on3eWtbpa84vT4EpwHAd691fJd4dDCnVcWuVyCjC6H3wDXatBtBjyBUNF839T\"]},{\"@timestamp\":\"2024-02-28T17:22:18.000\",\"timestamp\":\"2024-02-28T17:22:18.000\",\"block_num\":295336651,\"block_id\":\"119a7acbb7e85b53d19414a8fd576443587fb340de19bd2cfc6bedc835d1b48b\",\"trx_id\":\"6bb5eb716350a6d7dc0fc6ad64c0a1a6c82c70513f2951560bc5893822e28e46\",\"act\":{\"account\":\"delphioracle\",\"name\":\"write\",\"authorization\":[{\"actor\":\"teamgreymass\",\"permission\":\"oracle\"}],\"data\":{\"owner\":\"teamgreymass\",\"quotes\":[{\"value\":\"754\",\"pair\":\"waxpusd\"},{\"value\":\"128\",\"pair\":\"waxpbtc\"},{\"value\":\"10014\",\"pair\":\"usdtusd\"},{\"value\":\"9999\",\"pair\":\"usdcusd\"},{\"value\":\"2231\",\"pair\":\"waxpeth\"}]}},\"receipts\":[{\"receiver\":\"delphioracle\",\"global_sequence\":88418875817,\"recv_sequence\":55055393,\"auth_sequence\":[{\"account\":\"teamgreymass\",\"sequence\":1894585}]}],\"cpu_usage_us\":325,\"net_usage_words\":23,\"global_sequence\":88418875817,\"producer\":\"eosriobrazil\",\"action_ordinal\":1,\"creator_action_ordinal\":0,\"signatures\":[\"SIG_K1_KePMReEypvZ1x7Z81c53if6TGGq7gTMCgzuXcf9op77g1hfsbMooJKMWbG4pAutG75zW5t3LAr7VwYHaJjbP8WZfhnMUQ6\"]}]}"
+}

@@ -1,0 +1,170 @@
+{
+    "request": {
+        "path": "https://wax.blokcrafters.io/v2/history/get_deltas?code=eosio.token&scope=teamgreymass&table=accounts&payer=teamgreymass",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": {
+        "query_time_ms": 75.62,
+        "total": {
+            "value": 2730,
+            "relation": "eq"
+        },
+        "deltas": [
+            {
+                "timestamp": "2024-02-27T19:37:44.500",
+                "present": 1,
+                "code": "eosio.token",
+                "scope": "teamgreymass",
+                "table": "accounts",
+                "primary_key": "5783895",
+                "payer": "teamgreymass",
+                "block_num": 295180105,
+                "block_id": "1198174936043a332cfd96c4436cdc7cb172f71c8b6ed4f6689ff8cf9a3e2241",
+                "data": {
+                    "amount": 2786894.85649746,
+                    "symbol": "WAX"
+                }
+            },
+            {
+                "timestamp": "2024-02-27T19:36:42.000",
+                "present": 1,
+                "code": "eosio.token",
+                "scope": "teamgreymass",
+                "table": "accounts",
+                "primary_key": "5783895",
+                "payer": "teamgreymass",
+                "block_num": 295179980,
+                "block_id": "119816cccaeac25c08c2cf0dd6e75fbbe6a91ac558c4dcdc67491e30ffa804fa",
+                "data": {
+                    "amount": 2781623.2516844,
+                    "symbol": "WAX"
+                }
+            },
+            {
+                "timestamp": "2024-02-26T19:36:58.000",
+                "present": 1,
+                "code": "eosio.token",
+                "scope": "teamgreymass",
+                "table": "accounts",
+                "primary_key": "5783895",
+                "payer": "teamgreymass",
+                "block_num": 295007297,
+                "block_id": "119574410eb1b1b739059930268a135b9034520cbfcda92f791040524a79d82d",
+                "data": {
+                    "amount": 2781545.58420595,
+                    "symbol": "WAX"
+                }
+            },
+            {
+                "timestamp": "2024-02-26T19:35:58.000",
+                "present": 1,
+                "code": "eosio.token",
+                "scope": "teamgreymass",
+                "table": "accounts",
+                "primary_key": "5783895",
+                "payer": "teamgreymass",
+                "block_num": 295007177,
+                "block_id": "119573c93aa8483196298d2a4484bb3022de5204c9fb8dc9e310333ff7d3ca1f",
+                "data": {
+                    "amount": 2776274.75652688,
+                    "symbol": "WAX"
+                }
+            },
+            {
+                "timestamp": "2024-02-25T19:36:31.000",
+                "present": 1,
+                "code": "eosio.token",
+                "scope": "teamgreymass",
+                "table": "accounts",
+                "primary_key": "5783895",
+                "payer": "teamgreymass",
+                "block_num": 294834527,
+                "block_id": "1192d15fd5715986bf21d45591342d38c4773ffe0b01e996a250aa49fdd8081b",
+                "data": {
+                    "amount": 2776196.55651056,
+                    "symbol": "WAX"
+                }
+            },
+            {
+                "timestamp": "2024-02-25T19:35:55.000",
+                "present": 1,
+                "code": "eosio.token",
+                "scope": "teamgreymass",
+                "table": "accounts",
+                "primary_key": "5783895",
+                "payer": "teamgreymass",
+                "block_num": 294834455,
+                "block_id": "1192d117d8e3295edf8035553345947e8a1e0205084336a16d4f517304d739bf",
+                "data": {
+                    "amount": 2770926.51397315,
+                    "symbol": "WAX"
+                }
+            },
+            {
+                "timestamp": "2024-02-24T19:35:54.500",
+                "present": 1,
+                "code": "eosio.token",
+                "scope": "teamgreymass",
+                "table": "accounts",
+                "primary_key": "5783895",
+                "payer": "teamgreymass",
+                "block_num": 294661654,
+                "block_id": "11902e16df0a5c89d65c1e8b14ad05121f766b19f2570bc99c34fa5befac5be6",
+                "data": {
+                    "amount": 2770847.68660657,
+                    "symbol": "WAX"
+                }
+            },
+            {
+                "timestamp": "2024-02-24T19:35:52.500",
+                "present": 1,
+                "code": "eosio.token",
+                "scope": "teamgreymass",
+                "table": "accounts",
+                "primary_key": "5783895",
+                "payer": "teamgreymass",
+                "block_num": 294661650,
+                "block_id": "11902e12a80b64f18260cdc3480d60edac80c2cb171d9c6bed29e40950309667",
+                "data": {
+                    "amount": 2765578.31314021,
+                    "symbol": "WAX"
+                }
+            },
+            {
+                "timestamp": "2024-02-23T19:35:53.500",
+                "present": 1,
+                "code": "eosio.token",
+                "scope": "teamgreymass",
+                "table": "accounts",
+                "primary_key": "5783895",
+                "payer": "teamgreymass",
+                "block_num": 294488852,
+                "block_id": "118d8b14c6bfa78913348e1f8de31dd019a656c0efc7e27a5d02ec2264dca9ea",
+                "data": {
+                    "amount": 2765498.767588,
+                    "symbol": "WAX"
+                }
+            },
+            {
+                "timestamp": "2024-02-23T19:35:49.000",
+                "present": 1,
+                "code": "eosio.token",
+                "scope": "teamgreymass",
+                "table": "accounts",
+                "primary_key": "5783895",
+                "payer": "teamgreymass",
+                "block_num": 294488843,
+                "block_id": "118d8b0b05e09b203fd0ad3d26db8547d656af5fa513ea7f4e1e0506904fe6bd",
+                "data": {
+                    "amount": 2760230.0697843,
+                    "symbol": "WAX"
+                }
+            }
+        ]
+    },
+    "text": "{\"query_time_ms\":75.62,\"total\":{\"value\":2730,\"relation\":\"eq\"},\"deltas\":[{\"timestamp\":\"2024-02-27T19:37:44.500\",\"present\":1,\"code\":\"eosio.token\",\"scope\":\"teamgreymass\",\"table\":\"accounts\",\"primary_key\":\"5783895\",\"payer\":\"teamgreymass\",\"block_num\":295180105,\"block_id\":\"1198174936043a332cfd96c4436cdc7cb172f71c8b6ed4f6689ff8cf9a3e2241\",\"data\":{\"amount\":2786894.85649746,\"symbol\":\"WAX\"}},{\"timestamp\":\"2024-02-27T19:36:42.000\",\"present\":1,\"code\":\"eosio.token\",\"scope\":\"teamgreymass\",\"table\":\"accounts\",\"primary_key\":\"5783895\",\"payer\":\"teamgreymass\",\"block_num\":295179980,\"block_id\":\"119816cccaeac25c08c2cf0dd6e75fbbe6a91ac558c4dcdc67491e30ffa804fa\",\"data\":{\"amount\":2781623.2516844,\"symbol\":\"WAX\"}},{\"timestamp\":\"2024-02-26T19:36:58.000\",\"present\":1,\"code\":\"eosio.token\",\"scope\":\"teamgreymass\",\"table\":\"accounts\",\"primary_key\":\"5783895\",\"payer\":\"teamgreymass\",\"block_num\":295007297,\"block_id\":\"119574410eb1b1b739059930268a135b9034520cbfcda92f791040524a79d82d\",\"data\":{\"amount\":2781545.58420595,\"symbol\":\"WAX\"}},{\"timestamp\":\"2024-02-26T19:35:58.000\",\"present\":1,\"code\":\"eosio.token\",\"scope\":\"teamgreymass\",\"table\":\"accounts\",\"primary_key\":\"5783895\",\"payer\":\"teamgreymass\",\"block_num\":295007177,\"block_id\":\"119573c93aa8483196298d2a4484bb3022de5204c9fb8dc9e310333ff7d3ca1f\",\"data\":{\"amount\":2776274.75652688,\"symbol\":\"WAX\"}},{\"timestamp\":\"2024-02-25T19:36:31.000\",\"present\":1,\"code\":\"eosio.token\",\"scope\":\"teamgreymass\",\"table\":\"accounts\",\"primary_key\":\"5783895\",\"payer\":\"teamgreymass\",\"block_num\":294834527,\"block_id\":\"1192d15fd5715986bf21d45591342d38c4773ffe0b01e996a250aa49fdd8081b\",\"data\":{\"amount\":2776196.55651056,\"symbol\":\"WAX\"}},{\"timestamp\":\"2024-02-25T19:35:55.000\",\"present\":1,\"code\":\"eosio.token\",\"scope\":\"teamgreymass\",\"table\":\"accounts\",\"primary_key\":\"5783895\",\"payer\":\"teamgreymass\",\"block_num\":294834455,\"block_id\":\"1192d117d8e3295edf8035553345947e8a1e0205084336a16d4f517304d739bf\",\"data\":{\"amount\":2770926.51397315,\"symbol\":\"WAX\"}},{\"timestamp\":\"2024-02-24T19:35:54.500\",\"present\":1,\"code\":\"eosio.token\",\"scope\":\"teamgreymass\",\"table\":\"accounts\",\"primary_key\":\"5783895\",\"payer\":\"teamgreymass\",\"block_num\":294661654,\"block_id\":\"11902e16df0a5c89d65c1e8b14ad05121f766b19f2570bc99c34fa5befac5be6\",\"data\":{\"amount\":2770847.68660657,\"symbol\":\"WAX\"}},{\"timestamp\":\"2024-02-24T19:35:52.500\",\"present\":1,\"code\":\"eosio.token\",\"scope\":\"teamgreymass\",\"table\":\"accounts\",\"primary_key\":\"5783895\",\"payer\":\"teamgreymass\",\"block_num\":294661650,\"block_id\":\"11902e12a80b64f18260cdc3480d60edac80c2cb171d9c6bed29e40950309667\",\"data\":{\"amount\":2765578.31314021,\"symbol\":\"WAX\"}},{\"timestamp\":\"2024-02-23T19:35:53.500\",\"present\":1,\"code\":\"eosio.token\",\"scope\":\"teamgreymass\",\"table\":\"accounts\",\"primary_key\":\"5783895\",\"payer\":\"teamgreymass\",\"block_num\":294488852,\"block_id\":\"118d8b14c6bfa78913348e1f8de31dd019a656c0efc7e27a5d02ec2264dca9ea\",\"data\":{\"amount\":2765498.767588,\"symbol\":\"WAX\"}},{\"timestamp\":\"2024-02-23T19:35:49.000\",\"present\":1,\"code\":\"eosio.token\",\"scope\":\"teamgreymass\",\"table\":\"accounts\",\"primary_key\":\"5783895\",\"payer\":\"teamgreymass\",\"block_num\":294488843,\"block_id\":\"118d8b0b05e09b203fd0ad3d26db8547d656af5fa513ea7f4e1e0506904fe6bd\",\"data\":{\"amount\":2760230.0697843,\"symbol\":\"WAX\"}}]}"
+}

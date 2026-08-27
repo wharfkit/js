@@ -1,0 +1,69 @@
+{
+    "request": {
+        "path": "https://wax.blokcrafters.io/v2/health",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": {
+        "version": "3.3.9-8",
+        "version_hash": "fb2fc20d1d0e0700d29865a57527b8fbd4cc30a2",
+        "host": "wax.blokcrafters.io",
+        "health": [
+            {
+                "service": "RabbitMq",
+                "status": "OK",
+                "time": 1709142126336
+            },
+            {
+                "service": "NodeosRPC",
+                "status": "OK",
+                "service_data": {
+                    "head_block_num": 295339027,
+                    "head_block_time": "2024-02-28T17:42:06.000",
+                    "time_offset": 384,
+                    "last_irreversible_block": 295338702,
+                    "chain_id": "1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4"
+                },
+                "time": 1709142126384
+            },
+            {
+                "service": "Elasticsearch",
+                "status": "OK",
+                "service_data": {
+                    "active_shards": "100.0%",
+                    "head_offset": 1,
+                    "first_indexed_block": 2,
+                    "last_indexed_block": 295339026,
+                    "total_indexed_blocks": 295339024,
+                    "missing_blocks": 0,
+                    "missing_pct": "0.00%"
+                },
+                "time": 1709142126338
+            }
+        ],
+        "features": {
+            "streaming": {
+                "enable": true,
+                "traces": true,
+                "deltas": true
+            },
+            "tables": {
+                "proposals": true,
+                "accounts": true,
+                "voters": true
+            },
+            "index_deltas": true,
+            "index_transfer_memo": true,
+            "index_all_deltas": true,
+            "deferred_trx": false,
+            "failed_trx": false,
+            "resource_limits": false,
+            "resource_usage": false
+        },
+        "query_time_ms": 51.775
+    },
+    "text": "{\"version\":\"3.3.9-8\",\"version_hash\":\"fb2fc20d1d0e0700d29865a57527b8fbd4cc30a2\",\"host\":\"wax.blokcrafters.io\",\"health\":[{\"service\":\"RabbitMq\",\"status\":\"OK\",\"time\":1709142126336},{\"service\":\"NodeosRPC\",\"status\":\"OK\",\"service_data\":{\"head_block_num\":295339027,\"head_block_time\":\"2024-02-28T17:42:06.000\",\"time_offset\":384,\"last_irreversible_block\":295338702,\"chain_id\":\"1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4\"},\"time\":1709142126384},{\"service\":\"Elasticsearch\",\"status\":\"OK\",\"service_data\":{\"active_shards\":\"100.0%\",\"head_offset\":1,\"first_indexed_block\":2,\"last_indexed_block\":295339026,\"total_indexed_blocks\":295339024,\"missing_blocks\":0,\"missing_pct\":\"0.00%\"},\"time\":1709142126338}],\"features\":{\"streaming\":{\"enable\":true,\"traces\":true,\"deltas\":true},\"tables\":{\"proposals\":true,\"accounts\":true,\"voters\":true},\"index_deltas\":true,\"index_transfer_memo\":true,\"index_all_deltas\":true,\"deferred_trx\":false,\"failed_trx\":false,\"resource_limits\":false,\"resource_usage\":false},\"query_time_ms\":51.775}"
+}

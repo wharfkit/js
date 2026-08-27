@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "isolatedModules": false,
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "resolveJsonModule": true,
+        "target": "es2022",
+        "types": ["mocha", "node"],
+        "useDefineForClassFields": false
+    }
+}

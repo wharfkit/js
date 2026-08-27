@@ -57,6 +57,23 @@
         "@wharfkit/wallet-plugin-privatekey": "workspace:*",
       },
     },
+    "packages/account": {
+      "name": "@wharfkit/account",
+      "version": "4.0.0-rc2",
+      "dependencies": {
+        "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/common": "workspace:*",
+        "@wharfkit/contract": "workspace:*",
+        "@wharfkit/resources": "workspace:*",
+        "@wharfkit/token": "workspace:*",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "@wharfkit/signing-request": "workspace:*",
+      },
+    },
     "packages/account-creation-plugin-anchor": {
       "name": "@wharfkit/account-creation-plugin-anchor",
       "version": "4.0.0-rc2",
@@ -73,6 +90,20 @@
       "name": "@wharfkit/account-creation-plugin-jungle4",
       "version": "4.0.0-rc2",
       "dependencies": {
+        "@wharfkit/session": "workspace:*",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+      },
+    },
+    "packages/account-creation-plugin-metamask": {
+      "name": "@wharfkit/account-creation-plugin-metamask",
+      "version": "4.0.0-rc2",
+      "dependencies": {
+        "@greymass/create-account": "^1.1.0",
+        "@metamask/providers": "^17.0.0",
         "@wharfkit/session": "workspace:*",
         "tslib": "catalog:",
       },
@@ -117,6 +148,20 @@
       },
       "devDependencies": {
         "eslint-plugin-es-x": "^10.0.0",
+      },
+    },
+    "packages/atomicassets": {
+      "name": "@wharfkit/atomicassets",
+      "version": "4.0.0-rc2",
+      "dependencies": {
+        "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/common": "workspace:*",
+        "@wharfkit/contract": "workspace:*",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/signing-request": "workspace:*",
       },
     },
     "packages/common": {
@@ -285,6 +330,18 @@
       "dependencies": {
         "@wharfkit/antelope": "workspace:*",
         "tslib": "catalog:",
+      },
+    },
+    "packages/token": {
+      "name": "@wharfkit/token",
+      "version": "4.0.0-rc2",
+      "dependencies": {
+        "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/contract": "workspace:*",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
       },
     },
     "packages/transact-plugin-autocorrect": {
@@ -593,6 +650,26 @@
         "@wharfkit/session": "workspace:*",
       },
     },
+    "packages/wallet-plugin-web-authenticator": {
+      "name": "@wharfkit/wallet-plugin-web-authenticator",
+      "version": "4.0.0-rc2",
+      "dependencies": {
+        "@greymass/buoy": "catalog:",
+        "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/protocol-esr": "workspace:*",
+        "@wharfkit/sealed-messages": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "isomorphic-ws": "catalog:",
+        "tslib": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/common": "workspace:*",
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "@wharfkit/signing-request": "workspace:*",
+        "text-encoding": "^0.7.0",
+      },
+    },
     "packages/web-renderer": {
       "name": "@wharfkit/web-renderer",
       "version": "4.0.0-rc2",
@@ -803,7 +880,11 @@
 
     "@greymass/buoy": ["@greymass/buoy@1.0.4", "", { "dependencies": { "eventemitter3": "^4.0.7", "tslib": "^2.1.0" } }, "sha512-/O9EsjWJw81TiJcvKqMKxjrJpEfHKh8WcUK07gFT+uS0+JUKfoVrYVQn1qNOAdYWU+AZrhZJop8xP/LYmKfGHg=="],
 
+    "@greymass/create-account": ["@greymass/create-account@1.1.0", "", { "dependencies": { "@greymass/return-path": "^0.0.1", "@wharfkit/antelope": "^1.0.13", "@wharfkit/signing-request": "^3.2.0", "tslib": "^2.1.0" } }, "sha512-6FT1Kwx7t5gL75PklNoMTH+CHCaT6/RZAMW48YvnNEdJyL8m5j5FTn8p5zzU9xaVIKzJSvjA1gkK1mjeXIxmIQ=="],
+
     "@greymass/miniaes": ["@greymass/miniaes@1.0.0", "", { "dependencies": { "tslib": "^2.1.0" } }, "sha512-xKYTnAyyoq3gpJS11JvU4dkju28M8Zbp06CuP3aKR4DMH6B2z64LauGGGzKksKh5Qd770JA/dzhLbImnBlymbg=="],
+
+    "@greymass/return-path": ["@greymass/return-path@0.0.1", "", { "dependencies": { "tslib": "^2.1.0" } }, "sha512-PMPgSJYSHeaYXbURj4JfsEeReWkJqlTKFMn2iTPhvb+6ICR5GhVPDJKewqZPqpZumcD13M1c701YYWKHZlMsxw=="],
 
     "@humanfs/core": ["@humanfs/core@0.19.2", "", { "dependencies": { "@humanfs/types": "^0.15.0" } }, "sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA=="],
 
@@ -1059,15 +1140,21 @@
 
     "@wharfkit/abicache": ["@wharfkit/abicache@workspace:packages/abicache"],
 
+    "@wharfkit/account": ["@wharfkit/account@workspace:packages/account"],
+
     "@wharfkit/account-creation-plugin-anchor": ["@wharfkit/account-creation-plugin-anchor@workspace:packages/account-creation-plugin-anchor"],
 
     "@wharfkit/account-creation-plugin-jungle4": ["@wharfkit/account-creation-plugin-jungle4@workspace:packages/account-creation-plugin-jungle4"],
+
+    "@wharfkit/account-creation-plugin-metamask": ["@wharfkit/account-creation-plugin-metamask@workspace:packages/account-creation-plugin-metamask"],
 
     "@wharfkit/account-creation-plugin-template": ["@wharfkit/account-creation-plugin-template@workspace:packages/account-creation-plugin-template"],
 
     "@wharfkit/actionstream": ["@wharfkit/actionstream@workspace:packages/actionstream"],
 
     "@wharfkit/antelope": ["@wharfkit/antelope@workspace:packages/antelope"],
+
+    "@wharfkit/atomicassets": ["@wharfkit/atomicassets@workspace:packages/atomicassets"],
 
     "@wharfkit/common": ["@wharfkit/common@workspace:packages/common"],
 
@@ -1094,6 +1181,8 @@
     "@wharfkit/session": ["@wharfkit/session@workspace:packages/session"],
 
     "@wharfkit/signing-request": ["@wharfkit/signing-request@workspace:packages/signing-request"],
+
+    "@wharfkit/token": ["@wharfkit/token@workspace:packages/token"],
 
     "@wharfkit/transact-plugin-autocorrect": ["@wharfkit/transact-plugin-autocorrect@workspace:packages/transact-plugin-autocorrect"],
 
@@ -1140,6 +1229,8 @@
     "@wharfkit/wallet-plugin-template": ["@wharfkit/wallet-plugin-template@workspace:packages/wallet-plugin-template"],
 
     "@wharfkit/wallet-plugin-tokenpocket": ["@wharfkit/wallet-plugin-tokenpocket@workspace:packages/wallet-plugin-tokenpocket"],
+
+    "@wharfkit/wallet-plugin-web-authenticator": ["@wharfkit/wallet-plugin-web-authenticator@workspace:packages/wallet-plugin-web-authenticator"],
 
     "@wharfkit/web-renderer": ["@wharfkit/web-renderer@workspace:packages/web-renderer"],
 

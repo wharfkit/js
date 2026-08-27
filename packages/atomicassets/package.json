@@ -1,0 +1,35 @@
+{
+    "name": "@wharfkit/atomicassets",
+    "description": "AtomicAsset library for Wharf",
+    "version": "4.0.0-rc2",
+    "homepage": "https://github.com/wharfkit/atomicassets",
+    "main": "lib/atomicassets.js",
+    "module": "lib/atomicassets.m.js",
+    "types": "lib/atomicassets.d.ts",
+    "browser": {
+        "buffer": false,
+        "crypto": false
+    },
+    "sideEffects": false,
+    "files": [
+        "lib/*",
+        "src/*"
+    ],
+    "scripts": {},
+    "dependencies": {
+        "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/common": "workspace:*",
+        "@wharfkit/contract": "workspace:*",
+        "tslib": "catalog:"
+    },
+    "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/signing-request": "workspace:*"
+    },
+    "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wharfkit/js.git",
+        "directory": "packages/atomicassets"
+    }
+}

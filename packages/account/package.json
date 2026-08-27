@@ -1,0 +1,34 @@
+{
+    "name": "@wharfkit/account",
+    "description": "Account kit for Wharf Kit",
+    "version": "4.0.0-rc2",
+    "homepage": "https://github.com/wharfkit/account",
+    "license": "BSD-3-Clause",
+    "main": "lib/account.js",
+    "module": "lib/account.m.js",
+    "types": "lib/account.d.ts",
+    "sideEffects": false,
+    "files": [
+        "lib/*",
+        "src/*"
+    ],
+    "scripts": {},
+    "dependencies": {
+        "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/common": "workspace:*",
+        "@wharfkit/contract": "workspace:*",
+        "@wharfkit/resources": "workspace:*",
+        "@wharfkit/token": "workspace:*",
+        "tslib": "catalog:"
+    },
+    "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "@wharfkit/signing-request": "workspace:*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wharfkit/js.git",
+        "directory": "packages/account"
+    }
+}

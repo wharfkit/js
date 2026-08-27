@@ -1,0 +1,33 @@
+{
+    "name": "@wharfkit/token",
+    "description": "Library to work with Antelope-blockchain system tokens.",
+    "version": "4.0.0-rc2",
+    "homepage": "https://github.com/wharfkit/token",
+    "license": "BSD-3-Clause",
+    "main": "lib/wharfkit-token.js",
+    "module": "lib/wharfkit-token.m.js",
+    "types": "lib/wharfkit-token.d.ts",
+    "browser": {
+        "buffer": false,
+        "crypto": false
+    },
+    "sideEffects": false,
+    "files": [
+        "lib/*",
+        "src/*"
+    ],
+    "scripts": {},
+    "dependencies": {
+        "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/contract": "workspace:*",
+        "tslib": "catalog:"
+    },
+    "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wharfkit/js.git",
+        "directory": "packages/token"
+    }
+}

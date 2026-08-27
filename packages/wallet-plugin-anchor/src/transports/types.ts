@@ -25,8 +25,11 @@ export interface TransportOptions {
     buoyUrl: string
     buoyWs?: WebSocket
     // Overridable so tests can substitute them; ESM namespaces cannot be stubbed in place.
+    /** @internal */
     send?: typeof send
+    /** @internal */
     waitForCallback?: typeof waitForCallback
+    /** @internal */
     generateReturnUrl?: typeof generateReturnUrl
 }
 

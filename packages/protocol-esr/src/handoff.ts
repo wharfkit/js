@@ -164,6 +164,7 @@ export function receiveReturnedTransaction(options: {
     now?: number
     storage?: Storage
     WebSocket?: typeof WebSocket
+    /** @internal */
     receive?: typeof receive
     abiProvider: AbiProvider
 }): Cancelable<SignedTransaction> | null {

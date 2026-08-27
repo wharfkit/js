@@ -17,24 +17,7 @@
         "@wharfkit/antelope": "workspace:*",
         "tslib": "catalog:"
     },
-    "devDependencies": {
-        "@eslint/js": "catalog:",
-        "@rollup/plugin-typescript": "catalog:",
-        "@types/bn.js": "catalog:",
-        "@types/mocha": "^10.0.10",
-        "@types/node": "catalog:",
-        "eslint": "catalog:",
-        "eslint-config-prettier": "catalog:",
-        "eslint-plugin-prettier": "catalog:",
-        "mocha": "^11.8.0",
-        "nyc": "^18.0.0",
-        "prettier": "catalog:",
-        "rollup": "catalog:",
-        "rollup-plugin-dts": "catalog:",
-        "tsx": "^4.19.0",
-        "typescript": "catalog:",
-        "typescript-eslint": "catalog:"
-    },
+    "devDependencies": {},
     "repository": {
         "type": "git",
         "url": "git+https://github.com/wharfkit/js.git",

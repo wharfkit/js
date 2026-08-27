@@ -1,5 +1,5 @@
 SRC_FILES := $(shell find src -name '*.ts')
-BIN := ./node_modules/.bin
+BIN := ../../node_modules/.bin
 STRIP_TYPES_FLAG := $(shell node -e 'const [a,b]=process.versions.node.split(".").map(Number); if (a>22||(a===22&&b>=6)) console.log("--no-experimental-strip-types")')
 MOCHA_ENV := TSX_TSCONFIG_PATH=test/tsconfig.json NODE_OPTIONS='$(STRIP_TYPES_FLAG)'
 

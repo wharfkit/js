@@ -6,7 +6,6 @@ import {
     TransactContext,
     WalletPlugin,
     WalletPluginConfig,
-    WalletPluginLoginResponse,
     WalletPluginMetadata,
 } from '@wharfkit/session'
 

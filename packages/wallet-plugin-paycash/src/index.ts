@@ -72,6 +72,7 @@ export class WalletPluginPayCash extends AbstractWalletPlugin {
             body: 'Scan the QR code with PayCash on your mobile device to connect.',
             elements,
         })
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         promptResponse.catch(() => {})
         const callbackResponse: CallbackPayload = await waitForCallback(
             callback,

@@ -1,4 +1,3 @@
-import fetch, {Response} from 'node-fetch'
 import {join as joinPath} from 'path'
 import {promisify} from 'util'
 import {readFile as _readFile, writeFile as _writeFile} from 'fs'
@@ -47,7 +46,7 @@ export async function mockFetch(path, params) {
                         path,
                         params,
                     },
-                    headers: Object.fromEntries(response.headers.entries()),
+                    headers: Object.fromEntries((response.headers as any).entries()),
                     status: response.status,
                     json,
                     text: JSON.stringify(json),

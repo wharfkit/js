@@ -122,6 +122,7 @@ export function browserTestConfig(metaUrl, options = {}) {
             output: {
                 file: options.output ?? 'build/browser.html',
                 format: 'iife',
+                inlineDynamicImports: true,
                 sourcemap: options.sourcemap ?? true,
                 globals: {
                     mocha: 'mocha',

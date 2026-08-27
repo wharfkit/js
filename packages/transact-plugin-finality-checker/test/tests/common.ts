@@ -1,4 +1,1 @@
-
-suite('TransactPluginFinalityChecker', () => {
-    
-})
+suite('TransactPluginFinalityChecker', () => {})

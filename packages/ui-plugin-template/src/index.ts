@@ -1,168 +1,81 @@
-import {Checksum256, PermissionLevel} from '@greymass/eosio'
 import {
+    AbstractUserInterface,
+    cancelable,
+    Cancelable,
+    Checksum256,
+    LocaleDefinitions,
     LoginContext,
     LoginOptions,
+    PermissionLevel,
     PromptArgs,
-    TransactContext,
+    PromptResponse,
     UserInterface,
+    UserInterfaceAccountCreationResponse,
+    UserInterfaceLoginResponse,
 } from '@wharfkit/session'
 
-export class UserInterfaceTEMPLATE implements UserInterface {
-    /**
-     * onError
-     */
-    // TODO: Remove these eslint rule modifiers when you are implementing this method.
-    /* eslint-disable @typescript-eslint/no-unused-vars */
-    async onError(error: Error): Promise<void> {
-        /**
-         * An error has occurred.
-         *
-         * Present the error to the user.
-         */
-    }
-    /**
-     * onLogin
-     *
-     * @param options LoginOptions
-     */
-    // TODO: Remove these eslint rule modifiers when you are implementing this method.
-    /* eslint-disable @typescript-eslint/no-unused-vars */
-    async onLogin(options?: LoginOptions): Promise<void> {
-        /**
-         * A login call has been initiated.
-         *
-         * Prepare any UI elements required for the login process.
-         */
+export class UserInterfaceTEMPLATE extends AbstractUserInterface implements UserInterface {
+    /* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function */
+
+    /** Collect the chain, permission level, and wallet plugin index a login call needs. */
+    async login(context: LoginContext): Promise<UserInterfaceLoginResponse> {
+        return {
+            chainId: context.chain?.id ?? Checksum256.from(context.chains[0].id),
+            permissionLevel: context.permissionLevel ?? PermissionLevel.from('teamgreymass@active'),
+            walletPluginIndex: 0,
+        }
     }
 
-    /**
-     * onLoginResult
-     */
-    async onLoginResult(): Promise<void> {
-        /**
-         * The login call has completed.
-         *
-         * Cleanup any UI elements or state from the login process.
-         */
+    /** An error has occurred. Present it to the user. */
+    async onError(error: Error): Promise<void> {}
+
+    /** An account creation call has started. Return the chain and plugin the user picked. */
+    async onAccountCreate(): Promise<UserInterfaceAccountCreationResponse> {
+        return {}
     }
 
-    /**
-     * onTransact
-     *
-     * @param context TransactContext
-     */
-    // TODO: Remove these eslint rule modifiers when you are implementing this method.
-    /* eslint-disable @typescript-eslint/no-unused-vars */
-    async onTransact(context: TransactContext): Promise<void> {
-        /**
-         * A transact call has been initiated.
-         *
-         * Prepare any UI elements required for the transact process.
-         */
+    /** The account creation call has finished. Tear down any account creation UI. */
+    async onAccountCreateComplete(): Promise<void> {}
+
+    /** A login call has started. Prepare any UI the login flow needs. */
+    async onLogin(options?: LoginOptions): Promise<void> {}
+
+    /** The login call has finished. Tear down any login UI. */
+    async onLoginComplete(): Promise<void> {}
+
+    /** A transact call has started. Prepare any UI the transact flow needs. */
+    async onTransact(): Promise<void> {}
+
+    /** The transact call has finished. Tear down any transact UI. */
+    async onTransactComplete(): Promise<void> {}
+
+    /** The transact call has reached the signing step. */
+    async onSign(): Promise<void> {}
+
+    /** Signing has finished. */
+    async onSignComplete(): Promise<void> {}
+
+    /** The transact call has reached the broadcast step. */
+    async onBroadcast(): Promise<void> {}
+
+    /** Broadcasting has finished. */
+    async onBroadcastComplete(): Promise<void> {}
+
+    /** Render the prompt in `args` and resolve with the user's choice; the second `cancelable` argument runs on abort. */
+    prompt(args: PromptArgs): Cancelable<PromptResponse> {
+        return cancelable(
+            new Promise<PromptResponse>(() => {
+                // Render the PromptElements in `args`, then resolve or reject.
+            }),
+            (canceled) => {
+                throw canceled
+            }
+        )
     }
 
-    /**
-     * onTransactResult
-     */
-    async onTransactResult(): Promise<void> {
-        /**
-         * The transact call has completed.
-         *
-         * Cleanup any UI elements or state from the transact process.
-         */
-    }
+    /** A plugin has pushed a text-only status message. Surface it however suits the UI. */
+    status(message: string): void {}
 
-    /**
-     * status
-     *
-     * @param message string
-     */
-    // TODO: Remove these eslint rule modifiers when you are implementing this method.
-    /* eslint-disable @typescript-eslint/no-unused-vars */
-    status(message: string) {
-        /**
-         * Plugins (TransactPlugins, WalletPlugins, etc) can use this to push generic text-only messages to the user interface.
-         *
-         * The UserInterface can decide how to surface this information to the user.
-         */
-    }
-
-    /**
-     * onSelectPermissionLevel
-     *
-     * @param context LoginContext
-     * @returns Promise<PermissionLevel>
-     */
-    // TODO: Remove these eslint rule modifiers when you are implementing this method.
-    /* eslint-disable @typescript-eslint/no-unused-vars */
-    async onSelectPermissionLevel(context: LoginContext): Promise<PermissionLevel> {
-        /**
-         * Present the user with an interface to select a permission level to use for the session.
-         *
-         * A basic example of how this could be done is two text inputs, one for the account name ('teamgreymass')
-         * and one for the permission ('active').
-         *
-         * The PermissionLevel object for this data should be returned below.
-         *
-         * NOTE: This isn't often used, but will be needed for user interfaces that interact directly with hardware
-         * wallets like Ledger. When using a Ledger directly, the user interface should be able to retrieve the public
-         * key from the device here, and then do account lookups to display choices.
-         *
-         * Most wallets (Anchor, Scatter, PrivateKeyPlugin, etc) won't use this step since they will return
-         * the permission level directly from the wallet.
-         */
-        return PermissionLevel.from('teamgreymass@active')
-    }
-
-    /**
-     * onSelectChain
-     *
-     * @param context LoginContext
-     * @returns Promise<Checksum256>
-     */
-    // TODO: Remove these eslint rule modifiers when you are implementing this method.
-    /* eslint-disable @typescript-eslint/no-unused-vars */
-    async onSelectChain(context: LoginContext): Promise<Checksum256> {
-        /**
-         * Present the user with an interface to select one of the blockchains from the config.
-         *
-         * An array of available chains can be found in the `context.chains` array.
-         *
-         * The chainId (a Checksum256 value) of the selected chain should be returned.
-         */
-        return Checksum256.from('0000000000000000000000000000000000000000000000000000000000000000')
-    }
-
-    /**
-     * onSelectWallet
-     *
-     * @param context LoginContext
-     * @returns Promise<number>
-     */
-    // TODO: Remove these eslint rule modifiers when you are implementing this method.
-    /* eslint-disable @typescript-eslint/no-unused-vars */
-    async onSelectWallet(context: LoginContext): Promise<number> {
-        /**
-         * Present the user with an interface to select one of the walletPlugins from the config.
-         *
-         * An array of the metadata about WalletPlugins is available in `context.walletPlugins`
-         * which can be used to display options.
-         *
-         * The index in the array of the wallet selected by the user should be returned below.
-         */
-        return 0
-    }
-
-    /**
-     * prompt
-     *
-     * @param args PromptArgs
-     */
-    // TODO: Remove these eslint rule modifiers when you are implementing this method.
-    /* eslint-disable @typescript-eslint/no-unused-vars */
-    async prompt(args: PromptArgs): Promise<void> {
-        /**
-         * Accept PromptArgs, render PromptElements, and present the user for interaction.
-         */
-    }
+    /** Merge localization strings supplied by a plugin into the UI's own definitions. */
+    addTranslations(definitions: LocaleDefinitions): void {}
 }

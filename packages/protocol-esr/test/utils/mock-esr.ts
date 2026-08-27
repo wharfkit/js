@@ -1,5 +1,5 @@
 import {CallbackPayload, ResolvedSigningRequest, SigningRequest} from '@wharfkit/session'
-import zlib from 'pako'
+import * as zlib from 'pako'
 
 import {mockChainId, mockPublicKey} from './mock-config'
 import {mockAbiProvider} from './mock-context'

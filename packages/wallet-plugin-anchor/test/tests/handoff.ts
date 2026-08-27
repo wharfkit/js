@@ -5,7 +5,7 @@ import {APIClient, PermissionLevel, PrivateKey} from '@wharfkit/antelope'
 import * as buoy from '@greymass/buoy'
 import * as protocol from '@wharfkit/protocol-esr'
 import sinon from 'sinon'
-import zlib from 'pako'
+import * as zlib from 'pako'
 
 import {NativeTransport} from '$lib/transports/native'
 import {mockCallbackPayload} from '$test/utils/mock-esr'

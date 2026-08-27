@@ -1,7 +1,7 @@
 import type {ChainDefinitionType, Fetch} from '@wharfkit/common'
 import type {Contract} from '@wharfkit/contract'
 
-import zlib from 'pako'
+import * as zlib from 'pako'
 import {
     APIClient,
     Checksum256,

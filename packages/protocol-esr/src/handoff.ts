@@ -6,7 +6,7 @@ import {
     ResolvedSigningRequest,
     SignedTransaction,
 } from '@wharfkit/session'
-import zlib from 'pako'
+import * as zlib from 'pako'
 
 import {extractSignaturesFromCallback, isCallback} from './esr'
 

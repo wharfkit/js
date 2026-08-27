@@ -64,7 +64,7 @@ export class REXState extends Struct {
         const bancor = Number(tokens.units) / (this.total_rent.value / this.total_unlent.value)
 
         // The ratio of the number of tokens received vs the sampled values
-        const unitPrice = bancor * (Number(usage) / BNPrecision)
+        const unitPrice = bancor * (Number(usage) / Number(BNPrecision))
 
         // The token units spent per unit
         const perunit = Number(tokens.units) / unitPrice

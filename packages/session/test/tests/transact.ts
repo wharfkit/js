@@ -1,5 +1,5 @@
 import {assert} from 'chai'
-import zlib from 'pako'
+import * as zlib from 'pako'
 
 import {
     Name,

@@ -12,7 +12,7 @@ import {
     TransactContext,
     TransactContextOptions,
 } from '@wharfkit/session'
-import zlib from 'pako'
+import * as zlib from 'pako'
 
 import {mockChainDefinition, mockUrl} from './mock-config'
 import {mockFetch} from '$test/utils/mock-fetch'

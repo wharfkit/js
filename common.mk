@@ -6,7 +6,7 @@
 #   MOCHA_UI      mocha interface flag (default: -u tdd; empty selects mocha's bdd)
 #   TEST_FILES    test sources (default: test/tests/**/*.ts; empty means no suite)
 #   TEST_DEPS     extra prerequisites for the test targets
-#   LINT_PATHS    eslint targets (default: src)
+#   LINT_PATHS    oxlint and oxfmt targets (default: src)
 #   DOCS_ENTRY    typedoc entry point (default: src/index.ts)
 #   BROWSER_OUT   browser bundle output, matching test/rollup.config.mjs (empty means none)
 #   CLEAN_EXTRA   extra paths removed by clean
@@ -65,11 +65,11 @@ coverage: build/coverage
 
 .PHONY: check
 check: $(ROOT)/node_modules
-	@$(BIN)/eslint $(LINT_PATHS) --max-warnings 0 && echo "Ok"
+	@$(BIN)/oxlint $(LINT_PATHS) --max-warnings 0 && echo "Ok"
 
 .PHONY: format
 format: $(ROOT)/node_modules
-	@$(BIN)/eslint $(LINT_PATHS) --fix
+	@$(BIN)/oxlint $(LINT_PATHS) --fix && $(BIN)/oxfmt $(LINT_PATHS)
 
 build/docs: $(SRC_FILES) $(ROOT)/node_modules
 	@$(BIN)/typedoc --out build/docs \

@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "arrowParens": "always",
+  "bracketSpacing": false,
+  "endOfLine": "lf",
+  "printWidth": 100,
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 4,
+  "trailingComma": "es5",
+  "sortPackageJson": false,
+  "ignorePatterns": [
+    "node_modules/",
+    "packages/*/lib/",
+    "packages/*/build/",
+    "packages/*/coverage/",
+    "packages/*/docs_build/",
+    "packages/*/site/",
+    "packages/*/test/browser.html",
+    "packages/*/test/data/",
+    "packages/antelope/test/*.json",
+    "bun.lock",
+    "*.svelte",
+    "packages/svelte-components/",
+    "packages/web-ui/",
+    "packages/session/src/sessionkey/systemcontract.ts"
+  ]
+}

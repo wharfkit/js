@@ -3,7 +3,9 @@ import {wrapIndexValue} from '../utils'
 
 /** Mashup of valid types for an APIClient call to v1.chain.get_table_rows */
 export type TableRowParamsTypes =
-    API.v1.GetTableRowsParams | API.v1.GetTableRowsParamsKeyed | API.v1.GetTableRowsParamsTyped
+    | API.v1.GetTableRowsParams
+    | API.v1.GetTableRowsParamsKeyed
+    | API.v1.GetTableRowsParamsTyped
 
 export interface TableCursorArgs {
     /** The ABI for the contract this table belongs to */

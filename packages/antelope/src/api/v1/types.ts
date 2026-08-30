@@ -501,7 +501,13 @@ export interface TableIndexTypes {
 }
 
 export type TableIndexType =
-    Name | UInt64 | UInt128 | Float64 | Float128 | Checksum256 | Checksum160
+    | Name
+    | UInt64
+    | UInt128
+    | Float64
+    | Float128
+    | Checksum256
+    | Checksum160
 
 export interface GetTableRowsParams<Index = TableIndexType | string> {
     /** The name of the smart contract that controls the provided table. */

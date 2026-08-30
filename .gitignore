@@ -1,6 +1,9 @@
 node_modules/
-lib/
-build/
-coverage/
+/packages/*/lib/
+/packages/*/build/
+/packages/*/coverage/
+/lib/
+/build/
+/coverage/
 *.tgz
 .DS_Store

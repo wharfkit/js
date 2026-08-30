@@ -18,26 +18,15 @@
       Disconnect Wallet
     </button>
     <script type="module">      
-      // import {
-      //   Chains,
-      //   SessionKit,
-      //   WalletPluginAnchor, 
-      //   WalletPluginCloudWallet, 
-      //   WalletPluginMetaMask, 
-      //   WalletPluginTokenPocket, 
-      //   WalletPluginWebAuthenticator, 
-      //   WebRenderer
-      // } from './wharf.esm.js';
       import {
         Chains,
         SessionKit,
-        WalletPluginAnchor, 
-        WalletPluginCloudWallet, 
-        WalletPluginMetaMask, 
-        WalletPluginTokenPocket, 
-        WalletPluginWebAuthenticator, 
-        WebRenderer
-      } from 'https://cdn.jsdelivr.net/npm/@wharfkit/bundle@0.1.2/+esm'
+        WalletPluginAnchor,
+        WalletPluginCloudWallet,
+        WalletPluginMetaMask,
+        WalletPluginTokenPocket,
+        WebUI
+      } from './wharf.esm.js'
 
       var walletPlugins = [
         new WalletPluginAnchor(),
@@ -49,7 +38,7 @@
       var kit = new SessionKit({
         appName: 'authenticate',
         chains: [Chains.Jungle4, Chains.Vaulta],
-        ui: new WebRenderer(),
+        ui: new WebUI(),
         walletPlugins
       })
 

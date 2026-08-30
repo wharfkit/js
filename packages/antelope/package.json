@@ -28,6 +28,7 @@
         "tslib": "catalog:"
     },
     "devDependencies": {
+        "@typescript-eslint/parser": "^8.66.0",
         "eslint": "^10.8.0",
         "eslint-plugin-es-x": "^10.0.0"
     },

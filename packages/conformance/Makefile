@@ -92,7 +92,7 @@ TS_DIRS := $(wildcard test) $(wildcard testnet)
 
 jscheck: node_modules
 	@if [ -n "$(TS_SOURCES)" ]; then \
-		$(BIN)/eslint $(TS_DIRS) --max-warnings 0 && echo "Ok"; \
+		$(BIN)/oxlint $(TS_DIRS) --max-warnings 0 && echo "Ok"; \
 	else \
 		echo "no TS sources yet, skipping jscheck"; \
 	fi
@@ -100,7 +100,7 @@ jscheck: node_modules
 .PHONY: format
 format:
 	@if [ -n "$(CPP_SOURCES)" ]; then clang-format -i $(CPP_SOURCES); fi
-	@if [ -n "$(TS_SOURCES)" ]; then $(BIN)/eslint $(TS_DIRS) --fix; fi
+	@if [ -n "$(TS_SOURCES)" ]; then $(BIN)/oxlint $(TS_DIRS) --fix && $(BIN)/oxfmt $(TS_DIRS); fi
 
 # TESTNET
 

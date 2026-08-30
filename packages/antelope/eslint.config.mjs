@@ -1,7 +1,7 @@
 import esx from 'eslint-plugin-es-x'
 import tsparser from '@typescript-eslint/parser'
 
-// no-optional-chaining has no oxlint equivalent and guards the es6 CJS bundle target
+// no-optional-chaining has no oxlint equivalent; the es2020 ESM build emits ?. unchanged
 export default [
     {ignores: ['**/lib/**', '**/node_modules/**', '**/coverage/**', '**/docs_build/**']},
     {linterOptions: {reportUnusedDisableDirectives: 'off'}},

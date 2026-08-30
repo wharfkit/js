@@ -893,7 +893,8 @@ export class SigningRequest {
             return null
         }
         const ids = this.getInfoKey('chain_ids', {type: ChainIdVariant, array: true}) as
-            ChainIdVariant[] | undefined
+            | ChainIdVariant[]
+            | undefined
         if (ids) {
             return ids.map((id) => id.chainId)
         }

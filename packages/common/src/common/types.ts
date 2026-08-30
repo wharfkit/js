@@ -9,7 +9,8 @@ export type Fetch = (input: any, init?: any) => Promise<any>
 export type LogoType = Logo | {dark: string; light: string} | string
 
 export type ExplorerDefinitionType =
-    ExplorerDefinition | {prefix: string; suffix: string; url?: (id: string) => string}
+    | ExplorerDefinition
+    | {prefix: string; suffix: string; url?: (id: string) => string}
 
 export type ChainDefinitionType =
     | ChainDefinition

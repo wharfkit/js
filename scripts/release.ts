@@ -76,6 +76,10 @@ function internalDeps(json: any): string[] {
     return [...found]
 }
 
+// A member whose build inputs are devDependencies has no runtime edges to order it by, so the
+// graph would place it before the packages it bundles. bundle is the only such member.
+const BUILD_LAST = new Set(['@wharfkit/bundle'])
+
 function topological(list: Member[]): Member[] {
     const byName = new Map(list.map((m) => [m.name, m]))
     const ordered: Member[] = []
@@ -98,7 +102,8 @@ function topological(list: Member[]): Member[] {
         done.add(member.name)
         ordered.push(member)
     }
-    for (const member of list) visit(member, [])
+    for (const member of list.filter((m) => !BUILD_LAST.has(m.name))) visit(member, [])
+    for (const member of list.filter((m) => BUILD_LAST.has(m.name))) visit(member, [])
     return ordered
 }
 

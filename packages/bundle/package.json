@@ -1,0 +1,51 @@
+{
+    "name": "@wharfkit/bundle",
+    "version": "4.0.0-rc3",
+    "description": "A prepackaged bundle of common Wharf libraries re-exported for IIFE or ESM",
+    "license": "BSD-3-Clause",
+    "type": "module",
+    "main": "dist/wharf.bundle.js",
+    "module": "dist/wharf.esm.js",
+    "unpkg": "dist/wharf.bundle.js",
+    "jsdelivr": "dist/wharf.bundle.js",
+    "exports": {
+        ".": {
+            "import": "./dist/wharf.esm.js"
+        }
+    },
+    "files": [
+        "dist/"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wharfkit/js.git",
+        "directory": "packages/bundle"
+    },
+    "scripts": {
+        "build": "tsc && vite build",
+        "check": "tsc",
+        "test": "node test/exports.mjs"
+    },
+    "devDependencies": {
+        "@wharfkit/account": "workspace:*",
+        "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/atomicassets": "workspace:*",
+        "@wharfkit/common": "workspace:*",
+        "@wharfkit/contract": "workspace:*",
+        "@wharfkit/hyperion": "workspace:*",
+        "@wharfkit/resources": "workspace:*",
+        "@wharfkit/roborovski": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "@wharfkit/token": "workspace:*",
+        "@wharfkit/transact-plugin-autocorrect": "workspace:*",
+        "@wharfkit/transact-plugin-resource-provider": "workspace:*",
+        "@wharfkit/wallet-plugin-anchor": "workspace:*",
+        "@wharfkit/wallet-plugin-cloudwallet": "workspace:*",
+        "@wharfkit/wallet-plugin-imtoken": "workspace:*",
+        "@wharfkit/wallet-plugin-metamask": "workspace:*",
+        "@wharfkit/wallet-plugin-tokenpocket": "workspace:*",
+        "@wharfkit/web-ui": "workspace:*",
+        "typescript": "~5.9.3",
+        "vite": "^7.1.7"
+    }
+}

@@ -202,4 +202,4 @@ Publishing locally means releases carry **no npm provenance** — provenance req
 
 BSD-3-Clause — see [LICENSE](./LICENSE). Copyright (c) 2026 Greymass Inc.
 
-Bundled fonts are OFL-1.1 ([LICENSE-OFL](./LICENSE-OFL)). Note that the `@wharfkit/antelope` dependency carries BSD-3-Clause-No-Military-License.
+Bundled fonts are OFL-1.1 ([LICENSE-OFL](./LICENSE-OFL)).

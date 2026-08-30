@@ -122,7 +122,7 @@ The plugin implements the WharfKit Session Kit wallet plugin interface:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under BSD-3-Clause - see the [LICENSE](LICENSE) file for details.
 
 ## Support
 

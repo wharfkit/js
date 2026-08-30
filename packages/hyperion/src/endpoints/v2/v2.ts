@@ -6,7 +6,7 @@ import {
     NameType,
     PublicKeyType,
 } from '@wharfkit/antelope'
-import {Types} from '$lib'
+import * as Types from '../../types'
 
 export class HyperionV2APIClient {
     public state: HyperionV2StateAPIClient

@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/login-plugin-template",
     "description": "A template to create a `LoginPlugin` for use with @wharfkit/session.",
-    "version": "4.0.0-rc2",
+    "version": "4.0.0-rc3",
     "private": true,
     "homepage": "https://github.com/wharfkit/login-plugin-template",
     "license": "BSD-3-Clause",

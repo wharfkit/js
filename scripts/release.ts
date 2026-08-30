@@ -3,6 +3,7 @@ import {existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSyn
 import {tmpdir} from 'node:os'
 import {join} from 'node:path'
 import semver from 'semver'
+import {checkDependencyLicenses, checkMemberLicenses} from './check-licenses.ts'
 
 const ROOT = new URL('..', import.meta.url).pathname
 
@@ -75,6 +76,10 @@ function internalDeps(json: any): string[] {
     return [...found]
 }
 
+// A member whose build inputs are devDependencies has no runtime edges to order it by, so the
+// graph would place it before the packages it bundles. bundle is the only such member.
+const BUILD_LAST = new Set(['@wharfkit/bundle'])
+
 function topological(list: Member[]): Member[] {
     const byName = new Map(list.map((m) => [m.name, m]))
     const ordered: Member[] = []
@@ -97,7 +102,8 @@ function topological(list: Member[]): Member[] {
         done.add(member.name)
         ordered.push(member)
     }
-    for (const member of list) visit(member, [])
+    for (const member of list.filter((m) => !BUILD_LAST.has(m.name))) visit(member, [])
+    for (const member of list.filter((m) => BUILD_LAST.has(m.name))) visit(member, [])
     return ordered
 }
 
@@ -118,6 +124,12 @@ function guardInternalRefs(list: Member[]) {
             }
         }
     }
+}
+
+function guardLicenses(list: Member[]) {
+    checkMemberLicenses(list)
+    const deps = checkDependencyLicenses(list)
+    log(`license check passed across ${list.length} member(s) and ${deps} dependencies`)
 }
 
 // Every member must reach every gate stage. A member that cannot is named here with its
@@ -158,6 +170,7 @@ function verify(opts: {install: boolean}) {
         execFileSync('bun', ['install', '--ignore-scripts'], {cwd: ROOT, stdio: 'inherit'})
     }
     const ordered = topological(members())
+    guardLicenses(ordered)
     for (const member of ordered) runScript(member, 'build')
     for (const member of ordered) runScript(member, 'check')
     for (const member of ordered) runScript(member, 'test')
@@ -248,6 +261,7 @@ function bump(arg: string, dryRun: boolean) {
         log(`${member.name} ${member.json.version} joins the lockstep with this bump`)
     }
     guardInternalRefs(list)
+    guardLicenses(list)
 
     const target = resolveTarget(root.version, arg)
     guardPrereleaseOnly(target)

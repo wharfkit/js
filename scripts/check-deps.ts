@@ -20,6 +20,10 @@ const ALLOW_UNUSED: Record<string, string> = {
     '@wharfkit/protocol-esr:ws': 'peer dependency of isomorphic-ws under node',
     '@wharfkit/wallet-plugin-anchor:ws': 'peer dependency of isomorphic-ws under node',
 }
+// bundle's dist is self-contained, so the packages it re-exports are build inputs rather than
+// runtime dependencies (Meta-Package Strategy). Its src imports resolve from devDependencies.
+const DEV_SATISFIES_SRC = new Set(['@wharfkit/bundle'])
+
 const ALLOW_UNDECLARED: Record<string, string> = {
     '@wharfkit/web-renderer:svelte': 'framework supplied by the consuming application',
     '@wharfkit/web-renderer:@wharfkit/antelope': 'type-only import in src/lib/translations.ts',
@@ -90,7 +94,8 @@ for (const name of readdirSync(join(ROOT, 'packages'))) {
             const pkg = packageName(specifier)
             if (!pkg || pkg === self) continue
             runtimeUsed.add(pkg)
-            if (!runtime.has(pkg) && !ALLOW_UNDECLARED[`${json.name}:${pkg}`]) {
+            const declared = runtime.has(pkg) || (DEV_SATISFIES_SRC.has(self) && dev.has(pkg))
+            if (!declared && !ALLOW_UNDECLARED[`${json.name}:${pkg}`]) {
                 problems.push(
                     `${json.name}: src imports ${pkg} but does not declare it as a dependency`
                 )

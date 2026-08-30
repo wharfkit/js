@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bundle</title>
+
+  </head>
+  <body>
+    <h1>Wharf Bundle</h1>
+    <button id="connect">
+      Connect Wallet
+    </button>
+    <button disabled id="transact">
+      Transact
+    </button>
+    <button disabled id="disconnect">
+      Disconnect Wallet
+    </button>
+    <script type="module">      
+      import {
+        Chains,
+        SessionKit,
+        WalletPluginAnchor,
+        WalletPluginCloudWallet,
+        WalletPluginMetaMask,
+        WalletPluginTokenPocket,
+        WebUI
+      } from './wharf.esm.js'
+
+      var walletPlugins = [
+        new WalletPluginAnchor(),
+        new WalletPluginCloudWallet(),
+        new WalletPluginMetaMask(),
+        new WalletPluginTokenPocket(),
+      ]
+
+      var kit = new SessionKit({
+        appName: 'authenticate',
+        chains: [Chains.Jungle4, Chains.Vaulta],
+        ui: new WebUI(),
+        walletPlugins
+      })
+
+      var session
+      var connectButton = document.getElementById('connect')
+      var disconnectButton = document.getElementById('disconnect')
+      var transactButton = document.getElementById('transact')
+
+      connectButton.addEventListener('click', function() {
+        kit.login().then(result => {
+          session = result.session;
+          console.log('Session:', session);
+          let actorDiv = document.getElementById('actor-div');
+          if (!actorDiv) {
+            actorDiv = document.createElement('div');
+            actorDiv.id = 'actor-div';
+            document.body.appendChild(actorDiv);
+          }
+          actorDiv.textContent = `Logged in as: ${session.actor}`;
+          connectButton.disabled = true;
+          disconnectButton.disabled = false;
+          transactButton.disabled = false;
+        });
+      });
+
+      disconnectButton.addEventListener('click', function() {
+        kit.logout().then(() => {
+          session = null;
+          console.log('Logged out');
+          let actorDiv = document.getElementById('actor-div');
+          if (actorDiv) {
+            document.body.removeChild(actorDiv);
+          }
+          connectButton.disabled = false;
+          disconnectButton.disabled = true;
+          transactButton.disabled = true;
+        });
+      });
+
+      transactButton.addEventListener('click', function() {
+        if (!session) {
+          console.error('No active session');
+          return;
+        }
+        const actions = [{
+          account: 'eosio.token',
+          name: 'transfer',
+          authorization: [{
+            actor: session.actor,
+            permission: session.permission,
+          }],
+          data: {
+            from: session.actor,
+            to: 'exampleacct',
+            quantity: '0.0001 EOS',
+            memo: 'Test transaction',
+          },
+        }];
+
+        session.transact({ actions }, {
+          blocksBehind: 3,
+          expireSeconds: 30,
+        }).then((result) => {
+          console.log('Transaction success:', result);
+        }).catch((error) => {
+          console.error('Transaction error:', error);
+        });
+      });
+    </script>
+  </body>
+</html>

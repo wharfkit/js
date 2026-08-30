@@ -4,6 +4,7 @@ BIN := ./node_modules/.bin
 check:
 	bun scripts/check-closure.ts
 	bun scripts/check-deps.ts
+	bun scripts/check-licenses.ts
 	@$(BIN)/prettier --check '**/*.{ts,mjs}'
 
 verify:

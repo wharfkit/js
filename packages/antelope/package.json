@@ -1,9 +1,9 @@
 {
     "name": "@wharfkit/antelope",
     "description": "Library for working with Antelope powered blockchains.",
-    "version": "4.0.0-rc2",
+    "version": "4.0.0-rc3",
     "homepage": "https://github.com/wharfkit/antelope",
-    "license": "BSD-3-Clause-No-Military-License",
+    "license": "BSD-3-Clause",
     "engines": {
         "node": ">=20.19.0"
     },

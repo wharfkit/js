@@ -1,4 +1,0 @@
-lib/*
-tests/*
-node_modules/**
-src/sessionkey/systemcontract.ts

@@ -1,0 +1,37 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript"],
+  "categories": {
+    "correctness": "error"
+  },
+  "ignorePatterns": [
+    "**/lib/**",
+    "**/node_modules/**",
+    "**/coverage/**",
+    "**/docs_build/**",
+    "**/*.svelte",
+    "packages/svelte-components/**",
+    "packages/web-ui/**",
+    "packages/contract/test/data/contracts/*.ts",
+    "packages/session/src/sessionkey/systemcontract.ts"
+  ],
+  "rules": {
+    "no-console": "warn",
+    "sort-imports": ["warn", {"ignoreCase": true, "ignoreDeclarationSort": true}],
+    "typescript/no-empty-function": "warn",
+    "typescript/explicit-module-boundary-types": "off",
+    "typescript/no-explicit-any": "off",
+    "typescript/no-namespace": "off",
+    "typescript/no-non-null-assertion": "off",
+    "typescript/no-this-alias": "off",
+    "no-inner-declarations": "off"
+  },
+  "overrides": [
+    {
+      "files": ["packages/transact-plugin-mock/**"],
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ]
+}

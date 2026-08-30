@@ -1,15 +1,10 @@
 import esx from 'eslint-plugin-es-x'
 
-import base from '../../eslint.base.mjs'
-
+// no-optional-chaining has no oxlint equivalent and guards the es6 CJS bundle target
 export default [
-    ...base,
+    {ignores: ['**/lib/**', '**/node_modules/**', '**/coverage/**', '**/docs_build/**']},
     {
         plugins: {'es-x': esx},
-        rules: {
-            'es-x/no-optional-chaining': 'error',
-            'es-x/no-class-fields': 'off',
-            'es-x/no-export-ns-from': 'off',
-        },
+        rules: {'es-x/no-optional-chaining': 'error'},
     },
 ]

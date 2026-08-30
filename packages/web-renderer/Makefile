@@ -25,7 +25,7 @@ coverage: node_modules
 
 .PHONY: format
 format: node_modules
-	@./node_modules/.bin/eslint src --fix
+	@../../node_modules/.bin/oxlint src --fix && ../../node_modules/.bin/oxfmt src
 
 .PHONY: ci-test
 ci-test: node_modules
@@ -33,7 +33,7 @@ ci-test: node_modules
 
 .PHONY: check
 check: node_modules
-	@./node_modules/.bin/eslint src --max-warnings 0 && echo "Ok"
+	@../../node_modules/.bin/oxlint src --max-warnings 0 && echo "Ok"
 
 .PHONY: browser
 browser:

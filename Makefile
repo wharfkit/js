@@ -6,7 +6,7 @@ check:
 	bun scripts/check-deps.ts
 	bun scripts/check-instances.ts
 	bun scripts/check-licenses.ts
-	@$(BIN)/prettier --check '**/*.{ts,mjs}'
+	@$(BIN)/oxfmt --check '**/*.{ts,mjs}'
 
 verify:
 	bun scripts/release.ts verify

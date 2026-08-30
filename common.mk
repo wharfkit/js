@@ -7,7 +7,6 @@
 #   TEST_FILES    test sources (default: test/tests/**/*.ts; empty means no suite)
 #   TEST_DEPS     extra prerequisites for the test targets
 #   LINT_PATHS    oxlint and oxfmt targets (default: src)
-#   CHECK_EXTRA   extra lint command chained onto the check target
 #   DOCS_ENTRY    typedoc entry point (default: src/index.ts)
 #   BROWSER_OUT   browser bundle output, matching test/rollup.config.mjs (empty means none)
 #   CLEAN_EXTRA   extra paths removed by clean
@@ -66,7 +65,7 @@ coverage: build/coverage
 
 .PHONY: check
 check: $(ROOT)/node_modules
-	@$(BIN)/oxlint $(LINT_PATHS) --max-warnings 0 $(if $(CHECK_EXTRA),&& $(CHECK_EXTRA),) && echo "Ok"
+	@$(BIN)/oxlint $(LINT_PATHS) --max-warnings 0 && echo "Ok"
 
 .PHONY: format
 format: $(ROOT)/node_modules

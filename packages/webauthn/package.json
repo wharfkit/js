@@ -19,8 +19,7 @@
     "dependencies": {
         "@wharfkit/antelope": "workspace:*",
         "cborg": "^4.5.8",
-        "elliptic": "^6.5.4",
-        "tslib": "catalog:"
+        "elliptic": "^6.5.4"
     },
     "devDependencies": {
         "@types/elliptic": "^6.4.13"

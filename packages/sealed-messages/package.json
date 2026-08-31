@@ -18,8 +18,7 @@
     "scripts": {},
     "dependencies": {
         "@greymass/miniaes": "^1.0.0",
-        "@wharfkit/antelope": "workspace:*",
-        "tslib": "catalog:"
+        "@wharfkit/antelope": "workspace:*"
     },
     "devDependencies": {
         "text-encoding": "^0.7.0"

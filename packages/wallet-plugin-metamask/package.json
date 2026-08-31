@@ -18,7 +18,6 @@
     "scripts": {},
     "dependencies": {
         "@metamask/providers": "^17.0.0",
-        "tslib": "catalog:",
         "@wharfkit/session": "workspace:*"
     },
     "devDependencies": {

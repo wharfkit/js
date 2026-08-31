@@ -17,7 +17,6 @@
     ],
     "scripts": {},
     "dependencies": {
-        "tslib": "catalog:",
         "@wharfkit/session": "workspace:*"
     },
     "devDependencies": {

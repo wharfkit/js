@@ -36,7 +36,6 @@
       "dependencies": {
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/signing-request": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -52,7 +51,6 @@
         "@wharfkit/contract": "workspace:*",
         "@wharfkit/resources": "workspace:*",
         "@wharfkit/token": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -65,7 +63,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -77,7 +74,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -91,7 +87,6 @@
         "@greymass/create-account": "^1.1.0",
         "@metamask/providers": "^17.0.0",
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -103,7 +98,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -115,7 +109,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/antelope": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@types/ws": "^8.18.1",
@@ -130,7 +123,6 @@
         "@noble/hashes": "^2.2.0",
         "bn.js": "catalog:",
         "pako": "catalog:",
-        "tslib": "catalog:",
       },
     },
     "packages/atomicassets": {
@@ -140,7 +132,6 @@
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/common": "workspace:*",
         "@wharfkit/contract": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -202,7 +193,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/antelope": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/antelope": "workspace:*",
@@ -227,7 +217,6 @@
         "@wharfkit/abicache": "workspace:*",
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/signing-request": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -240,7 +229,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/antelope": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -251,7 +239,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -266,7 +253,6 @@
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/session": "workspace:*",
         "@wharfkit/wallet-plugin-privatekey": "workspace:*",
-        "tslib": "catalog:",
       },
     },
     "packages/msigs": {
@@ -274,7 +260,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/antelope": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -306,7 +291,6 @@
         "@wharfkit/session": "workspace:*",
         "eosjs": "20.0.0",
         "scatter-ts": "^0.1.9",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/antelope": "workspace:*",
@@ -321,7 +305,6 @@
         "@wharfkit/antelope": "workspace:*",
         "bn.js": "catalog:",
         "js-big-decimal": "^2.0.7",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -332,7 +315,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/antelope": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -344,7 +326,6 @@
       "dependencies": {
         "@greymass/miniaes": "^1.0.0",
         "@wharfkit/antelope": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "text-encoding": "^0.7.0",
@@ -360,7 +341,6 @@
         "@wharfkit/contract": "workspace:*",
         "@wharfkit/signing-request": "workspace:*",
         "pako": "catalog:",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -373,7 +353,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/antelope": "workspace:*",
-        "tslib": "catalog:",
       },
     },
     "packages/svelte-components": {
@@ -429,7 +408,6 @@
       "dependencies": {
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/contract": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -441,7 +419,6 @@
       "dependencies": {
         "@wharfkit/resources": "workspace:*",
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/antelope": "workspace:*",
@@ -466,7 +443,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/antelope": "workspace:*",
@@ -479,7 +455,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/session": "workspace:*",
@@ -491,7 +466,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -504,7 +478,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/antelope": "workspace:*",
@@ -517,7 +490,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -531,7 +503,6 @@
       "dependencies": {
         "@wharfkit/resources": "workspace:*",
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/antelope": "workspace:*",
@@ -546,7 +517,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -559,7 +529,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -592,7 +561,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/antelope": "workspace:*",
@@ -604,7 +572,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/antelope": "workspace:*",
@@ -617,7 +584,6 @@
       "dependencies": {
         "@wharfkit/protocol-scatter": "workspace:*",
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -631,7 +597,6 @@
       "dependencies": {
         "@wharfkit/protocol-scatter": "workspace:*",
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -645,7 +610,6 @@
       "dependencies": {
         "@metamask/providers": "^17.0.0",
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -657,7 +621,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -669,7 +632,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/antelope": "workspace:*",
@@ -683,7 +645,6 @@
       "dependencies": {
         "@wharfkit/protocol-esr": "workspace:*",
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -695,7 +656,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/antelope": "workspace:*",
@@ -709,7 +669,6 @@
       "dependencies": {
         "@wharfkit/protocol-scatter": "workspace:*",
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/antelope": "workspace:*",
@@ -721,7 +680,6 @@
       "version": "4.0.0-rc3",
       "dependencies": {
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",
@@ -734,7 +692,6 @@
       "dependencies": {
         "@wharfkit/protocol-scatter": "workspace:*",
         "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/antelope": "workspace:*",
@@ -751,7 +708,6 @@
         "@wharfkit/sealed-messages": "workspace:*",
         "@wharfkit/session": "workspace:*",
         "isomorphic-ws": "catalog:",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@wharfkit/common": "workspace:*",
@@ -851,7 +807,6 @@
         "@wharfkit/antelope": "workspace:*",
         "cborg": "^4.5.8",
         "elliptic": "^6.5.4",
-        "tslib": "catalog:",
       },
       "devDependencies": {
         "@types/elliptic": "^6.4.13",

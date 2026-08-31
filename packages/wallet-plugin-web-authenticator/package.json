@@ -22,8 +22,7 @@
         "@wharfkit/protocol-esr": "workspace:*",
         "@wharfkit/sealed-messages": "workspace:*",
         "@wharfkit/session": "workspace:*",
-        "isomorphic-ws": "catalog:",
-        "tslib": "catalog:"
+        "isomorphic-ws": "catalog:"
     },
     "devDependencies": {
         "@wharfkit/common": "workspace:*",

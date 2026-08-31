@@ -19,7 +19,6 @@
     "dependencies": {
         "eosjs": "20.0.0",
         "scatter-ts": "^0.1.9",
-        "tslib": "catalog:",
         "@wharfkit/session": "workspace:*"
     },
     "devDependencies": {

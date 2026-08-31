@@ -18,7 +18,6 @@
     "scripts": {},
     "dependencies": {
         "@wharfkit/protocol-scatter": "workspace:*",
-        "tslib": "catalog:",
         "@wharfkit/session": "workspace:*"
     },
     "devDependencies": {

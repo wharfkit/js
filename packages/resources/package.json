@@ -23,8 +23,7 @@
     "dependencies": {
         "@wharfkit/antelope": "workspace:*",
         "bn.js": "catalog:",
-        "js-big-decimal": "^2.0.7",
-        "tslib": "catalog:"
+        "js-big-decimal": "^2.0.7"
     },
     "devDependencies": {
         "@wharfkit/mock-data": "workspace:*"

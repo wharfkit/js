@@ -19,8 +19,7 @@
     "dependencies": {
         "@wharfkit/abicache": "workspace:*",
         "@wharfkit/antelope": "workspace:*",
-        "@wharfkit/signing-request": "workspace:*",
-        "tslib": "catalog:"
+        "@wharfkit/signing-request": "workspace:*"
     },
     "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",

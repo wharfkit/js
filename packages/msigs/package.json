@@ -16,8 +16,7 @@
     ],
     "scripts": {},
     "dependencies": {
-        "@wharfkit/antelope": "workspace:*",
-        "tslib": "catalog:"
+        "@wharfkit/antelope": "workspace:*"
     },
     "devDependencies": {
         "@wharfkit/mock-data": "workspace:*"

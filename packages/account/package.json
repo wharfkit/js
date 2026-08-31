@@ -21,8 +21,7 @@
         "@wharfkit/common": "workspace:*",
         "@wharfkit/contract": "workspace:*",
         "@wharfkit/resources": "workspace:*",
-        "@wharfkit/token": "workspace:*",
-        "tslib": "catalog:"
+        "@wharfkit/token": "workspace:*"
     },
     "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",

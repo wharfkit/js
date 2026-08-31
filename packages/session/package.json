@@ -23,8 +23,7 @@
         "@wharfkit/common": "workspace:*",
         "@wharfkit/contract": "workspace:*",
         "@wharfkit/signing-request": "workspace:*",
-        "pako": "catalog:",
-        "tslib": "catalog:"
+        "pako": "catalog:"
     },
     "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",

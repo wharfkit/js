@@ -23,8 +23,7 @@
     "dependencies": {
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/common": "workspace:*",
-        "@wharfkit/contract": "workspace:*",
-        "tslib": "catalog:"
+        "@wharfkit/contract": "workspace:*"
     },
     "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",

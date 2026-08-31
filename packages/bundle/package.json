@@ -4,6 +4,9 @@
     "description": "A prepackaged bundle of common Wharf libraries re-exported for IIFE or ESM",
     "license": "BSD-3-Clause",
     "type": "module",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "dist/wharf.bundle.js",
     "module": "dist/wharf.esm.js",
     "unpkg": "dist/wharf.bundle.js",

@@ -5,6 +5,9 @@
     "private": true,
     "homepage": "https://github.com/wharfkit/transact-plugin-msig-propose",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/transact-plugin-msig-propose.js",
     "module": "lib/transact-plugin-msig-propose.m.js",
     "types": "lib/transact-plugin-msig-propose.d.ts",

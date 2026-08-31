@@ -4,6 +4,9 @@
     "description": "Modern embedded UI renderer for WharfKit SessionKit",
     "type": "module",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/web-ui.cjs",
     "module": "lib/web-ui.m.js",
     "types": "lib/web-ui.d.ts",

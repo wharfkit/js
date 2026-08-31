@@ -5,6 +5,9 @@
     "private": true,
     "homepage": "https://github.com/wharfkit/account-creation-plugin-template",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/account-creation-plugin-template.js",
     "module": "lib/account-creation-plugin-template.m.js",
     "types": "lib/account-creation-plugin-template.d.ts",

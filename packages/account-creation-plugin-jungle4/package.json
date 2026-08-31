@@ -4,6 +4,9 @@
     "version": "4.0.0-rc3",
     "homepage": "https://github.com/wharfkit/account-creation-plugin-jungle4",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/account-creation-plugin-jungle4.js",
     "module": "lib/account-creation-plugin-jungle4.m.js",
     "types": "lib/account-creation-plugin-jungle4.d.ts",

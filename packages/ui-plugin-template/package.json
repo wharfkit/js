@@ -5,6 +5,9 @@
     "private": true,
     "homepage": "https://github.com/wharfkit/ui-plugin-template",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/ui-plugin-template.js",
     "module": "lib/ui-plugin-template.m.js",
     "types": "lib/ui-plugin-template.d.ts",

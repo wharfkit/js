@@ -4,6 +4,9 @@
     "version": "4.0.0-rc3",
     "homepage": "https://github.com/wharfkit/protocol-scatter",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/protocol-scatter.js",
     "module": "lib/protocol-scatter.m.js",
     "types": "lib/protocol-scatter.d.ts",

@@ -62,9 +62,9 @@ function closeDtsExports() {
 /**
  * @param {string} dir                    the member's package directory
  * @param {object} [o]
- * @param {boolean|string} [o.banner]     license banner; a string overrides the product name
- * @param {string} [o.bannerText]        literal banner, in place of the license block
- * @param {boolean} [o.comments]         keep comments (default false only where cleanup ran)
+ * @param {string} [o.bannerText]        literal prefix emitted above the licence notice
+ * @param {boolean} [o.comments]          keep comments (default false only where cleanup ran)
+ * @param {boolean} [o.named]             output.exports 'named' on the CJS build
  * @param {boolean} [o.esModule]          output.esModule on the CJS build (default true)
  * @param {boolean} [o.stripInternal]     drop @internal from the declaration build
  * @param {boolean} [o.replaceVersion]    substitute __ver with pkg.version
@@ -86,20 +86,20 @@ export function libraryConfig(dir, o = {}) {
     const out = (f) => relocate(f)
     const outDir = (f) => path.dirname(relocate(f))
 
-    let banner = o.bannerText
-    if (o.banner) {
-        const name = typeof o.banner === 'string' ? o.banner : pkg.name
-        const license = fs.readFileSync(path.join(dir, 'LICENSE')).toString('utf-8').trim()
-        banner = `
-/**
- * ${name} v${pkg.version}
- * ${pkg.homepage}
- *
- * @license
- * ${license.replace(/\n/g, '\n * ')}
- */
-`.trim()
-    }
+    // A one-line notice rather than the full licence text: it survives minification by the same
+    // rule the full block did, at 106 bytes instead of 1,640, and the text itself ships as
+    // LICENSE in every tarball. The copyright line is read rather than composed so that the
+    // members attributing FFF00 Agents AB keep saying so.
+    const copyright = fs
+        .readFileSync(path.join(dir, 'LICENSE'), 'utf-8')
+        .split('\n')
+        .find((line) => /^copyright/i.test(line))
+        .trim()
+    // the repository rather than the homepage: this points at the source the licence covers, and
+    // homepage is due to become a documentation link
+    const source = pkg.repository.url.replace(/^git\+/, '').replace(/\.git$/, '')
+    const notice = `/*! ${pkg.name} v${pkg.version} | ${pkg.license} | ${copyright} | ${source} */`
+    const banner = o.bannerText ? `${o.bannerText}\n${notice}` : notice
 
     const declared = [...Object.keys(pkg.dependencies ?? {}), ...(o.externalExtra ?? [])]
     // rolldown resolves node_modules where these rollup configs did not, so anything not

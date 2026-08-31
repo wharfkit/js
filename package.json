@@ -1,7 +1,7 @@
 {
     "name": "wharfkit-js",
     "private": true,
-    "version": "4.0.0-rc3",
+    "version": "4.0.0-rc4",
     "workspaces": {
         "packages": [
             "packages/*"

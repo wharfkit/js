@@ -65,7 +65,6 @@ function closeDtsExports() {
  * @param {boolean|string} [o.banner]     license banner; a string overrides the product name
  * @param {string} [o.bannerText]        literal banner, in place of the license block
  * @param {boolean} [o.comments]         keep comments (default false only where cleanup ran)
- * @param {boolean} [o.named]             output.exports 'named' on the CJS build
  * @param {boolean} [o.esModule]          output.esModule on the CJS build (default true)
  * @param {boolean} [o.stripInternal]     drop @internal from the declaration build
  * @param {boolean} [o.replaceVersion]    substitute __ver with pkg.version
@@ -132,7 +131,7 @@ export function libraryConfig(dir, o = {}) {
                 format: 'cjs',
                 esModule: o.esModule !== false,
                 sourcemap: true,
-                ...(o.named ? {exports: 'named'} : {}),
+                exports: 'named',
                 ...(comments === false ? {comments: false} : {}),
             },
         },

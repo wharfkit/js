@@ -10,22 +10,20 @@ const pkgOf = (name) =>
 
 // Every member's build, declared once. Anything not listed builds with the defaults.
 const MEMBERS = {
-    abicache: {named: true},
+    abicache: {},
     antelope: {banner: '@wharfkit/antelope', comments: true},
-    atomicassets: {named: true, comments: true},
+    atomicassets: {comments: true},
     cli: {
         bannerText: "#!/usr/bin/env node\nprocess.removeAllListeners('warning')",
-        named: true,
         esModule: false,
         types: false,
         esm: false,
         externalExtra: ['fs'],
     },
-    common: {named: true},
-    contract: {named: true},
-    hyperion: {named: true, comments: true},
+    hyperion: {comments: true},
+    common: {},
+    contract: {},
     'mock-data': {
-        named: true,
         extraOutputs: [
             {
                 file: pkgOf('mock-data').browser['./lib/mock-data.m.js'],
@@ -40,32 +38,28 @@ const MEMBERS = {
     },
     'protocol-esr': {
         banner: true,
-        named: true,
         comments: true,
         stripInternal: true,
         replaceVersion: true,
     },
     'protocol-scatter': {
         banner: true,
-        named: true,
         comments: true,
         browser: true,
         bundleDeps: true,
     },
     resources: {banner: true, comments: true},
-    roborovski: {named: true, comments: true},
-    session: {named: true},
+    roborovski: {comments: true},
+    session: {},
     'signing-request': {banner: 'EOSIO Signing Request', comments: true},
     'wallet-plugin-anchor': {
         banner: true,
-        named: true,
         comments: true,
         stripInternal: true,
         replaceVersion: true,
     },
     'wallet-plugin-scatter': {
         banner: true,
-        named: true,
         comments: true,
         browser: true,
         bundleDeps: true,
@@ -73,7 +67,6 @@ const MEMBERS = {
     },
     'wallet-plugin-tokenpocket': {
         banner: true,
-        named: true,
         comments: true,
         browser: true,
         bundleDeps: true,
@@ -82,12 +75,11 @@ const MEMBERS = {
     webauthn: {
         cjsExternal: Object.keys(pkgOf('webauthn').dependencies).filter((d) => d !== 'cborg'),
         banner: true,
-        named: true,
         comments: true,
     },
 }
 
-const DEFAULTS = {banner: true, named: true, comments: true}
+const DEFAULTS = {banner: true, comments: true}
 export default selected(root, members(root)).flatMap((name) =>
     libraryConfig(path.join(root, 'packages', name), MEMBERS[name] ?? DEFAULTS)
 )

@@ -4,6 +4,9 @@
     "version": "4.0.0-rc3",
     "homepage": "https://github.com/wharfkit/session",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/session.js",
     "module": "lib/session.m.js",
     "types": "lib/session.d.ts",
@@ -20,8 +23,7 @@
         "@wharfkit/common": "workspace:*",
         "@wharfkit/contract": "workspace:*",
         "@wharfkit/signing-request": "workspace:*",
-        "pako": "catalog:",
-        "tslib": "catalog:"
+        "pako": "catalog:"
     },
     "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",

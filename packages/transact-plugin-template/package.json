@@ -5,6 +5,9 @@
     "private": true,
     "homepage": "https://github.com/wharfkit/transact-plugin-template",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/transact-plugin-template.js",
     "module": "lib/transact-plugin-template.m.js",
     "types": "lib/transact-plugin-template.d.ts",
@@ -15,8 +18,7 @@
     ],
     "scripts": {},
     "dependencies": {
-        "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:"
+        "@wharfkit/session": "workspace:*"
     },
     "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",

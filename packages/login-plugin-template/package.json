@@ -5,6 +5,9 @@
     "private": true,
     "homepage": "https://github.com/wharfkit/login-plugin-template",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/login-plugin-template.js",
     "module": "lib/login-plugin-template.m.js",
     "types": "lib/login-plugin-template.d.ts",
@@ -15,8 +18,7 @@
     ],
     "scripts": {},
     "dependencies": {
-        "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:"
+        "@wharfkit/session": "workspace:*"
     },
     "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",

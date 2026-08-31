@@ -3,6 +3,9 @@
     "version": "4.0.0-rc3",
     "type": "module",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "scripts": {},
     "devDependencies": {
         "@greymass/vert": "^3.0.0",

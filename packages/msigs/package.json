@@ -4,6 +4,9 @@
     "version": "4.0.0-rc3",
     "homepage": "https://github.com/wharfkit/msigs",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/msigs.js",
     "module": "lib/msigs.m.js",
     "types": "lib/msigs.d.ts",
@@ -13,8 +16,7 @@
     ],
     "scripts": {},
     "dependencies": {
-        "@wharfkit/antelope": "workspace:*",
-        "tslib": "catalog:"
+        "@wharfkit/antelope": "workspace:*"
     },
     "devDependencies": {
         "@wharfkit/mock-data": "workspace:*"

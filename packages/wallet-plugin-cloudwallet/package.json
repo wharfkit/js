@@ -4,6 +4,9 @@
     "version": "4.0.0-rc3",
     "homepage": "https://github.com/wharfkit/wallet-plugin-cloudwallet",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/wallet-plugin-cloudwallet.js",
     "module": "lib/wallet-plugin-cloudwallet.m.js",
     "types": "lib/wallet-plugin-cloudwallet.d.ts",
@@ -14,7 +17,6 @@
     ],
     "scripts": {},
     "dependencies": {
-        "tslib": "catalog:",
         "@wharfkit/session": "workspace:*"
     },
     "devDependencies": {

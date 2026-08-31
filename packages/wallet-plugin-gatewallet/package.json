@@ -4,6 +4,9 @@
     "version": "4.0.0-rc3",
     "homepage": "https://github.com/wharfkit/wallet-plugin-template",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/wallet-plugin-template.js",
     "module": "lib/wallet-plugin-template.m.js",
     "types": "lib/wallet-plugin-template.d.ts",
@@ -15,8 +18,7 @@
     "scripts": {},
     "dependencies": {
         "@wharfkit/protocol-scatter": "workspace:*",
-        "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:"
+        "@wharfkit/session": "workspace:*"
     },
     "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",

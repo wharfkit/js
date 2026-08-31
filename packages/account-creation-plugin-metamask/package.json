@@ -4,6 +4,9 @@
     "version": "4.0.0-rc3",
     "homepage": "https://github.com/wharfkit/wallet-plugin-metamask",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/account-creation-plugin-metamask.js",
     "module": "lib/account-creation-plugin-metamask.m.js",
     "types": "lib/account-creation-plugin-metamask.d.ts",
@@ -16,8 +19,7 @@
     "dependencies": {
         "@greymass/create-account": "^1.1.0",
         "@metamask/providers": "^17.0.0",
-        "@wharfkit/session": "workspace:*",
-        "tslib": "catalog:"
+        "@wharfkit/session": "workspace:*"
     },
     "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",

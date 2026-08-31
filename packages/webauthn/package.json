@@ -4,6 +4,9 @@
     "version": "4.0.0-rc3",
     "homepage": "https://github.com/greymass/eosio-webauthn",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/eosio-webauthn.js",
     "module": "lib/eosio-webauthn.m.js",
     "types": "lib/eosio-webauthn.d.ts",
@@ -16,8 +19,7 @@
     "dependencies": {
         "@wharfkit/antelope": "workspace:*",
         "cborg": "^4.5.8",
-        "elliptic": "^6.5.4",
-        "tslib": "catalog:"
+        "elliptic": "^6.5.4"
     },
     "devDependencies": {
         "@types/elliptic": "^6.4.13"

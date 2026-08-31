@@ -4,6 +4,9 @@
     "version": "4.0.0-rc3",
     "homepage": "https://github.com/wharfkit/roborovski",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/roborovski.js",
     "module": "lib/roborovski.m.js",
     "types": "lib/roborovski.d.ts",
@@ -18,8 +21,7 @@
     ],
     "scripts": {},
     "dependencies": {
-        "@wharfkit/antelope": "workspace:*",
-        "tslib": "catalog:"
+        "@wharfkit/antelope": "workspace:*"
     },
     "devDependencies": {
         "@wharfkit/mock-data": "workspace:*"

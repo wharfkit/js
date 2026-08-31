@@ -4,6 +4,9 @@
     "version": "4.0.0-rc3",
     "homepage": "https://github.com/wharfkit/abicache",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/abicache.js",
     "module": "lib/abicache.m.js",
     "types": "lib/abicache.d.ts",
@@ -16,8 +19,7 @@
     "scripts": {},
     "dependencies": {
         "@wharfkit/antelope": "workspace:*",
-        "@wharfkit/signing-request": "workspace:*",
-        "tslib": "catalog:"
+        "@wharfkit/signing-request": "workspace:*"
     },
     "devDependencies": {
         "@wharfkit/mock-data": "workspace:*",

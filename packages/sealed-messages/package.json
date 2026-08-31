@@ -4,6 +4,9 @@
     "version": "4.0.0-rc3",
     "homepage": "https://github.com/wharfkit/sealed-messages",
     "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "main": "lib/sealed-messages.js",
     "module": "lib/sealed-messages.m.js",
     "types": "lib/sealed-messages.d.ts",
@@ -15,8 +18,7 @@
     "scripts": {},
     "dependencies": {
         "@greymass/miniaes": "^1.0.0",
-        "@wharfkit/antelope": "workspace:*",
-        "tslib": "catalog:"
+        "@wharfkit/antelope": "workspace:*"
     },
     "devDependencies": {
         "text-encoding": "^0.7.0"

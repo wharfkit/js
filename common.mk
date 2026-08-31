@@ -8,7 +8,7 @@
 #   TEST_DEPS     extra prerequisites for the test targets
 #   LINT_PATHS    oxlint and oxfmt targets (default: src)
 #   DOCS_ENTRY    typedoc entry point (default: src/index.ts)
-#   BROWSER_OUT   browser bundle output, matching test/rollup.config.mjs (empty means none)
+#   BROWSER_OUT   browser bundle output, matching browser-test.rolldown.config.mjs (empty means none)
 #   CLEAN_EXTRA   extra paths removed by clean
 
 SHELL := /usr/bin/env bash
@@ -27,8 +27,11 @@ MOCHA_ENV := TSX_TSCONFIG_PATH=test/tsconfig.json NODE_OPTIONS='$(STRIP_TYPES_FL
 MOCHA_OPTS := $(MOCHA_UI) --require tsx --extension ts $(MOCHA_EXTRA)
 NYC_OPTS := --temp-dir build/nyc_output --report-dir build/coverage
 
-lib: $(SRC_FILES) package.json tsconfig.json $(ROOT)/node_modules rollup.config.mjs
-	@$(BIN)/rollup -c && touch lib
+LIB_CONFIG := $(ROOT)/rolldown.config.mjs $(ROOT)/rolldown.base.mjs
+BROWSER_CONFIG := $(ROOT)/browser-test.rolldown.config.mjs $(ROOT)/browser-test.rolldown.mjs
+
+lib: $(SRC_FILES) package.json tsconfig.json $(ROOT)/node_modules $(LIB_CONFIG)
+	@$(BIN)/rolldown -c $(ROOT)/rolldown.config.mjs && touch lib
 
 .PHONY: test
 test: $(ROOT)/node_modules $(TEST_DEPS)
@@ -82,8 +85,8 @@ docs: build/docs
 	@open build/docs/index.html
 
 ifneq ($(strip $(BROWSER_OUT)),)
-$(BROWSER_OUT): $(SRC_FILES) $(TEST_FILES) test/rollup.config.mjs $(ROOT)/node_modules
-	@$(BIN)/rollup -c test/rollup.config.mjs
+$(BROWSER_OUT): $(SRC_FILES) $(TEST_FILES) $(ROOT)/node_modules $(BROWSER_CONFIG)
+	@$(BIN)/rolldown -c $(ROOT)/browser-test.rolldown.config.mjs
 
 .PHONY: browser
 browser: $(BROWSER_OUT)

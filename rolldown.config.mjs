@@ -8,22 +8,24 @@ const root = path.dirname(fileURLToPath(import.meta.url))
 const pkgOf = (name) =>
     JSON.parse(fs.readFileSync(path.join(root, 'packages', name, 'package.json')))
 
-// Every member's build, declared once. Anything not listed builds with the defaults.
+// What each member needs beyond DEFAULTS, declared once. Anything not listed takes the defaults.
 const MEMBERS = {
-    abicache: {},
-    antelope: {banner: '@wharfkit/antelope', comments: true},
-    atomicassets: {comments: true},
+    abicache: {banner: false},
+    antelope: {banner: '@wharfkit/antelope'},
+    atomicassets: {banner: false},
     cli: {
+        banner: false,
         bannerText: "#!/usr/bin/env node\nprocess.removeAllListeners('warning')",
         esModule: false,
         types: false,
         esm: false,
         externalExtra: ['fs'],
     },
-    hyperion: {comments: true},
-    common: {},
-    contract: {},
+    hyperion: {banner: false},
+    common: {banner: false},
+    contract: {banner: false},
     'mock-data': {
+        banner: false,
         extraOutputs: [
             {
                 file: pkgOf('mock-data').browser['./lib/mock-data.m.js'],
@@ -38,36 +40,31 @@ const MEMBERS = {
     },
     'protocol-esr': {
         banner: true,
-        comments: true,
         stripInternal: true,
         replaceVersion: true,
     },
     'protocol-scatter': {
         banner: true,
-        comments: true,
         browser: true,
         bundleDeps: true,
     },
-    resources: {banner: true, comments: true},
-    roborovski: {comments: true},
-    session: {},
-    'signing-request': {banner: 'EOSIO Signing Request', comments: true},
+
+    roborovski: {banner: false},
+    session: {banner: false},
+    'signing-request': {banner: 'EOSIO Signing Request'},
     'wallet-plugin-anchor': {
         banner: true,
-        comments: true,
         stripInternal: true,
         replaceVersion: true,
     },
     'wallet-plugin-scatter': {
         banner: true,
-        comments: true,
         browser: true,
         bundleDeps: true,
         dir: true,
     },
     'wallet-plugin-tokenpocket': {
         banner: true,
-        comments: true,
         browser: true,
         bundleDeps: true,
         dir: true,
@@ -75,11 +72,11 @@ const MEMBERS = {
     webauthn: {
         cjsExternal: Object.keys(pkgOf('webauthn').dependencies).filter((d) => d !== 'cborg'),
         banner: true,
-        comments: true,
     },
 }
 
-const DEFAULTS = {banner: true, comments: true}
+// the defaults every member gets; the table above carries only what differs
+const DEFAULTS = {banner: true, comments: false}
 export default selected(root, members(root)).flatMap((name) =>
-    libraryConfig(path.join(root, 'packages', name), MEMBERS[name] ?? DEFAULTS)
+    libraryConfig(path.join(root, 'packages', name), {...DEFAULTS, ...MEMBERS[name]})
 )

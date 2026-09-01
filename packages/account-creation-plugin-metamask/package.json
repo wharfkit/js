@@ -17,7 +17,6 @@
     ],
     "scripts": {},
     "dependencies": {
-        "@greymass/create-account": "^1.1.0",
         "@metamask/providers": "^17.0.0",
         "@wharfkit/session": "workspace:*"
     },

@@ -1,4 +1,3 @@
-import {AccountCreator} from '@greymass/create-account'
 import {
     AbstractAccountCreationPlugin,
     AccountCreationPlugin,
@@ -10,6 +9,7 @@ import {
 } from '@wharfkit/session'
 import {AccountCreationPluginMetadata} from '@wharfkit/session'
 import {MetaMaskInpageProvider, RequestArguments} from '@metamask/providers'
+import {AccountCreator} from './account-creator'
 import {checkIsFlask, getSnapsProvider, InvokeSnapParams, Snap} from './metamask'
 
 export type GetSnapsResponse = Record<string, Snap>
@@ -88,19 +88,13 @@ export class AccountCreationPluginMetamask
         qs.set('owner_key', String(ownerPublicKey))
         qs.set('active_key', String(activePublicKey))
         const accountCreator = new AccountCreator({
-            supportedChains: [String(currentChain.id)],
-            fullCreationServiceUrl: `${this.accountCreationServiceUrl}?${qs.toString()}`,
-            scope: context.appName || 'Antelope App',
+            url: `${this.accountCreationServiceUrl}?${qs.toString()}`,
         })
-        const accountCreationResponse = await accountCreator.createAccount()
+        const {sa} = await accountCreator.createAccount()
 
-        if ('sa' in accountCreationResponse && 'sp' in accountCreationResponse) {
-            return {
-                accountName: accountCreationResponse.sa,
-                chain: context.chain,
-            }
-        } else {
-            throw new Error(accountCreationResponse.error)
+        return {
+            accountName: sa,
+            chain: context.chain,
         }
     }
 

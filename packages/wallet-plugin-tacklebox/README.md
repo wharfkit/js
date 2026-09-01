@@ -71,6 +71,15 @@ new WalletPluginTackleBox({
 })
 ```
 
+## Trying it live
+
+[`examples/dapp`](./examples/dapp) is a minimal browser dapp (login, self-transfer, restore,
+logout) for exercising the plugin against a real TackleBox build:
+
+```bash
+npm install && cd examples/dapp && npm install && npm run dev
+```
+
 ## Developing
 
 You need [Node.js](https://nodejs.org/) 18 or newer.

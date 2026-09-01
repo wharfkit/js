@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>wallet-plugin-tacklebox example</title>
+        <style>
+            body {
+                font-family: system-ui, sans-serif;
+                max-width: 640px;
+                margin: 3rem auto;
+                padding: 0 1rem;
+                color: #1a2b3c;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+            button {
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+                margin-right: 0.5rem;
+                border-radius: 6px;
+                border: 1px solid #0b4f6c;
+                background: #0b4f6c;
+                color: #fbfdff;
+                cursor: pointer;
+            }
+            button:disabled {
+                opacity: 0.4;
+                cursor: default;
+            }
+            #status {
+                margin: 1rem 0;
+                font-weight: 600;
+            }
+            pre {
+                background: #f0f4f8;
+                padding: 1rem;
+                border-radius: 6px;
+                overflow-x: auto;
+                white-space: pre-wrap;
+                word-break: break-all;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>wallet-plugin-tacklebox example</h1>
+        <p>
+            Login opens the Wharfkit modal with the ESR login request: copy it and paste it into
+            TackleBox under <b>Contracts &rarr; ESR &rarr; CONNECT AS LOGIN</b>. Transfer sends
+            0.0001 of the core token to yourself, pushed straight into the wallet over the link
+            channel &mdash; with a matching pinned auto-sign whitelist rule it completes without
+            touching the wallet.
+        </p>
+        <div id="status">Not logged in.</div>
+        <button id="login">Login</button>
+        <button id="transfer" disabled>Transfer to self</button>
+        <button id="logout" disabled>Logout</button>
+        <pre id="output">--</pre>
+        <script type="module" src="/src/main.ts"></script>
+    </body>
+</html>

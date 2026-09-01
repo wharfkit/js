@@ -53,8 +53,9 @@ export class AccountCreator {
         )!
 
         return new Promise((resolve, reject) => {
+            const origin = new URL(this.creationServiceUrl).origin
             const listener = (event: MessageEvent) => {
-                if (event.origin === this.creationServiceUrl) {
+                if (event.origin === origin) {
                     window.removeEventListener('message', listener)
                     this.closeDialog()
 

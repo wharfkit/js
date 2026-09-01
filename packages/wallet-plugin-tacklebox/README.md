@@ -11,18 +11,24 @@ friends).
 
 ## How it works
 
-TackleBox is a desktop-first native app that does not register an `esr://` URL handler, so the
-flow is paste-first:
+The flow mirrors Anchor's: requests open the wallet directly, with QR and copy-paste fallbacks.
 
-1. **Login** — the plugin renders an ESR identity request as a QR code, a **Copy login request**
-   button and an `esr:` link. The user pastes it into TackleBox under
-   **Contracts → ESR → CONNECT AS LOGIN** (or scans the QR with TackleBox on another device) and
-   approves the connection. TackleBox answers over a [buoy](https://github.com/greymass/buoy)
-   callback and announces its sealed push channel (`link_ch` / `link_key` / `link_name`).
+1. **Login** — the plugin fires a `tacklebox://request/…` deep link that opens TackleBox with
+   the ESR identity request (the wallet registers the `tacklebox:` scheme per user, and claims
+   `esr:` only when no other wallet owns it — so an Anchor install keeps its links). The prompt
+   keeps a **Launch TackleBox** link, a QR code and a **Copy login request** fallback
+   (paste target: **Contracts → ESR → CONNECT AS LOGIN**). TackleBox answers over a
+   [buoy](https://github.com/greymass/buoy) callback and announces its sealed push channel
+   (`link_ch` / `link_key` / `link_name`).
 2. **Transact** — signing requests are sealed to the wallet's session key and pushed straight
-   into TackleBox over that channel. Every request still passes TackleBox's whitelist guard,
-   contract-hash verification and signing review before a signature is produced and returned via
-   callback. A **Sign manually instead** fallback shows the request as QR/copyable text.
+   into TackleBox over that channel; the wallet raises its own window for review. Every request
+   still passes TackleBox's whitelist guard, contract-hash verification and signing review
+   before a signature is produced and returned via callback. **Open TackleBox** and
+   **Sign manually instead** fallbacks cover a closed wallet or another device.
+
+While a TackleBox prompt is up, the Wharfkit modal wears the wallet's own dark theme —
+deep-void navy, cyan light lines, restrained glow — scoped so other wallets' prompts keep the
+stock look (and skipped entirely on non-web-renderer UIs).
 
 ## Installation
 
@@ -68,6 +74,9 @@ new WalletPluginTackleBox({
     buoyUrl: 'https://cb.anchor.link',
     // WebSocket constructor override (defaults to isomorphic-ws).
     buoyWs: WebSocket,
+    // Keep the tacklebox: deep link from firing automatically on login and
+    // manual signing; the prompt's launch link and fallbacks remain.
+    disableAutoLaunch: false,
 })
 ```
 

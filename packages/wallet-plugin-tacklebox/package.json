@@ -1,7 +1,7 @@
 {
     "name": "wallet-plugin-tacklebox",
     "description": "A TackleBox wallet plugin for use with @wharfkit/session.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "homepage": "https://github.com/on-a-t-break/wallet-plugin-tacklebox",
     "license": "BSD-3-Clause",
     "main": "lib/wallet-plugin-tacklebox.js",

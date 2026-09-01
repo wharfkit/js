@@ -1,19 +1,20 @@
 {
     "login": {
         "title": "Connect with TackleBox",
-        "body": "Copy the login request and paste it into TackleBox (Contracts → ESR → CONNECT AS LOGIN), or scan the QR code with TackleBox on another device.",
+        "body": "TackleBox should open with this login request - approve the connection there. If nothing opens, launch it with the button, copy the request into TackleBox (Contracts → ESR → CONNECT AS LOGIN), or scan the QR code.",
         "copied": "Request copied. In TackleBox, open Contracts → ESR → CONNECT AS LOGIN and paste it to continue.",
         "copy": "Copy login request",
-        "link": "Open esr: link"
+        "launch": "Launch TackleBox"
     },
     "transact": {
         "title": "Sign with TackleBox",
         "title_manual": "Sign with TackleBox",
         "body": "Review and approve this transaction in TackleBox (\"{{channelName}}\").",
-        "body_manual": "Copy the signing request and paste it into TackleBox (Contracts → ESR), or scan the QR code with TackleBox on another device.",
+        "body_manual": "TackleBox should open with this signing request. If nothing opens, launch it with the button, copy the request into TackleBox (Contracts → ESR), or scan the QR code.",
         "copied": "Request copied. In TackleBox, open Contracts → ESR and paste it to continue.",
         "copy": "Copy signing request",
         "manual": "Sign manually instead",
+        "launch": "Open TackleBox",
         "await": "Waiting for TackleBox"
     },
     "error": {

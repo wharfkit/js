@@ -46,11 +46,12 @@
     <body>
         <h1>wallet-plugin-tacklebox example</h1>
         <p>
-            Login opens the Wharfkit modal with the ESR login request: copy it and paste it into
-            TackleBox under <b>Contracts &rarr; ESR &rarr; CONNECT AS LOGIN</b>. Transfer sends
-            0.0001 of the core token to yourself, pushed straight into the wallet over the link
-            channel &mdash; with a matching pinned auto-sign whitelist rule it completes without
-            touching the wallet.
+            Login fires a <code>tacklebox://</code> deep link that opens the wallet with the ESR
+            login request (QR and copy-paste into
+            <b>Contracts &rarr; ESR &rarr; CONNECT AS LOGIN</b> remain as fallbacks). Transfer
+            sends 0.0001 of the core token to yourself, pushed straight into the wallet over the
+            link channel &mdash; TackleBox raises its own window for review, and with a matching
+            pinned auto-sign whitelist rule it completes without touching the wallet.
         </p>
         <div id="status">Not logged in.</div>
         <button id="login">Login</button>

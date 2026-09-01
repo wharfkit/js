@@ -1,7 +1,9 @@
 import {assert} from 'chai'
-import {AbstractWalletPlugin} from '@wharfkit/session'
+import zlib from 'pako'
+import {AbstractWalletPlugin, SigningRequest} from '@wharfkit/session'
+import {mockChainId} from '@wharfkit/mock-data'
 
-import {copyToClipboard, DEFAULT_BUOY_URL, WalletPluginTackleBox} from '$lib'
+import {copyToClipboard, DEFAULT_BUOY_URL, tackleboxDeepLink, WalletPluginTackleBox} from '$lib'
 
 suite('plugin surface', function () {
     test('is a wallet plugin with the expected id', function () {
@@ -47,5 +49,28 @@ suite('plugin surface', function () {
 
     test('clipboard helper degrades gracefully outside a browser', async function () {
         assert.isFalse(await copyToClipboard('esr://test'))
+    })
+
+    test('deep links carry the request payload on the tacklebox scheme', function () {
+        const request = SigningRequest.identity(
+            {
+                callback: {url: 'https://cb.anchor.link/unittest', background: true},
+                scope: 'unittest',
+                chainId: mockChainId,
+            },
+            {zlib}
+        )
+        const link = tackleboxDeepLink(request)
+        assert.isTrue(link.startsWith('tacklebox://request/'))
+
+        const payload = link.slice('tacklebox://request/'.length)
+        const roundTrip = SigningRequest.from(`esr://${payload}`, {zlib})
+        assert.isTrue(roundTrip.isIdentity())
+        assert.equal(String(roundTrip.getIdentityScope()), 'unittest')
+    })
+
+    test('auto-launch can be disabled by option', function () {
+        assert.isTrue(new WalletPluginTackleBox().autoLaunch)
+        assert.isFalse(new WalletPluginTackleBox({disableAutoLaunch: true}).autoLaunch)
     })
 })

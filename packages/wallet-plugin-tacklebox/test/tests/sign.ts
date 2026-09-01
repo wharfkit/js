@@ -137,8 +137,10 @@ suite('sign', function () {
         assert.match(String(prompt.body), /TackleBox/)
         assert.deepEqual(
             (prompt.elements as any[]).map((e) => e.type),
-            ['countdown', 'button']
+            ['countdown', 'link', 'button']
         )
+        const link: any = (prompt.elements as any[]).find((e) => e.type === 'link')
+        assert.isTrue(String(link.data.href).startsWith('tacklebox://request/'))
     })
 
     test('falls back to the paste flow when no channel was announced', async function () {
@@ -167,8 +169,71 @@ suite('sign', function () {
 
         const prompt = ui.prompts[ui.prompts.length - 1]
         const types = (prompt.elements as any[]).map((e) => e.type)
-        assert.deepEqual(types, ['qr', 'button', 'countdown'])
+        assert.deepEqual(types, ['qr', 'link', 'button', 'countdown'])
         const qr: any = (prompt.elements as any[]).find((e) => e.type === 'qr')
         assert.isTrue(String(qr.data).startsWith('esr://'))
+    })
+
+    test('opens TackleBox directly for channel-less signing when a window exists', async function () {
+        const receiveStub = sinon.stub(buoy, 'receive')
+        sinon.stub(buoy, 'send')
+        receiveStub
+            .onFirstCall()
+            .resolves(JSON.stringify(makeLoginCallbackPayload({channel: false})))
+        receiveStub
+            .onSecondCall()
+            .callsFake(async () =>
+                JSON.stringify(await makeTransactCallbackPayload(transferAction))
+            )
+
+        const fakeWindow = {location: {href: 'http://localhost/unittest'}}
+        ;(global as any).window = fakeWindow
+        ;(global as any).navigator = {userAgent: 'mocha-unittest'}
+        try {
+            const plugin = new WalletPluginTackleBox()
+            const kit = makeKit(plugin, makeMockUI())
+            const {session} = await kit.login({
+                chain: mockChainId,
+                permissionLevel: mockPermissionLevel,
+            })
+            fakeWindow.location.href = 'http://localhost/after-login'
+
+            await session.transact({action: transferAction}, {broadcast: false})
+            assert.isTrue(fakeWindow.location.href.startsWith('tacklebox://request/'))
+        } finally {
+            delete (global as any).window
+            delete (global as any).navigator
+        }
+    })
+
+    test('does not navigate when signing over the wallet channel', async function () {
+        const receiveStub = sinon.stub(buoy, 'receive')
+        sinon.stub(buoy, 'send')
+        receiveStub.onFirstCall().resolves(JSON.stringify(makeLoginCallbackPayload()))
+        receiveStub
+            .onSecondCall()
+            .callsFake(async () =>
+                JSON.stringify(await makeTransactCallbackPayload(transferAction))
+            )
+
+        const fakeWindow = {location: {href: 'http://localhost/unittest'}}
+        ;(global as any).window = fakeWindow
+        ;(global as any).navigator = {userAgent: 'mocha-unittest'}
+        try {
+            const plugin = new WalletPluginTackleBox()
+            const kit = makeKit(plugin, makeMockUI())
+            const {session} = await kit.login({
+                chain: mockChainId,
+                permissionLevel: mockPermissionLevel,
+            })
+            fakeWindow.location.href = 'http://localhost/after-login'
+
+            await session.transact({action: transferAction}, {broadcast: false})
+            // The wallet raises itself on the channel push; the page stays put.
+            assert.equal(fakeWindow.location.href, 'http://localhost/after-login')
+        } finally {
+            delete (global as any).window
+            delete (global as any).navigator
+        }
     })
 })

@@ -35,8 +35,21 @@ function makeLoginContext(ui: any): LoginContext {
     } as unknown as LoginContext
 }
 
+function stubBrowserWindow(): {location: {href: string}} {
+    const fakeWindow = {location: {href: 'http://localhost/unittest'}}
+    ;(global as any).window = fakeWindow
+    ;(global as any).navigator = {userAgent: 'mocha-unittest'}
+    return fakeWindow
+}
+
+function unstubBrowserWindow() {
+    delete (global as any).window
+    delete (global as any).navigator
+}
+
 suite('login', function () {
     teardown(function () {
+        unstubBrowserWindow()
         sinon.restore()
     })
 
@@ -90,7 +103,7 @@ suite('login', function () {
         assert.isUndefined(plugin.data.channelUrl)
     })
 
-    test('prompts with a paste-first flow: QR, copy button and esr link', async function () {
+    test('prompts with a QR code, a launch link and a copy fallback', async function () {
         sinon.stub(buoy, 'receive').resolves(JSON.stringify(makeLoginCallbackPayload()))
 
         const plugin = new WalletPluginTackleBox()
@@ -103,14 +116,46 @@ suite('login', function () {
         const elements = args.elements as PromptElement[]
         assert.deepEqual(
             elements.map((e) => e.type),
-            ['qr', 'button', 'link']
+            ['qr', 'link', 'button']
         )
+
+        // The launch link targets the wallet's own scheme.
+        const link: any = elements.find((e) => e.type === 'link')
+        assert.isTrue(String(link.data.href).startsWith('tacklebox://request/'))
 
         // The rendered request is a valid ESR identity request.
         const qr: any = elements.find((e) => e.type === 'qr')
         assert.isTrue(String(qr.data).startsWith('esr://'))
         const request = SigningRequest.from(String(qr.data), {zlib})
         assert.isTrue(request.isIdentity())
+    })
+
+    test('opens TackleBox directly when a window exists', async function () {
+        sinon.stub(buoy, 'receive').resolves(JSON.stringify(makeLoginCallbackPayload()))
+        const fakeWindow = stubBrowserWindow()
+
+        const plugin = new WalletPluginTackleBox()
+        await plugin.login(makeLoginContext(makeMockUI()))
+
+        assert.isTrue(fakeWindow.location.href.startsWith('tacklebox://request/'))
+        // The deep link payload decodes back into the identity request.
+        const payload = fakeWindow.location.href.slice('tacklebox://request/'.length)
+        const request = SigningRequest.from(`esr://${payload}`, {zlib})
+        assert.isTrue(request.isIdentity())
+    })
+
+    test('honors the disableAutoLaunch option', async function () {
+        sinon.stub(buoy, 'receive').resolves(JSON.stringify(makeLoginCallbackPayload()))
+        const fakeWindow = stubBrowserWindow()
+
+        const plugin = new WalletPluginTackleBox({disableAutoLaunch: true})
+        const ui = makeMockUI()
+        await plugin.login(makeLoginContext(ui))
+
+        assert.equal(fakeWindow.location.href, 'http://localhost/unittest')
+        // The launch link stays available in the prompt.
+        const elements = ui.prompts[0].elements as PromptElement[]
+        assert.isTrue(elements.some((e) => e.type === 'link'))
     })
 
     test('listens for the callback on the configured buoy service', async function () {

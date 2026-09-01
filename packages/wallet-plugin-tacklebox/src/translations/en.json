@@ -1,0 +1,25 @@
+{
+    "login": {
+        "title": "Connect with TackleBox",
+        "body": "Copy the login request and paste it into TackleBox (Contracts → ESR → CONNECT AS LOGIN), or scan the QR code with TackleBox on another device.",
+        "copied": "Request copied. In TackleBox, open Contracts → ESR → CONNECT AS LOGIN and paste it to continue.",
+        "copy": "Copy login request",
+        "link": "Open esr: link"
+    },
+    "transact": {
+        "title": "Sign with TackleBox",
+        "title_manual": "Sign with TackleBox",
+        "body": "Review and approve this transaction in TackleBox (\"{{channelName}}\").",
+        "body_manual": "Copy the signing request and paste it into TackleBox (Contracts → ESR), or scan the QR code with TackleBox on another device.",
+        "copied": "Request copied. In TackleBox, open Contracts → ESR and paste it to continue.",
+        "copy": "Copy signing request",
+        "manual": "Sign manually instead",
+        "await": "Waiting for TackleBox"
+    },
+    "error": {
+        "expired": "The request expired, please try again.",
+        "invalid_response": "Invalid response from TackleBox, it must contain the cid, sa and sp fields.",
+        "not_completed": "The request was not completed.",
+        "cancelled": "The request was declined in TackleBox."
+    }
+}

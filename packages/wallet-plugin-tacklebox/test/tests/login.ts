@@ -1,0 +1,155 @@
+import {assert} from 'chai'
+import sinon from 'sinon'
+import zlib from 'pako'
+import * as buoy from '@greymass/buoy'
+import {
+    ChainDefinition,
+    LoginContext,
+    PermissionLevel,
+    PromptElement,
+    SigningRequest,
+} from '@wharfkit/session'
+import {mockChainDefinition, mockChainId, mockFetch, mockPermissionLevel} from '@wharfkit/mock-data'
+
+import {WalletPluginTackleBox} from '$lib'
+import {makeMockUI} from '$test/utils/mock-ui'
+import {makeLoginCallbackPayload, mockChannelUrl, mockPublicKey} from '$test/utils/mock-esr'
+
+const chain = ChainDefinition.from(mockChainDefinition)
+
+function makeLoginContext(ui: any): LoginContext {
+    return {
+        chain,
+        chains: [chain],
+        ui,
+        fetch: mockFetch,
+        hooks: {},
+        appName: 'unittest',
+        permissionLevel: PermissionLevel.from(mockPermissionLevel),
+        walletPlugins: [],
+        arbitrary: {},
+        uiRequirements: {},
+        addHook: () => undefined,
+        getClient: () => undefined,
+        esrOptions: {zlib},
+    } as unknown as LoginContext
+}
+
+suite('login', function () {
+    teardown(function () {
+        sinon.restore()
+    })
+
+    test('completes a login answered over the buoy channel', async function () {
+        sinon.stub(buoy, 'receive').resolves(JSON.stringify(makeLoginCallbackPayload()))
+
+        const plugin = new WalletPluginTackleBox()
+        const ui = makeMockUI()
+        const response = await plugin.login(makeLoginContext(ui))
+
+        assert.equal(String(response.chain), mockChainId)
+        assert.equal(String(response.permissionLevel), mockPermissionLevel)
+        assert.exists(response.identityProof)
+    })
+
+    test('stores the wallet push channel for later signing', async function () {
+        sinon.stub(buoy, 'receive').resolves(JSON.stringify(makeLoginCallbackPayload()))
+
+        const plugin = new WalletPluginTackleBox()
+        await plugin.login(makeLoginContext(makeMockUI()))
+
+        assert.equal(plugin.data.channelUrl, mockChannelUrl)
+        assert.equal(plugin.data.channelName, 'TackleBox')
+        assert.equal(String(plugin.data.signerKey), mockPublicKey)
+        assert.exists(plugin.data.privateKey)
+        assert.exists(plugin.data.requestKey)
+    })
+
+    test('session data survives a JSON round trip for restores', async function () {
+        sinon.stub(buoy, 'receive').resolves(JSON.stringify(makeLoginCallbackPayload()))
+
+        const plugin = new WalletPluginTackleBox()
+        await plugin.login(makeLoginContext(makeMockUI()))
+
+        const restored = JSON.parse(JSON.stringify(plugin.data))
+        assert.equal(restored.channelUrl, mockChannelUrl)
+        assert.equal(restored.channelName, 'TackleBox')
+        assert.equal(String(restored.signerKey), mockPublicKey)
+        assert.isString(restored.privateKey)
+    })
+
+    test('still logs in when the wallet announces no channel', async function () {
+        sinon
+            .stub(buoy, 'receive')
+            .resolves(JSON.stringify(makeLoginCallbackPayload({channel: false})))
+
+        const plugin = new WalletPluginTackleBox()
+        const response = await plugin.login(makeLoginContext(makeMockUI()))
+
+        assert.equal(String(response.chain), mockChainId)
+        assert.isUndefined(plugin.data.channelUrl)
+    })
+
+    test('prompts with a paste-first flow: QR, copy button and esr link', async function () {
+        sinon.stub(buoy, 'receive').resolves(JSON.stringify(makeLoginCallbackPayload()))
+
+        const plugin = new WalletPluginTackleBox()
+        const ui = makeMockUI()
+        await plugin.login(makeLoginContext(ui))
+
+        const args = ui.prompts[0]
+        assert.exists(args)
+        assert.equal(args.title, 'Connect with TackleBox')
+        const elements = args.elements as PromptElement[]
+        assert.deepEqual(
+            elements.map((e) => e.type),
+            ['qr', 'button', 'link']
+        )
+
+        // The rendered request is a valid ESR identity request.
+        const qr: any = elements.find((e) => e.type === 'qr')
+        assert.isTrue(String(qr.data).startsWith('esr://'))
+        const request = SigningRequest.from(String(qr.data), {zlib})
+        assert.isTrue(request.isIdentity())
+    })
+
+    test('listens for the callback on the configured buoy service', async function () {
+        const receiveStub = sinon
+            .stub(buoy, 'receive')
+            .resolves(JSON.stringify(makeLoginCallbackPayload()))
+
+        const plugin = new WalletPluginTackleBox({buoyUrl: 'https://buoy.example.com'})
+        await plugin.login(makeLoginContext(makeMockUI()))
+
+        const receiveOptions: any = receiveStub.firstCall.args[0]
+        assert.equal(receiveOptions.service, 'https://buoy.example.com')
+        assert.isString(receiveOptions.channel)
+    })
+
+    test('rejects when the wallet declines the request', async function () {
+        sinon.stub(buoy, 'receive').resolves(JSON.stringify({}))
+
+        const plugin = new WalletPluginTackleBox()
+        let error: Error | undefined
+        try {
+            await plugin.login(makeLoginContext(makeMockUI()))
+        } catch (err) {
+            error = err as Error
+        }
+        assert.exists(error)
+        assert.match(String(error!.message), /cancelled|declined/i)
+    })
+
+    test('requires a UI', async function () {
+        const plugin = new WalletPluginTackleBox()
+        const context = {...makeLoginContext(makeMockUI()), ui: undefined} as any
+        let error: Error | undefined
+        try {
+            await plugin.login(context)
+        } catch (err) {
+            error = err as Error
+        }
+        assert.exists(error)
+        assert.match(String(error!.message), /requires a UI/)
+    })
+})

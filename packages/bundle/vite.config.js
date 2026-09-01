@@ -4,6 +4,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
   build: {
+    sourcemap: true,
     lib: {
       entry: resolve(__dirname, 'src/main.ts'),
       name: 'Wharf',
@@ -14,10 +15,12 @@ export default defineConfig({
     rollupOptions: {
       output: {
         globals: {},
+        // Without this the ESM output is a 6 KB shell importing sibling chunks.
+        inlineDynamicImports: true,
       },
     },
   },
    define: {
-    'process.env': {}, 
+    'process.env': {},
   },
 });

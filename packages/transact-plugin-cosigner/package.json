@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/transact-plugin-cosigner",
     "description": "Automatically cosign transactions to assume resource costs using a noop action.",
-    "version": "4.0.0-rc3",
+    "version": "4.0.0-rc4",
     "homepage": "https://github.com/wharfkit/transact-plugin-cosigner",
     "license": "BSD-3-Clause",
     "engines": {

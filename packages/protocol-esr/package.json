@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/protocol-esr",
     "description": "Abstract methods useful to all ESR-based wallet plugins",
-    "version": "4.0.0-rc3",
+    "version": "4.0.0-rc4",
     "homepage": "https://github.com/wharfkit/protocol-esr",
     "license": "BSD-3-Clause",
     "engines": {

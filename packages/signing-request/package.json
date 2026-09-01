@@ -1,6 +1,6 @@
 {
     "name": "@wharfkit/signing-request",
-    "version": "4.0.0-rc3",
+    "version": "4.0.0-rc4",
     "description": "Signing Request (ESR / EEP-7) encoder and decoder for Antelope blockchains",
     "homepage": "https://github.com/wharfkit/signing-request",
     "license": "BSD-3-Clause",

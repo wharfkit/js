@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/transact-plugin-msig-propose",
     "description": "A template to create plugins for use with @wharfkit/session transact method.",
-    "version": "4.0.0-rc3",
+    "version": "4.0.0-rc4",
     "private": true,
     "homepage": "https://github.com/wharfkit/transact-plugin-msig-propose",
     "license": "BSD-3-Clause",

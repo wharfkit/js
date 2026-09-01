@@ -210,6 +210,22 @@ function resolveTarget(current: string, arg: string): string {
     fail(`unknown version argument "${arg}"`)
 }
 
+// CDN pins must name an exact version, so a bump has to rewrite them
+const PINNED_READMES = ['packages/bundle/README.md']
+const PIN = /(@wharfkit\/[a-z-]+@)\d+\.\d+\.\d+(?:-[\w.]+)?/g
+
+function writeReadmePins(version: string) {
+    for (const relative of PINNED_READMES) {
+        const path = join(ROOT, relative)
+        if (!existsSync(path)) fail(`${relative}: pinned readme is missing`)
+        const raw = readFileSync(path, 'utf8')
+        const updated = raw.replace(PIN, `$1${version}`)
+        if (updated === raw) continue
+        writeFileSync(path, updated)
+        log(`${relative}: pinned to ${version}`)
+    }
+}
+
 function writeVersion(manifestPath: string, version: string) {
     const raw = readFileSync(manifestPath, 'utf8')
     const updated = raw.replace(/"version":\s*"[^"]*"/, `"version": "${version}"`)
@@ -286,6 +302,7 @@ function bump(arg: string, dryRun: boolean) {
     log(`bumping to ${target}`)
     writeVersion(join(ROOT, 'package.json'), target)
     for (const member of list) writeVersion(member.manifestPath, target)
+    writeReadmePins(target)
     execFileSync('bun', ['install', '--ignore-scripts'], {cwd: ROOT, stdio: 'inherit'})
     packAndCheckPins(members())
 

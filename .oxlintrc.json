@@ -5,7 +5,7 @@
     "correctness": "error"
   },
   "ignorePatterns": [
-    "**/lib/**",
+    "packages/*/lib/**",
     "**/node_modules/**",
     "**/coverage/**",
     "**/docs_build/**",

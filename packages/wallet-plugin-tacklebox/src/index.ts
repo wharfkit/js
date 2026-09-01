@@ -150,7 +150,7 @@ export class WalletPluginTackleBox extends AbstractWalletPlugin {
 
             // The QR code only helps when this device is not the one running
             // the wallet - hide it on known-mobile dapp devices.
-            if (!isKnownMobile()) {
+            if (!onMobileDevice()) {
                 elements.unshift({
                     type: 'qr',
                     data: encodedRequest,
@@ -278,7 +278,7 @@ export class WalletPluginTackleBox extends AbstractWalletPlugin {
                 },
                 countdown,
             ]
-            if (!isKnownMobile()) {
+            if (!onMobileDevice()) {
                 elements.unshift({
                     type: 'qr',
                     data: encodedRequest,
@@ -326,11 +326,12 @@ export class WalletPluginTackleBox extends AbstractWalletPlugin {
             promptManual(false)
         }
 
+        // Timeouts above 2^31-1ms fire immediately; clamp far-future expiries.
         const timer = setTimeout(() => {
             prompts.forEach((p) =>
                 p.cancel(t('error.expired', {default: 'The request expired, please try again.'}))
             )
-        }, expiresIn)
+        }, Math.min(expiresIn, 0x7fffffff))
 
         const callbackPromise = waitForCallback(callback, this.buoyWs, t)
 
@@ -370,6 +371,15 @@ export class WalletPluginTackleBox extends AbstractWalletPlugin {
 
         throw new Error(t('error.not_completed', {default: 'The request was not completed.'}))
     }
+}
+
+/**
+ * Whether the dapp is running on a known mobile device (where a QR code is of
+ * no use). protocol-esr's isKnownMobile assumes a browser environment, so
+ * guard it for SSR and node.
+ */
+function onMobileDevice(): boolean {
+    return typeof navigator !== 'undefined' && isKnownMobile()
 }
 
 /**

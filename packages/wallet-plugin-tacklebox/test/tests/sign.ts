@@ -1,3 +1,5 @@
+import fs from 'fs'
+import path from 'path'
 import {assert} from 'chai'
 import sinon from 'sinon'
 import * as buoy from '@greymass/buoy'
@@ -30,6 +32,19 @@ const transferAction = {
     },
 }
 
+/** The chain head time captured in the recorded get_info fixture. */
+function fixtureHeadTime(): number {
+    const dir = path.join(__dirname, '..', 'data')
+    for (const file of fs.readdirSync(dir)) {
+        const recorded = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'))
+        const head = recorded.json && recorded.json.head_block_time
+        if (head) {
+            return new Date(head + 'Z').getTime()
+        }
+    }
+    throw new Error('No recorded get_info fixture found in test/data')
+}
+
 function makeKit(plugin: WalletPluginTackleBox, ui: RecordingUserInterface) {
     return new SessionKit(
         {
@@ -48,7 +63,17 @@ suite('sign', function () {
     this.timeout(120 * 1000)
     this.slow(5 * 1000)
 
+    let clock: sinon.SinonFakeTimers | undefined
+
+    setup(function () {
+        // TAPOS in these tests comes from the recorded chain head; pin "now"
+        // right after it so request expirations stay in the future no matter
+        // when the suite actually runs. Timers stay real.
+        clock = sinon.useFakeTimers({now: fixtureHeadTime() + 1000, toFake: ['Date']})
+    })
+
     teardown(function () {
+        clock?.restore()
         sinon.restore()
     })
 

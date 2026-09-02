@@ -5,7 +5,7 @@ A prepackaged bundle of common Wharf libraries, built as a self-contained IIFE (
 ## Usage
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@wharfkit/bundle@4.0.0-rc5/dist/wharf.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@wharfkit/bundle@4.0.0-rc6/dist/wharf.bundle.js"></script>
 <script>
     const kit = new Wharf.SessionKit({
         appName: 'my-app',
@@ -20,7 +20,7 @@ The ESM file is the same artifact in module form, and it is one file with no sib
 
 ```html
 <script type="module">
-    import {SessionKit, Chains, WebUI, WalletPluginAnchor} from 'https://cdn.jsdelivr.net/npm/@wharfkit/bundle@4.0.0-rc5/dist/wharf.esm.js'
+    import {SessionKit, Chains, WebUI, WalletPluginAnchor} from 'https://cdn.jsdelivr.net/npm/@wharfkit/bundle@4.0.0-rc6/dist/wharf.esm.js'
 </script>
 ```
 
@@ -30,7 +30,7 @@ Both URLs above name an exact version and the full file path. jsDelivr serves th
 
 Use `https://cdn.jsdelivr.net/npm/@wharfkit/bundle@4/dist/wharf.bundle.js` if you want patch releases without editing the page. The trade is that the bytes are no longer the package's own and no longer eligible for Subresource Integrity.
 
-To add an `integrity` attribute, take the hash for the exact version from `https://data.jsdelivr.com/v1/packages/npm/@wharfkit/bundle@4.0.0-rc5?structure=flat`, and pair it with `crossorigin="anonymous"`, which SRI requires. An `integrity` attribute on a `<script type="module">` covers that file's own fetch, which for the ESM artifact is the whole artifact.
+To add an `integrity` attribute, take the hash for the exact version from `https://data.jsdelivr.com/v1/packages/npm/@wharfkit/bundle@4.0.0-rc6?structure=flat`, and pair it with `crossorigin="anonymous"`, which SRI requires. An `integrity` attribute on a `<script type="module">` covers that file's own fetch, which for the ESM artifact is the whole artifact.
 
 Sourcemaps ship alongside both files. A browser fetches them only when devtools are open, so a page downloads nothing extra for them.
 
@@ -42,18 +42,18 @@ Every `@wharfkit/*` package in a lockstep release pins its siblings to the exact
 
 ```html
 <script type="module">
-    import {SessionKit, Chains} from 'https://esm.sh/@wharfkit/session@4.0.0-rc5'
-    import {WalletPluginAnchor} from 'https://esm.sh/@wharfkit/wallet-plugin-anchor@4.0.0-rc5'
+    import {SessionKit, Chains} from 'https://esm.sh/@wharfkit/session@4.0.0-rc6'
+    import {WalletPluginAnchor} from 'https://esm.sh/@wharfkit/wallet-plugin-anchor@4.0.0-rc6'
 </script>
 ```
 
-Mixing versions across imports, or adding a package still on the `1.x` line, splits it again. esm.sh takes an explicit pin against that: `?deps=@wharfkit/antelope@4.0.0-rc5` on each top-level URL rewrites the antelope import to one concrete build and propagates into every transitive `@wharfkit/*` request, so it costs one query parameter per import rather than one entry per transitive package. jsDelivr's `+esm` route has no query-parameter equivalent, and its output carries jsDelivr's own warning against pairing it with Subresource Integrity.
+Mixing versions across imports, or adding a package still on the `1.x` line, splits it again. esm.sh takes an explicit pin against that: `?deps=@wharfkit/antelope@4.0.0-rc6` on each top-level URL rewrites the antelope import to one concrete build and propagates into every transitive `@wharfkit/*` request, so it costs one query parameter per import rather than one entry per transitive package. jsDelivr's `+esm` route has no query-parameter equivalent, and its output carries jsDelivr's own warning against pairing it with Subresource Integrity.
 
 The bundle stays the recommended browser artifact. It is the only one that guarantees a single antelope without a resolver.
 
 ## Examples
 
-`public/bundle.html` and `public/esm.html` are runnable examples of both forms, loading the built files next to them. `make` copies them into `dist/`, so open them from there after a build. The same pages ship in the package, at `https://cdn.jsdelivr.net/npm/@wharfkit/bundle@4.0.0-rc5/dist/bundle.html` and `.../dist/esm.html`.
+`public/bundle.html` and `public/esm.html` are runnable examples of both forms, loading the built files next to them. `make` copies them into `dist/`, so open them from there after a build. The same pages ship in the package, at `https://cdn.jsdelivr.net/npm/@wharfkit/bundle@4.0.0-rc6/dist/bundle.html` and `.../dist/esm.html`.
 
 ## Types
 

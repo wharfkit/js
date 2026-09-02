@@ -1,5 +1,11 @@
 import {assert} from 'chai'
-import {Checksum256, PermissionLevel, TimePointSec} from '@wharfkit/antelope'
+import {
+    Checksum256,
+    Checksum256Type,
+    PermissionLevel,
+    Serializer,
+    TimePointSec,
+} from '@wharfkit/antelope'
 import {WalletPluginPrivateKey} from '@wharfkit/wallet-plugin-privatekey'
 
 import {
@@ -9,12 +15,15 @@ import {
     ExplorerDefinition,
     Logo,
     Session,
+    SessionArgs,
     SessionKit,
+    SessionType,
+    URLEncodedSession,
     UserInterfaceAccountCreationResponse,
     UserInterfaceLoginResponse,
 } from '$lib'
 
-import {makeWallet, MockWalletPluginConfigs} from '@wharfkit/mock-data'
+import {makeWallet, mockSessionOptions, MockWalletPluginConfigs} from '@wharfkit/mock-data'
 import {MockTransactPlugin} from '@wharfkit/mock-data'
 import {makeMockAction} from '@wharfkit/mock-data'
 import {
@@ -32,6 +41,19 @@ const action = makeMockAction()
 const defaultLoginOptions = {
     chain: mockChainId,
     permissionLevel: mockPermissionLevel,
+}
+
+function makeSession(actor: string, overrides: Partial<SessionArgs> = {}) {
+    return new Session(
+        {
+            actor,
+            permission: 'test',
+            chain: mockChainDefinition,
+            walletPlugin: makeWallet(),
+            ...overrides,
+        },
+        mockSessionOptions
+    )
 }
 
 function assertSessionMatchesMockSession(session: Session) {
@@ -389,13 +411,26 @@ suite('kit', function () {
             assert.lengthOf(sessionsAfterLogout, 0)
         })
         test('session param', async function () {
-            const {session} = await sessionKit.login()
-            assertSessionMatchesMockSession(session)
+            const session1 = makeSession('session1')
+            await sessionKit.persistSession(session1)
+
+            const session2 = makeSession('session2')
+            await sessionKit.persistSession(session2)
+
+            const session3 = makeSession('session3', {chain: Chains.EOS})
+            await sessionKit.persistSession(session3)
+
             const sessionsBeforeLogout = await sessionKit.getSessions()
-            assert.lengthOf(sessionsBeforeLogout, 1)
-            await sessionKit.logout(session)
+            assert.lengthOf(sessionsBeforeLogout, 3)
+            assert.equal(sessionsBeforeLogout[0].actor, session1.actor)
+            assert.equal(sessionsBeforeLogout[1].actor, session2.actor)
+            assert.equal(sessionsBeforeLogout[2].actor, session3.actor)
+
+            await sessionKit.logout(session2)
             const sessionsAfterLogout = await sessionKit.getSessions()
-            assert.lengthOf(sessionsAfterLogout, 0)
+            assert.lengthOf(sessionsAfterLogout, 2)
+            assert.equal(sessionsAfterLogout[0].actor, session1.actor)
+            assert.equal(sessionsAfterLogout[1].actor, session3.actor)
         })
         test('serialized session param', async function () {
             const {session} = await sessionKit.login()
@@ -405,6 +440,35 @@ suite('kit', function () {
             await sessionKit.logout(session.serialize())
             const sessionsAfterLogout = await sessionKit.getSessions()
             assert.lengthOf(sessionsAfterLogout, 0)
+        })
+        test('retains sessions for unregistered wallet plugins', async function () {
+            const storage = new MockStorage()
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                storage,
+            })
+            const session = makeSession('session1')
+            await sessionKit.persistSession(session)
+
+            // Add a session for a wallet plugin this kit does not register
+            const stored = JSON.parse(String(await storage.read('sessions')))
+            stored.push({
+                ...stored[0],
+                actor: 'session2',
+                walletPlugin: {id: 'wallet-plugin-unregistered', data: {retained: true}},
+                default: false,
+            })
+            await storage.write('sessions', JSON.stringify(stored))
+            assert.lengthOf(await sessionKit.getSessions(), 1)
+
+            await sessionKit.logout(session)
+
+            const remaining = JSON.parse(String(await storage.read('sessions')))
+            assert.lengthOf(remaining, 1)
+            assert.equal(remaining[0].actor, 'session2')
+            assert.equal(remaining[0].walletPlugin.id, 'wallet-plugin-unregistered')
+            assert.deepEqual(remaining[0].walletPlugin.data, {retained: true})
+            assert.lengthOf(await sessionKit.getSessions(), 0)
         })
     })
     suite('restore', function () {
@@ -424,7 +488,7 @@ suite('kit', function () {
             })
             const {session} = await sessionKit.login()
             session.data.customField = 'data value'
-            sessionKit.persistSession(session)
+            await sessionKit.persistSession(session)
             const restored = await sessionKit.restore()
             if (!restored) {
                 throw new Error('Failed to restore session')
@@ -529,6 +593,151 @@ suite('kit', function () {
                 assert.isTrue(restoredJUNGLE.chain.id.equals(Chains.Jungle4.id))
             }
         })
+        test('session from URL', async function () {
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                acceptUrlSession: true,
+                storage: new MockStorage(),
+            })
+
+            // Mock window object for Node.js environment
+            if (typeof globalThis.window === 'undefined') {
+                ;(globalThis as any).window = {}
+            }
+
+            // Mock window.history for Node.js environment
+            if (typeof (globalThis as any).window.history === 'undefined') {
+                ;(globalThis as any).window.history = {
+                    // eslint-disable-next-line @typescript-eslint/no-empty-function
+                    replaceState: () => {},
+                }
+            }
+
+            // Mock window.location with a writable href property
+            if (typeof (globalThis as any).window.location === 'undefined') {
+                ;(globalThis as any).window.location = {href: ''}
+            } else {
+                try {
+                    ;(globalThis as any).window.location.href =
+                        (globalThis as any).window.location.href || ''
+                } catch {
+                    ;(globalThis as any).window.location = {href: ''}
+                }
+            }
+
+            // Ensure no sessions
+            const sessions = await sessionKit.restoreAll()
+            assert.lengthOf(sessions, 0)
+
+            // Set the href to include an incomingWharfSession parameter
+            window.location.href =
+                'https://somewhere.com?incomingWharfSession=73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d104208d9c1754de3000000000090b1ca737b226964223a2277616c6c65742d706c7567696e2d707269766174656b6579222c2264617461223a7b22707269766174654b6579223a225056545f4b315f32355850314c7431527438376879796d6f755369654262676e554541657253317951486939777148433255656b326d677a48227d7d010f7b226669656c64223a22666f6f227d'
+
+            // Attempt to restore the session from the URL
+            const session = await sessionKit.restore()
+            if (!session) {
+                throw new Error('Failed to restore session from URL')
+            }
+
+            // Ensure session is correct
+            assert.isDefined(session)
+            assert.isTrue(session.chain.id.equals(mockChainDefinition.id), 'Incorrect chain')
+            assert.isTrue(session.actor.equals('wharfkit1111'), 'Incorrect actor')
+            assert.isTrue(session.permission.equals('test'), 'Incorrect permission')
+            assert.isTrue(
+                session.walletPlugin instanceof WalletPluginPrivateKey,
+                'Incorrect walletPlugin type'
+            )
+            assert.equal(session.data.field, 'foo', 'Incorrect session data')
+            assert.equal(session.walletPlugin.id, 'wallet-plugin-privatekey')
+            assert.equal(
+                session.walletPlugin.data.privateKey,
+                'PVT_K1_25XP1Lt1Rt87hyymouSieBbgnUEAerS1yQHi9wqHC2Uek2mgzH'
+            )
+
+            // Ensure session was persisted to storage
+            const sessionsAfter = await sessionKit.restoreAll()
+            assert.lengthOf(sessionsAfter, 1)
+        })
+        test('session from URL this kit cannot restore', async function () {
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                acceptUrlSession: true,
+                storage: new MockStorage(),
+            })
+            const stored = makeSession('session1')
+            await sessionKit.persistSession(stored)
+
+            const existingWindow = (globalThis as any).window
+            ;(globalThis as any).window = {
+                history: {replaceState: () => undefined},
+                location: {href: ''},
+            }
+            const craft = (walletPluginId: string, chain: Checksum256Type) =>
+                Serializer.encode({
+                    object: URLEncodedSession.from({
+                        chain,
+                        actor: 'incoming1111',
+                        permission: 'active',
+                        walletPlugin: JSON.stringify({id: walletPluginId, data: {}}),
+                    }),
+                }).toString('hex')
+            const unsupported = [
+                craft('wallet-plugin-unregistered', mockChainDefinition.id),
+                craft(
+                    'wallet-plugin-privatekey',
+                    '00000000000000000000000000000000000000000000000000000000deadbeef'
+                ),
+            ]
+            try {
+                for (const hex of unsupported) {
+                    ;(globalThis as any).window.location.href =
+                        `https://app.test?incomingWharfSession=${hex}`
+                    // Falls back to the stored session rather than throwing
+                    const restored = await sessionKit.restore()
+                    assert.isTrue(restored?.actor.equals('session1'))
+                }
+            } finally {
+                ;(globalThis as any).window = existingWindow
+            }
+        })
+        test('session from URL that fails to decode', async function () {
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                acceptUrlSession: true,
+                storage: new MockStorage(),
+            })
+            const existingWindow = (globalThis as any).window
+            let replaced: string | undefined
+            ;(globalThis as any).window = {
+                history: {
+                    replaceState: (_s: unknown, _t: unknown, url: URL) => {
+                        replaced = String(url)
+                    },
+                },
+                location: {href: 'https://app.test?incomingWharfSession=not-hex-at-all'},
+            }
+            try {
+                assert.isUndefined(await sessionKit.restore())
+                assert.equal(replaced, 'https://app.test/')
+            } finally {
+                ;(globalThis as any).window = existingWindow
+            }
+        })
+        test('session from URL outside a browser', function () {
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                acceptUrlSession: true,
+                storage: new MockStorage(),
+            })
+            const existing = (globalThis as any).window
+            delete (globalThis as any).window
+            try {
+                assert.isUndefined(sessionKit.restoreFromURL())
+            } finally {
+                ;(globalThis as any).window = existing
+            }
+        })
         test('no session returns undefined', async function () {
             const sessionKit = new SessionKit(mockSessionKitArgs, {
                 ...mockSessionKitOptions,
@@ -609,6 +818,120 @@ suite('kit', function () {
             assert.isTrue(sessions[1].actor.equals('mock2'))
             assert.instanceOf(sessions[2], Session)
             assert.isTrue(sessions[2].actor.equals('mock3'))
+        })
+    })
+    suite('persistSession', function () {
+        test('persists session data', async function () {
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                storage: new MockStorage(),
+            })
+            const {session} = await sessionKit.login()
+            const restored = await sessionKit.restore()
+            if (!restored) {
+                throw new Error('Failed to restore session')
+            }
+            assert.deepEqual(restored.serialize(), session.serialize())
+        })
+        test('prevent duplicates', async function () {
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                storage: new MockStorage(),
+            })
+            const {session} = await sessionKit.login()
+            await sessionKit.persistSession(session)
+            await sessionKit.persistSession(session)
+            const sessions = await sessionKit.getSessions()
+            assert.lengthOf(sessions, 1)
+        })
+        test('sets default on new session', async function () {
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                storage: new MockStorage(),
+            })
+            const session1 = makeSession('session1')
+            await sessionKit.persistSession(session1)
+            const session2 = makeSession('session2')
+            await sessionKit.persistSession(session2)
+            const sessions = await sessionKit.getSessions()
+            assert.lengthOf(sessions, 2)
+            assert.equal(sessions[0].default, false)
+            assert.equal(sessions[1].default, true)
+        })
+        test('prevent default on new session', async function () {
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                storage: new MockStorage(),
+            })
+            const session1 = makeSession('session1')
+            await sessionKit.persistSession(session1)
+            const session2 = makeSession('session2')
+            await sessionKit.persistSession(session2, {setAsDefault: false})
+            const sessions = await sessionKit.getSessions()
+            assert.lengthOf(sessions, 2)
+            assert.equal(sessions[0].default, true)
+            assert.equal(sessions[1].default, false)
+        })
+    })
+    suite('equalityFn', function () {
+        test('base equality check', async function () {
+            // The base equality uses a combination of chain, actor, and permission
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                storage: new MockStorage(),
+            })
+            // Create two sessions for the same chain, actor, and permission but different appIds
+            const session1 = makeSession('session1', {data: {appId: 'app1'}})
+            await sessionKit.persistSession(session1)
+            const session2 = makeSession('session1', {data: {appId: 'app2'}})
+            await sessionKit.persistSession(session2)
+            const sessions = await sessionKit.getSessions()
+            // Base equality ignores data like appId, so the pair collapses to one
+            assert.lengthOf(sessions, 1)
+            // The second session should have overwritten the first
+            assert.equal(sessions[0].data?.appId, 'app2')
+        })
+        test('custom equalityFn', async function () {
+            // This custom rule enforces custom uniqueness based on persisted appId
+            const equalityFn = (a: SessionType, b: SessionType) => {
+                const first = a instanceof Session ? a.serialize() : a
+                const second = b instanceof Session ? b.serialize() : b
+                return Session.matches(first, second) && first.data?.appId === second.data?.appId
+            }
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                equalityFn, // Initialize with custom equality function
+                storage: new MockStorage(),
+            })
+            // Create two sessions for the same user with different appIds
+            const session1 = makeSession('session1', {data: {appId: 'app1'}})
+            await sessionKit.persistSession(session1)
+            const session2 = makeSession('session1', {data: {appId: 'app2'}})
+            await sessionKit.persistSession(session2)
+            const sessions = await sessionKit.getSessions()
+            // Ensure the uniqueness rule was applied and both sessions exist
+            assert.lengthOf(sessions, 2)
+            assert.equal(sessions[0].data?.appId, 'app1')
+            assert.equal(sessions[1].data?.appId, 'app2')
+        })
+        test('disable equality', async function () {
+            // This custom rule disables uniqueness entirely
+            const equalityFn = () => false
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                equalityFn, // Initialize with custom equality function
+                storage: new MockStorage(),
+            })
+            // Create two sessions for the same user with different appIds
+            const session1 = makeSession('session1', {data: {appId: 'app1'}})
+            await sessionKit.persistSession(session1)
+            const session2 = makeSession('session1', {data: {appId: 'app2'}})
+            await sessionKit.persistSession(session2)
+            const sessions = await sessionKit.getSessions()
+            // Ensure the uniqueness rule was applied and both sessions exist
+            assert.lengthOf(sessions, 2)
+            assert.equal(sessions[0].data?.appId, 'app1')
+            assert.equal(sessions[1].data?.appId, 'app2')
         })
     })
     suite('setEndpoint', function () {

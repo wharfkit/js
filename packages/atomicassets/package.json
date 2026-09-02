@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/atomicassets",
     "description": "AtomicAsset library for Wharf",
-    "version": "4.0.0-rc5",
+    "version": "4.0.0-rc6",
     "homepage": "https://github.com/wharfkit/atomicassets",
     "license": "BSD-3-Clause",
     "engines": {

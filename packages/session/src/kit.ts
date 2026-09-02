@@ -1,11 +1,14 @@
 import {ChainDefinition, type ChainDefinitionType, type Fetch} from '@wharfkit/common'
 import type {Contract} from '@wharfkit/contract'
 import {
+    Bytes,
     Checksum256,
     Checksum256Type,
+    Name,
     NameType,
     PermissionLevel,
     PermissionLevelType,
+    Serializer,
 } from '@wharfkit/antelope'
 
 import {
@@ -15,7 +18,7 @@ import {
     LoginPlugin,
     UserInterfaceWalletPlugin,
 } from './login'
-import {SerializedSession, Session} from './session'
+import {PartialSerializedSession, SerializedSession, Session, SessionType} from './session'
 import {BrowserLocalStorage, SessionStorage} from './storage'
 import {
     AbstractTransactPlugin,
@@ -37,11 +40,13 @@ import {
 import {SessionKeyManager} from './sessionkey/manager'
 import {SessionKeyWalletPlugin} from './sessionkey/wallet'
 import {SessionKeyConfig} from './sessionkey/types'
+import {URLEncodedSession} from './encoded'
 
 export interface LoginOptions {
     arbitrary?: Record<string, any> // Arbitrary data that will be passed via context to wallet plugin
     chain?: ChainDefinition | Checksum256Type
     chains?: Checksum256Type[]
+    equalityFn?: SerializedSessionEqualityFn
     loginPlugins?: LoginPlugin[]
     setAsDefault?: boolean
     transactPlugins?: TransactPlugin[]
@@ -62,12 +67,19 @@ export interface LogoutContext {
     ui?: UserInterface
 }
 
-export interface RestoreArgs {
-    chain: Checksum256Type | ChainDefinition
-    actor?: NameType
-    permission?: NameType
-    walletPlugin?: Record<string, any>
-    data?: Record<string, any>
+export interface LogoutOptions {
+    equalityFn?: SerializedSessionEqualityFn
+}
+
+/**
+ * A predicate deciding whether two sessions refer to the same thing, used to
+ * deduplicate sessions in storage and to select which session a logout removes.
+ */
+export type SerializedSessionEqualityFn = (a: SessionType, b: SessionType) => boolean
+
+export interface PersistOptions {
+    setAsDefault?: boolean
+    equalityFn?: SerializedSessionEqualityFn
 }
 
 export interface SessionKitArgs {
@@ -79,8 +91,11 @@ export interface SessionKitArgs {
 
 export interface SessionKitOptions {
     abis?: TransactABIDef[]
+    acceptUrlSession?: boolean
+    acceptUrlSessionParam?: string
     allowModify?: boolean
     contracts?: Contract[]
+    equalityFn?: SerializedSessionEqualityFn
     expireSeconds?: number
     fetch?: Fetch
     loginPlugins?: LoginPlugin[]
@@ -98,8 +113,11 @@ export interface SessionKitOptions {
  */
 export class SessionKit {
     readonly abis: TransactABIDef[] = []
+    readonly acceptUrlSession: boolean = false
+    readonly acceptUrlSessionParam: string = 'incomingWharfSession'
     readonly allowModify: boolean = true
     readonly appName: string
+    readonly equalityFn: SerializedSessionEqualityFn = serializedSessionEquals
     readonly awaitIrreversible: boolean = false
     readonly broadcastOptions?: BroadcastOptions
     readonly expireSeconds: number = 120
@@ -132,6 +150,15 @@ export class SessionKit {
         // Add any ABIs manually provided
         if (options.abis) {
             this.abis = [...options.abis]
+        }
+        if (options.acceptUrlSession) {
+            this.acceptUrlSession = options.acceptUrlSession
+        }
+        if (options.acceptUrlSessionParam) {
+            this.acceptUrlSessionParam = options.acceptUrlSessionParam
+        }
+        if (options.equalityFn) {
+            this.equalityFn = options.equalityFn
         }
         // Extract any ABIs from the Contract instances provided
         if (options.contracts) {
@@ -248,6 +275,14 @@ export class SessionKit {
             return undefined
         }
         return registered.clone ? registered.clone() : registered
+    }
+
+    private walletPluginFor(serializedSession: SerializedSession): WalletPlugin | undefined {
+        const walletPlugin = this.cloneWalletPlugin(serializedSession.walletPlugin.id)
+        if (walletPlugin && serializedSession.walletPlugin.data) {
+            walletPlugin.data = serializedSession.walletPlugin.data
+        }
+        return walletPlugin
     }
 
     /**
@@ -544,7 +579,10 @@ export class SessionKit {
             for (const hook of context.hooks.afterLogin) await hook(context)
 
             // Save the session to storage if it has a storage instance.
-            this.persistSession(session, options?.setAsDefault)
+            this.persistSession(session, {
+                setAsDefault: options?.setAsDefault,
+                equalityFn: options?.equalityFn,
+            })
 
             // Notify the UI that the login request has completed.
             await context.ui.onLoginComplete()
@@ -561,7 +599,7 @@ export class SessionKit {
         }
     }
 
-    logoutParams(session: Session | SerializedSession, walletPlugin: WalletPlugin): LogoutContext {
+    logoutParams(session: SessionType, walletPlugin: WalletPlugin): LogoutContext {
         if (session instanceof Session) {
             return {
                 session,
@@ -584,20 +622,13 @@ export class SessionKit {
         }
     }
 
-    async logout(session?: Session | SerializedSession) {
+    async logout(session?: SessionType, options: LogoutOptions = {}) {
         if (!this.storage) {
             throw new Error('An instance of Storage must be provided to utilize the logout method.')
         }
         if (session) {
-            let walletPlugin: WalletPlugin | undefined
-            if (session instanceof Session) {
-                walletPlugin = session.walletPlugin
-            } else {
-                walletPlugin = this.cloneWalletPlugin(session.walletPlugin.id)
-                if (walletPlugin && session.walletPlugin.data) {
-                    walletPlugin.data = session.walletPlugin.data
-                }
-            }
+            const walletPlugin =
+                session instanceof Session ? session.walletPlugin : this.walletPluginFor(session)
 
             if (walletPlugin?.logout) {
                 await walletPlugin.logout(this.logoutParams(session, walletPlugin))
@@ -605,9 +636,11 @@ export class SessionKit {
 
             await this.storage.remove('session')
 
-            const sessions = await this.getSessions()
-            if (sessions) {
-                const other = sessions.filter((s) => !Session.matches(s, session))
+            // Every session, not getSessions(): its plugin filter would drop unregistered ones here
+            const sessions = await this.readAllSessions()
+            if (sessions.length) {
+                const equalityFn = options.equalityFn || this.equalityFn
+                const other = sessions.filter((s) => !equalityFn(s, session))
                 await this.storage.write('sessions', JSON.stringify(other))
             }
         } else {
@@ -616,10 +649,7 @@ export class SessionKit {
             if (sessions) {
                 await Promise.allSettled(
                     sessions.map((s) => {
-                        const walletPlugin = this.cloneWalletPlugin(s.walletPlugin.id)
-                        if (walletPlugin && s.walletPlugin.data) {
-                            walletPlugin.data = s.walletPlugin.data
-                        }
+                        const walletPlugin = this.walletPluginFor(s)
                         return walletPlugin?.logout
                             ? walletPlugin.logout(this.logoutParams(s, walletPlugin))
                             : Promise.resolve()
@@ -632,74 +662,104 @@ export class SessionKit {
         }
     }
 
-    async restore(args?: RestoreArgs, options?: LoginOptions): Promise<Session | undefined> {
-        // If no args were provided, attempt to default restore the session from storage.
-        if (!args) {
-            const data = await this.storage.read('session')
-            if (data) {
-                args = JSON.parse(data)
-            } else {
-                return
+    /**
+     * Read a session handed over through the current URL, if one is present.
+     *
+     * Requires `acceptUrlSession` and a browser environment. The parameter is
+     * stripped from the URL once read, so a reload cannot replay it.
+     */
+    restoreFromURL(): SerializedSession | undefined {
+        if (typeof window === 'undefined') {
+            return
+        }
+        const url = new URL(window.location.href)
+        const urlSessionParam = url.searchParams.get(this.acceptUrlSessionParam)
+        if (urlSessionParam) {
+            // Remove the session from the URL to prevent reuse, decodable or not
+            url.searchParams.delete(this.acceptUrlSessionParam)
+            window.history.replaceState(null, '', url)
+            try {
+                const encodedSession = Serializer.decode({
+                    data: Bytes.from(urlSessionParam, 'hex'),
+                    type: URLEncodedSession,
+                })
+                return encodedSession.serialized
+            } catch {
+                // eslint-disable-next-line no-console -- warn the developer since this may be unintentional
+                console.warn('Failed to decode session from URL: ' + urlSessionParam)
+            }
+        }
+    }
+
+    private canRestore(serializedSession: SerializedSession): boolean {
+        return (
+            !!this.getWalletPlugin(serializedSession.walletPlugin.id) &&
+            this.chains.some((c) => c.id.equals(serializedSession.chain))
+        )
+    }
+
+    /**
+     * Find the session to restore when the caller named none: the incoming URL
+     * session if one is offered, otherwise the default session in storage.
+     */
+    private async restoreWithoutArgs(): Promise<SerializedSession | undefined> {
+        let serializedSession: SerializedSession | undefined
+
+        if (this.acceptUrlSession) {
+            const fromURL = this.restoreFromURL()
+            if (fromURL && this.canRestore(fromURL)) {
+                serializedSession = fromURL
+            } else if (fromURL) {
+                // eslint-disable-next-line no-console -- warn the developer since this may be unintentional
+                console.warn(
+                    `Ignoring session from URL for chain ${fromURL.chain} and wallet plugin '${fromURL.walletPlugin.id}', which this SessionKit does not support.`
+                )
             }
         }
 
-        if (!args) {
-            throw new Error('Either a RestoreArgs object or a Storage instance must be provided.')
+        if (!serializedSession) {
+            const data = await this.storage.read('session')
+            if (data) {
+                serializedSession = JSON.parse(data)
+            }
         }
 
+        return serializedSession
+    }
+
+    /**
+     * Find the session to restore from the arguments given: the arguments
+     * themselves when they fully specify a session, otherwise the default
+     * session in storage for the named chain.
+     */
+    private async restoreWithArgs(
+        args: PartialSerializedSession
+    ): Promise<SerializedSession | undefined> {
         const chainId = Checksum256.from(
             args.chain instanceof ChainDefinition ? args.chain.id : args.chain
         )
-
-        let serializedSession: SerializedSession
-
-        // Retrieve all sessions from storage
-        const data = await this.storage.read('sessions')
-
-        if (data) {
-            // If sessions exist, restore the session that matches the provided args
-            const sessions = JSON.parse(data)
-            if (args.actor && args.permission) {
-                // If all args are provided, return exact match
-                serializedSession = sessions.find((s: SerializedSession) => {
-                    return (
-                        args &&
-                        chainId.equals(s.chain) &&
-                        s.actor === args.actor &&
-                        s.permission === args.permission
-                    )
-                })
-            } else {
-                // If no actor/permission defined, return based on chain
-                serializedSession = sessions.find((s: SerializedSession) => {
-                    return args && chainId.equals(s.chain) && s.default
-                })
-            }
-        } else {
-            // If no sessions were found, but the args contains all the data for a serialized session, use args
-            if (args.actor && args.permission && args.walletPlugin) {
-                serializedSession = {
-                    chain: String(chainId),
-                    actor: args.actor,
-                    permission: args.permission,
-                    walletPlugin: {
-                        id: args.walletPlugin.id,
-                        data: args.walletPlugin.data,
-                    },
-                    data: args.data,
-                }
-            } else {
-                // Otherwise throw an error since we can't establish the session data
-                throw new Error('No sessions found in storage. A wallet plugin must be provided.')
-            }
-        }
-
-        // If no session found, return
+        let serializedSession = upgradePossibleSerializedSession({...args, chain: chainId})
         if (!serializedSession) {
-            return
+            const sessions = await this.readAllSessions()
+            serializedSession = sessions.find((s) =>
+                args.actor && args.permission
+                    ? chainId.equals(s.chain) &&
+                      Name.from(s.actor).equals(args.actor) &&
+                      Name.from(s.permission).equals(args.permission)
+                    : chainId.equals(s.chain) && s.default
+            )
         }
+        return serializedSession
+    }
 
-        const walletPlugin = this.cloneWalletPlugin(serializedSession.walletPlugin.id)
+    /**
+     * Resolve the wallet plugin a serialized session names, loaded with that
+     * session's wallet data.
+     *
+     * @throws Error if no wallet plugin with that ID is registered
+     */
+    private getWalletPluginFromSerialized(serializedSession: SerializedSession): WalletPlugin {
+        const walletPlugin = this.walletPluginFor(serializedSession)
 
         if (!walletPlugin) {
             throw new Error(
@@ -707,17 +767,16 @@ export class SessionKit {
             )
         }
 
-        // Set the wallet data from the serialized session
-        if (serializedSession.walletPlugin.data) {
-            walletPlugin.data = serializedSession.walletPlugin.data
-        }
+        return walletPlugin
+    }
 
-        // If walletPlugin data was provided by args, override
-        if (args.walletPlugin && args.walletPlugin.data) {
-            walletPlugin.data = args.walletPlugin.data
-        }
-
-        // Create a new session from the provided args.
+    /**
+     * Build a live [[Session]] from serialized session data.
+     */
+    private serializedToSession(
+        serializedSession: SerializedSession,
+        options: LoginOptions = {}
+    ): Session {
         const session = new Session(
             {
                 chain: this.getChainDefinition(serializedSession.chain),
@@ -725,7 +784,7 @@ export class SessionKit {
                     actor: serializedSession.actor,
                     permission: serializedSession.permission,
                 }),
-                walletPlugin,
+                walletPlugin: this.getWalletPluginFromSerialized(serializedSession),
             },
             this.getSessionOptions(options)
         )
@@ -734,28 +793,42 @@ export class SessionKit {
             session.data = serializedSession.data
         }
 
-        // Save the session to storage if it has a storage instance.
-        this.persistSession(session, options?.setAsDefault)
-
-        // Return the session
         return session
+    }
+
+    async restore(
+        args?: PartialSerializedSession,
+        options?: LoginOptions
+    ): Promise<Session | undefined> {
+        const serializedSession = args
+            ? await this.restoreWithArgs(args)
+            : await this.restoreWithoutArgs()
+
+        if (serializedSession) {
+            const session = this.serializedToSession(serializedSession, options)
+
+            this.persistSession(session, {
+                setAsDefault: options?.setAsDefault,
+                equalityFn: options?.equalityFn,
+            })
+
+            return session
+        }
     }
 
     async restoreAll(): Promise<Session[]> {
         const sessions: Session[] = []
         const serializedSessions = await this.getSessions()
-        if (serializedSessions) {
-            for (const s of serializedSessions) {
-                const session = await this.restore(s)
-                if (session) {
-                    sessions.push(session)
-                }
+        for (const serializedSession of serializedSessions) {
+            const session = await this.restore(serializedSession)
+            if (session) {
+                sessions.push(session)
             }
         }
         return sessions
     }
 
-    async persistSession(session: Session, setAsDefault = true) {
+    async persistSession(session: Session, options: PersistOptions = {}) {
         // TODO: Allow disabling of session persistence via kit options
 
         // If no storage exists, do nothing.
@@ -767,61 +840,60 @@ export class SessionKit {
         const serialized = session.serialize()
 
         // Specify whether or not this is now the default for the given chain
-        serialized.default = setAsDefault
+        serialized.default = options.setAsDefault ?? true
 
-        // Set this as the current session for all chains
-        if (setAsDefault) {
+        const equalityFn = options.equalityFn || this.equalityFn
+
+        if (serialized.default) {
             this.storage.write('session', JSON.stringify(serialized))
         }
 
         // Add the current session to the list of sessions, preventing duplication.
         const existing = await this.storage.read('sessions')
-        if (existing) {
-            const stored = JSON.parse(existing)
-            const sessions: SerializedSession[] = stored
-                .filter((s: SerializedSession) => !Session.matches(s, serialized))
-                .map((s: SerializedSession): SerializedSession => {
-                    if (session.chain.id.equals(s.chain)) {
+        const stored: SerializedSession[] = existing ? JSON.parse(existing) : []
+        const orderedSessions = [
+            ...stored
+                .filter((s) => !equalityFn(s, serialized))
+                .map((s): SerializedSession => {
+                    if (serialized.default && session.chain.id.equals(s.chain)) {
                         s.default = false
                     }
                     return s
-                })
+                }),
+            serialized,
+        ]
 
-            // Merge arrays
-            const orderedSessions = [...sessions, serialized]
+        // Sort sessions by chain, actor, and permission
+        orderedSessions.sort((a: SerializedSession, b: SerializedSession) => {
+            const chain = String(a.chain).localeCompare(String(b.chain))
+            const actor = String(a.actor).localeCompare(String(b.actor))
+            const permission = String(a.permission).localeCompare(String(b.permission))
+            return chain || actor || permission
+        })
 
-            // Sort sessions by chain, actor, and permission
-            orderedSessions.sort((a: SerializedSession, b: SerializedSession) => {
-                const chain = String(a.chain).localeCompare(String(b.chain))
-                const actor = String(a.actor).localeCompare(String(b.actor))
-                const permission = String(a.permission).localeCompare(String(b.permission))
-                return chain || actor || permission
-            })
-
-            this.storage.write('sessions', JSON.stringify(orderedSessions))
-        } else {
-            this.storage.write('sessions', JSON.stringify([serialized]))
-        }
+        this.storage.write('sessions', JSON.stringify(orderedSessions))
     }
 
-    async getSessions(): Promise<SerializedSession[]> {
+    /**
+     * Read every session held in storage, including those whose wallet plugin is
+     * not registered with this kit.
+     */
+    private async readAllSessions(): Promise<SerializedSession[]> {
         if (!this.storage) {
             throw new Error('No storage instance is available to retrieve sessions from.')
         }
         const data = await this.storage.read('sessions')
         if (!data) return []
         try {
-            const parsed = JSON.parse(data)
-            // Only return sessions that have a wallet plugin that is currently registered.
-            const filtered = parsed.filter((s: SerializedSession) =>
-                this.walletPlugins.some((p) => {
-                    return p.id === s.walletPlugin.id
-                })
-            )
-            return filtered
+            return JSON.parse(data)
         } catch (e) {
             throw new Error(`Failed to parse sessions from storage (${e})`)
         }
+    }
+
+    async getSessions(): Promise<SerializedSession[]> {
+        // Only return sessions that have a wallet plugin that is currently registered.
+        return getSessionsMatchingWalletPlugins(await this.readAllSessions(), this.walletPlugins)
     }
 
     getSessionOptions(options?: LoginOptions) {
@@ -841,4 +913,44 @@ export class SessionKit {
             onPersist: (session: Session) => this.persistSession(session),
         }
     }
+}
+
+/**
+ * Filter a list of serialized sessions down to those whose wallet plugin is registered.
+ */
+export function getSessionsMatchingWalletPlugins(
+    sessions: SerializedSession[],
+    walletPlugins: WalletPlugin[]
+) {
+    return sessions.filter((s) => walletPlugins.some((p) => p.id === s.walletPlugin.id))
+}
+
+/**
+ * Promote a partially specified session to a full one, when it carries every required field.
+ */
+export function upgradePossibleSerializedSession(
+    possible: PartialSerializedSession | undefined
+): SerializedSession | undefined {
+    if (
+        possible &&
+        possible.actor !== undefined &&
+        possible.chain !== undefined &&
+        possible.permission !== undefined &&
+        possible.walletPlugin !== undefined
+    ) {
+        return {
+            actor: possible.actor,
+            chain: possible.chain instanceof ChainDefinition ? possible.chain.id : possible.chain,
+            permission: possible.permission,
+            walletPlugin: possible.walletPlugin,
+            data: possible.data,
+        }
+    }
+}
+
+/**
+ * The default [[SerializedSessionEqualityFn]], matching on chain, actor and permission.
+ */
+export function serializedSessionEquals(a: SessionType, b: SessionType): boolean {
+    return Session.matches(a, b)
 }

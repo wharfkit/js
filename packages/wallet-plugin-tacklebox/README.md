@@ -33,10 +33,13 @@ stock look (and skipped entirely on non-web-renderer UIs).
 ## Installation
 
 ```bash
-npm install wallet-plugin-tacklebox
+npm install github:on-a-t-break/wallet-plugin-tacklebox
 ```
 
-Or straight from the repository: `npm install github:on-a-t-break/wallet-plugin-tacklebox`.
+This repository is the upstream source for the plugin: the intent is for it to be adopted into
+the official [Wharfkit](https://github.com/wharfkit) plugin collection, which is where npm
+publication would happen (as `@wharfkit/wallet-plugin-tacklebox`). It deliberately follows the
+Wharfkit wallet-plugin template structure and tooling to keep that adoption a clean fork.
 
 ## Usage
 

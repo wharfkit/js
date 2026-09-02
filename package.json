@@ -43,5 +43,8 @@
     "overrides": {
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/signing-request": "workspace:*"
+    },
+    "patchedDependencies": {
+        "scatter-ts@0.1.9": "patches/scatter-ts@0.1.9.patch"
     }
 }

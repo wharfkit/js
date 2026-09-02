@@ -1,0 +1,26 @@
+diff --git a/packages/core/src/util/Device.js b/packages/core/src/util/Device.js
+index b20039200a5f7fdc92ca445e63c99620e36de4d0..d6a6f1b57acf45c8ed06fe34ceb9b5ed625e691e 100644
+--- a/packages/core/src/util/Device.js
++++ b/packages/core/src/util/Device.js
+@@ -2,7 +2,7 @@ import DeviceUUID from './device-uuid';
+ 
+ let device;
+ 
+-if ( typeof navigator === 'undefined') {
++if ( typeof navigator === 'undefined' || typeof window === 'undefined') {
+ 	device = 'nodejs_env'
+ } else {
+ 	const du = new DeviceUUID().parse();
+diff --git a/scatter.js b/scatter.js
+index 8997c7dace3d0c453915da4453614679a8a152c1..ee9f31e4a9274b1cc171b00f544d54eea6b88ed4 100644
+--- a/scatter.js
++++ b/scatter.js
+@@ -1370,7 +1370,7 @@ var DeviceUUID = function (options) {
+ 
+ let device;
+ 
+-if ( typeof navigator === 'undefined') {
++if ( typeof navigator === 'undefined' || typeof window === 'undefined') {
+ 	device = 'nodejs_env';
+ } else {
+ 	const du = new DeviceUUID().parse();

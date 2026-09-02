@@ -755,6 +755,9 @@
       },
     },
   },
+  "patchedDependencies": {
+    "scatter-ts@0.1.9": "patches/scatter-ts@0.1.9.patch",
+  },
   "overrides": {
     "@wharfkit/antelope": "workspace:*",
     "@wharfkit/signing-request": "workspace:*",

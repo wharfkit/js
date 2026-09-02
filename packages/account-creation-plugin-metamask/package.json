@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/account-creation-plugin-metamask",
     "description": "A MetaMask plugin to create EOS accounts using Metamask public keys.",
-    "version": "4.0.0-rc5",
+    "version": "4.0.0-rc6",
     "homepage": "https://github.com/wharfkit/wallet-plugin-metamask",
     "license": "BSD-3-Clause",
     "engines": {

@@ -3,6 +3,12 @@ name: Release
 on:
   push:
     branches: [master]
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Publish even though the tag for master's version already exists
+        type: boolean
+        default: false
 
 permissions:
   id-token: write
@@ -27,6 +33,6 @@ jobs:
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      - run: bun scripts/release.ts publish
+      - run: bun scripts/release.ts publish ${{ inputs.force && '--force' || '' }}
         env:
           GH_TOKEN: ${{ github.token }}

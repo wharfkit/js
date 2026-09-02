@@ -25,15 +25,14 @@ export function getThemedLogo(
 
     if (!theme) {
         // if no theme is set, use the system preference for logo
-        window.matchMedia('(prefers-color-scheme: dark)').matches
-            ? (theme = 'dark')
-            : (theme = 'light')
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
     }
 
     if (!logo) {
         if ('getLogo' in metadata) {
             return metadata.getLogo()?.[theme] ?? metadata.getLogo()?.[oppositeTheme]
         }
+        // eslint-disable-next-line no-console
         console.warn(`${name} does not have a logo.`)
         return
     }
@@ -41,6 +40,7 @@ export function getThemedLogo(
     const image = logo[theme] ?? logo[oppositeTheme]
 
     if (!isUrlImage(image.toString()) && !isBase64Image(image.toString())) {
+        // eslint-disable-next-line no-console
         console.warn(`${name} ${theme} logo is not a supported image format.`)
         return
     }

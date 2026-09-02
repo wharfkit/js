@@ -68,6 +68,7 @@ export class AccountCreationPluginAnchor
      */
     async create(context: CreateAccountContext): Promise<CreateAccountResponse> {
         const accountCreator = new AccountCreator({
+            creationServiceUrl: this.config.serviceUrl,
             supportedChains: context.chain
                 ? [context.chain.id]
                 : (context.chains || this.config.supportedChains || []).map((chain) => chain.id),

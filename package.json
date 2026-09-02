@@ -1,7 +1,7 @@
 {
     "name": "wharfkit-js",
     "private": true,
-    "version": "4.0.0-rc4",
+    "version": "4.0.0-rc5",
     "workspaces": {
         "packages": [
             "packages/*"
@@ -43,5 +43,8 @@
     "overrides": {
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/signing-request": "workspace:*"
+    },
+    "patchedDependencies": {
+        "scatter-ts@0.1.9": "patches/scatter-ts@0.1.9.patch"
     }
 }

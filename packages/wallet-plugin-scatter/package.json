@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/wallet-plugin-scatter",
     "description": "A WalletPlugin for the Scatter wallet for use within the @wharfkit/session.",
-    "version": "4.0.0-rc4",
+    "version": "4.0.0-rc5",
     "homepage": "https://github.com/wharfkit/wallet-plugin-scatter",
     "license": "BSD-3-Clause",
     "engines": {

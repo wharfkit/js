@@ -210,6 +210,22 @@ function resolveTarget(current: string, arg: string): string {
     fail(`unknown version argument "${arg}"`)
 }
 
+// CDN pins must name an exact version, so a bump has to rewrite them
+const PINNED_READMES = ['packages/bundle/README.md']
+const PIN = /(@wharfkit\/[a-z-]+@)\d+\.\d+\.\d+(?:-[\w.]+)?/g
+
+function writeReadmePins(version: string) {
+    for (const relative of PINNED_READMES) {
+        const path = join(ROOT, relative)
+        if (!existsSync(path)) fail(`${relative}: pinned readme is missing`)
+        const raw = readFileSync(path, 'utf8')
+        const updated = raw.replace(PIN, `$1${version}`)
+        if (updated === raw) continue
+        writeFileSync(path, updated)
+        log(`${relative}: pinned to ${version}`)
+    }
+}
+
 function writeVersion(manifestPath: string, version: string) {
     const raw = readFileSync(manifestPath, 'utf8')
     const updated = raw.replace(/"version":\s*"[^"]*"/, `"version": "${version}"`)
@@ -241,15 +257,15 @@ function bump(arg: string, dryRun: boolean) {
 
     if (sh('git', ['status', '--porcelain']) !== '') fail('working tree is not clean')
     const branch = sh('git', ['rev-parse', '--abbrev-ref', 'HEAD'])
-    if (branch !== 'master') fail(`on branch ${branch}, releases start from master`)
+    if (branch !== 'dev') fail(`on branch ${branch}, releases start from dev`)
     const hasOrigin = trySh('git', ['remote', 'get-url', 'origin']) !== null
     if (hasOrigin) {
-        sh('git', ['fetch', 'origin', 'master'])
-        if (sh('git', ['rev-parse', 'HEAD']) !== sh('git', ['rev-parse', 'origin/master'])) {
-            fail('master is not equal to origin/master')
+        sh('git', ['fetch', 'origin', 'dev'])
+        if (sh('git', ['rev-parse', 'HEAD']) !== sh('git', ['rev-parse', 'origin/dev'])) {
+            fail('dev is not equal to origin/dev')
         }
     } else if (dryRun) {
-        log('no origin remote; skipping the origin/master guard for this dry run')
+        log('no origin remote; skipping the origin/dev guard for this dry run')
     } else {
         fail('no origin remote configured')
     }
@@ -286,6 +302,7 @@ function bump(arg: string, dryRun: boolean) {
     log(`bumping to ${target}`)
     writeVersion(join(ROOT, 'package.json'), target)
     for (const member of list) writeVersion(member.manifestPath, target)
+    writeReadmePins(target)
     execFileSync('bun', ['install', '--ignore-scripts'], {cwd: ROOT, stdio: 'inherit'})
     packAndCheckPins(members())
 
@@ -295,25 +312,25 @@ function bump(arg: string, dryRun: boolean) {
         return
     }
 
-    const releaseBranch = `release/${tag}`
-    sh('git', ['checkout', '-b', releaseBranch])
     sh('git', ['add', '-A'])
     sh('git', ['commit', '-m', `Version ${target}`])
-    sh('git', ['push', '-u', 'origin', releaseBranch])
+    sh('git', ['push', 'origin', 'dev'])
     sh('gh', [
         'pr',
         'create',
         '--base',
         'master',
+        '--head',
+        'dev',
         '--title',
         `Version ${target}`,
         '--body',
-        `Lockstep release ${target}. Publishes on merge via release.yml.`,
+        `Lockstep release ${target}. Promotes dev to master; publishes on merge via release.yml.`,
     ])
-    log(`release PR opened for ${target}`)
+    log(`promotion PR opened for ${target}`)
 }
 
-function publish() {
+function publish(force: boolean) {
     const root = rootManifest()
     const version = root.version
     const tag = `v${version}`
@@ -322,11 +339,16 @@ function publish() {
         return
     }
 
-    if (
+    const tagged =
         trySh('git', ['rev-parse', '--verify', `refs/tags/${tag}`]) !== null ||
         trySh('git', ['ls-remote', '--exit-code', '--tags', 'origin', `refs/tags/${tag}`]) !== null
-    ) {
-        log(`tag ${tag} already exists; nothing to publish`)
+    if (tagged) {
+        // every master push runs publish; an existing tag means this one carries no bump
+        if (!force) {
+            log(`tag ${tag} already exists; this push is not a release`)
+            return
+        }
+        log(`tag ${tag} already exists; --force given, resuming the publish`)
     } else {
         sh('git', ['tag', '-a', tag, '-m', `Version ${version}`])
         sh('git', ['push', 'origin', tag])
@@ -392,7 +414,7 @@ function main() {
             break
         }
         case 'publish':
-            publish()
+            publish(flags.has('--force'))
             break
         case 'verify':
             verify({install: !flags.has('--no-install')})

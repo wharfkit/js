@@ -4,6 +4,15 @@
     "version": "0.2.0",
     "homepage": "https://github.com/on-a-t-break/wallet-plugin-tacklebox",
     "license": "BSD-3-Clause",
+    "author": "on-a-t-break",
+    "keywords": [
+        "antelope",
+        "eosio",
+        "esr",
+        "tacklebox",
+        "wallet",
+        "wharfkit"
+    ],
     "main": "lib/wallet-plugin-tacklebox.js",
     "module": "lib/wallet-plugin-tacklebox.m.js",
     "types": "lib/wallet-plugin-tacklebox.d.ts",

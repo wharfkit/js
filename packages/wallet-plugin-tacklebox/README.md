@@ -32,13 +32,11 @@ stock look (and skipped entirely on non-web-renderer UIs).
 
 ## Installation
 
-Not yet published to npm; install straight from the repository:
-
 ```bash
-npm install github:on-a-t-break/wallet-plugin-tacklebox
+npm install wallet-plugin-tacklebox
 ```
 
-Once published: `npm install wallet-plugin-tacklebox`.
+Or straight from the repository: `npm install github:on-a-t-break/wallet-plugin-tacklebox`.
 
 ## Usage
 

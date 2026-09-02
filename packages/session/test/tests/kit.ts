@@ -441,6 +441,37 @@ suite('kit', function () {
             const sessionsAfterLogout = await sessionKit.getSessions()
             assert.lengthOf(sessionsAfterLogout, 0)
         })
+        test('retains sessions for unregistered wallet plugins', async function () {
+            const storage = new MockStorage()
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                storage,
+            })
+            const session = makeSession('session1')
+            await sessionKit.persistSession(session)
+
+            // Add a session for a wallet plugin this kit does not register
+            const stored = JSON.parse(String(await storage.read('sessions')))
+            stored.push({
+                ...stored[0],
+                actor: 'session2',
+                walletPlugin: {id: 'wallet-plugin-unregistered', data: {retained: true}},
+                default: false,
+            })
+            await storage.write('sessions', JSON.stringify(stored))
+            assert.lengthOf(await sessionKit.getSessions(), 1)
+
+            await sessionKit.logout(session)
+
+            const remaining = JSON.parse(String(await storage.read('sessions')))
+            assert.lengthOf(remaining, 1)
+            assert.equal(remaining[0].actor, 'session2')
+            assert.equal(remaining[0].walletPlugin.id, 'wallet-plugin-unregistered')
+            assert.deepEqual(remaining[0].walletPlugin.data, {retained: true})
+            assert.lengthOf(await sessionKit.getSessions(), 0)
+        })
+    })
+    suite('restore', function () {
         test('session', async function () {
             const {session} = await sessionKit.login()
             const mockSerializedSession = session.serialize()

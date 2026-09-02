@@ -636,8 +636,9 @@ export class SessionKit {
 
             await this.storage.remove('session')
 
-            const sessions = await this.getSessions()
-            if (sessions) {
+            // Every session, not getSessions(): its plugin filter would drop unregistered ones here
+            const sessions = await this.readAllSessions()
+            if (sessions.length) {
                 const equalityFn = options.equalityFn || this.equalityFn
                 const other = sessions.filter((s) => !equalityFn(s, session))
                 await this.storage.write('sessions', JSON.stringify(other))

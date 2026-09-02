@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/msigs",
     "description": "API Client to access Roborovski msigs API endpoints",
-    "version": "4.0.0-rc4",
+    "version": "4.0.0-rc5",
     "homepage": "https://github.com/wharfkit/msigs",
     "license": "BSD-3-Clause",
     "engines": {

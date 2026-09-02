@@ -43,6 +43,7 @@ import {
     TransactRevisions,
 } from './transact'
 import {SessionStorage} from './storage'
+import {URLEncodedSession} from './encoded'
 import {
     actionMatchesPermission,
     buildSendTransaction2Options,
@@ -68,6 +69,7 @@ import {
 export interface SessionArgs {
     actor?: NameType
     chain: ChainDefinitionType
+    data?: Record<string, any>
     permission?: NameType
     permissionLevel?: PermissionLevelType | string
     walletPlugin: WalletPlugin
@@ -103,6 +105,22 @@ export interface SerializedSession {
     walletPlugin: SerializedWalletPlugin
     data?: Record<string, any>
 }
+
+export type SessionType = Session | SerializedSession
+
+/**
+ * A partially specified session, as accepted by [[SessionKit.restore]]. A value
+ * carrying every required field is used directly; anything less is treated as a
+ * lookup against the sessions held in storage.
+ */
+export interface PartialSerializedSession extends Partial<Omit<SerializedSession, 'chain'>> {
+    chain: Checksum256Type | ChainDefinition
+}
+
+/**
+ * The encodings [[Session.encode]] can return.
+ */
+export type SessionEncodingTypes = 'encoded' | 'json' | 'serialized' | 'url'
 
 /**
  * A representation of a session to interact with a specific blockchain account.
@@ -142,7 +160,7 @@ export class Session {
      * @param s2 Session or SerializedSession
      * @returns boolean indicating if the sessions match
      */
-    static matches(s1: SerializedSession | Session, s2: SerializedSession | Session): boolean {
+    static matches(s1: SessionType, s2: SessionType): boolean {
         const ser1 = s1 instanceof Session ? s1.serialize() : s1
         const ser2 = s2 instanceof Session ? s2.serialize() : s2
 
@@ -189,6 +207,10 @@ export class Session {
 
         // Set the WalletPlugin for this session
         this._walletPlugin = args.walletPlugin
+
+        if (args.data) {
+            this._data = args.data
+        }
 
         // Handle all the optional values provided
         if (options.appName) {
@@ -994,6 +1016,36 @@ export class Session {
 
         if (this.onPersist) {
             await this.onPersist(this)
+        }
+    }
+
+    /**
+     * Encode this session for storage or transport.
+     *
+     * @param encoding The representation to return, defaulting to `serialized`
+     */
+    encode(): SerializedSession
+    encode(encoding: 'encoded'): URLEncodedSession
+    encode(encoding: 'json'): string
+    encode(encoding: 'serialized'): SerializedSession
+    encode(encoding: 'url'): string
+    encode(
+        encoding: SessionEncodingTypes = 'serialized'
+    ): string | SerializedSession | URLEncodedSession {
+        const serialized = this.serialize()
+        switch (encoding) {
+            case 'encoded':
+                return URLEncodedSession.fromSession(serialized)
+            case 'json':
+                return JSON.stringify(serialized)
+            case 'serialized':
+                return serialized
+            case 'url':
+                return Serializer.encode({
+                    object: URLEncodedSession.fromSession(serialized),
+                }).toString('hex')
+            default:
+                throw new Error(`Unsupported encoding: ${encoding}`)
         }
     }
 }

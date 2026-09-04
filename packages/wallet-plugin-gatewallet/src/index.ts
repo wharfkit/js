@@ -8,6 +8,7 @@ import {
     WalletPluginConfig,
     WalletPluginMetadata,
 } from '@wharfkit/session'
+import {handleLogin, handleLogout, handleSignatureRequest} from '@wharfkit/protocol-scatter'
 
 export class WalletPluginGateWallet extends AbstractWalletPlugin implements WalletPlugin {
     id = 'gatewallet'
@@ -28,18 +29,6 @@ export class WalletPluginGateWallet extends AbstractWalletPlugin implements Wall
         super()
     }
 
-    private async loadScatterProtocol() {
-        let protocolScatter
-        if (typeof window !== 'undefined') {
-            protocolScatter = await import('@wharfkit/protocol-scatter')
-        }
-
-        if (!protocolScatter) {
-            throw new Error('Scatter protocol is not available in this environment')
-        }
-
-        return protocolScatter
-    }
     /**
      * The metadata for the wallet plugin to be displayed in the user interface.
      */
@@ -58,8 +47,7 @@ export class WalletPluginGateWallet extends AbstractWalletPlugin implements Wall
      * @returns Promise<WalletPluginLoginResponse>
      */
     async login(context: LoginContext) {
-        const protocolScatter = await this.loadScatterProtocol()
-        return protocolScatter.handleLogin(context)
+        return handleLogin(context)
     }
 
     /**
@@ -70,8 +58,7 @@ export class WalletPluginGateWallet extends AbstractWalletPlugin implements Wall
      */
 
     async logout(context: LogoutContext): Promise<void> {
-        const protocolScatter = await this.loadScatterProtocol()
-        return protocolScatter.handleLogout(context)
+        return handleLogout(context)
     }
 
     /**
@@ -82,8 +69,6 @@ export class WalletPluginGateWallet extends AbstractWalletPlugin implements Wall
      * @returns Promise<Signature>
      */
     async sign(resolved: ResolvedSigningRequest, context: TransactContext) {
-        const protocolScatter = await this.loadScatterProtocol()
-
-        return protocolScatter.handleSignatureRequest(resolved, context)
+        return handleSignatureRequest(resolved, context)
     }
 }

@@ -2,6 +2,12 @@
 
 Abstract functions for use by various Scatter-based wallet plugins.
 
+## Browser only
+
+The Scatter protocol runs in a browser. Importing this package is safe in any environment, including Node.js, and the browser dependencies load only when `getScatter` runs. Calling `getScatter`, `handleLogin`, `handleLogout` or `handleSignatureRequest` outside a browser throws.
+
+A wallet plugin built on this package can therefore import it directly and let the error surface, rather than guarding the import itself.
+
 ## Developing
 
 You need [Make](https://www.gnu.org/software/make/), [node.js](https://nodejs.org/en/) and [yarn](https://classic.yarnpkg.com/en/docs/install) installed.

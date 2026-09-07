@@ -22,8 +22,8 @@ suite('plugin surface', function () {
     test('carries TackleBox metadata', function () {
         const {metadata} = new WalletPluginTackleBox()
         assert.equal(metadata.name, 'TackleBox')
-        assert.equal(metadata.homepage, 'https://github.com/on-a-t-break/tacklebox')
-        assert.equal(metadata.download, 'https://github.com/on-a-t-break/tacklebox/releases')
+        assert.equal(metadata.homepage, 'https://github.com/doyen-games/tacklebox')
+        assert.equal(metadata.download, 'https://github.com/doyen-games/tacklebox/releases')
         assert.exists(metadata.logo)
         assert.isTrue(String(metadata.logo!.getVariant('light')).startsWith('data:image/svg+xml'))
         assert.isTrue(String(metadata.logo!.getVariant('dark')).startsWith('data:image/svg+xml'))

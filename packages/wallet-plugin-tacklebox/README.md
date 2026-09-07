@@ -3,7 +3,7 @@
 # wallet-plugin-tacklebox
 
 A `WalletPlugin` for use with [`@wharfkit/session`](https://github.com/wharfkit/session) that lets
-dapps login and sign transactions with [TackleBox](https://github.com/on-a-t-break/tacklebox),
+dapps login and sign transactions with [TackleBox](https://github.com/doyen-games/tacklebox),
 the native wallet and block explorer for Antelope blockchains (EOS/Vaulta, WAX, Telos, and
 friends).
 

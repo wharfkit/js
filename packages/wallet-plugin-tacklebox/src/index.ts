@@ -60,7 +60,7 @@ export const DEFAULT_BUOY_URL = 'https://cb.anchor.link'
 
 /**
  * A @wharfkit/session WalletPlugin for TackleBox, the native wallet and block
- * explorer for Antelope blockchains (https://github.com/on-a-t-break/tacklebox).
+ * explorer for Antelope blockchains (https://github.com/doyen-games/tacklebox).
  *
  * TackleBox speaks the anchor-link protocol. Logging in fires a `tacklebox:`
  * deep link that opens the wallet with the ESR identity request (with QR code
@@ -111,8 +111,8 @@ export class WalletPluginTackleBox extends AbstractWalletPlugin {
         name: 'TackleBox',
         description: 'A native wallet and block explorer for Antelope blockchains.',
         logo: tackleboxLogo,
-        homepage: 'https://github.com/on-a-t-break/tacklebox',
-        download: 'https://github.com/on-a-t-break/tacklebox/releases',
+        homepage: 'https://github.com/doyen-games/tacklebox',
+        download: 'https://github.com/doyen-games/tacklebox/releases',
     })
 
     login(context: LoginContext): Promise<WalletPluginLoginResponse> {

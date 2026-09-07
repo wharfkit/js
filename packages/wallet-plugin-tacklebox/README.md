@@ -1,3 +1,5 @@
+<img src="assets/tacklebox.svg" alt="TackleBox" width="112" align="right">
+
 # wallet-plugin-tacklebox
 
 A `WalletPlugin` for use with [`@wharfkit/session`](https://github.com/wharfkit/session) that lets

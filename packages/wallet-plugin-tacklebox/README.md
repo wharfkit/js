@@ -35,7 +35,7 @@ stock look (and skipped entirely on non-web-renderer UIs).
 ## Installation
 
 ```bash
-npm install github:on-a-t-break/wallet-plugin-tacklebox
+npm install github:doyen-games/wallet-plugin-tacklebox
 ```
 
 This repository is the upstream source for the plugin: the intent is for it to be adopted into

@@ -70,6 +70,7 @@ function closeDtsExports() {
  * @param {boolean} [o.replaceVersion]    substitute __ver with pkg.version
  * @param {boolean} [o.browser]           platform browser
  * @param {boolean} [o.bundleDeps]        resolve node_modules; external is the declared list only
+ * @param {object} [o.alias]              resolve.alias entries applied to every build
  * @param {string[]} [o.cjsExternal]      override the CJS external list
  * @param {boolean} [o.dir]               emit to output.dir rather than output.file
  * @param {boolean} [o.types]             emit declarations (default true)
@@ -118,8 +119,12 @@ export function libraryConfig(dir, o = {}) {
         tsconfig: path.join(dir, 'tsconfig.json'),
         transform: define ? {...target, define} : target,
         ...(o.browser ? {platform: 'browser'} : {}),
+        ...(o.alias ? {resolve: {alias: o.alias}} : {}),
     }
-    const place = o.dir ? (f) => ({dir: outDir(f)}) : (f) => ({file: out(f)})
+    // stable chunk names so a rebuild overwrites rather than leaving the old hash behind to publish
+    const place = o.dir
+        ? (f) => ({dir: outDir(f), chunkFileNames: '[name].js'})
+        : (f) => ({file: out(f)})
 
     const configs = [
         {
@@ -153,7 +158,7 @@ export function libraryConfig(dir, o = {}) {
     for (const extra of o.extraOutputs ?? []) {
         configs.push({
             ...shared,
-            ...(extra.alias ? {resolve: {alias: extra.alias}} : {}),
+            ...(extra.alias ? {resolve: {alias: {...o.alias, ...extra.alias}}} : {}),
             output: {
                 banner,
                 file: out(extra.file),

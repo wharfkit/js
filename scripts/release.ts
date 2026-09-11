@@ -315,7 +315,7 @@ function bump(arg: string, dryRun: boolean) {
     sh('git', ['add', '-A'])
     sh('git', ['commit', '-m', `Version ${target}`])
     sh('git', ['push', 'origin', 'dev'])
-    sh('gh', [
+    const url = sh('gh', [
         'pr',
         'create',
         '--base',
@@ -327,7 +327,7 @@ function bump(arg: string, dryRun: boolean) {
         '--body',
         `Lockstep release ${target}. Promotes dev to master; publishes on merge via release.yml.`,
     ])
-    log(`promotion PR opened for ${target}`)
+    log(`promotion PR opened for ${target}: ${url}`)
 }
 
 function publish(force: boolean) {

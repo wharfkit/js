@@ -1,8 +1,8 @@
 {
     "name": "@wharfkit/resources",
     "description": "Library to assist in Antelope-blockchain resource calculations.",
-    "version": "4.0.0-rc6",
-    "homepage": "https://github.com/wharfkit/resources",
+    "version": "4.0.0-rc7",
+    "homepage": "https://wharfkit.com",
     "license": "BSD-3-Clause",
     "engines": {
         "node": ">=20.19.0"

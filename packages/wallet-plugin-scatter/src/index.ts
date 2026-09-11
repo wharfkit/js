@@ -10,6 +10,7 @@ import {
     WalletPluginMetadata,
     WalletPluginSignResponse,
 } from '@wharfkit/session'
+import {handleLogin, handleLogout, handleSignatureRequest} from '@wharfkit/protocol-scatter'
 
 export class WalletPluginScatter extends AbstractWalletPlugin implements WalletPlugin {
     id = 'scatter'
@@ -42,19 +43,6 @@ export class WalletPluginScatter extends AbstractWalletPlugin implements WalletP
         download: 'https://github.com/GetScatter/ScatterDesktop/releases',
     })
 
-    private async loadScatterProtocol() {
-        let protocolScatter
-        if (typeof window !== 'undefined') {
-            protocolScatter = await import('@wharfkit/protocol-scatter')
-        }
-
-        if (!protocolScatter) {
-            throw new Error('Scatter protocol is not available in this environment')
-        }
-
-        return protocolScatter
-    }
-
     /**
      * Performs the wallet logic required to login and return the chain and permission level to use.
      *
@@ -62,8 +50,7 @@ export class WalletPluginScatter extends AbstractWalletPlugin implements WalletP
      * @returns Promise<WalletPluginLoginResponse>
      */
     async login(context: LoginContext): Promise<WalletPluginLoginResponse> {
-        const scatterProtocol = await this.loadScatterProtocol()
-        return scatterProtocol.handleLogin(context)
+        return handleLogin(context)
     }
 
     /**
@@ -74,8 +61,7 @@ export class WalletPluginScatter extends AbstractWalletPlugin implements WalletP
      */
 
     async logout(context: LogoutContext): Promise<void> {
-        const scatterProtocol = await this.loadScatterProtocol()
-        return scatterProtocol.handleLogout(context)
+        return handleLogout(context)
     }
 
     /**
@@ -89,7 +75,6 @@ export class WalletPluginScatter extends AbstractWalletPlugin implements WalletP
         resolved: ResolvedSigningRequest,
         context: TransactContext
     ): Promise<WalletPluginSignResponse> {
-        const scatterProtocol = await this.loadScatterProtocol()
-        return scatterProtocol.handleSignatureRequest(resolved, context)
+        return handleSignatureRequest(resolved, context)
     }
 }

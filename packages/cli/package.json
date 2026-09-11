@@ -1,8 +1,8 @@
 {
     "name": "@wharfkit/cli",
-    "version": "4.0.0-rc6",
+    "version": "4.0.0-rc7",
     "license": "BSD-3-Clause",
-    "homepage": "https://github.com/wharfkit/cli#readme",
+    "homepage": "https://wharfkit.com/docs/utilities/cli",
     "description": "Command line utilities for Wharf",
     "scripts": {},
     "engines": {

@@ -1,8 +1,8 @@
 {
     "name": "@wharfkit/transact-plugin-mock",
     "description": "A mock TransactPlugin to simulate specific events.",
-    "version": "4.0.0-rc6",
-    "homepage": "https://github.com/wharfkit/transact-plugin-mock",
+    "version": "4.0.0-rc7",
+    "homepage": "https://wharfkit.com/plugins/transact-plugin-mock",
     "license": "BSD-3-Clause",
     "engines": {
         "node": ">=20.19.0"

@@ -579,7 +579,7 @@ export class SessionKit {
             for (const hook of context.hooks.afterLogin) await hook(context)
 
             // Save the session to storage if it has a storage instance.
-            this.persistSession(session, {
+            await this.persistSession(session, {
                 setAsDefault: options?.setAsDefault,
                 equalityFn: options?.equalityFn,
             })
@@ -807,7 +807,7 @@ export class SessionKit {
         if (serializedSession) {
             const session = this.serializedToSession(serializedSession, options)
 
-            this.persistSession(session, {
+            await this.persistSession(session, {
                 setAsDefault: options?.setAsDefault,
                 equalityFn: options?.equalityFn,
             })
@@ -816,16 +816,10 @@ export class SessionKit {
         }
     }
 
+    /** Build a live session for every stored session with a registered wallet plugin. Reads storage without writing to it. */
     async restoreAll(): Promise<Session[]> {
-        const sessions: Session[] = []
         const serializedSessions = await this.getSessions()
-        for (const serializedSession of serializedSessions) {
-            const session = await this.restore(serializedSession)
-            if (session) {
-                sessions.push(session)
-            }
-        }
-        return sessions
+        return serializedSessions.map((s) => this.serializedToSession(s))
     }
 
     async persistSession(session: Session, options: PersistOptions = {}) {
@@ -845,7 +839,7 @@ export class SessionKit {
         const equalityFn = options.equalityFn || this.equalityFn
 
         if (serialized.default) {
-            this.storage.write('session', JSON.stringify(serialized))
+            await this.storage.write('session', JSON.stringify(serialized))
         }
 
         // Add the current session to the list of sessions, preventing duplication.
@@ -871,7 +865,7 @@ export class SessionKit {
             return chain || actor || permission
         })
 
-        this.storage.write('sessions', JSON.stringify(orderedSessions))
+        await this.storage.write('sessions', JSON.stringify(orderedSessions))
     }
 
     /**

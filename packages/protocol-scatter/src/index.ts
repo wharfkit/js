@@ -14,10 +14,20 @@ import {
     WalletPluginSignResponse,
 } from '@wharfkit/session'
 
-import {Api, JsonRpc} from 'eosjs'
-import {ScatterAccount, ScatterEOS, ScatterIdentity, ScatterJS} from 'scatter-ts'
+import type {ScatterAccount, ScatterIdentity} from 'scatter-ts'
 
 export async function getScatter(context): Promise<{scatter: any; connector: any}> {
+    if (typeof window === 'undefined') {
+        throw new Error(
+            'The Scatter protocol requires a browser environment and cannot be used in Node.js.'
+        )
+    }
+
+    const [{Api, JsonRpc}, {ScatterEOS, ScatterJS}] = await Promise.all([
+        import('eosjs'),
+        import('scatter-ts'),
+    ])
+
     // register scatter plugins
     ScatterJS.plugins(new ScatterEOS())
 

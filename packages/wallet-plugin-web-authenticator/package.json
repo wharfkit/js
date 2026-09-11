@@ -1,8 +1,8 @@
 {
     "name": "@wharfkit/wallet-plugin-web-authenticator",
     "description": "A Web Authenticator wallet plugin for use with @wharfkit/session.",
-    "version": "4.0.0-rc6",
-    "homepage": "https://github.com/wharfkit/wallet-plugin-web-authenticator",
+    "version": "4.0.0-rc7",
+    "homepage": "https://wharfkit.com/plugins/wallet-plugin-web-authenticator",
     "license": "BSD-3-Clause",
     "engines": {
         "node": ">=20.19.0"

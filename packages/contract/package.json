@@ -1,8 +1,8 @@
 {
     "name": "@wharfkit/contract",
     "description": "ContractKit for Wharf",
-    "version": "4.0.0-rc6",
-    "homepage": "https://github.com/wharfkit/contract",
+    "version": "4.0.0-rc7",
+    "homepage": "https://wharfkit.com/docs/contract-kit",
     "license": "BSD-3-Clause",
     "engines": {
         "node": ">=20.19.0"

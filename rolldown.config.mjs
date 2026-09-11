@@ -30,7 +30,14 @@ const MEMBERS = {
         ],
     },
     'protocol-esr': {stripInternal: true, replaceVersion: true},
-    'protocol-scatter': {browser: true, bundleDeps: true},
+    'protocol-scatter': {
+        browser: true,
+        bundleDeps: true,
+        dir: true,
+        alias: {
+            'create-hash': path.join(root, 'packages/protocol-scatter/src/create-hash.ts'),
+        },
+    },
     'wallet-plugin-anchor': {stripInternal: true, replaceVersion: true},
     'wallet-plugin-scatter': {browser: true, bundleDeps: true, dir: true},
     'wallet-plugin-tokenpocket': {browser: true, bundleDeps: true, dir: true},

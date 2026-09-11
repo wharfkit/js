@@ -1,8 +1,8 @@
 {
     "name": "@wharfkit/token",
     "description": "Library to work with Antelope-blockchain system tokens.",
-    "version": "4.0.0-rc6",
-    "homepage": "https://github.com/wharfkit/token",
+    "version": "4.0.0-rc7",
+    "homepage": "https://wharfkit.com",
     "license": "BSD-3-Clause",
     "engines": {
         "node": ">=20.19.0"

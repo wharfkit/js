@@ -1,6 +1,6 @@
 {
     "name": "@wharfkit/web-renderer",
-    "version": "4.0.0-rc6",
+    "version": "4.0.0-rc7",
     "description": "",
     "license": "BSD-3-Clause",
     "engines": {
@@ -30,7 +30,7 @@
     "bugs": {
         "url": "https://github.com/wharfkit/web-renderer/issues"
     },
-    "homepage": "https://github.com/wharfkit/web-renderer",
+    "homepage": "https://wharfkit.com/docs/session-kit/web-renderer",
     "files": [
         "lib/*",
         "src/*"

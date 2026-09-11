@@ -23,7 +23,10 @@ const MEMBERS = {
     hyperion: {testsDir: '.'},
     msigs: {testsDir: '.'},
     'protocol-esr': {browserFetch: true},
-    'protocol-scatter': {browserFetch: true},
+    'protocol-scatter': {
+        browserFetch: true,
+        aliases: [{find: '$lib/create-hash', replacement: '../src/create-hash.ts'}],
+    },
     roborovski: {testsDir: '.'},
     'sealed-messages': {browserProvider: true},
     'transact-plugin-autocorrect': {browserFetch: true},

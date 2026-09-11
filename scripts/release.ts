@@ -419,8 +419,11 @@ function main() {
         case 'verify':
             verify({install: !flags.has('--no-install')})
             break
+        case 'build':
+            for (const member of topological(members())) runScript(member, 'build')
+            break
         default:
-            fail('usage: release.ts <bump|publish|verify> [...]')
+            fail('usage: release.ts <bump|publish|verify|build> [...]')
     }
 }
 

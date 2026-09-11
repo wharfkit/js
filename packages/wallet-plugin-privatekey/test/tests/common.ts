@@ -24,6 +24,7 @@ const mockSessionKitArgs = {
 
 const mockSessionKitOptions = {
     fetch: mockFetch, // Required for unit tests
+    storage: new MockStorage(),
 }
 
 suite('wallet plugin', function () {

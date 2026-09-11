@@ -12,22 +12,14 @@ yarn add @wharfkit/abicache
 npm install --save @wharfkit/abicache
 ```
 
-## Developing
+## Contributing
 
-You need [Make](https://www.gnu.org/software/make/), [node.js](https://nodejs.org/en/) and [yarn](https://classic.yarnpkg.com/en/docs/install) installed.
-
-**All development should be done based on the [dev](https://github.com/wharfkit/session/tree/dev) branch.**
-
-Clone the repository and run `make` to checkout all dependencies and build the project. The tests can be run using `make test` and can be continously tested during development with `make test/watch`.
-
-See the [Makefile](./Makefile) for other useful targets.
-
-Before submitting a pull request make sure to run `make check` and `make format`.
+This package is developed in the [wharfkit/js](https://github.com/wharfkit/js) monorepo. See its README for how to build and test.
 
 ## Dependencies
 
--   [@wharfkit/antelope](https://github.com/wharfkit/antelope): Core library to provide Antelope data types.
--   [@wharfkit/signing-request](https://github.com/@wharfkit/signing-request): Antelope Signing Request Protocol.
+-   [@wharfkit/antelope](https://github.com/wharfkit/js/tree/master/packages/antelope): Core library to provide Antelope data types.
+-   [@wharfkit/signing-request](https://github.com/wharfkit/js/tree/master/packages/signing-request): Antelope Signing Request Protocol.
 
 ---
 

@@ -2,7 +2,7 @@
 
 Svelte 5 and Tailwind v4 component library for Antelope applications.
 
-[Component showcase →](https://wharfkit.github.io/svelte-components)
+[Component showcase →](https://wharfkit.github.io/js/svelte-components/)
 
 ## Requirements
 
@@ -169,34 +169,9 @@ Stated plainly, so nothing here is a surprise:
 - **No support commitment.** Issues may go unanswered.
 - **No external contribution process.** There is no `CONTRIBUTING` guide and no review workflow for outside PRs.
 
-## Developing
+## Contributing
 
-```bash
-bun install
-bun run dev      # showcase at src/routes
-bun run check    # svelte-check
-bun run lint     # prettier + eslint
-bun run build    # showcase + package
-```
-
-`make`, `make check` and `make format` forward to the same scripts.
-
-Everything in `src/lib` is the published library; `src/routes` is the showcase.
-
-## Releasing
-
-[release-please](https://github.com/googleapis/release-please) opens a release PR from conventional commits and tags the release when it merges. **Publishing is manual**, from a maintainer's machine:
-
-```bash
-git pull                 # get the release commit release-please merged
-bun install
-bun run build
-npm publish              # not bun publish
-```
-
-> **Never run `bun publish`** — it ignores the `files` field and would ship `src/`, `.svelte-kit/`, `build/` and `bun.lock`: about 2.9 MB across 506 files. Version 0.6.1 shipped that way. A `prepublishOnly` guard now refuses bun and aborts if the tarball exceeds 400 kB or contains any of those paths, but the guard is a backstop, not a licence to guess.
-
-Publishing locally means releases carry **no npm provenance** — provenance requires CI's OIDC token and cannot be generated from a laptop.
+This package is developed in the [wharfkit/js](https://github.com/wharfkit/js) monorepo. See its README for how to build and test.
 
 ## License
 

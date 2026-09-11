@@ -1,7 +1,7 @@
 import {execFileSync} from 'node:child_process'
 import {existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync} from 'node:fs'
 import {tmpdir} from 'node:os'
-import {join} from 'node:path'
+import {basename, join} from 'node:path'
 import semver from 'semver'
 import {checkDependencyLicenses, checkMemberLicenses} from './check-licenses.ts'
 
@@ -194,6 +194,62 @@ function distTag(version: string): string {
     return semver.prerelease(version) ? 'next' : 'latest'
 }
 
+// files outside packages/ whose changes alter every published tarball
+const SHARED_BUILD_FILES = [
+    'bun.lock',
+    'common.mk',
+    'rolldown.base.mjs',
+    'rolldown.config.mjs',
+    'scripts/release.ts',
+    'tsconfig.base.json',
+]
+
+// manifest fields whose changes alter nothing a consumer installs
+const METADATA_KEYS = ['author', 'bugs', 'description', 'homepage', 'keywords', 'repository']
+
+function manifestChangeIsMetadata(base: string, file: string): boolean {
+    const before = trySh('git', ['show', `${base}:${file}`])
+    if (before === null) return false
+    const a = JSON.parse(before)
+    const b = JSON.parse(readFileSync(join(ROOT, file), 'utf8'))
+    for (const key of METADATA_KEYS) {
+        delete a[key]
+        delete b[key]
+    }
+    return JSON.stringify(a) === JSON.stringify(b)
+}
+
+function promotionBody(list: Member[], base: string): string {
+    const files = sh('git', ['diff', '--name-only', `${base}..HEAD`])
+        .split('\n')
+        .filter(Boolean)
+    const names = new Set(publishable(list).map((m) => basename(m.dir)))
+    const changed = new Set<string>()
+    const metadataOnly = new Set<string>()
+    for (const file of files) {
+        const match = file.match(/^packages\/([^/]+)\/(.+)$/)
+        if (!match || !names.has(match[1])) continue
+        const metadata =
+            match[2] === 'README.md' ||
+            (match[2] === 'package.json' && manifestChangeIsMetadata(base, file))
+        if (metadata) metadataOnly.add(match[1])
+        else changed.add(match[1])
+    }
+    for (const name of changed) metadataOnly.delete(name)
+    const lines: string[] = []
+    if (changed.size) {
+        const others = metadataOnly.size ? `, and ${metadataOnly.size} others by metadata only` : ''
+        lines.push(`Packages changed: ${[...changed].sort().join(', ')}${others}.`)
+    } else if (metadataOnly.size) {
+        lines.push(`Packages changed by metadata only: ${[...metadataOnly].sort().join(', ')}.`)
+    } else {
+        lines.push('No package changed.')
+    }
+    const shared = SHARED_BUILD_FILES.filter((f) => files.includes(f))
+    if (shared.length) lines.push(`Shared build changes: ${shared.join(', ')}.`)
+    return lines.join('\n')
+}
+
 function resolveTarget(current: string, arg: string): string {
     if (semver.valid(arg)) return arg
     if (arg === 'prerelease') {
@@ -299,6 +355,9 @@ function bump(arg: string, dryRun: boolean) {
 
     verify({install: true})
 
+    sh('git', ['fetch', 'origin', 'master'])
+    const body = promotionBody(list, 'origin/master')
+
     log(`bumping to ${target}`)
     writeVersion(join(ROOT, 'package.json'), target)
     for (const member of list) writeVersion(member.manifestPath, target)
@@ -308,6 +367,7 @@ function bump(arg: string, dryRun: boolean) {
 
     if (dryRun) {
         sh('git', ['checkout', '--', '.'])
+        log(`promotion PR body would read:\n${body}`)
         log(`dry run for ${target} complete; changes reverted`)
         return
     }
@@ -325,7 +385,7 @@ function bump(arg: string, dryRun: boolean) {
         '--title',
         `Version ${target}`,
         '--body',
-        `Lockstep release ${target}. Promotes dev to master; publishes on merge via release.yml.`,
+        body,
     ])
     log(`promotion PR opened for ${target}: ${url}`)
 }

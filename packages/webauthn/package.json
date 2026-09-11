@@ -2,7 +2,7 @@
     "name": "@wharfkit/webauthn",
     "description": "WebAuthn helpers for antelope core",
     "version": "4.0.0-rc6",
-    "homepage": "https://github.com/greymass/eosio-webauthn",
+    "homepage": "https://wharfkit.com",
     "license": "BSD-3-Clause",
     "engines": {
         "node": ">=20.19.0"

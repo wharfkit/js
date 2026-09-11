@@ -2,7 +2,7 @@
     "name": "@wharfkit/transact-plugin-finality-checker",
     "description": "A template to create plugins for use with @wharfkit/session transact method.",
     "version": "4.0.0-rc6",
-    "homepage": "https://github.com/wharfkit/transact-plugin-finality-checker",
+    "homepage": "https://wharfkit.com/plugins/transact-plugin-finality-checker",
     "license": "BSD-3-Clause",
     "engines": {
         "node": ">=20.19.0"

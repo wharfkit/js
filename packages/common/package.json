@@ -2,7 +2,7 @@
     "name": "@wharfkit/common",
     "description": "Common data and functions shared across WharfKit packages",
     "version": "4.0.0-rc6",
-    "homepage": "https://github.com/wharfkit/common",
+    "homepage": "https://wharfkit.com/docs/utilities/common-library",
     "license": "BSD-3-Clause",
     "engines": {
         "node": ">=20.19.0"

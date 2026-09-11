@@ -2,7 +2,7 @@
     "name": "@wharfkit/roborovski",
     "description": "API Client to access Roborovski API endpoints",
     "version": "4.0.0-rc6",
-    "homepage": "https://github.com/wharfkit/roborovski",
+    "homepage": "https://wharfkit.com",
     "license": "BSD-3-Clause",
     "engines": {
         "node": ">=20.19.0"

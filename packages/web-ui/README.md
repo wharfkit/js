@@ -2,7 +2,7 @@
 
 ###### Web UI - An embedded UI renderer for WharfKit SessionKit
 
-A modern, Shadow DOM-based user interface for [SessionKit](https://github.com/wharfkit/session). It renders the login, transact, and prompt flows as a modal layer inside your web application. The default palette is neutral, so the modal sits cleanly on any host site, and every color can be themed to match your brand. Successor to [`@wharfkit/web-renderer`](https://github.com/wharfkit/web-renderer).
+A modern, Shadow DOM-based user interface for [SessionKit](https://github.com/wharfkit/js/tree/master/packages/session). It renders the login, transact, and prompt flows as a modal layer inside your web application. The default palette is neutral, so the modal sits cleanly on any host site, and every color can be themed to match your brand. Successor to [`@wharfkit/web-renderer`](https://github.com/wharfkit/js/tree/master/packages/web-renderer).
 
 ## Installation
 
@@ -117,21 +117,9 @@ This suits projects whose theming already lives in CSS, such as design tokens th
 
 WebUI ships with translations for English (`en`), Korean (`ko`), Simplified and Traditional Chinese (`zh-Hans`, `zh-Hant`), and Turkish (`tr`). The locale can be set at construction time (`locale` option) or changed at runtime with `ui.setLocale()`. Wallet plugin translations can be registered with `ui.addTranslations()`.
 
-## Developing
+## Contributing
 
-You need [Make](https://www.gnu.org/software/make/) and [Bun](https://bun.sh) installed.
-
-Clone the repository and run `make` to install dependencies and build the library. `make dev` starts a Vite dev server with a sample host app (`dev/`) exercising every view against both real wallet plugins and mock flows.
-
-```
-make          # install deps + build lib/
-make dev      # dev server with HMR
-make test     # unit tests (Vitest)
-make check    # lint (Biome + Prettier)
-make format   # auto-fix formatting
-```
-
-Before submitting a pull request make sure to run `make check` and `make format`.
+This package is developed in the [wharfkit/js](https://github.com/wharfkit/js) monorepo. See its README for how to build and test.
 
 ## Reporting Issues
 
@@ -141,8 +129,8 @@ To do this, fork this repository and create your own branch. In this new branch,
 
 ## Dependencies
 
--   [@wharfkit/session](https://github.com/wharfkit/session): SessionKit, which this package renders a UI for (peer dependency).
--   [@wharfkit/common](https://github.com/wharfkit/common): Shared types and utilities (peer dependency).
+-   [@wharfkit/session](https://github.com/wharfkit/js/tree/master/packages/session): SessionKit, which this package renders a UI for (peer dependency).
+-   [@wharfkit/common](https://github.com/wharfkit/js/tree/master/packages/common): Shared types and utilities (peer dependency).
 -   [Svelte 5](https://svelte.dev): Compiled away at build time; your app takes on no runtime framework dependency.
 
 ---

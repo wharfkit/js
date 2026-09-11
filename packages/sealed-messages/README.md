@@ -1,6 +1,6 @@
 # Sealed Messages
 
-Use [Shamir's secret sharing](https://en.wikipedia.org/wiki/Shamir%27s_secret_sharing) with [@wharfkit/antelope](https://github.com/wharfkit/antelope) Public/Private Keys to encrypt and decrypt a message.
+Use [Shamir's secret sharing](https://en.wikipedia.org/wiki/Shamir%27s_secret_sharing) with [@wharfkit/antelope](https://github.com/wharfkit/js/tree/master/packages/antelope) Public/Private Keys to encrypt and decrypt a message.
 
 In a real world scenario, the sender of the message needs to have a private key and known the public key of the receiver. They then take their message and a nonce to encode the message using the `sealMessage` function. The receiver needs to take the message and decrypt it with their private key, the public key of the sender, as well as the nonce of the message. 
 

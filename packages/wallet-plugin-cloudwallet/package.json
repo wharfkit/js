@@ -2,7 +2,7 @@
     "name": "@wharfkit/wallet-plugin-cloudwallet",
     "description": "A WalletPlugin for My Cloud Wallet for use within the @wharfkit/session.",
     "version": "4.0.0-rc6",
-    "homepage": "https://github.com/wharfkit/wallet-plugin-cloudwallet",
+    "homepage": "https://wharfkit.com/plugins/wallet-plugin-cloudwallet",
     "license": "BSD-3-Clause",
     "engines": {
         "node": ">=20.19.0"

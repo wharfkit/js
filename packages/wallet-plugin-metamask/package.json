@@ -2,7 +2,7 @@
     "name": "@wharfkit/wallet-plugin-metamask",
     "description": "A MetaMask plugin for use with @wharfkit/session.",
     "version": "4.0.0-rc6",
-    "homepage": "https://github.com/wharfkit/wallet-plugin-metamask",
+    "homepage": "https://wharfkit.com/plugins/wallet-plugin-metamask",
     "license": "BSD-3-Clause",
     "engines": {
         "node": ">=20.19.0"

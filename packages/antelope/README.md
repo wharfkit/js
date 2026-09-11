@@ -22,20 +22,20 @@ npm install @wharfkit/antelope@1
 
 ## API Documentation
 
-https://wharfkit.github.io/antelope/
+https://wharfkit.github.io/js/antelope/
 
 ## Documentation
 
 Documentation beyond the automatically generated API documentation above is currently incomplete. Until full documentation is complete, the tests themselves provide good reference material on how to do nearly everything.
 
-https://github.com/wharfkit/antelope/tree/master/test
+https://github.com/wharfkit/js/tree/master/packages/antelope/test
 
 More:
 
--   Using APIs: https://github.com/wharfkit/antelope/blob/master/test/api.ts
--   Serialization: https://github.com/wharfkit/antelope/blob/master/test/serializer.ts
--   Crypto Operations: https://github.com/wharfkit/antelope/blob/master/test/crypto.ts
--   Primitive Data Types: https://github.com/wharfkit/antelope/blob/master/test/chain.ts
+-   Using APIs: https://github.com/wharfkit/js/tree/master/packages/antelope/test/api.ts
+-   Serialization: https://github.com/wharfkit/js/tree/master/packages/antelope/test/serializer.ts
+-   Crypto Operations: https://github.com/wharfkit/js/tree/master/packages/antelope/test/crypto.ts
+-   Primitive Data Types: https://github.com/wharfkit/js/tree/master/packages/antelope/test/chain.ts
 
 ## Reporting Issues
 
@@ -77,7 +77,7 @@ make test
 make coverage
 ```
 
-The report for the current version can also be found at: https://wharfkit.github.io/antelope/coverage/
+The report for the current version can also be found at: https://wharfkit.github.io/js/antelope/coverage/
 
 ### Run the test suite in a browser:
 
@@ -85,7 +85,7 @@ The report for the current version can also be found at: https://wharfkit.github
 make browser-test
 ```
 
-The browser test suite for the current version of the library is available at: https://wharfkit.github.io/antelope/tests.html
+The browser test suite for the current version of the library is available at: https://wharfkit.github.io/js/antelope/tests.html
 
 ## Debugging
 

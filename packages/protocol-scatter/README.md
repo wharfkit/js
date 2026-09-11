@@ -8,11 +8,9 @@ The Scatter protocol runs in a browser. Importing this package is safe in any en
 
 A wallet plugin built on this package can therefore import it directly and let the error surface, rather than guarding the import itself.
 
-## Developing
+## Contributing
 
-You need [Make](https://www.gnu.org/software/make/), [node.js](https://nodejs.org/en/) and [yarn](https://classic.yarnpkg.com/en/docs/install) installed.
-
-Clone the repository and run `make` to checkout all dependencies and build the project. See the [Makefile](./Makefile) for other useful targets. Before submitting a pull request make sure to run `make lint`.
+This package is developed in the [wharfkit/js](https://github.com/wharfkit/js) monorepo. See its README for how to build and test.
 
 ---
 

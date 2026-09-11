@@ -8,7 +8,7 @@
 		"url": "git+https://github.com/wharfkit/js.git",
 		"directory": "packages/svelte-components"
 	},
-	"homepage": "https://wharfkit.github.io/svelte-components",
+	"homepage": "https://wharfkit.github.io/js/svelte-components/",
 	"bugs": {
 		"url": "https://github.com/wharfkit/svelte-components/issues"
 	},
@@ -31,9 +31,9 @@
 		"**/*.css"
 	],
 	"svelte": "./dist/index.js",
-    "engines": {
-        "node": ">=20.19.0"
-    },
+	"engines": {
+		"node": ">=20.19.0"
+	},
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"exports": {

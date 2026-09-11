@@ -52,7 +52,7 @@ To generate the code for the `eosio.token` contract on the Jungle 4 testnet:
 npx @wharfkit/cli generate -u https://jungle4.greymass.com eosio.token 
 ```
 
-This will output the code directly into the console window similar to [this example code](https://github.com/wharfkit/cli/blob/master/test/data/contracts/mock-eosio.token.ts). 
+This will output the code directly into the console window similar to [this example code](https://github.com/wharfkit/js/tree/master/packages/cli/test/data/contracts/mock-eosio.token.ts). 
 
 If you'd prefer to save this as a file, use the `-f` flag followed by a filename:
 

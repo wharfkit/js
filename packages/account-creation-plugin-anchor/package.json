@@ -2,7 +2,7 @@
     "name": "@wharfkit/account-creation-plugin-anchor",
     "description": "An account creation plugin using the Greymass account creation service",
     "version": "4.0.0-rc6",
-    "homepage": "https://github.com/wharfkit/account-creation-plugin-anchor",
+    "homepage": "https://wharfkit.com/plugins/account-creation-plugin-anchor",
     "license": "BSD-3-Clause",
     "engines": {
         "node": ">=20.19.0"

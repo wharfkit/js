@@ -134,7 +134,7 @@ For support and questions:
 
 ## Related
 
-- [WharfKit Session Kit](https://github.com/wharfkit/session)
+- [WharfKit Session Kit](https://github.com/wharfkit/js/tree/master/packages/session)
 - [PayCash Wallet](https://paycash.app)
 - [Antelope Blockchain](https://antelope.io)
 

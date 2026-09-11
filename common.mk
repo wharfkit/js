@@ -77,7 +77,7 @@ format: $(ROOT)/node_modules
 build/docs: $(SRC_FILES) $(ROOT)/node_modules
 	@$(BIN)/typedoc --out build/docs \
 		--excludeInternal --excludePrivate --excludeProtected \
-		--includeVersion --hideGenerator --readme none \
+		--includeVersion --hideGenerator --readme none --skipErrorChecking \
 		$(DOCS_ENTRY)
 
 .PHONY: docs
@@ -100,10 +100,11 @@ browser:
 	@echo '$(notdir $(CURDIR)) has no browser bundle'
 endif
 
-build/pages: build/docs build/coverage $(BROWSER_OUT)
+COVERAGE_OUT := $(if $(strip $(TEST_FILES)),build/coverage,)
+build/pages: build/docs $(COVERAGE_OUT) $(BROWSER_OUT)
 	@mkdir -p build/pages
 	@cp -r build/docs/* build/pages/
-	@cp -r build/coverage build/pages/coverage
+	@$(if $(COVERAGE_OUT),cp -r build/coverage build/pages/coverage,true)
 	@$(if $(BROWSER_OUT),cp $(BROWSER_OUT) build/pages/tests.html,true)
 
 .PHONY: deploy-pages

@@ -11,10 +11,13 @@ check:
 verify:
 	bun scripts/release.ts verify
 
+pages:
+	bun scripts/pages.ts
+
 release:
 	bun scripts/release.ts bump $(v)
 
 release-dry:
 	bun scripts/release.ts bump $(v) --dry-run
 
-.PHONY: check verify release release-dry
+.PHONY: check verify pages release release-dry

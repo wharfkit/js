@@ -28,6 +28,7 @@ const ALLOW_UNDECLARED: Record<string, string> = {
     '@wharfkit/web-renderer:svelte': 'framework supplied by the consuming application',
     '@wharfkit/web-renderer:@wharfkit/antelope': 'type-only import in src/lib/translations.ts',
     '@wharfkit/web-renderer:sveltekit-i18n': 'not external to rollup, so it is bundled into lib',
+    '@wharfkit/protocol-scatter:scatter-ts': 'not external to rolldown, so it is bundled into lib',
     '@wharfkit/web-ui:svelte': 'framework supplied by the consuming application',
     '@wharfkit/web-ui:wuchale': 'compiled away by the wuchale vite plugin at build time',
     '@wharfkit/svelte-components:svelte': 'framework supplied by the consuming application',

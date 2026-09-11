@@ -4,6 +4,7 @@
         "baseUrl": "..",
         "paths": {
             "$lib": ["src"],
+            "$lib/*": ["src/*"],
             "$test": ["test"],
             "$test/*": ["test/*"]
         }

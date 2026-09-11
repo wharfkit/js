@@ -264,14 +264,15 @@
       "name": "@wharfkit/protocol-scatter",
       "version": "4.0.0-rc6",
       "dependencies": {
+        "@wharfkit/antelope": "workspace:*",
         "@wharfkit/session": "workspace:*",
         "eosjs": "20.0.0",
-        "scatter-ts": "^0.1.9",
       },
       "devDependencies": {
         "@wharfkit/antelope": "workspace:*",
         "@wharfkit/common": "workspace:*",
         "@wharfkit/session": "workspace:*",
+        "scatter-ts": "^0.1.9",
       },
     },
     "packages/resources": {

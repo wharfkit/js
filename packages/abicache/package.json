@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/abicache",
     "description": "ABI Caching Mechanism for use in Session and Contract Kits",
-    "version": "4.0.0-rc6",
+    "version": "4.0.0-rc7",
     "homepage": "https://wharfkit.com",
     "license": "BSD-3-Clause",
     "engines": {

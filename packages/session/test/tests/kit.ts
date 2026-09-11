@@ -14,6 +14,7 @@ import {
     Chains,
     ExplorerDefinition,
     Logo,
+    SerializedSession,
     Session,
     SessionArgs,
     SessionKit,
@@ -818,6 +819,95 @@ suite('kit', function () {
             assert.isTrue(sessions[1].actor.equals('mock2'))
             assert.instanceOf(sessions[2], Session)
             assert.isTrue(sessions[2].actor.equals('mock3'))
+        })
+        test('leaves storage unchanged', async function () {
+            const storage = new MockStorage()
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                storage,
+            })
+            await sessionKit.login({
+                chain: mockChainDefinition.id,
+                permissionLevel: PermissionLevel.from('aaa@interface'),
+            })
+            await sessionKit.login({
+                chain: mockChainDefinition.id,
+                permissionLevel: PermissionLevel.from('zzz@interface'),
+                setAsDefault: false,
+            })
+            const before = {...storage.data}
+            const sessions = await sessionKit.restoreAll()
+            assert.lengthOf(sessions, 2)
+            assert.deepEqual(storage.data, before)
+            const stored: SerializedSession[] = JSON.parse(storage.data.sessions)
+            assert.deepEqual(
+                stored.map((s) => [String(s.actor), s.default]),
+                [
+                    ['aaa', true],
+                    ['zzz', false],
+                ]
+            )
+            assert.equal(JSON.parse(storage.data.session).actor, 'aaa')
+        })
+    })
+    suite('storage that resolves later', function () {
+        class SlowStorage extends MockStorage {
+            private delay() {
+                return new Promise((resolve) => setTimeout(resolve, 2))
+            }
+            async write(key: string, data: string) {
+                await this.delay()
+                return super.write(key, data)
+            }
+            async read(key: string) {
+                await this.delay()
+                return super.read(key)
+            }
+        }
+        test('login resolves after the session is stored', async function () {
+            const storage = new SlowStorage()
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                storage,
+            })
+            await sessionKit.login({
+                permissionLevel: PermissionLevel.from('mock1@interface'),
+            })
+            assert.equal(JSON.parse(String(storage.data.session)).actor, 'mock1')
+            assert.lengthOf(JSON.parse(String(storage.data.sessions)), 1)
+        })
+        test('consecutive logins keep every session', async function () {
+            const storage = new SlowStorage()
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                storage,
+            })
+            await sessionKit.login({
+                permissionLevel: PermissionLevel.from('mock1@interface'),
+            })
+            await sessionKit.login({
+                permissionLevel: PermissionLevel.from('mock2@interface'),
+            })
+            const stored: SerializedSession[] = JSON.parse(String(storage.data.sessions))
+            assert.deepEqual(
+                stored.map((s) => String(s.actor)),
+                ['mock1', 'mock2']
+            )
+        })
+        test('restore resolves after the session is stored', async function () {
+            const storage = new SlowStorage()
+            const sessionKit = new SessionKit(mockSessionKitArgs, {
+                ...mockSessionKitOptions,
+                storage,
+            })
+            const {session} = await sessionKit.login({
+                permissionLevel: PermissionLevel.from('mock1@interface'),
+            })
+            await sessionKit.login({
+                permissionLevel: PermissionLevel.from('mock2@interface'),
+            })
+            await sessionKit.restore(session.serialize())
+            assert.equal(JSON.parse(String(storage.data.session)).actor, 'mock1')
         })
     })
     suite('persistSession', function () {

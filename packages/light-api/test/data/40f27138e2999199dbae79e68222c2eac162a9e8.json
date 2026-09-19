@@ -1,0 +1,532 @@
+{
+    "request": {
+        "path": "https://eos.light-api.net/api/account/eos/teamgreymass",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": {
+        "delegated_from": [
+            {
+                "cpu_weight": 0,
+                "del_from": "eos42freedom",
+                "net_weight": 1
+            },
+            {
+                "cpu_weight": 0,
+                "del_from": "teamgreymass",
+                "net_weight": 1
+            }
+        ],
+        "balances": [
+            {
+                "currency": "BKT",
+                "amount": "45245.6267",
+                "decimals": "4",
+                "contract": "betkingtoken"
+            },
+            {
+                "decimals": "4",
+                "contract": "bgbgbgbgbgbg",
+                "amount": "0.1000",
+                "currency": "BG"
+            },
+            {
+                "amount": "1000.0000",
+                "contract": "bingobetoken",
+                "decimals": "4",
+                "currency": "BINGO"
+            },
+            {
+                "currency": "BITI",
+                "amount": "103.9999",
+                "decimals": "4",
+                "contract": "biteyebiteye"
+            },
+            {
+                "currency": "BBT",
+                "decimals": "4",
+                "contract": "blockbasetkn",
+                "amount": "0.0012"
+            },
+            {
+                "currency": "ADE",
+                "contract": "buildertoken",
+                "decimals": "4",
+                "amount": "32351.8580"
+            },
+            {
+                "amount": "32358.858000",
+                "decimals": "6",
+                "contract": "cadeositoken",
+                "currency": "ADE"
+            },
+            {
+                "currency": "OBTC",
+                "amount": "0.00000100",
+                "contract": "core.ogx",
+                "decimals": "8"
+            },
+            {
+                "amount": "15004.7481",
+                "contract": "core.vaulta",
+                "decimals": "4",
+                "currency": "A"
+            },
+            {
+                "amount": "18.0000",
+                "contract": "dhbonetokens",
+                "decimals": "4",
+                "currency": "DHB"
+            },
+            {
+                "currency": "EAPP",
+                "amount": "2.0000",
+                "decimals": "4",
+                "contract": "eappeappp.tp"
+            },
+            {
+                "currency": "EMOON",
+                "amount": "1000010000.00",
+                "contract": "emoonnetwork",
+                "decimals": "2"
+            },
+            {
+                "currency": "BT",
+                "amount": "0.0080",
+                "contract": "eosbtextoken",
+                "decimals": "4"
+            },
+            {
+                "currency": "CCC",
+                "amount": "202.0000",
+                "contract": "eoscccdotcom",
+                "decimals": "4"
+            },
+            {
+                "currency": "EOS",
+                "amount": "5292.4309",
+                "decimals": "4",
+                "contract": "eosio.token"
+            },
+            {
+                "currency": "POW",
+                "contract": "eosiopowcoin",
+                "decimals": "8",
+                "amount": "3.26194299"
+            },
+            {
+                "currency": "ERCT",
+                "decimals": "4",
+                "contract": "eostory12345",
+                "amount": "100.0000"
+            },
+            {
+                "amount": "0.0001",
+                "decimals": "4",
+                "contract": "epraofficial",
+                "currency": "EPRA"
+            },
+            {
+                "currency": "EETH",
+                "amount": "5000.0000",
+                "decimals": "4",
+                "contract": "ethsidechain"
+            },
+            {
+                "amount": "0.001",
+                "decimals": "3",
+                "contract": "everipediaiq",
+                "currency": "IQ"
+            },
+            {
+                "currency": "LORD",
+                "contract": "gamelordcoin",
+                "decimals": "4",
+                "amount": "1.0000"
+            },
+            {
+                "amount": "0.1914",
+                "decimals": "4",
+                "contract": "hashbabycoin",
+                "currency": "HBGO"
+            },
+            {
+                "currency": "HVT",
+                "amount": "19908.0137",
+                "decimals": "4",
+                "contract": "hirevibeshvt"
+            },
+            {
+                "currency": "MVC",
+                "amount": "0.0001",
+                "decimals": "4",
+                "contract": "mvcoin.x"
+            },
+            {
+                "decimals": "8",
+                "contract": "okkkkkkkkkkk",
+                "amount": "2.00000000",
+                "currency": "CZB"
+            },
+            {
+                "contract": "okkkkkkkkkkk",
+                "decimals": "6",
+                "amount": "53.660000",
+                "currency": "LED"
+            },
+            {
+                "amount": "280000.0000",
+                "contract": "onessusblock",
+                "decimals": "4",
+                "currency": "VOID"
+            },
+            {
+                "decimals": "4",
+                "contract": "oo1122334455",
+                "amount": "2000.0000",
+                "currency": "IPOS"
+            },
+            {
+                "currency": "BRM",
+                "amount": "479.605",
+                "decimals": "3",
+                "contract": "openbrmeos11"
+            },
+            {
+                "currency": "PIZZA",
+                "amount": "47.4718",
+                "contract": "pizzatotoken",
+                "decimals": "4"
+            },
+            {
+                "currency": "PLAY",
+                "amount": "100.0000",
+                "contract": "play.pomelo",
+                "decimals": "4"
+            },
+            {
+                "amount": "11438.5283",
+                "decimals": "4",
+                "contract": "playeronetkn",
+                "currency": "PLO"
+            },
+            {
+                "decimals": "4",
+                "contract": "pumlhealthio",
+                "amount": "12.7777",
+                "currency": "PUML"
+            },
+            {
+                "currency": "RWC",
+                "amount": "5.0000",
+                "decimals": "4",
+                "contract": "realworldcpn"
+            },
+            {
+                "amount": "1.0000",
+                "contract": "stipsoculus1",
+                "decimals": "4",
+                "currency": "STIPS"
+            },
+            {
+                "currency": "TOOK",
+                "amount": "47988.8846",
+                "decimals": "4",
+                "contract": "taketooktook"
+            },
+            {
+                "amount": "0.0000",
+                "decimals": "4",
+                "contract": "tethertether",
+                "currency": "USDT"
+            },
+            {
+                "currency": "EFOR",
+                "contract": "theforcegrou",
+                "decimals": "4",
+                "amount": "100.0000"
+            },
+            {
+                "decimals": "4",
+                "contract": "thepeostoken",
+                "amount": "14380.2999",
+                "currency": "PEOS"
+            },
+            {
+                "currency": "ZEOS",
+                "amount": "68450.2273",
+                "contract": "thezeostoken",
+                "decimals": "4"
+            },
+            {
+                "amount": "1",
+                "contract": "token.rms",
+                "decimals": "0",
+                "currency": "V"
+            },
+            {
+                "currency": "LIBRA",
+                "contract": "usdcoinchain",
+                "decimals": "4",
+                "amount": "16100.0000"
+            },
+            {
+                "currency": "VIG",
+                "amount": "375000.0000",
+                "contract": "vig111111111",
+                "decimals": "4"
+            },
+            {
+                "decimals": "0",
+                "contract": "visionfintec",
+                "amount": "1",
+                "currency": "RED"
+            },
+            {
+                "amount": "914665.7776",
+                "decimals": "4",
+                "contract": "zerotoone.en",
+                "currency": "CDOG"
+            }
+        ],
+        "linkauth": [
+            {
+                "type": "claimrewards",
+                "requirement": "claim",
+                "code": "core.vaulta"
+            },
+            {
+                "code": "core.vaulta",
+                "type": "transfer",
+                "requirement": "transfer"
+            },
+            {
+                "code": "decentiumorg",
+                "requirement": "decentium",
+                "type": ""
+            },
+            {
+                "requirement": "oracle",
+                "type": "write",
+                "code": "delphioracle"
+            },
+            {
+                "type": "claimrewards",
+                "requirement": "claim",
+                "code": "eosio"
+            },
+            {
+                "code": "eosio",
+                "requirement": "killswitch",
+                "type": "unregprod"
+            },
+            {
+                "requirement": "vote",
+                "type": "voteproducer",
+                "code": "eosio"
+            },
+            {
+                "type": "claimrewards",
+                "requirement": "claim",
+                "code": "eosio.bpay"
+            },
+            {
+                "requirement": "voting",
+                "type": "unvote",
+                "code": "eosio.forum"
+            },
+            {
+                "type": "vote",
+                "requirement": "voting",
+                "code": "eosio.forum"
+            },
+            {
+                "code": "eosio.token",
+                "requirement": "transfer",
+                "type": "transfer"
+            },
+            {
+                "type": "set",
+                "requirement": "producerjson",
+                "code": "producerjson"
+            }
+        ],
+        "permissions": [
+            {
+                "auth": {
+                    "keys": [
+                        {
+                            "pubkey": "EOS6gqJ7sdPgjHLFLtks9cRPs5qYHa9U3CwK4P2JasTLWKQ9kXZK1",
+                            "public_key": "PUB_K1_6gqJ7sdPgjHLFLtks9cRPs5qYHa9U3CwK4P2JasTLWKQBdT2GF",
+                            "weight": 1
+                        }
+                    ],
+                    "accounts": []
+                },
+                "threshold": 1,
+                "perm": "active"
+            },
+            {
+                "auth": {
+                    "accounts": [],
+                    "keys": [
+                        {
+                            "public_key": "PUB_K1_6DLD9HxMcwn73U41jjdGsNe9vDFRKB26um6qTAqrtYcJFFzdpw",
+                            "pubkey": "EOS6DLD9HxMcwn73U41jjdGsNe9vDFRKB26um6qTAqrtYcJFtED4C",
+                            "weight": 1
+                        }
+                    ]
+                },
+                "threshold": 1,
+                "perm": "claim"
+            },
+            {
+                "perm": "decentium",
+                "threshold": 1,
+                "auth": {
+                    "keys": [
+                        {
+                            "public_key": "PUB_K1_7knG7M5TUEdRv1bkVjTPddVoDQnwS7oEZXAgFk3A4hhoXjv3GL",
+                            "pubkey": "EOS7knG7M5TUEdRv1bkVjTPddVoDQnwS7oEZXAgFk3A4hhocA3eJf",
+                            "weight": 1
+                        }
+                    ],
+                    "accounts": []
+                }
+            },
+            {
+                "perm": "killswitch",
+                "auth": {
+                    "accounts": [],
+                    "keys": [
+                        {
+                            "weight": 1,
+                            "pubkey": "EOS7CjC7GL71msPzAuAzd2WwiBEAzTcPL47ACrjSuiNmnnGGufYSn",
+                            "public_key": "PUB_K1_7CjC7GL71msPzAuAzd2WwiBEAzTcPL47ACrjSuiNmnnGHEHtup"
+                        }
+                    ]
+                },
+                "threshold": 1
+            },
+            {
+                "perm": "oracle",
+                "auth": {
+                    "keys": [
+                        {
+                            "weight": 1,
+                            "public_key": "PUB_K1_88VqmDmJJ9S23eNqdeWYf2zySxv3ckQrWBKy7EvVRCUuhEDJJt",
+                            "pubkey": "EOS88VqmDmJJ9S23eNqdeWYf2zySxv3ckQrWBKy7EvVRCUuhSU4f3"
+                        }
+                    ],
+                    "accounts": []
+                },
+                "threshold": 1
+            },
+            {
+                "auth": {
+                    "keys": [
+                        {
+                            "weight": 1,
+                            "pubkey": "EOS8QzGtCea2thiqcTVeXGdyRZpdKYptQznbcWSMj73FD5RgwKN82",
+                            "public_key": "PUB_K1_8QzGtCea2thiqcTVeXGdyRZpdKYptQznbcWSMj73FD5Rgra4mN"
+                        }
+                    ],
+                    "accounts": []
+                },
+                "threshold": 1,
+                "perm": "owner"
+            },
+            {
+                "auth": {
+                    "accounts": [],
+                    "keys": [
+                        {
+                            "weight": 1,
+                            "public_key": "PUB_K1_5JCEciUdfXnQmTyj85T98bXTAZZ1g7Nmajseu7ZWB8DrGVwUnM",
+                            "pubkey": "EOS5JCEciUdfXnQmTyj85T98bXTAZZ1g7Nmajseu7ZWB8DrDa6Etp"
+                        }
+                    ]
+                },
+                "threshold": 1,
+                "perm": "producerjson"
+            },
+            {
+                "perm": "transfer",
+                "auth": {
+                    "accounts": [],
+                    "keys": [
+                        {
+                            "weight": 1,
+                            "public_key": "PUB_K1_7qZ8nnmn6KBnjQL4oukyZFWCj8DmC9nJE2nkAYAZbwgKm7MD7V",
+                            "pubkey": "EOS7qZ8nnmn6KBnjQL4oukyZFWCj8DmC9nJE2nkAYAZbwgKhMu8cW"
+                        }
+                    ]
+                },
+                "threshold": 1
+            },
+            {
+                "threshold": 1,
+                "auth": {
+                    "keys": [
+                        {
+                            "weight": 1,
+                            "public_key": "PUB_K1_65NrHPVXaV4voxepQREmYCmnMJm4tAWdxPaK46CbUN1rrkfmPY",
+                            "pubkey": "EOS65NrHPVXaV4voxepQREmYCmnMJm4tAWdxPaK46CbUN1rrVmRzg"
+                        }
+                    ],
+                    "accounts": []
+                },
+                "perm": "vote"
+            },
+            {
+                "perm": "voting",
+                "auth": {
+                    "accounts": [],
+                    "keys": [
+                        {
+                            "public_key": "PUB_K1_7pn6P5FftyNAKRfx9VcUzBFMvC4UitNbnoKbfxNe8SShE8XTzQ",
+                            "pubkey": "EOS7pn6P5FftyNAKRfx9VcUzBFMvC4UitNbnoKbfxNe8SShELo2it",
+                            "weight": 1
+                        }
+                    ]
+                },
+                "threshold": 1
+            }
+        ],
+        "account_name": "teamgreymass",
+        "delegated_to": [
+            {
+                "net_weight": 1,
+                "account_name": "teamgreymass",
+                "cpu_weight": 0
+            }
+        ],
+        "rex": {
+            "fund": "0.0000 EOS",
+            "matured": "0.0000 EOS",
+            "savings": "0.0000 EOS",
+            "maturing": "0.0000 EOS"
+        },
+        "chain": {
+            "chainid": "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906",
+            "decimals": 4,
+            "production": 1,
+            "description": "EOS Mainnet",
+            "systoken": "EOS",
+            "network": "eos",
+            "rex_enabled": 1,
+            "block_time": "2026-03-24 19:56:46",
+            "sync": -1,
+            "block_num": 490174677
+        },
+        "resources": {
+            "net_weight": 2,
+            "ram_bytes": 818870,
+            "cpu_weight": 0
+        }
+    },
+    "text": "{\"delegated_from\":[{\"cpu_weight\":0,\"del_from\":\"eos42freedom\",\"net_weight\":1},{\"cpu_weight\":0,\"del_from\":\"teamgreymass\",\"net_weight\":1}],\"balances\":[{\"currency\":\"BKT\",\"amount\":\"45245.6267\",\"decimals\":\"4\",\"contract\":\"betkingtoken\"},{\"decimals\":\"4\",\"contract\":\"bgbgbgbgbgbg\",\"amount\":\"0.1000\",\"currency\":\"BG\"},{\"amount\":\"1000.0000\",\"contract\":\"bingobetoken\",\"decimals\":\"4\",\"currency\":\"BINGO\"},{\"currency\":\"BITI\",\"amount\":\"103.9999\",\"decimals\":\"4\",\"contract\":\"biteyebiteye\"},{\"currency\":\"BBT\",\"decimals\":\"4\",\"contract\":\"blockbasetkn\",\"amount\":\"0.0012\"},{\"currency\":\"ADE\",\"contract\":\"buildertoken\",\"decimals\":\"4\",\"amount\":\"32351.8580\"},{\"amount\":\"32358.858000\",\"decimals\":\"6\",\"contract\":\"cadeositoken\",\"currency\":\"ADE\"},{\"currency\":\"OBTC\",\"amount\":\"0.00000100\",\"contract\":\"core.ogx\",\"decimals\":\"8\"},{\"amount\":\"15004.7481\",\"contract\":\"core.vaulta\",\"decimals\":\"4\",\"currency\":\"A\"},{\"amount\":\"18.0000\",\"contract\":\"dhbonetokens\",\"decimals\":\"4\",\"currency\":\"DHB\"},{\"currency\":\"EAPP\",\"amount\":\"2.0000\",\"decimals\":\"4\",\"contract\":\"eappeappp.tp\"},{\"currency\":\"EMOON\",\"amount\":\"1000010000.00\",\"contract\":\"emoonnetwork\",\"decimals\":\"2\"},{\"currency\":\"BT\",\"amount\":\"0.0080\",\"contract\":\"eosbtextoken\",\"decimals\":\"4\"},{\"currency\":\"CCC\",\"amount\":\"202.0000\",\"contract\":\"eoscccdotcom\",\"decimals\":\"4\"},{\"currency\":\"EOS\",\"amount\":\"5292.4309\",\"decimals\":\"4\",\"contract\":\"eosio.token\"},{\"currency\":\"POW\",\"contract\":\"eosiopowcoin\",\"decimals\":\"8\",\"amount\":\"3.26194299\"},{\"currency\":\"ERCT\",\"decimals\":\"4\",\"contract\":\"eostory12345\",\"amount\":\"100.0000\"},{\"amount\":\"0.0001\",\"decimals\":\"4\",\"contract\":\"epraofficial\",\"currency\":\"EPRA\"},{\"currency\":\"EETH\",\"amount\":\"5000.0000\",\"decimals\":\"4\",\"contract\":\"ethsidechain\"},{\"amount\":\"0.001\",\"decimals\":\"3\",\"contract\":\"everipediaiq\",\"currency\":\"IQ\"},{\"currency\":\"LORD\",\"contract\":\"gamelordcoin\",\"decimals\":\"4\",\"amount\":\"1.0000\"},{\"amount\":\"0.1914\",\"decimals\":\"4\",\"contract\":\"hashbabycoin\",\"currency\":\"HBGO\"},{\"currency\":\"HVT\",\"amount\":\"19908.0137\",\"decimals\":\"4\",\"contract\":\"hirevibeshvt\"},{\"currency\":\"MVC\",\"amount\":\"0.0001\",\"decimals\":\"4\",\"contract\":\"mvcoin.x\"},{\"decimals\":\"8\",\"contract\":\"okkkkkkkkkkk\",\"amount\":\"2.00000000\",\"currency\":\"CZB\"},{\"contract\":\"okkkkkkkkkkk\",\"decimals\":\"6\",\"amount\":\"53.660000\",\"currency\":\"LED\"},{\"amount\":\"280000.0000\",\"contract\":\"onessusblock\",\"decimals\":\"4\",\"currency\":\"VOID\"},{\"decimals\":\"4\",\"contract\":\"oo1122334455\",\"amount\":\"2000.0000\",\"currency\":\"IPOS\"},{\"currency\":\"BRM\",\"amount\":\"479.605\",\"decimals\":\"3\",\"contract\":\"openbrmeos11\"},{\"currency\":\"PIZZA\",\"amount\":\"47.4718\",\"contract\":\"pizzatotoken\",\"decimals\":\"4\"},{\"currency\":\"PLAY\",\"amount\":\"100.0000\",\"contract\":\"play.pomelo\",\"decimals\":\"4\"},{\"amount\":\"11438.5283\",\"decimals\":\"4\",\"contract\":\"playeronetkn\",\"currency\":\"PLO\"},{\"decimals\":\"4\",\"contract\":\"pumlhealthio\",\"amount\":\"12.7777\",\"currency\":\"PUML\"},{\"currency\":\"RWC\",\"amount\":\"5.0000\",\"decimals\":\"4\",\"contract\":\"realworldcpn\"},{\"amount\":\"1.0000\",\"contract\":\"stipsoculus1\",\"decimals\":\"4\",\"currency\":\"STIPS\"},{\"currency\":\"TOOK\",\"amount\":\"47988.8846\",\"decimals\":\"4\",\"contract\":\"taketooktook\"},{\"amount\":\"0.0000\",\"decimals\":\"4\",\"contract\":\"tethertether\",\"currency\":\"USDT\"},{\"currency\":\"EFOR\",\"contract\":\"theforcegrou\",\"decimals\":\"4\",\"amount\":\"100.0000\"},{\"decimals\":\"4\",\"contract\":\"thepeostoken\",\"amount\":\"14380.2999\",\"currency\":\"PEOS\"},{\"currency\":\"ZEOS\",\"amount\":\"68450.2273\",\"contract\":\"thezeostoken\",\"decimals\":\"4\"},{\"amount\":\"1\",\"contract\":\"token.rms\",\"decimals\":\"0\",\"currency\":\"V\"},{\"currency\":\"LIBRA\",\"contract\":\"usdcoinchain\",\"decimals\":\"4\",\"amount\":\"16100.0000\"},{\"currency\":\"VIG\",\"amount\":\"375000.0000\",\"contract\":\"vig111111111\",\"decimals\":\"4\"},{\"decimals\":\"0\",\"contract\":\"visionfintec\",\"amount\":\"1\",\"currency\":\"RED\"},{\"amount\":\"914665.7776\",\"decimals\":\"4\",\"contract\":\"zerotoone.en\",\"currency\":\"CDOG\"}],\"linkauth\":[{\"type\":\"claimrewards\",\"requirement\":\"claim\",\"code\":\"core.vaulta\"},{\"code\":\"core.vaulta\",\"type\":\"transfer\",\"requirement\":\"transfer\"},{\"code\":\"decentiumorg\",\"requirement\":\"decentium\",\"type\":\"\"},{\"requirement\":\"oracle\",\"type\":\"write\",\"code\":\"delphioracle\"},{\"type\":\"claimrewards\",\"requirement\":\"claim\",\"code\":\"eosio\"},{\"code\":\"eosio\",\"requirement\":\"killswitch\",\"type\":\"unregprod\"},{\"requirement\":\"vote\",\"type\":\"voteproducer\",\"code\":\"eosio\"},{\"type\":\"claimrewards\",\"requirement\":\"claim\",\"code\":\"eosio.bpay\"},{\"requirement\":\"voting\",\"type\":\"unvote\",\"code\":\"eosio.forum\"},{\"type\":\"vote\",\"requirement\":\"voting\",\"code\":\"eosio.forum\"},{\"code\":\"eosio.token\",\"requirement\":\"transfer\",\"type\":\"transfer\"},{\"type\":\"set\",\"requirement\":\"producerjson\",\"code\":\"producerjson\"}],\"permissions\":[{\"auth\":{\"keys\":[{\"pubkey\":\"EOS6gqJ7sdPgjHLFLtks9cRPs5qYHa9U3CwK4P2JasTLWKQ9kXZK1\",\"public_key\":\"PUB_K1_6gqJ7sdPgjHLFLtks9cRPs5qYHa9U3CwK4P2JasTLWKQBdT2GF\",\"weight\":1}],\"accounts\":[]},\"threshold\":1,\"perm\":\"active\"},{\"auth\":{\"accounts\":[],\"keys\":[{\"public_key\":\"PUB_K1_6DLD9HxMcwn73U41jjdGsNe9vDFRKB26um6qTAqrtYcJFFzdpw\",\"pubkey\":\"EOS6DLD9HxMcwn73U41jjdGsNe9vDFRKB26um6qTAqrtYcJFtED4C\",\"weight\":1}]},\"threshold\":1,\"perm\":\"claim\"},{\"perm\":\"decentium\",\"threshold\":1,\"auth\":{\"keys\":[{\"public_key\":\"PUB_K1_7knG7M5TUEdRv1bkVjTPddVoDQnwS7oEZXAgFk3A4hhoXjv3GL\",\"pubkey\":\"EOS7knG7M5TUEdRv1bkVjTPddVoDQnwS7oEZXAgFk3A4hhocA3eJf\",\"weight\":1}],\"accounts\":[]}},{\"perm\":\"killswitch\",\"auth\":{\"accounts\":[],\"keys\":[{\"weight\":1,\"pubkey\":\"EOS7CjC7GL71msPzAuAzd2WwiBEAzTcPL47ACrjSuiNmnnGGufYSn\",\"public_key\":\"PUB_K1_7CjC7GL71msPzAuAzd2WwiBEAzTcPL47ACrjSuiNmnnGHEHtup\"}]},\"threshold\":1},{\"perm\":\"oracle\",\"auth\":{\"keys\":[{\"weight\":1,\"public_key\":\"PUB_K1_88VqmDmJJ9S23eNqdeWYf2zySxv3ckQrWBKy7EvVRCUuhEDJJt\",\"pubkey\":\"EOS88VqmDmJJ9S23eNqdeWYf2zySxv3ckQrWBKy7EvVRCUuhSU4f3\"}],\"accounts\":[]},\"threshold\":1},{\"auth\":{\"keys\":[{\"weight\":1,\"pubkey\":\"EOS8QzGtCea2thiqcTVeXGdyRZpdKYptQznbcWSMj73FD5RgwKN82\",\"public_key\":\"PUB_K1_8QzGtCea2thiqcTVeXGdyRZpdKYptQznbcWSMj73FD5Rgra4mN\"}],\"accounts\":[]},\"threshold\":1,\"perm\":\"owner\"},{\"auth\":{\"accounts\":[],\"keys\":[{\"weight\":1,\"public_key\":\"PUB_K1_5JCEciUdfXnQmTyj85T98bXTAZZ1g7Nmajseu7ZWB8DrGVwUnM\",\"pubkey\":\"EOS5JCEciUdfXnQmTyj85T98bXTAZZ1g7Nmajseu7ZWB8DrDa6Etp\"}]},\"threshold\":1,\"perm\":\"producerjson\"},{\"perm\":\"transfer\",\"auth\":{\"accounts\":[],\"keys\":[{\"weight\":1,\"public_key\":\"PUB_K1_7qZ8nnmn6KBnjQL4oukyZFWCj8DmC9nJE2nkAYAZbwgKm7MD7V\",\"pubkey\":\"EOS7qZ8nnmn6KBnjQL4oukyZFWCj8DmC9nJE2nkAYAZbwgKhMu8cW\"}]},\"threshold\":1},{\"threshold\":1,\"auth\":{\"keys\":[{\"weight\":1,\"public_key\":\"PUB_K1_65NrHPVXaV4voxepQREmYCmnMJm4tAWdxPaK46CbUN1rrkfmPY\",\"pubkey\":\"EOS65NrHPVXaV4voxepQREmYCmnMJm4tAWdxPaK46CbUN1rrVmRzg\"}],\"accounts\":[]},\"perm\":\"vote\"},{\"perm\":\"voting\",\"auth\":{\"accounts\":[],\"keys\":[{\"public_key\":\"PUB_K1_7pn6P5FftyNAKRfx9VcUzBFMvC4UitNbnoKbfxNe8SShE8XTzQ\",\"pubkey\":\"EOS7pn6P5FftyNAKRfx9VcUzBFMvC4UitNbnoKbfxNe8SShELo2it\",\"weight\":1}]},\"threshold\":1}],\"account_name\":\"teamgreymass\",\"delegated_to\":[{\"net_weight\":1,\"account_name\":\"teamgreymass\",\"cpu_weight\":0}],\"rex\":{\"fund\":\"0.0000 EOS\",\"matured\":\"0.0000 EOS\",\"savings\":\"0.0000 EOS\",\"maturing\":\"0.0000 EOS\"},\"chain\":{\"chainid\":\"aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906\",\"decimals\":4,\"production\":1,\"description\":\"EOS Mainnet\",\"systoken\":\"EOS\",\"network\":\"eos\",\"rex_enabled\":1,\"block_time\":\"2026-03-24 19:56:46\",\"sync\":-1,\"block_num\":490174677},\"resources\":{\"net_weight\":2,\"ram_bytes\":818870,\"cpu_weight\":0}}"
+}

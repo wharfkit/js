@@ -1,0 +1,12 @@
+{
+    "request": {
+        "path": "https://eos.light-api.net/api/usercount/eos",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": 6404414,
+    "text": "6404414"
+}

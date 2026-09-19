@@ -21,6 +21,7 @@ const MEMBERS = {
     common: {lib: false},
     contract: {dataDir: 'data/requests'},
     hyperion: {testsDir: '.'},
+    'light-api': {testsDir: '.'},
     msigs: {testsDir: '.'},
     'protocol-esr': {browserFetch: true},
     'protocol-scatter': {

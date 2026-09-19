@@ -1,0 +1,12 @@
+{
+    "request": {
+        "path": "https://eos.light-api.net/api/tokenbalance/eos/teamgreymass/eosio.token/EOS",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": 5292.4309,
+    "text": "5292.4309"
+}

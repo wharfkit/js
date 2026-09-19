@@ -1,0 +1,32 @@
+{
+    "request": {
+        "path": "https://eos.light-api.net/api/rexbalance/eos/teamgreymass",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": {
+        "account_name": "teamgreymass",
+        "chain": {
+            "chainid": "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906",
+            "production": 1,
+            "decimals": 4,
+            "block_num": 490174681,
+            "description": "EOS Mainnet",
+            "network": "eos",
+            "systoken": "EOS",
+            "rex_enabled": 1,
+            "block_time": "2026-03-24 19:56:48",
+            "sync": 0
+        },
+        "rex": {
+            "maturing": "0.0000 EOS",
+            "matured": "0.0000 EOS",
+            "savings": "0.0000 EOS",
+            "fund": "0.0000 EOS"
+        }
+    },
+    "text": "{\"account_name\":\"teamgreymass\",\"chain\":{\"chainid\":\"aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906\",\"production\":1,\"decimals\":4,\"block_num\":490174681,\"description\":\"EOS Mainnet\",\"network\":\"eos\",\"systoken\":\"EOS\",\"rex_enabled\":1,\"block_time\":\"2026-03-24 19:56:48\",\"sync\":0},\"rex\":{\"maturing\":\"0.0000 EOS\",\"matured\":\"0.0000 EOS\",\"savings\":\"0.0000 EOS\",\"fund\":\"0.0000 EOS\"}}"
+}

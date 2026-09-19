@@ -1,0 +1,34 @@
+{
+    "name": "@wharfkit/light-api",
+    "description": "API Client to access Light API endpoints",
+    "version": "4.0.0-rc7",
+    "homepage": "https://wharfkit.com",
+    "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
+    "main": "lib/light-api.js",
+    "module": "lib/light-api.m.js",
+    "types": "lib/light-api.d.ts",
+    "browser": {
+        "buffer": false,
+        "crypto": false
+    },
+    "sideEffects": false,
+    "files": [
+        "lib/*",
+        "src/*"
+    ],
+    "scripts": {},
+    "dependencies": {
+        "@wharfkit/antelope": "workspace:*"
+    },
+    "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wharfkit/js.git",
+        "directory": "packages/light-api"
+    }
+}

@@ -222,6 +222,16 @@
         "@wharfkit/mock-data": "workspace:*",
       },
     },
+    "packages/light-api": {
+      "name": "@wharfkit/light-api",
+      "version": "4.0.0-rc7",
+      "dependencies": {
+        "@wharfkit/antelope": "workspace:*",
+      },
+      "devDependencies": {
+        "@wharfkit/mock-data": "workspace:*",
+      },
+    },
     "packages/mock-data": {
       "name": "@wharfkit/mock-data",
       "version": "4.0.0-rc7",
@@ -1435,6 +1445,8 @@
     "@wharfkit/contract": ["@wharfkit/contract@workspace:packages/contract"],
 
     "@wharfkit/hyperion": ["@wharfkit/hyperion@workspace:packages/hyperion"],
+
+    "@wharfkit/light-api": ["@wharfkit/light-api@workspace:packages/light-api"],
 
     "@wharfkit/mock-data": ["@wharfkit/mock-data@workspace:packages/mock-data"],
 

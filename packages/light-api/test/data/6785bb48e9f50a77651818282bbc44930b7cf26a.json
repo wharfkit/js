@@ -1,0 +1,33 @@
+{
+    "request": {
+        "path": "https://eos.light-api.net/api/codehash/0a16e1dac533c4558698c8754f41219839ba2a2b75e517e65ea2537f76681f49",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": {
+        "eos": {
+            "accounts": {
+                "eosio.token": {
+                    "account_name": "eosio.token",
+                    "code_hash": "0a16e1dac533c4558698c8754f41219839ba2a2b75e517e65ea2537f76681f49"
+                }
+            },
+            "chain": {
+                "chainid": "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906",
+                "production": 1,
+                "decimals": 4,
+                "block_num": 490174690,
+                "block_time": "2026-03-24 19:56:52",
+                "sync": 0,
+                "systoken": "EOS",
+                "description": "EOS Mainnet",
+                "rex_enabled": 1,
+                "network": "eos"
+            }
+        }
+    },
+    "text": "{\"eos\":{\"accounts\":{\"eosio.token\":{\"account_name\":\"eosio.token\",\"code_hash\":\"0a16e1dac533c4558698c8754f41219839ba2a2b75e517e65ea2537f76681f49\"}},\"chain\":{\"chainid\":\"aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906\",\"production\":1,\"decimals\":4,\"block_num\":490174690,\"block_time\":\"2026-03-24 19:56:52\",\"sync\":0,\"systoken\":\"EOS\",\"description\":\"EOS Mainnet\",\"rex_enabled\":1,\"network\":\"eos\"}}}"
+}

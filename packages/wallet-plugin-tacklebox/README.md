@@ -28,9 +28,12 @@ The flow mirrors Anchor's: requests open the wallet directly, with QR and copy-p
    before a signature is produced and returned via callback. **Open TackleBox** and
    **Sign manually instead** fallbacks cover a closed wallet or another device.
 
-While a TackleBox prompt is up, the Wharfkit modal wears the wallet's own dark theme —
-deep-void navy, cyan light lines, restrained glow — scoped so other wallets' prompts keep the
-stock look (and skipped entirely on non-web-renderer UIs).
+The plugin is renderer-agnostic: it speaks only the abstract `UserInterface` contract
+(prompts, translations, metadata), so it renders identically under
+[`@wharfkit/web-renderer`](https://github.com/wharfkit/web-renderer),
+[`@wharfkit/web-ui`](https://github.com/wharfkit/web-ui), or any custom session UI, and never
+touches the host page's styling — TackleBox's presence in the modal comes through its logo and
+prompt content, with theming left entirely to the integrating dapp.
 
 ## Installation
 

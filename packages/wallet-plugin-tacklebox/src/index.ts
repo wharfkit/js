@@ -34,7 +34,6 @@ import WebSocket from 'isomorphic-ws'
 
 import defaultTranslations from './translations'
 import {tackleboxLogo} from './logo'
-import {applyModalTheme} from './theme'
 
 /** Options for the TackleBox wallet plugin. */
 export interface WalletPluginTackleBoxOptions {
@@ -68,6 +67,9 @@ export const DEFAULT_BUOY_URL = 'https://cb.anchor.link'
  * callback and opens a sealed push channel. Transactions are then pushed
  * straight into the wallet, which raises its own window for review - every
  * request still passes TackleBox's whitelist guard and signing review.
+ *
+ * The plugin is renderer-agnostic: it speaks only the abstract UserInterface
+ * contract, so any session UI (web-renderer, web-ui, or custom) renders it.
  */
 export class WalletPluginTackleBox extends AbstractWalletPlugin {
     buoyUrl: string
@@ -125,119 +127,106 @@ export class WalletPluginTackleBox extends AbstractWalletPlugin {
         }
 
         const t = context.ui.getTranslate(this.id)
-        const revertTheme = applyModalTheme(context.ui)
 
-        try {
-            const {callback, request, sameDeviceRequest, requestKey, privateKey} =
-                await createIdentityRequest(context, this.buoyUrl)
+        const {callback, request, sameDeviceRequest, requestKey, privateKey} =
+            await createIdentityRequest(context, this.buoyUrl)
 
-            const encodedRequest = request.encode(true, true, 'esr:')
-            const launchUrl = tackleboxDeepLink(sameDeviceRequest)
+        const encodedRequest = request.encode(true, true, 'esr:')
+        const launchUrl = tackleboxDeepLink(sameDeviceRequest)
 
-            const prompt = (copied: boolean) => {
-                const elements: PromptElement[] = [
-                    {
-                        type: 'link',
+        const prompt = (copied: boolean) => {
+            const elements: PromptElement[] = [
+                {
+                    type: 'link',
+                    label: t('login.launch', {default: 'Launch TackleBox'}),
+                    data: {
+                        href: launchUrl,
                         label: t('login.launch', {default: 'Launch TackleBox'}),
-                        data: {
-                            href: launchUrl,
-                            label: t('login.launch', {default: 'Launch TackleBox'}),
-                            variant: 'primary',
-                        },
+                        variant: 'primary',
                     },
-                    {
-                        type: 'button',
+                },
+                {
+                    type: 'button',
+                    label: t('login.copy', {default: 'Copy login request'}),
+                    data: {
                         label: t('login.copy', {default: 'Copy login request'}),
-                        data: {
-                            label: t('login.copy', {default: 'Copy login request'}),
-                            onClick: () => {
-                                copyToClipboard(encodedRequest).then(
-                                    (ok) => ok && !copied && prompt(true)
-                                )
-                            },
+                        onClick: () => {
+                            copyToClipboard(encodedRequest).then(
+                                (ok) => ok && !copied && prompt(true)
+                            )
                         },
                     },
-                ]
+                },
+            ]
 
-                // The QR code only helps when this device is not the one
-                // running the wallet - hide it on known-mobile dapp devices.
-                if (!onMobileDevice()) {
-                    elements.unshift({
-                        type: 'qr',
-                        data: encodedRequest,
-                    })
-                }
-
-                const promptPromise = context.ui!.prompt({
-                    title: t('login.title', {default: 'Connect with TackleBox'}),
-                    body: copied
-                        ? t('login.copied', {
-                              default:
-                                  'Request copied. In TackleBox, open Contracts → ESR → CONNECT AS LOGIN and paste it to continue.',
-                          })
-                        : t('login.body', {
-                              default:
-                                  'TackleBox should open with this login request - approve the connection there. If nothing opens, launch it with the button, copy the request into TackleBox (Contracts → ESR → CONNECT AS LOGIN), or scan the QR code.',
-                          }),
-                    elements,
+            // The QR code only helps when this device is not the one
+            // running the wallet - hide it on known-mobile dapp devices.
+            if (!onMobileDevice()) {
+                elements.unshift({
+                    type: 'qr',
+                    data: encodedRequest,
                 })
-                // The modal closing is handled by the session kit; swallow the rejection.
-                promptPromise.catch(() => undefined)
             }
 
-            prompt(false)
+            const promptPromise = context.ui!.prompt({
+                title: t('login.title', {default: 'Connect with TackleBox'}),
+                body: copied
+                    ? t('login.copied', {
+                          default:
+                              'Request copied. In TackleBox, open Contracts → ESR → CONNECT AS LOGIN and paste it to continue.',
+                      })
+                    : t('login.body', {
+                          default:
+                              'TackleBox should open with this login request - approve the connection there. If nothing opens, launch it with the button, copy the request into TackleBox (Contracts → ESR → CONNECT AS LOGIN), or scan the QR code.',
+                      }),
+                elements,
+            })
+            // The modal closing is handled by the session kit; swallow the rejection.
+            promptPromise.catch(() => undefined)
+        }
 
-            // Open the wallet directly with the request, anchor-style.
-            if (this.autoLaunch) {
-                openDeepLink(launchUrl)
-            }
+        prompt(false)
 
-            const callbackResponse: CallbackPayload = await waitForCallback(
-                callback,
-                this.buoyWs,
-                t
+        // Open the wallet directly with the request, anchor-style.
+        if (this.autoLaunch) {
+            openDeepLink(launchUrl)
+        }
+
+        const callbackResponse: CallbackPayload = await waitForCallback(callback, this.buoyWs, t)
+
+        verifyLoginCallbackResponse(callbackResponse, context)
+
+        if (!callbackResponse.cid || !callbackResponse.sa || !callbackResponse.sp) {
+            throw new Error(
+                t('error.invalid_response', {
+                    default:
+                        'Invalid response from TackleBox, it must contain the cid, sa and sp fields.',
+                })
             )
+        }
 
-            verifyLoginCallbackResponse(callbackResponse, context)
+        // TackleBox always opens a push channel on login; store it so
+        // transact requests can be pushed straight into the wallet.
+        if (callbackResponse.link_ch && callbackResponse.link_key && callbackResponse.link_name) {
+            this.data.requestKey = requestKey
+            this.data.privateKey = privateKey
+            this.data.signerKey = PublicKey.from(callbackResponse.link_key)
+            this.data.channelUrl = callbackResponse.link_ch
+            this.data.channelName = callbackResponse.link_name
+        }
 
-            if (!callbackResponse.cid || !callbackResponse.sa || !callbackResponse.sp) {
-                throw new Error(
-                    t('error.invalid_response', {
-                        default:
-                            'Invalid response from TackleBox, it must contain the cid, sa and sp fields.',
-                    })
-                )
-            }
+        const resolvedResponse = await ResolvedSigningRequest.fromPayload(
+            callbackResponse,
+            context.esrOptions
+        )
 
-            // TackleBox always opens a push channel on login; store it so
-            // transact requests can be pushed straight into the wallet.
-            if (
-                callbackResponse.link_ch &&
-                callbackResponse.link_key &&
-                callbackResponse.link_name
-            ) {
-                this.data.requestKey = requestKey
-                this.data.privateKey = privateKey
-                this.data.signerKey = PublicKey.from(callbackResponse.link_key)
-                this.data.channelUrl = callbackResponse.link_ch
-                this.data.channelName = callbackResponse.link_name
-            }
-
-            const resolvedResponse = await ResolvedSigningRequest.fromPayload(
-                callbackResponse,
-                context.esrOptions
-            )
-
-            return {
-                chain: Checksum256.from(callbackResponse.cid),
-                permissionLevel: PermissionLevel.from({
-                    actor: callbackResponse.sa,
-                    permission: callbackResponse.sp,
-                }),
-                identityProof: resolvedResponse.getIdentityProof(callbackResponse.sig),
-            }
-        } finally {
-            revertTheme()
+        return {
+            chain: Checksum256.from(callbackResponse.cid),
+            permissionLevel: PermissionLevel.from({
+                actor: callbackResponse.sa,
+                permission: callbackResponse.sp,
+            }),
+            identityProof: resolvedResponse.getIdentityProof(callbackResponse.sig),
         }
     }
 
@@ -257,7 +246,6 @@ export class WalletPluginTackleBox extends AbstractWalletPlugin {
         }
 
         const t = context.ui.getTranslate(this.id)
-        const revertTheme = applyModalTheme(context.ui)
 
         const expiration = resolved.transaction.expiration.toDate()
         const expiresIn = Math.max(0, expiration.getTime() - Date.now())
@@ -339,89 +327,83 @@ export class WalletPluginTackleBox extends AbstractWalletPlugin {
             )
         }
 
-        try {
-            if (this.data.channelUrl) {
-                onPromptSettled(
-                    context.ui.prompt({
-                        title: t('transact.title', {default: 'Sign with TackleBox'}),
-                        body: t('transact.body', {
-                            channelName: this.data.channelName,
-                            default: `Review and approve this transaction in TackleBox ("${this.data.channelName}").`,
-                        }),
-                        elements: [
-                            countdown,
-                            launchElement,
-                            {
-                                type: 'button',
-                                label: t('transact.manual', {default: 'Sign manually instead'}),
-                                data: {
-                                    label: t('transact.manual', {
-                                        default: 'Sign manually instead',
-                                    }),
-                                    onClick: () => promptManual(false),
-                                },
+        if (this.data.channelUrl) {
+            onPromptSettled(
+                context.ui.prompt({
+                    title: t('transact.title', {default: 'Sign with TackleBox'}),
+                    body: t('transact.body', {
+                        channelName: this.data.channelName,
+                        default: `Review and approve this transaction in TackleBox ("${this.data.channelName}").`,
+                    }),
+                    elements: [
+                        countdown,
+                        launchElement,
+                        {
+                            type: 'button',
+                            label: t('transact.manual', {default: 'Sign manually instead'}),
+                            data: {
+                                label: t('transact.manual', {
+                                    default: 'Sign manually instead',
+                                }),
+                                onClick: () => promptManual(false),
                             },
-                        ],
-                    })
-                )
-            } else {
-                promptManual(false)
-                // No push channel: open the wallet directly with the request.
-                if (this.autoLaunch) {
-                    openDeepLink(launchUrl)
-                }
-            }
-
-            // Timeouts above 2^31-1ms fire immediately; clamp far-future expiries.
-            const timer = setTimeout(() => {
-                prompts.forEach((p) =>
-                    p.cancel(
-                        t('error.expired', {default: 'The request expired, please try again.'})
-                    )
-                )
-            }, Math.min(expiresIn, 0x7fffffff))
-
-            const callbackPromise = waitForCallback(callback, this.buoyWs, t)
-
-            if (this.data.channelUrl) {
-                // Seal the request to the wallet's session key and push it
-                // into TackleBox over its buoy channel; the wallet raises its
-                // own window when the request arrives.
-                const service = new URL(this.data.channelUrl).origin
-                const channel = new URL(this.data.channelUrl).pathname.substring(1)
-                const sealedMessage = await sealMessage(
-                    encodedRequest,
-                    PrivateKey.from(this.data.privateKey),
-                    PublicKey.from(this.data.signerKey)
-                )
-                send(Serializer.encode({object: sealedMessage}).array, {service, channel})
-            }
-
-            const callbackResponse = await Promise.race([callbackPromise, promptSettled]).finally(
-                () => {
-                    clearTimeout(timer)
-                    prompts.forEach((p) => p.cancel())
-                }
+                        },
+                    ],
+                })
             )
-
-            if (
-                isCallback(callbackResponse) &&
-                extractSignaturesFromCallback(callbackResponse).length
-            ) {
-                const resolvedRequest = await ResolvedSigningRequest.fromPayload(
-                    callbackResponse,
-                    context.esrOptions
-                )
-                return {
-                    signatures: extractSignaturesFromCallback(callbackResponse),
-                    resolved: resolvedRequest,
-                }
+        } else {
+            promptManual(false)
+            // No push channel: open the wallet directly with the request.
+            if (this.autoLaunch) {
+                openDeepLink(launchUrl)
             }
-
-            throw new Error(t('error.not_completed', {default: 'The request was not completed.'}))
-        } finally {
-            revertTheme()
         }
+
+        // Timeouts above 2^31-1ms fire immediately; clamp far-future expiries.
+        const timer = setTimeout(() => {
+            prompts.forEach((p) =>
+                p.cancel(t('error.expired', {default: 'The request expired, please try again.'}))
+            )
+        }, Math.min(expiresIn, 0x7fffffff))
+
+        const callbackPromise = waitForCallback(callback, this.buoyWs, t)
+
+        if (this.data.channelUrl) {
+            // Seal the request to the wallet's session key and push it
+            // into TackleBox over its buoy channel; the wallet raises its
+            // own window when the request arrives.
+            const service = new URL(this.data.channelUrl).origin
+            const channel = new URL(this.data.channelUrl).pathname.substring(1)
+            const sealedMessage = await sealMessage(
+                encodedRequest,
+                PrivateKey.from(this.data.privateKey),
+                PublicKey.from(this.data.signerKey)
+            )
+            send(Serializer.encode({object: sealedMessage}).array, {service, channel})
+        }
+
+        const callbackResponse = await Promise.race([callbackPromise, promptSettled]).finally(
+            () => {
+                clearTimeout(timer)
+                prompts.forEach((p) => p.cancel())
+            }
+        )
+
+        if (
+            isCallback(callbackResponse) &&
+            extractSignaturesFromCallback(callbackResponse).length
+        ) {
+            const resolvedRequest = await ResolvedSigningRequest.fromPayload(
+                callbackResponse,
+                context.esrOptions
+            )
+            return {
+                signatures: extractSignaturesFromCallback(callbackResponse),
+                resolved: resolvedRequest,
+            }
+        }
+
+        throw new Error(t('error.not_completed', {default: 'The request was not completed.'}))
     }
 }
 
@@ -488,5 +470,3 @@ export async function copyToClipboard(text: string): Promise<boolean> {
     }
     return false
 }
-
-export {applyModalTheme, tackleboxModalStyles} from './theme'

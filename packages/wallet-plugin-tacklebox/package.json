@@ -1,7 +1,7 @@
 {
     "name": "wallet-plugin-tacklebox",
     "description": "A TackleBox wallet plugin for use with @wharfkit/session.",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "homepage": "https://github.com/doyen-games/wallet-plugin-tacklebox",
     "license": "BSD-3-Clause",
     "author": "Doyen Games",

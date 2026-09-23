@@ -1,4 +1,4 @@
-<img src="assets/tacklebox.svg" alt="TackleBox" width="112" align="right">
+<img src="https://raw.githubusercontent.com/wharfkit/js/master/packages/wallet-plugin-tacklebox/assets/tacklebox.svg" alt="TackleBox" width="112" align="right">
 
 # @wharfkit/wallet-plugin-tacklebox
 

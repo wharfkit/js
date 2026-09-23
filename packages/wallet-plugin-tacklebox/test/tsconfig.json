@@ -1,0 +1,13 @@
+{
+    "extends": ["../tsconfig.json", "../../../tsconfig.test.json"],
+    "compilerOptions": {
+        "baseUrl": "..",
+        "paths": {
+            "$lib": ["src"],
+            "$lib/*": ["src/*"],
+            "$test": ["test"],
+            "$test/*": ["test/*"]
+        }
+    },
+    "include": ["*.ts", "**/*.ts", "../src/**/*.ts"]
+}

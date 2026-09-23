@@ -639,6 +639,21 @@
         "@wharfkit/session": "workspace:*",
       },
     },
+    "packages/wallet-plugin-tacklebox": {
+      "name": "@wharfkit/wallet-plugin-tacklebox",
+      "version": "4.0.0-rc7",
+      "dependencies": {
+        "@greymass/buoy": "catalog:",
+        "@wharfkit/protocol-esr": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "isomorphic-ws": "catalog:",
+      },
+      "devDependencies": {
+        "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/mock-data": "workspace:*",
+        "pako": "catalog:",
+      },
+    },
     "packages/wallet-plugin-tokenpocket": {
       "name": "@wharfkit/wallet-plugin-tokenpocket",
       "version": "4.0.0-rc7",
@@ -1507,6 +1522,8 @@
     "@wharfkit/wallet-plugin-privatekey": ["@wharfkit/wallet-plugin-privatekey@workspace:packages/wallet-plugin-privatekey"],
 
     "@wharfkit/wallet-plugin-scatter": ["@wharfkit/wallet-plugin-scatter@workspace:packages/wallet-plugin-scatter"],
+
+    "@wharfkit/wallet-plugin-tacklebox": ["@wharfkit/wallet-plugin-tacklebox@workspace:packages/wallet-plugin-tacklebox"],
 
     "@wharfkit/wallet-plugin-tokenpocket": ["@wharfkit/wallet-plugin-tokenpocket@workspace:packages/wallet-plugin-tokenpocket"],
 

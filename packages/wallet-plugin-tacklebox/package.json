@@ -1,0 +1,35 @@
+{
+    "name": "@wharfkit/wallet-plugin-tacklebox",
+    "description": "A TackleBox plugin for use with @wharfkit/session.",
+    "version": "4.0.0-rc7",
+    "homepage": "https://wharfkit.com/plugins/wallet-plugin-tacklebox",
+    "license": "BSD-3-Clause",
+    "engines": {
+        "node": ">=20.19.0"
+    },
+    "main": "lib/wallet-plugin-tacklebox.js",
+    "module": "lib/wallet-plugin-tacklebox.m.js",
+    "types": "lib/wallet-plugin-tacklebox.d.ts",
+    "sideEffects": false,
+    "files": [
+        "lib/*",
+        "src/*"
+    ],
+    "scripts": {},
+    "dependencies": {
+        "@greymass/buoy": "catalog:",
+        "@wharfkit/protocol-esr": "workspace:*",
+        "@wharfkit/session": "workspace:*",
+        "isomorphic-ws": "catalog:"
+    },
+    "devDependencies": {
+        "@wharfkit/antelope": "workspace:*",
+        "@wharfkit/mock-data": "workspace:*",
+        "pako": "catalog:"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wharfkit/js.git",
+        "directory": "packages/wallet-plugin-tacklebox"
+    }
+}

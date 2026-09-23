@@ -1,0 +1,19 @@
+{
+    "name": "wallet-plugin-tacklebox-example",
+    "private": true,
+    "version": "0.1.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@wharfkit/session": "^1.7.0",
+        "@wharfkit/web-renderer": "^1.4.3",
+        "wallet-plugin-tacklebox": "file:../.."
+    },
+    "devDependencies": {
+        "vite": "^5.4.0"
+    }
+}

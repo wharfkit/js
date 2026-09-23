@@ -1,7 +1,7 @@
 {
     "name": "@wharfkit/wallet-plugin-gatewallet",
     "description": "A template to create wallet plugins for use with @wharfkit/session.",
-    "version": "4.0.0-rc7",
+    "version": "4.0.0",
     "homepage": "https://wharfkit.com/plugins/wallet-plugin-gatewallet",
     "license": "BSD-3-Clause",
     "engines": {

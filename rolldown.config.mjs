@@ -39,6 +39,7 @@ const MEMBERS = {
         },
     },
     'wallet-plugin-anchor': {stripInternal: true, replaceVersion: true},
+    'wallet-plugin-tacklebox': {stripInternal: true},
     'wallet-plugin-scatter': {browser: true, bundleDeps: true, dir: true},
     'wallet-plugin-tokenpocket': {browser: true, bundleDeps: true, dir: true},
     webauthn: {

@@ -35,4 +35,4 @@ Inside a member directory, `make` builds it, `make test` runs its tests, and `ma
 
 ## Documentation
 
-Consumer documentation is on [wharfkit.com](https://wharfkit.com). API documentation, coverage reports, and browser test suites for every member are published from `master` to [wharfkit.github.io/js](https://wharfkit.github.io/js/), one directory per package.
+Consumer documentation is on [wharfkit.com](https://wharfkit.com), including the [release notes](https://wharfkit.com/docs/releases) and [UPGRADING.md](UPGRADING.md) for moving a project to 4.0.0. API documentation, coverage reports, and browser test suites for every member are published from `master` to [wharfkit.github.io/js](https://wharfkit.github.io/js/), one directory per package.

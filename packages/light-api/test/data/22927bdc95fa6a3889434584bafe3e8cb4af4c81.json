@@ -1,0 +1,298 @@
+{
+    "request": {
+        "path": "https://eos.light-api.net/api/balances/eos/teamgreymass",
+        "params": {
+            "method": "GET",
+            "headers": {}
+        }
+    },
+    "status": 200,
+    "json": {
+        "balances": [
+            {
+                "amount": "45245.6267",
+                "contract": "betkingtoken",
+                "decimals": "4",
+                "currency": "BKT"
+            },
+            {
+                "contract": "bgbgbgbgbgbg",
+                "decimals": "4",
+                "amount": "0.1000",
+                "currency": "BG"
+            },
+            {
+                "currency": "BINGO",
+                "contract": "bingobetoken",
+                "decimals": "4",
+                "amount": "1000.0000"
+            },
+            {
+                "amount": "103.9999",
+                "contract": "biteyebiteye",
+                "decimals": "4",
+                "currency": "BITI"
+            },
+            {
+                "amount": "0.0012",
+                "decimals": "4",
+                "contract": "blockbasetkn",
+                "currency": "BBT"
+            },
+            {
+                "currency": "ADE",
+                "contract": "buildertoken",
+                "decimals": "4",
+                "amount": "32351.8580"
+            },
+            {
+                "currency": "ADE",
+                "contract": "cadeositoken",
+                "decimals": "6",
+                "amount": "32358.858000"
+            },
+            {
+                "contract": "core.ogx",
+                "decimals": "8",
+                "amount": "0.00000100",
+                "currency": "OBTC"
+            },
+            {
+                "currency": "A",
+                "amount": "15004.7481",
+                "decimals": "4",
+                "contract": "core.vaulta"
+            },
+            {
+                "amount": "18.0000",
+                "contract": "dhbonetokens",
+                "decimals": "4",
+                "currency": "DHB"
+            },
+            {
+                "currency": "EAPP",
+                "amount": "2.0000",
+                "contract": "eappeappp.tp",
+                "decimals": "4"
+            },
+            {
+                "currency": "EMOON",
+                "contract": "emoonnetwork",
+                "decimals": "2",
+                "amount": "1000010000.00"
+            },
+            {
+                "amount": "0.0080",
+                "decimals": "4",
+                "contract": "eosbtextoken",
+                "currency": "BT"
+            },
+            {
+                "currency": "CCC",
+                "amount": "202.0000",
+                "decimals": "4",
+                "contract": "eoscccdotcom"
+            },
+            {
+                "amount": "5292.4309",
+                "decimals": "4",
+                "contract": "eosio.token",
+                "currency": "EOS"
+            },
+            {
+                "currency": "POW",
+                "amount": "3.26194299",
+                "decimals": "8",
+                "contract": "eosiopowcoin"
+            },
+            {
+                "amount": "100.0000",
+                "decimals": "4",
+                "contract": "eostory12345",
+                "currency": "ERCT"
+            },
+            {
+                "currency": "EPRA",
+                "decimals": "4",
+                "contract": "epraofficial",
+                "amount": "0.0001"
+            },
+            {
+                "amount": "5000.0000",
+                "contract": "ethsidechain",
+                "decimals": "4",
+                "currency": "EETH"
+            },
+            {
+                "contract": "everipediaiq",
+                "decimals": "3",
+                "amount": "0.001",
+                "currency": "IQ"
+            },
+            {
+                "contract": "gamelordcoin",
+                "decimals": "4",
+                "amount": "1.0000",
+                "currency": "LORD"
+            },
+            {
+                "currency": "HBGO",
+                "amount": "0.1914",
+                "decimals": "4",
+                "contract": "hashbabycoin"
+            },
+            {
+                "amount": "19908.0137",
+                "contract": "hirevibeshvt",
+                "decimals": "4",
+                "currency": "HVT"
+            },
+            {
+                "currency": "MVC",
+                "amount": "0.0001",
+                "contract": "mvcoin.x",
+                "decimals": "4"
+            },
+            {
+                "currency": "CZB",
+                "amount": "2.00000000",
+                "contract": "okkkkkkkkkkk",
+                "decimals": "8"
+            },
+            {
+                "currency": "LED",
+                "contract": "okkkkkkkkkkk",
+                "decimals": "6",
+                "amount": "53.660000"
+            },
+            {
+                "amount": "280000.0000",
+                "contract": "onessusblock",
+                "decimals": "4",
+                "currency": "VOID"
+            },
+            {
+                "currency": "IPOS",
+                "decimals": "4",
+                "contract": "oo1122334455",
+                "amount": "2000.0000"
+            },
+            {
+                "amount": "479.605",
+                "contract": "openbrmeos11",
+                "decimals": "3",
+                "currency": "BRM"
+            },
+            {
+                "currency": "PIZZA",
+                "contract": "pizzatotoken",
+                "decimals": "4",
+                "amount": "47.4718"
+            },
+            {
+                "currency": "PLAY",
+                "contract": "play.pomelo",
+                "decimals": "4",
+                "amount": "100.0000"
+            },
+            {
+                "currency": "PLO",
+                "amount": "11438.5283",
+                "contract": "playeronetkn",
+                "decimals": "4"
+            },
+            {
+                "currency": "PUML",
+                "decimals": "4",
+                "contract": "pumlhealthio",
+                "amount": "12.7777"
+            },
+            {
+                "currency": "RWC",
+                "decimals": "4",
+                "contract": "realworldcpn",
+                "amount": "5.0000"
+            },
+            {
+                "amount": "1.0000",
+                "contract": "stipsoculus1",
+                "decimals": "4",
+                "currency": "STIPS"
+            },
+            {
+                "currency": "TOOK",
+                "amount": "47988.8846",
+                "contract": "taketooktook",
+                "decimals": "4"
+            },
+            {
+                "contract": "tethertether",
+                "decimals": "4",
+                "amount": "0.0000",
+                "currency": "USDT"
+            },
+            {
+                "amount": "100.0000",
+                "contract": "theforcegrou",
+                "decimals": "4",
+                "currency": "EFOR"
+            },
+            {
+                "currency": "PEOS",
+                "amount": "14380.2999",
+                "decimals": "4",
+                "contract": "thepeostoken"
+            },
+            {
+                "currency": "ZEOS",
+                "amount": "68450.2273",
+                "decimals": "4",
+                "contract": "thezeostoken"
+            },
+            {
+                "contract": "token.rms",
+                "decimals": "0",
+                "amount": "1",
+                "currency": "V"
+            },
+            {
+                "currency": "LIBRA",
+                "amount": "16100.0000",
+                "decimals": "4",
+                "contract": "usdcoinchain"
+            },
+            {
+                "contract": "vig111111111",
+                "decimals": "4",
+                "amount": "375000.0000",
+                "currency": "VIG"
+            },
+            {
+                "currency": "RED",
+                "amount": "1",
+                "decimals": "0",
+                "contract": "visionfintec"
+            },
+            {
+                "currency": "CDOG",
+                "amount": "914665.7776",
+                "contract": "zerotoone.en",
+                "decimals": "4"
+            }
+        ],
+        "chain": {
+            "chainid": "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906",
+            "decimals": 4,
+            "production": 1,
+            "sync": 0,
+            "block_time": "2026-03-24 19:56:48",
+            "description": "EOS Mainnet",
+            "network": "eos",
+            "systoken": "EOS",
+            "rex_enabled": 1,
+            "block_num": 490174681
+        },
+        "account_name": "teamgreymass"
+    },
+    "text": "{\"balances\":[{\"amount\":\"45245.6267\",\"contract\":\"betkingtoken\",\"decimals\":\"4\",\"currency\":\"BKT\"},{\"contract\":\"bgbgbgbgbgbg\",\"decimals\":\"4\",\"amount\":\"0.1000\",\"currency\":\"BG\"},{\"currency\":\"BINGO\",\"contract\":\"bingobetoken\",\"decimals\":\"4\",\"amount\":\"1000.0000\"},{\"amount\":\"103.9999\",\"contract\":\"biteyebiteye\",\"decimals\":\"4\",\"currency\":\"BITI\"},{\"amount\":\"0.0012\",\"decimals\":\"4\",\"contract\":\"blockbasetkn\",\"currency\":\"BBT\"},{\"currency\":\"ADE\",\"contract\":\"buildertoken\",\"decimals\":\"4\",\"amount\":\"32351.8580\"},{\"currency\":\"ADE\",\"contract\":\"cadeositoken\",\"decimals\":\"6\",\"amount\":\"32358.858000\"},{\"contract\":\"core.ogx\",\"decimals\":\"8\",\"amount\":\"0.00000100\",\"currency\":\"OBTC\"},{\"currency\":\"A\",\"amount\":\"15004.7481\",\"decimals\":\"4\",\"contract\":\"core.vaulta\"},{\"amount\":\"18.0000\",\"contract\":\"dhbonetokens\",\"decimals\":\"4\",\"currency\":\"DHB\"},{\"currency\":\"EAPP\",\"amount\":\"2.0000\",\"contract\":\"eappeappp.tp\",\"decimals\":\"4\"},{\"currency\":\"EMOON\",\"contract\":\"emoonnetwork\",\"decimals\":\"2\",\"amount\":\"1000010000.00\"},{\"amount\":\"0.0080\",\"decimals\":\"4\",\"contract\":\"eosbtextoken\",\"currency\":\"BT\"},{\"currency\":\"CCC\",\"amount\":\"202.0000\",\"decimals\":\"4\",\"contract\":\"eoscccdotcom\"},{\"amount\":\"5292.4309\",\"decimals\":\"4\",\"contract\":\"eosio.token\",\"currency\":\"EOS\"},{\"currency\":\"POW\",\"amount\":\"3.26194299\",\"decimals\":\"8\",\"contract\":\"eosiopowcoin\"},{\"amount\":\"100.0000\",\"decimals\":\"4\",\"contract\":\"eostory12345\",\"currency\":\"ERCT\"},{\"currency\":\"EPRA\",\"decimals\":\"4\",\"contract\":\"epraofficial\",\"amount\":\"0.0001\"},{\"amount\":\"5000.0000\",\"contract\":\"ethsidechain\",\"decimals\":\"4\",\"currency\":\"EETH\"},{\"contract\":\"everipediaiq\",\"decimals\":\"3\",\"amount\":\"0.001\",\"currency\":\"IQ\"},{\"contract\":\"gamelordcoin\",\"decimals\":\"4\",\"amount\":\"1.0000\",\"currency\":\"LORD\"},{\"currency\":\"HBGO\",\"amount\":\"0.1914\",\"decimals\":\"4\",\"contract\":\"hashbabycoin\"},{\"amount\":\"19908.0137\",\"contract\":\"hirevibeshvt\",\"decimals\":\"4\",\"currency\":\"HVT\"},{\"currency\":\"MVC\",\"amount\":\"0.0001\",\"contract\":\"mvcoin.x\",\"decimals\":\"4\"},{\"currency\":\"CZB\",\"amount\":\"2.00000000\",\"contract\":\"okkkkkkkkkkk\",\"decimals\":\"8\"},{\"currency\":\"LED\",\"contract\":\"okkkkkkkkkkk\",\"decimals\":\"6\",\"amount\":\"53.660000\"},{\"amount\":\"280000.0000\",\"contract\":\"onessusblock\",\"decimals\":\"4\",\"currency\":\"VOID\"},{\"currency\":\"IPOS\",\"decimals\":\"4\",\"contract\":\"oo1122334455\",\"amount\":\"2000.0000\"},{\"amount\":\"479.605\",\"contract\":\"openbrmeos11\",\"decimals\":\"3\",\"currency\":\"BRM\"},{\"currency\":\"PIZZA\",\"contract\":\"pizzatotoken\",\"decimals\":\"4\",\"amount\":\"47.4718\"},{\"currency\":\"PLAY\",\"contract\":\"play.pomelo\",\"decimals\":\"4\",\"amount\":\"100.0000\"},{\"currency\":\"PLO\",\"amount\":\"11438.5283\",\"contract\":\"playeronetkn\",\"decimals\":\"4\"},{\"currency\":\"PUML\",\"decimals\":\"4\",\"contract\":\"pumlhealthio\",\"amount\":\"12.7777\"},{\"currency\":\"RWC\",\"decimals\":\"4\",\"contract\":\"realworldcpn\",\"amount\":\"5.0000\"},{\"amount\":\"1.0000\",\"contract\":\"stipsoculus1\",\"decimals\":\"4\",\"currency\":\"STIPS\"},{\"currency\":\"TOOK\",\"amount\":\"47988.8846\",\"contract\":\"taketooktook\",\"decimals\":\"4\"},{\"contract\":\"tethertether\",\"decimals\":\"4\",\"amount\":\"0.0000\",\"currency\":\"USDT\"},{\"amount\":\"100.0000\",\"contract\":\"theforcegrou\",\"decimals\":\"4\",\"currency\":\"EFOR\"},{\"currency\":\"PEOS\",\"amount\":\"14380.2999\",\"decimals\":\"4\",\"contract\":\"thepeostoken\"},{\"currency\":\"ZEOS\",\"amount\":\"68450.2273\",\"decimals\":\"4\",\"contract\":\"thezeostoken\"},{\"contract\":\"token.rms\",\"decimals\":\"0\",\"amount\":\"1\",\"currency\":\"V\"},{\"currency\":\"LIBRA\",\"amount\":\"16100.0000\",\"decimals\":\"4\",\"contract\":\"usdcoinchain\"},{\"contract\":\"vig111111111\",\"decimals\":\"4\",\"amount\":\"375000.0000\",\"currency\":\"VIG\"},{\"currency\":\"RED\",\"amount\":\"1\",\"decimals\":\"0\",\"contract\":\"visionfintec\"},{\"currency\":\"CDOG\",\"amount\":\"914665.7776\",\"contract\":\"zerotoone.en\",\"decimals\":\"4\"}],\"chain\":{\"chainid\":\"aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906\",\"decimals\":4,\"production\":1,\"sync\":0,\"block_time\":\"2026-03-24 19:56:48\",\"description\":\"EOS Mainnet\",\"network\":\"eos\",\"systoken\":\"EOS\",\"rex_enabled\":1,\"block_num\":490174681},\"account_name\":\"teamgreymass\"}"
+}

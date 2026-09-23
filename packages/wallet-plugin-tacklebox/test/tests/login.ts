@@ -1,7 +1,6 @@
 import {assert} from 'chai'
 import sinon from 'sinon'
-import zlib from 'pako'
-import * as buoy from '@greymass/buoy'
+import * as zlib from 'pako'
 import {
     ChainDefinition,
     LoginContext,
@@ -47,6 +46,14 @@ function unstubBrowserWindow() {
     delete (global as any).navigator
 }
 
+/**
+ * The plugin takes its buoy callback wait as an internal seam, so a test
+ * substitutes the transport instead of stubbing a module export.
+ */
+function waitForCallbackStub(payload: any = makeLoginCallbackPayload()) {
+    return sinon.stub().resolves(payload)
+}
+
 suite('login', function () {
     teardown(function () {
         unstubBrowserWindow()
@@ -54,9 +61,7 @@ suite('login', function () {
     })
 
     test('completes a login answered over the buoy channel', async function () {
-        sinon.stub(buoy, 'receive').resolves(JSON.stringify(makeLoginCallbackPayload()))
-
-        const plugin = new WalletPluginTackleBox()
+        const plugin = new WalletPluginTackleBox({waitForCallback: waitForCallbackStub()})
         const ui = makeMockUI()
         const response = await plugin.login(makeLoginContext(ui))
 
@@ -66,9 +71,7 @@ suite('login', function () {
     })
 
     test('stores the wallet push channel for later signing', async function () {
-        sinon.stub(buoy, 'receive').resolves(JSON.stringify(makeLoginCallbackPayload()))
-
-        const plugin = new WalletPluginTackleBox()
+        const plugin = new WalletPluginTackleBox({waitForCallback: waitForCallbackStub()})
         await plugin.login(makeLoginContext(makeMockUI()))
 
         assert.equal(plugin.data.channelUrl, mockChannelUrl)
@@ -79,9 +82,7 @@ suite('login', function () {
     })
 
     test('session data survives a JSON round trip for restores', async function () {
-        sinon.stub(buoy, 'receive').resolves(JSON.stringify(makeLoginCallbackPayload()))
-
-        const plugin = new WalletPluginTackleBox()
+        const plugin = new WalletPluginTackleBox({waitForCallback: waitForCallbackStub()})
         await plugin.login(makeLoginContext(makeMockUI()))
 
         const restored = JSON.parse(JSON.stringify(plugin.data))
@@ -92,11 +93,9 @@ suite('login', function () {
     })
 
     test('still logs in when the wallet announces no channel', async function () {
-        sinon
-            .stub(buoy, 'receive')
-            .resolves(JSON.stringify(makeLoginCallbackPayload({channel: false})))
-
-        const plugin = new WalletPluginTackleBox()
+        const plugin = new WalletPluginTackleBox({
+            waitForCallback: waitForCallbackStub(makeLoginCallbackPayload({channel: false})),
+        })
         const response = await plugin.login(makeLoginContext(makeMockUI()))
 
         assert.equal(String(response.chain), mockChainId)
@@ -104,9 +103,7 @@ suite('login', function () {
     })
 
     test('prompts with a QR code, a launch link and a copy fallback', async function () {
-        sinon.stub(buoy, 'receive').resolves(JSON.stringify(makeLoginCallbackPayload()))
-
-        const plugin = new WalletPluginTackleBox()
+        const plugin = new WalletPluginTackleBox({waitForCallback: waitForCallbackStub()})
         const ui = makeMockUI()
         await plugin.login(makeLoginContext(ui))
 
@@ -131,10 +128,9 @@ suite('login', function () {
     })
 
     test('opens TackleBox directly when a window exists', async function () {
-        sinon.stub(buoy, 'receive').resolves(JSON.stringify(makeLoginCallbackPayload()))
         const fakeWindow = stubBrowserWindow()
 
-        const plugin = new WalletPluginTackleBox()
+        const plugin = new WalletPluginTackleBox({waitForCallback: waitForCallbackStub()})
         await plugin.login(makeLoginContext(makeMockUI()))
 
         assert.isTrue(fakeWindow.location.href.startsWith('tacklebox://request/'))
@@ -145,10 +141,12 @@ suite('login', function () {
     })
 
     test('honors the disableAutoLaunch option', async function () {
-        sinon.stub(buoy, 'receive').resolves(JSON.stringify(makeLoginCallbackPayload()))
         const fakeWindow = stubBrowserWindow()
 
-        const plugin = new WalletPluginTackleBox({disableAutoLaunch: true})
+        const plugin = new WalletPluginTackleBox({
+            disableAutoLaunch: true,
+            waitForCallback: waitForCallbackStub(),
+        })
         const ui = makeMockUI()
         await plugin.login(makeLoginContext(ui))
 
@@ -159,22 +157,27 @@ suite('login', function () {
     })
 
     test('listens for the callback on the configured buoy service', async function () {
-        const receiveStub = sinon
-            .stub(buoy, 'receive')
-            .resolves(JSON.stringify(makeLoginCallbackPayload()))
+        const waitStub = waitForCallbackStub()
 
-        const plugin = new WalletPluginTackleBox({buoyUrl: 'https://buoy.example.com'})
+        const plugin = new WalletPluginTackleBox({
+            buoyUrl: 'https://buoy.example.com',
+            waitForCallback: waitStub,
+        })
         await plugin.login(makeLoginContext(makeMockUI()))
 
-        const receiveOptions: any = receiveStub.firstCall.args[0]
+        const receiveOptions: any = waitStub.firstCall.args[0]
         assert.equal(receiveOptions.service, 'https://buoy.example.com')
         assert.isString(receiveOptions.channel)
     })
 
     test('rejects when the wallet declines the request', async function () {
-        sinon.stub(buoy, 'receive').resolves(JSON.stringify({}))
-
-        const plugin = new WalletPluginTackleBox()
+        // A decline reaches the plugin as a rejection out of waitForCallback,
+        // which is where protocol-esr turns an empty payload into this error.
+        const plugin = new WalletPluginTackleBox({
+            waitForCallback: sinon
+                .stub()
+                .rejects(new Error('The request was cancelled from Anchor.')),
+        })
         let error: Error | undefined
         try {
             await plugin.login(makeLoginContext(makeMockUI()))

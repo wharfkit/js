@@ -1,4 +1,6 @@
 node_modules/
 lib/
 build/
-dist/
+
+# Yarn files
+yarn-error.log

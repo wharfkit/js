@@ -52,6 +52,10 @@ export interface WalletPluginTackleBoxOptions {
      * launch link, QR code and copy fallbacks.
      */
     disableAutoLaunch?: boolean
+    /** @internal */
+    send?: typeof send
+    /** @internal */
+    waitForCallback?: typeof waitForCallback
 }
 
 /** Default buoy service, shared with the rest of the anchor-link ecosystem. */
@@ -75,6 +79,10 @@ export class WalletPluginTackleBox extends AbstractWalletPlugin {
     buoyUrl: string
     buoyWs: WebSocket | undefined
     autoLaunch: boolean
+    /** @internal */
+    send: typeof send
+    /** @internal */
+    waitForCallback: typeof waitForCallback
 
     /**
      * The unique identifier for the wallet plugin.
@@ -93,6 +101,8 @@ export class WalletPluginTackleBox extends AbstractWalletPlugin {
         this.buoyUrl = options?.buoyUrl || DEFAULT_BUOY_URL
         this.buoyWs = options?.buoyWs || WebSocket
         this.autoLaunch = !options?.disableAutoLaunch
+        this.send = options?.send || send
+        this.waitForCallback = options?.waitForCallback || waitForCallback
     }
 
     /**
@@ -192,7 +202,11 @@ export class WalletPluginTackleBox extends AbstractWalletPlugin {
             openDeepLink(launchUrl)
         }
 
-        const callbackResponse: CallbackPayload = await waitForCallback(callback, this.buoyWs, t)
+        const callbackResponse: CallbackPayload = await this.waitForCallback(
+            callback,
+            this.buoyWs,
+            t
+        )
 
         verifyLoginCallbackResponse(callbackResponse, context)
 
@@ -360,13 +374,18 @@ export class WalletPluginTackleBox extends AbstractWalletPlugin {
         }
 
         // Timeouts above 2^31-1ms fire immediately; clamp far-future expiries.
-        const timer = setTimeout(() => {
-            prompts.forEach((p) =>
-                p.cancel(t('error.expired', {default: 'The request expired, please try again.'}))
-            )
-        }, Math.min(expiresIn, 0x7fffffff))
+        const timer = setTimeout(
+            () => {
+                prompts.forEach((p) =>
+                    p.cancel(
+                        t('error.expired', {default: 'The request expired, please try again.'})
+                    )
+                )
+            },
+            Math.min(expiresIn, 0x7fffffff)
+        )
 
-        const callbackPromise = waitForCallback(callback, this.buoyWs, t)
+        const callbackPromise = this.waitForCallback(callback, this.buoyWs, t)
 
         if (this.data.channelUrl) {
             // Seal the request to the wallet's session key and push it
@@ -379,7 +398,7 @@ export class WalletPluginTackleBox extends AbstractWalletPlugin {
                 PrivateKey.from(this.data.privateKey),
                 PublicKey.from(this.data.signerKey)
             )
-            send(Serializer.encode({object: sealedMessage}).array, {service, channel})
+            this.send(Serializer.encode({object: sealedMessage}).array, {service, channel})
         }
 
         const callbackResponse = await Promise.race([callbackPromise, promptSettled]).finally(
@@ -426,7 +445,7 @@ function openDeepLink(url: string) {
         if (typeof window !== 'undefined' && window.location) {
             window.location.href = url
         }
-    } catch (error) {
+    } catch {
         // Leaving the prompt's launch link as the way in.
     }
 }
@@ -449,7 +468,7 @@ export async function copyToClipboard(text: string): Promise<boolean> {
             await navigator.clipboard.writeText(text)
             return true
         }
-    } catch (error) {
+    } catch {
         // Permission denied or insecure context; try the legacy path below.
     }
     try {
@@ -465,7 +484,7 @@ export async function copyToClipboard(text: string): Promise<boolean> {
             document.body.removeChild(element)
             return copied
         }
-    } catch (error) {
+    } catch {
         // Nothing else to fall back to.
     }
     return false

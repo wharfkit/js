@@ -1,4 +1,4 @@
-import zlib from 'pako'
+import * as zlib from 'pako'
 import {APIClient, FetchProvider} from '@wharfkit/antelope'
 import {
     ABICache,

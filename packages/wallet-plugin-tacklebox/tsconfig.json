@@ -1,18 +1,9 @@
 {
+    "extends": "../../tsconfig.base.json",
     "compilerOptions": {
-        "downlevelIteration": true,
-        "esModuleInterop": true,
-        "experimentalDecorators": true,
-        "importHelpers": true,
-        "isolatedModules": true,
-        "lib": ["dom", "es2020"],
-        "module": "es2020",
-        "moduleResolution": "node",
-        "noImplicitAny": false,
-        "resolveJsonModule": true,
-        "sourceMap": true,
-        "strict": true,
-        "target": "es2020"
+        "resolveJsonModule": true
     },
-    "include": ["src/**/*"]
+    "include": [
+        "src/**/*"
+    ]
 }

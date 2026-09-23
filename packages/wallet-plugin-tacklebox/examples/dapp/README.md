@@ -4,11 +4,12 @@ A minimal browser dapp for exercising the plugin against a real TackleBox build:
 login, a self-transfer, session restore and logout.
 
 ```bash
-# from the repository root: build the plugin first
-npm install
+# from the monorepo root: install and build the plugin first
+bun install
+make -C packages/wallet-plugin-tacklebox lib
 
 # then run the example
-cd examples/dapp
+cd packages/wallet-plugin-tacklebox/examples/dapp
 npm install
 npm run dev
 ```

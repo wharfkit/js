@@ -2,7 +2,6 @@ import fs from 'fs'
 import path from 'path'
 import {assert} from 'chai'
 import sinon from 'sinon'
-import * as buoy from '@greymass/buoy'
 import {PermissionLevel, SessionKit} from '@wharfkit/session'
 import {
     mockChainId,
@@ -78,16 +77,14 @@ suite('sign', function () {
     })
 
     test('pushes the sealed request over the wallet channel and returns its signature', async function () {
-        const receiveStub = sinon.stub(buoy, 'receive')
-        const sendStub = sinon.stub(buoy, 'send')
-        receiveStub.onFirstCall().resolves(JSON.stringify(makeLoginCallbackPayload()))
-        receiveStub
+        const waitStub = sinon.stub()
+        const sendStub = sinon.stub()
+        waitStub.onFirstCall().resolves(makeLoginCallbackPayload())
+        waitStub
             .onSecondCall()
-            .callsFake(async () =>
-                JSON.stringify(await makeTransactCallbackPayload(transferAction))
-            )
+            .callsFake(async () => await makeTransactCallbackPayload(transferAction))
 
-        const plugin = new WalletPluginTackleBox()
+        const plugin = new WalletPluginTackleBox({waitForCallback: waitStub, send: sendStub})
         const ui = makeMockUI()
         const kit = makeKit(plugin, ui)
 
@@ -114,16 +111,14 @@ suite('sign', function () {
     })
 
     test('shows the channel prompt with a countdown and a manual fallback', async function () {
-        const receiveStub = sinon.stub(buoy, 'receive')
-        sinon.stub(buoy, 'send')
-        receiveStub.onFirstCall().resolves(JSON.stringify(makeLoginCallbackPayload()))
-        receiveStub
+        const waitStub = sinon.stub()
+        const sendStub = sinon.stub()
+        waitStub.onFirstCall().resolves(makeLoginCallbackPayload())
+        waitStub
             .onSecondCall()
-            .callsFake(async () =>
-                JSON.stringify(await makeTransactCallbackPayload(transferAction))
-            )
+            .callsFake(async () => await makeTransactCallbackPayload(transferAction))
 
-        const plugin = new WalletPluginTackleBox()
+        const plugin = new WalletPluginTackleBox({waitForCallback: waitStub, send: sendStub})
         const ui = makeMockUI()
         const kit = makeKit(plugin, ui)
         const {session} = await kit.login({
@@ -144,18 +139,14 @@ suite('sign', function () {
     })
 
     test('falls back to the paste flow when no channel was announced', async function () {
-        const receiveStub = sinon.stub(buoy, 'receive')
-        const sendStub = sinon.stub(buoy, 'send')
-        receiveStub
-            .onFirstCall()
-            .resolves(JSON.stringify(makeLoginCallbackPayload({channel: false})))
-        receiveStub
+        const waitStub = sinon.stub()
+        const sendStub = sinon.stub()
+        waitStub.onFirstCall().resolves(makeLoginCallbackPayload({channel: false}))
+        waitStub
             .onSecondCall()
-            .callsFake(async () =>
-                JSON.stringify(await makeTransactCallbackPayload(transferAction))
-            )
+            .callsFake(async () => await makeTransactCallbackPayload(transferAction))
 
-        const plugin = new WalletPluginTackleBox()
+        const plugin = new WalletPluginTackleBox({waitForCallback: waitStub, send: sendStub})
         const ui = makeMockUI()
         const kit = makeKit(plugin, ui)
         const {session} = await kit.login({
@@ -175,22 +166,18 @@ suite('sign', function () {
     })
 
     test('opens TackleBox directly for channel-less signing when a window exists', async function () {
-        const receiveStub = sinon.stub(buoy, 'receive')
-        sinon.stub(buoy, 'send')
-        receiveStub
-            .onFirstCall()
-            .resolves(JSON.stringify(makeLoginCallbackPayload({channel: false})))
-        receiveStub
+        const waitStub = sinon.stub()
+        const sendStub = sinon.stub()
+        waitStub.onFirstCall().resolves(makeLoginCallbackPayload({channel: false}))
+        waitStub
             .onSecondCall()
-            .callsFake(async () =>
-                JSON.stringify(await makeTransactCallbackPayload(transferAction))
-            )
+            .callsFake(async () => await makeTransactCallbackPayload(transferAction))
 
         const fakeWindow = {location: {href: 'http://localhost/unittest'}}
         ;(global as any).window = fakeWindow
         ;(global as any).navigator = {userAgent: 'mocha-unittest'}
         try {
-            const plugin = new WalletPluginTackleBox()
+            const plugin = new WalletPluginTackleBox({waitForCallback: waitStub, send: sendStub})
             const kit = makeKit(plugin, makeMockUI())
             const {session} = await kit.login({
                 chain: mockChainId,
@@ -207,20 +194,18 @@ suite('sign', function () {
     })
 
     test('does not navigate when signing over the wallet channel', async function () {
-        const receiveStub = sinon.stub(buoy, 'receive')
-        sinon.stub(buoy, 'send')
-        receiveStub.onFirstCall().resolves(JSON.stringify(makeLoginCallbackPayload()))
-        receiveStub
+        const waitStub = sinon.stub()
+        const sendStub = sinon.stub()
+        waitStub.onFirstCall().resolves(makeLoginCallbackPayload())
+        waitStub
             .onSecondCall()
-            .callsFake(async () =>
-                JSON.stringify(await makeTransactCallbackPayload(transferAction))
-            )
+            .callsFake(async () => await makeTransactCallbackPayload(transferAction))
 
         const fakeWindow = {location: {href: 'http://localhost/unittest'}}
         ;(global as any).window = fakeWindow
         ;(global as any).navigator = {userAgent: 'mocha-unittest'}
         try {
-            const plugin = new WalletPluginTackleBox()
+            const plugin = new WalletPluginTackleBox({waitForCallback: waitStub, send: sendStub})
             const kit = makeKit(plugin, makeMockUI())
             const {session} = await kit.login({
                 chain: mockChainId,

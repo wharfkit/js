@@ -1,5 +1,5 @@
 import {assert} from 'chai'
-import zlib from 'pako'
+import * as zlib from 'pako'
 import {AbstractWalletPlugin, SigningRequest} from '@wharfkit/session'
 import {mockChainId} from '@wharfkit/mock-data'
 

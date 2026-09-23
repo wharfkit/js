@@ -1,6 +1,6 @@
 import {Asset, Session, SessionKit} from '@wharfkit/session'
 import {WebRenderer} from '@wharfkit/web-renderer'
-import {WalletPluginTackleBox} from 'wallet-plugin-tacklebox'
+import {WalletPluginTackleBox} from '@wharfkit/wallet-plugin-tacklebox'
 
 // Core token per supported chain, for the self-transfer demo action.
 const CORE_TOKEN: Record<string, {contract: string; symbol: string}> = {

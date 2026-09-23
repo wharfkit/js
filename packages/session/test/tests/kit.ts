@@ -442,6 +442,98 @@ suite('kit', function () {
             const sessionsAfterLogout = await sessionKit.getSessions()
             assert.lengthOf(sessionsAfterLogout, 0)
         })
+        test('logging out another session keeps the default restorable', async function () {
+            const storage = new MockStorage()
+            const kit = new SessionKit(mockSessionKitArgs, {...mockSessionKitOptions, storage})
+
+            const defaultSession = makeSession('aaa')
+            await kit.persistSession(defaultSession)
+            const other = makeSession('zzz')
+            await kit.persistSession(other, {setAsDefault: false})
+
+            await kit.logout(other)
+
+            const restored = await kit.restore()
+            assert.isDefined(restored)
+            assert.equal(String(restored?.actor), 'aaa')
+
+            const remaining = JSON.parse(String(await storage.read('sessions')))
+            assert.lengthOf(remaining, 1)
+            assert.equal(remaining[0].actor, 'aaa')
+            assert.isTrue(remaining[0].default)
+        })
+        test('logging out a session on another chain keeps the default restorable', async function () {
+            const storage = new MockStorage()
+            const kit = new SessionKit(mockSessionKitArgs, {...mockSessionKitOptions, storage})
+
+            const defaultSession = makeSession('aaa')
+            await kit.persistSession(defaultSession)
+            const elsewhere = makeSession('zzz', {chain: Chains.EOS})
+            await kit.persistSession(elsewhere, {setAsDefault: false})
+
+            await kit.logout(elsewhere)
+
+            const restored = await kit.restore()
+            assert.isDefined(restored)
+            assert.equal(String(restored?.actor), 'aaa')
+        })
+        test('logging out the default clears it without promoting another', async function () {
+            const storage = new MockStorage()
+            const kit = new SessionKit(mockSessionKitArgs, {...mockSessionKitOptions, storage})
+
+            const defaultSession = makeSession('aaa')
+            await kit.persistSession(defaultSession)
+            const other = makeSession('zzz')
+            await kit.persistSession(other, {setAsDefault: false})
+
+            await kit.logout(defaultSession)
+
+            assert.isNotOk(await storage.read('session'))
+
+            const remaining = JSON.parse(String(await storage.read('sessions')))
+            assert.lengthOf(remaining, 1)
+            assert.equal(remaining[0].actor, 'zzz')
+            assert.isFalse(remaining[0].default)
+        })
+        test('the default key and the list flags agree after every logout path', async function () {
+            const storage = new MockStorage()
+            const kit = new SessionKit(mockSessionKitArgs, {...mockSessionKitOptions, storage})
+
+            const assertAgreement = async function () {
+                const stored: any[] = JSON.parse(String((await storage.read('sessions')) || '[]'))
+                const key = await storage.read('session')
+                if (key) {
+                    const held = JSON.parse(String(key))
+                    const match = stored.find(
+                        (s) =>
+                            s.chain === held.chain &&
+                            s.actor === held.actor &&
+                            s.permission === held.permission
+                    )
+                    assert.isDefined(match, 'the default key names a session still in the list')
+                    assert.isTrue(match.default, 'the session the key names is flagged default')
+                }
+                for (const chain of new Set(stored.map((s) => s.chain))) {
+                    const defaults = stored.filter((s) => s.chain === chain && s.default)
+                    assert.isAtMost(defaults.length, 1, `one default at most on chain ${chain}`)
+                }
+            }
+
+            const first = makeSession('aaa')
+            await kit.persistSession(first)
+            const second = makeSession('zzz')
+            await kit.persistSession(second, {setAsDefault: false})
+            await assertAgreement()
+
+            await kit.logout(second)
+            await assertAgreement()
+
+            await kit.logout(first)
+            await assertAgreement()
+
+            await kit.logout()
+            await assertAgreement()
+        })
         test('retains sessions for unregistered wallet plugins', async function () {
             const storage = new MockStorage()
             const sessionKit = new SessionKit(mockSessionKitArgs, {

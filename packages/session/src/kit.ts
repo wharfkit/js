@@ -622,6 +622,13 @@ export class SessionKit {
         }
     }
 
+    /**
+     * Log a session out, or every session when none is named.
+     *
+     * Logging out a session affects only that session: other sessions keep their
+     * `default` flags, and the default `session` key is cleared only when it held
+     * the session being logged out. Nothing is promoted in its place.
+     */
     async logout(session?: SessionType, options: LogoutOptions = {}) {
         if (!this.storage) {
             throw new Error('An instance of Storage must be provided to utilize the logout method.')
@@ -634,12 +641,16 @@ export class SessionKit {
                 await walletPlugin.logout(this.logoutParams(session, walletPlugin))
             }
 
-            await this.storage.remove('session')
+            const equalityFn = options.equalityFn || this.equalityFn
+
+            const current = await this.storage.read('session')
+            if (current && equalityFn(JSON.parse(current), session)) {
+                await this.storage.remove('session')
+            }
 
             // Every session, not getSessions(): its plugin filter would drop unregistered ones here
             const sessions = await this.readAllSessions()
             if (sessions.length) {
-                const equalityFn = options.equalityFn || this.equalityFn
                 const other = sessions.filter((s) => !equalityFn(s, session))
                 await this.storage.write('sessions', JSON.stringify(other))
             }

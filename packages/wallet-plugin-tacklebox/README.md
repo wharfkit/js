@@ -1,6 +1,6 @@
 <img src="assets/tacklebox.svg" alt="TackleBox" width="112" align="right">
 
-# wallet-plugin-tacklebox
+# @wharfkit/wallet-plugin-tacklebox
 
 A `WalletPlugin` for use with [`@wharfkit/session`](https://github.com/wharfkit/session) that lets
 dapps login and sign transactions with [TackleBox](https://github.com/doyen-games/tacklebox),
@@ -38,13 +38,8 @@ prompt content, with theming left entirely to the integrating dapp.
 ## Installation
 
 ```bash
-npm install github:doyen-games/wallet-plugin-tacklebox
+npm install @wharfkit/wallet-plugin-tacklebox
 ```
-
-This repository is the upstream source for the plugin: the intent is for it to be adopted into
-the official [Wharfkit](https://github.com/wharfkit) plugin collection, which is where npm
-publication would happen (as `@wharfkit/wallet-plugin-tacklebox`). It deliberately follows the
-Wharfkit wallet-plugin template structure and tooling to keep that adoption a clean fork.
 
 ## Usage
 
@@ -53,7 +48,7 @@ Include the plugin in the `walletPlugins` list when initializing the `SessionKit
 ```ts
 import {SessionKit} from '@wharfkit/session'
 import {WebRenderer} from '@wharfkit/web-renderer'
-import {WalletPluginTackleBox} from 'wallet-plugin-tacklebox'
+import {WalletPluginTackleBox} from '@wharfkit/wallet-plugin-tacklebox'
 
 const sessionKit = new SessionKit({
     appName: 'myapp',
@@ -97,17 +92,14 @@ npm install && cd examples/dapp && npm install && npm run dev
 
 ## Developing
 
-You need [Node.js](https://nodejs.org/) 18 or newer.
+This package is a member of the [wharfkit/js](https://github.com/wharfkit/js) monorepo. Install
+the workspace once from the repository root with `bun install`, then work in this directory:
 
 ```bash
-npm install   # install dependencies (also builds lib/)
-npm run build # bundle to lib/ (cjs, esm and types)
-npm test      # run the mocha test suite
-npm run lint  # eslint + prettier checks
+make lib    # bundle to lib/ (cjs, esm and types)
+make test   # run the mocha test suite
+make check  # lint
 ```
-
-A `Makefile` with the same targets (`make lib`, `make test`, `make check`) is included for
-consistency with the rest of the Wharfkit ecosystem.
 
 Tests replay recorded API responses from `test/data`; delete a file there to re-record it
 against a live endpoint.

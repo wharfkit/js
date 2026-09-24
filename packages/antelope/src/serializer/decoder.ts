@@ -198,6 +198,9 @@ function decodeBinary(type: ABI.ResolvedType, decoder: ABIDecoder, ctx: Decoding
                 }
                 const rv: any = {}
                 for (const field of fields) {
+                    if (field.type.isExtension && !ctx.strictExtensions && !decoder.canRead()) {
+                        continue
+                    }
                     ctx.codingPath.push({field: field.name, type: field.type})
                     rv[field.name] = decodeBinary(field.type, decoder, ctx)
                     ctx.codingPath.pop()
@@ -283,8 +286,16 @@ function decodeObject(value: any, type: ABI.ResolvedType, ctx: DecodingContext):
             }
             const struct: any = {}
             for (const field of fields) {
+                const fieldValue = value[field.name]
+                if (
+                    field.type.isExtension &&
+                    !ctx.strictExtensions &&
+                    (fieldValue === undefined || (fieldValue === null && !field.type.isOptional))
+                ) {
+                    continue
+                }
                 ctx.codingPath.push({field: field.name, type: field.type})
-                struct[field.name] = decodeObject(value[field.name], field.type, ctx)
+                struct[field.name] = decodeObject(fieldValue, field.type, ctx)
                 ctx.codingPath.pop()
             }
             if (abiType) {

@@ -37,8 +37,12 @@ export class TableScopeCursor extends TableCursor {
             code: this.params.code,
             table: this.params.table,
             limit,
-            lower_bound: lower_bound ? String(lower_bound) : undefined,
-            upper_bound: this.params.upper_bound ? String(this.params.upper_bound) : undefined,
+            lower_bound:
+                lower_bound === undefined || lower_bound === null ? undefined : String(lower_bound),
+            upper_bound:
+                this.params.upper_bound === undefined || this.params.upper_bound === null
+                    ? undefined
+                    : String(this.params.upper_bound),
         }
 
         const result = await this.client!.v1.chain.get_table_by_scope(query)

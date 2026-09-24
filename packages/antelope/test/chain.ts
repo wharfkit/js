@@ -540,6 +540,11 @@ suite('chain', function () {
             true
         )
 
+        const nullKey = PublicKey.from('EOS1111111111111111111111111111111114T1Anm')
+        assert.equal(nullKey.data.length, 33)
+        assert.equal(nullKey.toLegacyString(), 'EOS1111111111111111111111111111111114T1Anm')
+        assert.equal(nullKey.toString(), 'PUB_K1_11111111111111111111111111111111149Mr2R')
+
         const sig = Signature.from(
             'SIG_K1_JyMXe1HU42qN2aM7GPUf5XrAcAjWPbRoojzfsKq9Rgto3dGsRcCZ4UaPsAcFPS2faGQMpRoSTRX8WQQUDEA5TfWHj8sr6q'
         )

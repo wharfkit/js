@@ -1,11 +1,6 @@
 import {assert} from 'chai'
 
-import SessionKit, {
-    BaseTransactPlugin,
-    ChainDefinition,
-    Session,
-    SessionOptions,
-} from '$lib'
+import SessionKit, {BaseTransactPlugin, ChainDefinition, Session, SessionOptions} from '$lib'
 import {
     ABI,
     ABIDef,

@@ -1,9 +1,5 @@
 import {assert} from 'chai'
-import {
-    Checksum256,
-    PermissionLevel,
-    TimePointSec,
-} from '@wharfkit/antelope'
+import {Checksum256, PermissionLevel, TimePointSec} from '@wharfkit/antelope'
 import {WalletPluginPrivateKey} from '@wharfkit/wallet-plugin-privatekey'
 
 import {

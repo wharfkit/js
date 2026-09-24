@@ -1297,6 +1297,33 @@ suite('serializer', function () {
         assert.notProperty(optionalsAbsent, 'maybe_ext')
     })
 
+    test('absent binary extensions are omitted from structs', function () {
+        @Struct.type('approve_ext')
+        class ApproveExt extends Struct {
+            @Struct.field(Name) declare proposer: Name
+            @Struct.field('checksum256$') declare proposal_hash?: Checksum256
+            @Struct.field(Checksum256, {extension: true}) declare other_hash?: Checksum256
+        }
+        const data = Serializer.encode({object: ApproveExt.from({proposer: 'foo'})})
+        const decoded = Serializer.decode({data, type: ApproveExt})
+        assert.notProperty(decoded, 'proposal_hash')
+        assert.notProperty(decoded, 'other_hash')
+        assert.deepEqual(Serializer.objectify(decoded), {proposer: 'foo'})
+        assert.equal(Serializer.encode({object: decoded}).hexString, data.hexString)
+
+        const hash = '0000000000000000000000000000000000000000000000000000000000000001'
+        const full = ApproveExt.from({proposer: 'foo', proposal_hash: hash, other_hash: hash})
+        const fullDecoded = Serializer.decode({
+            data: Serializer.encode({object: full}),
+            type: ApproveExt,
+        })
+        assert.deepEqual(Serializer.objectify(fullDecoded), {
+            proposer: 'foo',
+            proposal_hash: hash,
+            other_hash: hash,
+        })
+    })
+
     test('action_results', function () {
         const raw = {
             ____comment: 'This file was generated with eosio-abigen. DO NOT EDIT ',

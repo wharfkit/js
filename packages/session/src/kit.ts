@@ -1,14 +1,12 @@
 import {ChainDefinition, type ChainDefinitionType, type Fetch} from '@wharfkit/common'
 import type {Contract} from '@wharfkit/contract'
 import {
-    Bytes,
     Checksum256,
     Checksum256Type,
     Name,
     NameType,
     PermissionLevel,
     PermissionLevelType,
-    Serializer,
 } from '@wharfkit/antelope'
 
 import {
@@ -40,7 +38,6 @@ import {
 import {SessionKeyManager} from './sessionkey/manager'
 import {SessionKeyWalletPlugin} from './sessionkey/wallet'
 import {SessionKeyConfig} from './sessionkey/types'
-import {URLEncodedSession} from './encoded'
 
 export interface LoginOptions {
     arbitrary?: Record<string, any> // Arbitrary data that will be passed via context to wallet plugin
@@ -91,8 +88,6 @@ export interface SessionKitArgs {
 
 export interface SessionKitOptions {
     abis?: TransactABIDef[]
-    acceptUrlSession?: boolean
-    acceptUrlSessionParam?: string
     allowModify?: boolean
     contracts?: Contract[]
     equalityFn?: SerializedSessionEqualityFn
@@ -113,8 +108,6 @@ export interface SessionKitOptions {
  */
 export class SessionKit {
     readonly abis: TransactABIDef[] = []
-    readonly acceptUrlSession: boolean = false
-    readonly acceptUrlSessionParam: string = 'incomingWharfSession'
     readonly allowModify: boolean = true
     readonly appName: string
     readonly equalityFn: SerializedSessionEqualityFn = serializedSessionEquals
@@ -150,12 +143,6 @@ export class SessionKit {
         // Add any ABIs manually provided
         if (options.abis) {
             this.abis = [...options.abis]
-        }
-        if (options.acceptUrlSession) {
-            this.acceptUrlSession = options.acceptUrlSession
-        }
-        if (options.acceptUrlSessionParam) {
-            this.acceptUrlSessionParam = options.acceptUrlSessionParam
         }
         if (options.equalityFn) {
             this.equalityFn = options.equalityFn
@@ -674,68 +661,14 @@ export class SessionKit {
     }
 
     /**
-     * Read a session handed over through the current URL, if one is present.
-     *
-     * Requires `acceptUrlSession` and a browser environment. The parameter is
-     * stripped from the URL once read, so a reload cannot replay it.
-     */
-    restoreFromURL(): SerializedSession | undefined {
-        if (typeof window === 'undefined') {
-            return
-        }
-        const url = new URL(window.location.href)
-        const urlSessionParam = url.searchParams.get(this.acceptUrlSessionParam)
-        if (urlSessionParam) {
-            // Remove the session from the URL to prevent reuse, decodable or not
-            url.searchParams.delete(this.acceptUrlSessionParam)
-            window.history.replaceState(null, '', url)
-            try {
-                const encodedSession = Serializer.decode({
-                    data: Bytes.from(urlSessionParam, 'hex'),
-                    type: URLEncodedSession,
-                })
-                return encodedSession.serialized
-            } catch {
-                // eslint-disable-next-line no-console -- warn the developer since this may be unintentional
-                console.warn('Failed to decode session from URL: ' + urlSessionParam)
-            }
-        }
-    }
-
-    private canRestore(serializedSession: SerializedSession): boolean {
-        return (
-            !!this.getWalletPlugin(serializedSession.walletPlugin.id) &&
-            this.chains.some((c) => c.id.equals(serializedSession.chain))
-        )
-    }
-
-    /**
-     * Find the session to restore when the caller named none: the incoming URL
-     * session if one is offered, otherwise the default session in storage.
+     * Find the session to restore when the caller named none: the default
+     * session in storage.
      */
     private async restoreWithoutArgs(): Promise<SerializedSession | undefined> {
-        let serializedSession: SerializedSession | undefined
-
-        if (this.acceptUrlSession) {
-            const fromURL = this.restoreFromURL()
-            if (fromURL && this.canRestore(fromURL)) {
-                serializedSession = fromURL
-            } else if (fromURL) {
-                // eslint-disable-next-line no-console -- warn the developer since this may be unintentional
-                console.warn(
-                    `Ignoring session from URL for chain ${fromURL.chain} and wallet plugin '${fromURL.walletPlugin.id}', which this SessionKit does not support.`
-                )
-            }
+        const data = await this.storage.read('session')
+        if (data) {
+            return JSON.parse(data)
         }
-
-        if (!serializedSession) {
-            const data = await this.storage.read('session')
-            if (data) {
-                serializedSession = JSON.parse(data)
-            }
-        }
-
-        return serializedSession
     }
 
     /**

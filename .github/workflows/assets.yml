@@ -1,0 +1,33 @@
+name: Assets
+
+on:
+  push:
+    branches: [dev]
+    paths:
+      - 'packages/common/assets/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: assets
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+      - name: Upload chain logos to R2
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          for file in packages/common/assets/chain/*.png; do
+            npx --yes wrangler@4.139.0 r2 object put "wharfkit/chain/$(basename "$file")" \
+              --file "$file" --content-type image/png --remote
+          done

@@ -58,7 +58,7 @@ export function sealMessage(
     publicKey: PublicKey,
     nonce: UInt64
 ): Bytes {
-    const secret = privateKey.sharedSecret(publicKey)
+    const secret = privateKey.sharedSecret(publicKey, {legacy: true})
     const iv = createIV(nonce, secret)
     const symmetricKey = createSymmetricKey(secret, nonce)
     return encryptMessage(iv, symmetricKey, message)
@@ -73,7 +73,7 @@ export function sealedMessagePayload(
     if (!nonce) {
         nonce = UInt64.random()
     }
-    const secret = privateKey.sharedSecret(publicKey)
+    const secret = privateKey.sharedSecret(publicKey, {legacy: true})
     const iv = createIV(nonce, secret)
     const symmetricKey = createSymmetricKey(secret, nonce)
     const ciphertext = encryptMessage(iv, symmetricKey, message)
@@ -102,7 +102,7 @@ export function unsealMessage(
     publicKey: PublicKey,
     nonce: UInt64
 ): string {
-    const secret = privateKey.sharedSecret(publicKey)
+    const secret = privateKey.sharedSecret(publicKey, {legacy: true})
     const iv = createIV(nonce, secret)
     const symmetricKey = createSymmetricKey(secret, nonce)
     const decryptedMessage = decryptMessage(iv, symmetricKey, message)

@@ -456,10 +456,7 @@ function publish(force: boolean) {
     if (semver.prerelease(version)) {
         releaseArgs.push('--prerelease')
     } else {
-        releaseArgs.push(
-            '--notes',
-            `Release notes: https://wharfkit.com/docs/releases/${version.replace(/\./g, '-')}`
-        )
+        releaseArgs.push('--notes', 'Release notes: https://wharfkit.com/docs/releases')
     }
     if (trySh('gh', ['release', 'view', tag]) !== null) {
         log(`GitHub release for ${tag} already exists`)

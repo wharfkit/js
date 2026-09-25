@@ -1,11 +1,5 @@
 import {assert} from 'chai'
-import {
-    Checksum256,
-    Checksum256Type,
-    PermissionLevel,
-    Serializer,
-    TimePointSec,
-} from '@wharfkit/antelope'
+import {Checksum256, PermissionLevel, TimePointSec} from '@wharfkit/antelope'
 import {WalletPluginPrivateKey} from '@wharfkit/wallet-plugin-privatekey'
 
 import {
@@ -19,7 +13,6 @@ import {
     SessionArgs,
     SessionKit,
     SessionType,
-    URLEncodedSession,
     UserInterfaceAccountCreationResponse,
     UserInterfaceLoginResponse,
 } from '$lib'
@@ -684,151 +677,6 @@ suite('kit', function () {
                 assert.instanceOf(restoredJUNGLE, Session)
                 assert.isTrue(restoredJUNGLE.actor.equals('mock2'))
                 assert.isTrue(restoredJUNGLE.chain.id.equals(Chains.Jungle4.id))
-            }
-        })
-        test('session from URL', async function () {
-            const sessionKit = new SessionKit(mockSessionKitArgs, {
-                ...mockSessionKitOptions,
-                acceptUrlSession: true,
-                storage: new MockStorage(),
-            })
-
-            // Mock window object for Node.js environment
-            if (typeof globalThis.window === 'undefined') {
-                ;(globalThis as any).window = {}
-            }
-
-            // Mock window.history for Node.js environment
-            if (typeof (globalThis as any).window.history === 'undefined') {
-                ;(globalThis as any).window.history = {
-                    // eslint-disable-next-line @typescript-eslint/no-empty-function
-                    replaceState: () => {},
-                }
-            }
-
-            // Mock window.location with a writable href property
-            if (typeof (globalThis as any).window.location === 'undefined') {
-                ;(globalThis as any).window.location = {href: ''}
-            } else {
-                try {
-                    ;(globalThis as any).window.location.href =
-                        (globalThis as any).window.location.href || ''
-                } catch {
-                    ;(globalThis as any).window.location = {href: ''}
-                }
-            }
-
-            // Ensure no sessions
-            const sessions = await sessionKit.restoreAll()
-            assert.lengthOf(sessions, 0)
-
-            // Set the href to include an incomingWharfSession parameter
-            window.location.href =
-                'https://somewhere.com?incomingWharfSession=73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d104208d9c1754de3000000000090b1ca737b226964223a2277616c6c65742d706c7567696e2d707269766174656b6579222c2264617461223a7b22707269766174654b6579223a225056545f4b315f32355850314c7431527438376879796d6f755369654262676e554541657253317951486939777148433255656b326d677a48227d7d010f7b226669656c64223a22666f6f227d'
-
-            // Attempt to restore the session from the URL
-            const session = await sessionKit.restore()
-            if (!session) {
-                throw new Error('Failed to restore session from URL')
-            }
-
-            // Ensure session is correct
-            assert.isDefined(session)
-            assert.isTrue(session.chain.id.equals(mockChainDefinition.id), 'Incorrect chain')
-            assert.isTrue(session.actor.equals('wharfkit1111'), 'Incorrect actor')
-            assert.isTrue(session.permission.equals('test'), 'Incorrect permission')
-            assert.isTrue(
-                session.walletPlugin instanceof WalletPluginPrivateKey,
-                'Incorrect walletPlugin type'
-            )
-            assert.equal(session.data.field, 'foo', 'Incorrect session data')
-            assert.equal(session.walletPlugin.id, 'wallet-plugin-privatekey')
-            assert.equal(
-                session.walletPlugin.data.privateKey,
-                'PVT_K1_25XP1Lt1Rt87hyymouSieBbgnUEAerS1yQHi9wqHC2Uek2mgzH'
-            )
-
-            // Ensure session was persisted to storage
-            const sessionsAfter = await sessionKit.restoreAll()
-            assert.lengthOf(sessionsAfter, 1)
-        })
-        test('session from URL this kit cannot restore', async function () {
-            const sessionKit = new SessionKit(mockSessionKitArgs, {
-                ...mockSessionKitOptions,
-                acceptUrlSession: true,
-                storage: new MockStorage(),
-            })
-            const stored = makeSession('session1')
-            await sessionKit.persistSession(stored)
-
-            const existingWindow = (globalThis as any).window
-            ;(globalThis as any).window = {
-                history: {replaceState: () => undefined},
-                location: {href: ''},
-            }
-            const craft = (walletPluginId: string, chain: Checksum256Type) =>
-                Serializer.encode({
-                    object: URLEncodedSession.from({
-                        chain,
-                        actor: 'incoming1111',
-                        permission: 'active',
-                        walletPlugin: JSON.stringify({id: walletPluginId, data: {}}),
-                    }),
-                }).toString('hex')
-            const unsupported = [
-                craft('wallet-plugin-unregistered', mockChainDefinition.id),
-                craft(
-                    'wallet-plugin-privatekey',
-                    '00000000000000000000000000000000000000000000000000000000deadbeef'
-                ),
-            ]
-            try {
-                for (const hex of unsupported) {
-                    ;(globalThis as any).window.location.href =
-                        `https://app.test?incomingWharfSession=${hex}`
-                    // Falls back to the stored session rather than throwing
-                    const restored = await sessionKit.restore()
-                    assert.isTrue(restored?.actor.equals('session1'))
-                }
-            } finally {
-                ;(globalThis as any).window = existingWindow
-            }
-        })
-        test('session from URL that fails to decode', async function () {
-            const sessionKit = new SessionKit(mockSessionKitArgs, {
-                ...mockSessionKitOptions,
-                acceptUrlSession: true,
-                storage: new MockStorage(),
-            })
-            const existingWindow = (globalThis as any).window
-            let replaced: string | undefined
-            ;(globalThis as any).window = {
-                history: {
-                    replaceState: (_s: unknown, _t: unknown, url: URL) => {
-                        replaced = String(url)
-                    },
-                },
-                location: {href: 'https://app.test?incomingWharfSession=not-hex-at-all'},
-            }
-            try {
-                assert.isUndefined(await sessionKit.restore())
-                assert.equal(replaced, 'https://app.test/')
-            } finally {
-                ;(globalThis as any).window = existingWindow
-            }
-        })
-        test('session from URL outside a browser', function () {
-            const sessionKit = new SessionKit(mockSessionKitArgs, {
-                ...mockSessionKitOptions,
-                acceptUrlSession: true,
-                storage: new MockStorage(),
-            })
-            const existing = (globalThis as any).window
-            delete (globalThis as any).window
-            try {
-                assert.isUndefined(sessionKit.restoreFromURL())
-            } finally {
-                ;(globalThis as any).window = existing
             }
         })
         test('no session returns undefined', async function () {

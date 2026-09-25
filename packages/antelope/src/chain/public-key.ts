@@ -37,9 +37,10 @@ export class PublicKey implements ABISerializableObject {
             const size = type === KeyType.K1 || type === KeyType.R1 ? 33 : undefined
             const data = Base58.decodeRipemd160Check(parts[2], size, type)
             return new PublicKey(type, data)
-        } else if (value.length >= 50) {
-            // Legacy EOS key
-            const data = Base58.decodeRipemd160Check(value.slice(-50))
+        } else if (value.startsWith('EOS') || value.length >= 50) {
+            // Legacy EOS key; leading zero bytes shorten the encoding, e.g. the null key
+            const encoded = value.startsWith('EOS') ? value.slice(3) : value.slice(-50)
+            const data = Base58.decodeRipemd160Check(encoded, 33)
             return new PublicKey(KeyType.K1, data)
         } else {
             throw new Error('Invalid public key string')

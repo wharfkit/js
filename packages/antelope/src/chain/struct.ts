@@ -14,6 +14,14 @@ export interface StructConstructor extends ABISerializableConstructor {
     structFields: ABIField[]
 }
 
+function fieldModifiers(field: ABIField) {
+    if (typeof field.type === 'string') {
+        const resolved = new ABI.ResolvedType(field.type)
+        return {isOptional: resolved.isOptional, isExtension: resolved.isExtension}
+    }
+    return {isOptional: !!field.optional, isExtension: !!field.extension}
+}
+
 export class Struct implements ABISerializableObject {
     static abiName = '__struct'
     static abiFields: ABIField[]
@@ -50,12 +58,10 @@ export class Struct implements ABISerializableObject {
     constructor(object: any) {
         const self = this.constructor as typeof Struct
         for (const field of self.structFields) {
-            const isOptional =
-                typeof field.type === 'string'
-                    ? new ABI.ResolvedType(String(field.type)).isOptional
-                    : field.optional
+            const {isOptional, isExtension} = fieldModifiers(field)
             const value = object[field.name]
             if (isOptional && !value) continue
+            if (isExtension && value === undefined) continue
             this[field.name] = value
         }
     }
@@ -84,6 +90,7 @@ export class Struct implements ABISerializableObject {
         const rv: any = {}
         for (const field of self.structFields) {
             if (field.optional && !this[field.name]) continue
+            if (this[field.name] === undefined && fieldModifiers(field).isExtension) continue
             rv[field.name] = this[field.name]
         }
         return rv

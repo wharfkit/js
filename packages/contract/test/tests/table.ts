@@ -729,5 +729,32 @@ suite('Table', () => {
                 )
             })
         })
+
+        test('should send a bound of zero', async function () {
+            const queries: any[] = []
+            const client = new APIClient({
+                provider: {
+                    call: async ({params}: any) => {
+                        queries.push(JSON.parse(JSON.stringify(params)))
+                        return {
+                            status: 200,
+                            headers: {},
+                            text: '{"rows":[],"more":""}',
+                            json: {rows: [], more: ''},
+                        }
+                    },
+                },
+            })
+            const cursor = new TableScopeCursor({
+                abi: msig.abi,
+                client,
+                params: {code: 'eosio.msig', table: 'proposal', lower_bound: 0, upper_bound: 0},
+            })
+
+            await cursor.next()
+
+            assert.equal(queries[0].lower_bound, '0')
+            assert.equal(queries[0].upper_bound, '0')
+        })
     })
 })

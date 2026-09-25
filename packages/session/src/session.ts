@@ -43,7 +43,6 @@ import {
     TransactRevisions,
 } from './transact'
 import {SessionStorage} from './storage'
-import {URLEncodedSession} from './encoded'
 import {
     actionMatchesPermission,
     buildSendTransaction2Options,
@@ -116,11 +115,6 @@ export type SessionType = Session | SerializedSession
 export interface PartialSerializedSession extends Partial<Omit<SerializedSession, 'chain'>> {
     chain: Checksum256Type | ChainDefinition
 }
-
-/**
- * The encodings [[Session.encode]] can return.
- */
-export type SessionEncodingTypes = 'encoded' | 'json' | 'serialized' | 'url'
 
 /**
  * A representation of a session to interact with a specific blockchain account.
@@ -1016,36 +1010,6 @@ export class Session {
 
         if (this.onPersist) {
             await this.onPersist(this)
-        }
-    }
-
-    /**
-     * Encode this session for storage or transport.
-     *
-     * @param encoding The representation to return, defaulting to `serialized`
-     */
-    encode(): SerializedSession
-    encode(encoding: 'encoded'): URLEncodedSession
-    encode(encoding: 'json'): string
-    encode(encoding: 'serialized'): SerializedSession
-    encode(encoding: 'url'): string
-    encode(
-        encoding: SessionEncodingTypes = 'serialized'
-    ): string | SerializedSession | URLEncodedSession {
-        const serialized = this.serialize()
-        switch (encoding) {
-            case 'encoded':
-                return URLEncodedSession.fromSession(serialized)
-            case 'json':
-                return JSON.stringify(serialized)
-            case 'serialized':
-                return serialized
-            case 'url':
-                return Serializer.encode({
-                    object: URLEncodedSession.fromSession(serialized),
-                }).toString('hex')
-            default:
-                throw new Error(`Unsupported encoding: ${encoding}`)
         }
     }
 }

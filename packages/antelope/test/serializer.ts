@@ -1222,6 +1222,108 @@ suite('serializer', function () {
         assert.notProperty(Serializer.objectify(res1), 'proposal_hash')
     })
 
+    test('absent binary extensions are omitted', function () {
+        const abi = ABI.from({
+            structs: [
+                {
+                    name: 'permission_level',
+                    base: '',
+                    fields: [
+                        {name: 'actor', type: 'name'},
+                        {name: 'permission', type: 'name'},
+                    ],
+                },
+                {
+                    name: 'approve',
+                    base: '',
+                    fields: [
+                        {name: 'proposer', type: 'name'},
+                        {name: 'proposal_name', type: 'name'},
+                        {name: 'level', type: 'permission_level'},
+                        {name: 'proposal_hash', type: 'checksum256$'},
+                    ],
+                },
+                {
+                    name: 'optionals',
+                    base: '',
+                    fields: [
+                        {name: 'name', type: 'name'},
+                        {name: 'maybe', type: 'checksum256?'},
+                        {name: 'maybe_ext', type: 'bool?$'},
+                    ],
+                },
+            ],
+        })
+        const action = {
+            proposer: 'foo',
+            proposal_name: 'bar',
+            level: {actor: 'baz', permission: 'active'},
+        }
+        const data = Serializer.encode({object: action, abi, type: 'approve'})
+        const fromBinary = Serializer.decode({data, abi, type: 'approve'})
+        assert.notProperty(fromBinary, 'proposal_hash')
+        assert.deepEqual(Serializer.objectify(fromBinary), action)
+        assert.equal(
+            Serializer.encode({object: fromBinary, abi, type: 'approve'}).hexString,
+            data.hexString
+        )
+
+        const fromObject = Serializer.decode({object: action, abi, type: 'approve'})
+        assert.notProperty(fromObject, 'proposal_hash')
+        const fromNull = Serializer.decode({
+            object: {...action, proposal_hash: null},
+            abi,
+            type: 'approve',
+        })
+        assert.notProperty(fromNull, 'proposal_hash')
+
+        const optionals = Serializer.decode({
+            data: Serializer.encode({
+                object: {name: 'foo', maybe: null, maybe_ext: null},
+                abi,
+                type: 'optionals',
+            }),
+            abi,
+            type: 'optionals',
+        }) as any
+        assert.strictEqual(optionals.maybe, null)
+        assert.strictEqual(optionals.maybe_ext, null)
+        const optionalsAbsent = Serializer.decode({
+            data: '0000000000000000' + '00',
+            abi,
+            type: 'optionals',
+        })
+        assert.strictEqual((optionalsAbsent as any).maybe, null)
+        assert.notProperty(optionalsAbsent, 'maybe_ext')
+    })
+
+    test('absent binary extensions are omitted from structs', function () {
+        @Struct.type('approve_ext')
+        class ApproveExt extends Struct {
+            @Struct.field(Name) declare proposer: Name
+            @Struct.field('checksum256$') declare proposal_hash?: Checksum256
+            @Struct.field(Checksum256, {extension: true}) declare other_hash?: Checksum256
+        }
+        const data = Serializer.encode({object: ApproveExt.from({proposer: 'foo'})})
+        const decoded = Serializer.decode({data, type: ApproveExt})
+        assert.notProperty(decoded, 'proposal_hash')
+        assert.notProperty(decoded, 'other_hash')
+        assert.deepEqual(Serializer.objectify(decoded), {proposer: 'foo'})
+        assert.equal(Serializer.encode({object: decoded}).hexString, data.hexString)
+
+        const hash = '0000000000000000000000000000000000000000000000000000000000000001'
+        const full = ApproveExt.from({proposer: 'foo', proposal_hash: hash, other_hash: hash})
+        const fullDecoded = Serializer.decode({
+            data: Serializer.encode({object: full}),
+            type: ApproveExt,
+        })
+        assert.deepEqual(Serializer.objectify(fullDecoded), {
+            proposer: 'foo',
+            proposal_hash: hash,
+            other_hash: hash,
+        })
+    })
+
     test('action_results', function () {
         const raw = {
             ____comment: 'This file was generated with eosio-abigen. DO NOT EDIT ',

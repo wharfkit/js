@@ -1,6 +1,6 @@
 {
     "name": "@wharfkit/bundle",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "homepage": "https://wharfkit.com",
     "description": "A prepackaged bundle of common Wharf libraries re-exported for IIFE or ESM",
     "license": "BSD-3-Clause",

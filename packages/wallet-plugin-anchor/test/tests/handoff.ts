@@ -35,10 +35,9 @@ function makeSameDeviceData() {
     }
 }
 
-function makeTransport(data: Record<string, unknown>, overrides: Record<string, any> = {}) {
+function makeTransport(overrides: Record<string, any> = {}) {
     return new NativeTransport({
         id: 'anchor',
-        data,
         buoyUrl: 'https://cb.anchor.link',
         ...overrides,
     })
@@ -112,8 +111,10 @@ suite('native signing handoff', function () {
                 resolveSend = () => resolve(undefined as any)
             })
         )
-        const transport = makeTransport(makeSameDeviceData(), {send: sendStub})
-        transport.sign(makeResolved(), makeTransactContext(makeMockUI())).catch(() => undefined)
+        const transport = makeTransport({send: sendStub})
+        transport
+            .sign(makeSameDeviceData(), makeResolved(), makeTransactContext(makeMockUI()))
+            .catch(() => undefined)
         await settle()
 
         assert.equal(sendStub.callCount, 1, 'the sealed request was sent')
@@ -134,13 +135,13 @@ suite('native signing handoff', function () {
             })
         )
 
-        const transport = makeTransport(makeSameDeviceData(), {
+        const transport = makeTransport({
             send: sendStub,
             generateReturnUrl: returnUrlStub,
             waitForCallback: callbackStub,
         })
         const signing = transport
-            .sign(makeResolved(), makeTransactContext(makeMockUI()))
+            .sign(makeSameDeviceData(), makeResolved(), makeTransactContext(makeMockUI()))
             .catch(() => undefined)
         await settle()
 
@@ -170,12 +171,14 @@ suite('native signing handoff', function () {
         const returnUrlStub = sinon.stub().returns('googlechrome://')
         const callbackStub = sinon.stub().returns(new Promise(() => {}))
 
-        const transport = makeTransport(makeSameDeviceData(), {
+        const transport = makeTransport({
             send: sendStub,
             generateReturnUrl: returnUrlStub,
             waitForCallback: callbackStub,
         })
-        transport.sign(makeResolved(), makeTransactContext(makeMockUI())).catch(() => undefined)
+        transport
+            .sign(makeSameDeviceData(), makeResolved(), makeTransactContext(makeMockUI()))
+            .catch(() => undefined)
         await settle()
 
         assert.equal(callbackStub.callCount, 1, 'connects right away')
@@ -187,11 +190,15 @@ suite('native signing handoff', function () {
         const returnUrlStub = sinon.stub().returns(RETURN_URL)
         const callbackStub = sinon.stub().returns(new Promise(() => {}))
 
-        const transport = makeTransport(
-            {...makeSameDeviceData(), sameDevice: false},
-            {send: sendStub, generateReturnUrl: returnUrlStub, waitForCallback: callbackStub}
-        )
-        transport.sign(makeResolved(), makeTransactContext(makeMockUI())).catch(() => undefined)
+        const data = {...makeSameDeviceData(), sameDevice: false}
+        const transport = makeTransport({
+            send: sendStub,
+            generateReturnUrl: returnUrlStub,
+            waitForCallback: callbackStub,
+        })
+        transport
+            .sign(data, makeResolved(), makeTransactContext(makeMockUI()))
+            .catch(() => undefined)
         await settle()
 
         assert.equal(callbackStub.callCount, 1, 'connects right away')
@@ -214,11 +221,13 @@ suite('native signing handoff', function () {
             return pending
         }) as typeof ui.prompt
 
-        const transport = makeTransport(makeSameDeviceData(), {send: sendStub})
+        const transport = makeTransport({send: sendStub})
         let message = ''
-        await transport.sign(makeResolved(), makeTransactContext(ui)).catch((error) => {
-            message = error.message
-        })
+        await transport
+            .sign(makeSameDeviceData(), makeResolved(), makeTransactContext(ui))
+            .catch((error) => {
+                message = error.message
+            })
 
         assert.equal(message, 'buoy unavailable', 'the delivery error surfaces')
         assert.equal(cancelCount, 1, 'the prompt was cancelled')

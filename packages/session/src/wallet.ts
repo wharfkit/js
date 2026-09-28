@@ -188,6 +188,7 @@ export abstract class AbstractWalletPlugin implements WalletPlugin {
             data: this.data,
         }
     }
+    /** Shallow copy with fresh data and metadata; every other field must be safe to share. */
     clone(): WalletPlugin {
         const cloned = Object.create(Object.getPrototypeOf(this))
         Object.assign(cloned, this)

@@ -12,6 +12,7 @@ import {
     ResolvedSigningRequest,
     Serializer,
     TransactContext,
+    WalletPluginData,
     WalletPluginLoginResponse,
     WalletPluginSignResponse,
 } from '@wharfkit/session'
@@ -42,6 +43,7 @@ export class NativeTransport {
     constructor(private options: TransportOptions) {}
 
     async login(
+        data: WalletPluginData,
         context: LoginContext,
         bundle: IdentityRequestBundle,
         t: Translator,
@@ -139,18 +141,18 @@ export class NativeTransport {
                 callbackResponse.link_key &&
                 callbackResponse.link_name
             ) {
-                this.options.data.requestKey = requestKey
-                this.options.data.privateKey = privateKey
-                this.options.data.signerKey = PublicKey.from(callbackResponse.link_key)
-                this.options.data.channelUrl = callbackResponse.link_ch
-                this.options.data.channelName = callbackResponse.link_name
+                data.requestKey = requestKey
+                data.privateKey = privateKey
+                data.signerKey = PublicKey.from(callbackResponse.link_key)
+                data.channelUrl = callbackResponse.link_ch
+                data.channelName = callbackResponse.link_name
 
                 try {
                     if (callbackResponse.link_meta) {
                         const metadata = JSON.parse(callbackResponse.link_meta)
-                        this.options.data.sameDevice = metadata.sameDevice
-                        this.options.data.launchUrl = metadata.launchUrl
-                        this.options.data.triggerUrl = metadata.triggerUrl
+                        data.sameDevice = metadata.sameDevice
+                        data.launchUrl = metadata.launchUrl
+                        data.triggerUrl = metadata.triggerUrl
                     }
                 } catch {
                     // link_meta is advisory; a malformed value must not fail the login
@@ -183,6 +185,7 @@ export class NativeTransport {
     }
 
     async sign(
+        data: WalletPluginData,
         resolved: ResolvedSigningRequest,
         context: TransactContext
     ): Promise<WalletPluginSignResponse> {
@@ -190,7 +193,6 @@ export class NativeTransport {
             throw new Error('No UI available')
         }
 
-        const data = this.options.data
         const t = context.ui.getTranslate(this.options.id)
 
         const expiration = resolved.transaction.expiration.toDate()

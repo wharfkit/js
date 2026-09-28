@@ -20,8 +20,6 @@ export interface IdentityRequestBundle {
 /** Everything a transport needs from the plugin that owns it. */
 export interface TransportOptions {
     id: string
-    /** The plugin's persisted storage — shared by reference across transports. */
-    data: Record<string, any>
     buoyUrl: string
     buoyWs?: WebSocket
     // Overridable so tests can substitute them; ESM namespaces cannot be stubbed in place.

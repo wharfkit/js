@@ -43,12 +43,11 @@ suite('native transport', function () {
         const ui = makeMockUI()
         const transport = new NativeTransport({
             id: 'anchor',
-            data: {},
             buoyUrl: 'https://cb.anchor.link',
         })
         // Never resolves in this test — we only assert on what was rendered.
         transport
-            .login(makeLoginContext(ui), makeBundle(), ui.getTranslate())
+            .login({}, makeLoginContext(ui), makeBundle(), ui.getTranslate())
             .catch(() => undefined)
 
         const args = ui.lastPrompt()
@@ -62,11 +61,10 @@ suite('native transport', function () {
         const ui = makeMockUI()
         const transport = new NativeTransport({
             id: 'anchor',
-            data: {},
             buoyUrl: 'https://cb.anchor.link',
         })
         transport
-            .login(makeLoginContext(ui), makeBundle(), ui.getTranslate())
+            .login({}, makeLoginContext(ui), makeBundle(), ui.getTranslate())
             .catch(() => undefined)
         assert.equal(window.location.href, 'esr://same-device')
     })
@@ -76,11 +74,10 @@ suite('native transport', function () {
         let selected = false
         const transport = new NativeTransport({
             id: 'anchor',
-            data: {},
             buoyUrl: 'https://cb.anchor.link',
         })
         transport
-            .login(makeLoginContext(ui), makeBundle(), ui.getTranslate(), {
+            .login({}, makeLoginContext(ui), makeBundle(), ui.getTranslate(), {
                 delayMs: 10,
                 onSelect: () => (selected = true),
             })
@@ -102,11 +99,10 @@ suite('native transport', function () {
         const ui = makeMockUI()
         const transport = new NativeTransport({
             id: 'anchor',
-            data: {},
             buoyUrl: 'https://cb.anchor.link',
         })
         transport
-            .login(makeLoginContext(ui), makeBundle(), ui.getTranslate())
+            .login({}, makeLoginContext(ui), makeBundle(), ui.getTranslate())
             .catch(() => undefined)
         await new Promise((resolve) => setTimeout(resolve, 30))
         assert.equal(ui.prompts.length, 1)

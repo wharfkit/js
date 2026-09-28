@@ -88,13 +88,8 @@ export class WalletPluginAnchor extends AbstractWalletPlugin {
         this.webAuthenticatorUrls = options?.webAuthenticatorUrls || {}
         this.webFallbackDelayMs = options?.webFallbackDelayMs ?? DEFAULT_WEB_FALLBACK_DELAY_MS
 
-        // SessionKit.restore() reassigns `this.data`, so transports must read it live.
-        const currentData = () => this.data
         const transportOptions: TransportOptions = {
             id: this.id,
-            get data() {
-                return currentData()
-            },
             buoyUrl: this.buoyUrl,
             buoyWs: this.buoyWs,
             ...options?.transport,
@@ -187,7 +182,7 @@ export class WalletPluginAnchor extends AbstractWalletPlugin {
             // Native-only chain: the question has no second answer, so never ask it.
             if (!webUrl) {
                 preopened?.close()
-                return await this.native.login(context, bundle, t)
+                return await this.native.login(this.data, context, bundle, t)
             }
 
             const forcedMode = perCall.mode ?? this.loginModeOverride
@@ -208,7 +203,7 @@ export class WalletPluginAnchor extends AbstractWalletPlugin {
             writeMode(this.data, mode)
 
             if (mode === 'web') {
-                return await this.web.login(context, bundle, webUrl, popup)
+                return await this.web.login(this.data, context, bundle, webUrl, popup)
             }
             // Freshly chosen: no immediate switch link, but still recover from a silent deep link.
             return await this.loginWithSwitch(context, bundle, t, webUrl, 'app', false)
@@ -236,8 +231,8 @@ export class WalletPluginAnchor extends AbstractWalletPlugin {
 
             try {
                 return mode === 'web' && webUrl
-                    ? await this.web.login(context, bundle, webUrl, popup)
-                    : await this.native.login(context, bundle, t)
+                    ? await this.web.login(this.data, context, bundle, webUrl, popup)
+                    : await this.native.login(this.data, context, bundle, t)
             } catch (error) {
                 if (!(error instanceof AnchorRequestCancelledError)) {
                     throw error
@@ -286,12 +281,14 @@ export class WalletPluginAnchor extends AbstractWalletPlugin {
 
         const primary =
             mode === 'app'
-                ? this.native.login(context, bundle, t, {
+                ? this.native.login(this.data, context, bundle, t, {
                       immediate,
                       delayMs: this.webFallbackDelayMs,
                       onSelect: () => switchTo(),
                   })
-                : this.web.login(context, bundle, webUrl, preopened, {onSelect: () => switchTo()})
+                : this.web.login(this.data, context, bundle, webUrl, preopened, {
+                      onSelect: () => switchTo(),
+                  })
 
         // The loser of the race is abandoned; swallow its eventual rejection.
         primary.catch(() => undefined)
@@ -304,8 +301,8 @@ export class WalletPluginAnchor extends AbstractWalletPlugin {
         const next: AnchorMode = mode === 'app' ? 'web' : 'app'
         writeMode(this.data, next)
         return next === 'web'
-            ? this.web.login(context, alternateBundle, webUrl, popup)
-            : this.native.login(context, alternateBundle, t)
+            ? this.web.login(this.data, context, alternateBundle, webUrl, popup)
+            : this.native.login(this.data, context, alternateBundle, t)
     }
 
     /** The browser popup opens inside the click handler, before this promise resolves. */
@@ -375,10 +372,10 @@ export class WalletPluginAnchor extends AbstractWalletPlugin {
                     `This session signs in the browser, but there is no Anchor web authenticator for chain ${context.chain?.id}.`
                 )
             }
-            return this.web.sign(resolved, context, webUrl)
+            return this.web.sign(this.data, resolved, context, webUrl)
         }
 
-        return this.native.sign(resolved, context)
+        return this.native.sign(this.data, resolved, context)
     }
 }
 

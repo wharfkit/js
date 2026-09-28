@@ -8,6 +8,7 @@ import {
     ResolvedSigningRequest,
     TransactContext,
     UserInterface,
+    WalletPluginData,
     WalletPluginLoginResponse,
     WalletPluginSignResponse,
 } from '@wharfkit/session'
@@ -65,6 +66,7 @@ export class WebTransport {
     }
 
     async login(
+        data: WalletPluginData,
         context: LoginContext,
         bundle: IdentityRequestBundle,
         baseUrl: string,
@@ -82,8 +84,8 @@ export class WebTransport {
             switchOffer
         )
 
-        this.options.data.encryptionKey = String(bundle.privateKey)
-        this.options.data.messageKey = payload.link_key
+        data.encryptionKey = String(bundle.privateKey)
+        data.messageKey = payload.link_key
 
         if (!payload.cid) {
             throw new Error('Login failed: No chain ID returned')
@@ -110,11 +112,11 @@ export class WebTransport {
     }
 
     async sign(
+        data: WalletPluginData,
         resolved: ResolvedSigningRequest,
         context: TransactContext,
         baseUrl: string
     ): Promise<WalletPluginSignResponse> {
-        const data = this.options.data
         if (!data.encryptionKey || !data.messageKey) {
             throw new Error('No request keys available - please login first')
         }

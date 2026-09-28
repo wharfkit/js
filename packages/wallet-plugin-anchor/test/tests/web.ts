@@ -48,7 +48,6 @@ suite('web transport', function () {
         const ui = makeMockUI()
         const transport = new WebTransport({
             id: 'anchor',
-            data: {},
             buoyUrl: 'https://cb.anchor.link',
         })
         const url = transport.loginUrl(
@@ -66,7 +65,6 @@ suite('web transport', function () {
         ;(window.open as any).calls.length = 0
         const transport = new WebTransport({
             id: 'anchor',
-            data: {},
             buoyUrl: 'https://cb.anchor.link',
         })
         const popup = transport.openWindow('https://jungle4.anchorwallet.io/sign?esr=x')
@@ -79,14 +77,19 @@ suite('web transport', function () {
         const ui = makeMockUI()
         const transport = new WebTransport({
             id: 'anchor',
-            data: {},
             buoyUrl: 'https://cb.anchor.link',
         })
         const preOpened = transport.openWindow('https://jungle4.anchorwallet.io/sign?esr=x')
         assert.equal((window.open as any).calls.length, 1)
 
         transport
-            .login(makeLoginContext(ui), makeBundle(), 'https://jungle4.anchorwallet.io', preOpened)
+            .login(
+                {},
+                makeLoginContext(ui),
+                makeBundle(),
+                'https://jungle4.anchorwallet.io',
+                preOpened
+            )
             .catch(() => undefined)
         await new Promise((resolve) => setTimeout(resolve, 10))
 
@@ -101,7 +104,6 @@ suite('web transport', function () {
         const ui = makeMockUI()
         const transport = new WebTransport({
             id: 'anchor',
-            data: {},
             buoyUrl: 'https://cb.anchor.link',
         })
         // A blocked popup is `null`, which is exactly what openWindow returns on failure.
@@ -109,7 +111,7 @@ suite('web transport', function () {
         ;(window as any).open = () => null
         try {
             transport
-                .login(makeLoginContext(ui), makeBundle(), 'https://jungle4.anchorwallet.io')
+                .login({}, makeLoginContext(ui), makeBundle(), 'https://jungle4.anchorwallet.io')
                 .catch(() => undefined)
             await new Promise((resolve) => setTimeout(resolve, 10))
             const args = ui.lastPrompt()!
@@ -132,11 +134,11 @@ suite('web transport', function () {
             const ui = makeMockUI()
             const transport = new WebTransport({
                 id: 'anchor',
-                data: {},
                 buoyUrl: 'https://cb.anchor.link',
                 waitForCallback: callback,
             })
             const response = await transport.login(
+                {},
                 makeLoginContext(ui),
                 makeBundle(),
                 'https://jungle4.anchorwallet.io'
@@ -152,12 +154,12 @@ suite('web transport', function () {
         ;(window.open as any).calls.length = 0
         const dappKey = PrivateKey.generate('K1')
         const walletKey = PrivateKey.generate('K1')
+        const data = {
+            encryptionKey: String(dappKey),
+            messageKey: String(walletKey.toPublic()),
+        }
         const transport = new WebTransport({
             id: 'anchor',
-            data: {
-                encryptionKey: String(dappKey),
-                messageKey: String(walletKey.toPublic()),
-            },
             buoyUrl: 'https://cb.anchor.link',
         })
 
@@ -178,7 +180,7 @@ suite('web transport', function () {
         } as any
 
         let signError: any
-        transport.sign(resolved, context, 'https://jungle4.anchorwallet.io').catch((e) => {
+        transport.sign(data, resolved, context, 'https://jungle4.anchorwallet.io').catch((e) => {
             signError = e
         })
         await new Promise((resolve) => setTimeout(resolve, 20))
@@ -199,12 +201,11 @@ suite('web transport', function () {
     test('sign refuses to run before a web login has stored keys', async function () {
         const transport = new WebTransport({
             id: 'anchor',
-            data: {},
             buoyUrl: 'https://cb.anchor.link',
         })
         let message = ''
         try {
-            await transport.sign({} as any, {} as any, 'https://jungle4.anchorwallet.io')
+            await transport.sign({}, {} as any, {} as any, 'https://jungle4.anchorwallet.io')
         } catch (error: any) {
             message = error.message
         }

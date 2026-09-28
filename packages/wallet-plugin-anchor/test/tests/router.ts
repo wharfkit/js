@@ -1,5 +1,5 @@
 import {assert} from 'chai'
-import {ChainDefinition, LoginContext} from '@wharfkit/session'
+import {ChainDefinition, LoginContext, SessionKit} from '@wharfkit/session'
 import {ResolvedSigningRequest} from '@wharfkit/signing-request'
 import {APIClient, PermissionLevel, PrivateKey} from '@wharfkit/antelope'
 import * as buoy from '@greymass/buoy'
@@ -78,6 +78,16 @@ function makeTransactContext(ui: any, chain: ChainDefinition) {
 
 const sessionKey = PrivateKey.generate('K1')
 const walletKey = PrivateKey.generate('K1')
+
+/** The harness has no browser storage, so the kit persists into a map. */
+function memoryStorage() {
+    const store = new Map<string, string>()
+    return {
+        write: async (key: string, value: string) => void store.set(key, value),
+        read: async (key: string) => store.get(key) ?? null,
+        remove: async (key: string) => void store.delete(key),
+    }
+}
 
 /** Let the router's `await createIdentityRequest(...)` settle before asserting. */
 function settle() {
@@ -886,5 +896,96 @@ suite('caller-opened popup', function () {
         ui.clickButton(1)
         await settle()
         assert.isTrue((popup as any).closed)
+    })
+})
+
+suite('restored session', function () {
+    this.timeout(10 * 1000)
+
+    test('a restored web session signs with the keys assigned to the clone', async function () {
+        ;(window.open as any).calls.length = 0
+        const ui = makeMockUI()
+        const registered = new WalletPluginAnchor()
+        const restored = registered.clone() as WalletPluginAnchor
+        restored.data = {
+            mode: 'web',
+            encryptionKey: String(sessionKey),
+            messageKey: String(walletKey.toPublic()),
+        }
+
+        const resolved = await makeMockResolvedSigningRequest()
+        restored.sign(resolved, makeTransactContext(ui, jungle4)).catch(() => undefined)
+        await settle()
+
+        assert.equal((window.open as any).calls.length, 1, 'popup opened from the clone keys')
+        assert.include(
+            (window.open as any).calls[0],
+            'https://jungle4.anchorwallet.io/sign?sealed='
+        )
+    })
+
+    test('a restored native session signs over the channel assigned to the clone', async function () {
+        const ui = makeMockUI()
+        const sendStub = sinon.stub().resolves(undefined as any)
+        const callbackStub = sinon.stub().returns(new Promise(() => undefined))
+        const registered = new WalletPluginAnchor({
+            transport: {send: sendStub, waitForCallback: callbackStub},
+        })
+        const restored = registered.clone() as WalletPluginAnchor
+        restored.data = {
+            channelUrl: 'https://cb.anchor.link/laptop-channel',
+            channelName: 'laptop',
+            privateKey: String(sessionKey),
+            signerKey: String(walletKey.toPublic()),
+        }
+
+        const resolved = await makeMockResolvedSigningRequest()
+        restored.sign(resolved, makeTransactContext(ui, jungle4)).catch(() => undefined)
+        await settle()
+
+        assert.equal(sendStub.callCount, 1, 'the sealed request was sent from the clone channel')
+        assert.equal(sendStub.firstCall.args[1].channel, 'laptop-channel')
+    })
+})
+
+suite('restored session through the kit', function () {
+    this.timeout(10 * 1000)
+
+    test('a session the kit restores signs with its stored keys', async function () {
+        ;(window.open as any).calls.length = 0
+        const ui = makeMockUI()
+        const registered = new WalletPluginAnchor()
+        const kit = new SessionKit(
+            {appName: 'unittest', chains: [jungle4], ui, walletPlugins: [registered]},
+            {storage: memoryStorage()}
+        )
+        const session = await kit.restore({
+            chain: jungle4.id,
+            actor: 'wharfkit1131',
+            permission: 'test',
+            walletPlugin: {
+                id: 'anchor',
+                data: {
+                    mode: 'web',
+                    encryptionKey: String(sessionKey),
+                    messageKey: String(walletKey.toPublic()),
+                },
+            },
+        })
+        assert.isDefined(session)
+        assert.notStrictEqual(session!.walletPlugin, registered, 'the kit hands back a clone')
+        assert.deepEqual(registered.data, {}, 'the registered instance is untouched')
+
+        const resolved = await makeMockResolvedSigningRequest()
+        session!.walletPlugin
+            .sign(resolved, makeTransactContext(ui, jungle4))
+            .catch(() => undefined)
+        await settle()
+
+        assert.equal((window.open as any).calls.length, 1, 'popup opened from the restored keys')
+        assert.include(
+            (window.open as any).calls[0],
+            'https://jungle4.anchorwallet.io/sign?sealed='
+        )
     })
 })
